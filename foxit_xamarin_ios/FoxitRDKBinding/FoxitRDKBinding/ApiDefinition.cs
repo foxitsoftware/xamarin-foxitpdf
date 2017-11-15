@@ -1,3 +1,15 @@
+/**
+ * Copyright (C) 2003-2017, Foxit Software Inc..
+ * All Rights Reserved.
+ *
+ * http://www.foxitsoftware.com
+ *
+ * The following code is copyrighted and is the proprietary of Foxit Software Inc.. It is not allowed to
+ * distribute any parts of Foxit Mobile PDF SDK to third party or public without permission unless an agreement
+ * is signed between Foxit Software Inc. and customers to explicitly grant customers permissions.
+ * Review legal.txt for additional license and legal information.
+ */
+
 using System;
 using CoreGraphics;
 using Foundation;
@@ -6,3653 +18,3762 @@ using UIKit;
 
 namespace FoxitRDK
 {
-	[BaseType(typeof(NSObject))]
-	interface FSSwiftException
-	{
-		[Static]
-		[Export("tryException:error:")]
-		bool TryException(Action tryBlock, out NSError error);
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSSwiftException
+    {
+        [Static]
+        [Export("tryException:error:")]
+        bool TryException(Action tryBlock, [NullAllowed] out NSError error);
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSNotifier
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(NSObject))]
+    interface FSNotifier
+    {
+        [Export("OnOutOfMemory")]
+        void OnOutOfMemory();
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSIdentityProperties
+    {
+        [Export("set:email:loginName:name:")]
+        void Set(string corporation, string email, string loginName, string name);
 
-		[Export("OnOutOfMemory")]
-		void OnOutOfMemory();
+        [Export("setCorporation:")]
+        void SetCorporation(string value);
 
-	}
+        [Export("getCorporation")]
+        string GetCorporation();
 
-	[BaseType(typeof(NSObject))]
-	interface FSIdentityProperties
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setEmail:")]
+        void SetEmail(string value);
 
+        [Export("getEmail")]
+        string GetEmail();
 
-		[Export("set:email:loginName:name:")]
-		void Set(string corporation, string email, string loginName, string name);
+        [Export("setLoginName:")]
+        void SetLoginName(string value);
 
-		[Export("setCorporation:")]
-		void SetCorporation(string value);
+        [Export("getLoginName")]
+        string GetLoginName();
 
-		[Export("getCorporation")]
-		string GetCorporation();
+        [Export("setName:")]
+        void SetName(string value);
 
-		[Export("setEmail:")]
-		void SetEmail(string value);
+        [Export("getName")]
+        string GetName();
+    }
 
-		[Export("getEmail")]
-		string GetEmail();
+    [BaseType(typeof(NSObject))]
+    interface FSProgressive
+    {
+        [Export("resume")]
+        FSProgressState Resume();
 
-		[Export("setLoginName:")]
-		void SetLoginName(string value);
+        [Export("getRateOfProgress")]
+        int GetRateOfProgress();
+    }
 
-		[Export("getLoginName")]
-		string GetLoginName();
+    [BaseType(typeof(NSObject))]
+    interface FSActionHandler
+    {
+        [Export("getCurrentPage:")]
+        int GetCurrentPage(FSPDFDoc pdfDoc);
 
-		[Export("setName:")]
-		void SetName(string value);
+        [Export("setCurrentPage:pageIndex:")]
+        void SetCurrentPage(FSPDFDoc pdfDoc, int pageIndex);
 
-		[Export("getName")]
-		string GetName();
+        [Export("getPageRotation:pageIndex:")]
+        FSRotation GetPageRotation(FSPDFDoc pdfDoc, int pageIndex);
 
-	}
+        [Export("setPageRotation:pageIndex:rotation:")]
+        bool SetPageRotation(FSPDFDoc pdfDoc, int pageIndex, FSRotation rotation);
 
-	[BaseType(typeof(NSObject))]
-	interface FSActionHandler
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("alert:title:type:icon:")]
+        int Alert(string msg, string title, int type, int icon);
 
+        [Export("getIdentityProperties")]
+        FSIdentityProperties GetIdentityProperties();
+    }
 
-		[Export("getCurrentPage:")]
-		int GetCurrentPage(FSPDFDoc pdfDoc);
+    [BaseType(typeof(NSObject))]
+    interface FSFileSpec
+    {
+        [Export("initWithPDFDoc:")]
+        IntPtr Constructor(FSPDFDoc pdfDoc);
 
-		[Export("setCurrentPage:pageIndex:")]
-		void SetCurrentPage(FSPDFDoc pdfDoc, int pageIndex);
+        [Export("initWithPDFDoc:pdfObject:")]
+        IntPtr Constructor(FSPDFDoc pdfDoc, FSPDFObject pdfObject);
 
-		[Export("getPageRotation:pageIndex:")]
-		FSRotation GetPageRotation(FSPDFDoc pdfDoc, int pageIndex);
+        [Export("getFileName")]
+        string GetFileName();
 
-		[Export("setPageRotation:pageIndex:rotation:")]
-		bool SetPageRotation(FSPDFDoc pdfDoc, int pageIndex, FSRotation rotation);
+        [Export("setFileName:")]
+        void SetFileName(string fileName);
 
-		[Export("alert:title:type:icon:")]
-		int Alert(string msg, string title, int type, int icon);
+        [Export("getFileSize")]
+        ulong GetFileSize();
 
-		[Export("getIdentityProperties")]
-		FSIdentityProperties GetIdentityProperties();
+        [Export("getFileData")]
+        FSFileReadCallback GetFileData();
+
+        [Export("embed:")]
+        bool Embed(string filePath);
+
+        [Export("isEmbedded")]
+        bool IsEmbedded();
 
-	}
+        [Export("getDescription")]
+        string GetDescription();
 
-	[BaseType(typeof(NSObject))]
-	interface FSFileSpec
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setDescription:")]
+        void SetDescription(string description);
 
+        [Export("getCreationDateTime")]
+        FSDateTime GetCreationDateTime();
 
-		[Static]
-		[Export("create:")]
-		FSFileSpec Create(FSPDFDoc pdfDoc);
+        [Export("setCreationDateTime:")]
+        void SetCreationDateTime(FSDateTime dateTime);
 
-		[Static]
-		[Export("create:pdfObject:")]
-		FSFileSpec Create(FSPDFDoc pdfDoc, FSPDFObject pdfObject);
+        [Export("getModifiedDateTime")]
+        FSDateTime GetModifiedDateTime();
 
-		[Export("getFileName")]
-		string GetFileName();
+        [Export("setModifiedDateTime:")]
+        void SetModifiedDateTime(FSDateTime dateTime);
 
-		[Export("setFileName:")]
-		void SetFileName(string fileName);
+        [Export("getChecksum")]
+        NSData GetChecksum();
 
-		[Export("getFileSize")]
-		ulong GetFileSize();
+        [Export("setChecksum:")]
+        void SetChecksum(NSData checksum);
 
-		[Export("getFileData")]
-		FSFileReadCallback GetFileData();
+        [Export("getDict")]
+        FSPDFDictionary GetDict();
+    }
 
-		[Export("embed:")]
-		bool Embed(string filePath);
+    [BaseType(typeof(NSObject))]
+    interface FSLibrary
+    {
+        [Static]
+        [Export("init:key:")]
+        FSErrorCode Init([NullAllowed] string sn, [NullAllowed] string key);
 
-		[Export("isEmbedded")]
-		bool IsEmbedded();
+        [Static]
+        [Export("reinit")]
+        FSErrorCode Reinit();
 
-		[Export("getDescription")]
-		string GetDescription();
+        [Static]
+        [Export("release")]
+        void Release();
 
-		[Export("setDescription:")]
-		void SetDescription(string description);
+        [Static]
+        [Export("getVersion")]
+        string GetVersion();
 
-		[Export("getCreationDateTime")]
-		FSDateTime GetCreationDateTime();
+        [Static]
+        [Export("getModuleRight:")]
+        FSModuleRight GetModuleRight(FSModuleName module);
 
-		[Export("setCreationDateTime:")]
-		void SetCreationDateTime(FSDateTime dateTime);
+        [Static]
+        [Export("setAnnotIconProvider:")]
+        bool SetAnnotIconProvider(FSAnnotIconProviderCallback iconProvider);
 
-		[Export("getModifiedDateTime")]
-		FSDateTime GetModifiedDateTime();
+        [Static]
+        [Export("setNotifier:")]
+        bool SetNotifier(FSNotifier notifier);
 
-		[Export("setModifiedDateTime:")]
-		void SetModifiedDateTime(FSDateTime dateTime);
+        [Static]
+        [Export("setActionHandler:")]
+        bool SetActionHandler(FSActionHandler actionHandler);
 
-		[Export("getChecksum")]
-		NSData GetChecksum();
+        [Static]
+        [Export("registerSignatureHandler:subFilter:signatureHandler:")]
+        bool RegisterSignatureHandler(string filter, string subFilter, FSSignatureCallback signatureHandler);
 
-		[Export("setChecksum:")]
-		void SetChecksum(NSData checksum);
+        [Static]
+        [Export("registerSecurityCallback:callback:")]
+        bool RegisterSecurityCallback(string filter, FSSecurityCallback callback);
 
-		[Export("getDict")]
-		FSPDFDictionary GetDict();
+        [Static]
+        [Export("unregisterSecurityCallback:")]
+        bool UnregisterSecurityCallback(string filter);
+    }
 
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSRecoveryManager
+    {
+        [Static]
+        [Export("sharedInstance")]
+        FSRecoveryManager SharedInstance();
 
-	[BaseType(typeof(NSObject))]
-	interface FSLibrary
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("reloadDoc:")]
+        [return: NullAllowed]
+        FSPDFDoc ReloadDoc(FSPDFDoc pdfDoc);
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSPointF
+    {
+        [Export("x")]
+        float X { get; set; }
 
-		[Static]
-		[Export("init:key:")]
-		FSErrorCode Init(string sn, string key);
+        [Export("y")]
+        float Y { get; set; }
 
-		[Static]
-		[Export("reinit")]
-		FSErrorCode Reinit();
+        [Export("set:y:")]
+        void Set(float x, float y);
 
-		[Static]
-		[Export("release")]
-		void Release();
+        [Export("getX")]
+        float GetX();
 
-		[Static]
-		[Export("getVersion")]
-		string GetVersion();
+        [Export("getY")]
+        float GetY();
+    }
 
-		[Static]
-		[Export("getModuleRight:")]
-		FSModuleRight GetModuleRight(FSModuleName module);
+    [BaseType(typeof(NSObject))]
+    interface FSRectF
+    {
+        [Export("left")]
+        float Left { get; set; }
 
-		[Static]
-		[Export("setAnnotIconProvider:")]
-		bool SetAnnotIconProvider(FSAnnotIconProviderCallback iconProvider);
+        [Export("bottom")]
+        float Bottom { get; set; }
 
-		[Static]
-		[Export("setNotifier:")]
-		bool SetNotifier(FSNotifier notifier);
+        [Export("right")]
+        float Right { get; set; }
 
-		[Static]
-		[Export("setActionHandler:")]
-		bool SetActionHandler(FSActionHandler actionHandler);
+        [Export("top")]
+        float Top { get; set; }
 
-		[Static]
-		[Export("registerDefaultSignatureHandler")]
-		bool RegisterDefaultSignatureHandler();
+        [Export("set:bottom:right:top:")]
+        void Set(float left, float bottom, float right, float top);
 
-		[Static]
-		[Export("registerSignatureHandler:subFilter:signatureHandler:")]
-		bool RegisterSignatureHandler(string filter, string subFilter, FSSignatureCallback signatureHandler);
+        [Export("getLeft")]
+        float GetLeft();
 
-		[Static]
-		[Export("registerSecurityCallback:callback:")]
-		bool RegisterSecurityCallback(string filter, FSSecurityCallback callback);
+        [Export("getBottom")]
+        float GetBottom();
 
-		[Static]
-		[Export("unregisterSecurityCallback:")]
-		bool UnregisterSecurityCallback(string filter);
+        [Export("getRight")]
+        float GetRight();
 
-	}
+        [Export("getTop")]
+        float GetTop();
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSRecoveryManager
-	{
-		[Static]
-		[Export("sharedInstance")]
-		FSRecoveryManager SharedInstance();
+    [BaseType(typeof(NSObject))]
+    interface FSRectI
+    {
+        [Export("left")]
+        int Left { get; set; }
 
-		[Export("reloadDoc:")]
-		FSPDFDoc ReloadDoc(FSPDFDoc pdfDoc);
-	}
+        [Export("bottom")]
+        int Bottom { get; set; }
 
-	[BaseType(typeof(NSObject))]
-	interface FSPointF
-	{
-		[Export("x")]
-		float X { get; set; }
+        [Export("right")]
+        int Right { get; set; }
 
-		[Export("y")]
-		float Y { get; set; }
+        [Export("top")]
+        int Top { get; set; }
 
-		//unsafe IntPtr GetCptr();
+        [Export("set:top:right:bottom:")]
+        void Set(int left, int top, int right, int bottom);
 
+        [Export("getLeft")]
+        int GetLeft();
 
-		[Export("set:y:")]
-		void Set(float x, float y);
+        [Export("getTop")]
+        int GetTop();
 
-		[Export("getX")]
-		float GetX();
+        [Export("getRight")]
+        int GetRight();
 
-		[Export("getY")]
-		float GetY();
+        [Export("getBottom")]
+        int GetBottom();
+    }
 
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSMatrix
+    {
+        [Export("a")]
+        float A { get; set; }
 
-	[BaseType(typeof(NSObject))]
-	interface FSRectF
-	{
-		[Export("left")]
-		float Left { get; set; }
+        [Export("b")]
+        float B { get; set; }
 
-		[Export("bottom")]
-		float Bottom { get; set; }
+        [Export("c")]
+        float C { get; set; }
 
-		[Export("right")]
-		float Right { get; set; }
+        [Export("d")]
+        float D { get; set; }
 
-		[Export("top")]
-		float Top { get; set; }
+        [Export("e")]
+        float E { get; set; }
 
-		//unsafe IntPtr GetCptr();
+        [Export("f")]
+        float F { get; set; }
 
+        [Export("set:b:c:d:e:f:")]
+        void Set(float a, float b, float c, float d, float e, float f);
 
-		[Export("set:bottom:right:top:")]
-		void Set(float left, float bottom, float right, float top);
+        [Export("getReverse")]
+        FSMatrix GetReverse();
 
-		[Export("getLeft")]
-		float GetLeft();
+        [Export("transform:")]
+        FSPointF Transform(FSPointF point);
 
-		[Export("getBottom")]
-		float GetBottom();
+        [Export("transformRect:")]
+        FSRectF TransformRect(FSRectF rect);
 
-		[Export("getRight")]
-		float GetRight();
+        [Export("getA")]
+        float GetA();
 
-		[Export("getTop")]
-		float GetTop();
+        [Export("getB")]
+        float GetB();
 
-	}
+        [Export("getC")]
+        float GetC();
 
-	[BaseType(typeof(NSObject))]
-	interface FSRectI
-	{
-		[Export("left")]
-		int Left { get; set; }
+        [Export("getD")]
+        float GetD();
 
-		[Export("bottom")]
-		int Bottom { get; set; }
+        [Export("getE")]
+        float GetE();
 
-		[Export("right")]
-		int Right { get; set; }
+        [Export("getF")]
+        float GetF();
+    }
 
-		[Export("top")]
-		int Top { get; set; }
+    [BaseType(typeof(NSObject))]
+    interface FSDateTime
+    {
+        [Export("year")]
+        ushort Year { get; set; }
 
-		//unsafe IntPtr GetCptr();
+        [Export("month")]
+        ushort Month { get; set; }
 
+        [Export("day")]
+        ushort Day { get; set; }
 
-		[Export("set:top:right:bottom:")]
-		void Set(int left, int top, int right, int bottom);
+        [Export("hour")]
+        ushort Hour { get; set; }
 
-		[Export("getLeft")]
-		int GetLeft();
+        [Export("minute")]
+        ushort Minute { get; set; }
 
-		[Export("getTop")]
-		int GetTop();
+        [Export("second")]
+        ushort Second { get; set; }
 
-		[Export("getRight")]
-		int GetRight();
+        [Export("millisecond")]
+        ushort Millisecond { get; set; }
 
-		[Export("getBottom")]
-		int GetBottom();
+        [Export("UTHourOffset")]
+        short UTHourOffset { get; set; }
 
-	}
+        [Export("UTMinuteOffset")]
+        ushort UTMinuteOffset { get; set; }
 
-	[BaseType(typeof(NSObject))]
-	interface FSMatrix
-	{
-		[Export("a")]
-		float A { get; set; }
+        [Export("set:month:day:hour:minute:second:millisecond:UTHourOffset:UTMinuteOffset:")]
+        void Set(ushort year, ushort month, ushort day, ushort hour, ushort minute, ushort second, ushort millisecond, short UTHourOffset, ushort UTMinuteOffset);
 
-		[Export("b")]
-		float B { get; set; }
+        [Export("getYear")]
+        ushort GetYear();
 
-		[Export("c")]
-		float C { get; set; }
+        [Export("getMonth")]
+        ushort GetMonth();
 
-		[Export("d")]
-		float D { get; set; }
+        [Export("getDay")]
+        ushort GetDay();
 
-		[Export("e")]
-		float E { get; set; }
+        [Export("getHour")]
+        ushort GetHour();
 
-		[Export("f")]
-		float F { get; set; }
+        [Export("getMinute")]
+        ushort GetMinute();
 
-		//unsafe IntPtr GetCptr();
+        [Export("getSecond")]
+        ushort GetSecond();
 
+        [Export("getMillisecond")]
+        ushort GetMillisecond();
 
-		[Export("set:b:c:d:e:f:")]
-		void Set(float a, float b, float c, float d, float e, float f);
+        [Export("getUTHourOffset")]
+        short GetUTHourOffset();
 
-		[Export("getReverse")]
-		FSMatrix GetReverse();
+        [Export("getUTMinuteOffset")]
+        ushort GetUTMinuteOffset();
+    }
 
-		[Export("transform:")]
-		FSPointF Transform(FSPointF point);
+    [BaseType(typeof(NSObject))]
+    interface FSFont
+    {
+        [Export("initWithFontName:fontStyles:weight:charset:")]
+        IntPtr Constructor(string fontName, FSFontStyles fontStyles, int weight, FSFontCharset charset);
 
-		[Export("transformRect:")]
-		FSRectF TransformRect(FSRectF rect);
+        [Export("initWithStandardFontID:")]
+        IntPtr Constructor(FSStandardFontID fontID);
 
-		[Export("getA")]
-		float GetA();
+        [Export("getName")]
+        string GetName();
+    }
 
-		[Export("getB")]
-		float GetB();
+    [BaseType(typeof(NSObject))]
+    interface FSDefaultAppearance
+    {
+        [Export("flags", ArgumentSemantic.Assign)]
+        FSDefaultAPFlags Flags { get; set; }
 
-		[Export("getC")]
-		float GetC();
+        [Export("font", ArgumentSemantic.Retain)]
+        FSFont Font { get; set; }
 
-		[Export("getD")]
-		float GetD();
+        [Export("fontSize")]
+        float FontSize { get; set; }
 
-		[Export("getE")]
-		float GetE();
+        [Export("textColor")]
+        uint TextColor { get; set; }
 
-		[Export("getF")]
-		float GetF();
+        [Export("set:font:fontSize:textColor:")]
+        void Set(FSDefaultAPFlags flags, FSFont font, float fontSize, uint textColor);
+    }
 
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSPDFPath
+    {
+        [Export("getPointCount")]
+        int GetPointCount();
 
-	[BaseType(typeof(NSObject))]
-	interface FSDateTime
-	{
-		[Export("year")]
-		ushort Year { get; set; }
+        [Export("getPoint:")]
+        FSPointF GetPoint(int index);
 
-		[Export("month")]
-		ushort Month { get; set; }
+        [Export("getPointType:")]
+        FSPathPointType GetPointType(int index);
 
-		[Export("day")]
-		ushort Day { get; set; }
+        [Export("setPoint:point:pointType:")]
+        bool SetPoint(int index, FSPointF point, FSPathPointType pointType);
 
-		[Export("hour")]
-		ushort Hour { get; set; }
+        [Export("moveTo:")]
+        bool MoveTo(FSPointF point);
 
-		[Export("minute")]
-		ushort Minute { get; set; }
+        [Export("lineTo:")]
+        bool LineTo(FSPointF point);
 
-		[Export("second")]
-		ushort Second { get; set; }
+        [Export("cubicBezierTo:point2:point3:")]
+        bool CubicBezierTo(FSPointF point1, FSPointF point2, FSPointF point3);
 
-		[Export("millisecond")]
-		ushort Millisecond { get; set; }
+        [Export("closeFigure")]
+        bool CloseFigure();
 
-		[Export("UTHourOffset")]
-		short UTHourOffset { get; set; }
+        [Export("removePoint:")]
+        bool RemovePoint(int index);
 
-		[Export("UTMinuteOffset")]
-		ushort UTMinuteOffset { get; set; }
+        [Export("clear")]
+        void Clear();
+    }
 
-		//unsafe IntPtr GetCptr();
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface FSFileReadCallback
+    {
+        [Abstract]
+        [Export("getSize")]
+        ulong GetSize();
 
+        [Abstract]
+        [Export("readBlock:size:")]
+        NSData Size(ulong offset, ulong size);
 
-		[Export("set:month:day:hour:minute:second:millisecond:UTHourOffset:UTMinuteOffset:")]
-		void Set(ushort year, ushort month, ushort day, ushort hour, ushort minute, ushort second, ushort millisecond, short UTHourOffset, ushort UTMinuteOffset);
+        [Abstract]
+        [Export("getType")]
+        FSType GetThisType();
+    }
 
-		[Export("getYear")]
-		ushort GetYear();
+    [BaseType(typeof(NSObject))]
+    interface FSPauseCallback
+    {
+        [Export("needPauseNow")]
+        bool NeedPauseNow();
+    }
 
-		[Export("getMonth")]
-		ushort GetMonth();
+    [BaseType(typeof(NSObject))]
+    interface FSDestination
+    {
+        [Static]
+        [Export("createXYZ:left:top:zoomFactor:")]
+        FSDestination CreateXYZ(FSPDFPage page, float left, float top, float zoomFactor);
 
-		[Export("getDay")]
-		ushort GetDay();
+        [Static]
+        [Export("createFitPage:")]
+        FSDestination CreateFitPage(FSPDFPage page);
 
-		[Export("getHour")]
-		ushort GetHour();
+        [Static]
+        [Export("createFitHorz:top:")]
+        FSDestination CreateFitHorz(FSPDFPage page, float top);
 
-		[Export("getMinute")]
-		ushort GetMinute();
+        [Static]
+        [Export("createFitVert:left:")]
+        FSDestination CreateFitVert(FSPDFPage page, float left);
 
-		[Export("getSecond")]
-		ushort GetSecond();
+        [Static]
+        [Export("createFitRect:left:bottom:right:top:")]
+        FSDestination CreateFitRect(FSPDFPage page, float left, float bottom, float right, float top);
 
-		[Export("getMillisecond")]
-		ushort GetMillisecond();
+        [Static]
+        [Export("createFitBBox:")]
+        FSDestination CreateFitBBox(FSPDFPage page);
 
-		[Export("getUTHourOffset")]
-		short GetUTHourOffset();
+        [Static]
+        [Export("createFitBHorz:top:")]
+        FSDestination CreateFitBHorz(FSPDFPage page, float top);
 
-		[Export("getUTMinuteOffset")]
-		ushort GetUTMinuteOffset();
+        [Static]
+        [Export("createFitBVert:left:")]
+        FSDestination CreateFitBVert(FSPDFPage page, float left);
 
-	}
+        [Export("getPageIndex")]
+        int GetPageIndex();
 
-	[BaseType(typeof(NSObject))]
-	interface FSFont
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getZoomMode")]
+        FSZoomMode GetZoomMode();
 
+        [Export("getLeft")]
+        float GetLeft();
 
-		[Static]
-		[Export("create:fontStyles:weight:charset:")]
-		FSFont Create(string fontName, uint fontStyles, int weight, FSFontCharset charset);
+        [Export("getTop")]
+        float GetTop();
 
-		[Static]
-		[Export("createStandard:")]
-		FSFont CreateStandard(FSStandardFontID fontID);
+        [Export("getRight")]
+        float GetRight();
 
-		[Export("getName")]
-		string GetName();
+        [Export("getBottom")]
+        float GetBottom();
 
-	}
+        [Export("getZoomFactor")]
+        float GetZoomFactor();
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSDefaultAppearance
-	{
-		[Export("flags")]
-		uint Flags { get; set; }
+    [BaseType(typeof(NSObject))]
+    interface FSAction
+    {
+        [Static]
+        [Export("create:actType:")]
+        FSAction Create(FSPDFDoc doc, FSActionType actType);
 
-		[Export("font", ArgumentSemantic.Retain)]
-		FSFont Font { get; set; }
+        [Export("getType")]
+        FSActionType GetActionType();
 
-		[Export("fontSize")]
-		float FontSize { get; set; }
+        [Export("getSubActionCount")]
+        int GetSubActionCount();
 
-		[Export("textColor")]
-		uint TextColor { get; set; }
+        [Export("getSubAction:")]
+        FSAction GetSubAction(int index);
 
-		//unsafe IntPtr GetCptr();
+        [Export("setSubAction:subAction:")]
+        void SetSubAction(int index, FSAction subAction);
 
+        [Export("insertSubAction:subAction:")]
+        bool InsertSubAction(int index, FSAction subAction);
 
-		[Export("set:font:fontSize:textColor:")]
-		void Set(uint flags, FSFont font, float fontSize, uint textColor);
+        [Export("removeSubAction:")]
+        bool RemoveSubAction(int index);
 
-	}
+        [Export("removeAllSubActions")]
+        bool RemoveAllSubActions();
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFPath
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(FSAction))]
+    interface FSGotoAction
+    {
+        [Export("getDestination")]
+        FSDestination GetDestination();
 
+        [Export("setDestination:")]
+        void SetDestination(FSDestination dest);
+    }
 
-		[Static]
-		[Export("create")]
-		FSPDFPath Create();
+    [BaseType(typeof(FSAction))]
+    interface FSURIAction
+    {
+        [Export("getURI")]
+        string GetURI();
 
-		[Export("getPointCount")]
-		int GetPointCount();
+        [Export("setURI:")]
+        void SetURI(string uri);
 
-		[Export("getPoint:")]
-		FSPointF GetPoint(int index);
+        [Export("setTrackPositionFlag:")]
+        void SetTrackPositionFlag(bool isTrackPosition);
 
-		[Export("getPointType:")]
-		FSPathPointType GetPointType(int index);
+        [Export("isTrackPosition")]
+        bool IsTrackPosition();
+    }
 
-		[Export("setPoint:point:pointType:")]
-		bool SetPoint(int index, FSPointF point, FSPathPointType pointType);
+    [BaseType(typeof(FSAction))]
+    interface FSRemoteGotoAction
+    {
+        [Export("getDestination")]
+        FSDestination GetDestination();
 
-		[Export("moveTo:")]
-		bool MoveTo(FSPointF point);
+        [Export("setDestination:")]
+        void SetDestination(FSDestination destination);
 
-		[Export("lineTo:")]
-		bool LineTo(FSPointF point);
+        [Export("getDestinationName")]
+        string GetDestinationName();
 
-		[Export("cubicBezierTo:point2:point3:")]
-		bool CubicBezierTo(FSPointF point1, FSPointF point2, FSPointF point3);
+        [Export("setDestinationName:")]
+        void SetDestinationName(string destName);
 
-		[Export("closeFigure")]
-		bool CloseFigure();
+        [Export("getFileSpec")]
+        FSFileSpec GetFileSpec();
 
-		[Export("removePoint:")]
-		bool RemovePoint(int index);
+        [Export("setFileSpec:")]
+        void SetFileSpec(FSFileSpec fileSpecification);
 
-		[Export("clear")]
-		void Clear();
+        [Export("getNewWindowFlag")]
+        FSNewWindowFlag GetNewWindowFlag();
 
-	}
+        [Export("setNewWindowFlag:")]
+        void SetNewWindowFlag(FSNewWindowFlag flag);
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSFileReadCallback
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(FSAction))]
+    interface FSLaunchAction
+    {
+        [Export("getFileSpec")]
+        FSFileSpec GetFileSpec();
 
+        [Export("setFileSpec:")]
+        void SetFileSpec(FSFileSpec fileSpecification);
 
-		[Export("getSize")]
-		ulong GetSize();
+        [Export("getNewWindowFlag")]
+        FSNewWindowFlag GetNewWindowFlag();
 
-		[Export("readBlock:size:")]
-		NSData ReadBlock(ulong offset, ulong size);
+        [Export("setNewWindowFlag:")]
+        void SetNewWindowFlag(FSNewWindowFlag flag);
 
-	}
+        [Export("getWinFileName")]
+        string GetWinFileName();
 
-	[BaseType(typeof(NSObject))]
-	interface FSPauseCallback
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getWinDefaultDirectory")]
+        string GetWinDefaultDirectory();
 
+        [Export("getWinAppOperation")]
+        string GetWinAppOperation();
 
-		[Export("needPauseNow")]
-		bool NeedPauseNow();
+        [Export("getWinAppParameter")]
+        string GetWinAppParameter();
 
-	}
+        [Export("setWinLaunchParameter:defaultDirectory:operation:appParameter:")]
+        void SetWinLaunchParameter(string fileName, string defaultDirectory, string operation, string appParameter);
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSDestination
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(NSObject))]
+    interface FSFDFDoc
+    {
+        [Export("initWithFDFDocType:")]
+        IntPtr Constructor(FSFDFDocType fdfDocType);
 
+        [Export("initWithFilePath:")]
+        IntPtr Constructor(string path);
 
-		[Static]
-		[Export("createXYZ:left:top:zoomFactor:")]
-		FSDestination CreateXYZ(FSPDFPage page, float left, float top, float zoomFactor);
+        [Export("initWithMemory:")]
+        IntPtr Constructor(NSData buffer);
 
-		[Static]
-		[Export("createFitPage:")]
-		FSDestination CreateFitPage(FSPDFPage page);
+        [Export("initWithHandler:")]
+        IntPtr Constructor(FSFileReadCallback fileRead);
 
-		[Static]
-		[Export("createFitHorz:top:")]
-		FSDestination CreateFitHorz(FSPDFPage page, float top);
+        [Export("getPDFPath")]
+        string GetPDFPath();
 
-		[Static]
-		[Export("createFitVert:left:")]
-		FSDestination CreateFitVert(FSPDFPage page, float left);
+        [Export("setPDFPath:")]
+        bool SetPDFPath(string pdfPath);
 
-		[Static]
-		[Export("createFitRect:left:bottom:right:top:")]
-		FSDestination CreateFitRect(FSPDFPage page, float left, float bottom, float right, float top);
+        [Export("saveAs:")]
+        bool SaveAs(string filePath);
 
-		[Static]
-		[Export("createFitBBox:")]
-		FSDestination CreateFitBBox(FSPDFPage page);
+        [Export("importAnnotFromPDFDoc:")]
+        bool ImportAnnotFromPDFDoc(FSAnnot annot);
 
-		[Static]
-		[Export("createFitBHorz:top:")]
-		FSDestination CreateFitBHorz(FSPDFPage page, float top);
+        [Export("importAllAnnotsFromPDFDoc:")]
+        bool ImportAllAnnotsFromPDFDoc(FSPDFDoc pdfDoc);
 
-		[Static]
-		[Export("createFitBVert:left:")]
-		FSDestination CreateFitBVert(FSPDFPage page, float left);
+        [Export("exportAllAnnotsToPDFDoc:")]
+        bool ExportAllAnnotsToPDFDoc(FSPDFDoc pdfDoc);
+    }
 
-		[Export("getPageIndex")]
-		int GetPageIndex();
+    [BaseType(typeof(NSObject))]
+    interface FSSearchCallback
+    {
+        [Export("retrieveSearchResult:pageIndex:matchResult:matchStartTextIndex:matchEndTextIndex:")]
+        int RetrieveSearchResult(string filePath, int pageIndex, string matchResult, int matchStartTextIndex, int matchEndTextIndex);
+    }
 
-		[Export("getZoomMode")]
-		FSZoomMode GetZoomMode();
+    [BaseType(typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface FSDocumentsSource
+    {
+        [Export("initWithDirectory:")]
+        IntPtr Constructor(string directory);
+    }
 
-		[Export("getLeft")]
-		float GetLeft();
+    [BaseType(typeof(NSObject))]
+    interface FSFullTextSearch
+    {
+        [Export("setDataBasePath:")]
+        void SetDataBasePath(string pathOfDataBase);
 
-		[Export("getTop")]
-		float GetTop();
+        [Export("startUpdateIndex:pause:reUpdate:")]
+        [return: NullAllowed]
+        FSProgressive StartUpdateIndex(FSDocumentsSource source, [NullAllowed] FSPauseCallback pause, bool reUpdate);
 
-		[Export("getRight")]
-		float GetRight();
+        [Export("updateIndexWithFilePath:")]
+        bool UpdateIndexWithFilePath(string filePath);
 
-		[Export("getBottom")]
-		float GetBottom();
+        [Export("searchOf:RankMode:searchCallback:")]
+        bool SearchOf(string matchString, FSRankMode rankMode, [NullAllowed] FSSearchCallback searchCallback);
+    }
 
-		[Export("getZoomFactor")]
-		float GetZoomFactor();
+    [BaseType(typeof(NSObject))]
+    interface FSAnnot
+    {
+        [Export("getPage")]
+        FSPDFPage GetPage();
 
-	}
+        [Export("isMarkup")]
+        bool IsMarkup();
 
-	[BaseType(typeof(NSObject))]
-	interface FSAction
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getType")]
+        FSAnnotType GetThisType();
 
+        [Export("getIndex")]
+        int GetIndex();
 
-		[Static]
-		[Export("create:actType:")]
-		FSAction Create(FSPDFDoc doc, FSActionType actType);
+        [Export("getContent")]
+        string GetContent();
 
-		[Export("getType")]
-		FSActionType GetActionType();
+        [Export("setContent:")]
+        void SetContent(string content);
 
-		[Export("getSubActionCount")]
-		int GetSubActionCount();
+        [Export("getModifiedDateTime")]
+        FSDateTime GetModifiedDateTime();
 
-		[Export("getSubAction:")]
-		FSAction GetSubAction(int index);
+        [Export("setModifiedDateTime:")]
+        void SetModifiedDateTime(FSDateTime dataTime);
 
-		[Export("setSubAction:subAction:")]
-		void SetSubAction(int index, FSAction subAction);
+        [Export("getFlags")]
+        FSAnnotFlags GetFlags();
 
-		[Export("insertSubAction:subAction:")]
-		bool InsertSubAction(int index, FSAction subAction);
+        [Export("setFlags:")]
+        void SetFlags(FSAnnotFlags flags);
 
-		[Export("removeSubAction:")]
-		bool RemoveSubAction(int index);
+        [Export("getUniqueID")]
+        string GetUniqueID();
 
-		[Export("removeAllSubActions")]
-		bool RemoveAllSubActions();
+        [Export("setUniqueID:")]
+        void SetUniqueID(string uniqueID);
 
-	}
+        [Export("getRect")]
+        FSRectF GetRect();
 
-	[BaseType(typeof(FSAction))]
-	interface FSGotoAction
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("move:")]
+        bool Move(FSRectF rect);
 
+        [Export("getBorderInfo")]
+        FSBorderInfo GetBorderInfo();
 
-		[Export("getDestination")]
-		FSDestination GetDestination();
+        [Export("setBorderInfo:")]
+        void SetBorderInfo(FSBorderInfo border);
 
-		[Export("setDestination:")]
-		void SetDestination(FSDestination dest);
+        [Export("getBorderColor")]
+        uint GetBorderColor();
 
-	}
+        [Export("setBorderColor:")]
+        void SetBorderColor(uint color);
 
-	[BaseType(typeof(FSAction))]
-	interface FSURIAction
-	{
-		//unsafe IntPtr GetCptr();
+        //bool ResetAppearanceStream();
 
+        [Export("getDeviceRect:matrix:")]
+        FSRectI GetDeviceRect(bool isTransformIcon, FSMatrix matrix);
 
-		[Export("getURI")]
-		string GetURI();
+        [Export("getDict")]
+        FSPDFDictionary GetDict();
 
-		[Export("setURI:")]
-		void SetURI(string uri);
+        [Export("removeProperty:")]
+        bool RemoveProperty(FSAnnotProperty property);
+    }
 
-		[Export("setTrackPositionFlag:")]
-		void SetTrackPositionFlag(bool isTrackPosition);
+    [BaseType(typeof(NSObject))]
+    interface FSBorderInfo
+    {
+        [Export("set:style:intensity:dashPhase:dashes:dashCount:")]
+        unsafe void Set(float width, FSBorderStyle style, float intensity, float dashPhase, IntPtr dashes, int dashCount);
 
-		[Export("isTrackPosition")]
-		bool IsTrackPosition();
+        [Export("setWidth:")]
+        void SetWidth(float value);
 
-	}
+        [Export("getWidth")]
+        float GetWidth();
 
-	[BaseType(typeof(NSObject))]
-	interface FSFDFDoc
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setStyle:")]
+        void SetStyle(FSBorderStyle value);
 
+        [Export("getStyle")]
+        FSBorderStyle GetStyle();
 
-		[Static]
-		[Export("create:")]
-		FSFDFDoc Create(FSFDFDocType fdfDocType);
+        [Export("setCloudIntensity:")]
+        void SetCloudIntensity(float value);
 
-		[Static]
-		[Export("loadFromFilePath:")]
-		FSFDFDoc LoadFromFilePath(string path);
+        [Export("getCloudIntensity")]
+        float GetCloudIntensity();
 
-		[Static]
-		[Export("loadFromMemory:")]
-		FSFDFDoc LoadFromMemory(NSData buffer);
+        [Export("setDashPhase:")]
+        void SetDashPhase(float value);
 
-		[Static]
-		[Export("loadFromHandler:")]
-		FSFDFDoc LoadFromHandler(FSFileReadCallback fileRead);
+        [Export("getDashPhase")]
+        float GetDashPhase();
 
-		[Export("getPDFPath")]
-		string GetPDFPath();
+        [Export("setDashes:")]
+        void SetDashes(NSNumber[] value);
 
-		[Export("setPDFPath:")]
-		bool SetPDFPath(string pdfPath);
+        [Export("getDashes")]
+        NSNumber[] GetDashes();
+    }
 
-		[Export("saveAs:")]
-		bool SaveAs(string filePath);
+    [BaseType(typeof(NSObject))]
+    interface FSQuadPoints
+    {
+        [Export("set:second:third:fourth:")]
+        void Set(FSPointF first, FSPointF second, FSPointF third, FSPointF fourth);
 
-		[Export("importAnnotFromPDFDoc:")]
-		bool ImportAnnotFromPDFDoc(FSAnnot annot);
+        [Export("setFirst:")]
+        void SetFirst(FSPointF value);
 
-		[Export("importAllAnnotsFromPDFDoc:")]
-		bool ImportAllAnnotsFromPDFDoc(FSPDFDoc pdfDoc);
+        [Export("getFirst")]
+        FSPointF GetFirst();
 
-		[Export("exportAllAnnotsToPDFDoc:")]
-		bool ExportAllAnnotsToPDFDoc(FSPDFDoc pdfDoc);
+        [Export("setSecond:")]
+        void SetSecond(FSPointF value);
 
-	}
+        [Export("getSecond")]
+        FSPointF GetSecond();
 
-	[BaseType(typeof(NSObject))]
-	interface FSSearchCallback
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setThird:")]
+        void SetThird(FSPointF value);
 
+        [Export("getThird")]
+        FSPointF GetThird();
 
-		[Export("retrieveSearchResult:pageIndex:matchResult:matchStartTextIndex:matchEndTextIndex:")]
-		int RetrieveSearchResult(string filePath, int pageIndex, string matchResult, int matchStartTextIndex, int matchEndTextIndex);
+        [Export("setFourth:")]
+        void SetFourth(FSPointF value);
 
-	}
+        [Export("getFourth")]
+        FSPointF GetFourth();
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSDocumentsSource
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(NSObject))]
+    interface FSShadingColor
+    {
+        [Export("set:secondColor:")]
+        void Set(uint firstColor, uint secondColor);
 
+        [Export("setFirstColor:")]
+        void SetFirstColor(uint value);
 
-		[Static]
-		[Export("create:")]
-		FSDocumentsSource Create(string directory);
+        [Export("getFirstColor")]
+        uint GetFirstColor();
 
-	}
+        [Export("setSecondColor:")]
+        void SetSecondColor(uint value);
 
-	[BaseType(typeof(NSObject))]
-	interface FSFullTextSearch
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getSecondColor")]
+        uint GetSecondColor();
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSAnnotIconProviderCallback
+    {
+        [Export("getProviderID")]
+        string GetProviderID();
 
-		[Static]
-		[Export("create")]
-		FSFullTextSearch Create();
+        [Export("getProviderVersion")]
+        string GetProviderVersion();
 
-		[Export("setDataBasePath:")]
-		void SetDataBasePath(string pathOfDataBase);
+        [Export("hasIcon:iconName:")]
+        bool HasIcon(FSAnnotType annotType, string iconName);
 
-		[Export("startUpdateIndex:pause:reUpdate:")]
-		FSProgressState StartUpdateIndex(FSDocumentsSource source, FSPauseCallback pause, bool reUpdate);
+        [Export("canChangeColor:iconName:")]
+        bool CanChangeColor(FSAnnotType annotType, string iconName);
 
-		[Export("continueUpdateIndex")]
-		FSProgressState ContinueUpdateIndex();
+        [Export("getIcon:iconName:color:")]
+        FSPDFPage GetIcon(FSAnnotType annotType, string iconName, uint color);
 
-		[Export("updateIndexWithFilePath:")]
-		bool UpdateIndexWithFilePath(string filePath);
+        [Export("getShadingColor:iconName:refColor:shadingIndex:")]
+        FSShadingColor GetShadingColor(FSAnnotType annotType, string iconName, uint refColor, int shadingIndex);
 
-		[Export("searchOf:RankMode:searchCallback:")]
-		bool SearchOf(string matchString, FSRankMode rankMode, FSSearchCallback searchCallback);
+        [Export("getDisplayWidth:iconName:")]
+        NSNumber GetDisplayWidth(FSAnnotType annotType, string iconName);
 
-	}
+        [Export("getDisplayHeight:iconName:")]
+        NSNumber GetDisplayHeight(FSAnnotType annotType, string iconName);
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSAnnot
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(FSAnnot))]
+    interface FSPopup
+    {
+        [Export("getOpenStatus")]
+        bool GetOpenStatus();
 
+        [Export("setOpenStatus:")]
+        void SetOpenStatus(bool status);
+    }
 
-		[Export("getPage")]
-		FSPDFPage GetPage();
+    [BaseType(typeof(FSAnnot))]
+    interface FSMarkup
+    {
+        [Export("getPopup")]
+        FSPopup GetPopup();
 
-		[Export("isMarkup")]
-		bool IsMarkup();
+        [Export("setPopup:")]
+        void SetPopup(FSPopup popup);
 
-		[Export("getType")]
-		FSAnnotType GetThisType();
+        [Export("getTitle")]
+        string GetTitle();
 
-		[Export("getIndex")]
-		int GetIndex();
+        [Export("setTitle:")]
+        void SetTitle(string title);
 
-		[Export("getContent")]
-		string GetContent();
+        [Export("getSubject")]
+        string GetSubject();
 
-		[Export("setContent:")]
-		void SetContent(string content);
+        [Export("setSubject:")]
+        void SetSubject(string subject);
 
-		[Export("getModifiedDateTime")]
-		FSDateTime GetModifiedDateTime();
+        [Export("getOpacity")]
+        float GetOpacity();
 
-		[Export("setModifiedDateTime:")]
-		void SetModifiedDateTime(FSDateTime dataTime);
+        [Export("setOpacity:")]
+        void SetOpacity(float opacity);
 
-		[Export("getFlags")]
-		uint GetFlags();
+        [Export("getIntent")]
+        string GetIntent();
 
-		[Export("setFlags:")]
-		void SetFlags(uint flags);
+        [Export("setIntent:")]
+        void SetIntent(string intent);
 
-		[Export("getUniqueID")]
-		string GetUniqueID();
+        [Export("getCreationDateTime")]
+        FSDateTime GetCreationDateTime();
 
-		[Export("setUniqueID:")]
-		void SetUniqueID(string uniqueID);
+        [Export("setCreationDateTime:")]
+        void SetCreationDateTime(FSDateTime dateTime);
 
-		[Export("getRect")]
-		FSRectF GetRect();
+        [Export("getReplyCount")]
+        int GetReplyCount();
 
-		[Export("move:")]
-		bool Move(FSRectF rect);
+        [Export("getReply:")]
+        FSNote GetReply(int index);
 
-		[Export("getBorderInfo")]
-		FSBorderInfo GetBorderInfo();
+        [Export("addReply")]
+        FSNote AddReply();
 
-		[Export("setBorderInfo:")]
-		void SetBorderInfo(FSBorderInfo border);
+        [Export("removeReply:")]
+        bool RemoveReply(int index);
 
-		[Export("getBorderColor")]
-		uint GetBorderColor();
+        [Export("removeAllReplies")]
+        bool RemoveAllReplies();
 
-		[Export("setBorderColor:")]
-		void SetBorderColor(uint color);
+        [Export("isGrouped")]
+        bool IsGrouped();
 
-		//bool ResetAppearanceStream();
+        [Export("getGroupHeader")]
+        FSMarkup GetGroupHeader();
 
-		[Export("getDeviceRect:matrix:")]
-		FSRectI GetDeviceRect(bool isTransformIcon, FSMatrix matrix);
+        [Export("getGroupElementCount")]
+        int GetGroupElementCount();
 
-		[Export("getDict")]
-		FSPDFDictionary GetDict();
+        [Export("getGroupElement:")]
+        FSMarkup GetGroupElement(int index);
 
-		[Export("removeProperty:")]
-		bool RemoveProperty(FSAnnotProperty property);
+        [Export("ungroup")]
+        bool Ungroup();
 
-	}
+        [Export("getStateAnnotCount:")]
+        int GetStateAnnotCount(FSAnnotStateModel stateModel);
 
-	[BaseType(typeof(NSObject))]
-	interface FSBorderInfo
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getStateAnnot:index:")]
+        FSNote GetStateAnnot(FSAnnotStateModel stateModel, int index);
 
+        [Export("addStateAnnot:state:")]
+        FSNote AddStateAnnot(FSAnnotStateModel stateModel, FSAnnotState state);
 
-		[Export("set:style:intensity:dashPhase:dashes:")]
-		void Set(float width, FSBorderStyle style, float intensity, float dashPhase, NSObject[] dashes);
+        [Export("removeAllStateAnnots")]
+        bool RemoveAllStateAnnots();
+    }
 
-		[Export("setWidth:")]
-		void SetWidth(float value);
+    [BaseType(typeof(FSMarkup))]
+    interface FSNote
+    {
+        [Export("getOpenStatus")]
+        bool GetOpenStatus();
 
-		[Export("getWidth")]
-		float GetWidth();
+        [Export("setOpenStatus:")]
+        void SetOpenStatus(bool status);
 
-		[Export("setStyle:")]
-		void SetStyle(FSBorderStyle value);
+        [Export("getIconName")]
+        string GetIconName();
 
-		[Export("getStyle")]
-		FSBorderStyle GetStyle();
+        [Export("setIconName:")]
+        void SetIconName(string iconName);
 
-		[Export("setCloudIntensity:")]
-		void SetCloudIntensity(float value);
+        [Export("getReplyTo")]
+        FSMarkup GetReplyTo();
 
-		[Export("getCloudIntensity")]
-		float GetCloudIntensity();
+        //bool ResetAppearanceStream();
 
-		[Export("setDashPhase:")]
-		void SetDashPhase(float value);
+        [Export("isStateAnnot")]
+        bool IsStateAnnot();
 
-		[Export("getDashPhase")]
-		float GetDashPhase();
+        [Export("getStateModel")]
+        FSAnnotStateModel GetStateModel();
 
-		[Export("setDashes:")]
-		void SetDashes(NSObject[] value);
+        [Export("getState")]
+        FSAnnotState GetState();
 
-		[Export("getDashes")]
-		NSObject[] Dashes { get; }
+        [Export("setState:")]
+        void SetState(FSAnnotState state);
+    }
 
-	}
+    [BaseType(typeof(FSMarkup))]
+    interface FSTextMarkup
+    {
+        [Export("getQuadPointsCount")]
+        int GetQuadPointsCount();
 
-	[BaseType(typeof(NSObject))]
-	interface FSQuadPoints
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getQuadPoints:")]
+        FSQuadPoints GetQuadPoints(int index);
 
+        [Export("setQuadPoints:")]
+        void SetQuadPoints(NSObject[] quadPoints);
+    }
 
-		[Export("set:second:third:fourth:")]
-		void Set(FSPointF first, FSPointF second, FSPointF third, FSPointF fourth);
+    [BaseType(typeof(FSTextMarkup))]
+    interface FSHighlight
+    {
+        //bool ResetAppearanceStream();
+    }
 
-		[Export("setFirst:")]
-		void SetFirst(FSPointF value);
+    [BaseType(typeof(FSTextMarkup))]
+    interface FSUnderline
+    {
+        //bool ResetAppearanceStream();
+    }
 
-		[Export("getFirst")]
-		FSPointF GetFirst();
+    [BaseType(typeof(FSTextMarkup))]
+    interface FSStrikeOut
+    {
+        //bool ResetAppearanceStream();
+    }
 
-		[Export("setSecond:")]
-		void SetSecond(FSPointF value);
+    [BaseType(typeof(FSTextMarkup))]
+    interface FSSquiggly
+    {
+        //bool ResetAppearanceStream();
+    }
 
-		[Export("getSecond")]
-		FSPointF GetSecond();
+    [BaseType(typeof(FSMarkup))]
+    interface FSSquare
+    {
+        [Export("getFillColor")]
+        uint GetFillColor();
 
-		[Export("setThird:")]
-		void SetThird(FSPointF value);
+        [Export("setFillColor:")]
+        void SetFillColor(uint fillColor);
 
-		[Export("getThird")]
-		FSPointF GetThird();
+        //bool ResetAppearanceStream();
 
-		[Export("setFourth:")]
-		void SetFourth(FSPointF value);
+        [Export("getInnerRect")]
+        FSRectF GetInnerRect();
 
-		[Export("getFourth")]
-		FSPointF GetFourth();
+        [Export("setInnerRect:")]
+        void SetInnerRect(FSRectF innerRect);
+    }
 
-	}
+    [BaseType(typeof(FSMarkup))]
+    interface FSCircle
+    {
+        [Export("getFillColor")]
+        uint GetFillColor();
 
-	[BaseType(typeof(NSObject))]
-	interface FSShadingColor
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setFillColor:")]
+        void SetFillColor(uint fillColor);
 
+        //bool ResetAppearanceStream();
 
-		[Export("set:secondColor:")]
-		void Set(uint firstColor, uint secondColor);
+        [Export("getInnerRect")]
+        FSRectF GetInnerRect();
 
-		[Export("setFirstColor:")]
-		void SetFirstColor(uint value);
+        [Export("setInnerRect:")]
+        void SetInnerRect(FSRectF innerRect);
+    }
 
-		[Export("getFirstColor")]
-		uint GetFirstColor();
+    [BaseType(typeof(FSAnnot))]
+    interface FSLink
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("setSecondColor:")]
-		void SetSecondColor(uint value);
+        [Export("getQuadPointsCount")]
+        int GetQuadPointsCount();
 
-		[Export("getSecondColor")]
-		uint GetSecondColor();
+        [Export("getQuadPoints:")]
+        FSQuadPoints GetQuadPoints(int index);
 
-	}
+        [Export("setQuadPoints:")]
+        void SetQuadPoints(FSQuadPoints[] quadPoints);
 
-	[BaseType(typeof(NSObject))]
-	interface FSAnnotIconProviderCallback
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getHighlightingMode")]
+        FSHighlightingMode GetHighlightingMode();
 
+        [Export("setHighlightingMode:")]
+        void SetHighlightingMode(FSHighlightingMode mode);
 
-		[Export("getProviderID")]
-		string GetProviderID();
+        [Export("getAction")]
+        FSAction GetAction();
 
-		[Export("getProviderVersion")]
-		string GetProviderVersion();
+        [Export("setAction:")]
+        void SetAction(FSAction action);
 
-		[Export("hasIcon:iconName:")]
-		bool HasIcon(FSAnnotType annotType, string iconName);
+        [Export("removeAction")]
+        bool RemoveAction();
+    }
 
-		[Export("canChangeColor:iconName:")]
-		bool CanChangeColor(FSAnnotType annotType, string iconName);
+    [BaseType(typeof(FSMarkup))]
+    interface FSFreeText
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("getIcon:iconName:color:")]
-		FSPDFPage GetIcon(FSAnnotType annotType, string iconName, uint color);
+        [Export("getFillColor")]
+        uint GetFillColor();
 
-		[Export("getShadingColor:iconName:refColor:shadingIndex:")]
-		FSShadingColor GetShadingColor(FSAnnotType annotType, string iconName, uint refColor, int shadingIndex);
+        [Export("setFillColor:")]
+        void SetFillColor(uint fillColor);
 
-		[Export("getDisplayWidth:iconName:")]
-		NSNumber GetDisplayWidth(FSAnnotType annotType, string iconName);
+        [Export("getAlignment")]
+        FSAlignment GetAlignment();
 
-		[Export("getDisplayHeight:iconName:")]
-		NSNumber GetDisplayHeight(FSAnnotType annotType, string iconName);
+        [Export("setAlignment:")]
+        void SetAlignment(FSAlignment alignment);
 
-	}
+        [Export("getInnerRect")]
+        FSRectF GetInnerRect();
 
-	[BaseType(typeof(FSAnnot))]
-	interface FSPopup
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setInnerRect:")]
+        void SetInnerRect(FSRectF innerRect);
 
+        [Export("getDefaultAppearance")]
+        FSDefaultAppearance GetDefaultAppearance();
 
-		[Export("getOpenStatus")]
-		bool GetOpenStatus();
+        [Export("setDefaultAppearance:")]
+        bool SetDefaultAppearance(FSDefaultAppearance defaultAP);
 
-		[Export("setOpenStatus:")]
-		void SetOpenStatus(bool status);
+        [Export("getCalloutLineEndingStyle")]
+        string GetCalloutLineEndingStyle();
 
-	}
+        [Export("setCalloutLineEndingStyle:")]
+        void SetCalloutLineEndingStyle(string endingStyle);
 
-	[BaseType(typeof(FSAnnot))]
-	interface FSMarkup
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getCalloutLinePointCount")]
+        int GetCalloutLinePointCount();
 
+        [Export("getCalloutLinePoint:")]
+        FSPointF GetCalloutLinePoint(int index);
 
-		[Export("getPopup")]
-		FSPopup GetPopup();
+        [Export("setCalloutLinePoints:point2:point3:")]
+        void SetCalloutLinePoints(FSPointF point1, FSPointF point2, FSPointF point3);
+    }
 
-		[Export("setPopup:")]
-		void SetPopup(FSPopup popup);
+    [BaseType(typeof(FSMarkup))]
+    interface FSLine
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("getTitle")]
-		string GetTitle();
+        [Export("getLineStartingStyle")]
+        string GetLineStartingStyle();
 
-		[Export("setTitle:")]
-		void SetTitle(string title);
+        [Export("setLineStartingStyle:")]
+        void SetLineStartingStyle(string startingStyle);
 
-		[Export("getSubject")]
-		string GetSubject();
+        [Export("getLineEndingStyle")]
+        string GetLineEndingStyle();
 
-		[Export("setSubject:")]
-		void SetSubject(string subject);
+        [Export("setLineEndingStyle:")]
+        void SetLineEndingStyle(string endingStyle);
 
-		[Export("getOpacity")]
-		float GetOpacity();
+        [Export("getStyleFillColor")]
+        uint GetStyleFillColor();
 
-		[Export("setOpacity:")]
-		void SetOpacity(float opacity);
+        [Export("setStyleFillColor:")]
+        void SetStyleFillColor(uint color);
 
-		[Export("getIntent")]
-		string GetIntent();
+        [Export("getStartPoint")]
+        FSPointF GetStartPoint();
 
-		[Export("setIntent:")]
-		void SetIntent(string intent);
+        [Export("setStartPoint:")]
+        void SetStartPoint(FSPointF point);
 
-		[Export("getCreationDateTime")]
-		FSDateTime GetCreationDateTime();
+        [Export("getEndPoint")]
+        FSPointF GetEndPoint();
 
-		[Export("setCreationDateTime:")]
-		void SetCreationDateTime(FSDateTime dateTime);
+        [Export("setEndPoint:")]
+        void SetEndPoint(FSPointF point);
 
-		[Export("getReplyCount")]
-		int GetReplyCount();
+        [Export("hasCaption")]
+        bool HasCaption();
 
-		[Export("getReply:")]
-		FSNote GetReply(int index);
+        [Export("enableCaption:")]
+        void EnableCaption(bool cap);
 
-		[Export("addReply")]
-		FSNote AddReply();
+        [Export("getCaptionPositionType")]
+        string GetCaptionPositionType();
 
-		[Export("removeReply:")]
-		bool RemoveReply(int index);
+        [Export("setCaptionPositionType:")]
+        void SetCaptionPositionType(string captionPos);
 
-		[Export("removeAllReplies")]
-		bool RemoveAllReplies();
+        [Export("getCaptionOffset")]
+        FSPointF GetCaptionOffset();
 
-		[Export("isGrouped")]
-		bool IsGrouped();
+        [Export("setCaptionOffset:")]
+        void SetCaptionOffset(FSPointF offset);
+    }
 
-		[Export("getGroupHeader")]
-		FSMarkup GetGroupHeader();
+    [BaseType(typeof(FSMarkup))]
+    interface FSInk
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("getGroupElementCount")]
-		int GetGroupElementCount();
+        [Export("getInkList")]
+        FSPDFPath GetInkList();
 
-		[Export("getGroupElement:")]
-		FSMarkup GetGroupElement(int index);
+        [Export("setInkList:")]
+        void SetInkList(FSPDFPath inkList);
+    }
 
-		[Export("ungroup")]
-		bool Ungroup();
+    [BaseType(typeof(FSMarkup))]
+    interface FSStamp
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("getStateAnnotCount:")]
-		int GetStateAnnotCount(FSAnnotStateModel stateModel);
+        [Export("getIconName")]
+        string GetIconName();
 
-		[Export("getStateAnnot:index:")]
-		FSNote GetStateAnnot(FSAnnotStateModel stateModel, int index);
+        [Export("setIconName:")]
+        void SetIconName(string iconName);
 
-		[Export("addStateAnnot:state:")]
-		FSNote AddStateAnnot(FSAnnotStateModel stateModel, FSAnnotState state);
+        [Export("setBitmap:")]
+        void SetBitmap(FSBitmap bitmap);
+    }
 
-		[Export("removeAllStateAnnots")]
-		bool RemoveAllStateAnnots();
+    [BaseType(typeof(FSMarkup))]
+    interface FSPolygon
+    {
+        //bool ResetAppearanceStream();
 
-	}
+        [Export("getFillColor")]
+        uint GetFillColor();
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSNote
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setFillColor:")]
+        void SetFillColor(uint fillColor);
 
+        [Export("getVertexCount")]
+        int GetVertexCount();
 
-		[Export("getOpenStatus")]
-		bool GetOpenStatus();
+        [Export("getVertex:")]
+        FSPointF GetVertex(int index);
 
-		[Export("setOpenStatus:")]
-		void SetOpenStatus(bool status);
+        [Export("setVertexes:")]
+        void SetVertexes(FSPointF[] vertexes);
+    }
 
-		[Export("getIconName")]
-		string GetIconName();
+    [BaseType(typeof(FSMarkup))]
+    interface FSPolyLine
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("setIconName:")]
-		void SetIconName(string iconName);
+        [Export("getStyleFillColor")]
+        uint GetStyleFillColor();
 
-		[Export("getReplyTo")]
-		FSMarkup GetReplyTo();
+        [Export("setStyleFillColor:")]
+        void SetStyleFillColor(uint fillColor);
 
-		//bool ResetAppearanceStream();
+        [Export("getVertexCount")]
+        int GetVertexCount();
 
-		[Export("isStateAnnot")]
-		bool IsStateAnnot();
+        [Export("getVertex:")]
+        FSPointF GetVertex(int index);
 
-		[Export("getStateModel")]
-		FSAnnotStateModel GetStateModel();
+        [Export("setVertexes:")]
+        void SetVertexes(FSPointF[] vertexes);
 
-		[Export("getState")]
-		FSAnnotState GetState();
+        [Export("getLineStartingStyle")]
+        string GetLineStartingStyle();
 
-		[Export("setState:")]
-		void SetState(FSAnnotState state);
+        [Export("setLineStartingStyle:")]
+        void SetLineStartingStyle(string startingStyle);
 
-	}
+        [Export("getLineEndingStyle")]
+        string GetLineEndingStyle();
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSTextMarkup
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setLineEndingStyle:")]
+        void SetLineEndingStyle(string endingStyle);
+    }
 
+    [BaseType(typeof(FSMarkup))]
+    interface FSCaret
+    {
+        //bool ResetAppearanceStream();
 
-		[Export("getQuadPointsCount")]
-		int GetQuadPointsCount();
+        [Export("getInnerRect")]
+        FSRectF GetInnerRect();
 
-		[Export("getQuadPoints:")]
-		FSQuadPoints GetQuadPoints(int index);
+        [Export("setInnerRect:")]
+        void SetInnerRect(FSRectF innerRect);
+    }
 
-		[Export("setQuadPoints:")]
-		void SetQuadPoints(NSObject[] quadPoints);
+    [BaseType(typeof(FSMarkup))]
+    interface FSFileAttachment
+    {
+        //bool ResetAppearanceStream();
 
-	}
+        [Export("setFileSpec:")]
+        bool SetFileSpec(FSFileSpec fileSpecification);
 
-	[BaseType(typeof(FSTextMarkup))]
-	interface FSHighlight
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getFileSpec")]
+        FSFileSpec GetFileSpec();
 
+        [Export("getIconName")]
+        string GetIconName();
 
-		//bool ResetAppearanceStream();
+        [Export("setIconName:")]
+        void SetIconName(string iconName);
+    }
 
-	}
+    [BaseType(typeof(FSAnnot))]
+    interface FSPSInk
+    {
+        //bool ResetAppearanceStream();
+    }
 
-	[BaseType(typeof(FSTextMarkup))]
-	interface FSUnderline
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(FSAnnot))]
+    interface FSWidget
+    {
+        [Export("getField")]
+        FSFormField GetField();
 
+        [Export("getControl")]
+        FSFormControl GetControl();
 
-		//bool ResetAppearanceStream();
+        //bool ResetAppearanceStream();
 
-	}
+        [Export("getHighlightingMode")]
+        FSHighlightingMode GetHighlightingMode();
 
-	[BaseType(typeof(FSTextMarkup))]
-	interface FSStrikeOut
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setHighlightingMode:")]
+        void SetHighlightingMode(FSHighlightingMode mode);
 
+        [Export("getAction")]
+        FSAction GetAction();
 
-		//bool ResetAppearanceStream();
+        [Export("setAction:")]
+        void SetAction(FSAction action);
 
-	}
+        [Export("removeAction")]
+        void RemoveAction();
 
-	[BaseType(typeof(FSTextMarkup))]
-	interface FSSquiggly
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("hasMKEntry:")]
+        bool HasMKEntry(FSAnnotMKEntry mk_entry);
 
+        [Export("removeMKEntry:")]
+        void RemoveMKEntry(FSAnnotMKEntry mk_entry);
 
-		//bool ResetAppearanceStream();
+        [Export("getMKRotation")]
+        FSRotation GetMKRotation();
 
-	}
+        [Export("setMKRotation:")]
+        void SetMKRotation(FSRotation rotation);
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSSquare
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getMKBorderColor")]
+        uint GetMKBorderColor();
 
+        [Export("setMKBorderColor:")]
+        void SetMKBorderColor(uint color);
 
-		[Export("getFillColor")]
-		uint GetFillColor();
+        [Export("getMKBackgroundColor")]
+        uint GetMKBackgroundColor();
 
-		[Export("setFillColor:")]
-		void SetFillColor(uint fillColor);
+        [Export("setMKBackgroundColor:")]
+        void SetMKBackgroundColor(uint color);
 
-		//bool ResetAppearanceStream();
+        [Export("getMKNormalCaption")]
+        string GetMKNormalCaption();
 
-		[Export("getInnerRect")]
-		FSRectF GetInnerRect();
+        [Export("setMKNormalCaption:")]
+        void SetMKNormalCaption(string caption);
 
-		[Export("setInnerRect:")]
-		void SetInnerRect(FSRectF innerRect);
+        [Export("getMKRolloverCaption")]
+        string GetMKRolloverCaption();
 
-	}
+        [Export("setMKRolloverCaption:")]
+        void SetMKRolloverCaption(string caption);
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSCircle
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getMKDownCaption")]
+        string GetMKDownCaption();
 
+        [Export("setMKDownCaption:")]
+        void SetMKDownCaption(string caption);
 
-		[Export("getFillColor")]
-		uint GetFillColor();
+        [Export("getMKNormalIconBitmap")]
+        FSBitmap GetMKNormalIconBitmap();
 
-		[Export("setFillColor:")]
-		void SetFillColor(uint fillColor);
+        [Export("setMKNormalIconBitmap:")]
+        void SetMKNormalIconBitmap(FSBitmap bitmap);
 
-		//bool ResetAppearanceStream();
+        [Export("setMKNormalIconImage:frame_index:")]
+        void SetMKNormalIconImage(FSImage image, int frame_index);
 
-		[Export("getInnerRect")]
-		FSRectF GetInnerRect();
+        [Export("getMKRolloverIconBitmap")]
+        FSBitmap GetMKRolloverIconBitmap();
 
-		[Export("setInnerRect:")]
-		void SetInnerRect(FSRectF innerRect);
+        [Export("setMKRolloverIconBitmap:")]
+        void SetMKRolloverIconBitmap(FSBitmap bitmap);
 
-	}
+        [Export("setMKRolloverIconImage:frame_index:")]
+        void SetMKRolloverIconImage(FSImage image, int frame_index);
 
-	[BaseType(typeof(FSAnnot))]
-	interface FSLink
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getMKDownIconBitmap")]
+        FSBitmap GetMKDownIconBitmap();
 
+        [Export("setMKDownIconBitmap:")]
+        void SetMKDownIconBitmap(FSBitmap bitmap);
 
-		//bool ResetAppearanceStream();
+        [Export("setMKDownIconImage:frame_index:")]
+        void SetMKDownIconImage(FSImage image, int frame_index);
 
-		[Export("getQuadPointsCount")]
-		int GetQuadPointsCount();
+        [Export("getMKIconFit")]
+        FSIconFit GetMKIconFit();
 
-		[Export("getQuadPoints:")]
-		FSQuadPoints GetQuadPoints(int index);
+        [Export("setMKIconFit:")]
+        void SetMKIconFit(FSIconFit icon_fit);
 
-		[Export("setQuadPoints:")]
-		void SetQuadPoints(FSQuadPoints[] quadPoints);
+        [Export("getMKIconCaptionRelation")]
+        FSAnnotMKIconCaptionRelation GetMKIconCaptionRelation();
 
-		[Export("getHighlightingMode")]
-		FSHighlightingMode GetHighlightingMode();
+        [Export("setMKIconCaptionRelation:")]
+        void SetMKIconCaptionRelation(FSAnnotMKIconCaptionRelation relation);
+    }
 
-		[Export("setHighlightingMode:")]
-		void SetHighlightingMode(FSHighlightingMode mode);
+    [BaseType(typeof(NSObject))]
+    interface FSIconFit
+    {
+        [Export("scaleWayType", ArgumentSemantic.Assign)]
+        FSIconScaleWayType ScaleWayType { get; set; }
 
-		[Export("getAction")]
-		FSAction GetAction();
+        [Export("proportionalScaling")]
+        bool ProportionalScaling { [Bind("isProportionalScaling")] get; set; }
 
-		[Export("setAction:")]
-		void SetAction(FSAction action);
+        [Export("horizontalFraction")]
+        float HorizontalFraction { get; set; }
 
-		[Export("removeAction")]
-		bool RemoveAction();
+        [Export("verticalFraction")]
+        float VerticalFraction { get; set; }
 
-	}
+        [Export("fitBounds")]
+        bool FitBounds { [Bind("isFitBounds")] get; set; }
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSFreeText
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("initWithIconFit:")]
+        IntPtr Constructor(FSIconFit iconFit);
 
+        [Export("set:proportionalScaling:horizontalFraction:verticalFraction:fitBounds:")]
+        void Set(FSIconScaleWayType type, bool proportionalScaling, float horizontalFraction, float verticalFraction, bool fitBounds);
+    }
 
-		//bool ResetAppearanceStream();
+    [BaseType(typeof(NSObject))]
+    interface FSSecurityCallback
+    {
+        [Export("getSecurityType")]
+        FSEncryptType GetSecurityType();
+    }
 
-		[Export("getFillColor")]
-		uint GetFillColor();
+    [BaseType(typeof(FSSecurityCallback))]
+    interface FSCertificateSecurityCallback
+    {
 
-		[Export("setFillColor:")]
-		void SetFillColor(uint fillColor);
 
-		[Export("getAlignment")]
-		int GetAlignment();
 
-		[Export("setAlignment:")]
-		void SetAlignment(int alignment);
+        [Export("getPKCS12:")]
+        NSData GetPKCS12(NSData envelope);
 
-		[Export("getInnerRect")]
-		FSRectF GetInnerRect();
+        [Export("getPasswordForPKCS12:")]
+        string GetPasswordForPKCS12(NSData pkcs12);
+    }
 
-		[Export("setInnerRect:")]
-		void SetInnerRect(FSRectF innerRect);
+    [BaseType(typeof(NSObject))]
+    interface FSSecurityHandler
+    {
+    }
 
-		[Export("getDefaultAppearance")]
-		FSDefaultAppearance GetDefaultAppearance();
+    [BaseType(typeof(FSSecurityHandler))]
+    interface FSStdSecurityHandler
+    {
+        [Export("initialize:userPassword:ownerPassword:cipher:keyLen:encryptMetadata:")]
+        bool Initialize(uint userPermissions, string userPassword, string ownerPassword, FSCipherType cipher, int keyLen, bool encryptMetadata);
+    }
 
-		[Export("setDefaultAppearance:")]
-		bool SetDefaultAppearance(FSDefaultAppearance defaultAP);
+    [BaseType(typeof(FSSecurityHandler))]
+    interface FSCertificateSecurityHandler
+    {
+        [Export("initialize:cipher:encryptMetadata:")]
+        bool Initialize(NSData[] x509Certificates, FSCipherType cipher, bool encryptMetadata);
+    }
 
-		[Export("getCalloutLineEndingStyle")]
-		string GetCalloutLineEndingStyle();
+    [BaseType(typeof(FSSecurityCallback))]
+    interface FSCustomSecurityCallback
+    {
+        [Export("createContext:subFilter:encryptInfo:")]
+        unsafe IntPtr CreateContext(string filter, string subFilter, string encryptInfo);
 
-		[Export("setCalloutLineEndingStyle:")]
-		void SetCalloutLineEndingStyle(string startingStyle);
+        [Export("releaseContext:")]
+        unsafe bool ReleaseContext(IntPtr context);
 
-		[Export("getCalloutLinePointCount")]
-		int GetCalloutLinePointCount();
+        [Export("getUserPermissions:userPermission:")]
+        unsafe FSUserPermissions GetUserPermissions(IntPtr context, FSUserPermissions userPermission);
 
-		[Export("getCalloutLinePoint:")]
-		FSPointF GetCalloutLinePoint(int index);
+        [Export("isOwner:")]
+        unsafe bool IsOwner(IntPtr context);
 
-		[Export("setCalloutLinePoints:point2:point3:")]
-		void SetCalloutLinePoints(FSPointF point1, FSPointF point2, FSPointF point3);
+        [Export("getCipher:")]
+        unsafe FSCipherType GetCipher(IntPtr context);
 
-	}
+        [Export("getEncryptKey:")]
+        unsafe string GetEncryptKey(IntPtr context);
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSLine
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getDecryptedSize:srcDataSize:")]
+        unsafe uint GetDecryptedSize(IntPtr context, uint srcDataSize);
 
+        [Export("startDecryptor:objNum:genNum:")]
+        unsafe IntPtr StartDecryptor(IntPtr context, int objNum, int genNum);
 
-		//bool ResetAppearanceStream();
+        [Export("decryptData:encryptedData:encryptedDataLen:")]
+        unsafe string DecryptData(IntPtr decryptor, IntPtr encryptedData, uint encryptedDataLen);
 
-		[Export("getLineStartingStyle")]
-		string GetLineStartingStyle();
+        [Export("finishDecryptor:")]
+        unsafe string FinishDecryptor(IntPtr decryptor);
 
-		[Export("setLineStartingStyle:")]
-		void SetLineStartingStyle(string startingStyle);
+        [Export("getEncryptedSize:objNum:genNum:srcData:srcDataLen:")]
+        unsafe uint GetEncryptedSize(IntPtr context, int objNum, int genNum, IntPtr srcData, uint srcDataLen);
 
-		[Export("getLineEndingStyle")]
-		string GetLineEndingStyle();
+        [Export("encryptData:objNum:genNum:srcData:srcDataLen:dstBuffer:dstBufferLen:")]
+        unsafe bool EncryptData(IntPtr context, int objNum, int genNum, IntPtr srcData, uint srcDataLen, IntPtr dstBuffer, ref uint dstBufferLen);
+    }
 
-		[Export("setLineEndingStyle:")]
-		void SetLineEndingStyle(string endingStyle);
+    [BaseType(typeof(FSSecurityHandler))]
+    interface FSCustomSecurityHandler
+    {
+        [Export("initialize:subFilter:encryptInfo:isEncryptMetadata:callback:")]
+        bool Initialize(string filter, string subFilter, string encryptInfo, bool isEncryptMetadata, FSCustomSecurityCallback callback);
+    }
 
-		[Export("getStyleFillColor")]
-		uint GetStyleFillColor();
+    [BaseType(typeof(NSObject))]
+    interface FSGraphState
+    {
+        [Export("blendMode", ArgumentSemantic.Assign)]
+        FSRenderBlendMode BlendMode { get; set; }
 
-		[Export("setStyleFillColor:")]
-		void SetStyleFillColor(uint color);
+        [Export("lineWidth")]
+        float LineWidth { get; set; }
 
-		[Export("getStartPoint")]
-		FSPointF GetStartPoint();
+        [Export("lineJoin", ArgumentSemantic.Assign)]
+        FSLineJoinType LineJoin { get; set; }
 
-		[Export("setStartPoint:")]
-		void SetStartPoint(FSPointF point);
+        [Export("miterLimit")]
+        float MiterLimit { get; set; }
 
-		[Export("getEndPoint")]
-		FSPointF GetEndPoint();
+        [Export("lineCap", ArgumentSemantic.Assign)]
+        FSLineCapType LineCap { get; set; }
 
-		[Export("setEndPoint:")]
-		void SetEndPoint(FSPointF point);
+        [Export("dashPhase")]
+        float DashPhase { get; set; }
 
-		[Export("hasCaption")]
-		bool HasCaption();
+        [Export("dashes", ArgumentSemantic.Retain)]
+        NSNumber[] Dashes { get; set; }
 
-		[Export("enableCaption:")]
-		void EnableCaption(bool cap);
+        [Export("set:lineWidth:lineJoin:miterLimit:lineCap:dashPhase:dashes:dashCount:")]
+        unsafe void Set(FSRenderBlendMode blendMode, float lineWidth, FSLineJoinType lineJoin, float miterLimit, FSLineCapType lineCap, float dashPhase, IntPtr dashes, int dashCount);
+    }
 
-		[Export("getCaptionPositionType")]
-		string GetCaptionPositionType();
+    [BaseType(typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface FSPDFMarkedContent
+    {
+        [Export("hasTag:")]
+        bool HasTag(string tagName);
 
-		[Export("setCaptionPositionType:")]
-		void SetCaptionPositionType(string captionPos);
+        [Export("getItemCount")]
+        int GetItemCount();
 
-		[Export("getCaptionOffset")]
-		FSPointF GetCaptionOffset();
+        [Export("getItemTagName:")]
+        string GetItemTagName(int index);
 
-		[Export("setCaptionOffset:")]
-		void SetCaptionOffset(FSPointF offset);
+        [Export("getItemMCID:")]
+        int GetItemMCID(int index);
 
-	}
+        [Export("getItemPropertyDict:")]
+        FSPDFDictionary GetItemPropertyDict(int index);
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSInk
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("addItem:propertyDict:")]
+        int AddItem(string tagName, FSPDFDictionary propertyDict);
 
+        [Export("removeItem:")]
+        bool RemoveItem(string tagName);
+    }
 
-		//bool ResetAppearanceStream();
+    [BaseType(typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface FSPDFGraphicsObject
+    {
+        [Export("getType")]
+        FSGraphicsObjectType GetThisType();
 
-		[Export("getInkList")]
-		FSPDFPath GetInkList();
+        [Export("getRect")]
+        FSRectF GetRect();
 
-		[Export("setInkList:")]
-		void SetInkList(FSPDFPath inkList);
+        [Export("hasTransparency")]
+        bool HasTransparency();
 
-	}
+        [Export("getStrokeColor")]
+        uint GetStrokeColor();
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSStamp
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getFillColor")]
+        uint GetFillColor();
 
+        [Export("setStrokeColor:")]
+        void SetStrokeColor(uint color);
 
-		//bool ResetAppearanceStream();
+        [Export("setFillColor:")]
+        void SetFillColor(uint color);
 
-		[Export("getIconName")]
-		string GetIconName();
+        [Export("getMatrix")]
+        FSMatrix GetMatrix();
 
-		[Export("setIconName:")]
-		void SetIconName(string iconName);
+        [Export("setMatrix:")]
+        void SetMatrix(FSMatrix matrix);
 
-		[Export("setBitmap:")]
-		void SetBitmap(FSBitmap bitmap);
+        [Export("transform:needTransformClipPath:")]
+        bool Transform(FSMatrix matrix, bool needTransformClipPath);
 
-	}
+        [Export("clone")]
+        FSPDFGraphicsObject Clone();
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSPolygon
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getGraphState")]
+        FSGraphState GetGraphState();
 
+        [Export("setGraphState:")]
+        void SetGraphState(FSGraphState graphState);
 
-		//bool ResetAppearanceStream();
+        [Export("getClipPathCount")]
+        int GetClipPathCount();
 
-		[Export("getFillColor")]
-		uint GetFillColor();
+        [Export("getClipPath:")]
+        FSPDFPath GetClipPath(int index);
 
-		[Export("setFillColor:")]
-		void SetFillColor(uint fillColor);
+        [Export("getClipPathFillMode:")]
+        FSFillMode GetClipPathFillMode(int index);
 
-		[Export("getVertexCount")]
-		int GetVertexCount();
+        [Export("addClipPath:fillMode:")]
+        bool AddClipPath(FSPDFPath path, FSFillMode fillMode);
 
-		[Export("getVertex:")]
-		FSPointF GetVertex(int index);
+        [Export("removeClipPath:")]
+        bool RemoveClipPath(int index);
 
-		[Export("setVertexes:")]
-		void SetVertexes(FSPointF[] vertexes);
+        [Export("getClipTextObjectCount")]
+        int GetClipTextObjectCount();
 
-	}
+        [Export("getClipTextObject:")]
+        FSPDFTextObject GetClipTextObject(int index);
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSPolyLine
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("addClipTextObject:")]
+        bool AddClipTextObject(FSPDFTextObject textObj);
 
+        [Export("removeClipTextObject:")]
+        bool RemoveClipTextObject(int index);
 
-		//bool ResetAppearanceStream();
+        [Export("getClipRect")]
+        FSRectF GetClipRect();
 
-		[Export("getStyleFillColor")]
-		uint GetStyleFillColor();
+        [Export("setClipRect:")]
+        void SetClipRect(FSRectF clipRect);
 
-		[Export("setStyleFillColor:")]
-		void SetStyleFillColor(uint fillColor);
+        [Export("clearClips")]
+        bool ClearClips();
 
-		[Export("getVertexCount")]
-		int GetVertexCount();
+        [Export("getMarkedContent")]
+        FSPDFMarkedContent GetMarkedContent();
+    }
 
-		[Export("getVertex:")]
-		FSPointF GetVertex(int index);
+    [BaseType(typeof(NSObject))]
+    interface FSPDFTextState
+    {
+        [Export("set:font:fontSize:charSpace:wordSpace:textMode:originPosition:textMatrix:")]
+        void Set(uint version, FSFont font, float fontSize, float charSpace, float wordSpace, FSTextMode textMode, FSPointF originPosition, NSNumber[] textMatrix);
 
-		[Export("setVertexes:")]
-		void SetVertexes(FSPointF[] vertexes);
+        [Export("version")]
+        uint Version { get; set; }
 
-		[Export("getLineStartingStyle")]
-		string GetLineStartingStyle();
+        [Export("font", ArgumentSemantic.Retain)]
+        FSFont Font { get; set; }
 
-		[Export("setLineStartingStyle:")]
-		void SetLineStartingStyle(string startingStyle);
+        [Export("fontSize")]
+        float FontSize { get; set; }
 
-		[Export("getLineEndingStyle")]
-		string GetLineEndingStyle();
+        [Export("charSpace")]
+        float CharSpace { get; set; }
 
-		[Export("setLineEndingStyle:")]
-		void SetLineEndingStyle(string endingStyle);
+        [Export("wordSpace")]
+        float WordSpace { get; set; }
 
-	}
+        [Export("textMode", ArgumentSemantic.Assign)]
+        FSTextMode TextMode { get; set; }
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSCaret
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("originPosition", ArgumentSemantic.Retain)]
+        FSPointF OriginPosition { get; set; }
 
+        [Export("textMatrix", ArgumentSemantic.Retain)]
+        NSNumber[] TextMatrix { get; set; }
+    }
 
-		//bool ResetAppearanceStream();
+    [BaseType(typeof(FSPDFGraphicsObject))]
+    interface FSPDFTextObject
+    {
+        [Static]
+        [Export("create")]
+        FSPDFTextObject Create();
 
-		[Export("getInnerRect")]
-		FSRectF GetInnerRect();
+        [Export("getText")]
+        string GetText();
 
-		[Export("setInnerRect:")]
-		void SetInnerRect(FSRectF innerRect);
+        [Export("setText:")]
+        void SetText(string text);
 
-	}
+        [Export("getTextState:")]
+        FSPDFTextState GetTextState(FSPDFPage page);
 
-	[BaseType(typeof(FSMarkup))]
-	interface FSFileAttachment
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setTextState:textState:isItalic:weight:")]
+        void SetTextState(FSPDFPage page, FSPDFTextState textState, bool isItalic, int weight);
+    }
 
+    [BaseType(typeof(FSPDFGraphicsObject))]
+    interface FSPDFPathObject
+    {
+        [Static]
+        [Export("create")]
+        FSPDFPathObject Create();
 
-		//bool ResetAppearanceStream();
+        [Export("getFillMode")]
+        FSFillMode GetFillMode();
 
-		[Export("setFileSpec:")]
-		bool SetFileSpec(FSFileSpec fileSpecification);
+        [Export("setFillMode:")]
+        void SetFillMode(FSFillMode fillMode);
 
-		[Export("getFileSpec")]
-		FSFileSpec GetFileSpec();
+        [Export("getStrokeState")]
+        bool GetStrokeState();
 
-		[Export("getIconName")]
-		string GetIconName();
+        [Export("setStrokeState:")]
+        void SetStrokeState(bool isStroke);
 
-		[Export("setIconName:")]
-		void SetIconName(string iconName);
+        [Export("getPathData")]
+        FSPDFPath GetPathData();
 
-	}
+        [Export("setPathData:")]
+        void SetPathData(FSPDFPath pathData);
+    }
 
-	[BaseType(typeof(FSAnnot))]
-	interface FSPSInk
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(FSPDFGraphicsObject))]
+    [DisableDefaultCtor]
+    interface FSPDFFormXObject
+    {
+        [Static]
+        [Export("create:")]
+        FSPDFFormXObject Create(FSPDFDoc pdfDoc);
 
+        [Export("getStream")]
+        FSPDFStream GetStream();
 
-		//bool ResetAppearanceStream();
+        [Export("getGraphicsObjects")]
+        FSPDFGraphicsObjects GetGraphicsObjects();
 
-	}
+        [Export("importPageContent:isAnnotsIncluded:")]
+        bool ImportPageContent(FSPDFPage srcPage, bool isAnnotsIncluded);
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSSecurityCallback
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(FSPDFGraphicsObject))]
+    [DisableDefaultCtor]
+    interface FSPDFShadingObject
+    {
+        [Export("getPDFObject")]
+        FSPDFObject GetPDFObject();
+    }
 
+    [BaseType(typeof(FSPDFGraphicsObject))]
+    interface FSPDFImageObject
+    {
+        [Static]
+        [Export("create:")]
+        FSPDFImageObject Create(FSPDFDoc pdfDoc);
 
-		[Export("getSecurityType")]
-		FSEncryptType GetSecurityType();
+        [Export("setBitmap:mask:")]
+        void SetBitmap(FSBitmap bitmap, [NullAllowed] FSBitmap mask);
 
-	}
+        [Export("cloneBitmap:")]
+        FSBitmap CloneBitmap(FSPDFPage page);
 
-	[BaseType(typeof(FSSecurityCallback))]
-	interface FSCertificateSecurityCallback
-	{
+        [Export("getColorSpace")]
+        FSImageColorSpace GetColorSpace();
 
+        [Export("getStream")]
+        FSPDFStream GetStream();
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSPDFDoc
+    {
+        [Export("initWithFilePath:")]
+        IntPtr Constructor(string path);
 
-		[Export("getPKCS12:")]
-		NSData GetPKCS12(NSData envelope);
+        [Export("initWithMemory:")]
+        IntPtr Constructor(NSData buffer);
 
-		[Export("getPasswordForPKCS12:")]
-		string GetPasswordForPKCS12(NSData pkcs12);
+        [Export("initWithHandler:")]
+        IntPtr Constructor(FSFileReadCallback fileRead);
 
-	}
+        [Export("load:")]
+        FSErrorCode Load([NullAllowed] string password);
 
-	[BaseType(typeof(NSObject))]
-	interface FSSecurityHandler
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("startLoad:length:is_cache_stream:pause:")]
+        [return: NullAllowed]
+        FSProgressive StartLoad(string password, int length, bool is_cache_stream, [NullAllowed] FSPauseCallback pause);
 
+        [Export("getFileSize")]
+        ulong GetFileSize();
 
+        [Export("isXFA")]
+        bool IsXFA();
 
+        [Export("isEncrypted")]
+        bool IsEncrypted();
 
+        [Export("isModified")]
+        bool IsModified();
 
-	}
+        [Export("getEncryptionType")]
+        FSEncryptType GetEncryptionType();
 
-	[BaseType(typeof(FSSecurityHandler))]
-	interface FSStdSecurityHandler
-	{
-		[Static]
-		[Export("create")]
-		FSStdSecurityHandler Create();
+        [Export("getPasswordType")]
+        FSPasswordType GetPasswordType();
 
-		[Export("initialize:userPassword:ownerPassword:cipher:keyLen:encryptMetadata:")]
-		bool Initialize(uint userPermissions, string userPassword, string ownerPassword, FSCipherType cipher, int keyLen, bool encryptMetadata);
-	}
+        [Export("checkPassword:")]
+        FSPasswordType CheckPassword([NullAllowed] string password);
 
-	[BaseType(typeof(FSSecurityHandler))]
-	interface FSCertificateSecurityHandler
-	{
-		[Static]
-		[Export("create")]
-		FSCertificateSecurityHandler Create();
+        [Export("saveAs:saveFlags:")]
+        bool SaveAs(string filePath, FSSaveFlags saveFlags);
 
-		[Export("initialize:cipher:encryptMetadata:")]
-		bool Initialize(NSData[] x509Certificates, FSCipherType cipher, bool encryptMetadata);
+        [Export("startSaveAs:save_flags:pause:")]
+        [return: NullAllowed]
+        FSProgressive StartSaveAs(string file_path, FSSaveFlags save_flags, [NullAllowed] FSPauseCallback pause);
 
-	}
+        [Export("createFirstBookmark")]
+        FSBookmark CreateFirstBookmark();
 
-	[BaseType(typeof(NSObject))]
-	interface FSGraphState
-	{
-		[Export("blendMode", ArgumentSemantic.Assign)]
-		FSRenderBlendMode BlendMode { get; set; }
+        [Export("removeBookmark:")]
+        bool RemoveBookmark(FSBookmark bookmark);
 
-		[Export("lineWidth")]
-		float LineWidth { get; set; }
+        [Export("getFirstBookmark")]
+        FSBookmark GetFirstBookmark();
 
-		[Export("lineJoin", ArgumentSemantic.Assign)]
-		FSLineJoinType LineJoin { get; set; }
+        [Export("getPageCount")]
+        int GetPageCount();
 
-		[Export("miterLimit")]
-		float MiterLimit { get; set; }
+        [Export("getPage:")]
+        FSPDFPage GetPage(int pageIndex);
 
-		[Export("lineCap", ArgumentSemantic.Assign)]
-		FSLineCapType LineCap { get; set; }
+        [Export("closePage:")]
+        bool ClosePage(int pageIndex);
 
-		[Export("dashPhase")]
-		float DashPhase { get; set; }
+        [Export("getDisplayMode")]
+        FSDisplayMode GetDisplayMode();
 
-		[Export("dashes", ArgumentSemantic.Retain)]
-		NSNumber[] Dashes { get; set; }
+        [Export("setDisplayMode:")]
+        void SetDisplayMode(FSDisplayMode displayMode);
 
-		//unsafe IntPtr GetCptr();
+        [Export("getCatalog")]
+        FSPDFDictionary GetCatalog();
 
+        [Export("getTrailer")]
+        FSPDFDictionary GetTrailer();
 
-		[Export("set:lineWidth:lineJoin:miterLimit:lineCap:dashPhase:dashes:")]
-		void Set(FSRenderBlendMode blendMode, float lineWidth, FSLineJoinType lineJoin, float miterLimit, FSLineCapType lineCap, float dashPhase, NSNumber[] dashes);
+        [Export("getInfo")]
+        FSPDFDictionary GetInfo();
 
-	}
+        [Export("getEncryptDict")]
+        FSPDFDictionary GetEncryptDict();
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFMarkedContent
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getIndirectObject:")]
+        FSPDFObject GetIndirectObject(uint objnum);
 
+        [Export("addIndirectObject:")]
+        uint AddIndirectObject(FSPDFObject obj);
 
-		[Export("hasTag:")]
-		bool HasTag(string tagName);
+        [Export("deleteIndirectObject:")]
+        void DeleteIndirectObject(uint objnum);
 
-		[Export("getItemCount")]
-		int GetItemCount();
+        [Export("getUserPermissions")]
+        FSUserPermissions GetUserPermissions();
 
-		[Export("getItemTagName:")]
-		string GetItemTagName(int index);
+        [Export("hasForm")]
+        bool HasForm();
 
-		[Export("getItemMCID:")]
-		int GetItemMCID(int index);
+        [Export("getForm")]
+        FSForm GetForm();
 
-		[Export("getItemPropertyDict:")]
-		FSPDFDictionary GetItemPropertyDict(int index);
+        [Export("getReadingBookmarkCount")]
+        int GetReadingBookmarkCount();
 
-		[Export("addItem:propertyDict:")]
-		int AddItem(string tagName, FSPDFDictionary propertyDict);
+        [Export("getReadingBookmark:")]
+        FSReadingBookmark GetReadingBookmark(int index);
 
-		[Export("removeItem:")]
-		bool RemoveItem(string tagName);
+        [Export("insertReadingBookmark:title:pageIndex:")]
+        FSReadingBookmark InsertReadingBookmark(int readingBookmarkIndex, string title, int destPageIndex);
 
-	}
+        [Export("removeReadingBookmark:")]
+        bool RemoveReadingBookmark(FSReadingBookmark readingBookmark);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFGraphicsObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getSignatureCount")]
+        int GetSignatureCount();
 
+        [Export("getSignature:")]
+        FSSignature GetSignature(int index);
 
-		[Export("getType")]
-		FSGraphicsObjectType GetThisType();
+        [Export("insertPage:")]
+        FSPDFPage InsertPage(int index);
 
-		[Export("getRect")]
-		FSRectF GetRect();
+        [Export("removePage:")]
+        bool RemovePage(FSPDFPage page);
 
-		[Export("hasTransparency")]
-		bool HasTransparency();
+        [Export("movePageTo:dstIndex:")]
+        bool MovePageTo(FSPDFPage page, int dstIndex);
 
-		[Export("getStrokeColor")]
-		uint GetStrokeColor();
+        [Export("startImportPagesFromFilePath:flags:layerName:srcFilePath:password:pageRanges:count:pause:")]
+        [return: NullAllowed]
+        unsafe FSProgressive StartImportPagesFromFilePath(int dstIndex, FSImportFlags flags, string layerName, string srcFilePath, [NullAllowed] string password, IntPtr pageRanges, int count, [NullAllowed] FSPauseCallback pause);
 
-		[Export("getFillColor")]
-		uint GetFillColor();
+        [Export("startImportPages:flags:layerName:srcDoc:pageRanges:count:pause:")]
+        [return: NullAllowed]
+        unsafe FSProgressive StartImportPages(int dstIndex, uint flags, string layerName, FSPDFDoc srcDoc, IntPtr pageRanges, int count, [NullAllowed] FSPauseCallback pause);
 
-		[Export("setStrokeColor:")]
-		void SetStrokeColor(uint color);
+        [Export("getFileVersion")]
+        int GetFileVersion();
 
-		[Export("setFillColor:")]
-		void SetFillColor(uint color);
+        [Export("setFileVersion:")]
+        void SetFileVersion(int version);
 
-		[Export("getMatrix")]
-		FSMatrix GetMatrix();
+        [Export("setSecurityHandler:")]
+        bool SetSecurityHandler(FSSecurityHandler securityHandler);
 
-		[Export("setMatrix:")]
-		void SetMatrix(FSMatrix matrix);
+        [Export("getSecurityHandler")]
+        FSSecurityHandler GetSecurityHandler();
 
-		[Export("transform:needTransformClipPath:")]
-		bool Transform(FSMatrix matrix, bool needTransformClipPath);
+        [Export("removeSecurity")]
+        bool RemoveSecurity();
+    }
 
-		[Export("clone")]
-		FSPDFGraphicsObject Clone();
+    [BaseType(typeof(NSObject))]
+    interface FSPDFGraphicsObjects
+    {
+        [Export("getFirstGraphicsObjectPosition:")]
+        unsafe IntPtr GetFirstGraphicsObjectPosition(FSGraphicsObjectType filter);
 
-		[Export("getGraphState")]
-		FSGraphState GetGraphState();
+        [Export("getLastGraphicsObjectPosition:")]
+        unsafe IntPtr GetLastGraphicsObjectPosition(FSGraphicsObjectType filter);
 
-		[Export("setGraphState:")]
-		void SetGraphState(FSGraphState graphState);
+        [Export("getNextGraphicsObjectPosition:pos:")]
+        unsafe IntPtr GetNextGraphicsObjectPosition(FSGraphicsObjectType filter, IntPtr pos);
 
-		[Export("getClipPathCount")]
-		int GetClipPathCount();
+        [Export("getPrevGraphicsObjectPosition:pos:")]
+        unsafe IntPtr GetPrevGraphicsObjectPosition(FSGraphicsObjectType filter, IntPtr pos);
 
-		[Export("getClipPath:")]
-		FSPDFPath GetClipPath(int index);
+        [Export("getGraphicsObject:")]
+        unsafe FSPDFGraphicsObject GetGraphicsObject(IntPtr pos);
 
-		[Export("getClipPathFillMode:")]
-		FSFillMode GetClipPathFillMode(int index);
+        [Export("insertGraphicsObject:graphicsObj:")]
+        unsafe IntPtr InsertGraphicsObject(IntPtr posInsertAfter, FSPDFGraphicsObject graphicsObj);
 
-		[Export("addClipPath:fillMode:")]
-		bool AddClipPath(FSPDFPath path, FSFillMode fillMode);
+        [Export("removeGraphicsObject:")]
+        bool RemoveGraphicsObject(FSPDFGraphicsObject graphicsObj);
 
-		[Export("removeClipPath:")]
-		bool RemoveClipPath(int index);
+        [Export("removeGraphicsObjectByPosition:")]
+        unsafe bool RemoveGraphicsObjectByPosition(IntPtr pos);
 
-		[Export("getClipTextObjectCount")]
-		int GetClipTextObjectCount();
+        [Export("generateContent")]
+        bool GenerateContent();
+    }
 
-		[Export("getClipTextObject:")]
-		FSPDFTextObject GetClipTextObject(int index);
+    [BaseType(typeof(FSPDFGraphicsObjects))]
+    interface FSPDFPage
+    {
+        [Export("getDocument")]
+        FSPDFDoc GetDocument();
 
-		[Export("addClipTextObject:")]
-		bool AddClipTextObject(FSPDFTextObject textObj);
+        [Export("getDict")]
+        FSPDFDictionary GetDict();
 
-		[Export("removeClipTextObject:")]
-		bool RemoveClipTextObject(int index);
+        [Export("isParsed")]
+        bool IsParsed();
 
-		[Export("getClipRect")]
-		FSRectF GetClipRect();
+        [Export("startParse:pause:isReparse:")]
+        [return: NullAllowed]
+        FSProgressive StartParse(FSPageParseFlag flag, [NullAllowed] FSPauseCallback pause, bool isReparse);
 
-		[Export("setClipRect:")]
-		void SetClipRect(FSRectF clipRect);
+        [Export("getIndex")]
+        int GetIndex();
 
-		[Export("clearClips")]
-		bool ClearClips();
+        [Export("getHeight")]
+        float GetHeight();
 
-		[Export("getMarkedContent")]
-		FSPDFMarkedContent GetMarkedContent();
+        [Export("getWidth")]
+        float GetWidth();
 
-	}
+        [Export("getRotation")]
+        FSRotation GetRotation();
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFTextState
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("loadThumbnail")]
+        FSBitmap LoadThumbnail();
 
+        [Export("getDisplayMatrix:yPos:xSize:ySize:rotate:")]
+        FSMatrix GetDisplayMatrix(int xPos, int yPos, int xSize, int ySize, FSRotation rotate);
 
-		[Export("set:font:fontSize:charSpace:wordSpace:textMode:originPosition:textMatrix:")]
-		void Set(uint version, FSFont font, float fontSize, float charSpace, float wordSpace, FSTextMode textMode, FSPointF originPosition, NSNumber[] textMatrix);
+        [Export("calcContentBBox:")]
+        FSRectF CalcContentBBox(FSCalcMarginMode mode);
 
-		[Export("version")]
-		uint Version { get; set; }
+        [Export("getAnnotCount")]
+        int GetAnnotCount();
 
-		[Export("font", ArgumentSemantic.Retain)]
-		FSFont Font { get; set; }
+        [Export("getAnnot:")]
+        FSAnnot GetAnnot(int index);
 
-		[Export("fontSize")]
-		float FontSize { get; set; }
+        [Export("getAnnotAtPos:tolerance:")]
+        [return: NullAllowed]
+        FSAnnot GetAnnotAtPos(FSPointF pos, float tolerance);
 
-		[Export("charSpace")]
-		float CharSpace { get; set; }
+        [Export("getAnnotAtDevicePos:position:tolerance:")]
+        [return: NullAllowed]
+        FSAnnot GetAnnotAtDevicePos(FSMatrix matrix, FSPointF pos, float tolerance);
 
-		[Export("wordSpace")]
-		float WordSpace { get; set; }
+        [Export("addAnnot:rect:")]
+        FSAnnot AddAnnot(FSAnnotType annotType, FSRectF rect);
 
-		[Export("textMode", ArgumentSemantic.Assign)]
-		FSTextMode TextMode { get; set; }
+        [Export("removeAnnot:")]
+        bool RemoveAnnot(FSAnnot annot);
 
-		[Export("originPosition", ArgumentSemantic.Retain)]
-		FSPointF OriginPosition { get; set; }
+        [Export("hasTransparency")]
+        bool HasTransparency();
 
-		[Export("textMatrix", ArgumentSemantic.Retain)]
-		NSNumber[] TextMatrix { get; set; }
+        [Export("flatten:options:")]
+        bool Flatten(bool isDisplay, FSFlattenOptions options);
 
-	}
+        [Export("setAnnotGroup:headerIndex:")]
+        bool SetAnnotGroup(FSMarkup[] annotArray, int headerIndex);
 
-	[BaseType(typeof(FSPDFGraphicsObject))]
-	interface FSPDFTextObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("addSignature:")]
+        FSSignature AddSignature(FSRectF rect);
 
+        [Export("hasWatermark")]
+        bool HasWatermark();
 
-		[Static]
-		[Export("create")]
-		FSPDFTextObject Create();
+        [Export("removeAllWatermarks")]
+        bool RemoveAllWatermarks();
 
-		[Export("getText")]
-		string GetText();
+        [Export("setRotation:")]
+        void SetRotation(FSRotation rotate);
 
-		[Export("setText:")]
-		void SetText(string text);
+        [Export("setSize:height:")]
+        void SetSize(float width, float height);
 
-		[Export("getTextState:")]
-		FSPDFTextState GetTextState(FSPDFPage page);
+        [Export("setBox:box:")]
+        void SetBox(FSPageBox boxType, FSRectF box);
 
-		[Export("setTextState:textState:isItalic:weight:")]
-		void SetTextState(FSPDFPage page, FSPDFTextState textState, bool isItalic, int weight);
+        [Export("GetBox:")]
+        FSRectF GetBox(FSPageBox box_type);
 
-	}
+        [Export("transform:needTransformClipPath:")]
+        bool Transform(FSMatrix matrix, bool needTransformClipPath);
 
-	[BaseType(typeof(FSPDFGraphicsObject))]
-	interface FSPDFPathObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setClipRect:")]
+        void SetClipRect(FSRectF clipRect);
 
+        [Export("setThumbnail:")]
+        void SetThumbnail(FSBitmap thumbnail);
 
-		[Static]
-		[Export("create")]
-		FSPDFPathObject Create();
+        [Export("addImageFromFilePath:posPoint:width:height:isGenerateContent:")]
+        bool AddImageFromFilePath(string imageFilePath, FSPointF posPoint, float width, float height, bool isGenerateContent);
+    }
 
-		[Export("getFillMode")]
-		FSFillMode GetFillMode();
+    [BaseType(typeof(NSObject))]
+    interface FSBookmark
+    {
+        [NullAllowed, Export("getParent")]
+        FSBookmark GetParent();
 
-		[Export("setFillMode:")]
-		void SetFillMode(FSFillMode fillMode);
+        [NullAllowed, Export("getFirstChild")]
+        FSBookmark GetFirstChild();
 
-		[Export("getStrokeState")]
-		bool GetStrokeState();
+        [NullAllowed, Export("getNextSibling")]
+        FSBookmark GetNextSibling();
 
-		[Export("setStrokeState:")]
-		void SetStrokeState(bool isStroke);
+        [Export("insert:pos:")]
+        FSBookmark Insert(string title, FSBookmarkPosition pos);
 
-		[Export("getPathData")]
-		FSPDFPath GetPathData();
+        [Export("moveTo:pos:")]
+        bool MoveTo(FSBookmark destBookmark, FSBookmarkPosition pos);
 
-		[Export("setPathData:")]
-		void SetPathData(FSPDFPath pathData);
+        [Export("getDestination")]
+        FSDestination GetDestination();
 
-	}
+        [Export("setDestination:")]
+        void SetDestination(FSDestination dest);
 
-	[BaseType(typeof(FSPDFGraphicsObject))]
-	interface FSPDFFormXObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getTitle")]
+        string GetTitle();
 
+        [Export("setTitle:")]
+        void SetTitle(string title);
 
-		[Static]
-		[Export("create:")]
-		FSPDFFormXObject Create(FSPDFDoc pdfDoc);
+        [Export("getColor")]
+        uint GetColor();
 
-		[Export("getStream")]
-		FSPDFStream GetStream();
+        [Export("setColor:")]
+        void SetColor(uint color);
 
-		[Export("getGraphicsObjects")]
-		FSPDFGraphicsObjects GetGraphicsObjects();
+        [Export("getStyle")]
+        FSBookmarkStyle GetStyle();
 
-		[Export("importPageContent:isAnnotsIncluded:")]
-		bool ImportPageContent(FSPDFPage srcPage, bool isAnnotsIncluded);
+        [Export("setStyle:")]
+        void SetStyle(FSBookmarkStyle style);
+    }
 
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSReadingBookmark
+    {
+        [Export("getTitle")]
+        string GetTitle();
 
-	[BaseType(typeof(FSPDFGraphicsObject))]
-	interface FSPDFShadingObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setTitle:")]
+        void SetTitle(string title);
 
+        [Export("getPageIndex")]
+        int GetPageIndex();
 
-		[Export("getPDFObject")]
-		FSPDFObject GetPDFObject();
+        [Export("setPageIndex:")]
+        void SetPageIndex(int index);
 
-	}
+        [Export("getDateTime:")]
+        FSDateTime GetDateTime(bool isCreationDate);
 
-	[BaseType(typeof(FSPDFGraphicsObject))]
-	interface FSPDFImageObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setDateTime:isCreationDate:")]
+        void SetDateTime(FSDateTime dateTime, bool isCreationDate);
+    }
 
+    [BaseType(typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface FSPDFNameTree
+    {
+        [Export("initWithPDFDoc:type:")]
+        IntPtr Constructor(FSPDFDoc pdfDoc, FSNameTreeType type);
 
-		[Static]
-		[Export("create:")]
-		FSPDFImageObject Create(FSPDFDoc pdfDoc);
+        [Export("hasName:")]
+        bool HasName(string name);
 
-		[Export("setBitmap:mask:")]
-		void SetBitmap(FSBitmap bitmap, FSBitmap mask);
+        [Export("getCount")]
+        int GetCount();
 
-		[Export("cloneBitmap:")]
-		FSBitmap CloneBitmap(FSPDFPage page);
+        [Export("getName:")]
+        string GetName(int index);
 
-		[Export("getColorSpace")]
-		FSImageColorSpace GetColorSpace();
+        [Export("getObj:")]
+        FSPDFObject GetObj(string name);
 
-		[Export("getStream")]
-		FSPDFStream GetStream();
+        [Export("setObj:pdfObj:")]
+        bool SetObj(string name, FSPDFObject pdfObj);
 
-	}
+        [Export("rename:newName:")]
+        bool Rename(string oldName, string newName);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPageLabel
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("add:pdfObj:")]
+        bool Add(string name, FSPDFObject pdfObj);
 
+        [Export("removeObj:")]
+        bool RemoveObj(string name);
 
-		[Export("set:style:prefix:firstPageNumber:")]
-		void Set(int start, FSPageLabelStyle style, string prefix, int firstPageNumber);
+        [Export("removeAllObjs")]
+        bool RemoveAllObjs();
+    }
 
-		[Export("setStart:")]
-		void SetStart(int value);
+    [BaseType(typeof(NSObject))]
+    interface FSPDFPageLabels
+    {
+        [Export("initWithDocument:")]
+        IntPtr Constructor(FSPDFDoc document);
 
-		[Export("getStart")]
-		int GetStart();
+        [Export("getPageLabelTitle:")]
+        string GetPageLabelTitle(int page_index);
 
-		[Export("setStyle:")]
-		void SetStyle(FSPageLabelStyle value);
+        [Export("hasPageLabel:")]
+        bool HasPageLabel(int page_index);
 
-		[Export("getStyle")]
-		FSPageLabelStyle GetStyle();
+        [Export("getPageLabelStyle:")]
+        FSPageLabelStyle GetPageLabelStyle(int page_index);
 
-		[Export("setPrefix:")]
-		void SetPrefix(string value);
+        [Export("getPageLabelPrefix:")]
+        string GetPageLabelPrefix(int page_index);
 
-		[Export("getPrefix")]
-		string GetPrefix();
+        [Export("getFirstLabelNumber:")]
+        int GetFirstLabelNumber(int page_index);
 
-		[Export("setFirstPageNumber:")]
-		void SetFirstPageNumber(int value);
+        [Export("setPageLabel:label_style:prefix_string:first_label_number:")]
+        void SetPageLabel(int page_index, FSPageLabelStyle label_style, string prefix_string, int first_label_number);
 
-		[Export("getFirstPageNumber")]
-		int GetFirstPageNumber();
+        [Export("removePageLabel:")]
+        void RemovePageLabel(int page_index);
 
-	}
+        [Export("removeAll")]
+        void RemoveAll();
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFDoc
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(NSObject))]
+    interface FSPDFMetadata
+    {
+        [Export("initWithDocument:")]
+        IntPtr Constructor(FSPDFDoc document);
 
+        [Export("hasKey:")]
+        bool HasKey(string key);
 
-		[Static]
-		[Export("create")]
-		FSPDFDoc Create();
+        [NullAllowed, Export("getCreationDateTime")]
+        FSDateTime GetCreationDateTime();
 
-		[Static]
-		[Export("createFromFilePath:")]
-		FSPDFDoc CreateFromFilePath(string path);
+        [NullAllowed, Export("getModifiedDateTime")]
+        FSDateTime GetModifiedDateTime();
 
-		[Static]
-		[Export("createFromMemory:")]
-		FSPDFDoc CreateFromMemory(NSData buffer);
+        [Export("setCreationDateTime:")]
+        void SetCreationDateTime(FSDateTime date_time);
 
-		[Static]
-		[Export("createFromHandler:")]
-		FSPDFDoc CreateFromHandler(FSFileReadCallback fileRead);
+        [Export("setModifiedDateTime:")]
+        void SetModifiedDateTime(FSDateTime date_time);
 
-		[Export("load:")]
-		FSErrorCode Load(string password);
+        [Export("getValue:")]
+        [return: NullAllowed]
+        string GetValue(string key);
 
-		[Export("getFileSize")]
-		ulong GetFileSize();
+        [Export("getValueCount:")]
+        int GetValueCount(string key);
 
-		[Export("isXFA")]
-		bool IsXFA();
+        [Export("getValueByIndex:index:")]
+        string GetValueByIndex(string key, int index);
 
-		[Export("isEncrypted")]
-		bool IsEncrypted();
+        [Export("setValues:value_array:")]
+        void SetValues(string key, string[] value_array);
 
-		[Export("isModified")]
-		bool IsModified();
+        [Export("getKeys:")]
+        [return: NullAllowed]
+        string[] GetKeys(FSMetadataKeyType key_type);
 
-		[Export("getEncryptionType")]
-		FSEncryptType GetEncryptionType();
+        [Export("removeKey:")]
+        void RemoveKey(string key);
+    }
 
-		[Export("getPasswordType")]
-		FSPasswordType GetPasswordType();
+    [BaseType(typeof(NSObject))]
+    interface FSForm
+    {
+        [Export("getFieldCount:")]
+        int GetFieldCount(string filter);
 
-		[Export("checkPassword:")]
-		FSPasswordType CheckPassword(string password);
+        [Export("getField:index:")]
+        FSFormField GetField(string filter, int index);
 
-		[Export("saveAs:saveFlags:")]
-		bool SaveAs(string filePath, uint saveFlags);
+        [Export("getFormFiller")]
+        FSFormFiller GetFormFiller();
 
-		[Export("createFirstBookmark")]
-		FSBookmark CreateFirstBookmark();
+        [Export("reset")]
+        bool Reset();
 
-		[Export("removeBookmark:")]
-		bool RemoveBookmark(FSBookmark bookmark);
+        [Export("exportToXML:")]
+        bool ExportToXML(string path);
 
-		[Export("getFirstBookmark")]
-		FSBookmark GetFirstBookmark();
+        [Export("importFromXML:")]
+        bool ImportFromXML(string path);
 
-		[Export("getPageCount")]
-		int GetPageCount();
+        [Export("exportToFDFDoc:")]
+        bool ExportToFDFDoc(FSFDFDoc fdfDoc);
 
-		[Export("getPage:")]
-		FSPDFPage GetPage(int pageIndex);
+        [Export("importFromFDFDoc:")]
+        bool ImportFromFDFDoc(FSFDFDoc fdfDoc);
+    }
 
-		[Export("closePage:")]
-		bool ClosePage(int pageIndex);
+    [BaseType(typeof(NSObject))]
+    interface FSChoiceOption
+    {
+        [Export("initWithOption:")]
+        IntPtr Constructor(FSChoiceOption option);
 
-		[Export("getDisplayMode")]
-		FSDisplayMode GetDisplayMode();
+        [Export("set:optionLabel:selected:defaultSelected:")]
+        void Set(string optionValue, string optionLabel, bool selected, bool defaultSelected);
 
-		[Export("setDisplayMode:")]
-		void SetDisplayMode(FSDisplayMode displayMode);
+        [Export("optionValue")]
+        string OptionValue { get; set; }
 
-		[Export("getCatalog")]
-		FSPDFDictionary GetCatalog();
+        [Export("optionLabel")]
+        string OptionLabel { get; set; }
 
-		[Export("getTrailer")]
-		FSPDFDictionary GetTrailer();
+        [Export("selected")]
+        bool Selected { get; set; }
 
-		[Export("getInfo")]
-		FSPDFDictionary GetInfo();
+        [Export("defaultSelected")]
+        bool DefaultSelected { get; set; }
+    }
 
-		[Export("getEncryptDict")]
-		FSPDFDictionary GetEncryptDict();
+    [BaseType(typeof(NSObject))]
+    interface FSFormField
+    {
+        [Export("getType")]
+        FSFormFieldType GetThisType();
 
-		[Export("getIndirectObject:")]
-		FSPDFObject GetIndirectObject(uint objnum);
+        [Export("getFlags")]
+        FSFormFieldFlags GetFlags();
 
-		[Export("addIndirectObject:")]
-		uint AddIndirectObject(FSPDFObject obj);
+        [Export("setFlags:")]
+        void SetFlags(FSFormFieldFlags flags);
 
-		[Export("deleteIndirectObject:")]
-		void DeleteIndirectObject(uint objnum);
+        [Export("getName")]
+        string GetName();
 
-		[Export("getUserPermissions")]
-		uint GetUserPermissions();
+        [Export("getDefaultValue")]
+        string GetDefaultValue();
 
-		[Export("hasMetadataKey:")]
-		bool HasMetadataKey(string key);
+        [Export("setDefualtValue:")]
+        void SetDefualtValue(string value);
 
-		[Export("getCreationDateTime")]
-		FSDateTime GetCreationDateTime();
+        [Export("getValue")]
+        string GetValue();
 
-		[Export("getModifiedDateTime")]
-		FSDateTime GetModifiedDateTime();
+        [Export("setValue:")]
+        void SetValue(string value);
 
-		[Export("setCreationDateTime:")]
-		void SetCreationDateTime(FSDateTime dateTime);
+        [Export("getAlignment")]
+        FSAlignment GetAlignment();
 
-		[Export("setModifiedDateTime:")]
-		void SetModifiedDateTime(FSDateTime dateTime);
+        [Export("setAlignment:")]
+        void SetAlignment(FSAlignment alignment);
 
-		[Export("getMetadataValue:")]
-		string GetMetadataValue(string key);
+        [Export("getAlternateName")]
+        string GetAlternateName();
 
-		[Export("getMetadataValueCount:")]
-		int GetMetadataValueCount(string key);
+        [Export("setAlternateName:")]
+        void SetAlternateName(string alternate_name);
 
-		[Export("getMetadataValueByIndex:index:")]
-		string GetMetadataValueByIndex(string key, int index);
+        [Export("getDefaultAppearance")]
+        FSDefaultAppearance GetDefaultAppearance();
 
-		[Export("setMetadataArray:valueArray:count:")]
-		void SetMetadataArray(string key, string[] valueArray, int count);
+        [Export("setDefaultAppearance:")]
+        void SetDefaultAppearance(FSDefaultAppearance appearance);
 
-		[Export("getPageLabelRangeCount")]
-		int GetPageLabelRangeCount();
+        [Export("getMappingName")]
+        string GetMappingName();
 
-		[Export("getPageLabelInfo:")]
-		FSPageLabel GetPageLabelInfo(int index);
+        [Export("setMappingName:")]
+        void SetMappingName(string name);
 
-		[Export("hasForm")]
-		bool HasForm();
+        [Export("getMaxLength")]
+        int GetMaxLength();
 
-		[Export("getForm")]
-		FSForm GetForm();
+        [Export("setMaxLength:")]
+        void SetMaxLength(int max_length);
 
-		[Export("getReadingBookmarkCount")]
-		int GetReadingBookmarkCount();
+        [Export("getOptions")]
+        FSChoiceOption[] GetOptions();
 
-		[Export("getReadingBookmark:")]
-		FSReadingBookmark GetReadingBookmark(int index);
+        [Export("setOptions:")]
+        void SetOptions(FSChoiceOption[] option_array);
 
-		[Export("insertReadingBookmark:title:pageIndex:")]
-		FSReadingBookmark InsertReadingBookmark(int readingBookmarkIndex, string title, int destPageIndex);
+        [Export("getTopVisibleIndex")]
+        int GetTopVisibleIndex();
 
-		[Export("removeReadingBookmark:")]
-		bool RemoveReadingBookmark(FSReadingBookmark readingBookmark);
+        [Export("setTopVisibleIndex:")]
+        void SetTopVisibleIndex(int index);
 
-		[Export("getSignatureCount")]
-		int GetSignatureCount();
+        [Export("getControlCount")]
+        int GetControlCount();
 
-		[Export("getSignature:")]
-		FSSignature GetSignature(int index);
+        [Export("getControl:")]
+        FSFormControl GetControl(int index);
 
-		[Export("insertPage:")]
-		FSPDFPage InsertPage(int index);
+        [Export("reset")]
+        bool Reset();
+    }
 
-		[Export("removePage:")]
-		bool RemovePage(FSPDFPage page);
+    [BaseType(typeof(NSObject))]
+    interface FSFormControl
+    {
+        [Export("getField")]
+        FSFormField GetField();
 
-		[Export("movePageTo:dstIndex:")]
-		bool MovePageTo(FSPDFPage page, int dstIndex);
+        [Export("getWidget")]
+        FSWidget GetWidget();
 
-		[Export("startImportPagesFromFilePath:flags:layerName:srcFilePath:password:pageRanges:count:pause:")]
-		unsafe FSProgressState StartImportPagesFromFilePath(int dstIndex, uint flags, string layerName, string srcFilePath, string password, IntPtr pageRanges, int count, FSPauseCallback pause);
+        [Export("getIndex")]
+        int GetIndex();
 
-		[Export("startImportPages:flags:layerName:srcDoc:pageRanges:count:pause:")]
-		unsafe FSProgressState StartImportPages(int dstIndex, uint flags, string layerName, FSPDFDoc srcDoc, IntPtr pageRanges, int count, FSPauseCallback pause);
+        [Export("getExportValue")]
+        string GetExportValue();
 
-		[Export("continueImportPages")]
-		FSProgressState ContinueImportPages();
+        [Export("setExportValue:")]
+        void SetExportValue(string value);
 
-		[Export("getFileVersion")]
-		int GetFileVersion();
+        [Export("isChecked")]
+        bool IsChecked();
 
-		[Export("setFileVersion:")]
-		void SetFileVersion(int version);
+        [Export("setChecked:")]
+        void SetChecked(bool @checked);
 
-		[Export("setSecurityHandler:")]
-		bool SetSecurityHandler(FSSecurityHandler securityHandler);
+        [Export("isDefaultChecked")]
+        bool IsDefaultChecked();
 
-		[Export("getSecurityHandler")]
-		FSSecurityHandler GetSecurityHandler();
+        [Export("setDefaultChecked:")]
+        void SetDefaultChecked(bool @checked);
+    }
 
-		[Export("removeSecurity")]
-		bool RemoveSecurity();
+    [BaseType(typeof(NSObject))]
+    interface FSTimer
+    {
+        [Export("onTimer:")]
+        void OnTimer(int timer);
+    }
 
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSFormFillerAssist
+    {
+        [Export("getVersion")]
+        int GetVersion();
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFGraphicsObjects
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("refresh:pdfRect:")]
+        void Refresh(FSPDFPage page, FSRectF pdfRect);
 
+        [Export("setTimer:timer:timerID:")]
+        unsafe bool SetTimer(int elapse, FSTimer timer, IntPtr timerID);
 
-		[Export("getFirstGraphicsObjectPosition:")]
-		unsafe IntPtr GetFirstGraphicsObjectPosition(FSGraphicsObjectType filter);
+        [Export("killTimer:")]
+        bool KillTimer(int timerID);
 
-		[Export("getLastGraphicsObjectPosition:")]
-		unsafe IntPtr GetLastGraphicsObjectPosition(FSGraphicsObjectType filter);
+        [Export("focusGotOnControl:fieldValue:")]
+        void FocusGotOnControl(FSFormControl control, string fieldValue);
 
-		[Export("getNextGraphicsObjectPosition:pos:")]
-		unsafe IntPtr GetNextGraphicsObjectPosition(FSGraphicsObjectType filter, IntPtr pos);
+        [Export("focusLostFromControl:fieldValue:")]
+        void FocusLostFromControl(FSFormControl control, string fieldValue);
+    }
 
-		[Export("getPrevGraphicsObjectPosition:pos:")]
-		unsafe IntPtr GetPrevGraphicsObjectPosition(FSGraphicsObjectType filter, IntPtr pos);
+    [BaseType(typeof(NSObject))]
+    interface FSFormFiller
+    {
+        [Export("initWithForm:assist:")]
+        IntPtr Constructor(FSForm form, FSFormFillerAssist assist);
 
-		[Export("getGraphicsObject:")]
-		unsafe FSPDFGraphicsObject GetGraphicsObject(IntPtr pos);
+        [Export("render:matrix:renderer:")]
+        void Render(FSPDFPage page, FSMatrix matrix, NSObject renderer);
 
-		[Export("insertGraphicsObject:graphicsObj:")]
-		unsafe IntPtr InsertGraphicsObject(IntPtr posInsertAfter, FSPDFGraphicsObject graphicsObj);
+        [Export("tap:point:")]
+        bool Tap(FSPDFPage page, FSPointF point);
 
-		[Export("removeGraphicsObject:")]
-		bool RemoveGraphicsObject(FSPDFGraphicsObject graphicsObj);
+        [Export("touchesBegan:point:")]
+        bool TouchesBegan(FSPDFPage page, FSPointF point);
 
-		[Export("removeGraphicsObjectByPosition:")]
-		unsafe bool RemoveGraphicsObjectByPosition(IntPtr pos);
+        [Export("touchesMoved:point:")]
+        bool TouchesMoved(FSPDFPage page, FSPointF point);
 
-		[Export("generateContent")]
-		bool GenerateContent();
+        [Export("touchesEnded:point:")]
+        bool TouchesEnded(FSPDFPage page, FSPointF point);
 
-	}
+        [Export("input:")]
+        bool Input(uint charCode);
 
-	[BaseType(typeof(FSPDFGraphicsObjects))]
-	interface FSPDFPage
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setFocus:")]
+        bool SetFocus(FSFormControl control);
 
+        [Export("highlightFormFields:")]
+        void HighlightFormFields(bool isHighlight);
 
-		[Export("getDocument")]
-		FSPDFDoc GetDocument();
+        [Export("setHighlightColor:")]
+        void SetHighlightColor(uint color);
+    }
 
-		[Export("getDict")]
-		FSPDFDictionary GetDict();
+    [BaseType(typeof(NSObject))]
+    interface FSLayerZoomData
+    {
+        [Export("initWithMinFactor:MaxFactor:")]
+        IntPtr Constructor(float minFactor, float maxFactor);
 
-		[Export("isParsed")]
-		bool IsParsed();
+        [Export("initWithData:")]
+        IntPtr Constructor(FSLayerZoomData data);
 
-		[Export("startParse:pause:isReparse:")]
-		FSProgressState StartParse(uint flag, FSPauseCallback pause, bool isReparse);
+        [Export("set:maxFactor:")]
+        void Set(float minFactor, float maxFactor);
 
-		[Export("continueParse")]
-		FSProgressState ContinueParse();
+        [Export("setMinFactor:")]
+        void SetMinFactor(float value);
 
-		[Export("getIndex")]
-		int GetIndex();
+        [Export("getMinFactor")]
+        float GetMinFactor();
 
-		[Export("getHeight")]
-		float GetHeight();
+        [Export("setMaxFactor:")]
+        void SetMaxFactor(float value);
 
-		[Export("getWidth")]
-		float GetWidth();
+        [Export("getMaxFactor")]
+        float GetMaxFactor();
+    }
 
-		[Export("getRotation")]
-		FSRotation GetRotation();
+    [BaseType(typeof(NSObject))]
+    interface FSLayerNode
+    {
+        [Export("getChildrenCount")]
+        int GetChildrenCount();
 
-		[Export("loadThumbnail")]
-		FSBitmap LoadThumbnail();
+        [Export("getChild:")]
+        FSLayerNode GetChild(int index);
 
-		[Export("getDisplayMatrix:yPos:xSize:ySize:rotate:")]
-		FSMatrix GetDisplayMatrix(int xPos, int yPos, int xSize, int ySize, FSRotation rotate);
+        [Export("getName")]
+        string GetName();
 
-		[Export("calcContentBBox:")]
-		FSRectF CalcContentBBox(FSCalcMarginMode mode);
+        [Export("hasLayer")]
+        bool HasLayer();
 
-		[Export("getAnnotCount")]
-		int GetAnnotCount();
+        [Export("hasIntent:")]
+        bool HasIntent(string intent);
 
-		[Export("getAnnot:")]
-		FSAnnot GetAnnot(int index);
+        [Export("isInPage:")]
+        bool IsInPage(FSPDFPage page);
 
-		[Export("getAnnotAtPos:tolerance:")]
-		FSAnnot GetAnnotAtPos(FSPointF pos, float tolerance);
+        [Export("getViewUsage")]
+        FSLayerUsageState GetViewUsage();
 
-		[Export("getAnnotAtDevicePos:position:tolerance:")]
-		FSAnnot GetAnnotAtDevicePos(FSMatrix matrix, FSPointF pos, float tolerance);
+        [Export("getExportUsage")]
+        FSLayerUsageState GetExportUsage();
 
-		[Export("addAnnot:rect:")]
-		FSAnnot AddAnnot(FSAnnotType annotType, FSRectF rect);
+        [Export("getPrintUsage")]
+        FSLayerPrintData GetPrintUsage();
 
-		[Export("removeAnnot:")]
-		bool RemoveAnnot(FSAnnot annot);
+        [Export("getZoomUsage")]
+        FSLayerZoomData GetZoomUsage();
 
-		[Export("hasTransparency")]
-		bool HasTransparency();
+        [Export("setName:")]
+        bool SetName(string name);
 
-		[Export("flatten:options:")]
-		bool Flatten(bool isDisplay, uint options);
+        [Export("setDefaultVisible:")]
+        bool SetDefaultVisible(bool visible);
 
-		[Export("setAnnotGroup:headerIndex:")]
-		bool SetAnnotGroup(FSMarkup[] annotArray, int headerIndex);
+        [Export("setViewUsage:")]
+        bool SetViewUsage(FSLayerUsageState state);
 
-		[Export("addSignature:")]
-		FSSignature AddSignature(FSRectF rect);
+        [Export("setExportUsage:")]
+        bool SetExportUsage(FSLayerUsageState state);
 
-		[Export("setRotation:")]
-		void SetRotation(FSRotation rotate);
+        [Export("setPrintUsage:")]
+        bool SetPrintUsage(FSLayerPrintData data);
 
-		[Export("setSize:height:")]
-		void SetSize(float width, float height);
+        [Export("setZoomUsage:")]
+        bool SetZoomUsage(FSLayerZoomData data);
 
-		[Export("setBox:box:")]
-		void SetBox(FSPageBox boxType, FSRectF box);
+        [Export("getGraphicsObjects:")]
+        FSPDFGraphicsObject[] GetGraphicsObjects(FSPDFPage page);
 
-		[Export("transform:needTransformClipPath:")]
-		bool Transform(FSMatrix matrix, bool needTransformClipPath);
+        [Export("addGraphicsObject:graphicsObject:")]
+        bool AddGraphicsObject(FSPDFPage page, FSPDFGraphicsObject graphicsObject);
 
-		[Export("setClipRect:")]
-		void SetClipRect(FSRectF clipRect);
+        [Export("removeGraphicsObject:")]
+        bool RemoveGraphicsObject(FSPDFGraphicsObject graphicsObject);
 
-		[Export("setThumbnail:")]
-		void SetThumbnail(FSBitmap thumbnail);
+        [Export("removeUsage:")]
+        bool RemoveUsage(FSLayerUsageType usageType);
+    }
 
-		[Export("addImageFromFilePath:posPoint:width:height:isGenerateContent:")]
-		bool AddImageFromFilePath(string imageFilePath, FSPointF posPoint, float width, float height, bool isGenerateContent);
+    [BaseType(typeof(NSObject))]
+    interface FSLayerTree
+    {
+        [Export("initWithPDFDoc:")]
+        IntPtr Constructor(FSPDFDoc doc);
 
-	}
+        [Export("setBaseState:")]
+        bool SetBaseState(FSLayerUsageState state);
 
-	[BaseType(typeof(NSObject))]
-	interface FSBookmark
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getRootNode")]
+        FSLayerNode GetRootNode();
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSLayerContext
+    {
+        [Export("initWithPDFDoc:usageType:")]
+        IntPtr Constructor(FSPDFDoc doc, FSLayerUsageType usageType);
 
-		[Export("getParent")]
-		FSBookmark GetParent();
+        [Export("getDocument")]
+        FSPDFDoc GetDocument();
 
-		[Export("getFirstChild")]
-		FSBookmark GetFirstChild();
+        [Export("getUsageType")]
+        FSLayerUsageType GetUsageType();
 
-		[Export("getNextSibling")]
-		FSBookmark GetNextSibling();
+        [Export("reset")]
+        bool Reset();
 
-		[Export("insert:pos:")]
-		FSBookmark Insert(string title, FSBookmarkPosition pos);
+        [Export("copyStates:")]
+        bool CopyStates(FSLayerContext srcContext);
 
-		[Export("moveTo:pos:")]
-		bool MoveTo(FSBookmark destBookmark, FSBookmarkPosition pos);
+        [Export("mergeStates:")]
+        bool MergeStates(FSLayerContext srcContext);
 
-		[Export("getDestination")]
-		FSDestination GetDestination();
+        [Export("isVisible:")]
+        bool IsVisible(FSLayerNode layer);
 
-		[Export("setDestination:")]
-		void SetDestination(FSDestination dest);
+        [Export("setVisible:visible:")]
+        bool SetVisible(FSLayerNode layer, bool visible);
+    }
 
-		[Export("getTitle")]
-		string GetTitle();
+    [BaseType(typeof(NSObject))]
+    interface FSLayerPrintData
+    {
+        [Export("initWithSubType:PrintState:")]
+        IntPtr Constructor(string subType, FSLayerUsageState state);
 
-		[Export("setTitle:")]
-		void SetTitle(string title);
+        [Export("initWithData:")]
+        IntPtr Constructor(FSLayerPrintData data);
 
-		[Export("getColor")]
-		uint GetColor();
+        [Export("set:printState:")]
+        void Set(string subtype, FSLayerUsageState printState);
 
-		[Export("setColor:")]
-		void SetColor(uint color);
+        [Export("setSubtype:")]
+        void SetSubtype(string value);
 
-		[Export("getStyle")]
-		uint GetStyle();
+        [Export("getSubtype")]
+        string GetSubtype();
 
-		[Export("setStyle:")]
-		void SetStyle(uint style);
+        [Export("setPrintState:")]
+        void SetPrintState(FSLayerUsageState value);
 
-	}
+        [Export("getPrintState")]
+        FSLayerUsageState GetPrintState();
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSReadingBookmark
-	{
-		//unsafe IntPtr GetCptr();
+    [BaseType(typeof(NSObject))]
+    interface FSBitmap
+    {
+        [Export("initWithWidth:height:format:buffer:pitch:")]
+        unsafe IntPtr Constructor(int width, int height, FSDIBFormat format, [NullAllowed] IntPtr buffer, int pitch);
 
+        [Export("initWithUIImage:")]
+        IntPtr Constructor(UIImage image);
 
-		[Export("getTitle")]
-		string GetTitle();
+        [Export("clone:")]
+        FSBitmap Clone([NullAllowed] FSRectI clip);
 
-		[Export("setTitle:")]
-		void SetTitle(string title);
+        [Export("getWidth")]
+        int GetWidth();
 
-		[Export("getPageIndex")]
-		int GetPageIndex();
+        [Export("getHeight")]
+        int GetHeight();
 
-		[Export("setPageIndex:")]
-		void SetPageIndex(int index);
+        [Export("getPitch")]
+        int GetPitch();
 
-		[Export("getDateTime:")]
-		FSDateTime GetDateTime(bool isCreationDate);
+        [Export("getBpp")]
+        int GetBpp();
 
-		[Export("setDateTime:isCreationDate:")]
-		void SetDateTime(FSDateTime dateTime, bool isCreationDate);
+        [Export("getBuffer")]
+        NSData GetBuffer();
 
-	}
+        [Export("getFormat")]
+        FSDIBFormat GetFormat();
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFNameTree
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("fillRect:rect:")]
+        void FillRect(uint color, [NullAllowed] FSRectI rect);
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSRenderer
+    {
+        [Export("initWithBitmap:rgbOrder:")]
+        IntPtr Constructor(FSBitmap bitmap, bool rgbOrder);
 
-		[Static]
-		[Export("create:type:")]
-		FSPDFNameTree Create(FSPDFDoc pdfDoc, FSNameTreeType type);
+        [Static]
+        [Export("createFromContext:deviceType:")]
+        [return: NullAllowed]
+        unsafe FSRenderer CreateFromContext(IntPtr context, FSDeviceType deviceType);
 
-		[Export("hasName:")]
-		bool HasName(string name);
+        [Export("startQuickRender:matrix:pause:")]
+        [return: NullAllowed]
+        FSProgressive StartQuickRender(FSPDFPage page, FSMatrix matrix, [NullAllowed] FSPauseCallback pause);
 
-		[Export("getCount")]
-		int GetCount();
+        [Export("startRender:matrix:pause:")]
+        [return: NullAllowed]
+        FSProgressive StartRender(FSPDFPage page, FSMatrix matrix, [NullAllowed] FSPauseCallback pause);
 
-		[Export("getName:")]
-		string GetName(int index);
+        [Export("startRenderReflowPage:matrix:pause:")]
+        [return: NullAllowed]
+        FSProgressive StartRenderReflowPage(FSReflowPage reflowPage, FSMatrix matrix, [NullAllowed] FSPauseCallback pause);
 
-		[Export("getObj:")]
-		FSPDFObject GetObj(string name);
+        [Export("startRenderBitmap:matrix:clipRect:interpolation:pause:")]
+        [return: NullAllowed]
+        FSProgressive StartRenderBitmap(FSBitmap bitmap, FSMatrix matrix, FSRectI clipRect, FSBitmapInterpolationFlag interpolation, [NullAllowed] FSPauseCallback pause);
 
-		[Export("setObj:pdfObj:")]
-		bool SetObj(string name, FSPDFObject pdfObj);
+        [Export("renderAnnot:matrix:")]
+        bool RenderAnnot(FSAnnot annot, FSMatrix matrix);
 
-		[Export("rename:newName:")]
-		bool Rename(string oldName, string newName);
+        [Export("setRenderContent:")]
+        void SetRenderContent(FSRenderContentFlag renderContentFlag);
 
-		[Export("add:pdfObj:")]
-		bool Add(string name, FSPDFObject pdfObj);
+        [Export("setTransformAnnotIcon:")]
+        void SetTransformAnnotIcon(bool transformAnnotIcon);
 
-		[Export("removeObj:")]
-		bool RemoveObj(string name);
+        [Export("setLayerContext:")]
+        void SetLayerContext(FSLayerContext layerContext);
 
-		[Export("removeAllObjs")]
-		bool RemoveAllObjs();
+        [Export("setColorMode:")]
+        void SetColorMode(FSRenderColorMode colorMode);
 
-	}
+        [Export("setMappingModeColors:foreColor:")]
+        void SetMappingModeColors(uint backColor, uint foreColor);
 
-	[BaseType(typeof(NSObject))]
-	interface FSForm
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setForceHalftone:")]
+        void SetForceHalftone(bool isForceHalftone);
+    }
 
+    [BaseType(typeof(NSObject))]
+    interface FSImage
+    {
+        [Export("initWithFilePath:")]
+        IntPtr Constructor(string path);
 
-		[Export("getFieldCount:")]
-		int GetFieldCount(string filter);
+        [Export("initWithBuffer:")]
+        IntPtr Constructor(NSData buffer);
 
-		[Export("getField:index:")]
-		FSFormField GetField(string filter, int index);
+        [Export("initWithFileRead:")]
+        IntPtr Constructor(FSFileReadCallback fileRead);
 
-		[Export("getFormFiller")]
-		FSFormFiller GetFormFiller();
+        [Export("getType")]
+        FSImageType GetThisType();
 
-		[Export("reset")]
-		bool Reset();
+        [Export("getWidth")]
+        int GetWidth();
 
-		[Export("exportToXML:")]
-		bool ExportToXML(string path);
+        [Export("getHeight")]
+        int GetHeight();
 
-		[Export("importFromXML:")]
-		bool ImportFromXML(string path);
+        [Export("getFrameCount")]
+        int GetFrameCount();
 
-		[Export("exportToFDFDoc:")]
-		bool ExportToFDFDoc(FSFDFDoc fdfDoc);
+        [Export("getFrameBitmap:")]
+        FSBitmap GetFrameBitmap(int index);
 
-		[Export("importFromFDFDoc:")]
-		bool ImportFromFDFDoc(FSFDFDoc fdfDoc);
+        [Export("getXDPI")]
+        int GetXDPI();
 
-	}
+        [Export("getYDPI")]
+        int GetYDPI();
 
-	[BaseType(typeof(NSObject))]
-	interface FSFormField
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("addFrame:")]
+        bool AddFrame(FSBitmap bitmap);
 
+        [Export("setDPIs:y_dpi:")]
+        void SetDPIs(int x_dpi, int y_dpi);
 
-		[Export("getType")]
-		FSFormFieldType GetThisType();
+        [Export("saveAs:")]
+        bool SaveAs(string file_path);
+    }
 
-		[Export("getFlags")]
-		FSFormFieldFlags GetFlags();
+    [BaseType(typeof(NSObject))]
+    interface FSPDFObject
+    {
+        [Static]
+        [Export("createFromBoolean:")]
+        FSPDFObject CreateFromBoolean(bool boolean);
 
-		[Export("getName")]
-		string GetName();
+        [Static]
+        [Export("createFromFloat:")]
+        FSPDFObject CreateFromFloat(float f);
 
-		[Export("getDefaultValue")]
-		string GetDefaultValue();
+        [Static]
+        [Export("createFromInteger:")]
+        FSPDFObject CreateFromInteger(int integer);
 
-		[Export("getValue")]
-		string GetValue();
+        [Static]
+        [Export("createFromString:")]
+        FSPDFObject CreateFromString(string @string);
 
-		[Export("getControlCount:")]
-		int GetControlCount(FSPDFPage page);
+        [Static]
+        [Export("createFromName:")]
+        FSPDFObject CreateFromName(string name);
 
-		[Export("getControl:index:")]
-		FSFormControl GetControl(FSPDFPage page, int index);
+        [Static]
+        [Export("createFromDateTime:")]
+        FSPDFObject CreateFromDateTime(FSDateTime dateTime);
 
-		[Export("reset")]
-		bool Reset();
+        [Static]
+        [Export("createReference:objnum:")]
+        FSPDFObject CreateReference(FSPDFDoc pDoc, uint objnum);
 
-	}
+        [Export("cloneObject")]
+        FSPDFObject CloneObject();
 
-	[BaseType(typeof(FSAnnot))]
-	interface FSFormControl
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getType")]
+        FSPDFObjectType GetThisType();
 
+        [Export("getObjNum")]
+        uint GetObjNum();
 
-		[Export("getField")]
-		FSFormField GetField();
+        [Export("getInteger")]
+        int GetInteger();
 
-	}
+        [Export("getFloat")]
+        float GetFloat();
 
-	[BaseType(typeof(NSObject))]
-	interface FSTimer
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getBoolean")]
+        bool GetBoolean();
 
+        [Export("getMatrix")]
+        FSMatrix GetMatrix();
 
-		[Export("onTimer:")]
-		void OnTimer(int timer);
+        [Export("getRect")]
+        FSRectF GetRect();
 
-	}
+        [Export("getDirectObject")]
+        FSPDFObject GetDirectObject();
 
-	[BaseType(typeof(NSObject))]
-	interface FSFormFillerAssist
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getDateTime")]
+        FSDateTime GetDateTime();
 
+        [Export("getString")]
+        string GetString();
+    }
 
-		[Export("getVersion")]
-		int GetVersion();
+    [BaseType(typeof(FSPDFObject))]
+    interface FSPDFStream
+    {
+        [Static]
+        [Export("create:")]
+        FSPDFStream Create(FSPDFDictionary dictionary);
 
-		[Export("refresh:pdfRect:")]
-		void Refresh(FSPDFPage page, FSRectF pdfRect);
+        [Export("getDictionary")]
+        FSPDFDictionary GetDictionary();
 
-		[Export("setTimer:timer:timerID:")]
-		unsafe bool SetTimer(int elapse, FSTimer timer, IntPtr timerID);
+        [Export("getDataSize:")]
+        uint GetDataSize(bool rawData);
 
-		[Export("killTimer:")]
-		bool KillTimer(int timerID);
+        [Export("getData:bufLen:")]
+        NSData GetData(bool rawData, int bufLen);
 
-		[Export("focusGotOnControl:fieldValue:")]
-		void FocusGotOnControl(FSFormControl control, string fieldValue);
+        [Export("setData:")]
+        void SetData(NSData buffer);
+    }
 
-		[Export("focusLostFromControl:fieldValue:")]
-		void FocusLostFromControl(FSFormControl control, string fieldValue);
+    [BaseType(typeof(FSPDFObject))]
+    interface FSPDFArray
+    {
+        [Static]
+        [Export("create")]
+        FSPDFArray Create();
 
-	}
+        [Static]
+        [Export("createFromMatrix:")]
+        FSPDFArray CreateFromMatrix(FSMatrix matrix);
 
-	[BaseType(typeof(NSObject))]
-	interface FSFormFiller
-	{
-		//unsafe IntPtr GetCptr();
+        [Static]
+        [Export("createFromRect:")]
+        FSPDFArray CreateFromRect(FSRectF rect);
 
+        [Export("getElementCount")]
+        int GetElementCount();
 
-		[Static]
-		[Export("create:assist:")]
-		FSFormFiller Create(FSForm form, FSFormFillerAssist assist);
+        [Export("getElement:")]
+        FSPDFObject GetElement(int index);
 
-		[Export("render:matrix:renderer:")]
-		void Render(FSPDFPage page, FSMatrix matrix, NSObject renderer);
+        [Export("addElement:")]
+        void AddElement(FSPDFObject element);
 
-		[Export("tap:point:")]
-		bool Tap(FSPDFPage page, FSPointF point);
+        [Export("insertAt:element:")]
+        void InsertAt(int index, FSPDFObject element);
 
-		[Export("touchesBegan:point:")]
-		bool TouchesBegan(FSPDFPage page, FSPointF point);
+        [Export("setAt:element:")]
+        void SetAt(int index, FSPDFObject element);
 
-		[Export("touchesMoved:point:")]
-		bool TouchesMoved(FSPDFPage page, FSPointF point);
+        [Export("removeAt:")]
+        void RemoveAt(int index);
+    }
 
-		[Export("touchesEnded:point:")]
-		bool TouchesEnded(FSPDFPage page, FSPointF point);
+    [BaseType(typeof(FSPDFObject))]
+    interface FSPDFDictionary
+    {
+        [Static]
+        [Export("create")]
+        FSPDFDictionary Create();
 
-		[Export("input:")]
-		bool Input(uint charCode);
+        [Export("hasKey:")]
+        bool HasKey(string key);
 
-		[Export("setFocus:")]
-		bool SetFocus(FSFormControl control);
+        [Export("getElement:")]
+        FSPDFObject GetElement(string key);
 
-		[Export("highlightFormFields:")]
-		void HighlightFormFields(bool isHighlight);
+        [Export("getKey:")]
+        unsafe string GetKey(IntPtr pos);
 
-		[Export("setHighlightColor:")]
-		void SetHighlightColor(uint color);
+        [Export("getValue:")]
+        unsafe FSPDFObject GetValue(IntPtr pos);
 
-	}
+        [Export("moveNext:")]
+        unsafe IntPtr MoveNext([NullAllowed] IntPtr pos);
 
-	[BaseType(typeof(NSObject))]
-	interface FSLayerZoomData
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setAt:object:")]
+        void SetAt(string key, FSPDFObject @object);
 
+        [Export("removeAt:")]
+        void RemoveAt(string key);
+    }
 
-		[Export("initWithMinFactor:MaxFactor:")]
-		IntPtr Constructor(float minFactor, float maxFactor);
+    [BaseType(typeof(NSObject))]
+    interface FSPDFTextSearch
+    {
+        [Export("initWithPDFDoc:pause:")]
+        IntPtr Constructor(FSPDFDoc pdfDoc, [NullAllowed] FSPauseCallback pause);
 
-		[Export("initWithData:")]
-		IntPtr Constructor(FSLayerZoomData data);
+        [Export("setKeyWords:")]
+        bool SetKeyWords(string keyWords);
 
-		[Export("set:maxFactor:")]
-		void Set(float minFactor, float maxFactor);
+        [Export("setStartPage:")]
+        bool SetStartPage(int pageIndex);
 
-		[Export("setMinFactor:")]
-		void SetMinFactor(float value);
+        [Export("setFlag:")]
+        bool SetFlag(FSSearchFlag flag);
 
-		[Export("getMinFactor")]
-		float GetMinFactor();
+        [Export("findNext")]
+        bool FindNext();
 
-		[Export("setMaxFactor:")]
-		void SetMaxFactor(float value);
+        [Export("findPrev")]
+        bool FindPrev();
 
-		[Export("getMaxFactor")]
-		float GetMaxFactor();
+        [Export("getMatchRectCount")]
+        int GetMatchRectCount();
 
-	}
+        [Export("getMatchRect:")]
+        FSRectF GetMatchRect(int index);
 
-	[BaseType(typeof(NSObject))]
-	interface FSLayerNode
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getMatchPageIndex")]
+        int GetMatchPageIndex();
 
+        [Export("getMatchSentence")]
+        string GetMatchSentence();
 
-		[Export("getChildrenCount")]
-		int GetChildrenCount();
+        [Export("getMatchSentenceStartIndex")]
+        int GetMatchSentenceStartIndex();
 
-		[Export("getChild:")]
-		FSLayerNode GetChild(int index);
+        [Export("getMatchStartCharIndex")]
+        int GetMatchStartCharIndex();
 
-		[Export("getName")]
-		string GetName();
+        [Export("getMatchEndCharIndex")]
+        int GetMatchEndCharIndex();
+    }
 
-		[Export("hasLayer")]
-		bool HasLayer();
+    [BaseType(typeof(NSObject))]
+    interface FSPDFTextSelect
+    {
+        [Export("initWithPDFPage:")]
+        IntPtr Constructor(FSPDFPage pPage);
 
-		[Export("hasIntent:")]
-		bool HasIntent(string intent);
+        [Export("getPage")]
+        FSPDFPage GetPage();
 
-		[Export("isInPage:")]
-		bool IsInPage(FSPDFPage page);
+        [Export("getCharCount")]
+        int GetCharCount();
 
-		[Export("getViewUsage")]
-		FSLayerUsageState GetViewUsage();
+        [Export("getChars:count:")]
+        string GetChars(int startIndex, int count);
 
-		[Export("getExportUsage")]
-		FSLayerUsageState GetExportUsage();
+        [Export("getIndexAtPos:y:tolerance:")]
+        int GetIndexAtPos(float x, float y, float tolerance);
 
-		[Export("getPrintUsage")]
-		FSLayerPrintData GetPrintUsage();
+        [Export("getTextInRect:")]
+        string GetTextInRect(FSRectF rect);
 
-		[Export("getZoomUsage")]
-		FSLayerZoomData GetZoomUsage();
+        [Export("getWordAtPos:y:tolerance:")]
+        NSRange GetWordAtPos(float x, float y, float tolerance);
 
-		[Export("setName:")]
-		bool SetName(string name);
+        [Export("getTextRectCount:count:")]
+        int GetTextRectCount(int start, int count);
 
-		[Export("setDefaultVisible:")]
-		bool SetDefaultVisible(bool visible);
+        [Export("getTextRect:")]
+        FSRectF GetTextRect(int rectIndex);
 
-		[Export("setViewUsage:")]
-		bool SetViewUsage(FSLayerUsageState state);
+        [Export("getBaselineRotation:")]
+        FSRotation GetBaselineRotation(int rectIndex);
+    }
 
-		[Export("setExportUsage:")]
-		bool SetExportUsage(FSLayerUsageState state);
+    [BaseType(typeof(NSObject))]
+    interface FSPDFTextLink
+    {
+        [Export("getURI")]
+        string GetURI();
 
-		[Export("setPrintUsage:")]
-		bool SetPrintUsage(FSLayerPrintData data);
+        [Export("getStartCharIndex")]
+        int GetStartCharIndex();
 
-		[Export("setZoomUsage:")]
-		bool SetZoomUsage(FSLayerZoomData data);
+        [Export("getEndCharIndex")]
+        int GetEndCharIndex();
 
-		[Export("getGraphicsObjects:")]
-		FSPDFGraphicsObject[] GetGraphicsObjects(FSPDFPage page);
+        [Export("getRectCount")]
+        int GetRectCount();
 
-		[Export("addGraphicsObject:graphicsObject:")]
-		bool AddGraphicsObject(FSPDFPage page, FSPDFGraphicsObject graphicsObject);
+        [Export("getRect:")]
+        FSRectF GetRect(int rectIndex);
+    }
 
-		[Export("removeGraphicsObject:")]
-		bool RemoveGraphicsObject(FSPDFGraphicsObject graphicsObject);
+    [BaseType(typeof(NSObject))]
+    interface FSPDFPageLinks
+    {
+        [Export("initWithPDFPage:")]
+        IntPtr Constructor(FSPDFPage page);
 
-		[Export("removeUsage:")]
-		bool RemoveUsage(FSLayerUsageType usageType);
+        [Export("getTextLinkCount")]
+        int GetTextLinkCount();
 
-	}
+        [Export("getTextLink:")]
+        FSPDFTextLink GetTextLink(int index);
 
-	[BaseType(typeof(NSObject))]
-	interface FSLayerTree
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getLinkAnnotCount")]
+        int GetLinkAnnotCount();
 
+        [Export("getLinkAnnot:")]
+        FSLink GetLinkAnnot(int index);
+    }
 
-		[Static]
-		[Export("create:")]
-		FSLayerTree Create(FSPDFDoc doc);
+    [BaseType(typeof(NSObject))]
+    interface FSSignatureCallback
+    {
+        [Export("startCalcDigest:byteRangeArray:signature:clientData:")]
+        unsafe bool StartCalcDigest(FSFileReadCallback file, NSNumber[] byteRangeArray, FSSignature signature, [NullAllowed] IntPtr clientData);
 
-		[Export("setBaseState:")]
-		bool SetBaseState(FSLayerUsageState state);
+        [Export("continueCalcDigest:clientData:")]
+        unsafe FSProgressState ContinueCalcDigest([NullAllowed] FSPauseCallback pause, [NullAllowed] IntPtr clientData);
 
-		[Export("getRootNode")]
-		FSLayerNode GetRootNode();
+        [Export("getDigest:")]
+        unsafe NSData GetDigest([NullAllowed] IntPtr clientData);
 
-	}
+        [Export("sign:certPath:password:digestAlgorithm:clientData:")]
+        unsafe NSData Sign(NSData digest, [NullAllowed] string certPath, [NullAllowed] string password, FSDigestAlgorithm digestAlgorithm, [NullAllowed] IntPtr clientData);
 
-	[BaseType(typeof(NSObject))]
-	interface FSLayerContext
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("verifySigState:signedData:clientData:")]
+        unsafe FSSignatureStates VerifySigState(NSData digest, NSData signedData, [NullAllowed] IntPtr clientData);
+    }
 
+    [BaseType(typeof(FSFormField))]
+    interface FSSignature
+    {
+        [Export("isSigned")]
+        bool IsSigned();
 
-		[Static]
-		[Export("create:usageType:")]
-		FSLayerContext Create(FSPDFDoc doc, FSLayerUsageType usageType);
+        [Export("startSign:cert_password:digest_algorithm:client_data:pause:save_path:")]
+        [return: NullAllowed]
+        unsafe FSProgressive StartSign([NullAllowed] string cert_path, [NullAllowed] string cert_password, FSDigestAlgorithm digest_algorithm, [NullAllowed] IntPtr client_data, [NullAllowed] FSPauseCallback pause, string save_path);
 
-		[Export("getPDFDocument")]
-		FSPDFDoc GetPDFDocument();
+        [Export("startVerify:pause:")]
+        [return: NullAllowed]
+        unsafe FSProgressive StartVerify([NullAllowed] IntPtr client_data, [NullAllowed] FSPauseCallback pause);
 
-		[Export("getUsageType")]
-		FSLayerUsageType GetUsageType();
+        [Export("getCertificateInfo:")]
+        string GetCertificateInfo(string key);
 
-		[Export("reset")]
-		bool Reset();
+        [NullAllowed, Export("getByteRanges")]
+        NSNumber[] GetByteRanges();
 
-		[Export("copyStates:")]
-		bool CopyStates(FSLayerContext srcContext);
+        [Export("getState")]
+        FSSignatureStates GetState();
 
-		[Export("mergeStates:")]
-		bool MergeStates(FSLayerContext srcContext);
+        [Export("clearSignedData")]
+        bool ClearSignedData();
 
-		[Export("isVisible:")]
-		bool IsVisible(FSLayerNode layer);
+        [Export("getDocument")]
+        FSPDFDoc GetDocument();
 
-		[Export("setVisible:visible:")]
-		bool SetVisible(FSLayerNode layer, bool visible);
+        [Export("getAppearanceFlags")]
+        FSSignatureAPFlags GetAppearanceFlags();
 
-	}
+        [Export("setAppearanceFlags:")]
+        void SetAppearanceFlags(FSSignatureAPFlags apFlags);
 
-	[BaseType(typeof(NSObject))]
-	interface FSLayerPrintData
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("setAppearanceContent:")]
+        void SetAppearanceContent(string appearanceContent);
 
+        [Export("getSignTime")]
+        FSDateTime GetSignTime();
 
-		[Export("initWithSubType:PrintState:")]
-		IntPtr Constructor(string subType, FSLayerUsageState state);
+        [Export("setSignTime:")]
+        void SetSignTime(FSDateTime signTime);
 
-		[Export("initWithData:")]
-		IntPtr Constructor(FSLayerPrintData data);
+        [Export("getKeyValue:")]
+        string GetKeyValue(FSSignatureKeyName key);
 
-		[Export("set:printState:")]
-		void Set(string subtype, FSLayerUsageState printState);
+        [Export("setKeyValue:value:")]
+        void SetKeyValue(FSSignatureKeyName key, string value);
 
-		[Export("setSubtype:")]
-		void SetSubtype(string value);
+        [Export("getBitmap")]
+        FSBitmap GetBitmap();
 
-		[Export("getSubtype")]
-		string GetSubtype();
+        [Export("setBitmap:")]
+        void SetBitmap(FSBitmap bitmap);
 
-		[Export("setPrintState:")]
-		void SetPrintState(FSLayerUsageState value);
+        [Export("setImage:frame_index:")]
+        void SetImage(FSImage image, int frame_index);
 
-		[Export("getPrintState")]
-		FSLayerUsageState GetPrintState();
+        [Export("getSignatureDict")]
+        FSPDFDictionary GetSignatureDict();
 
-	}
+        [Export("setDefaultContentsLength:")]
+        void SetDefaultContentsLength(uint default_length);
 
-	[BaseType(typeof(NSObject))]
-	interface FSBitmap
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getCertCount")]
+        int GetCertCount();
 
+        [Export("getCert:")]
+        string GetCert(int index);
 
-		[Static]
-		[Export("create:height:format:buffer:pitch:")]
-		unsafe FSBitmap Create(int width, int height, FSDIBFormat format, IntPtr buffer, int pitch);
+        [Export("setCertChain:")]
+        void SetCertChain(string[] cert_chain);
+    }
 
-		[Export("clone:")]
-		FSBitmap Clone(FSRectI clip);
+    [BaseType(typeof(NSObject))]
+    interface FSReflowPage
+    {
+        [Export("initWithPDFPage:")]
+        IntPtr Constructor(FSPDFPage pdfPage);
 
-		[Export("getWidth")]
-		int GetWidth();
+        [Export("setScreenSize:screenHeight:")]
+        void SetScreenSize(float screenWidth, float screenHeight);
 
-		[Export("getHeight")]
-		int GetHeight();
+        [Export("setZoom:")]
+        void SetZoom(int zoom);
 
-		[Export("getPitch")]
-		int GetPitch();
+        [Export("setParseFlags:")]
+        void SetParseFlags(FSReflowFlags flags);
 
-		[Export("getBpp")]
-		int GetBpp();
+        [Export("setLineSpace:")]
+        void SetLineSpace(float lineSpace);
 
-		[Export("getBuffer")]
-		NSData GetBuffer();
+        [Export("setTopSpace:")]
+        void SetTopSpace(float topSpace);
 
-		[Export("getFormat")]
-		FSDIBFormat GetFormat();
+        [Export("startParse:")]
+        [return: NullAllowed]
+        FSProgressive StartParse([NullAllowed] FSPauseCallback pause);
 
-		[Export("fillRect:rect:")]
-		void FillRect(uint color, FSRectI rect);
+        [Export("getContentWidth")]
+        float GetContentWidth();
 
-	}
+        [Export("getContentHeight")]
+        float GetContentHeight();
 
-	[BaseType(typeof(NSObject))]
-	interface FSRenderer
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getDisplayMatrix:offsetY:")]
+        FSMatrix GetDisplayMatrix(float offsetX, float offsetY);
 
+        [Export("getFocusData:point:")]
+        string GetFocusData(FSMatrix matrix, FSPointF point);
 
-		[Static]
-		[Export("create:rgbOrder:")]
-		FSRenderer Create(FSBitmap bitmap, bool rgbOrder);
+        [Export("getFocusPosition:focusData:")]
+        FSPointF GetFocusPosition(FSMatrix matrix, string focusData);
 
-		[Static]
-		[Export("createFromContext:deviceType:")]
-		unsafe FSRenderer CreateFromContext(IntPtr context, FSDeviceType deviceType);
+        [Export("isParsed")]
+        bool IsParsed();
+    }
 
-		[Export("startRender:matrix:pause:")]
-		FSProgressState StartRender(FSPDFPage page, FSMatrix matrix, FSPauseCallback pause);
+    [BaseType(typeof(NSObject))]
+    interface FSPSICallback
+    {
+        [Export("refresh:Rect:")]
+        void Refresh(FSPSI PSIHandle, FSRectF flushRect);
+    }
 
-		[Export("startRenderReflowPage:matrix:pause:")]
-		FSProgressState StartRenderReflowPage(FSReflowPage reflowPage, FSMatrix matrix, FSPauseCallback pause);
+    [BaseType(typeof(NSObject))]
+    interface FSPSI
+    {
+        [Export("initWithBitmap:simulate:")]
+        IntPtr Constructor(FSBitmap bitmap, bool simulate);
 
-		[Export("startRenderBitmap:matrix:clipRect:interpolation:pause:")]
-		FSProgressState StartRenderBitmap(FSBitmap bitmap, FSMatrix matrix, FSRectI clipRect, int interpolation, FSPauseCallback pause);
+        [Export("initWithWidth:height:simulate:")]
+        IntPtr Constructor(int width, int height, bool simulate);
 
-		[Export("continueRender")]
-		FSProgressState ContinueRender();
+        [Export("setCallback:")]
+        void SetCallback(FSPSICallback callback);
 
-		[Export("renderAnnot:matrix:")]
-		bool RenderAnnot(FSAnnot annot, FSMatrix matrix);
+        [Export("setColor:")]
+        void SetColor(uint color);
 
-		[Export("setRenderContent:")]
-		void SetRenderContent(uint renderContentFlag);
+        [Export("setDiameter:")]
+        void SetDiameter(int diameter);
 
-		[Export("setTransformAnnotIcon:")]
-		void SetTransformAnnotIcon(bool transformAnnotIcon);
+        [Export("setOpacity:")]
+        void SetOpacity(float opacity);
 
-		[Export("setLayerContext:")]
-		void SetLayerContext(FSLayerContext layerContext);
+        [Export("addPoint:ptType:pressure:")]
+        void AddPoint(FSPointF point, FSPathPointType ptType, float pressure);
 
-		[Export("setColorMode:")]
-		void SetColorMode(FSRenderColorMode colorMode);
+        [Export("getContentsRect")]
+        FSRectF GetContentsRect();
 
-		[Export("setMappingModeColors:foreColor:")]
-		void SetMappingModeColors(uint backColor, uint foreColor);
+        [Export("getBitmap")]
+        FSBitmap GetBitmap();
 
-		[Export("setForceHalftone:")]
-		void SetForceHalftone(bool isForceHalftone);
+        [Export("convertToPDFAnnot:rect:rotate:")]
+        FSPSInk ConvertToPDFAnnot(FSPDFPage pdfPage, FSRectF rect, FSRotation rotate);
+    }
 
-	}
+    [BaseType(typeof(NSObject))]
+    interface FSWatermark
+    {
+        [Export("initWithDocument:text:properties:settings:")]
+        IntPtr Constructor(FSPDFDoc document, string text, FSWatermarkTextProperties properties, FSWatermarkSettings settings);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFObject
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getWidth")]
+        float GetWidth();
 
+        [Export("getHeight")]
+        float GetHeight();
 
-		[Static]
-		[Export("createFromBoolean:")]
-		FSPDFObject CreateFromBoolean(bool boolean);
+        [Export("insertToPage:")]
+        bool InsertToPage(FSPDFPage page);
+    }
 
-		[Static]
-		[Export("createFromFloat:")]
-		FSPDFObject CreateFromFloat(float f);
+    [BaseType(typeof(NSObject))]
+    interface FSWatermarkSettings
+    {
+        [Export("position", ArgumentSemantic.Assign)]
+        FSWatermarkPosition Position { get; set; }
 
-		[Static]
-		[Export("createFromInteger:")]
-		FSPDFObject CreateFromInteger(int integer);
+        [Export("offset_x")]
+        float Offset_x { get; set; }
 
-		[Static]
-		[Export("createFromString:")]
-		FSPDFObject CreateFromString(string @string);
+        [Export("offset_y")]
+        float Offset_y { get; set; }
 
-		[Static]
-		[Export("createFromName:")]
-		FSPDFObject CreateFromName(string name);
+        [Export("flags", ArgumentSemantic.Assign)]
+        FSWatermarkFlags Flags { get; set; }
 
-		[Static]
-		[Export("createFromDateTime:")]
-		FSPDFObject CreateFromDateTime(FSDateTime dateTime);
+        [Export("scale_x")]
+        float Scale_x { get; set; }
 
-		[Static]
-		[Export("createReference:objnum:")]
-		FSPDFObject CreateReference(FSPDFDoc pDoc, uint objnum);
+        [Export("scale_y")]
+        float Scale_y { get; set; }
 
-		[Export("cloneObject")]
-		FSPDFObject CloneObject();
+        [Export("rotation")]
+        float Rotation { get; set; }
 
-		[Export("getType")]
-		FSPDFObjectType GetThisType();
+        [Export("opacity")]
+        int Opacity { get; set; }
 
-		[Export("getObjNum")]
-		uint GetObjNum();
+        [Export("initWithSettings:")]
+        IntPtr Constructor(FSWatermarkSettings settings);
 
-		[Export("getInteger")]
-		int GetInteger();
+        [Export("set:offset_x:offset_y:flags:scale_x:scale_y:rotation:opacity:")]
+        void Set(FSWatermarkPosition position, float offset_x, float offset_y, uint flags, float scale_x, float scale_y, float rotation, int opacity);
+    }
 
-		[Export("getFloat")]
-		float GetFloat();
+    [BaseType(typeof(NSObject))]
+    interface FSWatermarkTextProperties
+    {
+        [Export("font", ArgumentSemantic.Strong)]
+        FSFont Font { get; set; }
 
-		[Export("getBoolean")]
-		bool GetBoolean();
+        [Export("font_size")]
+        float Font_size { get; set; }
 
-		[Export("getMatrix")]
-		FSMatrix GetMatrix();
+        [Export("color")]
+        uint Color { get; set; }
 
-		[Export("getRect")]
-		FSRectF GetRect();
+        [Export("font_style", ArgumentSemantic.Assign)]
+        FSWatermarkFontStyle Font_style { get; set; }
 
-		[Export("getDirectObject")]
-		FSPDFObject GetDirectObject();
+        [Export("line_space")]
+        float Line_space { get; set; }
 
-		[Export("getDateTime")]
-		FSDateTime GetDateTime();
+        [Export("alignment", ArgumentSemantic.Assign)]
+        FSWatermarkTextAlignment Alignment { get; set; }
 
-		[Export("getString")]
-		string GetString();
+        [Export("initWithProperties:")]
+        IntPtr Constructor(FSWatermarkTextProperties properties);
 
-	}
+        [Export("set:font_size:color:style:line_space:alignment:")]
+        void Set(FSFont font, float font_size, uint color, FSWatermarkFontStyle style, float line_space, FSWatermarkTextAlignment alignment);
+    }
 
-	[BaseType(typeof(FSPDFObject))]
-	interface FSPDFStream
-	{
-		//unsafe IntPtr GetCptr();
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IRecoveryEventListener
+    {
+        [Export("onWillRecover")]
+        void OnWillRecover();
 
+        [Export("onRecovered")]
+        void OnRecovered();
+    }
 
-		[Static]
-		[Export("create:")]
-		FSPDFStream Create(FSPDFDictionary dictionary);
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IRotationEventListener
+    {
+        [Export("willRotateToInterfaceOrientation:duration:")]
+        void WillRotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation, double duration);
 
-		[Export("getDictionary")]
-		FSPDFDictionary GetDictionary();
+        [Export("willAnimateRotationToInterfaceOrientation:duration:")]
+        void WillAnimateRotationToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation, double duration);
 
-		[Export("getDataSize:")]
-		uint GetDataSize(bool rawData);
+        [Export("didRotateFromInterfaceOrientation:")]
+        void DidRotateFromInterfaceOrientation(UIInterfaceOrientation fromInterfaceOrientation);
+    }
 
-		[Export("getData:bufLen:")]
-		NSData GetData(bool rawData, int bufLen);
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IDocEventListener
+    {
+        [Export("onDocWillOpen")]
+        void OnDocWillOpen();
 
-		[Export("setData:")]
-		void SetData(NSData buffer);
+        [Export("onDocOpened:error:")]
+        void OnDocOpened(FSPDFDoc document, int error);
 
-	}
+        [Export("onDocWillClose:")]
+        void OnDocWillClose(FSPDFDoc document);
 
-	[BaseType(typeof(FSPDFObject))]
-	interface FSPDFArray
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("onDocClosed:error:")]
+        void OnDocClosed(FSPDFDoc document, int error);
 
+        [Export("onDocWillSave:")]
+        void OnDocWillSave(FSPDFDoc document);
 
-		[Static]
-		[Export("create")]
-		FSPDFArray Create();
+        [Export("onDocSaved:error:")]
+        void OnDocSaved(FSPDFDoc document, int error);
+    }
 
-		[Static]
-		[Export("createFromMatrix:")]
-		FSPDFArray CreateFromMatrix(FSMatrix matrix);
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IPageEventListener
+    {
+        [Export("onPageChanged:currentIndex:")]
+        void OnPageChanged(int oldIndex, int currentIndex);
 
-		[Static]
-		[Export("createFromRect:")]
-		FSPDFArray CreateFromRect(FSRectF rect);
+        [Export("onPageVisible:")]
+        void OnPageVisible(int index);
 
-		[Export("getElementCount")]
-		int GetElementCount();
+        [Export("onPageInvisible:")]
+        void OnPageInvisible(int index);
 
-		[Export("getElement:")]
-		FSPDFObject GetElement(int index);
+        [Export("onPageJumped")]
+        void OnPageJumped();
 
-		[Export("addElement:")]
-		void AddElement(FSPDFObject element);
+        [Export("onPagesWillRemove:")]
+        void OnPagesWillRemove(NSNumber[] indexes);
 
-		[Export("insertAt:element:")]
-		void InsertAt(int index, FSPDFObject element);
+        [Export("onPagesWillMove:dstIndex:")]
+        void OnPagesWillMove(NSNumber[] indexes, int dstIndex);
 
-		[Export("setAt:element:")]
-		void SetAt(int index, FSPDFObject element);
+        [Export("onPagesWillRotate:rotation:")]
+        void OnPagesWillRotate(NSNumber[] indexes, int rotation);
 
-		[Export("removeAt:")]
-		void RemoveAt(int index);
+        [Export("onPagesRemoved:")]
+        void OnPagesRemoved(NSNumber[] indexes);
 
-	}
+        [Export("onPagesMoved:dstIndex:")]
+        void OnPagesMoved(NSNumber[] indexes, int dstIndex);
 
-	[BaseType(typeof(FSPDFObject))]
-	interface FSPDFDictionary
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("onPagesRotated:rotation:")]
+        void OnPagesRotated(NSNumber[] indexes, int rotation);
 
+        [Export("onPagesInsertedAtRange:")]
+        void OnPagesInsertedAtRange(NSRange range);
+    }
 
-		[Static]
-		[Export("create")]
-		FSPDFDictionary Create();
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface ILayoutEventListener
+    {
+        [Abstract]
+        [Export("onLayoutModeChanged:newLayoutMode:")]
+        void NewLayoutMode(FSLayoutMode oldLayoutMode, FSLayoutMode newLayoutMode);
+    }
 
-		[Export("hasKey:")]
-		bool HasKey(string key);
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IScrollViewEventListener
+    {
+        [Export("onScrollViewDidScroll:")]
+        void OnScrollViewDidScroll(UIScrollView scrollView);
 
-		[Export("getElement:")]
-		FSPDFObject GetElement(string key);
+        [Export("onScrollViewDidZoom:")]
+        void OnScrollViewDidZoom(UIScrollView scrollView);
 
-		[Export("getKey:")]
-		unsafe string GetKey(IntPtr pos);
+        [Export("onScrollViewWillBeginDragging:")]
+        void OnScrollViewWillBeginDragging(UIScrollView scrollView);
 
-		[Export("getValue:")]
-		unsafe FSPDFObject GetValue(IntPtr pos);
+        [Export("onScrollViewDidEndDragging:willDecelerate:")]
+        void OnScrollViewDidEndDragging(UIScrollView scrollView, bool decelerate);
 
-		[Export("moveNext:")]
-		unsafe IntPtr MoveNext(IntPtr pos);
+        [Export("onScrollViewWillBeginDecelerating:")]
+        void OnScrollViewWillBeginDecelerating(UIScrollView scrollView);
 
-		[Export("setAt:object:")]
-		void SetAt(string key, FSPDFObject @object);
+        [Export("onScrollViewDidEndDecelerating:")]
+        void OnScrollViewDidEndDecelerating(UIScrollView scrollView);
 
-		[Export("removeAt:")]
-		void RemoveAt(string key);
+        [Export("onScrollViewWillBeginZooming:")]
+        void OnScrollViewWillBeginZooming(UIScrollView scrollView);
 
-	}
+        [Export("onScrollViewDidEndZooming:")]
+        void OnScrollViewDidEndZooming(UIScrollView scrollView);
+    }
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFTextSearch
-	{
-		//unsafe IntPtr GetCptr();
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IGestureEventListener
+    {
+        [Export("onLongPress:")]
+        bool OnLongPress(UILongPressGestureRecognizer gestureRecognizer);
 
+        [Export("onTap:")]
+        bool OnTap(UITapGestureRecognizer gestureRecognizer);
 
-		[Static]
-		[Export("create:pause:")]
-		FSPDFTextSearch Create(FSPDFDoc pdfDoc, FSPauseCallback pause);
+        [Export("onPan:")]
+        bool OnPan(UIPanGestureRecognizer gestureRecognizer);
 
-		[Export("setKeyWords:")]
-		bool SetKeyWords(string keyWords);
+        [Export("onShouldBegin:")]
+        bool OnShouldBegin(UIGestureRecognizer gestureRecognizer);
+    }
 
-		[Export("setStartPage:")]
-		bool SetStartPage(int pageIndex);
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IDrawEventListener
+    {
+        [Abstract]
+        [Export("onDraw:inContext:")]
+        unsafe void InContext(int pageIndex, IntPtr context);
+    }
 
-		[Export("setFlag:")]
-		bool SetFlag(uint flag);
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface ITouchEventListener
+    {
+        [Export("onTouchesBegan:withEvent:")]
+        bool OnTouchesBegan(NSSet touches, UIEvent @event);
 
-		[Export("findNext")]
-		bool FindNext();
+        [Export("onTouchesMoved:withEvent:")]
+        bool OnTouchesMoved(NSSet touches, UIEvent @event);
 
-		[Export("findPrev")]
-		bool FindPrev();
+        [Export("onTouchesEnded:withEvent:")]
+        bool OnTouchesEnded(NSSet touches, UIEvent @event);
 
-		[Export("getMatchRectCount")]
-		int GetMatchRectCount();
+        [Export("onTouchesCancelled:withEvent:")]
+        bool OnTouchesCancelled(NSSet touches, UIEvent @event);
+    }
 
-		[Export("getMatchRect:")]
-		FSRectF GetMatchRect(int index);
+    //[Protocol, Model]
+    //[BaseType(typeof(NSObject))]
+    //interface FSPDFUIExtensionsManager : IGestureEventListener, IDrawEventListener, ITouchEventListener
+    //{
+    //[Export("shouldDrawAnnot:")]
+    //bool ShouldDrawAnnot(FSAnnot annot);
+    //}
 
-		[Export("getMatchPageIndex")]
-		int GetMatchPageIndex();
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface FSPageOrganizerDelegate
+    {
+        [Abstract]
+        [Export("movePagesFromIndexes:toIndex:")]
+        bool MovePagesFromIndexes(NSNumber[] sourcePageIndexes, nuint pageIndex);
 
-		[Export("getMatchSentence")]
-		string GetMatchSentence();
+        [Abstract]
+        [Export("deletePagesAtIndexes:")]
+        bool DeletePagesAtIndexes(NSNumber[] pageIndexes);
 
-		[Export("getMatchSentenceStartIndex")]
-		int GetMatchSentenceStartIndex();
+        [Abstract]
+        [Export("rotatePagesAtIndexes:clockwise:")]
+        bool RotatePagesAtIndexes(NSNumber[] pageIndexes, bool clockwise);
 
-		[Export("getMatchStartCharIndex")]
-		int GetMatchStartCharIndex();
+        [Abstract]
+        [Export("insertPageFromImage:atIndex:")]
+        bool InsertPageFromImage(UIImage image, nuint pageIndex);
 
-		[Export("getMatchEndCharIndex")]
-		int GetMatchEndCharIndex();
+        [Abstract]
+        [Export("insertPagesFromDocument:withSourceIndexes:flags:layerName:atIndex:")]
+        bool InsertPagesFromDocument(FSPDFDoc document, NSNumber[] sourcePagesIndexes, FSImportFlags flags, string layerName, nuint pageIndex);
+    }
 
-	}
+    [BaseType(typeof(UIView))]
+    interface FSPDFViewCtrl : IRotationEventListener, FSPageOrganizerDelegate
+    {
+        [NullAllowed, Export("extensionsManager", ArgumentSemantic.Weak)]
+        UIExtensionsManager ExtensionsManager { get; set; }
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFTextSelect
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("currentDoc", ArgumentSemantic.Strong)]
+        FSPDFDoc CurrentDoc { get; set; }
 
+        [Export("isNightMode")]
+        bool IsNightMode { get; set; }
 
-		[Static]
-		[Export("create:")]
-		FSPDFTextSelect Create(FSPDFPage pPage);
+        [Export("bottomOffset")]
+        int BottomOffset { get; set; }
 
-		[Export("getPage")]
-		FSPDFPage GetPage();
+        [Export("shouldRecover")]
+        bool ShouldRecover { get; set; }
 
-		[Export("getCharCount")]
-		int GetCharCount();
+        [NullAllowed, Export("filePath", ArgumentSemantic.Strong)]
+        string FilePath { get; }
 
-		[Export("getChars:count:")]
-		string GetChars(int startIndex, int count);
+        [Export("initWithFrame:")]
+        IntPtr Constructor(CGRect frame);
 
-		[Export("getIndexAtPos:y:tolerance:")]
-		int GetIndexAtPos(float x, float y, float tolerance);
+        [Export("registerDocEventListener:")]
+        void RegisterDocEventListener(NSObject listener);
 
-		[Export("getTextInRect:")]
-		string GetTextInRect(FSRectF rect);
+        [Export("registerPageEventListener:")]
+        void RegisterPageEventListener(IPageEventListener listener);
 
-		[Export("getWordAtPos:y:tolerance:")]
-		NSRange GetWordAtPos(float x, float y, float tolerance);
+        [Export("registerScrollViewEventListener:")]
+        void RegisterScrollViewEventListener(IScrollViewEventListener listener);
 
-		[Export("getTextRectCount:count:")]
-		int GetTextRectCount(int start, int count);
+        [Export("registerLayoutChangedEventListener:")]
+        void RegisterLayoutChangedEventListener(ILayoutEventListener listener);
 
-		[Export("getTextRect:")]
-		FSRectF GetTextRect(int rectIndex);
+        [Export("registerGestureEventListener:")]
+        void RegisterGestureEventListener(IGestureEventListener listener);
 
-		[Export("getBaselineRotation:")]
-		FSRotation GetBaselineRotation(int rectIndex);
+        [Export("registerDrawEventListener:")]
+        void RegisterDrawEventListener(IDrawEventListener listener);
 
-	}
+        [Export("registerRecoveryEventListener:")]
+        void RegisterRecoveryEventListener(IRecoveryEventListener listener);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFTextLink
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("unregisteRecoveryEventListener:")]
+        void UnregisteRecoveryEventListener(IRecoveryEventListener listener);
 
+        [Export("unregisterDrawEventListener:")]
+        void UnregisterDrawEventListener(IDrawEventListener listener);
 
-		[Export("getURI")]
-		string GetURI();
+        [Export("unregisterGestureEventListener:")]
+        void UnregisterGestureEventListener(IGestureEventListener listener);
 
-		[Export("getStartCharIndex")]
-		int GetStartCharIndex();
+        [Export("unregisterDocEventListener:")]
+        void UnregisterDocEventListener(NSObject listener);
 
-		[Export("getEndCharIndex")]
-		int GetEndCharIndex();
+        [Export("unregisterPageEventListener:")]
+        void UnregisterPageEventListener(IPageEventListener listener);
 
-		[Export("getRectCount")]
-		int GetRectCount();
+        [Export("unregisterScrollViewEventListener:")]
+        void UnregisterScrollViewEventListener(IScrollViewEventListener listener);
 
-		[Export("getRect:")]
-		FSRectF GetRect(int rectIndex);
+        [Export("unregisterLayoutChangedEventListener:")]
+        void UnregisterLayoutChangedEventListener(ILayoutEventListener listener);
 
-	}
+        [Export("setDoc:")]
+        void SetDoc(FSPDFDoc doc);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPDFPageLinks
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getDoc")]
+        FSPDFDoc GetDoc();
 
+        [Export("openDoc:password:completion:")]
+        [Async]
+        void OpenDoc(string filePath, [NullAllowed] string password, Action<FSErrorCode> completion);
 
-		[Static]
-		[Export("create:")]
-		FSPDFPageLinks Create(FSPDFPage page);
+        [Export("openDocFromMemory:password:completion:")]
+        void OpenDocFromMemory(NSData buffer, [NullAllowed] string password, Action<FSErrorCode> completion);
 
-		[Export("getTextLinkCount")]
-		int GetTextLinkCount();
+        [Export("closeDoc:")]
+        void CloseDoc([NullAllowed] Action cleanup);
 
-		[Export("getTextLink:")]
-		FSPDFTextLink GetTextLink(int index);
+        [Export("saveDoc:flag:")]
+        bool SaveDoc(string filePath, int flag);
 
-		[Export("getLinkAnnotCount")]
-		int GetLinkAnnotCount();
+        [Export("getPageCount")]
+        int GetPageCount();
 
-		[Export("getLinkAnnot:")]
-		FSLink GetLinkAnnot(int index);
+        [Export("getCurrentPage")]
+        int GetCurrentPage();
 
-	}
+        [Export("getPageIndex:")]
+        int GetPageIndex(CGPoint displayViewPt);
 
-	[BaseType(typeof(NSObject))]
-	interface FSSignatureCallback
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getVisiblePages")]
+        NSMutableArray GetVisiblePages();
 
+        [Export("isPageVisible:")]
+        bool IsPageVisible(int pageIndex);
 
-		[Export("startCalcDigest:byteRangeArray:signature:clientData:")]
-		unsafe bool StartCalcDigest(FSFileReadCallback file, NSNumber[] byteRangeArray, FSSignature signature, IntPtr clientData);
+        [Export("gotoPage:animated:")]
+        bool GotoPage(int index, bool animated);
 
-		[Export("continueCalcDigest:clientData:")]
-		unsafe FSProgressState ContinueCalcDigest(FSPauseCallback pause, IntPtr clientData);
+        [Export("gotoPage:withDocPoint:animated:")]
+        bool GotoPage(int index, FSPointF point, bool animated);
 
-		[Export("getDigest:")]
-		unsafe NSData GetDigest(IntPtr clientData);
+        [Export("gotoFirstPage:")]
+        bool GotoFirstPage(bool animated);
 
-		[Export("sign:certPath:password:digestAlgorithm:clientData:")]
-		unsafe NSData Sign(NSData digest, string certPath, string password, uint digestAlgorithm, IntPtr clientData);
+        [Export("gotoLastPage:")]
+        bool GotoLastPage(bool animated);
 
-		[Export("verifySigState:signedData:clientData:")]
-		unsafe uint VerifySigState(NSData digest, NSData signedData, IntPtr clientData);
+        [Export("gotoNextPage:")]
+        bool GotoNextPage(bool animated);
 
-	}
+        [Export("gotoPrevPage:")]
+        bool GotoPrevPage(bool animated);
 
-	[BaseType(typeof(FSFormControl))]
-	interface FSSignature
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("hasPrevView")]
+        bool HasPrevView();
 
+        [Export("hasNextView")]
+        bool HasNextView();
 
-		[Export("isSigned")]
-		bool IsSigned();
+        [Export("clearPrevNextStack")]
+        void ClearPrevNextStack();
 
-		[Export("startSign:certPath:certPassword:digestAlgorithm:pause:clientData:")]
-		unsafe FSProgressState StartSign(string savePath, string certPath, string certPassword, FSDigestAlgorithm digestAlgorithm, FSPauseCallback pause, IntPtr clientData);
+        [Export("gotoPrevView:")]
+        void GotoPrevView(bool animated);
 
-		[Export("continueSign")]
-		FSProgressState ContinueSign();
+        [Export("gotoNextView:")]
+        void GotoNextView(bool animated);
 
-		[Export("startVerify:clientData:")]
-		unsafe FSProgressState StartVerify(FSPauseCallback pause, IntPtr clientData);
+        [Export("getReflowMode")]
+        FSReflowMode GetReflowMode();
 
-		[Export("continueVerify")]
-		FSProgressState ContinueVerify();
+        [Export("setReflowMode:")]
+        void SetReflowMode(FSReflowMode reflowMode);
 
-		[Export("getCertificateInfo:")]
-		string GetCertificateInfo(string key);
+        [Export("getZoom")]
+        float GetZoom();
 
-		[Export("getByteRanges")]
-		NSObject[] ByteRanges { get; }
+        [Export("setZoom:")]
+        void SetZoom(float zoom);
 
-		[Export("getState")]
-		uint GetState();
+        [Export("setZoom:origin:")]
+        void SetZoom(float zoom, CGPoint origin);
 
-		[Export("clearSignedData")]
-		bool ClearSignedData();
+        [Export("setZoomMode:")]
+        void SetZoomMode(FSDisplayZoomMode zoomMode);
 
-		[Export("getDocument")]
-		FSPDFDoc GetDocument();
+        [Export("getPageLayoutMode")]
+        FSLayoutMode GetPageLayoutMode();
 
-		[Export("getAppearanceFlags")]
-		uint GetAppearanceFlags();
+        [Export("setPageLayoutMode:")]
+        void SetPageLayoutMode(FSLayoutMode mode);
 
-		[Export("setAppearanceFlags:")]
-		void SetAppearanceFlags(uint apFlags);
+        [Export("setCropMode:")]
+        bool SetCropMode(FSCropMode mode);
 
-		[Export("getSigningTime")]
-		FSDateTime GetSigningTime();
+        [Export("setCropPageRect:pdfRect:")]
+        bool SetCropPageRect(int pageIndex, FSRectF pdfRect);
 
-		[Export("setSigningTime:")]
-		void SetSigningTime(FSDateTime signTime);
+        [Export("setBackgroundColor:")]
+        void SetBackgroundColor([NullAllowed] UIColor color);
 
-		[Export("getKeyValue:")]
-		string GetKeyValue(FSSignatureKeyName key);
+        [Export("getHScrollPos")]
+        double GetHScrollPos();
 
-		[Export("setKeyValue:value:")]
-		void SetKeyValue(FSSignatureKeyName key, string value);
+        [Export("getVScrollPos")]
+        double GetVScrollPos();
 
-		[Export("getBitmap")]
-		FSBitmap GetBitmap();
+        [Export("setHScrollPos:animated:")]
+        void SetHScrollPos(double pos, bool animated);
 
-		[Export("setBitmap:")]
-		void SetBitmap(FSBitmap bitmap);
+        [Export("setVScrollPos:animated:")]
+        void SetVScrollPos(double pos, bool animated);
 
-		[Export("getSignatureDict")]
-		FSPDFDictionary GetSignatureDict();
+        [Export("getHScrollRange")]
+        double GetHScrollRange();
 
-		[Export("setAppearanceContent:")]
-		void SetAppearanceContent(string appearanceContent);
+        [Export("getVScrollRange")]
+        double GetVScrollRange();
 
-	}
+        [Export("getDisplayViewWidth")]
+        float GetDisplayViewWidth();
 
-	[BaseType(typeof(NSObject))]
-	interface FSReflowPage
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("getDisplayViewHeight")]
+        float GetDisplayViewHeight();
 
+        [Export("getPageViewWidth:")]
+        float GetPageViewWidth(int pageIndex);
 
-		[Static]
-		[Export("create:")]
-		FSReflowPage Create(FSPDFPage pdfPage);
+        [Export("getPageViewHeight:")]
+        float GetPageViewHeight(int pageIndex);
 
-		[Export("setScreenSize:screenHeight:")]
-		void SetScreenSize(float screenWidth, float screenHeight);
+        [Export("getDisplayView")]
+        UIView GetDisplayView();
 
-		[Export("setZoom:")]
-		void SetZoom(int zoom);
+        [Export("getPageView:")]
+        UIView GetPageView(int pageIndex);
 
-		[Export("setParseFlags:")]
-		void SetParseFlags(uint flags);
+        [Export("getOverlayView:")]
+        UIView GetOverlayView(int pageIndex);
 
-		[Export("setLineSpace:")]
-		void SetLineSpace(float lineSpace);
+        [Export("appendPageView:")]
+        bool AppendPageView(UIView pageView);
 
-		[Export("setTopSpace:")]
-		void SetTopSpace(float topSpace);
+        [Export("convertPageViewRectToDisplayViewRect:pageIndex:")]
+        CGRect ConvertPageViewRectToDisplayViewRect(CGRect rect, int pageIndex);
 
-		[Export("startParse:")]
-		FSProgressState StartParse(FSPauseCallback pause);
+        [Export("convertDisplayViewRectToPageViewRect:pageIndex:")]
+        CGRect ConvertDisplayViewRectToPageViewRect(CGRect rect, int pageIndex);
 
-		[Export("continueParse")]
-		FSProgressState ContinueParse();
+        [Export("convertDisplayViewPtToPageViewPt:pageIndex:")]
+        CGPoint ConvertDisplayViewPtToPageViewPt(CGPoint point, int pageIndex);
 
-		[Export("getContentWidth")]
-		float GetContentWidth();
+        [Export("convertPageViewPtToDisplayViewPt:pageIndex:")]
+        CGPoint ConvertPageViewPtToDisplayViewPt(CGPoint point, int pageIndex);
 
-		[Export("getContentHeight")]
-		float GetContentHeight();
+        [Export("convertPdfPtToPageViewPt:pageIndex:")]
+        CGPoint ConvertPdfPtToPageViewPt(FSPointF point, int pageIndex);
 
-		[Export("getDisplayMatrix:offsetY:")]
-		FSMatrix GetDisplayMatrix(float offsetX, float offsetY);
+        [Export("convertPageViewPtToPdfPt:pageIndex:")]
+        FSPointF ConvertPageViewPtToPdfPt(CGPoint point, int pageIndex);
 
-		[Export("getFocusData:point:")]
-		string GetFocusData(FSMatrix matrix, FSPointF point);
+        [Export("convertPdfRectToPageViewRect:pageIndex:")]
+        CGRect ConvertPdfRectToPageViewRect(FSRectF rect, int pageIndex);
 
-		[Export("getFocusPosition:focusData:")]
-		FSPointF GetFocusPosition(FSMatrix matrix, string focusData);
+        [Export("convertPageViewRectToPdfRect:pageIndex:")]
+        FSRectF ConvertPageViewRectToPdfRect(CGRect rect, int pageIndex);
 
-		[Export("isParsed")]
-		bool IsParsed();
+        [Export("getDisplayMatrix:")]
+        FSMatrix GetDisplayMatrix(int pageIndex);
 
-	}
+        [Export("getDisplayMatrix:fromOrigin:")]
+        FSMatrix GetDisplayMatrix(int pageIndex, CGPoint originPoint);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPSICallback
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("refresh:pageIndex:")]
+        void Refresh(CGRect rect, int pageIndex);
 
+        [Export("refresh:pageIndex:needRender:")]
+        void Refresh(CGRect rect, int pageIndex, bool needRender);
 
-		[Export("refresh:Rect:")]
-		void Refresh(FSPSI PSIHandle, FSRectF flushRect);
-	}
+        [Export("refresh:")]
+        void Refresh(int pageIndex);
 
-	[BaseType(typeof(NSObject))]
-	interface FSPSI
-	{
-		//unsafe IntPtr GetCptr();
+        [Export("refresh:needRender:")]
+        void Refresh(int pageIndex, bool needRender);
 
+        [Export("refresh")]
+        void Refresh();
 
-		[Static]
-		[Export("create:simulate:")]
-		FSPSI Create(FSBitmap bitmap, bool simulate);
-
-		[Static]
-		[Export("create:height:simulate:")]
-		FSPSI Create(int width, int height, bool simulate);
-
-		[Export("setCallback:")]
-		void SetCallback(FSPSICallback callback);
-
-		[Export("setColor:")]
-		void SetColor(uint color);
-
-		[Export("setDiameter:")]
-		void SetDiameter(int diameter);
-
-		[Export("setOpacity:")]
-		void SetOpacity(float opacity);
-
-		[Export("addPoint:ptType:pressure:")]
-		void AddPoint(FSPointF point, FSPathPointType ptType, float pressure);
-
-		[Export("getContentsRect")]
-		FSRectF GetContentsRect();
-
-		[Export("getBitmap")]
-		FSBitmap GetBitmap();
-
-		[Export("convertToPDFAnnot:rect:rotate:")]
-		FSPSInk ConvertToPDFAnnot(FSPDFPage pdfPage, FSRectF rect, FSRotation rotate);
-
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IRecoveryEventListener
-	{
-		[Export("onWillRecover")]
-		void OnWillRecover();
-
-		[Export("onRecovered")]
-		void OnRecovered();
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IRotationEventListener
-	{
-		[Export("willRotateToInterfaceOrientation:duration:")]
-		void WillRotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation, double duration);
-
-		[Export("willAnimateRotationToInterfaceOrientation:duration:")]
-		void WillAnimateRotationToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation, double duration);
-
-		[Export("didRotateFromInterfaceOrientation:")]
-		void DidRotateFromInterfaceOrientation(UIInterfaceOrientation fromInterfaceOrientation);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IDocEventListener
-	{
-		[Export("onDocWillOpen")]
-		void OnDocWillOpen();
-
-		[Export("onDocOpened:error:")]
-		void OnDocOpened(FSPDFDoc document, int error);
-
-		[Export("onDocWillClose:")]
-		void OnDocWillClose(FSPDFDoc document);
-
-		[Export("onDocClosed:error:")]
-		void OnDocClosed(FSPDFDoc document, int error);
-
-		[Export("onDocWillSave:")]
-		void OnDocWillSave(FSPDFDoc document);
-
-		[Export("onDocSaved:error:")]
-		void OnDocSaved(FSPDFDoc document, int error);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IPageEventListener
-	{
-		[Export("onPageChanged:currentIndex:")]
-		void OnPageChanged(int oldIndex, int currentIndex);
-
-		[Export("onPageVisible:")]
-		void OnPageVisible(int index);
-
-		[Export("onPageInvisible:")]
-		void OnPageInvisible(int index);
-
-		[Export("onPageJumped")]
-		void OnPageJumped();
-
-		[Export("onPagesWillRemove:")]
-		void OnPagesWillRemove(NSNumber[] indexes);
-
-		[Export("onPagesWillMove:dstIndex:")]
-		void OnPagesWillMove(NSNumber[] indexes, int dstIndex);
-
-		[Export("onPagesWillRotate:rotation:")]
-		void OnPagesWillRotate(NSNumber[] indexes, int rotation);
-
-		[Export("onPagesRemoved:")]
-		void OnPagesRemoved(NSNumber[] indexes);
-
-		[Export("onPagesMoved:dstIndex:")]
-		void OnPagesMoved(NSNumber[] indexes, int dstIndex);
-
-		[Export("onPagesRotated:rotation:")]
-		void OnPagesRotated(NSNumber[] indexes, int rotation);
-
-		[Export("onPagesInsertedAtRange:")]
-		void OnPagesInsertedAtRange(NSRange range);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface ILayoutEventListener
-	{
-		[Abstract]
-		[Export("onLayoutModeChanged:newLayoutMode:")]
-		void NewLayoutMode(FSLayoutMode oldLayoutMode, FSLayoutMode newLayoutMode);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IScrollViewEventListener
-	{
-		[Export("onScrollViewDidScroll:")]
-		void OnScrollViewDidScroll(UIScrollView scrollView);
-
-		[Export("onScrollViewDidZoom:")]
-		void OnScrollViewDidZoom(UIScrollView scrollView);
-
-		[Export("onScrollViewWillBeginDragging:")]
-		void OnScrollViewWillBeginDragging(UIScrollView scrollView);
-
-		[Export("onScrollViewDidEndDragging:willDecelerate:")]
-		void OnScrollViewDidEndDragging(UIScrollView scrollView, bool decelerate);
-
-		[Export("onScrollViewWillBeginDecelerating:")]
-		void OnScrollViewWillBeginDecelerating(UIScrollView scrollView);
-
-		[Export("onScrollViewDidEndDecelerating:")]
-		void OnScrollViewDidEndDecelerating(UIScrollView scrollView);
-
-		[Export("onScrollViewWillBeginZooming:")]
-		void OnScrollViewWillBeginZooming(UIScrollView scrollView);
-
-		[Export("onScrollViewDidEndZooming:")]
-		void OnScrollViewDidEndZooming(UIScrollView scrollView);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IGestureEventListener
-	{
-		[Export("onLongPress:")]
-		bool OnLongPress(UILongPressGestureRecognizer gestureRecognizer);
-
-		[Export("onTap:")]
-		bool OnTap(UITapGestureRecognizer gestureRecognizer);
-
-		[Export("onPan:")]
-		bool OnPan(UIPanGestureRecognizer gestureRecognizer);
-
-		[Export("onShouldBegin:")]
-		bool OnShouldBegin(UIGestureRecognizer gestureRecognizer);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface IDrawEventListener
-	{
-		[Abstract]
-		[Export("onDraw:inContext:")]
-		unsafe void InContext(int pageIndex, IntPtr context);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface ITouchEventListener
-	{
-		[Export("onTouchesBegan:withEvent:")]
-		bool OnTouchesBegan(NSSet touches, UIEvent @event);
-
-		[Export("onTouchesMoved:withEvent:")]
-		bool OnTouchesMoved(NSSet touches, UIEvent @event);
-
-		[Export("onTouchesEnded:withEvent:")]
-		bool OnTouchesEnded(NSSet touches, UIEvent @event);
-
-		[Export("onTouchesCancelled:withEvent:")]
-		bool OnTouchesCancelled(NSSet touches, UIEvent @event);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface FSPDFUIExtensionsManager : IGestureEventListener, IDrawEventListener, ITouchEventListener
-	{
-		[Export("shouldDrawAnnot:")]
-		bool ShouldDrawAnnot(FSAnnot annot);
-	}
-
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
-	interface FSPageOrganizerDelegate
-	{
-		[Abstract]
-		[Export("movePagesFromIndexes:toIndex:")]
-		bool MovePagesFromIndexes(NSNumber[] sourcePageIndexes, nuint pageIndex);
-
-		[Abstract]
-		[Export("deletePagesAtIndexes:")]
-		bool DeletePagesAtIndexes(NSNumber[] pageIndexes);
-
-		[Abstract]
-		[Export("rotatePagesAtIndexes:clockwise:")]
-		bool RotatePagesAtIndexes(NSNumber[] pageIndexes, bool clockwise);
-
-		[Abstract]
-		[Export("insertPageFromImage:atIndex:")]
-		bool InsertPageFromImage(UIImage image, nuint pageIndex);
-
-		[Abstract]
-		[Export("insertPagesFromDocument:withSourceIndexes:flags:layerName:atIndex:")]
-		bool InsertPagesFromDocument(FSPDFDoc document, NSNumber[] sourcePagesIndexes, FSImportFlags flags, string layerName, nuint pageIndex);
-	}
-
-	[BaseType(typeof(UIView))]
-	interface FSPDFViewCtrl : IRotationEventListener, FSPageOrganizerDelegate
-	{
-		[Export("extensionsManager", ArgumentSemantic.Strong)]
-		FSPDFUIExtensionsManager ExtensionsManager { get; set; }
-
-		[Export("currentDoc", ArgumentSemantic.Strong)]
-		FSPDFDoc CurrentDoc { get; set; }
-
-		[Export("isNightMode")]
-		bool IsNightMode { get; set; }
-
-		[Export("bottomOffset")]
-		int BottomOffset { get; set; }
-
-		[Export("shouldRecover")]
-		bool ShouldRecover { get; set; }
-
-		[Export("initWithFrame:")]
-		IntPtr Constructor(CGRect frame);
-
-		[Export("registerDocEventListener:")]
-		void RegisterDocEventListener(IDocEventListener listener);
-
-		[Export("registerPageEventListener:")]
-		void RegisterPageEventListener(IPageEventListener listener);
-
-		[Export("registerScrollViewEventListener:")]
-		void RegisterScrollViewEventListener(IScrollViewEventListener listener);
-
-		[Export("registerLayoutChangedEventListener:")]
-		void RegisterLayoutChangedEventListener(ILayoutEventListener listener);
-
-		[Export("registerGestureEventListener:")]
-		void RegisterGestureEventListener(IGestureEventListener listener);
-
-		[Export("registerDrawEventListener:")]
-		void RegisterDrawEventListener(IDrawEventListener listener);
-
-		[Export("registerRecoveryEventListener:")]
-		void RegisterRecoveryEventListener(IRecoveryEventListener listener);
-
-		[Export("unregisteRecoveryEventListener:")]
-		void UnregisteRecoveryEventListener(IRecoveryEventListener listener);
-
-		[Export("unregisterDrawEventListener:")]
-		void UnregisterDrawEventListener(IDrawEventListener listener);
-
-		[Export("unregisterGestureEventListener:")]
-		void UnregisterGestureEventListener(IGestureEventListener listener);
-
-		[Export("unregisterDocEventListener:")]
-		void UnregisterDocEventListener(IDocEventListener listener);
-
-		[Export("unregisterPageEventListener:")]
-		void UnregisterPageEventListener(IPageEventListener listener);
-
-		[Export("unregisterScrollViewEventListener:")]
-		void UnregisterScrollViewEventListener(IScrollViewEventListener listener);
-
-		[Export("unregisterLayoutChangedEventListener:")]
-		void UnregisterLayoutChangedEventListener(ILayoutEventListener listener);
-
-		[Export("setDoc:")]
-		void SetDoc(FSPDFDoc doc);
-
-		[Export("getDoc")]
-		FSPDFDoc GetDoc();
-
-		[Export("openDoc:password:completion:")]
-		void OpenDoc(string filePath, string password, Action<FSErrorCode> completion);
-
-		[Export("openDocFromMemory:password:completion:")]
-		void OpenDocFromMemory(NSData buffer, string password, Action<FSErrorCode> completion);
-
-		[Export("closeDoc:")]
-		void CloseDoc(Action cleanup);
-
-		[Export("saveDoc:flag:")]
-		bool SaveDoc(string filePath, int flag);
-
-		[Export("getPageCount")]
-		int GetPageCount();
-
-		[Export("getCurrentPage")]
-		int GetCurrentPage();
-
-		[Export("getPageIndex:")]
-		int GetPageIndex(CGPoint displayViewPt);
-
-		[Export("getVisiblePages")]
-		NSMutableArray GetVisiblePages();
-
-		[Export("isPageVisible:")]
-		bool IsPageVisible(int pageIndex);
-
-		[Export("gotoPage:animated:")]
-		bool GotoPage(int index, bool animated);
-
-		[Export("gotoPage:withDocPoint:animated:")]
-		bool GotoPage(int index, FSPointF point, bool animated);
-
-		[Export("gotoFirstPage:")]
-		bool GotoFirstPage(bool animated);
-
-		[Export("gotoLastPage:")]
-		bool GotoLastPage(bool animated);
-
-		[Export("gotoNextPage:")]
-		bool GotoNextPage(bool animated);
-
-		[Export("gotoPrevPage:")]
-		bool GotoPrevPage(bool animated);
-
-		[Export("hasPrevView")]
-		bool HasPrevView();
-
-		[Export("hasNextView")]
-		bool HasNextView();
-
-		[Export("gotoPrevView:")]
-		void GotoPrevView(bool animated);
-
-		[Export("gotoNextView:")]
-		void GotoNextView(bool animated);
-
-		[Export("getReflowMode")]
-		FSReflowMode GetReflowMode();
-
-		[Export("setReflowMode:")]
-		void SetReflowMode(FSReflowMode reflowMode);
-
-		[Export("getZoom")]
-		float GetZoom();
-
-		[Export("setZoom:")]
-		void SetZoom(float zoom);
-
-		[Export("setZoom:origin:")]
-		void SetZoom(float zoom, CGPoint origin);
-
-		[Export("setZoomMode:")]
-		void SetZoomMode(FSDisplayZoomMode zoomMode);
-
-		[Export("getPageLayoutMode")]
-		FSLayoutMode GetPageLayoutMode();
-
-		[Export("setPageLayoutMode:")]
-		void SetPageLayoutMode(FSLayoutMode mode);
-
-		[Export("setCropMode:")]
-		bool SetCropMode(FSCropMode mode);
-
-		[Export("setCropPageRect:pdfRect:")]
-		bool SetCropPageRect(int pageIndex, FSRectF pdfRect);
-
-		[Export("setBackgroundColor:")]
-		void SetBackgroundColor(UIColor color);
-
-		[Export("getHScrollPos")]
-		double GetHScrollPos();
-
-		[Export("getVScrollPos")]
-		double GetVScrollPos();
-
-		[Export("setHScrollPos:animated:")]
-		void SetHScrollPos(double pos, bool animated);
-
-		[Export("setVScrollPos:animated:")]
-		void SetVScrollPos(double pos, bool animated);
-
-		[Export("getHScrollRange")]
-		double GetHScrollRange();
-
-		[Export("getVScrollRange")]
-		double GetVScrollRange();
-
-		[Export("getDisplayViewWidth")]
-		float GetDisplayViewWidth();
-
-		[Export("getDisplayViewHeight")]
-		float GetDisplayViewHeight();
-
-		[Export("getPageViewWidth:")]
-		float GetPageViewWidth(int pageIndex);
-
-		[Export("getPageViewHeight:")]
-		float GetPageViewHeight(int pageIndex);
-
-		[Export("getDisplayView")]
-		UIView GetDisplayView();
-
-		[Export("getPageView:")]
-		UIView GetPageView(int pageIndex);
-
-		[Export("getOverlayView:")]
-		UIView GetOverlayView(int pageIndex);
-
-		[Export("appendPageView:")]
-		void AppendPageView(UIView pageView);
-
-		[Export("convertPageViewRectToDisplayViewRect:pageIndex:")]
-		CGRect ConvertPageViewRectToDisplayViewRect(CGRect rect, int pageIndex);
-
-		[Export("convertDisplayViewRectToPageViewRect:pageIndex:")]
-		CGRect ConvertDisplayViewRectToPageViewRect(CGRect rect, int pageIndex);
-
-		[Export("convertDisplayViewPtToPageViewPt:pageIndex:")]
-		CGPoint ConvertDisplayViewPtToPageViewPt(CGPoint point, int pageIndex);
-
-		[Export("convertPageViewPtToDisplayViewPt:pageIndex:")]
-		CGPoint ConvertPageViewPtToDisplayViewPt(CGPoint point, int pageIndex);
-
-		[Export("convertPdfPtToPageViewPt:pageIndex:")]
-		CGPoint ConvertPdfPtToPageViewPt(FSPointF point, int pageIndex);
-
-		[Export("convertPageViewPtToPdfPt:pageIndex:")]
-		FSPointF ConvertPageViewPtToPdfPt(CGPoint point, int pageIndex);
-
-		[Export("convertPdfRectToPageViewRect:pageIndex:")]
-		CGRect ConvertPdfRectToPageViewRect(FSRectF rect, int pageIndex);
-
-		[Export("convertPageViewRectToPdfRect:pageIndex:")]
-		FSRectF ConvertPageViewRectToPdfRect(CGRect rect, int pageIndex);
-
-		[Export("getDisplayMatrix:")]
-		FSMatrix GetDisplayMatrix(int pageIndex);
-
-		[Export("getDisplayMatrix:fromOrigin:")]
-		FSMatrix GetDisplayMatrix(int pageIndex, CGPoint originPoint);
-
-		[Export("refresh:pageIndex:")]
-		void Refresh(CGRect rect, int pageIndex);
-
-		[Export("refresh:pageIndex:needRender:")]
-		void Refresh(CGRect rect, int pageIndex, bool needRender);
-
-		[Export("refresh:")]
-		void Refresh(int pageIndex);
-
-		[Export("refresh:needRender:")]
-		void Refresh(int pageIndex, bool needRender);
-
-		[Export("refresh")]
-		void Refresh();
-
-		[Static]
-		[Export("recoverForOOM")]
-		void RecoverForOOM();
-	}
+        [Static]
+        [Export("recoverForOOM")]
+        void RecoverForOOM();
+    }
 }

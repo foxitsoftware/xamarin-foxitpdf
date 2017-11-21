@@ -24,6 +24,7 @@ namespace FoxitRDKDemo
         private UINavigationController rootViewController;
         private FSPDFViewCtrl pdfViewControl;
         private UIExtensionsManager extensionsMgr;
+        private UIViewController pdfViewController;
 
         protected ViewController(IntPtr handle) : base(handle)
         {
@@ -150,9 +151,12 @@ namespace FoxitRDKDemo
                     {
                         DispatchQueue.MainQueue.DispatchAsync(() =>
                         {
-                            UIViewController pdfViewController = new UIViewController();
-                            pdfViewController.View = pdfViewControl;
-                            pdfViewController.AutomaticallyAdjustsScrollViewInsets = false;
+                            if (this.pdfViewController == null)
+                            {
+                                this.pdfViewController = new UIViewController();
+                                pdfViewController.View = pdfViewControl;
+                                pdfViewController.AutomaticallyAdjustsScrollViewInsets = false;
+                            }
 
                             //Push to display the document on pdf view control.
                             rootNav.PushViewController(pdfViewController, true);

@@ -9,7 +9,7 @@ This sample project works with the Foxit RDK v5 and is a direct port of the `com
 Setup
 -----
 
-The sample project is ready to run but it requires the addition of three files. These files should be placed into the `libs` directory:
+The sample project is ready to run but it requires the addition of four files. These files should be placed into the `libs` directory:
 
 * `FoxitRDK.framework`
 * `libFoxitRDKUIExtensions.a`	

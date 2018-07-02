@@ -18,16 +18,9 @@ using UIKit;
 
 namespace FoxitRDK
 {
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface FSSwiftException
-    {
-        [Static]
-        [Export("tryException:error:")]
-        bool TryException(Action tryBlock, [NullAllowed] out NSError error);
-    }
-
-    [BaseType(typeof(NSObject))]
-    interface FSNotifier
+    interface FSNotifierCallback
     {
         [Export("OnOutOfMemory")]
         void OnOutOfMemory();
@@ -74,8 +67,9 @@ namespace FoxitRDK
         int GetRateOfProgress();
     }
 
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface FSActionHandler
+    interface FSActionCallback
     {
         [Export("getCurrentPage:")]
         int GetCurrentPage(FSPDFDoc pdfDoc);
@@ -155,12 +149,12 @@ namespace FoxitRDK
     interface FSLibrary
     {
         [Static]
-        [Export("init:key:")]
-        FSErrorCode Init([NullAllowed] string sn, [NullAllowed] string key);
+        [Export("initialize:key:")]
+        FSErrorCode Initialize([NullAllowed] string sn, [NullAllowed] string key);
 
         [Static]
-        [Export("reinit")]
-        FSErrorCode Reinit();
+        [Export("reinitialize")]
+        FSErrorCode Reinititialize();
 
         [Static]
         [Export("release")]
@@ -175,16 +169,16 @@ namespace FoxitRDK
         FSModuleRight GetModuleRight(FSModuleName module);
 
         [Static]
-        [Export("setAnnotIconProvider:")]
-        bool SetAnnotIconProvider(FSAnnotIconProviderCallback iconProvider);
+        [Export("setAnnotIconProviderCallback:")]
+        bool SetAnnotIconProviderCallback(FSIconProviderCallback annotIconProvider);
 
         [Static]
         [Export("setNotifier:")]
-        bool SetNotifier(FSNotifier notifier);
+        bool SetNotifier(FSNotifierCallback notifier);
 
         [Static]
         [Export("setActionHandler:")]
-        bool SetActionHandler(FSActionHandler actionHandler);
+        bool SetActionCallback(FSActionCallback actionCallback);
 
         [Static]
         [Export("registerSignatureHandler:subFilter:signatureHandler:")]
@@ -293,7 +287,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSMatrix
+    interface FSMatrix2D
     {
         [Export("a")]
         float A { get; set; }
@@ -317,7 +311,7 @@ namespace FoxitRDK
         void Set(float a, float b, float c, float d, float e, float f);
 
         [Export("getReverse")]
-        FSMatrix GetReverse();
+        FSMatrix2D GetReverse();
 
         [Export("transform:")]
         FSPointF Transform(FSPointF point);
@@ -438,7 +432,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFPath
+    interface FSPath
     {
         [Export("getPointCount")]
         int GetPointCount();
@@ -488,6 +482,7 @@ namespace FoxitRDK
         FSType GetThisType();
     }
 
+    [Model, Protocol]
     [BaseType(typeof(NSObject))]
     interface FSPauseCallback
     {
@@ -700,6 +695,7 @@ namespace FoxitRDK
         bool ExportAllAnnotsToPDFDoc(FSPDFDoc pdfDoc);
     }
 
+    [Model, Protocol]
     [BaseType(typeof(NSObject))]
     interface FSSearchCallback
     {
@@ -792,7 +788,7 @@ namespace FoxitRDK
         //bool ResetAppearanceStream();
 
         [Export("getDeviceRect:matrix:")]
-        FSRectI GetDeviceRect(bool isTransformIcon, FSMatrix matrix);
+        FSRectI GetDeviceRect(bool isTransformIcon, FSMatrix2D matrix);
 
         [Export("getDict")]
         FSPDFDictionary GetDict();
@@ -888,8 +884,9 @@ namespace FoxitRDK
         uint GetSecondColor();
     }
 
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface FSAnnotIconProviderCallback
+    interface FSIconProviderCallback
     {
         [Export("getProviderID")]
         string GetProviderID();
@@ -1249,10 +1246,10 @@ namespace FoxitRDK
         //bool ResetAppearanceStream();
 
         [Export("getInkList")]
-        FSPDFPath GetInkList();
+        FSPath GetInkList();
 
         [Export("setInkList:")]
-        void SetInkList(FSPDFPath inkList);
+        void SetInkList(FSPath inkList);
     }
 
     [BaseType(typeof(FSMarkup))]
@@ -1364,10 +1361,10 @@ namespace FoxitRDK
     interface FSWidget
     {
         [Export("getField")]
-        FSFormField GetField();
+        FSField GetField();
 
         [Export("getControl")]
-        FSFormControl GetControl();
+        FSControl GetControl();
 
         //bool ResetAppearanceStream();
 
@@ -1493,19 +1490,18 @@ namespace FoxitRDK
         void Set(FSIconScaleWayType type, bool proportionalScaling, float horizontalFraction, float verticalFraction, bool fitBounds);
     }
 
+    [Model, Protocol]
     [BaseType(typeof(NSObject))]
     interface FSSecurityCallback
     {
         [Export("getSecurityType")]
-        FSEncryptType GetSecurityType();
+        FSPDFDocEncryptType GetSecurityType();
     }
 
+    [Protocol, Model]
     [BaseType(typeof(FSSecurityCallback))]
     interface FSCertificateSecurityCallback
     {
-
-
-
         [Export("getPKCS12:")]
         NSData GetPKCS12(NSData envelope);
 
@@ -1532,6 +1528,7 @@ namespace FoxitRDK
         bool Initialize(NSData[] x509Certificates, FSCipherType cipher, bool encryptMetadata);
     }
 
+    [Protocol, Model]
     [BaseType(typeof(FSSecurityCallback))]
     interface FSCustomSecurityCallback
     {
@@ -1609,7 +1606,7 @@ namespace FoxitRDK
 
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface FSPDFMarkedContent
+    interface FSMarkedContent
     {
         [Export("hasTag:")]
         bool HasTag(string tagName);
@@ -1635,7 +1632,7 @@ namespace FoxitRDK
 
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface FSPDFGraphicsObject
+    interface FSGraphicsObject
     {
         [Export("getType")]
         FSGraphicsObjectType GetThisType();
@@ -1659,16 +1656,16 @@ namespace FoxitRDK
         void SetFillColor(uint color);
 
         [Export("getMatrix")]
-        FSMatrix GetMatrix();
+        FSMatrix2D GetMatrix();
 
         [Export("setMatrix:")]
-        void SetMatrix(FSMatrix matrix);
+        void SetMatrix(FSMatrix2D matrix);
 
         [Export("transform:needTransformClipPath:")]
-        bool Transform(FSMatrix matrix, bool needTransformClipPath);
+        bool Transform(FSMatrix2D matrix, bool needTransformClipPath);
 
         [Export("clone")]
-        FSPDFGraphicsObject Clone();
+        FSGraphicsObject Clone();
 
         [Export("getGraphState")]
         FSGraphState GetGraphState();
@@ -1680,13 +1677,13 @@ namespace FoxitRDK
         int GetClipPathCount();
 
         [Export("getClipPath:")]
-        FSPDFPath GetClipPath(int index);
+        FSPath GetClipPath(int index);
 
         [Export("getClipPathFillMode:")]
         FSFillMode GetClipPathFillMode(int index);
 
         [Export("addClipPath:fillMode:")]
-        bool AddClipPath(FSPDFPath path, FSFillMode fillMode);
+        bool AddClipPath(FSPath path, FSFillMode fillMode);
 
         [Export("removeClipPath:")]
         bool RemoveClipPath(int index);
@@ -1695,10 +1692,10 @@ namespace FoxitRDK
         int GetClipTextObjectCount();
 
         [Export("getClipTextObject:")]
-        FSPDFTextObject GetClipTextObject(int index);
+        FSTextObject GetClipTextObject(int index);
 
         [Export("addClipTextObject:")]
-        bool AddClipTextObject(FSPDFTextObject textObj);
+        bool AddClipTextObject(FSTextObject textObj);
 
         [Export("removeClipTextObject:")]
         bool RemoveClipTextObject(int index);
@@ -1713,11 +1710,11 @@ namespace FoxitRDK
         bool ClearClips();
 
         [Export("getMarkedContent")]
-        FSPDFMarkedContent GetMarkedContent();
+        FSMarkedContent GetMarkedContent();
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFTextState
+    interface FSTextState
     {
         [Export("set:font:fontSize:charSpace:wordSpace:textMode:originPosition:textMatrix:")]
         void Set(uint version, FSFont font, float fontSize, float charSpace, float wordSpace, FSTextMode textMode, FSPointF originPosition, NSNumber[] textMatrix);
@@ -1747,12 +1744,12 @@ namespace FoxitRDK
         NSNumber[] TextMatrix { get; set; }
     }
 
-    [BaseType(typeof(FSPDFGraphicsObject))]
-    interface FSPDFTextObject
+    [BaseType(typeof(FSGraphicsObject))]
+    interface FSTextObject
     {
         [Static]
         [Export("create")]
-        FSPDFTextObject Create();
+        FSTextObject Create();
 
         [Export("getText")]
         string GetText();
@@ -1761,18 +1758,18 @@ namespace FoxitRDK
         void SetText(string text);
 
         [Export("getTextState:")]
-        FSPDFTextState GetTextState(FSPDFPage page);
+        FSTextState GetTextState(FSPDFPage page);
 
         [Export("setTextState:textState:isItalic:weight:")]
-        void SetTextState(FSPDFPage page, FSPDFTextState textState, bool isItalic, int weight);
+        void SetTextState(FSPDFPage page, FSTextState textState, bool isItalic, int weight);
     }
 
-    [BaseType(typeof(FSPDFGraphicsObject))]
-    interface FSPDFPathObject
+    [BaseType(typeof(FSGraphicsObject))]
+    interface FSPathObject
     {
         [Static]
         [Export("create")]
-        FSPDFPathObject Create();
+        FSPathObject Create();
 
         [Export("getFillMode")]
         FSFillMode GetFillMode();
@@ -1787,44 +1784,44 @@ namespace FoxitRDK
         void SetStrokeState(bool isStroke);
 
         [Export("getPathData")]
-        FSPDFPath GetPathData();
+        FSPath GetPathData();
 
         [Export("setPathData:")]
-        void SetPathData(FSPDFPath pathData);
+        void SetPathData(FSPath pathData);
     }
 
-    [BaseType(typeof(FSPDFGraphicsObject))]
+    [BaseType(typeof(FSGraphicsObject))]
     [DisableDefaultCtor]
-    interface FSPDFFormXObject
+    interface FSFormXObject
     {
         [Static]
         [Export("create:")]
-        FSPDFFormXObject Create(FSPDFDoc pdfDoc);
+        FSFormXObject Create(FSPDFDoc pdfDoc);
 
         [Export("getStream")]
         FSPDFStream GetStream();
 
         [Export("getGraphicsObjects")]
-        FSPDFGraphicsObjects GetGraphicsObjects();
+        FSGraphicsObjects GetGraphicsObjects();
 
         [Export("importPageContent:isAnnotsIncluded:")]
         bool ImportPageContent(FSPDFPage srcPage, bool isAnnotsIncluded);
     }
 
-    [BaseType(typeof(FSPDFGraphicsObject))]
+    [BaseType(typeof(FSGraphicsObject))]
     [DisableDefaultCtor]
-    interface FSPDFShadingObject
+    interface FSShadingObject
     {
         [Export("getPDFObject")]
         FSPDFObject GetPDFObject();
     }
 
-    [BaseType(typeof(FSPDFGraphicsObject))]
-    interface FSPDFImageObject
+    [BaseType(typeof(FSGraphicsObject))]
+    interface FSImageObject
     {
         [Static]
         [Export("create:")]
-        FSPDFImageObject Create(FSPDFDoc pdfDoc);
+        FSImageObject Create(FSPDFDoc pdfDoc);
 
         [Export("setBitmap:mask:")]
         void SetBitmap(FSBitmap bitmap, [NullAllowed] FSBitmap mask);
@@ -1871,7 +1868,7 @@ namespace FoxitRDK
         bool IsModified();
 
         [Export("getEncryptionType")]
-        FSEncryptType GetEncryptionType();
+        FSPDFDocEncryptType GetEncryptionType();
 
         [Export("getPasswordType")]
         FSPasswordType GetPasswordType();
@@ -1992,7 +1989,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFGraphicsObjects
+    interface FSGraphicsObjects
     {
         [Export("getFirstGraphicsObjectPosition:")]
         unsafe IntPtr GetFirstGraphicsObjectPosition(FSGraphicsObjectType filter);
@@ -2007,13 +2004,13 @@ namespace FoxitRDK
         unsafe IntPtr GetPrevGraphicsObjectPosition(FSGraphicsObjectType filter, IntPtr pos);
 
         [Export("getGraphicsObject:")]
-        unsafe FSPDFGraphicsObject GetGraphicsObject(IntPtr pos);
+        unsafe FSGraphicsObject GetGraphicsObject(IntPtr pos);
 
         [Export("insertGraphicsObject:graphicsObj:")]
-        unsafe IntPtr InsertGraphicsObject(IntPtr posInsertAfter, FSPDFGraphicsObject graphicsObj);
+        unsafe IntPtr InsertGraphicsObject(IntPtr posInsertAfter, FSGraphicsObject graphicsObj);
 
         [Export("removeGraphicsObject:")]
-        bool RemoveGraphicsObject(FSPDFGraphicsObject graphicsObj);
+        bool RemoveGraphicsObject(FSGraphicsObject graphicsObj);
 
         [Export("removeGraphicsObjectByPosition:")]
         unsafe bool RemoveGraphicsObjectByPosition(IntPtr pos);
@@ -2022,7 +2019,7 @@ namespace FoxitRDK
         bool GenerateContent();
     }
 
-    [BaseType(typeof(FSPDFGraphicsObjects))]
+    [BaseType(typeof(FSGraphicsObjects))]
     interface FSPDFPage
     {
         [Export("getDocument")]
@@ -2054,7 +2051,7 @@ namespace FoxitRDK
         FSBitmap LoadThumbnail();
 
         [Export("getDisplayMatrix:yPos:xSize:ySize:rotate:")]
-        FSMatrix GetDisplayMatrix(int xPos, int yPos, int xSize, int ySize, FSRotation rotate);
+        FSMatrix2D GetDisplayMatrix(int xPos, int yPos, int xSize, int ySize, FSRotation rotate);
 
         [Export("calcContentBBox:")]
         FSRectF CalcContentBBox(FSCalcMarginMode mode);
@@ -2071,7 +2068,7 @@ namespace FoxitRDK
 
         [Export("getAnnotAtDevicePos:position:tolerance:")]
         [return: NullAllowed]
-        FSAnnot GetAnnotAtDevicePos(FSMatrix matrix, FSPointF pos, float tolerance);
+        FSAnnot GetAnnotAtDevicePos(FSMatrix2D matrix, FSPointF pos, float tolerance);
 
         [Export("addAnnot:rect:")]
         FSAnnot AddAnnot(FSAnnotType annotType, FSRectF rect);
@@ -2110,7 +2107,7 @@ namespace FoxitRDK
         FSRectF GetBox(FSPageBox box_type);
 
         [Export("transform:needTransformClipPath:")]
-        bool Transform(FSMatrix matrix, bool needTransformClipPath);
+        bool Transform(FSMatrix2D matrix, bool needTransformClipPath);
 
         [Export("setClipRect:")]
         void SetClipRect(FSRectF clipRect);
@@ -2223,7 +2220,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFPageLabels
+    interface FSPageLabels
     {
         [Export("initWithDocument:")]
         IntPtr Constructor(FSPDFDoc document);
@@ -2254,7 +2251,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFMetadata
+    interface FSMetadata
     {
         [Export("initWithDocument:")]
         IntPtr Constructor(FSPDFDoc document);
@@ -2302,10 +2299,10 @@ namespace FoxitRDK
         int GetFieldCount(string filter);
 
         [Export("getField:index:")]
-        FSFormField GetField(string filter, int index);
+        FSField GetField(string filter, int index);
 
         [Export("getFormFiller")]
-        FSFormFiller GetFormFiller();
+        FSFiller GetFormFiller();
 
         [Export("reset")]
         bool Reset();
@@ -2346,16 +2343,16 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSFormField
+    interface FSField
     {
         [Export("getType")]
-        FSFormFieldType GetThisType();
+        FSFieldType GetThisType();
 
         [Export("getFlags")]
-        FSFormFieldFlags GetFlags();
+        FSFieldFlags GetFlags();
 
         [Export("setFlags:")]
-        void SetFlags(FSFormFieldFlags flags);
+        void SetFlags(FSFieldFlags flags);
 
         [Export("getName")]
         string GetName();
@@ -2418,17 +2415,17 @@ namespace FoxitRDK
         int GetControlCount();
 
         [Export("getControl:")]
-        FSFormControl GetControl(int index);
+        FSControl GetControl(int index);
 
         [Export("reset")]
         bool Reset();
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSFormControl
+    interface FSControl
     {
         [Export("getField")]
-        FSFormField GetField();
+        FSField GetField();
 
         [Export("getWidget")]
         FSWidget GetWidget();
@@ -2462,8 +2459,9 @@ namespace FoxitRDK
         void OnTimer(int timer);
     }
 
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface FSFormFillerAssist
+    interface FSFillerAssistCallback
     {
         [Export("getVersion")]
         int GetVersion();
@@ -2478,20 +2476,20 @@ namespace FoxitRDK
         bool KillTimer(int timerID);
 
         [Export("focusGotOnControl:fieldValue:")]
-        void FocusGotOnControl(FSFormControl control, string fieldValue);
+        void FocusGotOnControl(FSControl control, string fieldValue);
 
         [Export("focusLostFromControl:fieldValue:")]
-        void FocusLostFromControl(FSFormControl control, string fieldValue);
+        void FocusLostFromControl(FSControl control, string fieldValue);
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSFormFiller
+    interface FSFiller
     {
         [Export("initWithForm:assist:")]
-        IntPtr Constructor(FSForm form, FSFormFillerAssist assist);
+        IntPtr Constructor(FSForm form, FSFillerAssistCallback assist);
 
         [Export("render:matrix:renderer:")]
-        void Render(FSPDFPage page, FSMatrix matrix, NSObject renderer);
+        void Render(FSPDFPage page, FSMatrix2D matrix, NSObject renderer);
 
         [Export("tap:point:")]
         bool Tap(FSPDFPage page, FSPointF point);
@@ -2509,7 +2507,7 @@ namespace FoxitRDK
         bool Input(uint charCode);
 
         [Export("setFocus:")]
-        bool SetFocus(FSFormControl control);
+        bool SetFocus(FSControl control);
 
         [Export("highlightFormFields:")]
         void HighlightFormFields(bool isHighlight);
@@ -2595,13 +2593,13 @@ namespace FoxitRDK
         bool SetZoomUsage(FSLayerZoomData data);
 
         [Export("getGraphicsObjects:")]
-        FSPDFGraphicsObject[] GetGraphicsObjects(FSPDFPage page);
+        FSGraphicsObject[] GetGraphicsObjects(FSPDFPage page);
 
         [Export("addGraphicsObject:graphicsObject:")]
-        bool AddGraphicsObject(FSPDFPage page, FSPDFGraphicsObject graphicsObject);
+        bool AddGraphicsObject(FSPDFPage page, FSGraphicsObject graphicsObject);
 
         [Export("removeGraphicsObject:")]
-        bool RemoveGraphicsObject(FSPDFGraphicsObject graphicsObject);
+        bool RemoveGraphicsObject(FSGraphicsObject graphicsObject);
 
         [Export("removeUsage:")]
         bool RemoveUsage(FSLayerUsageType usageType);
@@ -2720,22 +2718,22 @@ namespace FoxitRDK
 
         [Export("startQuickRender:matrix:pause:")]
         [return: NullAllowed]
-        FSProgressive StartQuickRender(FSPDFPage page, FSMatrix matrix, [NullAllowed] FSPauseCallback pause);
+        FSProgressive StartQuickRender(FSPDFPage page, FSMatrix2D matrix, [NullAllowed] FSPauseCallback pause);
 
         [Export("startRender:matrix:pause:")]
         [return: NullAllowed]
-        FSProgressive StartRender(FSPDFPage page, FSMatrix matrix, [NullAllowed] FSPauseCallback pause);
+        FSProgressive StartRender(FSPDFPage page, FSMatrix2D matrix, [NullAllowed] FSPauseCallback pause);
 
         [Export("startRenderReflowPage:matrix:pause:")]
         [return: NullAllowed]
-        FSProgressive StartRenderReflowPage(FSReflowPage reflowPage, FSMatrix matrix, [NullAllowed] FSPauseCallback pause);
+        FSProgressive StartRenderReflowPage(FSReflowPage reflowPage, FSMatrix2D matrix, [NullAllowed] FSPauseCallback pause);
 
         [Export("startRenderBitmap:matrix:clipRect:interpolation:pause:")]
         [return: NullAllowed]
-        FSProgressive StartRenderBitmap(FSBitmap bitmap, FSMatrix matrix, FSRectI clipRect, FSBitmapInterpolationFlag interpolation, [NullAllowed] FSPauseCallback pause);
+        FSProgressive StartRenderBitmap(FSBitmap bitmap, FSMatrix2D matrix, FSRectI clipRect, FSBitmapInterpolationFlag interpolation, [NullAllowed] FSPauseCallback pause);
 
         [Export("renderAnnot:matrix:")]
-        bool RenderAnnot(FSAnnot annot, FSMatrix matrix);
+        bool RenderAnnot(FSAnnot annot, FSMatrix2D matrix);
 
         [Export("setRenderContent:")]
         void SetRenderContent(FSRenderContentFlag renderContentFlag);
@@ -2849,7 +2847,7 @@ namespace FoxitRDK
         bool GetBoolean();
 
         [Export("getMatrix")]
-        FSMatrix GetMatrix();
+        FSMatrix2D GetMatrix();
 
         [Export("getRect")]
         FSRectF GetRect();
@@ -2893,7 +2891,7 @@ namespace FoxitRDK
 
         [Static]
         [Export("createFromMatrix:")]
-        FSPDFArray CreateFromMatrix(FSMatrix matrix);
+        FSPDFArray CreateFromMatrix(FSMatrix2D matrix);
 
         [Static]
         [Export("createFromRect:")]
@@ -2948,7 +2946,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFTextSearch
+    interface FSTextSearch
     {
         [Export("initWithPDFDoc:pause:")]
         IntPtr Constructor(FSPDFDoc pdfDoc, [NullAllowed] FSPauseCallback pause);
@@ -2991,41 +2989,7 @@ namespace FoxitRDK
     }
 
     [BaseType(typeof(NSObject))]
-    interface FSPDFTextSelect
-    {
-        [Export("initWithPDFPage:")]
-        IntPtr Constructor(FSPDFPage pPage);
-
-        [Export("getPage")]
-        FSPDFPage GetPage();
-
-        [Export("getCharCount")]
-        int GetCharCount();
-
-        [Export("getChars:count:")]
-        string GetChars(int startIndex, int count);
-
-        [Export("getIndexAtPos:y:tolerance:")]
-        int GetIndexAtPos(float x, float y, float tolerance);
-
-        [Export("getTextInRect:")]
-        string GetTextInRect(FSRectF rect);
-
-        [Export("getWordAtPos:y:tolerance:")]
-        NSRange GetWordAtPos(float x, float y, float tolerance);
-
-        [Export("getTextRectCount:count:")]
-        int GetTextRectCount(int start, int count);
-
-        [Export("getTextRect:")]
-        FSRectF GetTextRect(int rectIndex);
-
-        [Export("getBaselineRotation:")]
-        FSRotation GetBaselineRotation(int rectIndex);
-    }
-
-    [BaseType(typeof(NSObject))]
-    interface FSPDFTextLink
+    interface FSTextLink
     {
         [Export("getURI")]
         string GetURI();
@@ -3043,25 +3007,7 @@ namespace FoxitRDK
         FSRectF GetRect(int rectIndex);
     }
 
-    [BaseType(typeof(NSObject))]
-    interface FSPDFPageLinks
-    {
-        [Export("initWithPDFPage:")]
-        IntPtr Constructor(FSPDFPage page);
-
-        [Export("getTextLinkCount")]
-        int GetTextLinkCount();
-
-        [Export("getTextLink:")]
-        FSPDFTextLink GetTextLink(int index);
-
-        [Export("getLinkAnnotCount")]
-        int GetLinkAnnotCount();
-
-        [Export("getLinkAnnot:")]
-        FSLink GetLinkAnnot(int index);
-    }
-
+    [Model, Protocol]
     [BaseType(typeof(NSObject))]
     interface FSSignatureCallback
     {
@@ -3081,7 +3027,7 @@ namespace FoxitRDK
         unsafe FSSignatureStates VerifySigState(NSData digest, NSData signedData, [NullAllowed] IntPtr clientData);
     }
 
-    [BaseType(typeof(FSFormField))]
+    [BaseType(typeof(FSField))]
     interface FSSignature
     {
         [Export("isSigned")]
@@ -3188,18 +3134,19 @@ namespace FoxitRDK
         float GetContentHeight();
 
         [Export("getDisplayMatrix:offsetY:")]
-        FSMatrix GetDisplayMatrix(float offsetX, float offsetY);
+        FSMatrix2D GetDisplayMatrix(float offsetX, float offsetY);
 
         [Export("getFocusData:point:")]
-        string GetFocusData(FSMatrix matrix, FSPointF point);
+        string GetFocusData(FSMatrix2D matrix, FSPointF point);
 
         [Export("getFocusPosition:focusData:")]
-        FSPointF GetFocusPosition(FSMatrix matrix, string focusData);
+        FSPointF GetFocusPosition(FSMatrix2D matrix, string focusData);
 
         [Export("isParsed")]
         bool IsParsed();
     }
 
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface FSPSICallback
     {
@@ -3752,10 +3699,10 @@ namespace FoxitRDK
         FSRectF ConvertPageViewRectToPdfRect(CGRect rect, int pageIndex);
 
         [Export("getDisplayMatrix:")]
-        FSMatrix GetDisplayMatrix(int pageIndex);
+        FSMatrix2D GetDisplayMatrix(int pageIndex);
 
         [Export("getDisplayMatrix:fromOrigin:")]
-        FSMatrix GetDisplayMatrix(int pageIndex, CGPoint originPoint);
+        FSMatrix2D GetDisplayMatrix(int pageIndex, CGPoint originPoint);
 
         [Export("refresh:pageIndex:")]
         void Refresh(CGRect rect, int pageIndex);

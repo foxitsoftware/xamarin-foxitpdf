@@ -426,15 +426,16 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSEncryptType
+	public enum FSPDFDocEncryptType
     {
         Unknown = -1,
         None = 0,
-        Password,
-        Certificate,
-        FoxitDRM,
-        Custom,
-        Rms
+        Password = 1,
+        Certificate = 2,
+        FoxitDRM = 3,
+        Custom = 4,
+        Rms = 5,
+        Cdrm = 6
     }
 
     //[Native]
@@ -620,7 +621,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFormFieldType
+    public enum FSFieldType
     {
         UnknownType = 0,
         PushButton,
@@ -633,7 +634,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFormFieldFlags
+    public enum FSFieldFlags
     {
         Readonly = 1,
         Required = 2,

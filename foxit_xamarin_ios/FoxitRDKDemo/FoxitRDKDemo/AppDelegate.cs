@@ -102,7 +102,7 @@ namespace FoxitRDKDemo
             string key = GetIni(NSBundle.MainBundle.PathForResource("rdk_key", "txt"), "Sign");
 
             // Initialize the library
-            var eRet = FSLibrary.Init(sn, key);
+            var eRet = FSLibrary.Initialize(sn, key);
             if (FSErrorCode.Success != eRet)
             {
                 string errMsg = "Invalid license";

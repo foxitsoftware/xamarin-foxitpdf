@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "complete_pdf_viewer", "complete_pdf_viewer\complete_pdf_viewer.csproj", "{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cropper", "..\Cropper\Cropper\Cropper.csproj", "{56CA4DBD-6301-40E4-B60A-55522674A0C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxitUIExtensions", "..\FoxitUIExtensions\FoxitUIExtensions\FoxitUIExtensions.csproj", "{5C736DEF-108D-4948-B06B-C7C7569F1E72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D4846EB-2066-47A0-8C93-7A9ECD243903}
+	EndGlobalSection
+EndGlobal

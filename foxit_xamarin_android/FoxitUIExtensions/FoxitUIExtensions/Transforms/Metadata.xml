@@ -1,0 +1,13 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  <attr path="/api/package[@name='com.foxit.uiextensions.utils.thread']/class[@name='AppAsyncTask']/method[@name='doInBackground']" name="visibility">protected</attr>
+  <attr path="/api/package[@name='com.foxit.uiextensions.annots.ink']/class[@name='InkToolHandler']" name="visibility">public</attr>
+  <attr path="/api/package[@name='com.foxit.uiextensions.utils']/class[@name='Event']" name="managedName">IEvent</attr>
+
+</metadata>

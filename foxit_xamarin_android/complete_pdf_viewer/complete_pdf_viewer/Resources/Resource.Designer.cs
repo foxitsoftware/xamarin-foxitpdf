@@ -1334,11 +1334,11 @@ namespace complete_pdf_viewer
 			// aapt resource value: 0x7f0d0047
 			public const int black = 2131558471;
 			
-			// aapt resource value: 0x7f0d0079
-			public const int black_translucent = 2131558521;
+			// aapt resource value: 0x7f0d007c
+			public const int black_translucent = 2131558524;
 			
-			// aapt resource value: 0x7f0d007a
-			public const int border = 2131558522;
+			// aapt resource value: 0x7f0d007d
+			public const int border = 2131558525;
 			
 			// aapt resource value: 0x7f0d000a
 			public const int bright_foreground_disabled_material_dark = 2131558410;
@@ -1364,17 +1364,17 @@ namespace complete_pdf_viewer
 			// aapt resource value: 0x7f0d0011
 			public const int button_material_light = 2131558417;
 			
-			// aapt resource value: 0x7f0d0081
-			public const int colorAccent = 2131558529;
+			// aapt resource value: 0x7f0d0079
+			public const int colorAccent = 2131558521;
 			
-			// aapt resource value: 0x7f0d007f
-			public const int colorPrimary = 2131558527;
-			
-			// aapt resource value: 0x7f0d0080
-			public const int colorPrimaryDark = 2131558528;
+			// aapt resource value: 0x7f0d007a
+			public const int colorPrimary = 2131558522;
 			
 			// aapt resource value: 0x7f0d007b
-			public const int corner = 2131558523;
+			public const int colorPrimaryDark = 2131558523;
+			
+			// aapt resource value: 0x7f0d007e
+			public const int corner = 2131558526;
 			
 			// aapt resource value: 0x7f0d003c
 			public const int design_bottom_navigation_shadow_color = 2131558460;
@@ -1433,8 +1433,8 @@ namespace complete_pdf_viewer
 			// aapt resource value: 0x7f0d0018
 			public const int foreground_material_light = 2131558424;
 			
-			// aapt resource value: 0x7f0d007c
-			public const int guideline = 2131558524;
+			// aapt resource value: 0x7f0d007f
+			public const int guideline = 2131558527;
 			
 			// aapt resource value: 0x7f0d0019
 			public const int highlighted_text_material_dark = 2131558425;
@@ -1571,8 +1571,8 @@ namespace complete_pdf_viewer
 			// aapt resource value: 0x7f0d0034
 			public const int secondary_text_disabled_material_light = 2131558452;
 			
-			// aapt resource value: 0x7f0d007d
-			public const int surrounding_area = 2131558525;
+			// aapt resource value: 0x7f0d0080
+			public const int surrounding_area = 2131558528;
 			
 			// aapt resource value: 0x7f0d0035
 			public const int switch_thumb_disabled_material_dark = 2131558453;
@@ -1736,8 +1736,8 @@ namespace complete_pdf_viewer
 			// aapt resource value: 0x7f0d0078
 			public const int ux_text_color_title_light = 2131558520;
 			
-			// aapt resource value: 0x7f0d007e
-			public const int white_translucent = 2131558526;
+			// aapt resource value: 0x7f0d0081
+			public const int white_translucent = 2131558529;
 			
 			static Color()
 			{

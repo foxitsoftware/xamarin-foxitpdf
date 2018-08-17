@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{56CA4DBD-6301-40E4-B60A-55522674A0C0}</ProjectGuid>
+    <ProjectGuid>{C3F70847-6341-4BEF-8C9B-224FF64065AE}</ProjectGuid>
     <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{77efb91c-a7e9-4b0e-a7c5-31eeec3c6d46}</TemplateGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cropper</RootNamespace>
-    <AssemblyName>Cropper</AssemblyName>
+    <RootNamespace>FoxitRDK</RootNamespace>
+    <AssemblyName>FoxitRDK</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
@@ -45,8 +45,8 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\cropper.aar">
-      <Link>Jars\cropper.aar</Link>
+    <LibraryProjectZip Include="..\..\libs\FoxitRDK.aar">
+      <Link>Jars\FoxitRDK.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>
   <ItemGroup>

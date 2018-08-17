@@ -4,7 +4,7 @@ Use the Foxit Mobile PDF SDK with Xamarin on android
 Introduction
 ------------
 
-This sample project works with the  `Foxit RDK 6.0` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
+This sample project works with the  `Foxit RDK 6.1` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
 
 Setup
 -----
@@ -12,16 +12,14 @@ Setup
 
 2: unzip the `foxit_mobile_pdf_sdk_android_en.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
 
-* `arm64-v8a/librdk.so`
-* `armeabi-v7a/librdk.so`
-* `x86/librdk.so`
+* `FoxitRDK.aar`
 * `FoxitRDKUIExtensions.aar`
 * `rdk_key.txt`
 * `rdk_sn.txt`
 
 3: Click the `complete_pdf_viewer.sln`
 
-4: `Rebuild` the `FoxitUIExtensions` and `Cropper` project
+4: `Rebuild` the `FoxitRDK` , `FoxitUIExtensions` and `Cropper` project
 
 5: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
 

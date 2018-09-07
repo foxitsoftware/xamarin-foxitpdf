@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2003-2017, Foxit Software Inc..
  * All Rights Reserved.
  *
@@ -9,32 +9,47 @@
  * is signed between Foxit Software Inc. and customers to explicitly grant customers permissions.
  * Review legal.txt for additional license and legal information.
  */
-
 using System;
 using ObjCRuntime;
 
-namespace FoxitRDK
+namespace FoxitRDKUI
 {
-    [Native]
-    public enum FSPanelType : long
-    {
-        Annotation = 0,
-        Attachment,
-        Outline,
-        ReadingBookmark
-    }
+	[Native]
+	public enum FSPanelType : long
+	{
+		Annotation = 0,
+		Attachment,
+		Outline,
+		ReadingBookmark
+	}
 
-    [Native]
-    public enum SettingItemType : long
-    {
-        Single,
-        Continuous,
-        Doublepage,
-        Thumbnail,
-        Reflow,
-        Croppage,
-        Lockscreen,
-        Brightness,
-        Nightmode
-    }
+	[Native]
+	public enum SettingItemType : long
+	{
+		Single,
+		Continuous,
+		Doublepage,
+		Coverpage,
+		Thumbnail,
+		Reflow,
+		Croppage,
+		Lockscreen,
+		Brightness,
+		Nightmode,
+		Panzoom
+	}
+
+	[Native]
+	public enum DXPopoverPosition : long
+	{
+		Up = 1,
+		Down
+	}
+
+	[Native]
+	public enum DXPopoverMaskType : long
+	{
+		Black,
+		None
+	}
 }

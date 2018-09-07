@@ -9,137 +9,130 @@
  * is signed between Foxit Software Inc. and customers to explicitly grant customers permissions.
  * Review legal.txt for additional license and legal information.
  */
-
 using System;
 using ObjCRuntime;
 
 namespace FoxitRDK
 {
     //[Native]
-    public enum FSRotation
-    {
-        e_rotation0 = 0,
-        e_rotation90,
-        e_rotation180,
-        e_rotation270,
-        Unknown
-    }
-
-    //[Native]
-    public enum FSProgressState
-    {
-        Error = 0,
-        ToBeContinued,
-        Finished
-    }
-
-    //[Native]
-    public enum FSDIBFormat
-    {
-        Invalid = 0,
-        Rgb = 24,
-        Rgb32 = 32,
-        Argb = 544,
-        e_dib8bppMask = 264,
-        e_dib8bpp = 8
-    }
-
-    //[Native]
-    public enum FSBitmapInterpolationFlag
-    {
-        Downsample = 1 << 0,
-        Quadratic = 1 << 1,
-        Bicubic = 1 << 2
-    }
-
-    //[Native]
     public enum FSErrorCode
     {
         Success = 0,
-        File,
-        Format,
-        Password,
-        Handler,
-        Certificate,
-        Unknown,
-        InvalidLicense,
-        Param,
-        Unsupported,
-        OutOfMemory,
-        SecurityHandler,
-        NotParsed,
-        NotFound,
-        InvalidType,
-        Conflict,
-        UnknownState,
-        DataNotReady,
-        InvalidData
+        File = 1,
+        Format = 2,
+        Password = 3,
+        Handle = 4,
+        Certificate = 5,
+        Unknown = 6,
+        InvalidLicense = 7,
+        Param = 8,
+        Unsupported = 9,
+        OutOfMemory = 10,
+        SecurityHandler = 11,
+        NotParsed = 12,
+        NotFound = 13,
+        InvalidType = 14,
+        Conflict = 15,
+        UnknownState = 16,
+        DataNotReady = 17,
+        InvalidData = 18,
+        XFALoadError = 19,
+        NotLoaded = 20,
+        InvalidState = 21,
+        NotCDRM = 22,
+        CanNotConnectToServer = 23,
+        InvalidUserToken = 24,
+        NoRights = 25,
+        RightsExpired = 26,
+        DeviceLimitation = 27,
+        CanNotRemoveSecurityFromServer = 28,
+        CanNotGetACL = 29,
+        CanNotSetACL = 30,
+        IsAlreadyCPDF = 31,
+        IsAlreadyCDRM = 32,
+        CanNotUploadDocInfo = 33,
+        CanNotUploadCDRMInfo = 34,
+        InvalidWrapper = 35,
+        CanNotGetClientID = 36,
+        CanNotGetUserToken = 37,
+        InvalidACL = 38,
+        InvalidClientID = 39
+    }
+
+    ////[Native]
+    public enum FSRotation 
+    {
+        FSRotation0 = 0,
+        FSRotation90 = 1,
+        FSRotation180 = 2,
+        FSRotation270 = 3,
+        Unknown = 4
     }
 
     //[Native]
-    public enum FSDisplayMode
+    public enum FSAlignment 
     {
-        UseNone = 0,
-        UseOutlines,
-        UseThumbs,
-        FullScreen,
-        UseOC,
-        UseAttachment
+        Left = 0,
+        Center = 1,
+        Right = 2
     }
 
     //[Native]
-    public enum FSZoomMode
+    public enum FSFillMode 
     {
-        Xyz = 1,
-        FitPage,
-        FitHorz,
-        FitVert,
-        FitRect,
-        FitBBox,
-        FitBHorz,
-        FitBVert
-    }
-
-    //[Native]
-    public enum FSModuleName
-    {
-        Standard = 0,
-        Annotation
-    }
-
-    //[Native]
-    public enum FSModuleRight
-    {
-        Unknown = -1,
         None = 0,
-        Read,
-        Write
+        Alternate = 1,
+        Winding = 2
     }
 
     //[Native]
-    public enum FSDefaultAPFlags
+    public enum FSProgressiveState 
     {
-        Font = 1 << 0,
-        TextColor = 1 << 1,
-        FontSize = 1 << 2
+        Error = 0,
+        ToBeContinued = 1,
+        Finished = 2
     }
 
     //[Native]
-    public enum FSFontStyles
+    public enum FSGraphStateLineCapStyle 
     {
-        FixedPitch = 1 << 0,
-        Serif = 1 << 1,
-        Symbolic = 1 << 2,
-        Script = 1 << 3,
-        NonSymbolic = 1 << 5,
-        Italic = 1 << 6,
-        AllCap = 1 << 16,
-        sSmallCap = 1 << 17,
-        sBold = 1 << 18
+        Butt = 0,
+        Round = 1,
+        Square = 2
     }
 
     //[Native]
-    public enum FSFontCharset
+    public enum FSGraphStateLineJoinStyle 
+    {
+        Miter = 0,
+        Round = 1,
+        Bevel = 2
+    }
+
+    //[Native]
+    public enum FSRangeFilter 
+    {
+        All,
+        Even,
+        Odd
+    }
+
+    //[Native]
+    public enum FSFontStyles 
+    {
+        FixedPitch = 1,
+        Serif = 2,
+        Symbolic = 4,
+        Script = 8,
+        NonSymbolic = 32,
+        Italic = 64,
+        AllCap = 65536,
+        sSmallCap = 131072,
+        sBold = 262144
+    }
+
+    //[Native]
+    public enum FSFontCharset 
     {
         Ansi = 0,
         Default = 1,
@@ -159,237 +152,591 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSStandardFontID
+    public enum FSFontStandardID 
     {
         Courier = 0,
-        CourierB,
-        CourierBI,
-        CourierI,
-        Helvetica,
-        HelveticaB,
-        HelveticaBI,
-        HelveticaI,
-        Times,
-        TimesB,
-        TimesBI,
-        TimesI,
-        Symbol,
-        ZapfDingbats
+        CourierB = 1,
+        CourierBI = 2,
+        CourierI = 3,
+        Helvetica = 4,
+        HelveticaB = 5,
+        HelveticaBI = 6,
+        HelveticaI = 7,
+        Times = 8,
+        TimesB = 9,
+        TimesBI = 10,
+        TimesI = 11,
+        Symbol = 12,
+        ZapfDingbats = 13
     }
 
     //[Native]
-    public enum FSPathPointType
+    public enum FSPathPointType 
     {
         MoveTo = 1,
-        LineTo,
-        LineToCloseFigure,
-        BezierTo,
-        BezierToCloseFigure
+        LineTo = 2,
+        LineToCloseFigure = 3,
+        BezierTo = 4,
+        BezierToCloseFigure = 5
     }
 
     //[Native]
-    public enum FSFlattenOptions
+    public enum FSBitmapDIBFormat 
     {
-        All = 0,
-        NoAnnot = 1 << 0,
-        NoFormControl = 1 << 1
+        Invalid = 0,
+        Rgb = 24,
+        Rgb32 = 32,
+        Argb = 544,
+        FSBitmapDIB8bppMask = 264,
+        FSBitmapDIB8bpp = 8,
+        Rgb565 = 1381
     }
 
     //[Native]
-    public enum FSUserPermissions
+    public enum FSBitmapInterpolationFlag 
     {
-        Print = 1 << 2,
-        Modify = 1 << 3,
-        Extract = 1 << 4,
-        AnnotForm = 1 << 5,
-        FillForm = 1 << 8,
-        ExtractAccess = 1 << 9,
-        Assemble = 1 << 10,
-        PrintHigh = 1 << 11
+        Downsample = 1,
+        Quadratic = 2,
+        Bicubic = 4
     }
 
     //[Native]
-    public enum FSPageBox
+    public enum FSImageType 
     {
-        MediaBox = 0,
-        CropBox,
-        TrimBox,
-        ArtBox,
-        BleedBox
+        Unknown = -1,
+        None = 0,
+        Bmp = 1,
+        Jpg = 2,
+        Png = 3,
+        Gif = 4,
+        Tif = 5,
+        Jpx = 6,
+        Jbig2 = 8
     }
 
     //[Native]
-    public enum FSAnnotStateModel
+    public enum FSRendererColorMode 
     {
-        Marked = 1,
-        Review
+        Normal = 0,
+        Mapping = 2
     }
 
     //[Native]
-    public enum FSAnnotState
+    public enum FSRendererContentFlag 
     {
-        Marked = 1,
-        Unmarked,
-        Accepted,
-        Rejected,
-        Cancelled,
-        Completed,
-        None = 7
+        Page = 1,
+        Annot = 2
     }
 
     //[Native]
-    public enum FSAnnotProperty
+    public enum FSRendererDeviceType 
     {
-        ModifiedDate = 0,
-        CreationDate,
-        BorderColor,
-        FillColor
+        Display = 1,
+        Printer = 2
     }
 
     //[Native]
-    public enum FSProgressType
+    public enum FSBarcodeFormat 
     {
-        Parse,
-        ImportPages,
-        RenderPage,
-        QuickRenderPage,
-        ReflowRenderPage,
-        RenderBitmap,
-        SignatureSign,
-        SignatureVerify,
-        Save
+        Code39 = 0,
+        Code128 = 1,
+        Ean8 = 2,
+        Upca = 3,
+        Ean13 = 4,
+        Itf = 5,
+        Pdf417 = 6,
+        QRCode = 7
     }
 
     //[Native]
-    public enum FSType
+    public enum FSBarcodeQRErrorCorrectionLevel 
     {
-        e_TypeNormal = 0
+        Low = 0,
+        Medium = 1,
+        Quater = 2,
+        High = 3
     }
 
-    public enum FSActionType
+    //[Native]
+    public enum FSAppProviderCallbackAppInfo 
+    {
+        Version = 0,
+        Language = 1,
+        Platform = 2,
+        Variation = 3,
+        Name = 4,
+        Type = 5
+    }
+
+    //[Native]
+    public enum FSAppProviderCallbackBeepType 
+    {
+        Error = 0,
+        Warning = 1,
+        Question = 2,
+        Status = 3,
+        Default = 4
+    }
+
+    //[Native]
+    public enum FSAppProviderCallbackStringID 
+    {
+        ValidateFailed = 1,
+        CalcOverride = 2,
+        ModifyField = 3,
+        NotModifyField = 4,
+        AppName = 5,
+        ImageFilter = 6,
+        UnknownCaught = 7,
+        UnableToSet = 8,
+        ValueExcalmatory = 9,
+        InvalidEnumValue = 10,
+        UnsupportMethod = 11,
+        UnsupportProperty = 12,
+        InvalidPropertySetOperation = 13,
+        NotDefaultValue = 14,
+        UnableSetLanguage = 15,
+        UnableSetNumPages = 16,
+        UnableSetPlatformValue = 17,
+        UnableSetValidationsEnabledValue = 18,
+        UnableSetValidationsValue = 19,
+        UnableSetVersion = 20,
+        UnableSetReady = 21,
+        NumberOfOccur = 22,
+        UnableSetClassName = 23,
+        UnableSetLengthValue = 24,
+        UnsupportChar = 25,
+        BadSuffix = 26,
+        ExpectedIdent = 27,
+        ExpectedString = 28,
+        InvalidateChar = 29,
+        Redefinition = 30,
+        InvalidToken = 31,
+        InvalidExpression = 32,
+        UndefineIdentifier = 33,
+        InvalidateLeftValue = 34,
+        CompilerError = 35,
+        CannotModifyValue = 36,
+        ParametersError = 37,
+        ExpectedEndIf = 38,
+        UnexpectedExpression = 39,
+        ConditionIsNull = 40,
+        IllegalBreak = 41,
+        IllegalContinue = 42,
+        ExpectedOperator = 43,
+        DivideZero = 44,
+        CannotCovertToObject = 45,
+        NotFoundContainer = 46,
+        NotFoundProperty = 47,
+        NotFoundMethod = 48,
+        NotFoundConst = 49,
+        NotAssignObject = 50,
+        InvalidateInstruction = 51,
+        ExpectedNumber = 52,
+        ValidateOutOfArray = 53,
+        CannotAssign = 54,
+        NotFoundFunction = 55,
+        IsNotArray = 56,
+        OutOfArrayRange = 57,
+        NotSupportArrayCalculate = 58,
+        ArgumentNotArray = 59,
+        ArgumentExpectContainer = 60,
+        AccessProertyInNotObject = 61,
+        FunctionBuildIn = 62,
+        ErrorMessage = 63,
+        IndexValueOutOfBounds = 64,
+        IncorrectNumberOfMethod = 65,
+        ArgumentMismatch = 66,
+        InvalidEnumerate = 67,
+        InvalidAppend = 68,
+        SOMExpectedList = 69,
+        NotHaveProperty = 70,
+        InvalidNodeType = 71,
+        ViolateBoundary = 72,
+        ServerDeny = 73,
+        WeekDaySun = 74,
+        WeekDayMon = 75,
+        WeekDayTue = 76,
+        WeekDayWed = 77,
+        WeekDayThu = 78,
+        WeekDayFri = 79,
+        WeekDaySat = 80,
+        MonthJan = 81,
+        MonthFeb = 82,
+        MonthMarch = 83,
+        MonthApril = 84,
+        MonthMay = 85,
+        MonthJune = 86,
+        MonthJuly = 87,
+        MonthAug = 88,
+        MonthSep = 89,
+        MonthOct = 90,
+        MonthNov = 91,
+        MonthDec = 92,
+        Today = 93,
+        ValidateLimit = 94,
+        ValidateNullWarning = 95,
+        ValidateNullError = 96,
+        ValidateWarning = 97,
+        ValidateError = 98,
+        ValidateNumberError = 99,
+        ScriptFailedError = 100,
+        ScriptInvalidValue = 101,
+        SubmitValidateNullError = 102
+    }
+
+    //[Native]
+    public enum FSAppProviderCallbackMsgBoxIconType 
+    {
+        Error = 0,
+        Warning = 1,
+        Question = 2,
+        Status = 3
+    }
+
+    //[Native]
+    public enum FSAppProviderCallbackMsgBoxButtonType 
+    {
+        Ok = 0,
+        OKCancel = 1,
+        YesNo = 2,
+        YesNoCancel = 3
+    }
+
+    //[Native]
+    public enum FSAppProviderCallbackMsgBoxButtonID 
+    {
+        Ok = 1,
+        Cancel = 2,
+        No = 3,
+        Yes = 4
+    }
+
+    //[Native]
+    public enum FSDocProviderCallbackInvalidateFlag 
+    {
+        AllPages = 0,
+        CurrentPage = 1
+    }
+
+    //[Native]
+    public enum FSDocProviderCallbackPrintOption 
+    {
+        ShowDialog = 1,
+        CanCancel = 2,
+        ShrinkPage = 4,
+        AsImage = 8,
+        ReverseOrder = 16,
+        PrintAnnot = 32
+    }
+
+    //[Native]
+    public enum FSDocProviderCallbackSubmitFormat 
+    {
+        Xdp = 0,
+        Pdf = 1,
+        UrlEncoded = 2,
+        Xfd = 3,
+        Xml = 4
+    }
+
+    //[Native]
+    public enum FSDocProviderCallbackTextEncoding 
+    {
+        None = 0,
+        Big5 = 1,
+        FontSpecific = 2,
+        Gbk = 3,
+        Gb18030 = 4,
+        Gb2312 = 5,
+        Iso8859nn = 6,
+        Ksc5601 = 7,
+        ShiftJIS = 8,
+        Ucs2 = 9,
+        Utf16 = 10,
+        Utf8 = 11
+    }
+
+    //[Native]
+    public enum FSDocProviderCallbackPageViewEventType 
+    {
+        Added = 0,
+        Removed = 1,
+        AllRemoved = 2
+    }
+
+    //[Native]
+    public enum FSXFADocEventType 
     {
         Unknown = 0,
-        Goto,
-        GoToR,
-        GoToE,
-        Launch,
-        Thread,
-        Uri,
-        Sound,
-        Movie,
-        Hide,
-        Named,
-        SubmitForm,
-        ResetForm,
-        ImportData,
-        JavaScript,
-        SetOCGState,
-        Rendition,
-        Trans,
-        GoTo3DView
+        PostPrint = 1,
+        PrePrint = 2
     }
 
     //[Native]
-    public enum FSNewWindowFlag
+    public enum FSXFADocType 
     {
-        False = 0,
-        True,
-        None
+        Dynamic = 0,
+        Static = 1,
+        Xdp = 2
     }
 
     //[Native]
-    public enum FSFDFDocType
+    public enum FSXFADocExportDataType 
+    {
+        Xml = 0,
+        StaticXDP = 1,
+        Xdp = 2
+    }
+
+    //[Native]
+    public enum FSXFAWidgetHitTestArea 
+    {
+        Unknown = 0,
+        Client = 1,
+        TitleBar = 2,
+        HyperLink = 3
+    }
+
+    //[Native]
+    public enum FSFDFDocType 
     {
         Fdf = 0,
         Xfdf = 1
     }
 
     //[Native]
-    public enum FSRankMode
+    public enum FSActionCallbackLanguage 
     {
-        None,
-        HitCountASC,
-        HitCountDESC
+        Unknown = 0,
+        Chs = 1,
+        Cht = 2,
+        Dan = 3,
+        Deu = 4,
+        Enu = 5,
+        Esp = 6,
+        Fra = 7,
+        Ita = 8,
+        Kor = 9,
+        Jpn = 10,
+        Nld = 11,
+        Nor = 12,
+        Ptb = 13,
+        Suo = 14,
+        Sve = 15
     }
 
     //[Native]
-    public enum FSAnnotType
+    public enum FSActionCallbackAppInfoType 
     {
-        UnknownType = 0,
-        Note,
-        Link,
-        FreeText,
-        Line,
-        Square,
-        Circle,
-        Polygon,
-        PolyLine,
-        Highlight,
-        Underline,
-        Squiggly,
-        StrikeOut,
-        Stamp,
-        Caret,
-        Ink,
-        PSInk,
-        FileAttachment,
-        Sound,
-        Movie,
-        Widget,
-        Screen,
-        PrinterMark,
-        TrapNet,
-        Watermark,
-        e_annot3D,
-        Popup
+        FormsVersion = 0,
+        ViewerType = 1,
+        ViewerVariation = 2,
+        ViewerVersion = 3,
+        AppVersion = 4
     }
 
     //[Native]
-    public enum FSAnnotFlags
+    public enum FSActionCallbackMailType 
     {
-        Invisible = 1 << 0,
-        Hidden = 1 << 1,
-        Print = 1 << 2,
-        NoZoom = 1 << 3,
-        NoRotate = 1 << 4,
-        NoView = 1 << 5,
-        ReadOnly = 1 << 6,
-        Locked = 1 << 7,
-        ToggleNoView = 1 << 8,
-        LockedContents = 1 << 9
+        Doc = 0,
+        Form = 1,
+        Msg = 2
     }
 
     //[Native]
-    public enum FSBorderStyle
-    {
-        Solid = 0,
-        Dashed,
-        UnderLine,
-        Beveled,
-        Inset,
-        Cloudy
-    }
-
-    //[Native]
-    public enum FSHighlightingMode
+    public enum FSFullTextSearchRankMode 
     {
         None = 0,
-        Invert,
-        Outline,
-        Push,
-        Toggle
+        HitCountASC = 1,
+        HitCountDESC = 2
     }
 
     //[Native]
-    public enum FSAlignment
+    public enum FSDestinationZoomMode 
     {
-        Left,
-        Center,
-        Right
+        Xyz = 1,
+        FitPage = 2,
+        FitHorz = 3,
+        FitVert = 4,
+        FitRect = 5,
+        FitBBox = 6,
+        FitBHorz = 7,
+        FitBVert = 8
+    }
+    
+    public enum FSActionType 
+    {
+        Unknown = 0,
+        Goto = 1,
+        GoToR = 2,
+        GoToE = 3,
+        Launch = 4,
+        Thread = 5,
+        Uri = 6,
+        Sound = 7,
+        Movie = 8,
+        Hide = 9,
+        Named = 10,
+        SubmitForm = 11,
+        ResetForm = 12,
+        ImportData = 13,
+        JavaScript = 14,
+        SetOCGState = 15,
+        Rendition = 16,
+        Trans = 17,
+        GoTo3DView = 18
     }
 
     //[Native]
-    public enum FSAnnotMKEntry
+    public enum FSActionNewWindowFlag 
+    {
+        False = 0,
+        True = 1,
+        None = 2
+    }
+
+    //[Native]
+    public enum FSSubmitFormActionFlags 
+    {
+        Exclude = 1,
+        IncludeNoValueFields = 2,
+        ExportFormat = 4,
+        GetMethod = 8,
+        WithCoordinates = 16,
+        AsXFDF = 32,
+        IncludeAppendSaves = 64,
+        IncludeAnnotations = 128,
+        SubmitAsPDF = 256,
+        CanonicalFormat = 512,
+        ExclNonUserAnnots = 1024,
+        ExclFKey = 2048,
+        EmbedForm = 8192
+    }
+
+    ////[Native]
+    public enum FSAdditionalActionTriggerEvent 
+    {
+        PageOpened = 0,
+        PageClosed = 1,
+        DocWillClose = 2,
+        DocWillSave = 3,
+        DocSaved = 4,
+        DocWillPrint = 5,
+        DocPrinted = 6,
+        FieldKeyStroke = 7,
+        FieldWillFormat = 8,
+        FieldValueChanged = 9,
+        FieldRecalculateValue = 10,
+        AnnotCursorEnter = 11,
+        AnnotCursorExit = 12,
+        AnnotMouseButtonPressed = 13,
+        AnnotMouseButtonReleased = 14,
+        AnnotReceiveInputFocus = 15,
+        AnnotLoseInputFocus = 16,
+        AnnotPageOpened = 17,
+        AnnotPageClosed = 18,
+        AnnotPageVisible = 19,
+        AnnotPageInvisible = 20
+    }
+
+    //[Native]
+    public enum FSDefaultAppearanceFlags 
+    {
+        Font = 1,
+        TextColor = 2,
+        FontSize = 4
+    }
+
+    //[Native]
+    public enum FSBorderInfoStyle 
+    {
+        Solid = 0,
+        Dashed = 1,
+        UnderLine = 2,
+        Beveled = 3,
+        Inset = 4,
+        Cloudy = 5
+    }
+
+    //[Native]
+    public enum FSIconFitScaleWayType 
+    {
+        Always = 1,
+        Bigger = 2,
+        Smaller = 3,
+        Never = 4
+    }
+
+    //[Native]
+    public enum FSAnnotType 
+    {
+        UnknownType = 0,
+        Note = 1,
+        Link = 2,
+        FreeText = 3,
+        Line = 4,
+        Square = 5,
+        Circle = 6,
+        Polygon = 7,
+        PolyLine = 8,
+        Highlight = 9,
+        Underline = 10,
+        Squiggly = 11,
+        StrikeOut = 12,
+        Stamp = 13,
+        Caret = 14,
+        Ink = 15,
+        PSInk = 16,
+        FileAttachment = 17,
+        Sound = 18,
+        Movie = 19,
+        Widget = 20,
+        Screen = 21,
+        PrinterMark = 22,
+        TrapNet = 23,
+        Watermark = 24,
+        FSAnnot3D = 25,
+        Popup = 26,
+        Redact = 27
+    }
+
+    //[Native]
+    public enum FSAnnotFlags 
+    {
+        Invisible = 1,
+        Hidden = 2,
+        Print = 4,
+        NoZoom = 8,
+        NoRotate = 16,
+        NoView = 32,
+        ReadOnly = 64,
+        Locked = 128,
+        ToggleNoView = 256,
+        LockedContents = 512
+    }
+
+    //[Native]
+    public enum FSAnnotHighlightingMode 
+    {
+        None = 0,
+        Invert = 1,
+        Outline = 2,
+        Push = 3,
+        Toggle = 4
+    }
+
+    //[Native]
+    public enum FSAnnotProperty 
+    {
+        ModifiedDate = 0,
+        CreationDate = 1,
+        BorderColor = 2,
+        FillColor = 3
+    }
+
+    //[Native]
+    public enum FSAnnotMKEntry 
     {
         Rotation = 0,
         BorderColor = 1,
@@ -405,7 +752,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotMKIconCaptionRelation
+    public enum FSAnnotMKIconCaptionRelation 
     {
         NoIcon = 0,
         NoCaption = 1,
@@ -417,16 +764,97 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSIconScaleWayType
+    public enum FSAnnotAppearanceType 
     {
-        Always = 1,
-        Bigger = 2,
-        Smaller = 3,
-        Never = 4
+        Normal = 0,
+        Rollover = 1,
+        Down = 2
     }
 
     //[Native]
-	public enum FSPDFDocEncryptType
+    public enum FSMarkupStateModel 
+    {
+        Marked = 1,
+        Review = 2
+    }
+
+    //[Native]
+    public enum FSMarkupState 
+    {
+        Marked = 1,
+        Unmarked = 2,
+        Accepted = 3,
+        Rejected = 4,
+        Cancelled = 5,
+        Completed = 6,
+        None = 7
+    }
+
+    //[Native]
+    public enum FSMarkupEndingStyle 
+    {
+        None = 0,
+        Square = 1,
+        Circle = 2,
+        Diamond = 3,
+        OpenArrow = 4,
+        ClosedArrow = 5,
+        Butt = 6,
+        ROpenArrow = 7,
+        RClosedArrow = 8,
+        Slash = 9
+    }
+
+    //[Native]
+    public enum FSLineCapPos 
+    {
+        Inline = 0,
+        Top = 1
+    }
+
+    //[Native]
+    public enum FSBookmarkStyle 
+    {
+        Normal = 0,
+        Italic = 1,
+        Bold = 2
+    }
+
+    //[Native]
+    public enum FSBookmarkPosition 
+    {
+        FirstChild = 0,
+        LastChild = 1,
+        PrevSibling = 2,
+        NextSibling = 3,
+        FirstSibling = 4,
+        LastSibling = 5
+    }
+
+    //[Native]
+    public enum FSAssociatedFilesRelationship 
+    {
+        Unspecified = 0,
+        Source = 1,
+        Data = 2,
+        Alternative = 3,
+        Supplement = 4,
+        EncryptedPayload = 5,
+        FormData = 6,
+        Schema = 7
+    }
+
+    //[Native]
+    public enum FSPDFDocPasswordType 
+    {
+        Invalid = 0,
+        NoPassword = 1,
+        User = 2,
+        Owner = 3
+    }
+
+    //[Native]
+    public enum FSPDFDocEncryptType 
     {
         Unknown = -1,
         None = 0,
@@ -439,46 +867,88 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSCipherType
+    public enum FSPDFDocUserPermissions 
     {
-        None = 0,
-        Rc4,
-        Aes
+        Print = 4,
+        Modify = 8,
+        Extract = 16,
+        AnnotForm = 32,
+        FillForm = 256,
+        ExtractAccess = 512,
+        Assemble = 1024,
+        PrintHigh = 2048
     }
 
     //[Native]
-    public enum FSGraphicsObjectType
-    {
-        All = 0,
-        Text,
-        Path,
-        Image,
-        Shading,
-        FormXObject
-    }
-
-    //[Native]
-    public enum FSFillMode
-    {
-        None = 0,
-        Alternate,
-        Winding
-    }
-
-    //[Native]
-    public enum FSRenderBlendMode
+    public enum FSPDFDocSaveFlags 
     {
         Normal = 0,
-        Multiply,
-        Screen,
-        Overlay,
-        Darken,
-        Lighten,
-        ColorDodge,
-        ColorBurn,
-        Hardlight,
-        Softlight,
-        Difference,
+        Incremental = 1,
+        NoOriginal = 2,
+        XRefStream = 8,
+        Linearized = 4096
+    }
+
+    //[Native]
+    public enum FSPDFDocImportPageFlags 
+    {
+        Normal = 0,
+        WithLayers = 1,
+        ShareStream = 2
+    }
+
+    //[Native]
+    public enum FSPDFDocDisplayMode 
+    {
+        UseNone = 0,
+        UseOutlines = 1,
+        UseThumbs = 2,
+        FullScreen = 3,
+        UseOC = 4,
+        UseAttachment = 5
+    }
+
+    //[Native]
+    public enum FSPDFDocDataType 
+    {
+        Forms = 1,
+        Annots = 2,
+        NoLinks = 4
+    }
+
+    //[Native]
+    public enum FSLayerTreeUsageState 
+    {
+        On = 0,
+        Off = 1,
+        Unchanged = 2,
+        Undefined = 3
+    }
+
+    //[Native]
+    public enum FSLayerContextUsageType 
+    {
+        View = 0,
+        Design = 1,
+        Print = 2,
+        Export = 3,
+        Zoom = 4
+    }
+
+    //[Native]
+    public enum FSGraphicsObjectBlendMode 
+    {
+        Normal = 0,
+        Multiply = 1,
+        Screen = 2,
+        Overlay = 3,
+        Darken = 4,
+        Lighten = 5,
+        ColorDodge = 6,
+        ColorBurn = 7,
+        Hardlight = 8,
+        Softlight = 9,
+        Difference = 10,
         Exclusion = 11,
         Hue = 21,
         Saturation = 22,
@@ -487,44 +957,39 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSLineJoinType
+    public enum FSGraphicsObjectType 
     {
-        Miter = 0,
-        Round,
-        Bevel
+        All = 0,
+        Text = 1,
+        Path = 2,
+        Image = 3,
+        Shading = 4,
+        FormXObject = 5
     }
 
     //[Native]
-    public enum FSLineCapType
-    {
-        Butt = 0,
-        Round,
-        Square
-    }
-
-    //[Native]
-    public enum FSTextMode
+    public enum FSTextStateMode 
     {
         Fill = 0,
-        Stroke,
-        FillStroke,
-        Invisible,
-        FillClip,
-        StrokeClip,
-        FillStrokeClip,
-        Clip
+        Stroke = 1,
+        FillStroke = 2,
+        Invisible = 3,
+        FillClip = 4,
+        StrokeClip = 5,
+        FillStrokeClip = 6,
+        Clip = 7
     }
 
     //[Native]
-    public enum FSImageColorSpace
+    public enum FSImageObjectColorSpace 
     {
         Invalid = 0,
-        DeviceGray,
-        DeviceRGB,
-        DeviceCMYK,
-        CalGray,
-        CalRGB,
-        Lab,
+        DeviceGray = 1,
+        DeviceRGB = 2,
+        DeviceCMYK = 3,
+        CalGray = 4,
+        CalRGB = 5,
+        Lab = 6,
         Separation = 8,
         DeviceN = 9,
         Pattern = 11,
@@ -534,275 +999,127 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPageLabelStyle
-    {
-        None = 0,
-        DecimalNums,
-        UpperRomanNums,
-        LowerRomanNums,
-        UpperLetters,
-        LowerLetters
-    }
-
-    //[Native]
-    public enum FSPasswordType
-    {
-        Invalid = 0,
-        NoPassword,
-        User,
-        Owner
-    }
-
-    //[Native]
-    public enum FSSaveFlags
+    public enum FSPDFPageParseFlags 
     {
         Normal = 0,
-        Incremental = 1 << 0,
-        NoOriginal = 1 << 1,
-        XRefStream = 1 << 3,
-        Linearized = 1 << 12
+        TextOnly = 1
     }
 
     //[Native]
-    public enum FSImportFlags
-    {
-        Normal = 0,
-        WithLayers = 1 << 0,
-        ShareStream = 1 << 1
-    }
-
-    //[Native]
-    public enum FSPageParseFlag
-    {
-        PageNormal = 0,
-        PageTextOnly = 1 << 0,
-        TextOutputHyphen = 1 << 1
-    }
-
-    //[Native]
-    public enum FSCalcMarginMode
+    public enum FSPDFPageCalcMarginMode 
     {
         ContentsBox = 0,
         Detection = 1
     }
 
     //[Native]
-    public enum FSBookmarkStyle
+    public enum FSPDFPageFlattenOptions 
     {
-        Normal = 0,
-        Italic = 1,
-        Bold = 1 << 1
+        All = 0,
+        NoAnnot = 1,
+        NoFormControl = 2
     }
 
     //[Native]
-    public enum FSBookmarkPosition
+    public enum FSPDFPageBoxType 
     {
-        FirstChild = 0,
-        LastChild,
-        PrevSibling,
-        NextSibling,
-        FirstSibling,
-        LastSibling
+        MediaBox = 0,
+        CropBox = 1,
+        TrimBox = 2,
+        ArtBox = 3,
+        BleedBox = 4
     }
 
     //[Native]
-    public enum FSNameTreeType
+    public enum FSPDFPageSize 
     {
-        Dests = 1,
-        JavaScript,
-        EmbeddedFiles
+        Letter = 1,
+        Legal = 2,
+        A2 = 3,
+        A3 = 4,
+        A4 = 5,
+        A5 = 6,
+        A6 = 7,
+        B2 = 8,
+        B3 = 9,
+        B4 = 10,
+        B5 = 11,
+        B6 = 12
     }
 
     //[Native]
-    public enum FSMetadataKeyType
+    public enum FSDocViewerPrefsPrintScale 
     {
-        Standard = 1,
-        Custom = 2
-    }
-
-    //[Native]
-    public enum FSFieldType
-    {
-        UnknownType = 0,
-        PushButton,
-        CheckBox,
-        RadioButton,
-        ComboBox,
-        ListBox,
-        TextField,
-        Signature
-    }
-
-    //[Native]
-    public enum FSFieldFlags
-    {
-        Readonly = 1,
-        Required = 2,
-        NoExport = 4,
-        ButtonNoToggleToOff = 256,
-        ButtonRadiosInUnison = 512,
-        TextMultiline = 256,
-        TextPassword = 512,
-        TextDoNotScroll = 1024,
-        TextCombo = 2048,
-        ComboEdit = 256,
-        ChoiseMultiselect = 256
-    }
-
-    //[Native]
-    public enum FSLayerUsageType
-    {
-        View = 0,
-        Design,
-        Print,
-        Export,
-        Zoom
-    }
-
-    //[Native]
-    public enum FSLayerUsageState
-    {
-        On = 0,
-        Off,
-        Unchanged,
-        Undefined
-    }
-
-    //[Native]
-    public enum FSImageType
-    {
-        Unknown = -1,
         None = 0,
-        Bmp = 1,
-        Jpg = 2,
-        Png = 3,
-        Gif = 4,
-        Tif = 5,
-        Jpx = 6,
-        Jbig2 = 8
+        AppDefault = 1
     }
 
     //[Native]
-    public enum FSRenderColorMode
+    public enum FSDocViewerPrefsViewerPref 
+    {
+        HideToolbar = 0,
+        HideMenubar = 1,
+        HideWindowUI = 2,
+        FitWindow = 3,
+        CenterWindow = 4,
+        DisplayDocTitle = 5
+    }
+
+    //[Native]
+    public enum FSPageLabelsStyle 
+    {
+        None = 0,
+        DecimalNums = 1,
+        UpperRomanNums = 2,
+        LowerRomanNums = 3,
+        UpperLetters = 4,
+        LowerLetters = 5
+    }
+
+    //[Native]
+    public enum FSReflowPageFlags 
     {
         Normal = 0,
-        Mapping = 2
+        WithImage = 1,
+        NoTruncate = 2
     }
 
     //[Native]
-    public enum FSRenderContentFlag
-    {
-        Page = 1 << 0,
-        Annot = 1 << 1
-    }
-
-    //[Native]
-    public enum FSDeviceType
-    {
-        Printer = 0,
-        Display = 1
-    }
-
-    //[Native]
-    public enum FSPDFObjectType
-    {
-        InvalidType = 0,
-        Boolean,
-        Number,
-        String,
-        Name,
-        Array,
-        Dictionary,
-        Stream,
-        Null,
-        Reference
-    }
-
-    //[Native]
-    public enum FSSearchFlag
+    public enum FSTextPageTextParseFlags 
     {
         Normal = 0,
-        MatchCase = 1 << 0,
-        MatchWholeWord = 1 << 1,
-        Consecutive = 1 << 2
+        OutputHyphen = 1,
+        UseStreamOrder = 2
     }
 
     //[Native]
-    public enum FSSignatureStates
-    {
-        Unknown = 0,
-        Unsigned = 1 << 0,
-        Signed = 1 << 1,
-        VerifyValid = 1 << 2,
-        VerifyInvalid = 1 << 3,
-        VerifyErrorData = 1 << 4,
-        VerifyNoSupportWay = 1 << 5,
-        VerifyErrorByteRange = 1 << 6,
-        VerifyChange = 1 << 7,
-        VerifyIncredible = 1 << 8,
-        NoSignData = 1 << 9,
-        VerifyIssueValid = 1 << 12,
-        VerifyIssueUnknown = 1 << 13,
-        VerifyIssueRevoke = 1 << 14,
-        VerifyIssueExpire = 1 << 15,
-        VerifyIssueUncheck = 1 << 16,
-        VerifyIssueCurrent = 1 << 17,
-        VerifyTimestampNone = 1 << 18,
-        VerifyTimestampDoc = 1 << 19,
-        VerifyTimestampValid = 1 << 20,
-        VerifyTimestampInvalid = 1 << 21,
-        VerifyTimestampExpire = 1 << 22,
-        VerifyTimestampIssueUnknown = 1 << 23,
-        VerifyTimestampIssueInvalid = 1 << 24,
-        VerifyTimestampTimeBefore = 1 << 25
-    }
-
-    //[Native]
-    public enum FSSignatureAPFlags
-    {
-        FoxitFlag = 1 << 0,
-        Label = 1 << 1,
-        Reason = 1 << 2,
-        SigningTime = 1 << 3,
-        Dn = 1 << 4,
-        Location = 1 << 5,
-        Signer = 1 << 6,
-        Bitmap = 1 << 7,
-        Text = 1 << 8
-    }
-
-    //[Native]
-    public enum FSSignatureKeyName
-    {
-        Signer = 0,
-        Location,
-        Reason,
-        ContactInfo,
-        Dn,
-        Text,
-        Filter,
-        SubFilter
-    }
-
-    //[Native]
-    public enum FSDigestAlgorithm
-    {
-        e_digestSHA1 = 0,
-        e_digestSHA256,
-        e_digestSHA384,
-        e_digestSHA512
-    }
-
-    //[Native]
-    public enum FSReflowFlags
+    public enum FSTextSearchSearchFlags 
     {
         Normal = 0,
-        WithImage = 1 << 0,
-        NoTruncate = 1 << 1
+        MatchCase = 1,
+        MatchWholeWord = 2,
+        Consecutive = 4
     }
 
     //[Native]
-    public enum FSWatermarkPosition
+    public enum FSSecurityHandlerCipherType 
+    {
+        None = 0,
+        Rc4 = 1,
+        Aes = 2
+    }
+
+    //[Native]
+    public enum FSTabOrderMgrOrderType 
+    {
+        None = 0,
+        Row = 1,
+        Column = 2,
+        Structure = 3
+    }
+
+    //[Native]
+    public enum FSWatermarkSettingsPosition 
     {
         TopLeft = 0,
         TopCenter = 1,
@@ -816,7 +1133,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSWatermarkFlags
+    public enum FSWatermarkSettingsFlags 
     {
         ASPageContents = 0,
         ASAnnot = 1,
@@ -826,49 +1143,338 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSWatermarkFontStyle
+    public enum FSWatermarkTextPropertiesFontStyle 
     {
         Normal = 0,
         Underline = 1
     }
 
     //[Native]
-    public enum FSWatermarkTextAlignment
+    public enum FSFillerVirtualKeyCode 
     {
-        Left = 0,
-        Center = 1,
-        Right = 2
+        Unknown = 0,
+        Back = 8,
+        Tab = 9,
+        Return = 13,
+        Shift = 16,
+        Control = 17,
+        Menu = 18,
+        Pause = 19,
+        Escape = 27,
+        Space = 32,
+        Prior = 33,
+        Next = 34,
+        End = 35,
+        Home = 36,
+        Left = 37,
+        Up = 38,
+        Right = 39,
+        Down = 40,
+        Print = 42,
+        Snapshot = 44,
+        Insert = 45,
+        Delete = 46,
+        Help = 47,
+        FSFillerVkey0 = 48,
+        FSFillerVkey1 = 49,
+        FSFillerVkey2 = 50,
+        FSFillerVkey3 = 51,
+        FSFillerVkey4 = 52,
+        FSFillerVkey5 = 53,
+        FSFillerVkey6 = 54,
+        FSFillerVkey7 = 55,
+        FSFillerVkey8 = 56,
+        FSFillerVkey9 = 57,
+        A = 65,
+        B = 66,
+        C = 67,
+        D = 68,
+        E = 69,
+        F = 70,
+        G = 71,
+        H = 72,
+        I = 73,
+        J = 74,
+        K = 75,
+        L = 76,
+        M = 77,
+        N = 78,
+        O = 79,
+        P = 80,
+        Q = 81,
+        R = 82,
+        S = 83,
+        T = 84,
+        U = 85,
+        V = 86,
+        W = 87,
+        X = 88,
+        Y = 89,
+        Z = 90,
+        Numpad0 = 96,
+        Numpad1 = 97,
+        Numpad2 = 98,
+        Numpad3 = 99,
+        Numpad4 = 100,
+        Numpad5 = 101,
+        Numpad6 = 102,
+        Numpad7 = 103,
+        Numpad8 = 104,
+        Numpad9 = 105,
+        Multiply = 106,
+        Add = 107,
+        Separator = 108,
+        Subtract = 109,
+        Decimal = 110,
+        Divide = 111,
+        F1 = 112,
+        F2 = 113,
+        F3 = 114,
+        F4 = 115,
+        F5 = 116,
+        F6 = 117,
+        F7 = 118,
+        F8 = 119,
+        F9 = 120,
+        F10 = 121,
+        F11 = 122,
+        F12 = 123
     }
 
-    public enum FSLayoutMode
+    //[Native]
+    public enum FSFillerEventFlags 
+    {
+        ShiftKey = 1,
+        ControlKey = 2,
+        AltKey = 4,
+        MetaKey = 8,
+        KeyPad = 16,
+        AutoRepeat = 32,
+        LeftButtonDown = 64,
+        MiddleButtonDown = 128,
+        RightButtonDown = 256,
+        Command = 512
+    }
+
+    //[Native]
+    public enum FSFieldType 
+    {
+        Unknown = 0,
+        PushButton = 1,
+        CheckBox = 2,
+        RadioButton = 3,
+        ComboBox = 4,
+        ListBox = 5,
+        TextField = 6,
+        Signature = 7
+    }
+
+    //[Native]
+    public enum FSFieldFlags 
+    {
+        ReadOnly = 1,
+        Required = 2,
+        NoExport = 4,
+        ButtonNoToggleToOff = 256,
+        ButtonRadiosInUnison = 512,
+        TextMultiline = 256,
+        TextPassword = 512,
+        TextDoNotScroll = 1024,
+        TextComb = 2048,
+        ComboEdit = 256,
+        ChoiseMultiSelect = 256
+    }
+
+    //[Native]
+    public enum FSSignatureStates 
+    {
+        Unknown = 0,
+        NoSignData = 512,
+        Unsigned = 1,
+        Signed = 2,
+        VerifyValid = 4,
+        VerifyInvalid = 8,
+        VerifyErrorData = 16,
+        VerifyNoSupportWay = 32,
+        VerifyErrorByteRange = 64,
+        VerifyChange = 128,
+        VerifyIncredible = 256,
+        VerifyIssueValid = 4096,
+        VerifyIssueUnknown = 8192,
+        VerifyIssueRevoke = 16384,
+        VerifyIssueExpire = 32768,
+        VerifyIssueUncheck = 65536,
+        VerifyIssueCurrent = 131072,
+        VerifyTimestampNone = 262144,
+        VerifyTimestampDoc = 524288,
+        VerifyTimestampValid = 1048576,
+        VerifyTimestampInvalid = 2097152,
+        VerifyTimestampExpire = 4194304,
+        VerifyTimestampIssueUnknown = 8388608,
+        VerifyTimestampIssueValid = 16777216,
+        VerifyTimestampTimeBefore = 33554432
+    }
+
+    //[Native]
+    public enum FSSignatureAPFlags 
+    {
+        FoxitFlag = 1,
+        Label = 2,
+        Reason = 4,
+        SigningTime = 8,
+        Dn = 16,
+        Location = 32,
+        Signer = 64,
+        Bitmap = 128,
+        Text = 256
+    }
+
+    //[Native]
+    public enum FSSignatureKeyName 
+    {
+        Signer = 0,
+        Location = 1,
+        Reason = 2,
+        ContactInfo = 3,
+        Dn = 4,
+        Text = 5
+    }
+
+    //[Native]
+    public enum FSSignatureDigestAlgorithm 
+    {
+        FSSignatureDigestSHA1 = 0,
+        FSSignatureDigestSHA256 = 1,
+        FSSignatureDigestSHA384 = 2,
+        FSSignatureDigestSHA512 = 3
+    }
+
+    //[Native]
+    public enum FSPDFNameTreeType 
+    {
+        Dests = 1,
+        JavaScript = 2,
+        EmbeddedFiles = 3
+    }
+
+    //[Native]
+    public enum FSPDFObjectType 
+    {
+        InvalidType = 0,
+        Boolean = 1,
+        Number = 2,
+        String = 3,
+        Name = 4,
+        Array = 5,
+        Dictionary = 6,
+        Stream = 7,
+        Null = 8,
+        Reference = 9
+    }
+
+    //[Native]
+    public enum FSPDFStreamFilter 
+    {
+        Unknown = -1,
+        NoneDecode = 0,
+        ASCIIHexDecode = 1,
+        ASCII85Decode = 2,
+        LZWDecode = 3,
+        FlateDecode = 4,
+        RunLengthDecode = 5,
+        CCITTFaxDecode = 6,
+        JBIG2Decode = 7,
+        DCTDecode = 8,
+        JPXDecode = 9,
+        Crypt = 10
+    }
+
+    public enum PdfLayoutMode 
     {
         Unknown = 0,
         Continuous,
         Single,
         Two,
-        Reflow
+        Reflow,
+        TwoLeft,
+        TwoRight,
+        TwoMiddle
     }
 
-    public enum FSReflowMode
+    public enum PdfReflowReflowmode
     {
         None = -1,
         Withimage = 0,
         Onlytext
     }
 
-    public enum FSDisplayZoomMode
+    public enum PdfDisplayZoommode 
     {
         Unknown = 0,
-        FitPage,
+        Fitpage,
         Fitwidth,
         Fitheight
     }
 
-    public enum FSCropMode
+    public enum PdfCropMode
     {
         None = -1,
         Contentsbox,
         Detection,
         Customized
     }
+
+    public enum PDF_LAYOUT_MODE
+    {
+        /** @brief  Unknown page mode. */
+        PDF_LAYOUT_MODE_UNKNOWN = 0,
+        /** @brief  Continuous page mode. */
+        PDF_LAYOUT_MODE_CONTINUOUS,
+        /** @brief  Single page mode. */
+        PDF_LAYOUT_MODE_SINGLE,
+        /** @brief  Facing mode. */
+        PDF_LAYOUT_MODE_TWO,
+        /** @brief  Reflow mode. */
+        PDF_LAYOUT_MODE_REFLOW,
+        /** @brief  Facing mode. Cover page left */
+        PDF_LAYOUT_MODE_TWO_LEFT,
+        /** @brief  Facing mode. Cover page right */
+        PDF_LAYOUT_MODE_TWO_RIGHT,
+        /** @brief  Facing mode. Cover page middle */
+        PDF_LAYOUT_MODE_TWO_MIDDLE
+    }
+
+    public enum PDF_REFLOW_REFLOWMODE
+    {
+        /** @brief  No reflow. */
+        PDF_REFLOW_NONE = -1,
+        /** @brief Reflow both text and image on PDF page. */
+        PDF_REFLOW_WITHIMAGE = 0,
+        /** @brief Reflow just text on PDF page. */
+        PDF_REFLOW_ONLYTEXT
+    }
+
+    public enum PDF_DISPLAY_ZOOMMODE
+    {
+        /** @brief  Zoom mode: unknown. */
+        PDF_DISPLAY_ZOOMMODE_UNKNOWN = 0,
+        /** @brief  Zoom mode: fit page. */
+        PDF_DISPLAY_ZOOMMODE_FITPAGE,
+        /** @brief  Zoom mode: fit page width. */
+        PDF_DISPLAY_ZOOMMODE_FITWIDTH,
+        /** @brief  Zoom mode: fit page height. */
+        PDF_DISPLAY_ZOOMMODE_FITHEIGHT
+    }
+
+    public enum PDF_CROP_MODE {
+        /** @brief  No crop. */
+        PDF_CROP_MODE_NONE = -1,
+        /** @brief  Crop margin according to bounding box of all contents. */
+        PDF_CROP_MODE_CONTENTSBOX,
+        /** @brief  Crop margin by detecting paths or images. */
+        PDF_CROP_MODE_DETECTION,
+        /** @brief  Crop margin with specified pages & rects */
+        PDF_CROP_MODE_CUSTOMIZED,
+    }
+
 }

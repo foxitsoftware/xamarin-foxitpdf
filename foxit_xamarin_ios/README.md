@@ -4,7 +4,7 @@ Use the Foxit Mobile PDF SDK with Xamarin on iOS
 Introduction
 ------------
 
-This sample project works with the Foxit RDK v5 and is a direct port of the `complete_pdf_viewer` Objective-C sample project included in the RDK.
+This sample project works with the Foxit RDK v6 and is a direct port of the `complete_pdf_viewer` Objective-C sample project included in the RDK.
 
 Setup
 -----
@@ -12,7 +12,7 @@ Setup
 The sample project is ready to run but it requires the addition of four files. These files should be placed into the `libs` directory:
 
 * `FoxitRDK.framework`
-* `libFoxitRDKUIExtensions.a`	
+* `uiextensionsDynamic.framework`	
 * `rdk_key.txt`
 * `rdk_sn.txt`
 

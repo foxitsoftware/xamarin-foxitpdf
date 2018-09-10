@@ -13,6 +13,7 @@
 using Foundation;
 using UIKit;
 using FoxitRDK;
+using FoxitRDKUI;
 using System.IO;
 using System;
 

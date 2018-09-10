@@ -14,6 +14,7 @@ using System;
 using System.IO;
 using UIKit;
 using FoxitRDK;
+using FoxitRDKUI;
 using Foundation;
 using CoreFoundation;
 
@@ -55,7 +56,7 @@ namespace FoxitRDKDemo
             }
 
             FSFileListViewController fileListViewController = new FSFileListViewController();
-            fileListViewController.ADelegate = this;
+            fileListViewController.WeakDelegate = this;
             this.pdfViewControl.RegisterDocEventListener(fileListViewController);
 
             this.rootViewController = new UINavigationController(fileListViewController);
@@ -76,7 +77,7 @@ namespace FoxitRDKDemo
                 }
             };
 
-            this.pdfViewControl.ExtensionsManager = this.extensionsMgr;
+            this.pdfViewControl.ExtensionsManager = extensionsMgr;
         }
 
         public override void DidReceiveMemoryWarning()

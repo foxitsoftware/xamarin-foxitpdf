@@ -3524,8 +3524,8 @@ namespace FoxitRDK
 
         // -(BOOL)resetAppearanceStream;
         [Export("resetAppearanceStream")]
-        
-        bool ResetAppearanceStream { get; }
+
+        bool ResetAppearanceStream();
 
         // -(FSRectI *)getDeviceRect:(BOOL)is_transform_icon matrix:(FSMatrix2D *)matrix;
         [Export("getDeviceRect:matrix:")]

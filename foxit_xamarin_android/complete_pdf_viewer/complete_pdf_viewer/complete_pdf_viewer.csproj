@@ -52,6 +52,15 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cropper">
+      <HintPath>..\..\Cropper\Cropper\obj\Debug\Cropper.dll</HintPath>
+    </Reference>
+    <Reference Include="FoxitRDK">
+      <HintPath>..\..\FoxitRDK\FoxitRDK\obj\Debug\FoxitRDK.dll</HintPath>
+    </Reference>
+    <Reference Include="FoxitUIExtensions">
+      <HintPath>..\..\FoxitUIExtensions\FoxitUIExtensions\obj\Debug\FoxitUIExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -65,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\uiextensions_config.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -103,20 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Cropper\Cropper\Cropper.csproj">
-      <Project>{56ca4dbd-6301-40e4-b60a-55522674a0c0}</Project>
-      <Name>Cropper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FoxitRDK\FoxitRDK\FoxitRDK.csproj">
-      <Project>{c3f70847-6341-4bef-8c9b-224ff64065ae}</Project>
-      <Name>FoxitRDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FoxitUIExtensions\FoxitUIExtensions\FoxitUIExtensions.csproj">
-      <Project>{5c736def-108d-4948-b06b-c7c7569f1e72}</Project>
-      <Name>FoxitUIExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -537,6 +537,38 @@ namespace FoxitRDKUI
 		// @optional -(BOOL)shouldDrawAnnot:(FSAnnot * _Nonnull)annot inPDFViewCtrl:(FSPDFViewCtrl * _Nonnull)pdfViewCtrl;
 		[Export ("shouldDrawAnnot:inPDFViewCtrl:")]
 		bool ShouldDrawAnnot (FSAnnot annot, FSPDFViewCtrl pdfViewCtrl);
+
+		// @optional -(void)onXFAWidgetSelected:(FSXFAWidget * _Nonnull)widget;
+		[Export ("onXFAWidgetSelected:")]
+		void OnXFAWidgetSelected (FSXFAWidget widget);
+
+		// @optional -(void)onXFAWidgetDeselected:(FSXFAWidget * _Nonnull)widget;
+		[Export ("onXFAWidgetDeselected:")]
+		void OnXFAWidgetDeselected (FSXFAWidget widget);
+
+		// @optional -(BOOL)onPageViewTap:(int)pageIndex recognizer:(UITapGestureRecognizer * _Nonnull)recognizer widget:(FSXFAWidget * _Nullable)widget;
+		[Export ("onPageViewTap:recognizer:widget:")]
+		bool OnPageViewTap (int pageIndex, UITapGestureRecognizer recognizer, [NullAllowed] FSXFAWidget widget);
+
+		// @optional -(BOOL)onPageViewShouldBegin:(int)pageIndex recognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer widget:(FSXFAWidget * _Nullable)widget;
+		[Export ("onPageViewShouldBegin:recognizer:widget:")]
+		bool OnPageViewShouldBegin (int pageIndex, UIGestureRecognizer gestureRecognizer, [NullAllowed] FSXFAWidget widget);
+
+		// @optional -(BOOL)onPageViewTouchesBegan:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event widget:(FSXFAWidget * _Nullable)widget;
+		[Export ("onPageViewTouchesBegan:touches:withEvent:widget:")]
+		bool OnPageViewTouchesBegan (int pageIndex, NSSet touches, UIEvent @event, [NullAllowed] FSXFAWidget widget);
+
+		// @optional -(BOOL)onPageViewTouchesMoved:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event widget:(FSXFAWidget * _Nullable)widget;
+		[Export ("onPageViewTouchesMoved:touches:withEvent:widget:")]
+		bool OnPageViewTouchesMoved (int pageIndex, NSSet touches, UIEvent @event, [NullAllowed] FSXFAWidget widget);
+
+		// @optional -(BOOL)onPageViewTouchesEnded:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event widget:(FSXFAWidget * _Nullable)widget;
+		[Export ("onPageViewTouchesEnded:touches:withEvent:widget:")]
+		bool OnPageViewTouchesEnded (int pageIndex, NSSet touches, UIEvent @event, [NullAllowed] FSXFAWidget widget);
+
+		// @optional -(void)onDraw:(int)pageIndex inContext:(CGContextRef _Nonnull)context widget:(FSXFAWidget * _Nullable)widget;
+		[Export ("onDraw:inContext:widget:")]
+        unsafe void OnDraw (int pageIndex, IntPtr context, [NullAllowed] FSXFAWidget widget);
 	}
 
 	// @protocol IFullScreenListener <NSObject>
@@ -666,6 +698,10 @@ namespace FoxitRDKUI
 		[Export ("isDocModified")]
 		bool IsDocModified { get; set; }
 
+		// @property (assign, nonatomic) BOOL isMultiFileMode;
+		[Export ("isMultiFileMode")]
+		bool IsMultiFileMode { get; set; }
+
 		// @property (assign, nonatomic) FSPDFDocSaveFlags docSaveFlag;
 		[Export ("docSaveFlag", ArgumentSemantic.Assign)]
 		FSPDFDocSaveFlags DocSaveFlag { get; set; }
@@ -673,6 +709,10 @@ namespace FoxitRDKUI
 		// @property (nonatomic, strong) id<FSActionCallback> _Nonnull actionHandler;
 		[Export ("actionHandler", ArgumentSemantic.Strong)]
 		FSActionCallback ActionHandler { get; set; }
+
+		// @property (nonatomic, strong) FSXFAWidget * _Nullable currentWidget;
+		[NullAllowed, Export ("currentWidget", ArgumentSemantic.Strong)]
+		FSXFAWidget CurrentWidget { get; set; }
 
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]
@@ -811,6 +851,10 @@ namespace FoxitRDKUI
 		[Static]
 		[Export ("printDoc:fromRect:inView:animated:jobName:delegate:completionHandler:")]
 		void PrintDoc (FSPDFDoc doc, CGRect rect, UIView view, bool animated, [NullAllowed] string jobName, [NullAllowed] UIPrintInteractionControllerDelegate @delegate, [NullAllowed] UIPrintInteractionCompletionHandler completion);
+
+		// -(FSXFAWidget * _Nonnull)getXFAWidgetAtPoint:(CGPoint)pvPoint pageIndex:(int)pageIndex;
+		[Export ("getXFAWidgetAtPoint:pageIndex:")]
+		FSXFAWidget GetXFAWidgetAtPoint (CGPoint pvPoint, int pageIndex);
 	}
 
 	// @interface UIExtensionsModulesConfig : NSObject

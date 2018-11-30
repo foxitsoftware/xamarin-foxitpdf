@@ -85,13 +85,27 @@ namespace FoxitRDK
         Winding = 2
     }
 
-    //[Native]
-    public enum FSProgressiveState 
-    {
-        Error = 0,
-        ToBeContinued = 1,
-        Finished = 2
-    }
+
+	public enum FSPosition
+	{
+		TopLeft = 0,
+		TopCenter = 1,
+		TopRight = 2,
+		CenterLeft = 3,
+		Center = 4,
+		CenterRight = 5,
+		BottomLeft = 6,
+		BottomCenter = 7,
+		BottomRight = 8
+	}
+
+	//[Native]
+	public enum FSProgressiveState
+	{
+		Error = 0,
+		ToBeContinued = 1,
+		Finished = 2
+	}
 
     //[Native]
     public enum FSGraphStateLineCapStyle 
@@ -498,12 +512,42 @@ namespace FoxitRDK
         HyperLink = 3
     }
 
-    //[Native]
-    public enum FSFDFDocType 
-    {
-        Fdf = 0,
-        Xfdf = 1
-    }
+	//[Native]
+	public enum FSXFAWidgetWidgetType 
+	{
+		Barcode = 0,
+		PushButton = 1,
+		CheckButton = 2,
+		Arc = 3,
+		DateTimeEdit = 4,
+		NumericEdit = 5,
+		Signature = 6,
+		ChoiceList = 7,
+		ImageEdit = 8,
+		Line = 9,
+		PasswordEdit = 10,
+		RadioButton = 11,
+		Rectangle = 12,
+		TextEdit = 13,
+		Unknown = 14
+	}
+
+	//[Native]
+	public enum FSXFAWidgetPresenceProperty
+	{
+		Unknown = 0,
+		Visible = 1,
+		Hidden = 2,
+		Inactive = 3,
+		Invisible = 4
+	}
+
+	//[Native]
+	public enum FSFDFDocType 
+	{
+		Fdf = 0,
+		Xfdf = 1
+	}
 
     //[Native]
     public enum FSActionCallbackLanguage 
@@ -552,41 +596,169 @@ namespace FoxitRDK
         HitCountDESC = 2
     }
 
-    //[Native]
-    public enum FSDestinationZoomMode 
-    {
-        Xyz = 1,
-        FitPage = 2,
-        FitHorz = 3,
-        FitVert = 4,
-        FitRect = 5,
-        FitBBox = 6,
-        FitBHorz = 7,
-        FitBVert = 8
-    }
-    
-    public enum FSActionType 
-    {
-        Unknown = 0,
-        Goto = 1,
-        GoToR = 2,
-        GoToE = 3,
-        Launch = 4,
-        Thread = 5,
-        Uri = 6,
-        Sound = 7,
-        Movie = 8,
-        Hide = 9,
-        Named = 10,
-        SubmitForm = 11,
-        ResetForm = 12,
-        ImportData = 13,
-        JavaScript = 14,
-        SetOCGState = 15,
-        Rendition = 16,
-        Trans = 17,
-        GoTo3DView = 18
-    }
+	//[Native]
+	public enum FSPDFNameTreeType
+	{
+		Dests = 1,
+		JavaScript = 2,
+		EmbeddedFiles = 3
+	}
+
+	//[Native]
+	public enum FSPDFObjectType
+	{
+		InvalidType = 0,
+		Boolean = 1,
+		Number = 2,
+		String = 3,
+		Name = 4,
+		Array = 5,
+		Dictionary = 6,
+		Stream = 7,
+		Null = 8,
+		Reference = 9
+	}
+
+	//[Native]
+	public enum FSPDFStreamFilter
+	{
+		Unknown = -1,
+		NoneDecode = 0,
+		ASCIIHexDecode = 1,
+		ASCII85Decode = 2,
+		LZWDecode = 3,
+		FlateDecode = 4,
+		RunLengthDecode = 5,
+		CCITTFaxDecode = 6,
+		JBIG2Decode = 7,
+		DCTDecode = 8,
+		JPXDecode = 9,
+		Crypt = 10
+	}
+
+	//[Native]
+	public enum FSPDFNumberTreeType
+	{
+		FSPDFNumberTreePageLabels = 1
+	}
+
+	//[Native]
+	public enum FSRenditionMediaOptionType
+	{
+		MustBeHonored = 0,
+		BestEffort = 1
+	}
+
+	//[Native]
+	public enum FSRenditionMediaPermission
+	{
+		Never = 0,
+		Extract = 1,
+		Access = 2,
+		Always = 3
+	}
+
+	//[Native]
+	public enum FSRenditionMediaPlayerType
+	{
+		MustUsed = 0,
+		Available = 1,
+		NotUsed = 2
+	}
+
+	//[Native]
+	public enum FSRenditionMediaPlayerFitStyle
+	{
+		Meet = 0,
+		Slice = 1,
+		Fill = 2,
+		Scroll = 3,
+		Hidden = 4,
+		Default = 5
+	}
+
+	//[Native]
+	public enum FSRenditionWindowType
+	{
+		Floating = 0,
+		FullScreen = 1,
+		Hidden = 2,
+		AnnotRect = 3
+	}
+
+	//[Native]
+	public enum FSRenditionMonitorSpecifier
+	{
+		Largest = 0,
+		Smallest = 1,
+		Primary = 2,
+		GreatestColorDepth = 3,
+		GreatestArea = 4,
+		GreatestHeight = 5,
+		GreatestWidth = 6
+	}
+
+	//[Native]
+	public enum FSRenditionFloatingWindowRelatedWindowType
+	{
+		Document = 0,
+		Application = 1,
+		FullDesktop = 2,
+		Monitor = 3
+	}
+
+	//[Native]
+	public enum FSRenditionFloatingWindowResizeType
+	{
+		No = 0,
+		AspectRatio = 1,
+		Anyway = 2
+	}
+
+	//[Native]
+	public enum FSRenditionFloatingWindowOffscreenEvent
+	{
+		None = 0,
+		MoveResize = 1,
+		NonViable = 2
+	}
+
+	//[Native]
+	public enum FSDestinationZoomMode 
+	{
+		Xyz = 1,
+		FitPage = 2,
+		FitHorz = 3,
+		FitVert = 4,
+		FitRect = 5,
+		FitBBox = 6,
+		FitBHorz = 7,
+		FitBVert = 8
+	}
+
+	//[Native]
+	public enum FSActionType
+	{
+		Unknown = 0,
+		Goto = 1,
+		GoToR = 2,
+		GoToE = 3,
+		Launch = 4,
+		Thread = 5,
+		Uri = 6,
+		Sound = 7,
+		Movie = 8,
+		Hide = 9,
+		Named = 10,
+		SubmitForm = 11,
+		ResetForm = 12,
+		ImportData = 13,
+		JavaScript = 14,
+		SetOCGState = 15,
+		Rendition = 16,
+		Trans = 17,
+		GoTo3DView = 18
+	}
 
     //[Native]
     public enum FSActionNewWindowFlag 
@@ -614,8 +786,19 @@ namespace FoxitRDK
         EmbedForm = 8192
     }
 
-    ////[Native]
-    public enum FSAdditionalActionTriggerEvent 
+	//[Native]
+	public enum FSRenditionActionOperationType 
+	{
+		None = -1,
+		Associate = 0,
+		Stop = 1,
+		Pause = 2,
+		Resume = 3,
+		Play = 4
+	}
+	
+	
+	public enum FSAdditionalActionTriggerEvent 
     {
         PageOpened = 0,
         PageClosed = 1,
@@ -916,7 +1099,15 @@ namespace FoxitRDK
         NoLinks = 4
     }
 
-    //[Native]
+	//[Native]
+	public enum FSPDFDocWrapperType
+	{
+		None = 0,
+		Foxit = 1,
+		Pdfv2 = 2
+	}
+
+
     public enum FSLayerTreeUsageState 
     {
         On = 0,
@@ -1117,21 +1308,7 @@ namespace FoxitRDK
         Column = 2,
         Structure = 3
     }
-
-    //[Native]
-    public enum FSWatermarkSettingsPosition 
-    {
-        TopLeft = 0,
-        TopCenter = 1,
-        TopRight = 2,
-        CenterLeft = 3,
-        Center = 4,
-        CenterRight = 5,
-        BottomLeft = 6,
-        BottomCenter = 7,
-        BottomRight = 8
-    }
-
+ 
     //[Native]
     public enum FSWatermarkSettingsFlags 
     {
@@ -1299,6 +1476,7 @@ namespace FoxitRDK
         VerifyErrorByteRange = 64,
         VerifyChange = 128,
         VerifyIncredible = 256,
+		VerifyNoChange = 1024,
         VerifyIssueValid = 4096,
         VerifyIssueUnknown = 8192,
         VerifyIssueRevoke = 16384,
@@ -1347,46 +1525,6 @@ namespace FoxitRDK
         FSSignatureDigestSHA256 = 1,
         FSSignatureDigestSHA384 = 2,
         FSSignatureDigestSHA512 = 3
-    }
-
-    //[Native]
-    public enum FSPDFNameTreeType 
-    {
-        Dests = 1,
-        JavaScript = 2,
-        EmbeddedFiles = 3
-    }
-
-    //[Native]
-    public enum FSPDFObjectType 
-    {
-        InvalidType = 0,
-        Boolean = 1,
-        Number = 2,
-        String = 3,
-        Name = 4,
-        Array = 5,
-        Dictionary = 6,
-        Stream = 7,
-        Null = 8,
-        Reference = 9
-    }
-
-    //[Native]
-    public enum FSPDFStreamFilter 
-    {
-        Unknown = -1,
-        NoneDecode = 0,
-        ASCIIHexDecode = 1,
-        ASCII85Decode = 2,
-        LZWDecode = 3,
-        FlateDecode = 4,
-        RunLengthDecode = 5,
-        CCITTFaxDecode = 6,
-        JBIG2Decode = 7,
-        DCTDecode = 8,
-        JPXDecode = 9,
-        Crypt = 10
     }
 
     public enum PdfLayoutMode 

@@ -40,7 +40,10 @@ namespace Com.Foxit.Pdfreader
             Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 
             pdfViewCtrl = new PDFViewCtrl(this);
-            uiExtensionsManager = new UIExtensionsManager(this, pdfViewCtrl);
+
+            System.IO.Stream stream = Assets.Open("uiextensions_config.json");
+            UIExtensionsManager.Config config = new UIExtensionsManager.Config(stream);
+            uiExtensionsManager = new UIExtensionsManager(this, pdfViewCtrl, config);
             uiExtensionsManager.AttachedActivity = this;
             uiExtensionsManager.RegisterModule(App.Instance().GetLocalModule(filter));
 

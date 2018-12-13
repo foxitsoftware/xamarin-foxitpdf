@@ -23,7 +23,8 @@ Setup
 
 5: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
 
-####(Optional) 
+####(Optional)   
+
 - - -
 If you want to open a RMS protected PDF file, you should:
 

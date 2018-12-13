@@ -49,6 +49,7 @@ namespace Com.Foxit.Pdfreader
 
             uiExtensionsManager.OnCreate(this, pdfViewCtrl, savedInstanceState);
             pdfViewCtrl.UIExtensionsManager = uiExtensionsManager;
+            pdfViewCtrl.AttachedActivity = this;
 
             filePath = AppFileUtil.GetFilePath(this, this.Intent, HomeModule.FileExtra);
             uiExtensionsManager.OpenDocument(filePath, null);
@@ -126,6 +127,15 @@ namespace Com.Foxit.Pdfreader
                 }
             }
             return base.OnKeyDown(keyCode, e);
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (uiExtensionsManager != null)
+            {
+                uiExtensionsManager.HandleActivityResult(this,requestCode, (int)resultCode, data);
+            }
         }
 
         public override void OnConfigurationChanged(Configuration newConfig)

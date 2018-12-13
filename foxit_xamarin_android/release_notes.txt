@@ -1,18 +1,39 @@
 Foxit PDF SDK For iOS&Android
 
+***  Release  Date:  Dec 07,  2018  ***
+Version 6.2.1 this is a minor release
+
+New Features
+
+* RMS V1/V2 Support at UI Level
+
+Enhancements
+
+* Implement Color Palette at UI Level - iOS
+* The UI default colors and Color palette for Consistency at UI Level
+
+Bug Fixes
+
+* Fixes issue on method GotoPage()
+* Fixes issue on filling the form
+* Fixes crash issue when reseting field multiple times for some PDFs
+* Fixes crash issue when clicking '+' button for dynamic XFA
+* Fixes adaptive UI issue of iphone xs max
+* Fixes print annots issue for dynamic XFA
+
 ***  Release  Date:  Nov 09,  2018  ***
 Version 6.2. this is a minor release
 
 New Features
 
-* Multimedia Annotations Support(Video&Sound) at UIlevel
+* Multimedia Annotations Support(Video&Sound) at UI level
 * XFA Forms handling (Read & Fill) support at UI level 
 
 Enhancements/Bug Fixes
 
 * Event handler to catch selection/tapping on form field object
   (TextBox, ComboBox, CheckBox, PushButton, RadioButton, ListBox)
-* Rendering performance enhancementfor Android 6.1
+* Rendering performance enhancement for Android 6.1
 * Fixes unexpected scrolling actions triggered by clicking a form field in continuous page mode for iOS
 * Fixes full text search issue on iOS 12
 * Fixes crash issue when duplicating a page multiple times

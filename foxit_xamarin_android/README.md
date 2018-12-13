@@ -25,7 +25,6 @@ Setup
 
 ####(Optional)   
 
-- - -
 If you want to open a RMS protected PDF file, you should:
 
 1: `Rebuild` the `Microsoft_Aad_Aadl` , `RMSSDK` and `RMSSDK_UI` project.

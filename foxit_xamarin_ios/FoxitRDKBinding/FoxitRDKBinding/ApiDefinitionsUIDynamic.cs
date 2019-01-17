@@ -436,11 +436,6 @@ namespace FoxitRDKUI
 	[BaseType (typeof(NSObject))]
 	interface IAnnotHandler
 	{
-		// @required -(FSAnnotType)getType;
-		[Abstract]
-		[Export ("getType")]
-		FSAnnotType Type { get; }
-
 		// @required -(BOOL)isHitAnnot:(FSAnnot * _Nonnull)annot point:(FSPointF * _Nonnull)point;
 		[Abstract]
 		[Export ("isHitAnnot:point:")]
@@ -526,6 +521,16 @@ namespace FoxitRDKUI
 		[Export ("onPageViewTouchesCancelled:touches:withEvent:annot:")]
 		bool OnPageViewTouchesCancelled (int pageIndex, NSSet touches, UIEvent @event, FSAnnot annot);
 
+		// @optional -(FSAnnotType)getType;
+		[Export ("getType")]
+		//[Verify (MethodToProperty)]
+		FSAnnotType Type { get; }
+
+		// @optional -(NSString * _Nonnull)getName;
+		[Export ("getName")]
+        //[Verify (MethodToProperty)]
+		string Name { get; }
+
 		// @optional -(void)onDraw:(int)pageIndex inContext:(CGContextRef _Nonnull)context annot:(FSAnnot * _Nullable)annot;
 		[Export ("onDraw:inContext:annot:")]
 		unsafe void OnDraw (int pageIndex, IntPtr context, [NullAllowed] FSAnnot annot);
@@ -609,9 +614,10 @@ namespace FoxitRDKUI
 		[Export ("quitUIExtensionsManager:button:")]
 		void QuitUIExtensionsManager (UIExtensionsManager uiextensionsManager, UIButton button);
 
-		//// @optional -(FSClientInfo * _Nonnull)getClientInfo;
-		//[Export ("getClientInfo")]
-		//FSClientInfo ClientInfo { get; }
+		// @optional -(FSClientInfo * _Nonnull)getClientInfo;
+		[Export ("getClientInfo")]
+		//[Verify (MethodToProperty)]
+		FSClientInfo ClientInfo { get; }
 	}
 
 	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener>

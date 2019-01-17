@@ -10258,6 +10258,10 @@ namespace FoxitRDK
         [Abstract]
         [Export ("pageViewEvent:page_view_event_type:")]
         void PageViewEvent (int page_index, FSDocProviderCallbackPageViewEventType page_view_event_type);
+		// @required -(void)widgetEvent:(FSXFAWidget *)xfa_widget widget_event_type:(FSDocProviderCallbackWidgetEventType)widget_event_type;
+		[Abstract]
+		[Export ("widgetEvent:widget_event_type:")]
+		void WidgetEvent (FSXFAWidget xfa_widget, FSDocProviderCallbackWidgetEventType widget_event_type);
     }
 
     // @interface FSSwiftException : NSObject

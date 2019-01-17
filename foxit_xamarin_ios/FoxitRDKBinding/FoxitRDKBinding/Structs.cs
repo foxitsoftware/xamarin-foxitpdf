@@ -123,13 +123,13 @@ namespace FoxitRDK
         Bevel = 2
     }
 
-    //[Native]
-    public enum FSRangeFilter 
-    {
-        All,
-        Even,
-        Odd
-    }
+	//[Native]
+	public enum FSRangeFilter
+	{
+		All = 0,
+		Even = 1,
+		Odd = 2
+	}
 
     //[Native]
     public enum FSFontStyles 
@@ -479,13 +479,20 @@ namespace FoxitRDK
         AllRemoved = 2
     }
 
-    //[Native]
-    public enum FSXFADocEventType 
-    {
-        Unknown = 0,
-        PostPrint = 1,
-        PrePrint = 2
-    }
+	//[Native]
+	public enum FSDocProviderCallbackWidgetEventType
+	{
+		Added = 0,
+		BeforeRemoved = 1
+	}
+
+	//[Native]
+	public enum FSXFADocEventType
+	{
+		Unknown = 0,
+		PostPrint = 1,
+		PrePrint = 2
+	}
 
     //[Native]
     public enum FSXFADocType 

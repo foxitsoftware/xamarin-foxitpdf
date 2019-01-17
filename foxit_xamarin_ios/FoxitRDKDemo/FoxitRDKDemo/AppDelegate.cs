@@ -30,6 +30,7 @@ namespace FoxitRDKDemo
         {
             CopyPDFFromResourceToDocuments("Sample", false);
             CopyPDFFromResourceToDocuments("complete_pdf_viewer_guide_ios", false);
+            Console.WriteLine("document path " + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
             //NSLog( @"%@", DOCUMENT_PATH); //for finding Documents directory to debug
         }
 
@@ -110,7 +111,8 @@ namespace FoxitRDKDemo
 
                 UIAlertController alert = UIAlertController.Create("Check License", errMsg, UIAlertControllerStyle.Alert);
                 alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alert, true, null);
+                UIViewController rootvc = UIApplication.SharedApplication.KeyWindow.RootViewController;
+                rootvc.PresentViewController(alert, true, null);
 
                 return false;                
             }

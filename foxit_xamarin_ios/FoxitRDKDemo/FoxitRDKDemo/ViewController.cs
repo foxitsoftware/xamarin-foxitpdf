@@ -42,7 +42,7 @@ namespace FoxitRDKDemo
 
             this.pdfViewControl = new FSPDFViewCtrl(new CoreGraphics.CGRect(
                 0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height));
-
+            pdfViewControl.SetRMSAppClientId(appClientId: "972b6681-fa03-4b6b-817b-c8c10d38bd20", redirectURI: "com.foxitsoftware.com.mobilepdf-for-ios://authorize");
             pdfViewControl.RegisterDocEventListener(this);
 
             string configPath = NSBundle.MainBundle.PathForResource("uiextensions_config", "json");

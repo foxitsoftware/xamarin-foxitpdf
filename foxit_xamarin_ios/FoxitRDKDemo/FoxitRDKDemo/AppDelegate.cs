@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2003-2017, Foxit Software Inc..
+ * Copyright (C) 2003-2019, Foxit Software Inc..
  * All Rights Reserved.
  *
  * http://www.foxitsoftware.com
  *
  * The following code is copyrighted and is the proprietary of Foxit Software Inc.. It is not allowed to
- * distribute any parts of Foxit Mobile PDF SDK to third party or public without permission unless an agreement
+ * distribute any parts of Foxit PDF SDK for iOS to third party or public without permission unless an agreement
  * is signed between Foxit Software Inc. and customers to explicitly grant customers permissions.
  * Review legal.txt for additional license and legal information.
  */
@@ -41,7 +41,7 @@ namespace FoxitRDKDemo
             string fromPath = NSBundle.MainBundle.PathForResource(filename, "pdf");
             if ((fromPath == null) || (fromPath == ""))
             {
-                return false;   
+                return false;
             }
 
             string toPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), filename + ".pdf");
@@ -50,7 +50,7 @@ namespace FoxitRDKDemo
             {
                 if (overwrite)
                 {
-                    NSError deleteError = null;   
+                    NSError deleteError = null;
                     if (!fileManager.Remove(toPath, out deleteError))
                     {
                         return false;
@@ -72,7 +72,7 @@ namespace FoxitRDKDemo
                 Console.WriteLine("Failed to copy " + filename + ". " + error.LocalizedDescription);
                 return false;
             }
-                
+
         }
 
         public override UIWindow Window
@@ -114,7 +114,7 @@ namespace FoxitRDKDemo
                 UIViewController rootvc = UIApplication.SharedApplication.KeyWindow.RootViewController;
                 rootvc.PresentViewController(alert, true, null);
 
-                return false;                
+                return false;
             }
 
             return true;
@@ -123,7 +123,7 @@ namespace FoxitRDKDemo
         public override void OnResignActivation(UIApplication application)
         {
             // Invoked when the application is about to move from active to inactive state.
-            // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) 
+            // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message)
             // or when the user quits the application and it begins the transition to the background state.
             // Games should use this method to pause the game.
         }
@@ -142,7 +142,7 @@ namespace FoxitRDKDemo
 
         public override void OnActivated(UIApplication application)
         {
-            // Restart any tasks that were paused (or not yet started) while the application was inactive. 
+            // Restart any tasks that were paused (or not yet started) while the application was inactive.
             // If the application was previously in the background, optionally refresh the user interface.
         }
 
@@ -152,4 +152,3 @@ namespace FoxitRDKDemo
         }
     }
 }
-

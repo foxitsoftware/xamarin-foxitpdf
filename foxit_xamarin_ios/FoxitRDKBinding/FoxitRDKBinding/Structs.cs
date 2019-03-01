@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2003-2017, Foxit Software Inc..
+ * Copyright (C) 2003-2019, Foxit Software Inc..
  * All Rights Reserved.
  *
  * http://www.foxitsoftware.com
  *
  * The following code is copyrighted and is the proprietary of Foxit Software Inc.. It is not allowed to
- * distribute any parts of Foxit Mobile PDF SDK to third party or public without permission unless an agreement
+ * distribute any parts of Foxit PDF SDK for iOS to third party or public without permission unless an agreement
  * is signed between Foxit Software Inc. and customers to explicitly grant customers permissions.
  * Review legal.txt for additional license and legal information.
  */
@@ -60,7 +60,7 @@ namespace FoxitRDK
     }
 
     ////[Native]
-    public enum FSRotation 
+    public enum FSRotation
     {
         FSRotation0 = 0,
         FSRotation90 = 1,
@@ -70,7 +70,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAlignment 
+    public enum FSAlignment
     {
         Left = 0,
         Center = 1,
@@ -78,7 +78,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFillMode 
+    public enum FSFillMode
     {
         None = 0,
         Alternate = 1,
@@ -108,7 +108,7 @@ namespace FoxitRDK
 	}
 
     //[Native]
-    public enum FSGraphStateLineCapStyle 
+    public enum FSGraphStateLineCapStyle
     {
         Butt = 0,
         Round = 1,
@@ -116,7 +116,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSGraphStateLineJoinStyle 
+    public enum FSGraphStateLineJoinStyle
     {
         Miter = 0,
         Round = 1,
@@ -132,7 +132,7 @@ namespace FoxitRDK
 	}
 
     //[Native]
-    public enum FSFontStyles 
+    public enum FSFontStyles
     {
         FixedPitch = 1,
         Serif = 2,
@@ -146,7 +146,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFontCharset 
+    public enum FSFontCharset
     {
         Ansi = 0,
         Default = 1,
@@ -166,7 +166,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFontStandardID 
+    public enum FSFontStandardID
     {
         Courier = 0,
         CourierB = 1,
@@ -185,7 +185,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPathPointType 
+    public enum FSPathPointType
     {
         MoveTo = 1,
         LineTo = 2,
@@ -195,7 +195,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSBitmapDIBFormat 
+    public enum FSBitmapDIBFormat
     {
         Invalid = 0,
         Rgb = 24,
@@ -207,7 +207,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSBitmapInterpolationFlag 
+    public enum FSBitmapInterpolationFlag
     {
         Downsample = 1,
         Quadratic = 2,
@@ -215,7 +215,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSImageType 
+    public enum FSImageType
     {
         Unknown = -1,
         None = 0,
@@ -229,28 +229,28 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSRendererColorMode 
+    public enum FSRendererColorMode
     {
         Normal = 0,
         Mapping = 2
     }
 
     //[Native]
-    public enum FSRendererContentFlag 
+    public enum FSRendererContentFlag
     {
         Page = 1,
         Annot = 2
     }
 
     //[Native]
-    public enum FSRendererDeviceType 
+    public enum FSRendererDeviceType
     {
         Display = 1,
         Printer = 2
     }
 
     //[Native]
-    public enum FSBarcodeFormat 
+    public enum FSBarcodeFormat
     {
         Code39 = 0,
         Code128 = 1,
@@ -263,7 +263,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSBarcodeQRErrorCorrectionLevel 
+    public enum FSBarcodeQRErrorCorrectionLevel
     {
         Low = 0,
         Medium = 1,
@@ -272,7 +272,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAppProviderCallbackAppInfo 
+    public enum FSAppProviderCallbackAppInfo
     {
         Version = 0,
         Language = 1,
@@ -283,7 +283,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAppProviderCallbackBeepType 
+    public enum FSAppProviderCallbackBeepType
     {
         Error = 0,
         Warning = 1,
@@ -293,7 +293,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAppProviderCallbackStringID 
+    public enum FSAppProviderCallbackStringID
     {
         ValidateFailed = 1,
         CalcOverride = 2,
@@ -400,7 +400,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAppProviderCallbackMsgBoxIconType 
+    public enum FSAppProviderCallbackMsgBoxIconType
     {
         Error = 0,
         Warning = 1,
@@ -409,7 +409,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAppProviderCallbackMsgBoxButtonType 
+    public enum FSAppProviderCallbackMsgBoxButtonType
     {
         Ok = 0,
         OKCancel = 1,
@@ -418,7 +418,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAppProviderCallbackMsgBoxButtonID 
+    public enum FSAppProviderCallbackMsgBoxButtonID
     {
         Ok = 1,
         Cancel = 2,
@@ -427,14 +427,14 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSDocProviderCallbackInvalidateFlag 
+    public enum FSDocProviderCallbackInvalidateFlag
     {
         AllPages = 0,
         CurrentPage = 1
     }
 
     //[Native]
-    public enum FSDocProviderCallbackPrintOption 
+    public enum FSDocProviderCallbackPrintOption
     {
         ShowDialog = 1,
         CanCancel = 2,
@@ -445,7 +445,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSDocProviderCallbackSubmitFormat 
+    public enum FSDocProviderCallbackSubmitFormat
     {
         Xdp = 0,
         Pdf = 1,
@@ -455,7 +455,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSDocProviderCallbackTextEncoding 
+    public enum FSDocProviderCallbackTextEncoding
     {
         None = 0,
         Big5 = 1,
@@ -472,7 +472,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSDocProviderCallbackPageViewEventType 
+    public enum FSDocProviderCallbackPageViewEventType
     {
         Added = 0,
         Removed = 1,
@@ -495,7 +495,7 @@ namespace FoxitRDK
 	}
 
     //[Native]
-    public enum FSXFADocType 
+    public enum FSXFADocType
     {
         Dynamic = 0,
         Static = 1,
@@ -503,7 +503,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSXFADocExportDataType 
+    public enum FSXFADocExportDataType
     {
         Xml = 0,
         StaticXDP = 1,
@@ -511,7 +511,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSXFAWidgetHitTestArea 
+    public enum FSXFAWidgetHitTestArea
     {
         Unknown = 0,
         Client = 1,
@@ -520,7 +520,7 @@ namespace FoxitRDK
     }
 
 	//[Native]
-	public enum FSXFAWidgetWidgetType 
+	public enum FSXFAWidgetWidgetType
 	{
 		Barcode = 0,
 		PushButton = 1,
@@ -550,14 +550,14 @@ namespace FoxitRDK
 	}
 
 	//[Native]
-	public enum FSFDFDocType 
+	public enum FSFDFDocType
 	{
 		Fdf = 0,
 		Xfdf = 1
 	}
 
     //[Native]
-    public enum FSActionCallbackLanguage 
+    public enum FSActionCallbackLanguage
     {
         Unknown = 0,
         Chs = 1,
@@ -578,7 +578,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSActionCallbackAppInfoType 
+    public enum FSActionCallbackAppInfoType
     {
         FormsVersion = 0,
         ViewerType = 1,
@@ -588,7 +588,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSActionCallbackMailType 
+    public enum FSActionCallbackMailType
     {
         Doc = 0,
         Form = 1,
@@ -596,7 +596,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFullTextSearchRankMode 
+    public enum FSFullTextSearchRankMode
     {
         None = 0,
         HitCountASC = 1,
@@ -731,7 +731,7 @@ namespace FoxitRDK
 	}
 
 	//[Native]
-	public enum FSDestinationZoomMode 
+	public enum FSDestinationZoomMode
 	{
 		Xyz = 1,
 		FitPage = 2,
@@ -768,7 +768,7 @@ namespace FoxitRDK
 	}
 
     //[Native]
-    public enum FSActionNewWindowFlag 
+    public enum FSActionNewWindowFlag
     {
         False = 0,
         True = 1,
@@ -776,7 +776,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSSubmitFormActionFlags 
+    public enum FSSubmitFormActionFlags
     {
         Exclude = 1,
         IncludeNoValueFields = 2,
@@ -794,7 +794,7 @@ namespace FoxitRDK
     }
 
 	//[Native]
-	public enum FSRenditionActionOperationType 
+	public enum FSRenditionActionOperationType
 	{
 		None = -1,
 		Associate = 0,
@@ -803,9 +803,9 @@ namespace FoxitRDK
 		Resume = 3,
 		Play = 4
 	}
-	
-	
-	public enum FSAdditionalActionTriggerEvent 
+
+
+	public enum FSAdditionalActionTriggerEvent
     {
         PageOpened = 0,
         PageClosed = 1,
@@ -831,7 +831,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSDefaultAppearanceFlags 
+    public enum FSDefaultAppearanceFlags
     {
         Font = 1,
         TextColor = 2,
@@ -839,7 +839,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSBorderInfoStyle 
+    public enum FSBorderInfoStyle
     {
         Solid = 0,
         Dashed = 1,
@@ -850,7 +850,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSIconFitScaleWayType 
+    public enum FSIconFitScaleWayType
     {
         Always = 1,
         Bigger = 2,
@@ -859,7 +859,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotType 
+    public enum FSAnnotType
     {
         UnknownType = 0,
         Note = 1,
@@ -892,7 +892,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotFlags 
+    public enum FSAnnotFlags
     {
         Invisible = 1,
         Hidden = 2,
@@ -907,7 +907,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotHighlightingMode 
+    public enum FSAnnotHighlightingMode
     {
         None = 0,
         Invert = 1,
@@ -917,7 +917,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotProperty 
+    public enum FSAnnotProperty
     {
         ModifiedDate = 0,
         CreationDate = 1,
@@ -926,7 +926,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotMKEntry 
+    public enum FSAnnotMKEntry
     {
         Rotation = 0,
         BorderColor = 1,
@@ -942,7 +942,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotMKIconCaptionRelation 
+    public enum FSAnnotMKIconCaptionRelation
     {
         NoIcon = 0,
         NoCaption = 1,
@@ -954,7 +954,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAnnotAppearanceType 
+    public enum FSAnnotAppearanceType
     {
         Normal = 0,
         Rollover = 1,
@@ -962,14 +962,14 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSMarkupStateModel 
+    public enum FSMarkupStateModel
     {
         Marked = 1,
         Review = 2
     }
 
     //[Native]
-    public enum FSMarkupState 
+    public enum FSMarkupState
     {
         Marked = 1,
         Unmarked = 2,
@@ -981,7 +981,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSMarkupEndingStyle 
+    public enum FSMarkupEndingStyle
     {
         None = 0,
         Square = 1,
@@ -996,14 +996,14 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSLineCapPos 
+    public enum FSLineCapPos
     {
         Inline = 0,
         Top = 1
     }
 
     //[Native]
-    public enum FSBookmarkStyle 
+    public enum FSBookmarkStyle
     {
         Normal = 0,
         Italic = 1,
@@ -1011,7 +1011,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSBookmarkPosition 
+    public enum FSBookmarkPosition
     {
         FirstChild = 0,
         LastChild = 1,
@@ -1022,7 +1022,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSAssociatedFilesRelationship 
+    public enum FSAssociatedFilesRelationship
     {
         Unspecified = 0,
         Source = 1,
@@ -1035,7 +1035,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocPasswordType 
+    public enum FSPDFDocPasswordType
     {
         Invalid = 0,
         NoPassword = 1,
@@ -1044,7 +1044,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocEncryptType 
+    public enum FSPDFDocEncryptType
     {
         Unknown = -1,
         None = 0,
@@ -1057,7 +1057,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocUserPermissions 
+    public enum FSPDFDocUserPermissions
     {
         Print = 4,
         Modify = 8,
@@ -1070,7 +1070,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocSaveFlags 
+    public enum FSPDFDocSaveFlags
     {
         Normal = 0,
         Incremental = 1,
@@ -1080,7 +1080,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocImportPageFlags 
+    public enum FSPDFDocImportPageFlags
     {
         Normal = 0,
         WithLayers = 1,
@@ -1088,7 +1088,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocDisplayMode 
+    public enum FSPDFDocDisplayMode
     {
         UseNone = 0,
         UseOutlines = 1,
@@ -1099,7 +1099,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFDocDataType 
+    public enum FSPDFDocDataType
     {
         Forms = 1,
         Annots = 2,
@@ -1115,7 +1115,7 @@ namespace FoxitRDK
 	}
 
 
-    public enum FSLayerTreeUsageState 
+    public enum FSLayerTreeUsageState
     {
         On = 0,
         Off = 1,
@@ -1124,7 +1124,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSLayerContextUsageType 
+    public enum FSLayerContextUsageType
     {
         View = 0,
         Design = 1,
@@ -1134,7 +1134,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSGraphicsObjectBlendMode 
+    public enum FSGraphicsObjectBlendMode
     {
         Normal = 0,
         Multiply = 1,
@@ -1155,7 +1155,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSGraphicsObjectType 
+    public enum FSGraphicsObjectType
     {
         All = 0,
         Text = 1,
@@ -1166,7 +1166,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSTextStateMode 
+    public enum FSTextStateMode
     {
         Fill = 0,
         Stroke = 1,
@@ -1179,7 +1179,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSImageObjectColorSpace 
+    public enum FSImageObjectColorSpace
     {
         Invalid = 0,
         DeviceGray = 1,
@@ -1197,21 +1197,21 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFPageParseFlags 
+    public enum FSPDFPageParseFlags
     {
         Normal = 0,
         TextOnly = 1
     }
 
     //[Native]
-    public enum FSPDFPageCalcMarginMode 
+    public enum FSPDFPageCalcMarginMode
     {
         ContentsBox = 0,
         Detection = 1
     }
 
     //[Native]
-    public enum FSPDFPageFlattenOptions 
+    public enum FSPDFPageFlattenOptions
     {
         All = 0,
         NoAnnot = 1,
@@ -1219,7 +1219,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFPageBoxType 
+    public enum FSPDFPageBoxType
     {
         MediaBox = 0,
         CropBox = 1,
@@ -1229,7 +1229,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPDFPageSize 
+    public enum FSPDFPageSize
     {
         Letter = 1,
         Legal = 2,
@@ -1246,14 +1246,14 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSDocViewerPrefsPrintScale 
+    public enum FSDocViewerPrefsPrintScale
     {
         None = 0,
         AppDefault = 1
     }
 
     //[Native]
-    public enum FSDocViewerPrefsViewerPref 
+    public enum FSDocViewerPrefsViewerPref
     {
         HideToolbar = 0,
         HideMenubar = 1,
@@ -1264,7 +1264,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSPageLabelsStyle 
+    public enum FSPageLabelsStyle
     {
         None = 0,
         DecimalNums = 1,
@@ -1275,7 +1275,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSReflowPageFlags 
+    public enum FSReflowPageFlags
     {
         Normal = 0,
         WithImage = 1,
@@ -1283,7 +1283,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSTextPageTextParseFlags 
+    public enum FSTextPageTextParseFlags
     {
         Normal = 0,
         OutputHyphen = 1,
@@ -1291,7 +1291,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSTextSearchSearchFlags 
+    public enum FSTextSearchSearchFlags
     {
         Normal = 0,
         MatchCase = 1,
@@ -1300,7 +1300,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSSecurityHandlerCipherType 
+    public enum FSSecurityHandlerCipherType
     {
         None = 0,
         Rc4 = 1,
@@ -1308,16 +1308,16 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSTabOrderMgrOrderType 
+    public enum FSTabOrderMgrOrderType
     {
         None = 0,
         Row = 1,
         Column = 2,
         Structure = 3
     }
- 
+
     //[Native]
-    public enum FSWatermarkSettingsFlags 
+    public enum FSWatermarkSettingsFlags
     {
         ASPageContents = 0,
         ASAnnot = 1,
@@ -1327,14 +1327,14 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSWatermarkTextPropertiesFontStyle 
+    public enum FSWatermarkTextPropertiesFontStyle
     {
         Normal = 0,
         Underline = 1
     }
 
     //[Native]
-    public enum FSFillerVirtualKeyCode 
+    public enum FSFillerVirtualKeyCode
     {
         Unknown = 0,
         Back = 8,
@@ -1426,7 +1426,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFillerEventFlags 
+    public enum FSFillerEventFlags
     {
         ShiftKey = 1,
         ControlKey = 2,
@@ -1441,7 +1441,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFieldType 
+    public enum FSFieldType
     {
         Unknown = 0,
         PushButton = 1,
@@ -1454,7 +1454,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSFieldFlags 
+    public enum FSFieldFlags
     {
         ReadOnly = 1,
         Required = 2,
@@ -1470,7 +1470,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSSignatureStates 
+    public enum FSSignatureStates
     {
         Unknown = 0,
         NoSignData = 512,
@@ -1501,7 +1501,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSSignatureAPFlags 
+    public enum FSSignatureAPFlags
     {
         FoxitFlag = 1,
         Label = 2,
@@ -1515,7 +1515,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSSignatureKeyName 
+    public enum FSSignatureKeyName
     {
         Signer = 0,
         Location = 1,
@@ -1526,7 +1526,7 @@ namespace FoxitRDK
     }
 
     //[Native]
-    public enum FSSignatureDigestAlgorithm 
+    public enum FSSignatureDigestAlgorithm
     {
         FSSignatureDigestSHA1 = 0,
         FSSignatureDigestSHA256 = 1,
@@ -1534,7 +1534,7 @@ namespace FoxitRDK
         FSSignatureDigestSHA512 = 3
     }
 
-    public enum PdfLayoutMode 
+    public enum PdfLayoutMode
     {
         Unknown = 0,
         Continuous,
@@ -1553,7 +1553,7 @@ namespace FoxitRDK
         Onlytext
     }
 
-    public enum PdfDisplayZoommode 
+    public enum PdfDisplayZoommode
     {
         Unknown = 0,
         Fitpage,

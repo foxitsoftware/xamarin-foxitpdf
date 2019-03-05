@@ -1,5 +1,5 @@
 # foxit_xamarin_android
-Use the Foxit Mobile PDF SDK with Xamarin on android
+Use the Foxit PDF SDK for Android with Xamarin
 
 Introduction
 ------------
@@ -8,9 +8,9 @@ This sample project works with the  `Foxit RDK 6.2` and is a direct port of the 
 
 Setup
 -----
-1: Download `foxit_mobile_pdf_sdk_android_en.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
+1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
 
-2: unzip the `foxit_mobile_pdf_sdk_android_en.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
+2: unzip the `foxitpdfsdk_(version_no)_android.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
 
 * `FoxitRDK.aar`
 * `FoxitRDKUIExtensions.aar`

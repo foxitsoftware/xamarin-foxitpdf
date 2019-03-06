@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="MyApplication.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PDFReaderActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

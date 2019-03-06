@@ -9,4 +9,6 @@
 
   <attr path="/api/package[@name='com.foxit.uiextensions.utils']/class[@name='Event']" name="managedName">IEvent</attr>
 
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setResetLayoutListener']" />
+
 </metadata>

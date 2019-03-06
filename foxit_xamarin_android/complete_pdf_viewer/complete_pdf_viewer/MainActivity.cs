@@ -43,7 +43,6 @@ namespace Com.Foxit.Home
             RequestWindowFeature(Android.Views.WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
 
-            App.Instance().SetApplicationContext(this.ApplicationContext);
             mLicenseValid = App.Instance().CheckLicense();
             if (!mLicenseValid)
                 return;

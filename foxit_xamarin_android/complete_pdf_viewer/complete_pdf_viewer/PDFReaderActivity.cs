@@ -12,6 +12,7 @@ using Com.Foxit.Uiextensions;
 
 using Com.Foxit.Uiextensions.Utils;
 using Com.Foxit.Uiextensions.Home;
+using Com.Foxit.Uiextensions.Config;
 
 namespace Com.Foxit.Pdfreader
 {
@@ -42,7 +43,7 @@ namespace Com.Foxit.Pdfreader
             pdfViewCtrl = new PDFViewCtrl(this);
 
             System.IO.Stream stream = Assets.Open("uiextensions_config.json");
-            UIExtensionsManager.Config config = new UIExtensionsManager.Config(stream);
+            Config config = new Config(stream);
             uiExtensionsManager = new UIExtensionsManager(this, pdfViewCtrl, config);
             uiExtensionsManager.AttachedActivity = this;
             uiExtensionsManager.RegisterModule(App.Instance().GetLocalModule(filter));

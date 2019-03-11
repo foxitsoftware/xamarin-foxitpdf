@@ -23,7 +23,7 @@ Installation
 
 5: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
 
-####(Optional)   
+#### (Optional)   
 
 If you want to open a RMS protected PDF file, you should:
 
@@ -39,7 +39,7 @@ If you want to open a RMS protected PDF file, you should:
 License
 -----
 
-###lisense for Cropper
+### lisense for Cropper
 [https://github.com/edmodo/cropper](https://github.com/edmodo/cropper)
 
 Copyright 2013, Edmodo, Inc.
@@ -56,7 +56,7 @@ Copyright 2013, Edmodo, Inc.
     License for the specific language governing permissions and limitations   
     under the License.
 
-###lisense for ADAL
+### lisense for ADAL
 [https://github.com/AzureAD/azure-activedirectory-library-for-android](https://github.com/AzureAD/azure-activedirectory-library-for-android)
 
 Copyright (c) Microsoft Corporation.
@@ -69,7 +69,7 @@ Copyright (c) Microsoft Corporation.
     more information see the Code of Conduct FAQ or contact opencode@microsoft  
     .com with any additional questions or comments.
 
-###lisense for GSON
+### lisense for GSON
 [https://github.com/google/gson](https://github.com/google/gson)
 
 Copyright 2008 Google Inc.

@@ -61,6 +61,10 @@ namespace FoxitRDK
         [Export ("initWithCptr:swigOwnCObject:")]
         IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
+		// -(id)initWithX:(int)X Y:(int)Y;
+		[Export ("initWithX:Y:")]
+		IntPtr Constructor (int X, int Y);
+        
         // -(id)initWithOther:(FSPoint *)other;
         [Export ("initWithOther:")]
         IntPtr Constructor (FSPoint other);
@@ -107,6 +111,10 @@ namespace FoxitRDK
         [Export ("initWithCptr:swigOwnCObject:")]
         IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
+	    // -(id)initWithX:(float)X Y:(float)Y;
+		[Export ("initWithX:Y:")]
+		IntPtr Constructor (float X, float Y);
+		
         // -(id)initWithOther:(FSPointF *)other;
         [Export ("initWithOther:")]
         IntPtr Constructor (FSPointF other);
@@ -161,7 +169,7 @@ namespace FoxitRDK
 
         // -(int)setSize:(int)nNewSize nGrowBy:(int)nGrowBy;
         [Export ("setSize:nGrowBy:")]
-        int SetSize (int nNewSize, int nGrowBy);
+        bool SetSize (int nNewSize, int nGrowBy);
 
         // -(void)removeAll;
         [Export ("removeAll")]
@@ -173,23 +181,23 @@ namespace FoxitRDK
 
         // -(int)setAt:(int)nIndex newElement:(FSRectF *)newElement;
         [Export ("setAt:newElement:")]
-        int SetAt (int nIndex, FSRectF newElement);
+        bool SetAt (int nIndex, FSRectF newElement);
 
         // -(int)setAtGrow:(int)nIndex newElement:(FSRectF *)newElement;
         [Export ("setAtGrow:newElement:")]
-        int SetAtGrow (int nIndex, FSRectF newElement);
+        bool SetAtGrow (int nIndex, FSRectF newElement);
 
         // -(int)add:(FSRectF *)newElement;
         [Export ("add:")]
-        int Add (FSRectF newElement);
+        bool Add (FSRectF newElement);
 
         // -(int)insertAt:(int)nIndex newElement:(FSRectF *)newElement nCount:(int)nCount;
         [Export ("insertAt:newElement:nCount:")]
-        int InsertAt (int nIndex, FSRectF newElement, int nCount);
+        bool InsertAt (int nIndex, FSRectF newElement, int nCount);
 
         // -(int)removeAt:(int)nIndex nCount:(int)nCount;
         [Export ("removeAt:nCount:")]
-        int RemoveAt (int nIndex, int nCount);
+        bool RemoveAt (int nIndex, int nCount);
 
         // -(int)find:(FSRectF *)data iStart:(int)iStart;
         [Export ("find:iStart:")]
@@ -229,7 +237,7 @@ namespace FoxitRDK
 
         // -(int)setSize:(int)nNewSize nGrowBy:(int)nGrowBy;
         [Export ("setSize:nGrowBy:")]
-        int SetSize (int nNewSize, int nGrowBy);
+        bool SetSize (int nNewSize, int nGrowBy);
 
         // -(void)removeAll;
         [Export ("removeAll")]
@@ -241,23 +249,23 @@ namespace FoxitRDK
 
         // -(int)setAt:(int)nIndex newElement:(FSPointF *)newElement;
         [Export ("setAt:newElement:")]
-        int SetAt (int nIndex, FSPointF newElement);
+        bool SetAt (int nIndex, FSPointF newElement);
 
         // -(int)setAtGrow:(int)nIndex newElement:(FSPointF *)newElement;
         [Export ("setAtGrow:newElement:")]
-        int SetAtGrow (int nIndex, FSPointF newElement);
+        bool SetAtGrow (int nIndex, FSPointF newElement);
 
         // -(int)add:(FSPointF *)newElement;
         [Export ("add:")]
-        int Add (FSPointF newElement);
+        bool Add (FSPointF newElement);
 
         // -(int)insertAt:(int)nIndex newElement:(FSPointF *)newElement nCount:(int)nCount;
         [Export ("insertAt:newElement:nCount:")]
-        int InsertAt (int nIndex, FSPointF newElement, int nCount);
+        bool InsertAt (int nIndex, FSPointF newElement, int nCount);
 
         // -(int)removeAt:(int)nIndex nCount:(int)nCount;
         [Export ("removeAt:nCount:")]
-        int RemoveAt (int nIndex, int nCount);
+        bool RemoveAt (int nIndex, int nCount);
 
         // -(int)find:(FSPointF *)data iStart:(int)iStart;
         [Export ("find:iStart:")]
@@ -297,7 +305,7 @@ namespace FoxitRDK
 
         // -(int)setSize:(int)nNewSize nGrowBy:(int)nGrowBy;
         [Export ("setSize:nGrowBy:")]
-        int SetSize (int nNewSize, int nGrowBy);
+        bool SetSize (int nNewSize, int nGrowBy);
 
         // -(void)removeAll;
         [Export ("removeAll")]
@@ -309,23 +317,23 @@ namespace FoxitRDK
 
         // -(int)setAt:(int)nIndex newElement:(float)newElement;
         [Export ("setAt:newElement:")]
-        int SetAt (int nIndex, float newElement);
+        bool SetAt (int nIndex, float newElement);
 
         // -(int)setAtGrow:(int)nIndex newElement:(float)newElement;
         [Export ("setAtGrow:newElement:")]
-        int SetAtGrow (int nIndex, float newElement);
+        bool SetAtGrow (int nIndex, float newElement);
 
         // -(int)add:(float)newElement;
         [Export ("add:")]
-        int Add (float newElement);
+        bool Add (float newElement);
 
         // -(int)insertAt:(int)nIndex newElement:(float)newElement nCount:(int)nCount;
         [Export ("insertAt:newElement:nCount:")]
-        int InsertAt (int nIndex, float newElement, int nCount);
+        bool InsertAt (int nIndex, float newElement, int nCount);
 
         // -(int)removeAt:(int)nIndex nCount:(int)nCount;
         [Export ("removeAt:nCount:")]
-        int RemoveAt (int nIndex, int nCount);
+        bool RemoveAt (int nIndex, int nCount);
 
         // -(int)find:(float)data iStart:(int)iStart;
         [Export ("find:iStart:")]
@@ -365,7 +373,7 @@ namespace FoxitRDK
 
         // -(int)setSize:(int)nNewSize nGrowBy:(int)nGrowBy;
         [Export ("setSize:nGrowBy:")]
-        int SetSize (int nNewSize, int nGrowBy);
+        bool SetSize (int nNewSize, int nGrowBy);
 
         // -(void)removeAll;
         [Export ("removeAll")]
@@ -377,23 +385,23 @@ namespace FoxitRDK
 
         // -(int)setAt:(int)nIndex newElement:(int)newElement;
         [Export ("setAt:newElement:")]
-        int SetAt (int nIndex, int newElement);
+        bool SetAt (int nIndex, int newElement);
 
         // -(int)setAtGrow:(int)nIndex newElement:(int)newElement;
         [Export ("setAtGrow:newElement:")]
-        int SetAtGrow (int nIndex, int newElement);
+        bool SetAtGrow (int nIndex, int newElement);
 
         // -(int)add:(int)newElement;
         [Export ("add:")]
-        int Add (int newElement);
+        bool Add (int newElement);
 
         // -(int)insertAt:(int)nIndex newElement:(int)newElement nCount:(int)nCount;
         [Export ("insertAt:newElement:nCount:")]
-        int InsertAt (int nIndex, int newElement, int nCount);
+        bool InsertAt (int nIndex, int newElement, int nCount);
 
         // -(int)removeAt:(int)nIndex nCount:(int)nCount;
         [Export ("removeAt:nCount:")]
-        int RemoveAt (int nIndex, int nCount);
+        bool RemoveAt (int nIndex, int nCount);
 
         // -(int)find:(int)data iStart:(int)iStart;
         [Export ("find:iStart:")]
@@ -450,7 +458,7 @@ namespace FoxitRDK
         // -(int)isEmpty;
         [Export ("isEmpty")]
         //[Verify (MethodToProperty)]
-        int IsEmpty { get; }
+        bool IsEmpty { get; }
 
         // -(void)normalize;
         [Export ("normalize")]
@@ -470,7 +478,7 @@ namespace FoxitRDK
 
         // -(int)contains:(FSRectI *)other_rect;
         [Export ("contains:")]
-        int Contains (FSRectI other_rect);
+        bool Contains (FSRectI other_rect);
 
         // -(void)dealloc;
         [Export ("dealloc")]
@@ -525,7 +533,7 @@ namespace FoxitRDK
 
         // -(int)contains:(FSRectF *)other_rect;
         [Export ("contains:")]
-        int Contains (FSRectF other_rect);
+        bool Contains (FSRectF other_rect);
 
         // -(void)transform:(FSMatrix2D *)pMatrix;
         [Export ("transform:")]
@@ -666,46 +674,46 @@ namespace FoxitRDK
         // -(int)isIdentity;
         [Export ("isIdentity")]
         //[Verify (MethodToProperty)]
-        int IsIdentity { get; }
+        bool IsIdentity { get; }
 
         // -(int)isInvertible;
         [Export ("isInvertible")]
         //[Verify (MethodToProperty)]
-        int IsInvertible { get; }
+        bool IsInvertible { get; }
 
         // -(int)is90Rotated;
         [Export ("is90Rotated")]
         //[Verify (MethodToProperty)]
-        int Is90Rotated { get; }
+        bool Is90Rotated { get; }
 
         // -(int)isScaled;
         [Export ("isScaled")]
         //[Verify (MethodToProperty)]
-        int IsScaled { get; }
+        bool IsScaled { get; }
 
         // -(void)translate:(float)x y:(float)y bPrepended:(int)bPrepended;
         [Export ("translate:y:bPrepended:")]
-        void Translate (float x, float y, int bPrepended);
+        void Translate (float x, float y, bool bPrepended);
 
         // -(void)translateI:(int)x y:(int)y bPrepended:(int)bPrepended;
         [Export ("translateI:y:bPrepended:")]
-        void TranslateI (int x, int y, int bPrepended);
+        void TranslateI (int x, int y, bool bPrepended);
 
         // -(void)scale:(float)sx sy:(float)sy bPrepended:(int)bPrepended;
         [Export ("scale:sy:bPrepended:")]
-        void Scale (float sx, float sy, int bPrepended);
+        void Scale (float sx, float sy, bool bPrepended);
 
         // -(void)rotate:(float)fRadian bPrepended:(int)bPrepended;
         [Export ("rotate:bPrepended:")]
-        void Rotate (float fRadian, int bPrepended);
+        void Rotate (float fRadian, bool bPrepended);
 
         // -(void)rotateAt:(float)fRadian x:(float)x y:(float)y bPrepended:(int)bPrepended;
         [Export ("rotateAt:x:y:bPrepended:")]
-        void RotateAt (float fRadian, float x, float y, int bPrepended);
+        void RotateAt (float fRadian, float x, float y, bool bPrepended);
 
         // -(void)shear:(float)fAlphaRadian fBetaRadian:(float)fBetaRadian bPrepended:(int)bPrepended;
         [Export ("shear:fBetaRadian:bPrepended:")]
-        void Shear (float fAlphaRadian, float fBetaRadian, int bPrepended);
+        void Shear (float fAlphaRadian, float fBetaRadian, bool bPrepended);
 
         // -(void)matchRect:(FSRectF *)dest src:(FSRectF *)src;
         [Export ("matchRect:src:")]
@@ -1119,8 +1127,8 @@ namespace FoxitRDK
         IntPtr Constructor (int start_index, int end_index);
 
         // -(id)initWithArg0:(FSRange *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSRange arg0);
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSRange other);
 
         // -(BOOL)isEmpty;
         [Export ("isEmpty")]
@@ -1184,8 +1192,8 @@ namespace FoxitRDK
         IntPtr Constructor (string font_file_path, int face_index, FSFontCharset charset);
 
         // -(id)initWithArg0:(FSFont *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSFont arg0);
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSFont other);
 
         // -(BOOL)isEmpty;
         [Export ("isEmpty")]
@@ -1449,9 +1457,9 @@ namespace FoxitRDK
         [Export ("initWithFile_read:")]
         IntPtr Constructor (FSFileReaderCallback file_read);
 
-        // -(id)initWithArg0:(FSImage *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSImage arg0);
+        // -(id)initWithOther:(FSImage *)other;
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSImage other);
 
         // -(BOOL)isEmpty;
         [Export ("isEmpty")]
@@ -2419,9 +2427,9 @@ namespace FoxitRDK
         [Export ("initWithCptr:swigOwnCObject:")]
         IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-        // -(id)initWithArg0:(FSMenuListArray *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSMenuListArray arg0);
+        // -(id)initWithOther:(FSMenuListArray *)other;
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSMenuListArray other);
 
         // -(unsigned long)getSize;
         [Export ("getSize")]
@@ -2752,6 +2760,11 @@ namespace FoxitRDK
         //[Verify (MethodToProperty)]
         string Name { get; }
 
+		// -(NSData *)getString;
+		[Export ("getString")]
+		//[Verify (MethodToProperty)]
+		NSData String { get; }
+		
         // -(NSString *)getWideString;
         [Export ("getWideString")]
         //[Verify (MethodToProperty)]
@@ -2771,16 +2784,6 @@ namespace FoxitRDK
         [Export ("getStream")]
         //[Verify (MethodToProperty)]
         FSPDFStream Stream { get; }
-
-        // -(NSString *)getString;
-        [Export ("getString")]
-        //[Verify (MethodToProperty)]
-        string String { get; }
-
-        // -(const char *)getOriginalString;
-        [Export ("getOriginalString")]
-        //[Verify (MethodToProperty)]
-        unsafe string OriginalString { get; }
 
         // -(void)dealloc;
         [Export ("dealloc")]
@@ -4586,9 +4589,9 @@ namespace FoxitRDK
         [Export ("initWithCptr:swigOwnCObject:")]
         IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-        // -(id)initWithArg0:(FSMarkupArray *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSMarkupArray arg0);
+        // -(id)initWithOther:(FSMarkupArray *)other;
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSMarkupArray other);
 
         // -(unsigned long)getSize;
         [Export ("getSize")]
@@ -5012,6 +5015,10 @@ namespace FoxitRDK
         [Export ("calloutLinePoints", ArgumentSemantic.Weak)]
         FSPointFArray CalloutLinePoints { [Bind ("getCalloutLinePoints")] get; set; }
 
+		// @property (getter = getTextMatrix, nonatomic, weak) FSMatrix2D * textMatrix;
+		[Export ("textMatrix", ArgumentSemantic.Weak)]
+		FSMatrix2D TextMatrix { [Bind ("getTextMatrix")] get; set; }
+		
         // -(void *)getCptr;
         [Export ("getCptr")]
         //[Verify (MethodToProperty)]
@@ -5950,9 +5957,9 @@ namespace FoxitRDK
         [Export ("initWithFile_read:is_async:")]
         IntPtr Constructor (FSFileReaderCallback file_read, bool is_async);
 
-        // -(id)initWithArg0:(FSPDFDoc *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSPDFDoc arg0);
+        // -(id)initWithOther:(FSPDFDoc *)other;
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSPDFDoc other);
 
         // -(BOOL)isEmpty;
         [Export ("isEmpty")]
@@ -6253,6 +6260,11 @@ namespace FoxitRDK
         [Export ("exportAnnotToFDF:fdf_doc:")]
         bool ExportAnnotToFDF (FSAnnot pdf_annot, FSFDFDoc fdf_doc);
 
+		// -(NSString *)getHeader;
+		[Export ("getHeader")]
+		//[Verify (MethodToProperty)]
+		string Header { get; }
+		
         // -(BOOL)setSecurityHandler:(FSSecurityHandler *)handler;
         [Export ("setSecurityHandler:")]
         bool SetSecurityHandler (FSSecurityHandler handler);
@@ -6859,7 +6871,7 @@ namespace FoxitRDK
 
         // -(int)setSize:(int)nNewSize nGrowBy:(int)nGrowBy;
         [Export ("setSize:nGrowBy:")]
-        int SetSize (int nNewSize, int nGrowBy);
+        bool SetSize (int nNewSize, int nGrowBy);
 
         // -(void)removeAll;
         [Export ("removeAll")]
@@ -6871,23 +6883,23 @@ namespace FoxitRDK
 
         // -(int)setAt:(int)nIndex newElement:(FSGraphicsObject *)newElement;
         [Export ("setAt:newElement:")]
-        int SetAt (int nIndex, FSGraphicsObject newElement);
+        bool SetAt (int nIndex, FSGraphicsObject newElement);
 
         // -(int)setAtGrow:(int)nIndex newElement:(FSGraphicsObject *)newElement;
         [Export ("setAtGrow:newElement:")]
-        int SetAtGrow (int nIndex, FSGraphicsObject newElement);
+        bool SetAtGrow (int nIndex, FSGraphicsObject newElement);
 
         // -(int)add:(FSGraphicsObject *)newElement;
         [Export ("add:")]
-        int Add (FSGraphicsObject newElement);
+        bool Add (FSGraphicsObject newElement);
 
         // -(int)insertAt:(int)nIndex newElement:(FSGraphicsObject *)newElement nCount:(int)nCount;
         [Export ("insertAt:newElement:nCount:")]
-        int InsertAt (int nIndex, FSGraphicsObject newElement, int nCount);
+        bool InsertAt (int nIndex, FSGraphicsObject newElement, int nCount);
 
         // -(int)removeAt:(int)nIndex nCount:(int)nCount;
         [Export ("removeAt:nCount:")]
-        int RemoveAt (int nIndex, int nCount);
+        bool RemoveAt (int nIndex, int nCount);
 
         // -(int)find:(FSGraphicsObject *)data iStart:(int)iStart;
         [Export ("find:iStart:")]
@@ -8029,6 +8041,10 @@ namespace FoxitRDK
         [Export ("getBaselineRotation:")]
         FSRotation GetBaselineRotation (int rect_index);
 
+		// -(FSRectFArray *)getTextRectArrayByRect:(FSRectF *)rect;
+		[Export ("getTextRectArrayByRect:")]
+		FSRectFArray GetTextRectArrayByRect (FSRectF rect);
+		
         // -(void)dealloc;
         [Export ("dealloc")]
         void Dealloc ();
@@ -8248,7 +8264,7 @@ namespace FoxitRDK
 
         // -(int)setSize:(int)nNewSize nGrowBy:(int)nGrowBy;
         [Export ("setSize:nGrowBy:")]
-        int SetSize (int nNewSize, int nGrowBy);
+        bool SetSize (int nNewSize, int nGrowBy);
 
         // -(void)removeAll;
         [Export ("removeAll")]
@@ -8260,23 +8276,23 @@ namespace FoxitRDK
 
         // -(int)setAt:(int)nIndex newElement:(FSEnvelope *)newElement;
         [Export ("setAt:newElement:")]
-        int SetAt (int nIndex, FSEnvelope newElement);
+        bool SetAt (int nIndex, FSEnvelope newElement);
 
         // -(int)setAtGrow:(int)nIndex newElement:(FSEnvelope *)newElement;
         [Export ("setAtGrow:newElement:")]
-        int SetAtGrow (int nIndex, FSEnvelope newElement);
+        bool SetAtGrow (int nIndex, FSEnvelope newElement);
 
         // -(int)add:(FSEnvelope *)newElement;
         [Export ("add:")]
-        int Add (FSEnvelope newElement);
+        bool Add (FSEnvelope newElement);
 
         // -(int)insertAt:(int)nIndex newElement:(FSEnvelope *)newElement nCount:(int)nCount;
         [Export ("insertAt:newElement:nCount:")]
-        int InsertAt (int nIndex, FSEnvelope newElement, int nCount);
+        bool InsertAt (int nIndex, FSEnvelope newElement, int nCount);
 
         // -(int)removeAt:(int)nIndex nCount:(int)nCount;
         [Export ("removeAt:nCount:")]
-        int RemoveAt (int nIndex, int nCount);
+        bool RemoveAt (int nIndex, int nCount);
 
         // -(int)find:(FSEnvelope *)data iStart:(int)iStart;
         [Export ("find:iStart:")]
@@ -9124,9 +9140,9 @@ namespace FoxitRDK
         [Export ("initWithCptr:swigOwnCObject:")]
         IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-        // -(id)initWithArg0:(FSFieldArray *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSFieldArray arg0);
+        // -(id)initWithOther:(FSFieldArray *)other;
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSFieldArray other);
 
         // -(unsigned long)getSize;
         [Export ("getSize")]
@@ -9217,9 +9233,9 @@ namespace FoxitRDK
         [Export ("initWithCptr:swigOwnCObject:")]
         IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-        // -(id)initWithArg0:(FSChoiceOptionArray *)arg0;
-        [Export ("initWithArg0:")]
-        IntPtr Constructor (FSChoiceOptionArray arg0);
+        // -(id)initWithOther:(FSChoiceOptionArray *)other;
+        [Export ("initWithOther:")]
+        IntPtr Constructor (FSChoiceOptionArray other);
 
         // -(unsigned long)getSize;
         [Export ("getSize")]
@@ -9259,6 +9275,11 @@ namespace FoxitRDK
         [Export ("flags")]
         uint Flags { [Bind ("getFlags")] get; set; }
 
+
+		// @property (getter = getDefaultValue, nonatomic, weak) NSString * defaultValue;
+		[Export ("defaultValue", ArgumentSemantic.Weak)]
+		string DefaultValue { [Bind ("getDefaultValue")] get; set; }
+		
         // @property (getter = getValue, nonatomic, weak) NSString * value;
         [Export ("value", ArgumentSemantic.Weak)]
         string Value { [Bind ("getValue")] get; set; }
@@ -9322,11 +9343,6 @@ namespace FoxitRDK
         [Export ("getName")]
         //[Verify (MethodToProperty)]
         string Name { get; }
-
-        // -(NSString *)getDefaultValue;
-        [Export ("getDefaultValue")]
-        //[Verify (MethodToProperty)]
-        string DefaultValue { get; }
 
         // -(void)setDefualtValue:(NSString *)value;
         [Export ("setDefualtValue:")]
@@ -10690,6 +10706,11 @@ namespace FoxitRDK
         [Export ("isNightMode")]
         bool IsNightMode { get; set; }
 
+		// @property (assign, nonatomic, class) BOOL needLocalized;
+		[Static]
+		[Export ("needLocalized")]
+		bool NeedLocalized { get; set; }
+		
         // @property (assign, nonatomic) FSRendererColorMode colorMode;
         [Export ("colorMode", ArgumentSemantic.Assign)]
         FSRendererColorMode ColorMode { get; set; }
@@ -10908,6 +10929,16 @@ namespace FoxitRDK
         [Export ("setReflowMode:")]
         void SetReflowMode (PDF_REFLOW_REFLOWMODE reflowMode);
 
+		// -(float)getScale;
+		[Export ("getScale")]
+		//[Verify (MethodToProperty)]
+		float Scale { get; }
+		
+		// -(float)getDefaultPageScale;
+		[Export ("getDefaultPageScale")]
+		//[Verify (MethodToProperty)]
+		float DefaultPageScale { get; }
+
         // -(float)getZoom;
         [Export ("getZoom")]
         //[Verify (MethodToProperty)]
@@ -10917,10 +10948,20 @@ namespace FoxitRDK
         [Export ("setZoom:")]
         void SetZoom (float zoom);
 
+		// -(void)setZoom:(float)zoom withSlider:(BOOL)isWithSlider;
+		[Export ("setZoom:withSlider:")]
+		void SetZoom (float zoom, bool isWithSlider);
+		
         // -(void)setZoom:(float)zoom origin:(CGPoint)origin;
         [Export ("setZoom:origin:")]
         void SetZoom (float zoom, CGPoint origin);
 
+
+		// -(PDF_DISPLAY_ZOOMMODE)getZoomMode;
+		[Export ("getZoomMode")]
+		//[Verify (MethodToProperty)]
+		PDF_DISPLAY_ZOOMMODE ZoomMode { get; }
+		
         // -(void)setZoomMode:(PDF_DISPLAY_ZOOMMODE)zoomMode;
         [Export ("setZoomMode:")]
         void SetZoomMode (PDF_DISPLAY_ZOOMMODE zoomMode);
@@ -11128,6 +11169,32 @@ namespace FoxitRDK
         void SetRMSAppClientId (string appClientId, string redirectURI);
     }
 
+	// @interface CacheFileOption : NSObject
+	[BaseType (typeof(NSObject))]
+	interface CacheFileOption
+	{
+		// @property (nonatomic, strong) NSString * _Nullable cacheFilePath;
+		[NullAllowed, Export ("cacheFilePath", ArgumentSemantic.Strong)]
+		string CacheFilePath { get; set; }
+
+		// @property (assign, nonatomic) BOOL isDownloadAll;
+		[Export ("isDownloadAll")]
+		bool IsDownloadAll { get; set; }
+	}
+
+	// @interface HttpRequestProperties : NSObject
+	[BaseType (typeof(NSObject))]
+	interface HttpRequestProperties
+	{
+		// @property (nonatomic, strong) NSMutableDictionary * _Nonnull properties;
+		[Export ("properties", ArgumentSemantic.Strong)]
+		NSMutableDictionary Properties { get; set; }
+
+		// -(void)setRequestProperty:(NSString * _Nonnull)key Value:(NSString * _Nonnull)value;
+		[Export ("setRequestProperty:Value:")]
+		void SetRequestProperty (string key, string value);
+	}
+	
     // @interface async (FSPDFViewCtrl)
     [Category]
     [BaseType (typeof(FSPDFViewCtrl))]
@@ -11136,5 +11203,18 @@ namespace FoxitRDK
         // -(void)openDocAtURL:(NSURL * _Nonnull)url password:(NSString * _Nonnull)password completion:(void (^ _Nonnull)(FSErrorCode))completion;
         [Export ("openDocAtURL:password:completion:")]
         void OpenDocAtURL (NSUrl url, string password, Action<FSErrorCode> completion);
+
+
+		// -(void)openDocFromURL:(NSURL * _Nonnull)url password:(NSString * _Nonnull)password cacheOption:(CacheFileOption * _Nullable)cacheOption httpRequestProperties:(HttpRequestProperties * _Nullable)properties completion:(void (^ _Nonnull)(FSErrorCode))completion;
+		[Export ("openDocFromURL:password:cacheOption:httpRequestProperties:completion:")]
+		void OpenDocFromURL (NSUrl url, string password, [NullAllowed] CacheFileOption cacheOption, [NullAllowed] HttpRequestProperties properties, Action<FSErrorCode> completion);
+
+		// -(void)clearCacheFile:(NSString * _Nonnull)url;
+		[Export ("clearCacheFile:")]
+		void ClearCacheFile (string url);
+
+		// -(void)clearAllCacheFile;
+		[Export ("clearAllCacheFile")]
+		void ClearAllCacheFile ();
     }
 }

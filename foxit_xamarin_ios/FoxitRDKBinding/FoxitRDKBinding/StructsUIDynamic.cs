@@ -36,7 +36,9 @@ namespace FoxitRDKUI
 		Lockscreen,
 		Brightness,
 		Nightmode,
-		Panzoom
+		Panzoom,
+		Fitpage,
+		Fitwidth
 	}
 
 	[Native]

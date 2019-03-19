@@ -56,7 +56,10 @@ namespace FoxitRDK
         CanNotGetClientID = 36,
         CanNotGetUserToken = 37,
         InvalidACL = 38,
-        InvalidClientID = 39
+        InvalidClientID = 39,
+		OCRInvalidLicense = 40,
+		OCREngineNotInit = 41,
+		DiskFull = 42
     }
 
     ////[Native]

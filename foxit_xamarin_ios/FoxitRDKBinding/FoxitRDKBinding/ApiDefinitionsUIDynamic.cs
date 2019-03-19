@@ -49,6 +49,118 @@ namespace FoxitRDKUI
 		// @property (nonatomic, strong) UIToolbar * _Nonnull topToolbar;
 		[Export ("topToolbar", ArgumentSemantic.Strong)]
 		UIToolbar TopToolbar { get; set; }
+
+		// -(instancetype _Nullable)initWithLocalized:(BOOL)needLocalized;
+		[Export ("initWithLocalized:")]
+		IntPtr Constructor (bool needLocalized);
+	}
+
+	// @interface SegmentItem : NSObject
+	[BaseType (typeof(NSObject))]
+	interface SegmentItem
+	{
+		// @property (nonatomic, strong) NSString * title;
+		[Export ("title", ArgumentSemantic.Strong)]
+		string Title { get; set; }
+
+		// @property (nonatomic, strong) UIImage * image;
+		[Export ("image", ArgumentSemantic.Strong)]
+		UIImage Image { get; set; }
+
+		// @property (nonatomic, strong) UIImage * selectImage;
+		[Export ("selectImage", ArgumentSemantic.Strong)]
+		UIImage SelectImage { get; set; }
+
+		// @property (assign, nonatomic) NSUInteger tag;
+		[Export ("tag")]
+		nuint Tag { get; set; }
+
+		// @property (nonatomic, strong) UIColor * titleNormalColor;
+		[Export ("titleNormalColor", ArgumentSemantic.Strong)]
+		UIColor TitleNormalColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * titleSelectedColor;
+		[Export ("titleSelectedColor", ArgumentSemantic.Strong)]
+		UIColor TitleSelectedColor { get; set; }
+	}
+
+	// @protocol SegmentDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface SegmentDelegate
+	{
+		// @required -(void)itemClickWithItem:(SegmentItem *)item;
+		[Abstract]
+		[Export ("itemClickWithItem:")]
+		void ItemClickWithItem (SegmentItem item);
+	}
+
+	// @interface SegmentView : UIView
+	[BaseType (typeof(UIView))]
+	interface SegmentView
+	{
+		[Wrap ("WeakDelegate")]
+		SegmentDelegate Delegate { get; set; }
+
+		// @property (assign, nonatomic) id<SegmentDelegate> delegate;
+		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
+		NSObject WeakDelegate { get; set; }
+
+		// -(id)initWithFrame:(CGRect)frame segmentItems:(NSArray *)items;
+		[Export ("initWithFrame:segmentItems:")]
+		//[Verify (StronglyTypedNSArray)]
+		IntPtr Constructor (CGRect frame, NSObject[] items);
+
+		// -(void)setSelectItem:(SegmentItem *)item;
+		[Export ("setSelectItem:")]
+		void SetSelectItem (SegmentItem item);
+
+		// -(NSArray *)getItems;
+		[Export ("getItems")]
+		//[Verify (MethodToProperty), Verify (StronglyTypedNSArray)]
+		NSObject[] Items { get; }
+	}
+
+	// @interface PanelButton : UIButton
+	[BaseType (typeof(UIButton))]
+	interface PanelButton
+	{
+		// @property (assign, nonatomic) id<IPanelSpec> spec;
+		[Export ("spec", ArgumentSemantic.Assign)]
+        IPanelSpec Spec { get; set; }
+	}
+
+	// @interface PanelHost : NSObject <SegmentDelegate>
+	[BaseType (typeof(NSObject))]
+	interface PanelHost : SegmentDelegate
+	{
+		// @property (nonatomic, strong) NSMutableArray * spaces;
+		[Export ("spaces", ArgumentSemantic.Strong)]
+		NSMutableArray Spaces { get; set; }
+
+		// @property (nonatomic, strong) id<IPanelSpec> currentSpace;
+		[Export ("currentSpace", ArgumentSemantic.Strong)]
+        IPanelSpec CurrentSpace { get; set; }
+
+		// @property (nonatomic, strong) UIView * contentView;
+		[Export ("contentView", ArgumentSemantic.Strong)]
+		UIView ContentView { get; set; }
+
+		// -(instancetype)initWithSize:(CGSize)size panelTypes:(NSArray<NSNumber *> *)panelTypes;
+		[Export ("initWithSize:panelTypes:")]
+		IntPtr Constructor (CGSize size, NSNumber[] panelTypes);
+
+		// -(void)addSpec:(id<IPanelSpec>)spec;
+		[Export ("addSpec:")]
+		void AddSpec (IPanelSpec spec);
+
+		// -(void)removeSpec:(id<IPanelSpec>)spec;
+		[Export ("removeSpec:")]
+		void RemoveSpec (IPanelSpec spec);
+
+		// -(void)reloadSegmentView;
+		[Export ("reloadSegmentView")]
+		void ReloadSegmentView ();
 	}
 
 	// @protocol IPanelChangedListener <NSObject>
@@ -66,6 +178,10 @@ namespace FoxitRDKUI
 	[BaseType (typeof(NSObject))]
 	interface FSPanelController
 	{
+		// @property (nonatomic, strong) PanelHost * panel;
+		[Export ("panel", ArgumentSemantic.Strong)]
+		PanelHost Panel { get; set; }
+		
 		// @property (assign, nonatomic) BOOL isHidden;
 		[Export ("isHidden")]
 		bool IsHidden { get; set; }
@@ -158,6 +274,14 @@ namespace FoxitRDKUI
 		[Export ("settingBar:setNightMode:")]
 		void SettingBarSetNightMode(SettingBar settingBar, bool isNightMode);
 
+		// @optional -(void)settingBarFitPage:(SettingBar *)settingBar;
+		[Export ("settingBarFitPage:")]
+		void SettingBarFitPage (SettingBar settingBar);
+
+		// @optional -(void)settingBarFitWidth:(SettingBar *)settingBar;
+		[Export ("settingBarFitWidth:")]
+		void SettingBarFitWidth (SettingBar settingBar);
+		
 		// @optional -(void)settingBarDidChangeSize:(SettingBar *)settingBar;
 		[Export ("settingBarDidChangeSize:")]
 		void SettingBarDidChangeSize (SettingBar settingBar);
@@ -296,9 +420,6 @@ namespace FoxitRDKUI
 		[Export ("setMoreViewItemHiddenWithGroup:andItemTag:hidden:")]
 		void SetMoreViewItemHiddenWithGroup (nuint groupTag, nuint itemTag, bool isHidden);
 
-		// -(void)resetViewData;
-		[Export ("resetViewData")]
-		void ResetViewData ();
 	}
 
 	// @protocol IAnnotEventListener <NSObject>
@@ -696,6 +817,10 @@ namespace FoxitRDKUI
 		[Export ("isScreenLocked")]
 		bool IsScreenLocked { get; set; }
 
+		// @property (assign, nonatomic) BOOL needScreenLock;
+		[Export ("needScreenLock")]
+		bool NeedScreenLock { get; set; }
+		
 		// @property (nonatomic, strong) NSString * _Nonnull preventOverrideFilePath;
 		[Export ("preventOverrideFilePath", ArgumentSemantic.Strong)]
 		string PreventOverrideFilePath { get; set; }
@@ -728,9 +853,9 @@ namespace FoxitRDKUI
 		[Export ("initWithPDFViewControl:configuration:")]
 		IntPtr Constructor (FSPDFViewCtrl viewctrl, [NullAllowed] NSData jsonConfigData);
 
-		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl configurationObject:(UIExtensionsModulesConfig * _Nonnull)configuration;
-		[Export ("initWithPDFViewControl:configurationObject:")]
-		IntPtr Constructor (FSPDFViewCtrl viewctrl, UIExtensionsModulesConfig configuration);
+        // -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl configurationObject:(UIExtensionsConfig * _Nonnull)configuration;
+        [Export ("initWithPDFViewControl:configurationObject:")]
+		IntPtr Constructor (FSPDFViewCtrl viewctrl, UIExtensionsConfig configuration);
 
 		// -(void)registerFullScreenListener:(id<IFullScreenListener> _Nonnull)listener;
 		[Export ("registerFullScreenListener:")]
@@ -858,14 +983,27 @@ namespace FoxitRDKUI
 		[Export ("printDoc:fromRect:inView:animated:jobName:delegate:completionHandler:")]
 		void PrintDoc (FSPDFDoc doc, CGRect rect, UIView view, bool animated, [NullAllowed] string jobName, [NullAllowed] UIPrintInteractionControllerDelegate @delegate, [NullAllowed] UIPrintInteractionCompletionHandler completion);
 
-		// -(FSXFAWidget * _Nonnull)getXFAWidgetAtPoint:(CGPoint)pvPoint pageIndex:(int)pageIndex;
-		[Export ("getXFAWidgetAtPoint:pageIndex:")]
-		FSXFAWidget GetXFAWidgetAtPoint (CGPoint pvPoint, int pageIndex);
+		// -(unsigned int)getAnnotColor:(FSAnnotType)annotType;
+		[Export ("getAnnotColor:")]
+		uint GetAnnotColor (FSAnnotType annotType);
+
+		// -(void)setAnnotColor:(unsigned int)color annotType:(FSAnnotType)annotType;
+		[Export ("setAnnotColor:annotType:")]
+		void SetAnnotColor (uint color, FSAnnotType annotType);
+
+		// -(int)getState;
+		[Export ("getState")]
+		//[Verify (MethodToProperty)]
+		int State { get; }
+
+		// -(void)changeState:(int)state;
+		[Export ("changeState:")]
+		void ChangeState (int state);
 	}
 
-	// @interface UIExtensionsModulesConfig : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UIExtensionsModulesConfig
+    // @interface UIExtensionsConfig : NSObject
+    [BaseType (typeof(NSObject))]
+	interface UIExtensionsConfig
 	{
 		// @property (assign, nonatomic) BOOL loadThumbnail;
 		[Export ("loadThumbnail")]
@@ -903,9 +1041,25 @@ namespace FoxitRDKUI
 		[Export ("loadEncryption")]
 		bool LoadEncryption { get; set; }
 
+		// @property (assign, nonatomic) BOOL runJavaScript;
+		[Export ("runJavaScript")]
+		bool RunJavaScript { get; set; }
+
+		// @property (assign, nonatomic) BOOL copyText;
+		[Export ("copyText")]
+		bool CopyText { get; set; }
+
+		// @property (assign, nonatomic) BOOL disableLink;
+		[Export ("disableLink")]
+		bool DisableLink { get; set; }
+		
 		// @property (nonatomic, strong) NSMutableSet<NSString *> * _Nullable tools;
 		[NullAllowed, Export ("tools", ArgumentSemantic.Strong)]
 		NSMutableSet<NSString> Tools { get; set; }
+
+		// @property (readonly, nonatomic) UISettingsModel * _Nullable defaultSettings;
+		[NullAllowed, Export ("defaultSettings")]
+		UISettingsModel DefaultSettings { get; }
 
 		// -(id _Nullable)initWithJSONData:(NSData * _Nonnull)data;
 		[Export ("initWithJSONData:")]
@@ -993,4 +1147,28 @@ namespace FoxitRDKUI
 		[Export ("dismiss")]
 		void Dismiss ();
 	}
+
+	// @protocol IMvCallback <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IMvCallback
+	{
+		// @required -(void)onClick:(MvMenuItem *)item;
+		[Abstract]
+		[Export ("onClick:")]
+		void OnClick (MvMenuItem item);
+	}
+
+    // @protocol IPanelSpec <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IPanelSpec
+    {
+    }
+
+    // @interface UISettingsModel : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UISettingsModel
+    { 
+    }
 }

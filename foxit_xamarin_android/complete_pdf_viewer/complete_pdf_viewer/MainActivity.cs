@@ -52,7 +52,7 @@ namespace Com.Foxit.Home
                 filter = Intent.Action;
             }
 
-            if (Build.VERSION.SdkInt > BuildVersionCodes.M)
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
             {
                 Permission permission = ContextCompat.CheckSelfPermission(this.ApplicationContext, Manifest.Permission.WriteExternalStorage);
                 if (permission != Permission.Granted)
@@ -126,11 +126,17 @@ namespace Com.Foxit.Home
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            if (mLicenseValid && requestCode == REQUEST_EXTERNAL_STORAGE
-             && grantResults[0] == Permission.Granted)
+            if (mLicenseValid && requestCode == REQUEST_EXTERNAL_STORAGE)
             {
-                App.Instance().CopyGuideFiles(App.Instance().GetLocalModule(filter));
-                App.Instance().GetLocalModule(filter).UpdateStoragePermissionGranted();
+                if(grantResults[0] == Permission.Granted)
+                {
+                    App.Instance().CopyGuideFiles(App.Instance().GetLocalModule(filter));
+                    App.Instance().GetLocalModule(filter).UpdateStoragePermissionGranted();
+                }
+                else
+                {
+                    UIToast.GetInstance(this.ApplicationContext).Show("Permission Denied");
+                }
             }
             else
             {

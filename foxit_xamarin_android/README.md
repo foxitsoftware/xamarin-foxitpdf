@@ -1,13 +1,14 @@
 # foxit_xamarin_android
 Use the Foxit PDF SDK for Android with Xamarin
 
-Introduction
-------------
+## Introduction
 
 This sample project works with the  `Foxit PDF SDK for Android 6.3` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
 
-Installation
------
+## Installation
+
+### Install By Reference
+
 1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
 
 2: unzip the `foxitpdfsdk_(version_no)_android.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
@@ -23,7 +24,7 @@ Installation
 
 5: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
 
-#### (Optional)   
+#### (Optional - Reference)   
 
 If you want to open a RMS protected PDF file, you should:
 
@@ -35,9 +36,36 @@ If you want to open a RMS protected PDF file, you should:
 
 4:` Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
   
+### Install By NuGet
 
-License
------
+1: If you have already add reference `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
+
+2: Right-click the References node of the `complete_pdf_viewer`  project and select Manager NuGet Packages...
+
+3: Select the `Browse` tab, search for `Foxit.Android`, `Foxit.Android.UIExtensions` and `Foxit.Android.Cropper` and install them.
+
+4: If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.
+
+5: unzip the `foxitpdfsdk_(version_no)_android.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
+
+* `rdk_key.txt`
+* `rdk_sn.txt`
+
+6: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
+
+#### (Optional - NuGet)   
+
+If you want to open a RMS protected PDF file, you should:
+
+1: If you have already add reference `Microsoft_Aad_Aadl.dll`, `RMSSDK.dll` or `RMSSDK_UI.dll`, please remove them first.
+
+2: Right-click the References node of the `complete_pdf_viewer`  project and select Manager NuGet Packages...
+
+3: Select the `Browse` tab, search for `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.RMSSDK` and `Foxit.Android.RMSSDK.UI` and install them.
+
+4:` Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
+
+## License
 
 ### lisense for Cropper
 [https://github.com/edmodo/cropper](https://github.com/edmodo/cropper)

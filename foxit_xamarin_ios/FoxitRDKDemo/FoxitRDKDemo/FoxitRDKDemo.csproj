@@ -131,12 +131,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FoxitRDKBinding\FoxitRDKBinding\FoxitRDKBinding.csproj">
-      <Project>{01A9EB4A-8477-42AE-8052-62377A2CAF82}</Project>
-      <Name>FoxitRDKBinding</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="..\..\libs\rdk_key.txt">
       <Link>Resources\rdk_key.txt</Link>
     </BundleResource>
@@ -923,16 +917,6 @@
     <BundleResource Include="Resources\uiextensions_config.json" />
     <BundleResource Include="..\..\test_files\complete_pdf_viewer_guide_ios.pdf"><Link>Resources\complete_pdf_viewer_guide_ios.pdf</Link></BundleResource>
     <BundleResource Include="..\..\test_files\Sample.pdf"><Link>Resources\Sample.pdf</Link></BundleResource>
-  </ItemGroup>
-  <ItemGroup>
-    <NativeReference Include="..\..\libs\FoxitRDK.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\libs\uiextensionsDynamic.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -4,3 +4,12 @@ foxit_xamarin_ios/FoxitRDKBinding/FoxitRDKBinding/obj
 foxit_xamarin_ios/FoxitRDKDemo/FoxitRDKDemo/bin
 foxit_xamarin_ios/FoxitRDKDemo/FoxitRDKDemo/obj
 foxit_xamarin_ios/FoxitRDKDemo/.vs
+foxit_xamarin_ios/Foxit.iOS/.vs
+foxit_xamarin_ios/Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/obj
+foxit_xamarin_ios/Foxit.iOS/Foxit.iOS/bin
+foxit_xamarin_ios/Foxit.iOS/Foxit.iOS/obj
+foxit_xamarin_ios/FoxitRDKDemo/FoxitRDKDemo/.vs
+foxit_xamarin_ios/Foxit.iOS/Foxit.iOS/.vs
+foxit_xamarin_ios/Foxit.iOS.UIExtensions/.vs
+Foxit.iOS.UIExtensions.nuspec
+Foxit.iOS.nuspec

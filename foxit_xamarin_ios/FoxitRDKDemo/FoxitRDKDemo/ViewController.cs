@@ -13,10 +13,10 @@
 using System;
 using System.IO;
 using UIKit;
-using FoxitRDK;
-using FoxitRDKUI;
 using Foundation;
 using CoreFoundation;
+using Foxit.iOS;
+using Foxit.iOS.UIExtensions;
 
 namespace FoxitRDKDemo
 {

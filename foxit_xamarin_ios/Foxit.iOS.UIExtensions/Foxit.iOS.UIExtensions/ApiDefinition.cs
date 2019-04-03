@@ -1,22 +1,37 @@
+/**
+* Copyright (C) 2003-2019, Foxit Software Inc..
+* All Rights Reserved.
+*
+* http://www.foxitsoftware.com
+*
+* The following code is copyrighted and is the proprietary of Foxit Software Inc.. It is not allowed to
+* distribute any parts of Foxit PDF SDK for iOS to third party or public without permission unless an agreement
+* is signed between Foxit Software Inc. and customers to explicitly grant customers permissions.
+* Review legal.txt for additional license and legal information.
+*/
+
 using System;
 using CoreGraphics;
 using Foundation;
-using FoxitRDK;
 using ObjCRuntime;
 using UIKit;
+using Foxit.iOS;
 
-namespace FoxitRDKUI
+namespace Foxit.iOS.UIExtensions
 {
 	[Static]
+	//[Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
 		// extern double uiextensionsDynamicVersionNumber;
 		[Field ("uiextensionsDynamicVersionNumber", "__Internal")]
 		double uiextensionsDynamicVersionNumber { get; }
 
-		//// extern const unsigned char [] uiextensionsDynamicVersionString;
-		//[Field ("uiextensionsDynamicVersionString", "__Internal")]
-		//char uiextensionsDynamicVersionString { get; }
+		/*
+		// extern const unsigned char [] uiextensionsDynamicVersionString;
+		[Field ("uiextensionsDynamicVersionString", "__Internal")]
+		byte[] uiextensionsDynamicVersionString { get; }
+		*/
 	}
 
 	// @protocol FSFileSelectDelegate <NSObject>
@@ -32,7 +47,7 @@ namespace FoxitRDKUI
 
 	// @interface FSFileListViewController : UIViewController <IDocEventListener>
 	[BaseType (typeof(UIViewController))]
-	interface FSFileListViewController : IDocEventListener
+	interface FSFileListViewController : IIDocEventListener
 	{
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
@@ -42,9 +57,11 @@ namespace FoxitRDKUI
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
 
-		//// @property (nonatomic, strong) BlockButton * _Nonnull signBtn;
-		//[Export ("signBtn", ArgumentSemantic.Strong)]
-		//BlockButton SignBtn { get; set; }
+		/*
+		// @property (nonatomic, strong) BlockButton * _Nonnull signBtn;
+		[Export ("signBtn", ArgumentSemantic.Strong)]
+		BlockButton SignBtn { get; set; }
+		*/
 
 		// @property (nonatomic, strong) UIToolbar * _Nonnull topToolbar;
 		[Export ("topToolbar", ArgumentSemantic.Strong)]
@@ -127,7 +144,7 @@ namespace FoxitRDKUI
 	{
 		// @property (assign, nonatomic) id<IPanelSpec> spec;
 		[Export ("spec", ArgumentSemantic.Assign)]
-        IPanelSpec Spec { get; set; }
+		IPanelSpec Spec { get; set; }
 	}
 
 	// @interface PanelHost : NSObject <SegmentDelegate>
@@ -140,7 +157,7 @@ namespace FoxitRDKUI
 
 		// @property (nonatomic, strong) id<IPanelSpec> currentSpace;
 		[Export ("currentSpace", ArgumentSemantic.Strong)]
-        IPanelSpec CurrentSpace { get; set; }
+		IPanelSpec CurrentSpace { get; set; }
 
 		// @property (nonatomic, strong) UIView * contentView;
 		[Export ("contentView", ArgumentSemantic.Strong)]
@@ -181,7 +198,7 @@ namespace FoxitRDKUI
 		// @property (nonatomic, strong) PanelHost * panel;
 		[Export ("panel", ArgumentSemantic.Strong)]
 		PanelHost Panel { get; set; }
-		
+
 		// @property (assign, nonatomic) BOOL isHidden;
 		[Export ("isHidden")]
 		bool IsHidden { get; set; }
@@ -192,6 +209,7 @@ namespace FoxitRDKUI
 
 		// -(NSMutableDictionary *)getItemHiddenStatus;
 		[Export ("getItemHiddenStatus")]
+		//[Verify (MethodToProperty)]
 		NSMutableDictionary ItemHiddenStatus { get; }
 
 		// -(void)setPanelHidden:(BOOL)isHidden type:(FSPanelType)type;
@@ -272,7 +290,7 @@ namespace FoxitRDKUI
 
 		// @optional -(void)settingBar:(SettingBar *)settingBar setNightMode:(BOOL)isNightMode;
 		[Export ("settingBar:setNightMode:")]
-		void SettingBarSetNightMode(SettingBar settingBar, bool isNightMode);
+		void SettingBarSetNightMode (SettingBar settingBar, bool isNightMode);
 
 		// @optional -(void)settingBarFitPage:(SettingBar *)settingBar;
 		[Export ("settingBarFitPage:")]
@@ -281,7 +299,7 @@ namespace FoxitRDKUI
 		// @optional -(void)settingBarFitWidth:(SettingBar *)settingBar;
 		[Export ("settingBarFitWidth:")]
 		void SettingBarFitWidth (SettingBar settingBar);
-		
+
 		// @optional -(void)settingBarDidChangeSize:(SettingBar *)settingBar;
 		[Export ("settingBarDidChangeSize:")]
 		void SettingBarDidChangeSize (SettingBar settingBar);
@@ -308,6 +326,7 @@ namespace FoxitRDKUI
 
 		// -(NSMutableDictionary *)getItemHiddenStatus;
 		[Export ("getItemHiddenStatus")]
+		//[Verify (MethodToProperty)]
 		NSMutableDictionary ItemHiddenStatus { get; }
 
 		// -(void)setItem:(SettingItemType)itemType hidden:(BOOL)hidden;
@@ -333,6 +352,7 @@ namespace FoxitRDKUI
 
 		// -(NSMutableArray *)getItems;
 		[Export ("getItems")]
+		//[Verify (MethodToProperty)]
 		NSMutableArray Items { get; }
 
 		// -(void)setItems:(NSMutableArray *)arr;
@@ -360,9 +380,9 @@ namespace FoxitRDKUI
 		[Export ("enable")]
 		bool Enable { get; set; }
 
-		//// @property (nonatomic, strong) id<IMvCallback> callBack;
-		//[Export ("callBack", ArgumentSemantic.Strong)]
-		//IMvCallback CallBack { get; set; }
+		// @property (nonatomic, strong) id<IMvCallback> callBack;
+		[Export ("callBack", ArgumentSemantic.Strong)]
+		IMvCallback CallBack { get; set; }
 
 		// @property (nonatomic, strong) UIView * customView;
 		[Export ("customView", ArgumentSemantic.Strong)]
@@ -402,6 +422,7 @@ namespace FoxitRDKUI
 
 		// -(UIView *)getContentView;
 		[Export ("getContentView")]
+		//[Verify (MethodToProperty)]
 		UIView ContentView { get; }
 
 		// -(void)setMenuTitle:(NSString *)title;
@@ -419,7 +440,6 @@ namespace FoxitRDKUI
 		// -(void)setMoreViewItemHiddenWithGroup:(NSUInteger)groupTag andItemTag:(NSUInteger)itemTag hidden:(BOOL)isHidden;
 		[Export ("setMoreViewItemHiddenWithGroup:andItemTag:hidden:")]
 		void SetMoreViewItemHiddenWithGroup (nuint groupTag, nuint itemTag, bool isHidden);
-
 	}
 
 	// @protocol IAnnotEventListener <NSObject>
@@ -490,11 +510,13 @@ namespace FoxitRDKUI
 		// @required -(NSString * _Nonnull)getName;
 		[Abstract]
 		[Export ("getName")]
+		//[Verify (MethodToProperty)]
 		string Name { get; }
 
 		// @required -(BOOL)isEnabled;
 		[Abstract]
 		[Export ("isEnabled")]
+		//[Verify (MethodToProperty)]
 		bool IsEnabled { get; }
 
 		// @required -(void)onActivate;
@@ -547,10 +569,10 @@ namespace FoxitRDKUI
 		[Export ("onPageViewTouchesCancelled:touches:withEvent:")]
 		bool OnPageViewTouchesCancelled (int pageIndex, NSSet touches, UIEvent @event);
 
-        // @optional -(void)onDraw:(int)pageIndex inContext:(CGContextRef _Nonnull)context;
-        [Export("onDraw:inContext:")]
-        unsafe void OnDraw(int pageIndex, IntPtr context);
-    }
+		// @optional -(void)onDraw:(int)pageIndex inContext:(CGContextRef _Nonnull)context;
+		[Export ("onDraw:inContext:")]
+		unsafe void OnDraw (int pageIndex, IntPtr context);
+	}
 
 	// @protocol IAnnotHandler <NSObject>
 	[Protocol, Model]
@@ -649,7 +671,7 @@ namespace FoxitRDKUI
 
 		// @optional -(NSString * _Nonnull)getName;
 		[Export ("getName")]
-        //[Verify (MethodToProperty)]
+		//[Verify (MethodToProperty)]
 		string Name { get; }
 
 		// @optional -(void)onDraw:(int)pageIndex inContext:(CGContextRef _Nonnull)context annot:(FSAnnot * _Nullable)annot;
@@ -694,7 +716,7 @@ namespace FoxitRDKUI
 
 		// @optional -(void)onDraw:(int)pageIndex inContext:(CGContextRef _Nonnull)context widget:(FSXFAWidget * _Nullable)widget;
 		[Export ("onDraw:inContext:widget:")]
-        unsafe void OnDraw (int pageIndex, IntPtr context, [NullAllowed] FSXFAWidget widget);
+		unsafe void OnDraw (int pageIndex, IntPtr context, [NullAllowed] FSXFAWidget widget);
 	}
 
 	// @protocol IFullScreenListener <NSObject>
@@ -743,7 +765,7 @@ namespace FoxitRDKUI
 
 	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener>
 	[BaseType (typeof(NSObject))]
-	interface UIExtensionsManager : FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener
+	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener
 	{
 		// @property (readonly, nonatomic, strong) FSPDFViewCtrl * _Nonnull pdfViewCtrl;
 		[Export ("pdfViewCtrl", ArgumentSemantic.Strong)]
@@ -820,7 +842,7 @@ namespace FoxitRDKUI
 		// @property (assign, nonatomic) BOOL needScreenLock;
 		[Export ("needScreenLock")]
 		bool NeedScreenLock { get; set; }
-		
+
 		// @property (nonatomic, strong) NSString * _Nonnull preventOverrideFilePath;
 		[Export ("preventOverrideFilePath", ArgumentSemantic.Strong)]
 		string PreventOverrideFilePath { get; set; }
@@ -853,8 +875,8 @@ namespace FoxitRDKUI
 		[Export ("initWithPDFViewControl:configuration:")]
 		IntPtr Constructor (FSPDFViewCtrl viewctrl, [NullAllowed] NSData jsonConfigData);
 
-        // -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl configurationObject:(UIExtensionsConfig * _Nonnull)configuration;
-        [Export ("initWithPDFViewControl:configurationObject:")]
+		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl configurationObject:(UIExtensionsConfig * _Nonnull)configuration;
+		[Export ("initWithPDFViewControl:configurationObject:")]
 		IntPtr Constructor (FSPDFViewCtrl viewctrl, UIExtensionsConfig configuration);
 
 		// -(void)registerFullScreenListener:(id<IFullScreenListener> _Nonnull)listener;
@@ -955,6 +977,7 @@ namespace FoxitRDKUI
 
 		// -(NSString * _Nonnull)getCurrentSelectedText;
 		[Export ("getCurrentSelectedText")]
+		//[Verify (MethodToProperty)]
 		string CurrentSelectedText { get; }
 
 		// -(void)showThumbnailView;
@@ -963,10 +986,12 @@ namespace FoxitRDKUI
 
 		// -(NSMutableDictionary * _Nonnull)getTopToolbarItemHiddenStatus;
 		[Export ("getTopToolbarItemHiddenStatus")]
+		//[Verify (MethodToProperty)]
 		NSMutableDictionary TopToolbarItemHiddenStatus { get; }
 
 		// -(NSMutableDictionary * _Nonnull)getBottomToolbarItemHiddenStatus;
 		[Export ("getBottomToolbarItemHiddenStatus")]
+		//[Verify (MethodToProperty)]
 		NSMutableDictionary BottomToolbarItemHiddenStatus { get; }
 
 		// -(void)setToolbarItemHiddenWithTag:(NSUInteger)itemTag hidden:(BOOL)isHidden;
@@ -1001,8 +1026,8 @@ namespace FoxitRDKUI
 		void ChangeState (int state);
 	}
 
-    // @interface UIExtensionsConfig : NSObject
-    [BaseType (typeof(NSObject))]
+	// @interface UIExtensionsConfig : NSObject
+	[BaseType (typeof(NSObject))]
 	interface UIExtensionsConfig
 	{
 		// @property (assign, nonatomic) BOOL loadThumbnail;
@@ -1052,7 +1077,7 @@ namespace FoxitRDKUI
 		// @property (assign, nonatomic) BOOL disableLink;
 		[Export ("disableLink")]
 		bool DisableLink { get; set; }
-		
+
 		// @property (nonatomic, strong) NSMutableSet<NSString *> * _Nullable tools;
 		[NullAllowed, Export ("tools", ArgumentSemantic.Strong)]
 		NSMutableSet<NSString> Tools { get; set; }
@@ -1119,17 +1144,17 @@ namespace FoxitRDKUI
 		[Export ("sideEdge")]
 		nfloat SideEdge { get; set; }
 
-		// @property (copy, nonatomic) dispatch_block_t didShowHandler;
+		// @property (copy, nonatomic) Action didShowHandler;
 		[Export ("didShowHandler", ArgumentSemantic.Copy)]
-        Action DidShowHandler { get; set; }
+		Action DidShowHandler { get; set; }
 
-		// @property (copy, nonatomic) dispatch_block_t didDismissHandler;
+		// @property (copy, nonatomic) Action didDismissHandler;
 		[Export ("didDismissHandler", ArgumentSemantic.Copy)]
-        Action DidDismissHandler { get; set; }
+		Action DidDismissHandler { get; set; }
 
-		// @property (copy, nonatomic) dispatch_block_t didRotatedHandler;
+		// @property (copy, nonatomic) Action didRotatedHandler;
 		[Export ("didRotatedHandler", ArgumentSemantic.Copy)]
-        Action DidRotatedHandler { get; set; }
+		Action DidRotatedHandler { get; set; }
 
 		// @property (nonatomic, strong) UIControl * blackOverlay;
 		[Export ("blackOverlay", ArgumentSemantic.Strong)]

@@ -13,3 +13,7 @@ foxit_xamarin_ios/Foxit.iOS/Foxit.iOS/.vs
 foxit_xamarin_ios/Foxit.iOS.UIExtensions/.vs
 Foxit.iOS.UIExtensions.nuspec
 Foxit.iOS.nuspec
+foxit_xamarin_ios/Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/bin
+packages.config
+foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.6.3.0/lib
+foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.UIExtensions.6.3.0/lib

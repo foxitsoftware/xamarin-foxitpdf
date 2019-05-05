@@ -12,8 +12,8 @@
 
 using Foundation;
 using UIKit;
-using FoxitRDK;
-using FoxitRDKUI;
+using Foxit.iOS;
+using Foxit.iOS.UIExtensions;
 using System.IO;
 using System;
 
@@ -103,6 +103,8 @@ namespace FoxitRDKDemo
             string sn = GetIni(NSBundle.MainBundle.PathForResource("rdk_sn", "txt"), "SN");
             string key = GetIni(NSBundle.MainBundle.PathForResource("rdk_key", "txt"), "Sign");
 
+            Console.WriteLine("sn {0}",sn);
+            Console.WriteLine("key {0}", key);
             // Initialize the library
             var eRet = FSLibrary.Initialize(sn, key);
             if (FSErrorCode.Success != eRet)
@@ -111,7 +113,13 @@ namespace FoxitRDKDemo
 
                 UIAlertController alert = UIAlertController.Create("Check License", errMsg, UIAlertControllerStyle.Alert);
                 alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                UIViewController rootvc = UIApplication.SharedApplication.KeyWindow.RootViewController;
+                UIWindow keyWindow = UIApplication.SharedApplication.KeyWindow;
+                if (keyWindow == null)
+                {
+                    keyWindow = UIApplication.SharedApplication.Windows[0];
+                    keyWindow.MakeKeyAndVisible();
+                }
+                UIViewController rootvc = keyWindow.RootViewController;
                 rootvc.PresentViewController(alert, true, null);
 
                 return false;

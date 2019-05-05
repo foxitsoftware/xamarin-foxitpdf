@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foxit.iOS.UIExtensions", "Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions.csproj", "{F01A4156-B22E-4825-967F-AD9EC355E4EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foxit.iOS", "..\Foxit.iOS\Foxit.iOS\Foxit.iOS.csproj", "{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F01A4156-B22E-4825-967F-AD9EC355E4EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01A4156-B22E-4825-967F-AD9EC355E4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01A4156-B22E-4825-967F-AD9EC355E4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01A4156-B22E-4825-967F-AD9EC355E4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

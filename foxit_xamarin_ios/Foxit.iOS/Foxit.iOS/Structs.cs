@@ -58,9 +58,9 @@ namespace Foxit.iOS
 		CanNotGetUserToken = 37,
 		InvalidACL = 38,
 		InvalidClientID = 39,
-		OCRInvalidLicense = 40,
-		OCREngineNotInit = 41,
-		DiskFull = 42
+		OCREngineNotInit = 40,
+		DiskFull = 41,
+		OCRTrialIsEnd = 42
 	}
 
 	//[Native]
@@ -273,6 +273,13 @@ namespace Foxit.iOS
 		Medium = 1,
 		Quater = 2,
 		High = 3
+	}
+
+	//[Native]
+	public enum FSConnectedPDFEncryptType 
+	{
+		Aes = 1,
+		Sm4cbc = 2
 	}
 
 	//[Native]
@@ -540,7 +547,8 @@ namespace Foxit.iOS
 		RadioButton = 11,
 		Rectangle = 12,
 		TextEdit = 13,
-		Unknown = 14
+		Unknown = 14,
+		ExclGroup = 15
 	}
 
 	//[Native]
@@ -551,6 +559,13 @@ namespace Foxit.iOS
 		Hidden = 2,
 		Inactive = 3,
 		Invisible = 4
+	}
+
+	//[Native]
+	public enum FSXFAWidgetWidgetNameType 
+	{
+		Field = 0,
+		Caption = 1
 	}
 
 	//[Native]
@@ -1107,7 +1122,7 @@ namespace Foxit.iOS
 	{
 		Forms = 1,
 		Annots = 2,
-		NoLinks = 4
+		Links = 4
 	}
 
 	//[Native]
@@ -1572,6 +1587,22 @@ namespace Foxit.iOS
 		Detection,
 		Customized
 	}
+
+	//[Native]
+	public enum FsPagespacingDirection 
+	{
+		Horizontal = 1,
+		Vertical = 2
+	}
+
+	public enum PdfPageStyleType 
+	{
+		Blank = 0,
+		Lined,
+		Grid,
+		Graph,
+		Music
+	}
     public enum PDF_LAYOUT_MODE
     {
         /** @brief  Unknown page mode. */
@@ -1623,5 +1654,17 @@ namespace Foxit.iOS
         PDF_CROP_MODE_DETECTION,
         /** @brief  Crop margin with specified pages & rects */
         PDF_CROP_MODE_CUSTOMIZED,
+    }
+    public enum PDF_PAGE_STYLE_TYPE {
+	/** @brief    Insert page blank style. */
+    	PDF_PAGE_STYLE_TYPE_BLANK = 0,
+    	/** @brief    Insert page lined style. */
+    	PDF_PAGE_STYLE_TYPE_LINED,
+    	/** @brief    Insert page grid style. */
+    	PDF_PAGE_STYLE_TYPE_GRID,
+    	/** @brief    Insert page graph style. */
+    	PDF_PAGE_STYLE_TYPE_GRAPH,
+    	/** @brief    Insert page music style. */
+    	PDF_PAGE_STYLE_TYPE_MUSIC
     }
 }

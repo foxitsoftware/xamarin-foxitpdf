@@ -39,7 +39,8 @@ namespace Foxit.iOS.UIExtensions
 		Nightmode,
 		Panzoom,
 		Fitpage,
-		Fitwidth
+		Fitwidth,
+		Rotate
 	}
 
 	//[Native]

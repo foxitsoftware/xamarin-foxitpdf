@@ -15,7 +15,6 @@ using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
-using Foxit.iOS;
 
 namespace Foxit.iOS.UIExtensions
 {
@@ -299,6 +298,10 @@ namespace Foxit.iOS.UIExtensions
 		// @optional -(void)settingBarFitWidth:(SettingBar *)settingBar;
 		[Export ("settingBarFitWidth:")]
 		void SettingBarFitWidth (SettingBar settingBar);
+
+		// @optional -(void)settingBarRotate:(SettingBar *)settingBar;
+		[Export ("settingBarRotate:")]
+		void SettingBarRotate (SettingBar settingBar);
 
 		// @optional -(void)settingBarDidChangeSize:(SettingBar *)settingBar;
 		[Export ("settingBarDidChangeSize:")]
@@ -994,6 +997,10 @@ namespace Foxit.iOS.UIExtensions
 		//[Verify (MethodToProperty)]
 		NSMutableDictionary BottomToolbarItemHiddenStatus { get; }
 
+		// -(void)setFullScreen:(BOOL)fullScreen;
+		[Export ("setFullScreen:")]
+		void SetFullScreen (bool fullScreen);
+
 		// -(void)setToolbarItemHiddenWithTag:(NSUInteger)itemTag hidden:(BOOL)isHidden;
 		[Export ("setToolbarItemHiddenWithTag:hidden:")]
 		void SetToolbarItemHiddenWithTag (nuint itemTag, bool isHidden);
@@ -1065,6 +1072,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (assign, nonatomic) BOOL loadEncryption;
 		[Export ("loadEncryption")]
 		bool LoadEncryption { get; set; }
+
+		// @property (assign, nonatomic) BOOL loadMultipleSelection;
+		[Export ("loadMultipleSelection")]
+		bool LoadMultipleSelection { get; set; }
 
 		// @property (assign, nonatomic) BOOL runJavaScript;
 		[Export ("runJavaScript")]

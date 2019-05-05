@@ -1587,6 +1587,10 @@ namespace Foxit.iOS
 		[Export ("renderAnnot:matrix:")]
 		bool RenderAnnot (FSAnnot annot, FSMatrix2D matrix);
 
+		// -(BOOL)renderGraphicsObject:(FSGraphicsObject *)graphics_object page:(FSPDFPage *)page matrix:(FSMatrix2D *)matrix;
+		[Export ("renderGraphicsObject:page:matrix:")]
+		bool RenderGraphicsObject (FSGraphicsObject graphics_object, FSPDFPage page, FSMatrix2D matrix);
+
 		// -(void)setClipRect:(FSRectI *)clip_rect;
 		[Export ("setClipRect:")]
 		void SetClipRect (FSRectI clip_rect);
@@ -1811,17 +1815,9 @@ namespace Foxit.iOS
 		[Export ("getUserTokenFromServer:user_email:password:")]
 		string GetUserTokenFromServer (string endpoint, string user_email, string password);
 
-		// -(id)initWithClientid:(NSString *)clientid user_token:(NSString *)user_token content_key:(NSString *)content_key file_path:(NSString *)file_path;
-		[Export ("initWithClientid:user_token:content_key:file_path:")]
-		IntPtr Constructor (string clientid, string user_token, string content_key, string file_path);
-
-		// -(id)initWithClientid:(NSString *)clientid user_token:(NSString *)user_token content_key:(NSString *)content_key file_read:(id<FSFileReaderCallback>)file_read;
-		[Export ("initWithClientid:user_token:content_key:file_read:")]
-		IntPtr Constructor (string clientid, string user_token, string content_key, FSFileReaderCallback file_read);
-
-		// -(id)initWithClientid:(NSString *)clientid user_token:(NSString *)user_token content_key:(NSString *)content_key document:(FSPDFDoc *)document;
-		[Export ("initWithClientid:user_token:content_key:document:")]
-		IntPtr Constructor (string clientid, string user_token, string content_key, FSPDFDoc document);
+		// -(id)initWithClientid:(NSString *)clientid user_token:(NSString *)user_token content_key:(NSString *)content_key type:(FSConnectedPDFEncryptType)type file_path:(NSString *)file_path;
+		[Export ("initWithClientid:user_token:content_key:type:file_path:")]
+		IntPtr Constructor (string clientid, string user_token, string content_key, FSConnectedPDFEncryptType type, string file_path);
 
 		// -(id)initWithConnected_pdf:(FSConnectedPDF *)connected_pdf;
 		[Export ("initWithConnected_pdf:")]
@@ -1907,6 +1903,87 @@ namespace Foxit.iOS
 		// -(BOOL)saveAs:(NSString *)file_path;
 		[Export ("saveAs:")]
 		bool SaveAs (string file_path);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSWidgetChoiceOption : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSWidgetChoiceOption
+	{
+		// @property (getter = getOption_label, nonatomic, weak) NSString * option_label;
+		[Export ("option_label", ArgumentSemantic.Weak)]
+		string Option_label { [Bind ("getOption_label")] get; set; }
+
+		// @property (getter = getSelected, nonatomic) BOOL selected;
+		[Export ("selected")]
+		bool Selected { [Bind ("getSelected")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOption:(FSWidgetChoiceOption *)option;
+		[Export ("initWithOption:")]
+		IntPtr Constructor (FSWidgetChoiceOption option);
+
+		// -(void)set:(NSString *)option_label selected:(BOOL)selected;
+		[Export ("set:selected:")]
+		void Set (string option_label, bool selected);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSWidgetChoiceOptionArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSWidgetChoiceOptionArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSWidgetChoiceOptionArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSWidgetChoiceOptionArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSWidgetChoiceOption *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSWidgetChoiceOption GetAt (nuint index);
+
+		// -(void)add:(FSWidgetChoiceOption *)element;
+		[Export ("add:")]
+		void Add (FSWidgetChoiceOption element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSWidgetChoiceOption *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSWidgetChoiceOption element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -2109,6 +2186,20 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSRectF Rect { get; }
 
+		// -(NSString *)getName:(FSXFAWidgetWidgetNameType)type;
+		[Export ("getName:")]
+		string GetName (FSXFAWidgetWidgetNameType type);
+
+		// -(FSWidgetChoiceOptionArray *)getOptions;
+		[Export ("getOptions")]
+		//[Verify (MethodToProperty)]
+		FSWidgetChoiceOptionArray Options { get; }
+
+		// -(BOOL)isChecked;
+		[Export ("isChecked")]
+		//[Verify (MethodToProperty)]
+		bool IsChecked { get; }
+
 		// -(FSXFAWidgetPresenceProperty)getPresence;
 		[Export ("getPresence")]
 		//[Verify (MethodToProperty)]
@@ -2168,6 +2259,11 @@ namespace Foxit.iOS
 		[Export ("getType")]
 		//[Verify (MethodToProperty)]
 		FSXFAWidgetWidgetType Type { get; }
+
+		// -(FSSignature *)getSignature;
+		[Export ("getSignature")]
+		//[Verify (MethodToProperty)]
+		FSSignature Signature { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -5030,6 +5126,10 @@ namespace Foxit.iOS
 		[Export ("textMatrix", ArgumentSemantic.Weak)]
 		FSMatrix2D TextMatrix { [Bind ("getTextMatrix")] get; set; }
 
+		// @property (getter = getRotation, nonatomic) FSRotation rotation;
+		[Export ("rotation", ArgumentSemantic.Assign)]
+		FSRotation Rotation { [Bind ("getRotation")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -5051,6 +5151,10 @@ namespace Foxit.iOS
 		// -(BOOL)setDefaultAppearance:(FSDefaultAppearance *)default_ap;
 		[Export ("setDefaultAppearance:")]
 		bool SetDefaultAppearance (FSDefaultAppearance default_ap);
+
+		// -(void)rotate:(FSRotation)rotation;
+		[Export ("rotate:")]
+		void Rotate (FSRotation rotation);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -5182,6 +5286,10 @@ namespace Foxit.iOS
 		[Export ("iconName", ArgumentSemantic.Weak)]
 		string IconName { [Bind ("getIconName")] get; set; }
 
+		// @property (getter = getRotation, nonatomic) int rotation;
+		[Export ("rotation")]
+		int Rotation { [Bind ("getRotation")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -5202,6 +5310,10 @@ namespace Foxit.iOS
 		// -(void)setImage:(FSImage *)image frame_index:(int)frame_index compress:(int)compress;
 		[Export ("setImage:frame_index:compress:")]
 		void SetImage (FSImage image, int frame_index, int compress);
+
+		// -(void)rotate:(int)angle;
+		[Export ("rotate:")]
+		void Rotate (int angle);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -5567,6 +5679,11 @@ namespace Foxit.iOS
 		// -(id)initWithAnnot:(FSAnnot *)annot;
 		[Export ("initWithAnnot:")]
 		IntPtr Constructor (FSAnnot annot);
+
+		// -(BOOL)apply;
+		[Export ("apply")]
+		//[Verify (MethodToProperty)]
+		bool Apply { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -6239,6 +6356,10 @@ namespace Foxit.iOS
 		[Export ("insertPage:width:height:")]
 		FSPDFPage InsertPage (int index, float width, float height);
 
+		// -(FSPDFPage *)insertPageSize:(int)index size:(FSPDFPageSize)size;
+		[Export ("insertPageSize:size:")]
+		FSPDFPage InsertPageSize (int index, FSPDFPageSize size);
+
 		// -(BOOL)removePage:(int)index;
 		[Export ("removePage:")]
 		bool RemovePage (int index);
@@ -6422,6 +6543,10 @@ namespace Foxit.iOS
 		// -(BOOL)exportToFile:(NSString *)path;
 		[Export ("exportToFile:")]
 		bool ExportToFile (string path);
+
+		// -(BOOL)exportToFileStream:(id<FSFileReaderCallback>)stream;
+		[Export ("exportToFileStream:")]
+		bool ExportToFileStream (FSFileReaderCallback stream);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -6675,6 +6800,11 @@ namespace Foxit.iOS
 		[Export ("getName")]
 		//[Verify (MethodToProperty)]
 		string Name { get; }
+
+		// -(BOOL)isLocked;
+		[Export ("isLocked")]
+		//[Verify (MethodToProperty)]
+		bool IsLocked { get; }
 
 		// -(BOOL)hasLayer;
 		[Export ("hasLayer")]
@@ -7558,6 +7688,10 @@ namespace Foxit.iOS
 		[Export ("flatten:options:")]
 		bool Flatten (bool for_display, uint options);
 
+		// -(BOOL)flattenAnnot:(FSAnnot *)annot;
+		[Export ("flattenAnnot:")]
+		bool FlattenAnnot (FSAnnot annot);
+
 		// -(BOOL)setAnnotGroup:(FSMarkupArray *)annot_array header_index:(int)header_index;
 		[Export ("setAnnotGroup:header_index:")]
 		bool SetAnnotGroup (FSMarkupArray annot_array, int header_index);
@@ -7607,6 +7741,14 @@ namespace Foxit.iOS
 		// -(FSGraphicsObjectArray *)getGraphicsObjectsAtPoint:(FSPointF *)point tolerance:(float)tolerance filter:(FSGraphicsObjectType)filter;
 		[Export ("getGraphicsObjectsAtPoint:tolerance:filter:")]
 		FSGraphicsObjectArray GetGraphicsObjectsAtPoint (FSPointF point, float tolerance, FSGraphicsObjectType filter);
+
+		// -(FSGraphicsObject *)getGraphicsObjectAtDevicePoint:(FSPointF *)point tolerance:(float)tolerance matrix:(FSMatrix2D *)matrix filter:(FSGraphicsObjectType)filter;
+		[Export ("getGraphicsObjectAtDevicePoint:tolerance:matrix:filter:")]
+		FSGraphicsObject GetGraphicsObjectAtDevicePoint (FSPointF point, float tolerance, FSMatrix2D matrix, FSGraphicsObjectType filter);
+
+		// -(FSGraphicsObjectArray *)getGraphicsObjectsAtDevicePoint:(FSPointF *)point tolerance:(float)tolerance matrix:(FSMatrix2D *)matrix filter:(FSGraphicsObjectType)filter;
+		[Export ("getGraphicsObjectsAtDevicePoint:tolerance:matrix:filter:")]
+		FSGraphicsObjectArray GetGraphicsObjectsAtDevicePoint (FSPointF point, float tolerance, FSMatrix2D matrix, FSGraphicsObjectType filter);
 
 		// -(BOOL)addImageFromFilePath:(NSString *)file_path position:(FSPointF *)position width:(float)width height:(float)height auto_generate_content:(BOOL)auto_generate_content;
 		[Export ("addImageFromFilePath:position:width:height:auto_generate_content:")]
@@ -9512,6 +9654,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSPDFDictionary Dict { get; }
 
+		// -(void)fixPageFields:(int)page_index;
+		[Export ("fixPageFields:")]
+		void FixPageFields (int page_index);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -9753,6 +9899,46 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("writeBlock:offset:")]
 		bool Offset (NSData data, ulong offset);
+
+		// @required -(BOOL)flush;
+		[Abstract]
+		[Export ("flush")]
+		//[Verify (MethodToProperty)]
+		bool Flush { get; }
+	}
+
+	// @protocol FSStreamCallback <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface FSStreamCallback
+	{
+		// @required -(unsigned long long)getSize;
+		[Abstract]
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		ulong Size { get; }
+
+		// @required -(BOOL)IsEOF;
+		[Abstract]
+		[Export ("IsEOF")]
+		//[Verify (MethodToProperty)]
+		bool IsEOF { get; }
+
+		// @required -(unsigned long long)GetPosition;
+		[Abstract]
+		[Export ("GetPosition")]
+		//[Verify (MethodToProperty)]
+		ulong Position { get; }
+
+		// @required -(NSData *)readBlock:(unsigned long long)offset size:(unsigned long long)size;
+		[Abstract]
+		[Export ("readBlock:size:")]
+		NSData ReadBlock (ulong offset, ulong size);
+
+		// @required -(BOOL)writeBlock:(NSData *)data offset:(unsigned long long)offset;
+		[Abstract]
+		[Export ("writeBlock:offset:")]
+		bool WriteBlock (NSData data, ulong offset);
 
 		// @required -(BOOL)flush;
 		[Abstract]
@@ -10582,6 +10768,10 @@ namespace Foxit.iOS
 		[Export ("onTap:")]
 		bool OnTap (UITapGestureRecognizer gestureRecognizer);
 
+		// @optional -(BOOL)onDoubleTap:(UITapGestureRecognizer * _Nonnull)gestureRecognizer;
+		[Export ("onDoubleTap:")]
+		bool OnDoubleTap (UITapGestureRecognizer gestureRecognizer);
+
 		// @optional -(BOOL)onPan:(UIPanGestureRecognizer * _Nonnull)gestureRecognizer;
 		[Export ("onPan:")]
 		bool OnPan (UIPanGestureRecognizer gestureRecognizer);
@@ -10694,10 +10884,31 @@ namespace Foxit.iOS
 		[Export ("insertPageFromImage:atIndex:")]
 		bool InsertPageFromImage (UIImage image, nuint pageIndex);
 
+		// @required -(BOOL)insertPage:(int)index width:(float)width height:(float)height style:(PDF_PAGE_STYLE_TYPE)style color:(unsigned int)color rotation:(FSRotation)rotation count:(int)count;
+		[Abstract]
+		[Export ("insertPage:width:height:style:color:rotation:count:")]
+		bool InsertPage (int index, float width, float height, PDF_PAGE_STYLE_TYPE style, uint color, FSRotation rotation, int count);
+
+		// @required -(BOOL)insertPage:(int)index pageSize:(FSPDFPageSize)pageSize style:(PDF_PAGE_STYLE_TYPE)style color:(unsigned int)color rotation:(FSRotation)rotation count:(int)count;
+		[Abstract]
+		[Export ("insertPage:pageSize:style:color:rotation:count:")]
+		bool InsertPage (int index, FSPDFPageSize pageSize, PDF_PAGE_STYLE_TYPE style, uint color, FSRotation rotation, int count);
+
 		// @required -(void)insertPagesFromDocument:(FSPDFDoc * _Nonnull)document withSourceIndexes:(NSArray<NSNumber *> * _Nonnull)sourcePagesIndexes flags:(FSPDFDocImportPageFlags)flags layerName:(NSString * _Nullable)layerName atIndex:(NSUInteger)destinationIndex success:(void (^ _Nonnull)(NSString * _Nonnull))success error:(void (^ _Nonnull)(NSString * _Nonnull))error;
 		[Abstract]
 		[Export ("insertPagesFromDocument:withSourceIndexes:flags:layerName:atIndex:success:error:")]
 		void InsertPagesFromDocument (FSPDFDoc document, NSNumber[] sourcePagesIndexes, FSPDFDocImportPageFlags flags, [NullAllowed] string layerName, nuint destinationIndex, Action<NSString> success, Action<NSString> error);
+	}
+
+	// @protocol FSExceptionLoggerDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface FSExceptionLoggerDelegate
+	{
+		// @required -(void)stacktraceInfo:(NSString * _Nonnull)stackInfo;
+		[Abstract]
+		[Export ("stacktraceInfo:")]
+		void StacktraceInfo (string stackInfo);
 	}
 
 	// @interface FSPDFViewCtrl : UIView <IRotationEventListener, FSPageOrganizerDelegate>
@@ -10883,6 +11094,15 @@ namespace Foxit.iOS
 		// -(BOOL)isPageVisible:(int)pageIndex;
 		[Export ("isPageVisible:")]
 		bool IsPageVisible (int pageIndex);
+
+		// -(void)rotateView:(int)rotation;
+		[Export ("rotateView:")]
+		void RotateView (int rotation);
+
+		// -(int)getViewRotation;
+		[Export ("getViewRotation")]
+		//[Verify (MethodToProperty)]
+		int ViewRotation { get; }
 
 		// -(BOOL)gotoPage:(int)index animated:(BOOL)animated;
 		[Export ("gotoPage:animated:")]
@@ -11149,6 +11369,15 @@ namespace Foxit.iOS
 		[Export ("setPageSpacing:")]
 		void SetPageSpacing (int pageSpace);/*
 		
+
+		// -(void)setPageSpacing:(int)pageSpace direction:(FS_PAGESPACING_DIRECTION)direction;
+		[Export ("setPageSpacing:direction:")]
+		void SetPageSpacing (int pageSpace, FS_PAGESPACING_DIRECTION direction);
+
+		// +(void)setExceptionLogger:(id<FSExceptionLoggerDelegate> _Nullable)logger;
+		[Static]
+		[Export ("setExceptionLogger:")]
+		void SetExceptionLogger ([NullAllowed] FSExceptionLoggerDelegate logger);
 	}
 
 	// @interface xfa (FSPDFViewCtrl)

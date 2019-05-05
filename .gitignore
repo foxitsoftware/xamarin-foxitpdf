@@ -17,3 +17,6 @@ foxit_xamarin_ios/Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/bin
 packages.config
 foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.6.3.0/lib
 foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.UIExtensions.6.3.0/lib
+.signature.p7s
+Foxit.iOS.6.3.0.nupkg
+Foxit.iOS.UIExtensions.6.3.0.nupkg

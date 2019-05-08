@@ -3,7 +3,7 @@ Use the Foxit PDF SDK for Android with Xamarin
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for Android 6.3` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for Android 6.4` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
 
 ## Installation
 

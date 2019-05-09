@@ -1,12 +1,12 @@
 # foxit_xamarin_ios
 Use the Foxit Mobile PDF SDK with Xamarin on iOS
 
-Now we had support rdk 6.3.0
+Now we had support rdk 6.4.0
 
 Introduction
 ------------
 
-This sample project works with the Foxit RDK v6.3.0 and is a direct port of the `complete_pdf_viewer` Objective-C sample project included in the RDK.
+This sample project works with the Foxit RDK v6.4.0 and is a direct port of the `complete_pdf_viewer` Objective-C sample project included in the RDK.
 
 Setup
 -----

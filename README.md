@@ -4,7 +4,7 @@ Xamarin bridge for Foxit PDF SDK for Android/iOS to view, annotation and sign PD
 Introduction
 ------------
 
-This sample project works with the  `Foxit PDF SDK for Android/IOS` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for Android/iOS` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
 
 Sample
 -----

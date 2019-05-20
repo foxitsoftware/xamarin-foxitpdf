@@ -1607,10 +1607,6 @@ namespace Foxit.iOS
 		[Export ("setRenderContentFlags:")]
 		void SetRenderContentFlags (uint render_content_flags);
 
-		// -(void)setTransformAnnotIcon:(BOOL)is_to_transform_annot_icon;
-		[Export ("setTransformAnnotIcon:")]
-		void SetTransformAnnotIcon (bool is_to_transform_annot_icon);
-
 		// -(void)setRenderFormField:(BOOL)is_render_formfield;
 		[Export ("setRenderFormField:")]
 		void SetRenderFormField (bool is_render_formfield);
@@ -2405,6 +2401,183 @@ namespace Foxit.iOS
 		[Export ("clearStyle")]
 		//[Verify (MethodToProperty)]
 		bool ClearStyle { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSCompareResultInfo : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSCompareResultInfo
+	{
+		// @property (getter = getType, nonatomic) FSCompareResultInfoCompareResultType type;
+		[Export ("type", ArgumentSemantic.Assign)]
+		FSCompareResultInfoCompareResultType Type { [Bind ("getType")] get; set; }
+
+		// @property (getter = getRect_array, nonatomic, weak) FSRectFArray * rect_array;
+		[Export ("rect_array", ArgumentSemantic.Weak)]
+		FSRectFArray Rect_array { [Bind ("getRect_array")] get; set; }
+
+		// @property (getter = getDiff_contents, nonatomic, weak) NSString * diff_contents;
+		[Export ("diff_contents", ArgumentSemantic.Weak)]
+		string Diff_contents { [Bind ("getDiff_contents")] get; set; }
+
+		// @property (getter = getMatrix, nonatomic, weak) FSMatrix2D * matrix;
+		[Export ("matrix", ArgumentSemantic.Weak)]
+		FSMatrix2D Matrix { [Bind ("getMatrix")] get; set; }
+
+		// @property (getter = getHeight, nonatomic) float height;
+		[Export ("height")]
+		float Height { [Bind ("getHeight")] get; set; }
+
+		// @property (getter = getSect, nonatomic) int sect;
+		[Export ("sect")]
+		int Sect { [Bind ("getSect")] get; set; }
+
+		// @property (getter = getLine, nonatomic) int line;
+		[Export ("line")]
+		int Line { [Bind ("getLine")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithType:(FSCompareResultInfoCompareResultType)type rect_array:(FSRectFArray *)rect_array diff_contents:(NSString *)diff_contents matrix:(FSMatrix2D *)matrix height:(float)height sect:(int)sect line:(int)line;
+		[Export ("initWithType:rect_array:diff_contents:matrix:height:sect:line:")]
+		IntPtr Constructor (FSCompareResultInfoCompareResultType type, FSRectFArray rect_array, string diff_contents, FSMatrix2D matrix, float height, int sect, int line);
+
+		// -(id)initWithResult_info:(FSCompareResultInfo *)result_info;
+		[Export ("initWithResult_info:")]
+		IntPtr Constructor (FSCompareResultInfo result_info);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSCompareResultInfoArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSCompareResultInfoArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSCompareResultInfoArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSCompareResultInfoArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSCompareResultInfo *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSCompareResultInfo GetAt (nuint index);
+
+		// -(void)add:(FSCompareResultInfo *)element;
+		[Export ("add:")]
+		void Add (FSCompareResultInfo element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSCompareResultInfo *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSCompareResultInfo element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSCompareResults : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSCompareResults
+	{
+		// @property (getter = getResults_base_doc, nonatomic, weak) FSCompareResultInfoArray * results_base_doc;
+		[Export ("results_base_doc", ArgumentSemantic.Weak)]
+		FSCompareResultInfoArray Results_base_doc { [Bind ("getResults_base_doc")] get; set; }
+
+		// @property (getter = getResults_compared_doc, nonatomic, weak) FSCompareResultInfoArray * results_compared_doc;
+		[Export ("results_compared_doc", ArgumentSemantic.Weak)]
+		FSCompareResultInfoArray Results_compared_doc { [Bind ("getResults_compared_doc")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithResults_base_doc:(FSCompareResultInfoArray *)results_base_doc results_compared_doc:(FSCompareResultInfoArray *)results_compared_doc;
+		[Export ("initWithResults_base_doc:results_compared_doc:")]
+		IntPtr Constructor (FSCompareResultInfoArray results_base_doc, FSCompareResultInfoArray results_compared_doc);
+
+		// -(id)initWithCompare_results:(FSCompareResults *)compare_results;
+		[Export ("initWithCompare_results:")]
+		IntPtr Constructor (FSCompareResults compare_results);
+
+		// -(void)clear;
+		[Export ("clear")]
+		void Clear ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSComparsion : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSComparsion
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithBase_doc:(FSPDFDoc *)base_doc compared_doc:(FSPDFDoc *)compared_doc;
+		[Export ("initWithBase_doc:compared_doc:")]
+		IntPtr Constructor (FSPDFDoc base_doc, FSPDFDoc compared_doc);
+
+		// -(id)initWithOther:(FSComparsion *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSComparsion other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(FSCompareResults *)doCompare:(int)base_page_index compared_page_index:(int)compared_page_index compare_flags:(unsigned int)compare_flags;
+		[Export ("doCompare:compared_page_index:compare_flags:")]
+		FSCompareResults DoCompare (int base_page_index, int compared_page_index, uint compare_flags);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -4562,6 +4735,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSRectF Rect { get; }
 
+		// -(FSMatrix2D *)getDisplayMatrix:(FSMatrix2D *)page_display_matrix;
+		[Export ("getDisplayMatrix:")]
+		FSMatrix2D GetDisplayMatrix (FSMatrix2D page_display_matrix);
+
 		// -(BOOL)move:(FSRectF *)rect;
 		[Export ("move:")]
 		bool Move (FSRectF rect);
@@ -4571,9 +4748,9 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		bool ResetAppearanceStream { get; }
 
-		// -(FSRectI *)getDeviceRect:(BOOL)is_transform_icon matrix:(FSMatrix2D *)matrix;
-		[Export ("getDeviceRect:matrix:")]
-		FSRectI GetDeviceRect (bool is_transform_icon, FSMatrix2D matrix);
+		// -(FSRectI *)getDeviceRect:(FSMatrix2D *)matrix;
+		[Export ("getDeviceRect:")]
+		FSRectI GetDeviceRect (FSMatrix2D matrix);
 
 		// -(FSPDFDictionary *)getDict;
 		[Export ("getDict")]

@@ -752,9 +752,9 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("uiextensionsManager:setTopToolBarHidden:")]
 		void UiextensionsManager (UIExtensionsManager uiextensionsManager, bool hidden);
 
-		// @optional -(BOOL)uiextensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager openNewDocAtPath:(NSString * _Nonnull)path;
-		[Export ("uiextensionsManager:openNewDocAtPath:")]
-		bool UiextensionsManager (UIExtensionsManager uiextensionsManager, string path);
+		// @optional -(BOOL)uiextensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager openNewDocAtPath:(NSString * _Nonnull)path UseNewTab:(BOOL)useNewTab;
+		[Export ("uiextensionsManager:openNewDocAtPath:UseNewTab:")]
+		bool UiextensionsManager (UIExtensionsManager uiextensionsManager, string path, bool useNewTab);
 
 		// @optional -(void)quitUIExtensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager button:(UIButton * _Nonnull)button;
 		[Export ("quitUIExtensionsManager:button:")]
@@ -1073,10 +1073,6 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("loadEncryption")]
 		bool LoadEncryption { get; set; }
 
-		// @property (assign, nonatomic) BOOL loadMultipleSelection;
-		[Export ("loadMultipleSelection")]
-		bool LoadMultipleSelection { get; set; }
-
 		// @property (assign, nonatomic) BOOL runJavaScript;
 		[Export ("runJavaScript")]
 		bool RunJavaScript { get; set; }
@@ -1100,88 +1096,6 @@ namespace Foxit.iOS.UIExtensions
 		// -(id _Nullable)initWithJSONData:(NSData * _Nonnull)data;
 		[Export ("initWithJSONData:")]
 		IntPtr Constructor (NSData data);
-	}
-
-	// @interface DXPopover : UIView
-	[BaseType (typeof(UIView))]
-	interface DXPopover
-	{
-		// +(instancetype)popover;
-		[Static]
-		[Export ("popover")]
-		DXPopover Popover ();
-
-		// @property (readonly, assign, nonatomic) DXPopoverPosition popoverPosition;
-		[Export ("popoverPosition", ArgumentSemantic.Assign)]
-		DXPopoverPosition PopoverPosition { get; }
-
-		// @property (assign, nonatomic) CGSize arrowSize;
-		[Export ("arrowSize", ArgumentSemantic.Assign)]
-		CGSize ArrowSize { get; set; }
-
-		// @property (assign, nonatomic) CGFloat cornerRadius;
-		[Export ("cornerRadius")]
-		nfloat CornerRadius { get; set; }
-
-		// @property (assign, nonatomic) CGFloat animationIn;
-		[Export ("animationIn")]
-		nfloat AnimationIn { get; set; }
-
-		// @property (assign, nonatomic) CGFloat animationOut;
-		[Export ("animationOut")]
-		nfloat AnimationOut { get; set; }
-
-		// @property (assign, nonatomic) BOOL animationSpring;
-		[Export ("animationSpring")]
-		bool AnimationSpring { get; set; }
-
-		// @property (readonly, assign, nonatomic) BOOL isShow;
-		[Export ("isShow")]
-		bool IsShow { get; }
-
-		// @property (assign, nonatomic) DXPopoverMaskType maskType;
-		[Export ("maskType", ArgumentSemantic.Assign)]
-		DXPopoverMaskType MaskType { get; set; }
-
-		// @property (assign, nonatomic) BOOL applyShadow;
-		[Export ("applyShadow")]
-		bool ApplyShadow { get; set; }
-
-		// @property (assign, nonatomic) CGFloat betweenAtViewAndArrowHeight;
-		[Export ("betweenAtViewAndArrowHeight")]
-		nfloat BetweenAtViewAndArrowHeight { get; set; }
-
-		// @property (assign, nonatomic) CGFloat sideEdge;
-		[Export ("sideEdge")]
-		nfloat SideEdge { get; set; }
-
-		// @property (copy, nonatomic) Action didShowHandler;
-		[Export ("didShowHandler", ArgumentSemantic.Copy)]
-		Action DidShowHandler { get; set; }
-
-		// @property (copy, nonatomic) Action didDismissHandler;
-		[Export ("didDismissHandler", ArgumentSemantic.Copy)]
-		Action DidDismissHandler { get; set; }
-
-		// @property (copy, nonatomic) Action didRotatedHandler;
-		[Export ("didRotatedHandler", ArgumentSemantic.Copy)]
-		Action DidRotatedHandler { get; set; }
-
-		// @property (nonatomic, strong) UIControl * blackOverlay;
-		[Export ("blackOverlay", ArgumentSemantic.Strong)]
-		UIControl BlackOverlay { get; set; }
-
-		// @property (nonatomic, strong) UIView * contentView;
-		[Export ("contentView", ArgumentSemantic.Strong)]
-		UIView ContentView { get; set; }
-
-		// -(void)showAtPoint:(CGPoint)point popoverPosition:(DXPopoverPosition)position withContentView:(UIView *)contentView inView:(UIView *)containerView;
-		[Export ("showAtPoint:popoverPosition:withContentView:inView:")]
-		void ShowAtPoint (CGPoint point, DXPopoverPosition position, UIView contentView, UIView containerView);
-
-		// -(void)dismiss;
-		[Export ("dismiss")]
-		void Dismiss ();
 	}
 
 	// @protocol IMvCallback <NSObject>

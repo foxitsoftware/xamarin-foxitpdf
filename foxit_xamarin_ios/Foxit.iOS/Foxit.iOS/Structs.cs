@@ -60,7 +60,10 @@ namespace Foxit.iOS
 		InvalidClientID = 39,
 		OCREngineNotInit = 40,
 		DiskFull = 41,
-		OCRTrialIsEnd = 42
+		OCRTrialIsEnd = 42,
+		FilePathNotExist = 43,
+		ComplianceEngineNotInit = 44,
+		ComplianceEngineInvalidUnlockCode = 45
 	}
 
 	//[Native]
@@ -566,6 +569,38 @@ namespace Foxit.iOS
 	{
 		Field = 0,
 		Caption = 1
+	}
+
+	//[Native]
+	public enum FSCompareResultInfoCompareResultType 
+	{
+		None = -1,
+		DeleteText = 0,
+		InsertText = 1,
+		ReplaceText = 2,
+		DeleteTable = 3,
+		InsertTable = 4,
+		ReplaceTable = 5,
+		DeleteImage = 6,
+		InsertImage = 7,
+		ReplaceImage = 8,
+		DeletePath = 9,
+		InsertPath = 10,
+		ReplacePath = 11,
+		DeleteShading = 12,
+		InsertShading = 13,
+		ReplaceShading = 14,
+		DeleteAnnot = 15,
+		InsertAnnot = 16,
+		ReplaceAnnot = 17,
+		TextAttriChange = 18
+	}
+
+	//[Native]
+	public enum FSComparsionCompareType 
+	{
+		ext = 1,
+		able = 2
 	}
 
 	//[Native]
@@ -1095,7 +1130,8 @@ namespace Foxit.iOS
 		Incremental = 1,
 		NoOriginal = 2,
 		XRefStream = 8,
-		Linearized = 4096
+		Linearized = 4096,
+		RemoveRedundantObjects = 16
 	}
 
 	//[Native]

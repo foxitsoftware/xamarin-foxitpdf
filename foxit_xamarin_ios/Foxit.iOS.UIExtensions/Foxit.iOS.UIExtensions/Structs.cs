@@ -42,18 +42,4 @@ namespace Foxit.iOS.UIExtensions
 		Fitwidth,
 		Rotate
 	}
-
-	//[Native]
-	public enum DXPopoverPosition 
-	{
-		Up = 1,
-		Down
-	}
-
-	//[Native]
-	public enum DXPopoverMaskType 
-	{
-		Black,
-		None
-	}
 }

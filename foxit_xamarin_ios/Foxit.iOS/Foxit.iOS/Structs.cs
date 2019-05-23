@@ -63,7 +63,8 @@ namespace Foxit.iOS
 		OCRTrialIsEnd = 42,
 		FilePathNotExist = 43,
 		ComplianceEngineNotInit = 44,
-		ComplianceEngineInvalidUnlockCode = 45
+		ComplianceEngineInvalidUnlockCode = 45,
+		ComplianceEngineInitFailed = 46
 	}
 
 	//[Native]
@@ -597,7 +598,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSComparsionCompareType 
+	public enum FSComparisonCompareType 
 	{
 		ext = 1,
 		able = 2

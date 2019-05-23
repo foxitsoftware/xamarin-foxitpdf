@@ -88,6 +88,12 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Foxit.iOS">
+      <HintPath>..\packages\Foxit.iOS.6.4.0\lib\xamarinios10\Foxit.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Foxit.iOS.UIExtensions">
+      <HintPath>..\packages\Foxit.iOS.UIExtensions.6.4.0\lib\xamarinios10\Foxit.iOS.UIExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -121,6 +127,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

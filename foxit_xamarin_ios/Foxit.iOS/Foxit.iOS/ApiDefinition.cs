@@ -2424,22 +2424,6 @@ namespace Foxit.iOS
 		[Export ("diff_contents", ArgumentSemantic.Weak)]
 		string Diff_contents { [Bind ("getDiff_contents")] get; set; }
 
-		// @property (getter = getMatrix, nonatomic, weak) FSMatrix2D * matrix;
-		[Export ("matrix", ArgumentSemantic.Weak)]
-		FSMatrix2D Matrix { [Bind ("getMatrix")] get; set; }
-
-		// @property (getter = getHeight, nonatomic) float height;
-		[Export ("height")]
-		float Height { [Bind ("getHeight")] get; set; }
-
-		// @property (getter = getSect, nonatomic) int sect;
-		[Export ("sect")]
-		int Sect { [Bind ("getSect")] get; set; }
-
-		// @property (getter = getLine, nonatomic) int line;
-		[Export ("line")]
-		int Line { [Bind ("getLine")] get; set; }
-
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -2449,9 +2433,9 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithType:(FSCompareResultInfoCompareResultType)type rect_array:(FSRectFArray *)rect_array diff_contents:(NSString *)diff_contents matrix:(FSMatrix2D *)matrix height:(float)height sect:(int)sect line:(int)line;
-		[Export ("initWithType:rect_array:diff_contents:matrix:height:sect:line:")]
-		IntPtr Constructor (FSCompareResultInfoCompareResultType type, FSRectFArray rect_array, string diff_contents, FSMatrix2D matrix, float height, int sect, int line);
+		// -(id)initWithType:(FSCompareResultInfoCompareResultType)type rect_array:(FSRectFArray *)rect_array diff_contents:(NSString *)diff_contents;
+		[Export ("initWithType:rect_array:diff_contents:")]
+		IntPtr Constructor (FSCompareResultInfoCompareResultType type, FSRectFArray rect_array, string diff_contents);
 
 		// -(id)initWithResult_info:(FSCompareResultInfo *)result_info;
 		[Export ("initWithResult_info:")]
@@ -2514,13 +2498,13 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSCompareResults
 	{
-		// @property (getter = getResults_base_doc, nonatomic, weak) FSCompareResultInfoArray * results_base_doc;
-		[Export ("results_base_doc", ArgumentSemantic.Weak)]
-		FSCompareResultInfoArray Results_base_doc { [Bind ("getResults_base_doc")] get; set; }
+		// @property (getter = getBase_doc_results, nonatomic, weak) FSCompareResultInfoArray * base_doc_results;
+		[Export ("base_doc_results", ArgumentSemantic.Weak)]
+		FSCompareResultInfoArray Base_doc_results { [Bind ("getBase_doc_results")] get; set; }
 
-		// @property (getter = getResults_compared_doc, nonatomic, weak) FSCompareResultInfoArray * results_compared_doc;
-		[Export ("results_compared_doc", ArgumentSemantic.Weak)]
-		FSCompareResultInfoArray Results_compared_doc { [Bind ("getResults_compared_doc")] get; set; }
+		// @property (getter = getCompared_doc_results, nonatomic, weak) FSCompareResultInfoArray * compared_doc_results;
+		[Export ("compared_doc_results", ArgumentSemantic.Weak)]
+		FSCompareResultInfoArray Compared_doc_results { [Bind ("getCompared_doc_results")] get; set; }
 
 		// -(void *)getCptr;
 		[Export ("getCptr")]
@@ -2531,9 +2515,9 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithResults_base_doc:(FSCompareResultInfoArray *)results_base_doc results_compared_doc:(FSCompareResultInfoArray *)results_compared_doc;
-		[Export ("initWithResults_base_doc:results_compared_doc:")]
-		IntPtr Constructor (FSCompareResultInfoArray results_base_doc, FSCompareResultInfoArray results_compared_doc);
+		// -(id)initWithBase_doc_results:(FSCompareResultInfoArray *)base_doc_results compared_doc_results:(FSCompareResultInfoArray *)compared_doc_results;
+		[Export ("initWithBase_doc_results:compared_doc_results:")]
+		IntPtr Constructor (FSCompareResultInfoArray base_doc_results, FSCompareResultInfoArray compared_doc_results);
 
 		// -(id)initWithCompare_results:(FSCompareResults *)compare_results;
 		[Export ("initWithCompare_results:")]
@@ -2548,10 +2532,10 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
-	// @interface FSComparsion : FSBase
+	// @interface FSComparison : FSBase
 	[BaseType (typeof(FSBase))]
 	[DisableDefaultCtor]
-	interface FSComparsion
+	interface FSComparison
 	{
 		// -(void *)getCptr;
 		[Export ("getCptr")]
@@ -2566,9 +2550,9 @@ namespace Foxit.iOS
 		[Export ("initWithBase_doc:compared_doc:")]
 		IntPtr Constructor (FSPDFDoc base_doc, FSPDFDoc compared_doc);
 
-		// -(id)initWithOther:(FSComparsion *)other;
+		// -(id)initWithOther:(FSComparison *)other;
 		[Export ("initWithOther:")]
-		IntPtr Constructor (FSComparsion other);
+		IntPtr Constructor (FSComparison other);
 
 		// -(BOOL)isEmpty;
 		[Export ("isEmpty")]
@@ -11061,15 +11045,15 @@ namespace Foxit.iOS
 		[Export ("insertPageFromImage:atIndex:")]
 		bool InsertPageFromImage (UIImage image, nuint pageIndex);
 
-		// @required -(BOOL)insertPage:(int)index width:(float)width height:(float)height style:(PDF_PAGE_STYLE_TYPE)style color:(unsigned int)color rotation:(FSRotation)rotation count:(int)count;
+		// @required -(BOOL)insertPages:(int)index width:(float)width height:(float)height style:(PDF_PAGE_STYLE_TYPE)style color:(unsigned int)color rotation:(FSRotation)rotation count:(int)count;
 		[Abstract]
-		[Export ("insertPage:width:height:style:color:rotation:count:")]
-		bool InsertPage (int index, float width, float height, PDF_PAGE_STYLE_TYPE style, uint color, FSRotation rotation, int count);
+		[Export ("insertPages:width:height:style:color:rotation:count:")]
+		bool InsertPages (int index, float width, float height, PDF_PAGE_STYLE_TYPE style, uint color, FSRotation rotation, int count);
 
-		// @required -(BOOL)insertPage:(int)index pageSize:(FSPDFPageSize)pageSize style:(PDF_PAGE_STYLE_TYPE)style color:(unsigned int)color rotation:(FSRotation)rotation count:(int)count;
+		// @required -(BOOL)insertPages:(int)index pageSize:(FSPDFPageSize)pageSize style:(PDF_PAGE_STYLE_TYPE)style color:(unsigned int)color rotation:(FSRotation)rotation count:(int)count;
 		[Abstract]
-		[Export ("insertPage:pageSize:style:color:rotation:count:")]
-		bool InsertPage (int index, FSPDFPageSize pageSize, PDF_PAGE_STYLE_TYPE style, uint color, FSRotation rotation, int count);
+		[Export ("insertPages:pageSize:style:color:rotation:count:")]
+		bool InsertPages (int index, FSPDFPageSize pageSize, PDF_PAGE_STYLE_TYPE style, uint color, FSRotation rotation, int count);
 
 		// @required -(void)insertPagesFromDocument:(FSPDFDoc * _Nonnull)document withSourceIndexes:(NSArray<NSNumber *> * _Nonnull)sourcePagesIndexes flags:(FSPDFDocImportPageFlags)flags layerName:(NSString * _Nullable)layerName atIndex:(NSUInteger)destinationIndex success:(void (^ _Nonnull)(NSString * _Nonnull))success error:(void (^ _Nonnull)(NSString * _Nonnull))error;
 		[Abstract]

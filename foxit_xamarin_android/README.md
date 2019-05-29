@@ -38,7 +38,7 @@ If you want to open a RMS protected PDF file, you should:
 
 ### Install By Reference
 
-1: If you have already add NuGet `Foxit..Android`, `Foxit.Android.UIExtensions` or `Foxit.Android.Cropper`, please remove them first.
+1: If you have already add NuGet `Foxit.Android`, `Foxit.Android.UIExtensions` or `Foxit.Android.Cropper`, please remove them first.
 
 2: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
 

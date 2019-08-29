@@ -64,7 +64,15 @@ namespace Foxit.iOS
 		FilePathNotExist = 43,
 		ComplianceEngineNotInit = 44,
 		ComplianceEngineInvalidUnlockCode = 45,
-		ComplianceEngineInitFailed = 46
+		ComplianceEngineInitFailed = 46,
+		TimeStampServerMgrNotInit = 47,
+		LTVVerifyModeNotSet = 48,
+		LTVRevocationCallbackNotSet = 49,
+		LTVCannotSwitchVersion = 50,
+		LTVCannotCheckDTS = 51,
+		LTVCannotLoadDSS = 52,
+		LTVCannotLoadDTS = 53,
+		NeedSigned = 54
 	}
 
 	//[Native]
@@ -190,6 +198,15 @@ namespace Foxit.iOS
 		TimesI = 11,
 		Symbol = 12,
 		ZapfDingbats = 13
+	}
+
+	//[Native]
+	public enum FSFontFontTypes 
+	{
+		Type1 = 1,
+		TrueType = 2,
+		Type3 = 3,
+		CIDFont = 4
 	}
 
 	//[Native]
@@ -569,7 +586,8 @@ namespace Foxit.iOS
 	public enum FSXFAWidgetWidgetNameType 
 	{
 		Field = 0,
-		Caption = 1
+		Caption = 1,
+		FullName = 2
 	}
 
 	//[Native]
@@ -579,9 +597,6 @@ namespace Foxit.iOS
 		DeleteText = 0,
 		InsertText = 1,
 		ReplaceText = 2,
-		DeleteTable = 3,
-		InsertTable = 4,
-		ReplaceTable = 5,
 		DeleteImage = 6,
 		InsertImage = 7,
 		ReplaceImage = 8,
@@ -600,8 +615,8 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSComparisonCompareType 
 	{
-		ext = 1,
-		able = 2
+		All = 0,
+		Text = 1
 	}
 
 	//[Native]
@@ -1364,6 +1379,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSStdSecurityHandlerModifyFlag 
+	{
+		Permission = 1,
+		UserPassword = 2,
+		OwnerPassword = 4
+	}
+
+	//[Native]
 	public enum FSTabOrderMgrOrderType 
 	{
 		None = 0,
@@ -1526,9 +1549,9 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureStates 
+	public enum FSSignatureStates : long
 	{
-		Unknown = 0,
+		Unknown = 2147483648,
 		NoSignData = 512,
 		Unsigned = 1,
 		Signed = 2,
@@ -1553,7 +1576,8 @@ namespace Foxit.iOS
 		VerifyTimestampExpire = 4194304,
 		VerifyTimestampIssueUnknown = 8388608,
 		VerifyTimestampIssueValid = 16777216,
-		VerifyTimestampTimeBefore = 33554432
+		VerifyTimestampTimeBefore = 33554432,
+		CertCannotGetVRI = 67108864
 	}
 
 	//[Native]
@@ -1590,10 +1614,108 @@ namespace Foxit.iOS
 		FSSignatureDigestSHA512 = 3
 	}
 
+	//[Native]
+	public enum FSSignatureSignatureType 
+	{
+		Ordinary = 0,
+		TimeStamp = 3
+	}
+
+	//[Native]
+	public enum FSSignatureCallbackCertValidity 
+	{
+		Valid = 0,
+		Expired = 1,
+		UnsupportType = 2,
+		DataError = 3,
+		InvalidPassword = 4,
+		InvalidPath = 5,
+		NotSet = 6,
+		CannotGetPrivateKey = 7
+	}
+
+	//[Native]
+	public enum FSTimeStampServerSendRequestResult 
+	{
+		Success = 0,
+		FailToCreateSocket = 1,
+		FailToConnect = 2,
+		FailToSendData = 3,
+		FailToReceiveData = 4,
+		FailToRequest = 5,
+		FailToGetData = 6,
+		OutOfMemory = 7
+	}
+
+	//[Native]
+	public enum FSResponseResponseType 
+	{
+		None = 0,
+		Crl = 1,
+		Ocsp = 2
+	}
+
+	//[Native]
+	public enum FSCertVerifyResultCertStatus 
+	{
+		Valid = 0,
+		Revoked = 1,
+		Expired = 2,
+		Unknown = 3
+	}
+
+	//[Native]
+	public enum FSCertVerifyResultRevocationReason 
+	{
+		NoStatus = -1,
+		Unspecified = 0,
+		KeyCompromise = 1,
+		CACompromise = 2,
+		AffiliationChanged = 3,
+		Superseded = 4,
+		CessationOfOperation = 5,
+		CertificateHold = 6,
+		RemoveFromCRL = 7,
+		PrivilegeWithDrawn = 8,
+		AACompromise = 9
+	}
+
+	//[Native]
+	public enum FSCertVerifyResultResponseInfoLocation 
+	{
+		NotSet = 0,
+		Dss = 1,
+		Signature = 2,
+		Online = 3
+	}
+
+	//[Native]
+	public enum FSLTVVerifierTimeType 
+	{
+		SignatureCreationTime = 0,
+		SignatureTSTTime = 1,
+		CurrentTime = 2,
+		VRICreationTime = 3
+	}
+
+	//[Native]
+	public enum FSLTVVerifierVerifyMode 
+	{
+		Etsi = 0,
+		Acrobat = 1
+	}
+
+	//[Native]
+	public enum FSSignatureVerifyResultLTVState 
+	{
+		Inactive = 0,
+		Enable = 1,
+		NotEnable = 2
+	}
+
 	public enum PdfLayoutMode 
 	{
 		Unknown = 0,
-		Continuous,
 		Single,
 		Two,
 		Reflow,

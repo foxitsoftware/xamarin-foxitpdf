@@ -11,4 +11,6 @@
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setResetLayoutListener']" />
 
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.home']/interface[@name='IHomeModule']/method[@name='getTopToolbar' and count(parameter)=0]" />
+
 </metadata>

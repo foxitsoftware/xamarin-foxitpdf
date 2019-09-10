@@ -10,8 +10,8 @@
     <TemplateGuid>{77efb91c-a7e9-4b0e-a7c5-31eeec3c6d46}</TemplateGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft_Aad_Aadl</RootNamespace>
-    <AssemblyName>Microsoft_Aad_Aadl</AssemblyName>
+    <RootNamespace>Microsoft_Aad_Adal</RootNamespace>
+    <AssemblyName>Microsoft_Aad_Adal</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>

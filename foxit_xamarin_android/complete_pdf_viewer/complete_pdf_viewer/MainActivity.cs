@@ -9,10 +9,12 @@ using Android.Views;
 using Android.Content;
 
 using Com.Foxit.Uiextensions.Home;
+using Com.Foxit.Uiextensions.Home.Local;
 using Com.Foxit.Uiextensions.Utils;
 using Com.Foxit.Pdfreader;
 using Android.App;
 using Com.Foxit.Uiextensions.Modules.Connectpdf.Account;
+using Android.Content.Res;
 
 namespace Com.Foxit.Home
 {
@@ -26,7 +28,7 @@ namespace Com.Foxit.Home
     [IntentFilter(new[] { Intent.ActionView },
         Categories = new[] { Intent.CategoryDefault },
         DataMimeType = "application/pdf")]
-    public class MainActivity : AppCompatActivity, Com.Foxit.Uiextensions.Home.IHomeModuleOnFileItemEventListener
+    public class MainActivity : AppCompatActivity, Com.Foxit.Uiextensions.Home.IHomeModuleOnFileItemEventListener, LocalModule.ICompareListener
     {
 
         public static int REQUEST_EXTERNAL_STORAGE = 1;
@@ -67,8 +69,10 @@ namespace Com.Foxit.Home
                 StrictMode.SetVmPolicy(builder.Build());
             }
 
+            App.Instance().GetLocalModule(filter).SetAttachedActivity(this);
             App.Instance().CopyGuideFiles(App.Instance().GetLocalModule(filter));
             App.Instance().GetLocalModule(filter).SetFileItemEventListener(this);
+            App.Instance().GetLocalModule(filter).SetCompareListener(this);
 
             AccountModule.Instance.OnCreate(this, savedInstanceState);
 
@@ -148,5 +152,20 @@ namespace Com.Foxit.Home
         {
             OnFileSelected(fileExtra, filePath);
         }
+
+        public void OnCompareClicked(int state, string filePath)
+        {
+            if (state == LocalModule.CompareListener.StateSuccess)
+            {
+                OnFileItemClicked(HomeModule.FileExtra, filePath);
+            }
+        }
+
+        public override void OnConfigurationChanged(Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+            App.Instance().GetLocalModule(filter).OnConfigurationChanged(newConfig);
+        }
+
     }
 }

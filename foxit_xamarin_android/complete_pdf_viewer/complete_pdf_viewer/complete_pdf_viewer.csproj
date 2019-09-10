@@ -66,6 +66,9 @@
     <Reference Include="FoxitUIExtensions">
       <HintPath>..\..\FoxitUIExtensions\FoxitUIExtensions\obj\Debug\FoxitUIExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="RxAndroid">
+      <HintPath>..\..\RxAndroid\RxAndroid\bin\Debug\RxAndroid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />

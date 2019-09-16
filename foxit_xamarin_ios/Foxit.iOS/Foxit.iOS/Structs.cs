@@ -1551,7 +1551,7 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSSignatureStates : long
 	{
-		Unknown = 2147483648,
+		Unknown = 2147483648L,
 		NoSignData = 512,
 		Unsigned = 1,
 		Signed = 2,

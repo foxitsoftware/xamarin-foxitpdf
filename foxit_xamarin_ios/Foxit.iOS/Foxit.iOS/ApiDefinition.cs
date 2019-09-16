@@ -10080,10 +10080,9 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSPDFDoc Document { get; }
 
-		// -(FSPDFDoc *)getSignedVersionDocument;
-		[Export ("getSignedVersionDocument")]
-		//[Verify (MethodToProperty)]
-		FSPDFDoc SignedVersionDocument { get; }
+		// -(FSPDFDoc *)getSignedVersionDocument:(NSString *)file_path;
+		[Export ("getSignedVersionDocument:")]
+		FSPDFDoc GetSignedVersionDocument (string file_path);
 
 		// -(void)setAppearanceContent:(NSString *)appearance_content;
 		[Export ("setAppearanceContent:")]
@@ -12103,14 +12102,23 @@ namespace Foxit.iOS
 		[Export ("setPageLayoutMode:")]
 		void SetPageLayoutMode (PDF_LAYOUT_MODE mode);
 
-		// -(BOOL)getContinuous;
-		[Export ("getContinuous")]
+		// -(BOOL)isContinuous;
+		[Export ("isContinuous")]
 		//[Verify (MethodToProperty)]
-		bool Continuous { get; }
+		bool IsContinuous { get; }
 
 		// -(void)setContinuous:(BOOL)isContinuous;
 		[Export ("setContinuous:")]
 		void SetContinuous (bool isContinuous);
+
+		// -(BOOL)isViewSignedDocument;
+		[Export ("isViewSignedDocument")]
+		//[Verify (MethodToProperty)]
+		bool IsViewSignedDocument { get; }
+
+		// -(void)setViewSignedDocument:(BOOL)isViewSignedDocument;
+		[Export ("setViewSignedDocument:")]
+		void SetViewSignedDocument (bool isViewSignedDocument);
 
 		// -(UIEdgeInsets)getCropInsets:(int)pageIndex;
 		[Export ("getCropInsets:")]

@@ -361,9 +361,9 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
 
-		// -(instancetype)initWithUIExtensionsManager:(UIExtensionsManager *)extensionsManager;
-		[Export ("initWithUIExtensionsManager:")]
-		IntPtr Constructor (UIExtensionsManager extensionsManager);
+		// -(instancetype)initWithUIExtensionsManager:(UIExtensionsManager *)extensionsManager settingBarVC:(SettingBarViewC *)settingBarVC;
+		[Export ("initWithUIExtensionsManager:settingBarVC:")]
+		IntPtr Constructor (UIExtensionsManager extensionsManager, SettingBarViewC settingBarVC);
 
 		// -(NSMutableDictionary *)getItemHiddenStatus;
 		[Export ("getItemHiddenStatus")]

@@ -21,7 +21,8 @@ namespace Foxit.iOS.UIExtensions
 		Annotation = 1,
 		Attachment,
 		Outline,
-		ReadingBookmark
+		ReadingBookmark,
+		DigitalSignature
 	}
 
 	//[Native]

@@ -204,6 +204,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("addSpec:")]
 		void AddSpec (IPanelSpec spec);
 
+		// -(void)insertSpec:(id<IPanelSpec>)spec atIndex:(int)index;
+		[Export ("insertSpec:atIndex:")]
+		void InsertSpec (IPanelSpec spec, int index);
+
 		// -(void)removeSpec:(id<IPanelSpec>)spec;
 		[Export ("removeSpec:")]
 		void RemoveSpec (IPanelSpec spec);
@@ -244,6 +248,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("getItemHiddenStatus")]
 		//[Verify (MethodToProperty)]
 		NSMutableDictionary ItemHiddenStatus { get; }
+
+		// -(id<IPanelSpec>)getPanel:(FSPanelType)type;
+		[Export ("getPanel:")]
+		IPanelSpec GetPanel (FSPanelType type);
 
 		// -(BOOL)isPanelHidden:(FSPanelType)type;
 		[Export ("isPanelHidden:")]
@@ -1347,7 +1355,13 @@ namespace Foxit.iOS.UIExtensions
 		NSDictionary DefaultSettings { get; }
 	}
 
-	// @interface UIExtensionsConfig : NSObject
+	    // @interface SettingBarViewC : NSObject
+    [BaseType(typeof(NSObject))]
+    interface SettingBarViewC
+    { 
+    }
+
+// @interface UIExtensionsConfig : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UIExtensionsConfig
 	{

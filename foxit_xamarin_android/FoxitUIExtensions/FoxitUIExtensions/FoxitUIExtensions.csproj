@@ -90,6 +90,12 @@
     <LibraryProjectZip Include="..\..\libs\FoxitRDKUIExtensions.aar">
       <Link>Jars\FoxitRDKUIExtensions.aar</Link>
     </LibraryProjectZip>
+    <EmbeddedJar Include="..\..\libs\bcpkix-jdk15on-1.60.jar">
+      <Link>Jars\bcpkix-jdk15on-1.60.jar</Link>
+    </EmbeddedJar>
+    <EmbeddedJar Include="..\..\libs\bcprov-jdk15on-1.60.jar">
+      <Link>Jars\bcprov-jdk15on-1.60.jar</Link>
+    </EmbeddedJar>
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml">
@@ -102,6 +108,10 @@
     <ProjectReference Include="..\..\FoxitRDK\FoxitRDK\FoxitRDK.csproj">
       <Project>{c3f70847-6341-4bef-8c9b-224ff64065ae}</Project>
       <Name>FoxitRDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RxAndroid\RxAndroid\RxAndroid.csproj">
+      <Project>{58b9b4fa-694c-448f-a979-1dd42a5ada87}</Project>
+      <Name>RxAndroid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />

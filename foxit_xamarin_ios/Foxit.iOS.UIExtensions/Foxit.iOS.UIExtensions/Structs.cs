@@ -18,10 +18,11 @@ namespace Foxit.iOS.UIExtensions
 	//[Native]
 	public enum FSPanelType 
 	{
-		Annotation = 0,
+		Annotation = 1,
 		Attachment,
 		Outline,
-		ReadingBookmark
+		ReadingBookmark,
+		DigitalSignature
 	}
 
 	//[Native]
@@ -41,5 +42,12 @@ namespace Foxit.iOS.UIExtensions
 		Fitpage,
 		Fitwidth,
 		Rotate
+	}
+
+	//[Native]
+	public enum FSToolbarType 
+	{
+		TopBar = 1,
+		BottomBar
 	}
 }

@@ -3,17 +3,17 @@ Use the Foxit PDF SDK for Android with Xamarin
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for Android 6.4` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for Android 7.0` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
 
 ## Installation
 
 ### Install By NuGet
 
-1: If you have already add reference `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
+1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
 
 2: Right-click the References node of the `complete_pdf_viewer`  project and select Manager NuGet Packages...
 
-3: Select the `Browse` tab, search for `Foxit.Android`, `Foxit.Android.UIExtensions` and `Foxit.Android.Cropper` and install them.
+3: Select the `Browse` tab, search for `Foxit.Android`, `Foxit.Android.UIExtensions`,`Foxit.Android.RxAndroid` and `Foxit.Android.Cropper` and install them.
 
 4: If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.
 
@@ -38,7 +38,7 @@ If you want to open a RMS protected PDF file, you should:
 
 ### Install By Reference
 
-1: If you have already add NuGet `Foxit.Android`, `Foxit.Android.UIExtensions` or `Foxit.Android.Cropper`, please remove them first.
+1: If you have already add NuGet `Foxit.Android`, `Foxit.Android.UIExtensions` , `Foxit.Android.RxAndroid` or `Foxit.Android.Cropper`, please remove them first.
 
 2: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
 
@@ -51,7 +51,7 @@ If you want to open a RMS protected PDF file, you should:
 
 4: Click the `complete_pdf_viewer.sln`
 
-5: `Rebuild` the `FoxitRDK` , `FoxitUIExtensions` and `Cropper` project
+5: `Rebuild` the `FoxitRDK` , `FoxitUIExtensions` , `RxAndroid` and `Cropper` project
 
 6: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
 
@@ -112,6 +112,23 @@ Copyright 2008 Google Inc.
       
       http://www.apache.org/licenses/LICENSE-2.0  
       
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    
+### lisense for RxAndroid
+[https://github.com/ReactiveX/RxAndroid](https://github.com/ReactiveX/RxAndroid)
+
+Copyright 2015 The RxAndroid authors
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+        http://www.apache.org/licenses/LICENSE-2.0
+    
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

@@ -65,10 +65,6 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) UIToolbar * _Nonnull topToolbar;
 		[Export ("topToolbar", ArgumentSemantic.Strong)]
 		UIToolbar TopToolbar { get; set; }
-
-		// -(instancetype _Nullable)initWithLocalized:(BOOL)needLocalized;
-		[Export ("initWithLocalized:")]
-		IntPtr Constructor (bool needLocalized);
 	}
 
 	// @interface SegmentItem : NSObject
@@ -122,10 +118,13 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
 		NSObject WeakDelegate { get; set; }
 
-		// -(id)initWithFrame:(CGRect)frame segmentItems:(NSArray *)items;
-		[Export ("initWithFrame:segmentItems:")]
-		//[Verify (StronglyTypedNSArray)]
-		IntPtr Constructor (CGRect frame, NSObject[] items);
+		// -(id)initWithFrame:(CGRect)frame;
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (CGRect frame);
+
+		// -(void)loadWithItems:(NSArray<SegmentItem *> *)items;
+		[Export ("loadWithItems:")]
+		void LoadWithItems (SegmentItem[] items);
 
 		// -(void)setSelectItem:(SegmentItem *)item;
 		[Export ("setSelectItem:")]
@@ -137,38 +136,77 @@ namespace Foxit.iOS.UIExtensions
 		NSObject[] Items { get; }
 	}
 
-	// @interface PanelButton : UIButton
-	[BaseType (typeof(UIButton))]
-	interface PanelButton
+	// @protocol IPanelSpec <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IPanelSpec
 	{
-		// @property (assign, nonatomic) id<IPanelSpec> spec;
-		[Export ("spec", ArgumentSemantic.Assign)]
-		IPanelSpec Spec { get; set; }
+		// @required -(int)getType;
+		[Abstract]
+		[Export ("getType")]
+		//[Verify (MethodToProperty)]
+		int Type { get; }
+
+		// @required -(UIView *)getTopToolbar;
+		[Abstract]
+		[Export ("getTopToolbar")]
+		//[Verify (MethodToProperty)]
+		UIView TopToolbar { get; }
+
+		// @required -(UIView *)getContentView;
+		[Abstract]
+		[Export ("getContentView")]
+		//[Verify (MethodToProperty)]
+		UIView ContentView { get; }
+
+		// @required -(SegmentItem *)getSegmentItem;
+		[Abstract]
+		[Export ("getSegmentItem")]
+		//[Verify (MethodToProperty)]
+		SegmentItem SegmentItem { get; }
+
+		// @required -(void)onActivated;
+		[Abstract]
+		[Export ("onActivated")]
+		void OnActivated ();
+
+		// @required -(void)onDeactivated;
+		[Abstract]
+		[Export ("onDeactivated")]
+		void OnDeactivated ();
 	}
 
 	// @interface PanelHost : NSObject <SegmentDelegate>
 	[BaseType (typeof(NSObject))]
 	interface PanelHost : SegmentDelegate
 	{
-		// @property (nonatomic, strong) NSMutableArray * spaces;
-		[Export ("spaces", ArgumentSemantic.Strong)]
-		NSMutableArray Spaces { get; set; }
+		// @property (nonatomic, strong) SegmentView * segmentView;
+		[Export ("segmentView", ArgumentSemantic.Strong)]
+		SegmentView SegmentView { get; set; }
 
-		// @property (nonatomic, strong) id<IPanelSpec> currentSpace;
-		[Export ("currentSpace", ArgumentSemantic.Strong)]
-		IPanelSpec CurrentSpace { get; set; }
+		// @property (nonatomic, strong) NSMutableArray * specs;
+		[Export ("specs", ArgumentSemantic.Strong)]
+		NSMutableArray Specs { get; set; }
+
+		// @property (nonatomic, strong) id<IPanelSpec> currentSpec;
+		[Export ("currentSpec", ArgumentSemantic.Strong)]
+		IPanelSpec CurrentSpec { get; set; }
 
 		// @property (nonatomic, strong) UIView * contentView;
 		[Export ("contentView", ArgumentSemantic.Strong)]
 		UIView ContentView { get; set; }
 
-		// -(instancetype)initWithSize:(CGSize)size panelTypes:(NSArray<NSNumber *> *)panelTypes;
-		[Export ("initWithSize:panelTypes:")]
-		IntPtr Constructor (CGSize size, NSNumber[] panelTypes);
+		// -(instancetype)initWithFrame:(CGSize)size;
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (CGSize size);
 
 		// -(void)addSpec:(id<IPanelSpec>)spec;
 		[Export ("addSpec:")]
 		void AddSpec (IPanelSpec spec);
+
+		// -(void)insertSpec:(id<IPanelSpec>)spec atIndex:(int)index;
+		[Export ("insertSpec:atIndex:")]
+		void InsertSpec (IPanelSpec spec, int index);
 
 		// -(void)removeSpec:(id<IPanelSpec>)spec;
 		[Export ("removeSpec:")]
@@ -210,6 +248,14 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("getItemHiddenStatus")]
 		//[Verify (MethodToProperty)]
 		NSMutableDictionary ItemHiddenStatus { get; }
+
+		// -(id<IPanelSpec>)getPanel:(FSPanelType)type;
+		[Export ("getPanel:")]
+		IPanelSpec GetPanel (FSPanelType type);
+
+		// -(BOOL)isPanelHidden:(FSPanelType)type;
+		[Export ("isPanelHidden:")]
+		bool IsPanelHidden (FSPanelType type);
 
 		// -(void)setPanelHidden:(BOOL)isHidden type:(FSPanelType)type;
 		[Export ("setPanelHidden:type:")]
@@ -323,14 +369,18 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
 
-		// -(instancetype)initWithUIExtensionsManager:(UIExtensionsManager *)extensionsManager;
-		[Export ("initWithUIExtensionsManager:")]
-		IntPtr Constructor (UIExtensionsManager extensionsManager);
+		// -(instancetype)initWithUIExtensionsManager:(UIExtensionsManager *)extensionsManager settingBarVC:(SettingBarViewC *)settingBarVC;
+		[Export ("initWithUIExtensionsManager:settingBarVC:")]
+		IntPtr Constructor (UIExtensionsManager extensionsManager, SettingBarViewC settingBarVC);
 
 		// -(NSMutableDictionary *)getItemHiddenStatus;
 		[Export ("getItemHiddenStatus")]
 		//[Verify (MethodToProperty)]
 		NSMutableDictionary ItemHiddenStatus { get; }
+
+		// -(BOOL)isItemHidden:(SettingItemType)type;
+		[Export ("isItemHidden:")]
+		bool IsItemHidden (SettingItemType type);
 
 		// -(void)setItem:(SettingItemType)itemType hidden:(BOOL)hidden;
 		[Export ("setItem:hidden:")]
@@ -341,9 +391,52 @@ namespace Foxit.iOS.UIExtensions
 		void UpdateBtnLayout ();
 	}
 
-	// @interface MenuGroup : NSObject
+	// typedef void (^CancelCallback)();
+	delegate void CancelCallback ();
+
+	// @protocol MoreMenuItemAction <NSObject>
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
-	interface MenuGroup
+	interface MoreMenuItemAction
+	{
+		// @required -(void)onClick:(MoreMenuItem *)item;
+		[Abstract]
+		[Export ("onClick:")]
+		void OnClick (MoreMenuItem item);
+	}
+
+	// @interface MoreMenuItem : NSObject
+	[BaseType (typeof(NSObject))]
+	interface MoreMenuItem
+	{
+		// @property (assign, nonatomic) NSUInteger tag;
+		[Export ("tag")]
+		nuint Tag { get; set; }
+
+		// @property (nonatomic, strong) NSString * text;
+		[Export ("text", ArgumentSemantic.Strong)]
+		string Text { get; set; }
+
+		// @property (assign, nonatomic) NSInteger iconId;
+		[Export ("iconId")]
+		nint IconId { get; set; }
+
+		// @property (assign, nonatomic) BOOL enable;
+		[Export ("enable")]
+		bool Enable { get; set; }
+
+		// @property (nonatomic, weak) id<MoreMenuItemAction> callBack;
+		[Export ("callBack", ArgumentSemantic.Weak)]
+		MoreMenuItemAction CallBack { get; set; }
+
+		// @property (nonatomic, strong) UIView * customView;
+		[Export ("customView", ArgumentSemantic.Strong)]
+		UIView CustomView { get; set; }
+	}
+
+	// @interface MoreMenuGroup : NSObject
+	[BaseType (typeof(NSObject))]
+	interface MoreMenuGroup
 	{
 		// @property (assign, nonatomic) NSUInteger tag;
 		[Export ("tag")]
@@ -363,61 +456,29 @@ namespace Foxit.iOS.UIExtensions
 		void SetItems (NSMutableArray arr);
 	}
 
-	// @interface MvMenuItem : NSObject
+	// @interface MoreMenuView : NSObject
 	[BaseType (typeof(NSObject))]
-	interface MvMenuItem
+	interface MoreMenuView
 	{
-		// @property (assign, nonatomic) NSUInteger tag;
-		[Export ("tag")]
-		nuint Tag { get; set; }
-
-		// @property (nonatomic, strong) NSString * text;
-		[Export ("text", ArgumentSemantic.Strong)]
-		string Text { get; set; }
-
-		// @property (assign, nonatomic) NSInteger iconId;
-		[Export ("iconId")]
-		nint IconId { get; set; }
-
-		// @property (assign, nonatomic) BOOL enable;
-		[Export ("enable")]
-		bool Enable { get; set; }
-
-		// @property (nonatomic, strong) id<IMvCallback> callBack;
-		[Export ("callBack", ArgumentSemantic.Strong)]
-		IMvCallback CallBack { get; set; }
-
-		// @property (nonatomic, strong) UIView * customView;
-		[Export ("customView", ArgumentSemantic.Strong)]
-		UIView CustomView { get; set; }
-	}
-
-	// typedef void (^MV_Callback)();
-	delegate void MV_Callback ();
-
-	// @interface MenuView : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MenuView
-	{
-		// @property (copy, nonatomic) MV_Callback onCancelClicked;
+		// @property (copy, nonatomic) CancelCallback onCancelClicked;
 		[Export ("onCancelClicked", ArgumentSemantic.Copy)]
-		MV_Callback OnCancelClicked { get; set; }
+		CancelCallback OnCancelClicked { get; set; }
 
-		// -(void)addGroup:(MenuGroup *)group;
+		// -(void)addGroup:(MoreMenuGroup *)group;
 		[Export ("addGroup:")]
-		void AddGroup (MenuGroup group);
+		void AddGroup (MoreMenuGroup group);
 
 		// -(void)removeGroup:(NSUInteger)tag;
 		[Export ("removeGroup:")]
 		void RemoveGroup (nuint tag);
 
-		// -(MenuGroup *)getGroup:(NSUInteger)tag;
+		// -(MoreMenuGroup *)getGroup:(NSUInteger)tag;
 		[Export ("getGroup:")]
-		MenuGroup GetGroup (nuint tag);
+		MoreMenuGroup GetGroup (nuint tag);
 
-		// -(void)addMenuItem:(NSUInteger)groupTag withItem:(MvMenuItem *)item;
+		// -(void)addMenuItem:(NSUInteger)groupTag withItem:(MoreMenuItem *)item;
 		[Export ("addMenuItem:withItem:")]
-		void AddMenuItem (nuint groupTag, MvMenuItem item);
+		void AddMenuItem (nuint groupTag, MoreMenuItem item);
 
 		// -(void)removeMenuItem:(NSUInteger)groupTag WithItemTag:(NSUInteger)itemTag;
 		[Export ("removeMenuItem:WithItemTag:")]
@@ -597,73 +658,59 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("onAnnotDeselected:")]
 		void OnAnnotDeselected (FSAnnot annot);
 
-		// @required -(void)addAnnot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)addAnnot:(FSAnnot * _Nonnull)annot;
 		[Export ("addAnnot:")]
-		void AddAnnot (FSAnnot annot);
+		bool AddAnnot (FSAnnot annot);
 
-		// @required -(void)addAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
-		[Abstract]
+		// @optional -(BOOL)addAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
 		[Export ("addAnnot:addUndo:")]
-		void AddAnnot (FSAnnot annot, bool addUndo);
+		bool AddAnnot (FSAnnot annot, bool addUndo);
 
-		// @required -(void)modifyAnnot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)modifyAnnot:(FSAnnot * _Nonnull)annot;
 		[Export ("modifyAnnot:")]
-		void ModifyAnnot (FSAnnot annot);
+		bool ModifyAnnot (FSAnnot annot);
 
-		// @required -(void)modifyAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
-		[Abstract]
+		// @optional -(BOOL)modifyAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
 		[Export ("modifyAnnot:addUndo:")]
-		void ModifyAnnot (FSAnnot annot, bool addUndo);
+		bool ModifyAnnot (FSAnnot annot, bool addUndo);
 
-		// @required -(void)removeAnnot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)removeAnnot:(FSAnnot * _Nonnull)annot;
 		[Export ("removeAnnot:")]
-		void RemoveAnnot (FSAnnot annot);
+		bool RemoveAnnot (FSAnnot annot);
 
-		// @required -(void)removeAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
-		[Abstract]
+		// @optional -(BOOL)removeAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
 		[Export ("removeAnnot:addUndo:")]
-		void RemoveAnnot (FSAnnot annot, bool addUndo);
+		bool RemoveAnnot (FSAnnot annot, bool addUndo);
 
-		// @required -(BOOL)onPageViewLongPress:(int)pageIndex recognizer:(UILongPressGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nullable)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewLongPress:(int)pageIndex recognizer:(UILongPressGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nullable)annot;
 		[Export ("onPageViewLongPress:recognizer:annot:")]
 		bool OnPageViewLongPress (int pageIndex, UILongPressGestureRecognizer recognizer, [NullAllowed] FSAnnot annot);
 
-		// @required -(BOOL)onPageViewTap:(int)pageIndex recognizer:(UITapGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nullable)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewTap:(int)pageIndex recognizer:(UITapGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nullable)annot;
 		[Export ("onPageViewTap:recognizer:annot:")]
 		bool OnPageViewTap (int pageIndex, UITapGestureRecognizer recognizer, [NullAllowed] FSAnnot annot);
 
-		// @required -(BOOL)onPageViewPan:(int)pageIndex recognizer:(UIPanGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewPan:(int)pageIndex recognizer:(UIPanGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nonnull)annot;
 		[Export ("onPageViewPan:recognizer:annot:")]
 		bool OnPageViewPan (int pageIndex, UIPanGestureRecognizer recognizer, FSAnnot annot);
 
-		// @required -(BOOL)onPageViewShouldBegin:(int)pageIndex recognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer annot:(FSAnnot * _Nullable)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewShouldBegin:(int)pageIndex recognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer annot:(FSAnnot * _Nullable)annot;
 		[Export ("onPageViewShouldBegin:recognizer:annot:")]
 		bool OnPageViewShouldBegin (int pageIndex, UIGestureRecognizer gestureRecognizer, [NullAllowed] FSAnnot annot);
 
-		// @required -(BOOL)onPageViewTouchesBegan:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewTouchesBegan:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
 		[Export ("onPageViewTouchesBegan:touches:withEvent:annot:")]
 		bool OnPageViewTouchesBegan (int pageIndex, NSSet touches, UIEvent @event, FSAnnot annot);
 
-		// @required -(BOOL)onPageViewTouchesMoved:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewTouchesMoved:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
 		[Export ("onPageViewTouchesMoved:touches:withEvent:annot:")]
 		bool OnPageViewTouchesMoved (int pageIndex, NSSet touches, UIEvent @event, FSAnnot annot);
 
-		// @required -(BOOL)onPageViewTouchesEnded:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewTouchesEnded:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
 		[Export ("onPageViewTouchesEnded:touches:withEvent:annot:")]
 		bool OnPageViewTouchesEnded (int pageIndex, NSSet touches, UIEvent @event, FSAnnot annot);
 
-		// @required -(BOOL)onPageViewTouchesCancelled:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
-		[Abstract]
+		// @optional -(BOOL)onPageViewTouchesCancelled:(int)pageIndex touches:(NSSet * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event annot:(FSAnnot * _Nonnull)annot;
 		[Export ("onPageViewTouchesCancelled:touches:withEvent:annot:")]
 		bool OnPageViewTouchesCancelled (int pageIndex, NSSet touches, UIEvent @event, FSAnnot annot);
 
@@ -733,6 +780,17 @@ namespace Foxit.iOS.UIExtensions
 		void OnFullScreen (bool isFullScreen);
 	}
 
+	// @protocol IPageNumberListener <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IPageNumberListener
+	{
+		// @required -(void)updatePageNumber;
+		[Abstract]
+		[Export ("updatePageNumber")]
+		void UpdatePageNumber ();
+	}
+
 	// @protocol ILinkEventListener <NSObject>
 	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
@@ -748,13 +806,13 @@ namespace Foxit.iOS.UIExtensions
 	[BaseType (typeof(NSObject))]
 	interface UIExtensionsManagerDelegate
 	{
-		// @optional -(void)uiextensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager setTopToolBarHidden:(BOOL)hidden;
-		[Export ("uiextensionsManager:setTopToolBarHidden:")]
-		void UiextensionsManager (UIExtensionsManager uiextensionsManager, bool hidden);
+		// @optional -(void)uiextensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager onToolBar:(FSToolbarType)type hidden:(BOOL)hidden;
+		[Export ("uiextensionsManager:onToolBar:hidden:")]
+		void UiextensionsManager (UIExtensionsManager uiextensionsManager, FSToolbarType type, bool hidden);
 
-		// @optional -(BOOL)uiextensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager openNewDocAtPath:(NSString * _Nonnull)path UseNewTab:(BOOL)useNewTab;
-		[Export ("uiextensionsManager:openNewDocAtPath:UseNewTab:")]
-		bool UiextensionsManager (UIExtensionsManager uiextensionsManager, string path, bool useNewTab);
+		// @optional -(BOOL)uiextensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager openNewDocAtPath:(NSString * _Nonnull)path shouldCloseCurrentDoc:(BOOL)closeCurrentDoc;
+		[Export ("uiextensionsManager:openNewDocAtPath:shouldCloseCurrentDoc:")]
+		bool UiextensionsManager (UIExtensionsManager uiextensionsManager, string path, bool closeCurrentDoc);
 
 		// @optional -(void)quitUIExtensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager button:(UIButton * _Nonnull)button;
 		[Export ("quitUIExtensionsManager:button:")]
@@ -766,17 +824,17 @@ namespace Foxit.iOS.UIExtensions
 		FSClientInfo ClientInfo { get; }
 	}
 
-	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener>
+	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener, UIToolbarDelegate>
 	[BaseType (typeof(NSObject))]
-	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener
+	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener, IUIToolbarDelegate
 	{
 		// @property (readonly, nonatomic, strong) FSPDFViewCtrl * _Nonnull pdfViewCtrl;
 		[Export ("pdfViewCtrl", ArgumentSemantic.Strong)]
 		FSPDFViewCtrl PdfViewCtrl { get; }
 
-		// @property (readonly, nonatomic, strong) MenuView * _Nonnull more;
+		// @property (readonly, nonatomic, strong) MoreMenuView * _Nonnull more;
 		[Export ("more", ArgumentSemantic.Strong)]
-		MenuView More { get; }
+		MoreMenuView More { get; }
 
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
@@ -890,6 +948,14 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("unregisterFullScreenListener:")]
 		void UnregisterFullScreenListener (IFullScreenListener listener);
 
+		// -(void)registerPageNumberListener:(id<IPageNumberListener> _Nonnull)listener;
+		[Export ("registerPageNumberListener:")]
+		void RegisterPageNumberListener (IPageNumberListener listener);
+
+		// -(void)unregisterPageNumerListener:(id<IPageNumberListener> _Nonnull)listener;
+		[Export ("unregisterPageNumerListener:")]
+		void UnregisterPageNumerListener (IPageNumberListener listener);
+
 		// -(void)registerRotateChangedListener:(id<IRotationEventListener> _Nonnull)listener;
 		[Export ("registerRotateChangedListener:")]
 		void RegisterRotateChangedListener (IRotationEventListener listener);
@@ -987,6 +1053,18 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("showThumbnailView")]
 		void ShowThumbnailView ();
 
+		// -(void)setFullScreen:(BOOL)fullScreen;
+		[Export ("setFullScreen:")]
+		void SetFullScreen (bool fullScreen);
+
+		// -(void)suspendAutoFullScreen;
+		[Export ("suspendAutoFullScreen")]
+		void SuspendAutoFullScreen ();
+
+		// -(void)resumeAutoFullScreen;
+		[Export ("resumeAutoFullScreen")]
+		void ResumeAutoFullScreen ();
+
 		// -(NSMutableDictionary * _Nonnull)getTopToolbarItemHiddenStatus;
 		[Export ("getTopToolbarItemHiddenStatus")]
 		//[Verify (MethodToProperty)]
@@ -996,10 +1074,6 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("getBottomToolbarItemHiddenStatus")]
 		//[Verify (MethodToProperty)]
 		NSMutableDictionary BottomToolbarItemHiddenStatus { get; }
-
-		// -(void)setFullScreen:(BOOL)fullScreen;
-		[Export ("setFullScreen:")]
-		void SetFullScreen (bool fullScreen);
 
 		// -(void)setToolbarItemHiddenWithTag:(NSUInteger)itemTag hidden:(BOOL)isHidden;
 		[Export ("setToolbarItemHiddenWithTag:hidden:")]
@@ -1031,9 +1105,263 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)changeState:(int)state;
 		[Export ("changeState:")]
 		void ChangeState (int state);
+
+		// -(void)documentSaveAS:(void (^ _Nullable)(void))successed error:(void (^ _Nullable)(void))error;
+		[Export ("documentSaveAS:error:")]
+		void DocumentSaveAS ([NullAllowed] Action successed, [NullAllowed] Action error);
 	}
 
-	// @interface UIExtensionsConfig : NSObject
+	// @interface SettingObj : NSObject
+	[BaseType (typeof(NSObject))]
+	interface SettingObj
+	{
+		// @property (copy, nonatomic) NSString * _Nonnull icon;
+		[Export ("icon")]
+		string Icon { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull textFace;
+		[Export ("textFace")]
+		string TextFace { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull scaleFromUnit;
+		[Export ("scaleFromUnit")]
+		string ScaleFromUnit { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull scaleToUnit;
+		[Export ("scaleToUnit")]
+		string ScaleToUnit { get; set; }
+
+		// @property (assign, nonatomic) CGFloat textSize;
+		[Export ("textSize")]
+		nfloat TextSize { get; set; }
+
+		// @property (assign, nonatomic) CGFloat opacity;
+		[Export ("opacity")]
+		nfloat Opacity { get; set; }
+
+		// @property (assign, nonatomic) unsigned int thickness;
+		[Export ("thickness")]
+		uint Thickness { get; set; }
+
+		// @property (assign, nonatomic) unsigned int rotation;
+		[Export ("rotation")]
+		uint Rotation { get; set; }
+
+		// @property (assign, nonatomic) unsigned int scaleFromValue;
+		[Export ("scaleFromValue")]
+		uint ScaleFromValue { get; set; }
+
+		// @property (assign, nonatomic) unsigned int scaleToValue;
+		[Export ("scaleToValue")]
+		uint ScaleToValue { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull color;
+		[Export ("color", ArgumentSemantic.Strong)]
+		UIColor Color { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull fillColor;
+		[Export ("fillColor", ArgumentSemantic.Strong)]
+		UIColor FillColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull textColor;
+		[Export ("textColor", ArgumentSemantic.Strong)]
+		UIColor TextColor { get; set; }
+	}
+
+	// @interface Annotations : NSObject
+	[BaseType (typeof(NSObject))]
+	interface Annotations
+	{
+		// @property (assign, nonatomic) BOOL continuouslyAdd;
+		[Export ("continuouslyAdd")]
+		bool ContinuouslyAdd { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull highlight;
+		[Export ("highlight", ArgumentSemantic.Strong)]
+		SettingObj Highlight { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull underline;
+		[Export ("underline", ArgumentSemantic.Strong)]
+		SettingObj Underline { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull squiggly;
+		[Export ("squiggly", ArgumentSemantic.Strong)]
+		SettingObj Squiggly { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull strikeout;
+		[Export ("strikeout", ArgumentSemantic.Strong)]
+		SettingObj Strikeout { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull insert;
+		[Export ("insert", ArgumentSemantic.Strong)]
+		SettingObj Insert { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull replace;
+		[Export ("replace", ArgumentSemantic.Strong)]
+		SettingObj Replace { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull line;
+		[Export ("line", ArgumentSemantic.Strong)]
+		SettingObj Line { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull rectangle;
+		[Export ("rectangle", ArgumentSemantic.Strong)]
+		SettingObj Rectangle { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull oval;
+		[Export ("oval", ArgumentSemantic.Strong)]
+		SettingObj Oval { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull arrow;
+		[Export ("arrow", ArgumentSemantic.Strong)]
+		SettingObj Arrow { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull pencil;
+		[Export ("pencil", ArgumentSemantic.Strong)]
+		SettingObj Pencil { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull polygon;
+		[Export ("polygon", ArgumentSemantic.Strong)]
+		SettingObj Polygon { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull cloud;
+		[Export ("cloud", ArgumentSemantic.Strong)]
+		SettingObj Cloud { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull polyline;
+		[Export ("polyline", ArgumentSemantic.Strong)]
+		SettingObj Polyline { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull typewriter;
+		[Export ("typewriter", ArgumentSemantic.Strong)]
+		SettingObj Typewriter { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull textbox;
+		[Export ("textbox", ArgumentSemantic.Strong)]
+		SettingObj Textbox { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull callout;
+		[Export ("callout", ArgumentSemantic.Strong)]
+		SettingObj Callout { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull note;
+		[Export ("note", ArgumentSemantic.Strong)]
+		SettingObj Note { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull attachment;
+		[Export ("attachment", ArgumentSemantic.Strong)]
+		SettingObj Attachment { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull distance;
+		[Export ("distance", ArgumentSemantic.Strong)]
+		SettingObj Distance { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull image;
+		[Export ("image", ArgumentSemantic.Strong)]
+		SettingObj Image { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull redaction;
+		[Export ("redaction", ArgumentSemantic.Strong)]
+		SettingObj Redaction { get; set; }
+	}
+
+	// @interface UISettingsModel : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UISettingsModel
+	{
+		// @property (copy, nonatomic) NSString * _Nonnull pageMode;
+		[Export ("pageMode")]
+		string PageMode { get; set; }
+
+		// @property (assign, nonatomic) BOOL continuous;
+		[Export ("continuous")]
+		bool Continuous { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull colorMode;
+		[Export ("colorMode")]
+		string ColorMode { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull zoomMode;
+		[Export ("zoomMode")]
+		string ZoomMode { get; set; }
+
+		// @property (assign, nonatomic) BOOL fullscreen;
+		[Export ("fullscreen")]
+		bool Fullscreen { get; set; }
+
+		// @property (assign, nonatomic) BOOL highlightForm;
+		[Export ("highlightForm")]
+		bool HighlightForm { get; set; }
+
+		// @property (assign, nonatomic) BOOL highlightLink;
+		[Export ("highlightLink")]
+		bool HighlightLink { get; set; }
+
+		// @property (assign, nonatomic) BOOL disableFormNavigationBar;
+		[Export ("disableFormNavigationBar")]
+		bool DisableFormNavigationBar { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull highlightFormColor;
+		[Export ("highlightFormColor", ArgumentSemantic.Strong)]
+		UIColor HighlightFormColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull highlightLinkColor;
+		[Export ("highlightLinkColor", ArgumentSemantic.Strong)]
+		UIColor HighlightLinkColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull mapForegroundColor;
+		[Export ("mapForegroundColor", ArgumentSemantic.Strong)]
+		UIColor MapForegroundColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull mapBackgroundColor;
+		[Export ("mapBackgroundColor", ArgumentSemantic.Strong)]
+		UIColor MapBackgroundColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull reflowBackgroundColor;
+		[Export ("reflowBackgroundColor", ArgumentSemantic.Strong)]
+		UIColor ReflowBackgroundColor { get; set; }
+
+		// @property (nonatomic, strong) Annotations * _Nonnull annotations;
+		[Export ("annotations", ArgumentSemantic.Strong)]
+		Annotations Annotations { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull signature;
+		[Export ("signature", ArgumentSemantic.Strong)]
+		SettingObj Signature { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull commonlyUsed;
+		[Export ("commonlyUsed", ArgumentSemantic.Strong)]
+		SettingObj CommonlyUsed { get; set; }
+	}
+
+	// @interface UISettingsModel (NSObject)
+	[Category]
+	[BaseType (typeof(NSObject))]
+	interface NSObject_UISettingsModel
+	{
+		// +(instancetype _Nonnull)modelWithDict:(NSDictionary * _Nonnull)dict;
+		[Static]
+		[Export ("modelWithDict:")]
+		NSObject ModelWithDict (NSDictionary dict);
+
+		// -(id _Nonnull)replaceSettingsWithDict:(NSDictionary * _Nonnull)dict;
+		[Export ("replaceSettingsWithDict:")]
+		NSObject ReplaceSettingsWithDict (NSDictionary dict);
+
+		// +(NSDictionary * _Nonnull)defaultSettings;
+		[Static]
+		[Export ("defaultSettings")]
+		//[Verify (MethodToProperty)]
+		NSDictionary DefaultSettings { get; }
+	}
+
+	    // @interface SettingBarViewC : NSObject
+    [BaseType(typeof(NSObject))]
+    interface SettingBarViewC
+    { 
+    }
+
+// @interface UIExtensionsConfig : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UIExtensionsConfig
 	{
@@ -1097,28 +1425,4 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("initWithJSONData:")]
 		IntPtr Constructor (NSData data);
 	}
-
-	// @protocol IMvCallback <NSObject>
-	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface IMvCallback
-	{
-		// @required -(void)onClick:(MvMenuItem *)item;
-		[Abstract]
-		[Export ("onClick:")]
-		void OnClick (MvMenuItem item);
-	}
-
-    // @protocol IPanelSpec <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface IPanelSpec
-    {
-    }
-
-    // @interface UISettingsModel : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UISettingsModel
-    { 
-    }
 }

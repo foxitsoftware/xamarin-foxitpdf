@@ -491,6 +491,11 @@ namespace Foxit.iOS
 		[Export ("contains:")]
 		bool Contains (FSRectI other_rect);
 
+		// -(BOOL)valid;
+		[Export ("valid")]
+		//[Verify (MethodToProperty)]
+		bool Valid { get; }
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -1216,6 +1221,11 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		string Name { get; }
 
+		// -(NSString *)getFamilyName;
+		[Export ("getFamilyName")]
+		//[Verify (MethodToProperty)]
+		string FamilyName { get; }
+
 		// -(BOOL)isBold;
 		[Export ("isBold")]
 		//[Verify (MethodToProperty)]
@@ -1255,6 +1265,30 @@ namespace Foxit.iOS
 		// -(float)getCharWidth:(unsigned int)unicode;
 		[Export ("getCharWidth:")]
 		float GetCharWidth (uint unicode);
+
+		// -(unsigned int)getStyles:(FSPDFDoc *)document;
+		[Export ("getStyles:")]
+		uint GetStyles (FSPDFDoc document);
+
+		// -(FSFontCharset)getCharset:(FSPDFDoc *)document;
+		[Export ("getCharset:")]
+		FSFontCharset GetCharset (FSPDFDoc document);
+
+		// -(BOOL)isStandardFont:(FSPDFDoc *)document;
+		[Export ("isStandardFont:")]
+		bool IsStandardFont (FSPDFDoc document);
+
+		// -(FSFontStandardID)getStandard14Font:(FSPDFDoc *)document;
+		[Export ("getStandard14Font:")]
+		FSFontStandardID GetStandard14Font (FSPDFDoc document);
+
+		// -(FSFontFontTypes)getFontType:(FSPDFDoc *)document;
+		[Export ("getFontType:")]
+		FSFontFontTypes GetFontType (FSPDFDoc document);
+
+		// -(NSString *)getBaseFontName:(FSPDFDoc *)document;
+		[Export ("getBaseFontName:")]
+		string GetBaseFontName (FSPDFDoc document);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -1582,6 +1616,10 @@ namespace Foxit.iOS
 		// -(FSProgressive *)startRenderBitmap:(FSBitmap *)bitmap matrix:(FSMatrix2D *)matrix clip_rect:(FSRectI *)clip_rect interpolation:(unsigned int)interpolation pause:(id<FSPauseCallback>)pause;
 		[Export ("startRenderBitmap:matrix:clip_rect:interpolation:pause:")]
 		FSProgressive StartRenderBitmap (FSBitmap bitmap, FSMatrix2D matrix, FSRectI clip_rect, uint interpolation, FSPauseCallback pause);
+
+		// -(void)setRenderAnnotAppearanceType:(FSAnnotAppearanceType)ap_type;
+		[Export ("setRenderAnnotAppearanceType:")]
+		void SetRenderAnnotAppearanceType (FSAnnotAppearanceType ap_type);
 
 		// -(BOOL)renderAnnot:(FSAnnot *)annot matrix:(FSMatrix2D *)matrix;
 		[Export ("renderAnnot:matrix:")]
@@ -2071,6 +2109,10 @@ namespace Foxit.iOS
 		[Export ("killFocus")]
 		void KillFocus ();
 
+		// -(FSXFAWidget *)getWidgetByFullName:(NSString *)full_name;
+		[Export ("getWidgetByFullName:")]
+		FSXFAWidget GetWidgetByFullName (string full_name);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -2130,6 +2172,10 @@ namespace Foxit.iOS
 		// -(FSXFAWidget *)getWidget:(int)widget_index;
 		[Export ("getWidget:")]
 		FSXFAWidget GetWidget (int widget_index);
+
+		// -(FSXFAWidget *)getWidgetByFullName:(NSString *)full_name;
+		[Export ("getWidgetByFullName:")]
+		FSXFAWidget GetWidgetByFullName (string full_name);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -2562,6 +2608,10 @@ namespace Foxit.iOS
 		// -(FSCompareResults *)doCompare:(int)base_page_index compared_page_index:(int)compared_page_index compare_flags:(unsigned int)compare_flags;
 		[Export ("doCompare:compared_page_index:compare_flags:")]
 		FSCompareResults DoCompare (int base_page_index, int compared_page_index, uint compare_flags);
+
+		// -(FSPDFDoc *)generateComparedDoc:(unsigned int)compare_flags;
+		[Export ("generateComparedDoc:")]
+		FSPDFDoc GenerateComparedDoc (uint compare_flags);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -3243,6 +3293,10 @@ namespace Foxit.iOS
 		// -(void)setAt:(NSString *)key pdf_object:(FSPDFObject *)pdf_object;
 		[Export ("setAt:pdf_object:")]
 		void SetAt (string key, FSPDFObject pdf_object);
+
+		// -(void)setAtReference:(NSString *)key pdf_object:(FSPDFObject *)pdf_object document:(FSPDFDoc *)document;
+		[Export ("setAtReference:pdf_object:document:")]
+		void SetAtReference (string key, FSPDFObject pdf_object, FSPDFDoc document);
 
 		// -(void)setAtBoolean:(NSString *)key value:(BOOL)value;
 		[Export ("setAtBoolean:value:")]
@@ -5764,6 +5818,10 @@ namespace Foxit.iOS
 		[Export ("mKIconCaptionRelation", ArgumentSemantic.Assign)]
 		FSAnnotMKIconCaptionRelation MKIconCaptionRelation { [Bind ("getMKIconCaptionRelation")] get; set; }
 
+		// @property (getter = getAppearanceState, nonatomic, weak) NSString * appearanceState;
+		[Export ("appearanceState", ArgumentSemantic.Weak)]
+		string AppearanceState { [Bind ("getAppearanceState")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -5811,6 +5869,11 @@ namespace Foxit.iOS
 		[Export ("setMKDownIconImage:frame_index:")]
 		void SetMKDownIconImage (FSImage image, int frame_index);
 
+		// -(NSString *)getAppearanceOnStateName;
+		[Export ("getAppearanceOnStateName")]
+		//[Verify (MethodToProperty)]
+		string AppearanceOnStateName { get; }
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -5820,6 +5883,10 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSRedact
 	{
+		// @property (getter = getQuadPoints, nonatomic, weak) FSQuadPointsArray * quadPoints;
+		[Export ("quadPoints", ArgumentSemantic.Weak)]
+		FSQuadPointsArray QuadPoints { [Bind ("getQuadPoints")] get; set; }
+
 		// @property (getter = getFillColor, nonatomic) unsigned int fillColor;
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
@@ -5827,6 +5894,14 @@ namespace Foxit.iOS
 		// @property (getter = getApplyFillColor, nonatomic) unsigned int applyFillColor;
 		[Export ("applyFillColor")]
 		uint ApplyFillColor { [Bind ("getApplyFillColor")] get; set; }
+
+		// @property (getter = getOverlayText, nonatomic, weak) NSString * overlayText;
+		[Export ("overlayText", ArgumentSemantic.Weak)]
+		string OverlayText { [Bind ("getOverlayText")] get; set; }
+
+		// @property (getter = getOverlayTextAlignment, nonatomic) FSAlignment overlayTextAlignment;
+		[Export ("overlayTextAlignment", ArgumentSemantic.Assign)]
+		FSAlignment OverlayTextAlignment { [Bind ("getOverlayTextAlignment")] get; set; }
 
 		// -(void *)getCptr;
 		[Export ("getCptr")]
@@ -5840,6 +5915,15 @@ namespace Foxit.iOS
 		// -(id)initWithAnnot:(FSAnnot *)annot;
 		[Export ("initWithAnnot:")]
 		IntPtr Constructor (FSAnnot annot);
+
+		// -(FSDefaultAppearance *)getDefaultAppearance;
+		[Export ("getDefaultAppearance")]
+		//[Verify (MethodToProperty)]
+		FSDefaultAppearance DefaultAppearance { get; }
+
+		// -(BOOL)setDefaultAppearance:(FSDefaultAppearance *)default_ap;
+		[Export ("setDefaultAppearance:")]
+		bool SetDefaultAppearance (FSDefaultAppearance default_ap);
 
 		// -(BOOL)apply;
 		[Export ("apply")]
@@ -6339,6 +6423,14 @@ namespace Foxit.iOS
 		[Export ("checkPassword:")]
 		FSPDFDocPasswordType CheckPassword (string password);
 
+		// -(BOOL)isUserPassword:(NSString *)password;
+		[Export ("isUserPassword:")]
+		bool IsUserPassword (string password);
+
+		// -(BOOL)isOwnerPassword:(NSString *)password;
+		[Export ("isOwnerPassword:")]
+		bool IsOwnerPassword (string password);
+
 		// -(NSString *)getUserPassword:(NSString *)owner_password;
 		[Export ("getUserPassword:")]
 		string GetUserPassword (string owner_password);
@@ -6608,6 +6700,10 @@ namespace Foxit.iOS
 		// -(FSPageBasicInfo *)getPageBasicInfo:(int)index;
 		[Export ("getPageBasicInfo:")]
 		FSPageBasicInfo GetPageBasicInfo (int index);
+
+		// -(void)createDSS;
+		[Export ("createDSS")]
+		void CreateDSS ();
 
 		// -(id)initWithBuffer:(NSData *)buffer;
 		[Export ("initWithBuffer:")]
@@ -7271,6 +7367,14 @@ namespace Foxit.iOS
 		// @property (getter = getFillColor, nonatomic) unsigned int fillColor;
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
+
+		// @property (getter = getFillOpacity, nonatomic) float fillOpacity;
+		[Export ("fillOpacity")]
+		float FillOpacity { [Bind ("getFillOpacity")] get; set; }
+
+		// @property (getter = getStrokeOpacity, nonatomic) float strokeOpacity;
+		[Export ("strokeOpacity")]
+		float StrokeOpacity { [Bind ("getStrokeOpacity")] get; set; }
 
 		// @property (getter = getMatrix, nonatomic, weak) FSMatrix2D * matrix;
 		[Export ("matrix", ArgumentSemantic.Weak)]
@@ -7939,6 +8043,10 @@ namespace Foxit.iOS
 		[Export ("getInheritedAttribute:")]
 		FSPDFObject GetInheritedAttribute (string attruibute_name);
 
+		// -(void)clearRenderCache;
+		[Export ("clearRenderCache")]
+		void ClearRenderCache ();
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -8273,9 +8381,9 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		float ContentHeight { get; }
 
-		// -(FSMatrix2D *)getDisplayMatrix:(float)offset_x offset_y:(float)offset_y;
-		[Export ("getDisplayMatrix:offset_y:")]
-		FSMatrix2D GetDisplayMatrix (float offset_x, float offset_y);
+		// -(FSMatrix2D *)getDisplayMatrix:(float)offset_x offset_y:(float)offset_y width:(int)width height:(int)height rotate:(FSRotation)rotate;
+		[Export ("getDisplayMatrix:offset_y:width:height:rotate:")]
+		FSMatrix2D GetDisplayMatrix (float offset_x, float offset_y, int width, int height, FSRotation rotate);
 
 		// -(NSString *)getFocusData:(FSMatrix2D *)matrix point:(FSPointF *)point;
 		[Export ("getFocusData:point:")]
@@ -8719,6 +8827,10 @@ namespace Foxit.iOS
 		// -(BOOL)initializeW:(FSStdEncryptData *)encrypt_data user_password:(NSString *)user_password owner_password:(NSString *)owner_password;
 		[Export ("initializeW:user_password:owner_password:")]
 		bool InitializeW (FSStdEncryptData encrypt_data, string user_password, string owner_password);
+
+		// -(void)setAES256ModifyFlags:(unsigned int)modify_flags;
+		[Export ("setAES256ModifyFlags:")]
+		void SetAES256ModifyFlags (uint modify_flags);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -9968,6 +10080,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSPDFDoc Document { get; }
 
+		// -(FSPDFDoc *)getSignedVersionDocument:(NSString *)file_path;
+		[Export ("getSignedVersionDocument:")]
+		FSPDFDoc GetSignedVersionDocument (string file_path);
+
 		// -(void)setAppearanceContent:(NSString *)appearance_content;
 		[Export ("setAppearanceContent:")]
 		void SetAppearanceContent (string appearance_content);
@@ -10006,10 +10122,590 @@ namespace Foxit.iOS
 		[Export ("setCertChain:")]
 		void SetCertChain (string[] cert_chain);
 
+		// -(FSSignatureSignatureType)getSignatureType;
+		[Export ("getSignatureType")]
+		//[Verify (MethodToProperty)]
+		FSSignatureSignatureType SignatureType { get; }
+
+		// -(BOOL)isTimeStamp;
+		[Export ("isTimeStamp")]
+		//[Verify (MethodToProperty)]
+		bool IsTimeStamp { get; }
+
 		// -(FSInt32Array *)getByteRangeArray;
 		[Export ("getByteRangeArray")]
 		//[Verify (MethodToProperty)]
 		FSInt32Array ByteRangeArray { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSTimeStampServerMgr : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSTimeStampServerMgr
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// +(FSErrorCode)initialize;
+		[Static]
+		[Export ("initialize")]
+		//[Verify (MethodToProperty)]
+		FSErrorCode Initialize { get; }
+
+		// +(void)destroy;
+		[Static]
+		[Export ("destroy")]
+		void Destroy ();
+
+		// +(int)getServerCount;
+		[Static]
+		[Export ("getServerCount")]
+		//[Verify (MethodToProperty)]
+		int ServerCount { get; }
+
+		// +(FSTimeStampServer *)getServer:(int)index;
+		[Static]
+		[Export ("getServer:")]
+		FSTimeStampServer GetServer (int index);
+
+		// +(int)getServerIndex:(FSTimeStampServer *)server;
+		[Static]
+		[Export ("getServerIndex:")]
+		int GetServerIndex (FSTimeStampServer server);
+
+		// +(FSTimeStampServer *)getDefaultServer;
+		[Static]
+		[Export ("getDefaultServer")]
+		//[Verify (MethodToProperty)]
+		FSTimeStampServer DefaultServer { get; }
+
+		// +(void)setDefaultServer:(int)index;
+		[Static]
+		[Export ("setDefaultServer:")]
+		void SetDefaultServer (int index);
+
+		// +(FSTimeStampServer *)addServer:(NSString *)server_name server_url:(NSString *)server_url user_name:(NSString *)user_name password:(NSString *)password;
+		[Static]
+		[Export ("addServer:server_url:user_name:password:")]
+		FSTimeStampServer AddServer (string server_name, string server_url, string user_name, string password);
+
+		// +(void)removeServer:(int)index;
+		[Static]
+		[Export ("removeServer:")]
+		void RemoveServer (int index);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSTimeStampServer : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSTimeStampServer
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSTimeStampServer *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSTimeStampServer other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(FSTimeStampServerSendRequestResult)sendTimeStampRequest:(NSString *)request;
+		[Export ("sendTimeStampRequest:")]
+		FSTimeStampServerSendRequestResult SendTimeStampRequest (string request);
+
+		// -(NSString *)getTimeStampMessage;
+		[Export ("getTimeStampMessage")]
+		//[Verify (MethodToProperty)]
+		string TimeStampMessage { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSResponse : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSResponse
+	{
+		// @property (getter = getType, nonatomic) FSResponseResponseType type;
+		[Export ("type", ArgumentSemantic.Assign)]
+		FSResponseResponseType Type { [Bind ("getType")] get; set; }
+
+		// @property (getter = getResponse_data, nonatomic, weak) NSString * response_data;
+		[Export ("response_data", ArgumentSemantic.Weak)]
+		string Response_data { [Bind ("getResponse_data")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithType:(FSResponseResponseType)type response_data:(NSString *)response_data;
+		[Export ("initWithType:response_data:")]
+		IntPtr Constructor (FSResponseResponseType type, string response_data);
+
+		// -(id)initWithOther:(FSResponse *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSResponse other);
+
+		// -(void)set:(FSResponseResponseType)type response_data:(NSString *)response_data;
+		[Export ("set:response_data:")]
+		void Set (FSResponseResponseType type, string response_data);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSTimeRange : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSTimeRange
+	{
+		// @property (getter = getStart_time, nonatomic, weak) FSDateTime * start_time;
+		[Export ("start_time", ArgumentSemantic.Weak)]
+		FSDateTime Start_time { [Bind ("getStart_time")] get; set; }
+
+		// @property (getter = getEnd_time, nonatomic, weak) FSDateTime * end_time;
+		[Export ("end_time", ArgumentSemantic.Weak)]
+		FSDateTime End_time { [Bind ("getEnd_time")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithStart_time:(FSDateTime *)start_time end_time:(FSDateTime *)end_time;
+		[Export ("initWithStart_time:end_time:")]
+		IntPtr Constructor (FSDateTime start_time, FSDateTime end_time);
+
+		// -(id)initWithOther:(FSTimeRange *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSTimeRange other);
+
+		// -(void)set:(FSDateTime *)start_time end_time:(FSDateTime *)end_time;
+		[Export ("set:end_time:")]
+		void Set (FSDateTime start_time, FSDateTime end_time);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSCertVerifyResult : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSCertVerifyResult
+	{
+		// @property (getter = getCert, nonatomic, weak) NSString * cert;
+		[Export ("cert", ArgumentSemantic.Weak)]
+		string Cert { [Bind ("getCert")] get; set; }
+
+		// @property (getter = getIs_ca, nonatomic) BOOL is_ca;
+		[Export ("is_ca")]
+		bool Is_ca { [Bind ("getIs_ca")] get; set; }
+
+		// @property (getter = getIs_trusted, nonatomic) BOOL is_trusted;
+		[Export ("is_trusted")]
+		bool Is_trusted { [Bind ("getIs_trusted")] get; set; }
+
+		// @property (getter = getResponse, nonatomic, weak) FSResponse * response;
+		[Export ("response", ArgumentSemantic.Weak)]
+		FSResponse Response { [Bind ("getResponse")] get; set; }
+
+		// @property (getter = getResponse_effect_time_range, nonatomic, weak) FSTimeRange * response_effect_time_range;
+		[Export ("response_effect_time_range", ArgumentSemantic.Weak)]
+		FSTimeRange Response_effect_time_range { [Bind ("getResponse_effect_time_range")] get; set; }
+
+		// @property (getter = getRevoke_time, nonatomic, weak) FSDateTime * revoke_time;
+		[Export ("revoke_time", ArgumentSemantic.Weak)]
+		FSDateTime Revoke_time { [Bind ("getRevoke_time")] get; set; }
+
+		// @property (getter = getCert_status, nonatomic) FSCertVerifyResultCertStatus cert_status;
+		[Export ("cert_status", ArgumentSemantic.Assign)]
+		FSCertVerifyResultCertStatus Cert_status { [Bind ("getCert_status")] get; set; }
+
+		// @property (getter = getReason, nonatomic) FSCertVerifyResultRevocationReason reason;
+		[Export ("reason", ArgumentSemantic.Assign)]
+		FSCertVerifyResultRevocationReason Reason { [Bind ("getReason")] get; set; }
+
+		// @property (getter = getCert_check_time, nonatomic, weak) FSDateTime * cert_check_time;
+		[Export ("cert_check_time", ArgumentSemantic.Weak)]
+		FSDateTime Cert_check_time { [Bind ("getCert_check_time")] get; set; }
+
+		// @property (getter = getExist_signature_vri_creation_time, nonatomic) BOOL exist_signature_vri_creation_time;
+		[Export ("exist_signature_vri_creation_time")]
+		bool Exist_signature_vri_creation_time { [Bind ("getExist_signature_vri_creation_time")] get; set; }
+
+		// @property (getter = getSignature_vri_creation_time, nonatomic, weak) FSDateTime * signature_vri_creation_time;
+		[Export ("signature_vri_creation_time", ArgumentSemantic.Weak)]
+		FSDateTime Signature_vri_creation_time { [Bind ("getSignature_vri_creation_time")] get; set; }
+
+		// @property (getter = getExist_response_signature_vri_creation_time, nonatomic) BOOL exist_response_signature_vri_creation_time;
+		[Export ("exist_response_signature_vri_creation_time")]
+		bool Exist_response_signature_vri_creation_time { [Bind ("getExist_response_signature_vri_creation_time")] get; set; }
+
+		// @property (getter = getResponse_signature_vri_creation_time, nonatomic, weak) FSDateTime * response_signature_vri_creation_time;
+		[Export ("response_signature_vri_creation_time", ArgumentSemantic.Weak)]
+		FSDateTime Response_signature_vri_creation_time { [Bind ("getResponse_signature_vri_creation_time")] get; set; }
+
+		// @property (getter = getResponse_info_location, nonatomic) FSCertVerifyResultResponseInfoLocation response_info_location;
+		[Export ("response_info_location", ArgumentSemantic.Assign)]
+		FSCertVerifyResultResponseInfoLocation Response_info_location { [Bind ("getResponse_info_location")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithCert:(NSString *)cert is_ca:(BOOL)is_ca is_trusted:(BOOL)is_trusted response:(FSResponse *)response response_effect_time_range:(FSTimeRange *)response_effect_time_range revoke_time:(FSDateTime *)revoke_time cert_status:(FSCertVerifyResultCertStatus)cert_status reason:(FSCertVerifyResultRevocationReason)reason cert_check_time:(FSDateTime *)cert_check_time exist_signature_vri_creation_time:(BOOL)exist_signature_vri_creation_time signature_vri_creation_time:(FSDateTime *)signature_vri_creation_time exist_response_signature_vri_creation_time:(BOOL)exist_response_signature_vri_creation_time response_signature_vri_creation_time:(FSDateTime *)response_signature_vri_creation_time response_info_location:(FSCertVerifyResultResponseInfoLocation)response_info_location;
+		[Export ("initWithCert:is_ca:is_trusted:response:response_effect_time_range:revoke_time:cert_status:reason:cert_check_time:exist_signature_vri_creation_time:signature_vri_creation_time:exist_response_signature_vri_creation_time:response_signature_vri_creation_time:response_info_location:")]
+		IntPtr Constructor (string cert, bool is_ca, bool is_trusted, FSResponse response, FSTimeRange response_effect_time_range, FSDateTime revoke_time, FSCertVerifyResultCertStatus cert_status, FSCertVerifyResultRevocationReason reason, FSDateTime cert_check_time, bool exist_signature_vri_creation_time, FSDateTime signature_vri_creation_time, bool exist_response_signature_vri_creation_time, FSDateTime response_signature_vri_creation_time, FSCertVerifyResultResponseInfoLocation response_info_location);
+
+		// -(id)initWithOther:(FSCertVerifyResult *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSCertVerifyResult other);
+
+		// -(void)set:(NSString *)cert is_ca:(BOOL)is_ca is_trusted:(BOOL)is_trusted response:(FSResponse *)response response_effect_time_range:(FSTimeRange *)response_effect_time_range revoke_time:(FSDateTime *)revoke_time cert_status:(FSCertVerifyResultCertStatus)cert_status reason:(FSCertVerifyResultRevocationReason)reason cert_check_time:(FSDateTime *)cert_check_time exist_signature_vri_creation_time:(BOOL)exist_signature_vri_creation_time signature_vri_creation_time:(FSDateTime *)signature_vri_creation_time exist_response_signature_vri_creation_time:(BOOL)exist_response_signature_vri_creation_time response_signature_vri_creation_time:(FSDateTime *)response_signature_vri_creation_time response_info_location:(FSCertVerifyResultResponseInfoLocation)response_info_location;
+		[Export ("set:is_ca:is_trusted:response:response_effect_time_range:revoke_time:cert_status:reason:cert_check_time:exist_signature_vri_creation_time:signature_vri_creation_time:exist_response_signature_vri_creation_time:response_signature_vri_creation_time:response_info_location:")]
+		void Set (string cert, bool is_ca, bool is_trusted, FSResponse response, FSTimeRange response_effect_time_range, FSDateTime revoke_time, FSCertVerifyResultCertStatus cert_status, FSCertVerifyResultRevocationReason reason, FSDateTime cert_check_time, bool exist_signature_vri_creation_time, FSDateTime signature_vri_creation_time, bool exist_response_signature_vri_creation_time, FSDateTime response_signature_vri_creation_time, FSCertVerifyResultResponseInfoLocation response_info_location);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSCertVerifyResultArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSCertVerifyResultArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSCertVerifyResultArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSCertVerifyResultArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSCertVerifyResult *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSCertVerifyResult GetAt (nuint index);
+
+		// -(void)add:(FSCertVerifyResult *)element;
+		[Export ("add:")]
+		void Add (FSCertVerifyResult element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSCertVerifyResult *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSCertVerifyResult element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSCertIssuerPair : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSCertIssuerPair
+	{
+		// @property (getter = getCert, nonatomic, weak) NSString * cert;
+		[Export ("cert", ArgumentSemantic.Weak)]
+		string Cert { [Bind ("getCert")] get; set; }
+
+		// @property (getter = getIssuer, nonatomic, weak) NSString * issuer;
+		[Export ("issuer", ArgumentSemantic.Weak)]
+		string Issuer { [Bind ("getIssuer")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithCert:(NSString *)cert issuer:(NSString *)issuer;
+		[Export ("initWithCert:issuer:")]
+		IntPtr Constructor (string cert, string issuer);
+
+		// -(id)initWithOther:(FSCertIssuerPair *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSCertIssuerPair other);
+
+		// -(void)set:(NSString *)cert issuer:(NSString *)issuer;
+		[Export ("set:issuer:")]
+		void Set (string cert, string issuer);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSRevocationArrayInfo : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSRevocationArrayInfo
+	{
+		// @property (getter = getOcsp_array, nonatomic, weak) NSArray<NSData *> * ocsp_array;
+		[Export ("ocsp_array", ArgumentSemantic.Weak)]
+		NSData[] Ocsp_array { [Bind ("getOcsp_array")] get; set; }
+
+		// @property (getter = getCrl_array, nonatomic, weak) NSArray<NSData *> * crl_array;
+		[Export ("crl_array", ArgumentSemantic.Weak)]
+		NSData[] Crl_array { [Bind ("getCrl_array")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOcsp_array:(NSArray<NSData *> *)ocsp_array crl_array:(NSArray<NSData *> *)crl_array;
+		[Export ("initWithOcsp_array:crl_array:")]
+		IntPtr Constructor (NSData[] ocsp_array, NSData[] crl_array);
+
+		// -(id)initWithOther:(FSRevocationArrayInfo *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSRevocationArrayInfo other);
+
+		// -(void)set:(NSArray<NSData *> *)ocsp_array crl_array:(NSArray<NSData *> *)crl_array;
+		[Export ("set:crl_array:")]
+		void Set (NSData[] ocsp_array, NSData[] crl_array);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSSignatureVerifyResultArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSSignatureVerifyResultArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSSignatureVerifyResultArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSSignatureVerifyResultArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSSignatureVerifyResult *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSSignatureVerifyResult GetAt (nuint index);
+
+		// -(void)add:(FSSignatureVerifyResult *)element;
+		[Export ("add:")]
+		void Add (FSSignatureVerifyResult element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSSignatureVerifyResult *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSSignatureVerifyResult element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSLTVVerifier : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSLTVVerifier
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithDocument:(FSPDFDoc *)document is_verify_signature:(BOOL)is_verify_signature use_expired_tst:(BOOL)use_expired_tst ignore_doc_info:(BOOL)ignore_doc_info time_type:(FSLTVVerifierTimeType)time_type;
+		[Export ("initWithDocument:is_verify_signature:use_expired_tst:ignore_doc_info:time_type:")]
+		IntPtr Constructor (FSPDFDoc document, bool is_verify_signature, bool use_expired_tst, bool ignore_doc_info, FSLTVVerifierTimeType time_type);
+
+		// -(id)initWithOther:(FSLTVVerifier *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSLTVVerifier other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)setRevocationCallback:(id<FSRevocationCallback>)callback;
+		[Export ("setRevocationCallback:")]
+		void SetRevocationCallback (FSRevocationCallback callback);
+
+		// -(void)setVerifyMode:(FSLTVVerifierVerifyMode)mode;
+		[Export ("setVerifyMode:")]
+		void SetVerifyMode (FSLTVVerifierVerifyMode mode);
+
+		// -(void)setTrustedCertStoreCallback:(id<FSTrustedCertStoreCallback>)callback;
+		[Export ("setTrustedCertStoreCallback:")]
+		void SetTrustedCertStoreCallback (FSTrustedCertStoreCallback callback);
+
+		// -(FSSignatureVerifyResultArray *)verify;
+		[Export ("verify")]
+		//[Verify (MethodToProperty)]
+		FSSignatureVerifyResultArray Verify { get; }
+
+		// -(FSSignatureVerifyResultArray *)verifySignature:(FSSignature *)signature;
+		[Export ("verifySignature:")]
+		FSSignatureVerifyResultArray VerifySignature (FSSignature signature);
+
+		// -(void)addDSS:(FSSignatureVerifyResult *)signature_verify_result;
+		[Export ("addDSS:")]
+		void AddDSS (FSSignatureVerifyResult signature_verify_result);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSSignatureVerifyResult : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSSignatureVerifyResult
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSSignatureVerifyResult *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSSignatureVerifyResult other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(NSString *)getSignatureName;
+		[Export ("getSignatureName")]
+		//[Verify (MethodToProperty)]
+		string SignatureName { get; }
+
+		// -(NSString *)getSignatureHashValue;
+		[Export ("getSignatureHashValue")]
+		//[Verify (MethodToProperty)]
+		string SignatureHashValue { get; }
+
+		// -(unsigned int)getSignatureState;
+		[Export ("getSignatureState")]
+		//[Verify (MethodToProperty)]
+		uint SignatureState { get; }
+
+		// -(FSDateTime *)getSignatureCheckTime;
+		[Export ("getSignatureCheckTime")]
+		//[Verify (MethodToProperty)]
+		FSDateTime SignatureCheckTime { get; }
+
+		// -(FSLTVVerifierTimeType)getSignatureCheckTimeType;
+		[Export ("getSignatureCheckTimeType")]
+		//[Verify (MethodToProperty)]
+		FSLTVVerifierTimeType SignatureCheckTimeType { get; }
+
+		// -(FSSignatureVerifyResultLTVState)getLTVState;
+		[Export ("getLTVState")]
+		//[Verify (MethodToProperty)]
+		FSSignatureVerifyResultLTVState LTVState { get; }
+
+		// -(FSCertVerifyResultArray *)getCertificateVerifyResults;
+		[Export ("getCertificateVerifyResults")]
+		//[Verify (MethodToProperty)]
+		FSCertVerifyResultArray CertificateVerifyResults { get; }
+
+		// -(FSSignatureVerifyResultArray *)getOCSPSigantureVerifyResults;
+		[Export ("getOCSPSigantureVerifyResults")]
+		//[Verify (MethodToProperty)]
+		FSSignatureVerifyResultArray OCSPSigantureVerifyResults { get; }
+
+		// -(FSSignatureVerifyResult *)getTSTSignatureVerifyResult;
+		[Export ("getTSTSignatureVerifyResult")]
+		//[Verify (MethodToProperty)]
+		FSSignatureVerifyResult TSTSignatureVerifyResult { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -10490,6 +11186,11 @@ namespace Foxit.iOS
 		[Export ("isNeedPadData")]
 		//[Verify (MethodToProperty)]
 		bool IsNeedPadData { get; }
+
+		// @required -(FSSignatureCallbackCertValidity)CheckCertificateValidity:(NSString *)certPath certPassword:(NSString *)certPassword clientData:(void *)clientData;
+		[Abstract]
+		[Export ("CheckCertificateValidity:certPassword:clientData:")]
+		unsafe FSSignatureCallbackCertValidity CheckCertificateValidity (string certPath, string certPassword, IntPtr clientData);
 	}
 
 	// @protocol FSAppProviderCallback <NSObject>
@@ -10634,6 +11335,103 @@ namespace Foxit.iOS
 		void WidgetEvent (FSXFAWidget xfa_widget, FSDocProviderCallbackWidgetEventType widget_event_type);
 	}
 
+	// @protocol FSRevocationCallback <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface FSRevocationCallback
+	{
+		// @required -(NSArray<NSData *> *)getCertChainFromSignature:(NSData *)signature_content;
+		[Abstract]
+		[Export ("getCertChainFromSignature:")]
+		NSData[] GetCertChainFromSignature (NSData signature_content);
+
+		// @required -(FSResponse *)getResponseOnLineForSingleCert:(FSCertIssuerPair *)cert_issuer_pair;
+		[Abstract]
+		[Export ("getResponseOnLineForSingleCert:")]
+		FSResponse GetResponseOnLineForSingleCert (FSCertIssuerPair cert_issuer_pair);
+
+		// @required -(FSCertVerifyResult *)verifyOCSP:(FSCertIssuerPair *)cert_issuer_pair ocsp_data:(NSData *)ocsp_data;
+		[Abstract]
+		[Export ("verifyOCSP:ocsp_data:")]
+		FSCertVerifyResult VerifyOCSP (FSCertIssuerPair cert_issuer_pair, NSData ocsp_data);
+
+		// @required -(FSCertVerifyResult *)verifyCRL:(FSCertIssuerPair *)cert_issuer_pair crl_data:(NSData *)crl_data;
+		[Abstract]
+		[Export ("verifyCRL:crl_data:")]
+		FSCertVerifyResult VerifyCRL (FSCertIssuerPair cert_issuer_pair, NSData crl_data);
+
+		// @required -(BOOL)isCA:(NSData *)cert;
+		[Abstract]
+		[Export ("isCA:")]
+		bool IsCA (NSData cert);
+
+		// @required -(FSDateTime *)getDTSTime:(NSData *)signature_content;
+		[Abstract]
+		[Export ("getDTSTime:")]
+		FSDateTime GetDTSTime (NSData signature_content);
+
+		// @required -(NSData *)getTSTSignature:(NSData *)signature_content;
+		[Abstract]
+		[Export ("getTSTSignature:")]
+		NSData GetTSTSignature (NSData signature_content);
+
+		// @required -(FSDateTime *)getTSTTime:(NSData *)signature_content;
+		[Abstract]
+		[Export ("getTSTTime:")]
+		FSDateTime GetTSTTime (NSData signature_content);
+
+		// @required -(FSCertIssuerPair *)getOCSPCertAndIssuer:(NSData *)ocsp_data trust_cert_chain:(NSArray<NSData *> *)trust_cert_chain;
+		[Abstract]
+		[Export ("getOCSPCertAndIssuer:trust_cert_chain:")]
+		FSCertIssuerPair GetOCSPCertAndIssuer (NSData ocsp_data, NSData[] trust_cert_chain);
+
+		// @required -(FSDateTime *)getOCSPProducedAtTime:(NSData *)ocsp_data;
+		[Abstract]
+		[Export ("getOCSPProducedAtTime:")]
+		FSDateTime GetOCSPProducedAtTime (NSData ocsp_data);
+
+		// @required -(BOOL)isOCSPNeedCheck:(NSData *)ocsp_data;
+		[Abstract]
+		[Export ("isOCSPNeedCheck:")]
+		bool IsOCSPNeedCheck (NSData ocsp_data);
+
+		// @required -(FSTimeRange *)getCertValidTimeRange:(NSData *)cert;
+		[Abstract]
+		[Export ("getCertValidTimeRange:")]
+		FSTimeRange GetCertValidTimeRange (NSData cert);
+
+		// @required -(NSData *)getOCSPSignature:(NSData *)ocsp_data;
+		[Abstract]
+		[Export ("getOCSPSignature:")]
+		NSData GetOCSPSignature (NSData ocsp_data);
+
+		// @required -(NSData *)getCRLSignature:(NSData *)crl_data;
+		[Abstract]
+		[Export ("getCRLSignature:")]
+		NSData GetCRLSignature (NSData crl_data);
+
+		// @required -(FSRevocationArrayInfo *)getRevocationInfoFromSignatureData:(NSData *)signature_content;
+		[Abstract]
+		[Export ("getRevocationInfoFromSignatureData:")]
+		FSRevocationArrayInfo GetRevocationInfoFromSignatureData (NSData signature_content);
+
+		// @required -(BOOL)isIssuerMatchCert:(FSCertIssuerPair *)cert_issuer_pair;
+		[Abstract]
+		[Export ("isIssuerMatchCert:")]
+		bool IsIssuerMatchCert (FSCertIssuerPair cert_issuer_pair);
+	}
+
+	// @protocol FSTrustedCertStoreCallback <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface FSTrustedCertStoreCallback
+	{
+		// @required -(BOOL)isCertTrusted:(NSData *)cert;
+		[Abstract]
+		[Export ("isCertTrusted:")]
+		bool IsCertTrusted (NSData cert);
+	}
+
 	// @interface FSSwiftException : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSSwiftException
@@ -10644,112 +11442,52 @@ namespace Foxit.iOS
 		bool TryBlock (Action block, out NSError error);
 	}
 
-	// typedef void (^InstallSecurityHandlerCallback)(BOOL, NSString *, NSString *);
-	delegate void InstallSecurityHandlerCallback (bool arg0, string arg1, string arg2);
-
-	// @interface RMSProtection : NSObject <FSRMSSecurityCallback>
-	[BaseType (typeof(NSObject))]
-	interface RMSProtection : FSRMSSecurityCallback
+	[Static]
+	//[Verify (ConstantsInterfaceAssociation)]
+	partial interface Constants
 	{
-		// @property (nonatomic, weak) FSPDFViewCtrl * pdfViewCtrl;
-		[Export ("pdfViewCtrl", ArgumentSemantic.Weak)]
-		FSPDFViewCtrl PdfViewCtrl { get; set; }
+		// extern const FSLocalizationLanguageOptional FSLocalizationLanguageOptionalEnglish;
+		[Field ("FSLocalizationLanguageOptionalEnglish", "__Internal")]
+		nuint FSLocalizationLanguageOptionalEnglish { get; }
 
-		/*
-		// @property (nonatomic, strong) MSUserPolicy * userPolicy;
-		[Export ("userPolicy", ArgumentSemantic.Strong)]
-		MSUserPolicy UserPolicy { get; set; }
-		*/
+		// extern const FSLocalizationLanguageOptional FSLocalizationLanguageOptionalChineseSimplified;
+		[Field ("FSLocalizationLanguageOptionalChineseSimplified", "__Internal")]
+		nuint FSLocalizationLanguageOptionalChineseSimplified { get; }
 
-		// @property (nonatomic, strong) NSOperationQueue * queueRMS;
-		[Export ("queueRMS", ArgumentSemantic.Strong)]
-		NSOperationQueue QueueRMS { get; set; }
+		// extern const FSLocalizationLanguageOptional FSLocalizationLanguageOptionalChineseTraditional;
+		[Field ("FSLocalizationLanguageOptionalChineseTraditional", "__Internal")]
+		nuint FSLocalizationLanguageOptionalChineseTraditional { get; }
 
-		// @property (assign, nonatomic) BOOL isMSIRMEncryption;
-		[Export ("isMSIRMEncryption")]
-		bool IsMSIRMEncryption { get; set; }
+		// extern const FSLocalizationLanguageOptional FSLocalizationLanguageOptionalKorean;
+		[Field ("FSLocalizationLanguageOptionalKorean", "__Internal")]
+		nuint FSLocalizationLanguageOptionalKorean { get; }
+	}
 
-		// @property (assign, nonatomic) BOOL isFXRMSEncryption;
-		[Export ("isFXRMSEncryption")]
-		bool IsFXRMSEncryption { get; set; }
+	// @interface FSLocalization : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSLocalization
+	{
+		// @property (assign, nonatomic, class) NSUInteger currentLanguage;
+		[Static]
+		[Export ("currentLanguage")]
+		nuint CurrentLanguage { get; set; }
 
-		/*
-		// @property (nonatomic, strong) MSConsentManager * consentManager;
-		[Export ("consentManager", ArgumentSemantic.Strong)]
-		MSConsentManager ConsentManager { get; set; }
-		*/
+		// +(void)addLanguage:(NSUInteger)language table:(NSString * _Nonnull)tableName languageAbbr:(NSString * _Nonnull)abbr;
+		[Static]
+		[Export ("addLanguage:table:languageAbbr:")]
+		void AddLanguage (nuint language, string tableName, string abbr);
 
-		// -(instancetype)initWithPDFViewCtrl:(FSPDFViewCtrl *)pdfViewCtrl;
-		[Export ("initWithPDFViewCtrl:")]
-		IntPtr Constructor (FSPDFViewCtrl pdfViewCtrl);
-
-		// -(BOOL)installSecurityHandler:(InstallSecurityHandlerCallback)handler;
-		[Export ("installSecurityHandler:")]
-		bool InstallSecurityHandler (InstallSecurityHandlerCallback handler);
-
-		// -(BOOL)savePPDFDocument:(NSString *)tempPath saveFlags:(int)flag;
-		[Export ("savePPDFDocument:saveFlags:")]
-		bool SavePPDFDocument (string tempPath, int flag);
-
-		// -(unsigned int)GetPermission:(unsigned int)permission;
-		[Export ("GetPermission:")]
-		uint GetPermission (uint permission);
-
-		/*
-		// -(BOOL)isOwner;
-		[Export ("isOwner")]
+		// +(NSString * _Nonnull)languageAbbr;
+		[Static]
+		[Export ("languageAbbr")]
 		//[Verify (MethodToProperty)]
-		bool IsOwner { get; }
+		string LanguageAbbr { get; }
 
-		// -(BOOL)isOwner:(int)permissions;
-		[Export ("isOwner:")]
-		bool IsOwner (int permissions);
-		*/
-
-		// -(BOOL)canPrint:(int)permissions;
-		[Export ("canPrint:")]
-		bool CanPrint (int permissions);
-
-		// -(BOOL)canPrintHighQuality:(int)permissions;
-		[Export ("canPrintHighQuality:")]
-		bool CanPrintHighQuality (int permissions);
-
-		// -(BOOL)canFillForm:(int)permissions;
-		[Export ("canFillForm:")]
-		bool CanFillForm (int permissions);
-
-		// -(BOOL)canAddAnnot:(int)permissions;
-		[Export ("canAddAnnot:")]
-		bool CanAddAnnot (int permissions);
-
-		// -(BOOL)canAssemble:(int)permissions;
-		[Export ("canAssemble:")]
-		bool CanAssemble (int permissions);
-
-		// -(BOOL)canModifyContents:(int)permissions;
-		[Export ("canModifyContents:")]
-		bool CanModifyContents (int permissions);
-
-		// -(BOOL)canCopyForAssess:(int)permissions;
-		[Export ("canCopyForAssess:")]
-		bool CanCopyForAssess (int permissions);
-
-		// -(BOOL)canCopy:(int)permissions;
-		[Export ("canCopy:")]
-		bool CanCopy (int permissions);
-
-		// -(BOOL)canSigning:(int)permissions;
-		[Export ("canSigning:")]
-		bool CanSigning (int permissions);
-
-		// -(BOOL)hasPermission:(unsigned int)permission;
-		[Export ("hasPermission:")]
-		bool HasPermission (uint permission);
-
-		// -(int)pdfPermissionFromUserPolicy;
-		[Export ("pdfPermissionFromUserPolicy")]
+		// +(NSString * _Nonnull)tableName;
+		[Static]
+		[Export ("tableName")]
 		//[Verify (MethodToProperty)]
-		int PdfPermissionFromUserPolicy { get; }
+		string TableName { get; }
 	}
 
 	// @protocol IRecoveryEventListener <NSObject>
@@ -11088,11 +11826,6 @@ namespace Foxit.iOS
 		[Export ("isNightMode")]
 		bool IsNightMode { get; set; }
 
-		// @property (assign, nonatomic, class) BOOL needLocalized;
-		[Static]
-		[Export ("needLocalized")]
-		bool NeedLocalized { get; set; }
-
 		// @property (assign, nonatomic) FSRendererColorMode colorMode;
 		[Export ("colorMode", ArgumentSemantic.Assign)]
 		FSRendererColorMode ColorMode { get; set; }
@@ -11104,6 +11837,10 @@ namespace Foxit.iOS
 		// @property (nonatomic, strong) UIColor * _Nullable mappingModeForegroundColor;
 		[NullAllowed, Export ("mappingModeForegroundColor", ArgumentSemantic.Strong)]
 		UIColor MappingModeForegroundColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable reflowBackgroundColor;
+		[NullAllowed, Export ("reflowBackgroundColor", ArgumentSemantic.Strong)]
+		UIColor ReflowBackgroundColor { get; set; }
 
 		// @property (assign, nonatomic) int bottomOffset;
 		[Export ("bottomOffset")]
@@ -11365,6 +12102,24 @@ namespace Foxit.iOS
 		[Export ("setPageLayoutMode:")]
 		void SetPageLayoutMode (PDF_LAYOUT_MODE mode);
 
+		// -(BOOL)isContinuous;
+		[Export ("isContinuous")]
+		//[Verify (MethodToProperty)]
+		bool IsContinuous { get; }
+
+		// -(void)setContinuous:(BOOL)isContinuous;
+		[Export ("setContinuous:")]
+		void SetContinuous (bool isContinuous);
+
+		// -(BOOL)isViewSignedDocument;
+		[Export ("isViewSignedDocument")]
+		//[Verify (MethodToProperty)]
+		bool IsViewSignedDocument { get; }
+
+		// -(void)setViewSignedDocument:(BOOL)isViewSignedDocument;
+		[Export ("setViewSignedDocument:")]
+		void SetViewSignedDocument (bool isViewSignedDocument);
+
 		// -(UIEdgeInsets)getCropInsets:(int)pageIndex;
 		[Export ("getCropInsets:")]
 		UIEdgeInsets GetCropInsets (int pageIndex);
@@ -11573,9 +12328,10 @@ namespace Foxit.iOS
 		[Export ("setRMSAppClientId:redirectURI:")]
 		void SetRMSAppClientId (string appClientId, string redirectURI);
 
-		// @property (nonatomic, strong) RMSProtection * _Nonnull rmsHandler;
-		[Export ("rmsHandler", ArgumentSemantic.Strong)]
-		RMSProtection RmsHandler { get; set; }
+		// -(BOOL)isRMSProtected;
+		[Export ("isRMSProtected")]
+		//[Verify (MethodToProperty)]
+		bool IsRMSProtected { get; }
 	}
 
 	// @interface CacheFileOption : NSObject

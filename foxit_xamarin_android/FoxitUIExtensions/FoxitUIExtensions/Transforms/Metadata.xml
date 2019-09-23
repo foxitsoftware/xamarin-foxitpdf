@@ -7,8 +7,45 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
+  <!-- uiextensions -->
   <attr path="/api/package[@name='com.foxit.uiextensions.utils']/class[@name='Event']" name="managedName">IEvent</attr>
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setResetLayoutListener']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.home']/interface[@name='IHomeModule']/method[@name='getTopToolbar' and count(parameter)=0]" />
 
+  <!-- Rxjava -->
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.internal')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.observers')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.subjects')]"/>
+
+  <remove-node path="/api/package[@name='io.reactivex.schedulers']/class[@name='TestScheduler']"/>
+
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.SingleTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.NewThreadTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.IOTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.ComputationTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+
+  <!-- bcpkix -->
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.est')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.openssl')]"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.cms.bc']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms.jcajce']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cert.ocsp']"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='CMSAbsentContent']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='CMSProcessableFile']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='CMSProcessableByteArray']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='RecipientId']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='RecipientInformation']"/>
+
+  <!-- bcprov -->
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.crypto')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.jcajce')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.jce')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.pqc')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.x509')]"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.util']/class[@name='Strings']"/>
+  
 </metadata>

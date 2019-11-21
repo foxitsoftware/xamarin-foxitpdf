@@ -10,9 +10,19 @@
   <!-- uiextensions -->
   <attr path="/api/package[@name='com.foxit.uiextensions.utils']/class[@name='Event']" name="managedName">IEvent</attr>
 
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='UIExtensionsManager']/method[@name='getDocumentManager']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='DocumentManager']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='IPDFReader']/method[@name='getMainFrame']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='IPDFReader']/method[@name='getDocumentManager']" />
+
+  <!--
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setResetLayoutListener']" />
+  -->
   <remove-node path="/api/package[@name='com.foxit.uiextensions.home']/interface[@name='IHomeModule']/method[@name='getTopToolbar' and count(parameter)=0]" />
 
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail']/class[@name='I']" />
+  
   <!-- Rxjava -->
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.internal')]"/>
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.observers')]"/>

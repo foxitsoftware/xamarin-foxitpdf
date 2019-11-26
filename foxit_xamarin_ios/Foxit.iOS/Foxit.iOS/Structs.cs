@@ -72,7 +72,10 @@ namespace Foxit.iOS
 		LTVCannotCheckDTS = 51,
 		LTVCannotLoadDSS = 52,
 		LTVCannotLoadDTS = 53,
-		NeedSigned = 54
+		NeedSigned = 54,
+		ComplianceResourceFile = 55,
+		TimeStampServerMgrNoDefaltServer = 56,
+		DefaultTimeStampServer = 57
 	}
 
 	//[Native]
@@ -113,6 +116,20 @@ namespace Foxit.iOS
 		BottomLeft = 6,
 		BottomCenter = 7,
 		BottomRight = 8
+	}
+
+	//[Native]
+	public enum FSModuleName 
+	{
+		ConnectedPDF = 1,
+		Xfa = 2,
+		Redaction = 3,
+		Rms = 4,
+		Ocr = 5,
+		Comparison = 6,
+		Compliance = 7,
+		Optimizer = 8,
+		Conversion = 9
 	}
 
 	//[Native]
@@ -182,6 +199,17 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSFontCIDCharset 
+	{
+		Unknown = 0,
+		Gb1 = 1,
+		Cns1 = 2,
+		Japan1 = 3,
+		Korea1 = 4,
+		Unicode = 5
+	}
+
+	//[Native]
 	public enum FSFontStandardID 
 	{
 		Courier = 0,
@@ -228,6 +256,8 @@ namespace Foxit.iOS
 		Argb = 544,
 		FSBitmapDIB8bppMask = 264,
 		FSBitmapDIB8bpp = 8,
+		FSBitmapDIB8bppGray = 4104,
+		Abgr = 546,
 		Rgb565 = 1381
 	}
 
@@ -588,6 +618,34 @@ namespace Foxit.iOS
 		Field = 0,
 		Caption = 1,
 		FullName = 2
+	}
+
+	//[Native]
+	public enum FSXFAWidgetWidgetHAlignType 
+	{
+		Center = 128,
+		Justify = 156,
+		JustifyAll = 61,
+		Left = 252,
+		Radix = 231,
+		Right = 54
+	}
+
+	//[Native]
+	public enum FSXFAWidgetWidgetVAlignType 
+	{
+		Top = 33,
+		Bottom = 85,
+		Middle = 161
+	}
+
+	//[Native]
+	public enum FSXFAWidgetWidgetEdgePosition 
+	{
+		Top = 0,
+		Right = 1,
+		Bottom = 2,
+		Left = 3
 	}
 
 	//[Native]
@@ -1066,10 +1124,30 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSMarkupMeasureType 
+	{
+		X = 0,
+		Y = 1,
+		D = 2,
+		A = 3,
+		T = 4,
+		S = 5
+	}
+
+	//[Native]
 	public enum FSLineCapPos 
 	{
 		Inline = 0,
 		Top = 1
+	}
+
+	//[Native]
+	public enum FSSoundSampleEncodingFormat 
+	{
+		Raw = 0,
+		Signed = 1,
+		MuLaw = 2,
+		ALaw = 3
 	}
 
 	//[Native]
@@ -1156,6 +1234,23 @@ namespace Foxit.iOS
 		Normal = 0,
 		WithLayers = 1,
 		ShareStream = 2
+	}
+
+	//[Native]
+	public enum FSPDFDocExtractPagesOptions 
+	{
+		Annotation = 1,
+		StructureTree = 2,
+		Javascript = 4,
+		OCProperties = 8,
+		ObjectStream = 16,
+		AttachFiles = 32
+	}
+
+	//[Native]
+	public enum FSPDFDocInsertDocOptions 
+	{
+		FSPDFDocInsertDocOptionAttachments = 1
 	}
 
 	//[Native]
@@ -1354,11 +1449,29 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSTextPageCharInfoTextCharFlag 
+	{
+		Unknown = -1,
+		Normal = 0,
+		Generated = 1,
+		UnUnicode = 2,
+		Hyphen = 3,
+		ComboWord = 4
+	}
+
+	//[Native]
 	public enum FSTextPageTextParseFlags 
 	{
 		Normal = 0,
 		OutputHyphen = 1,
 		UseStreamOrder = 2
+	}
+
+	//[Native]
+	public enum FSTextPageTextOrderFlag 
+	{
+		StreamOrder = 0,
+		DisplayOrder = 1
 	}
 
 	//[Native]
@@ -1622,6 +1735,17 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSSignaturePAdESLevel 
+	{
+		NotPAdES = 0,
+		None = 1,
+		Bb = 2,
+		Bt = 3,
+		Blt = 4,
+		Blta = 5
+	}
+
+	//[Native]
 	public enum FSSignatureCallbackCertValidity 
 	{
 		Valid = 0,
@@ -1762,6 +1886,13 @@ namespace Foxit.iOS
 		Graph,
 		Music
 	}
+
+	public enum PdfCertErrorCode 
+	{
+		Sucesss = 0,
+		File,
+		Password
+	}
     public enum PDF_LAYOUT_MODE
     {
         /** @brief  Unknown page mode. */
@@ -1826,4 +1957,16 @@ namespace Foxit.iOS
     	/** @brief    Insert page music style. */
     	PDF_PAGE_STYLE_TYPE_MUSIC
     }
+    /**
+    * @brief    Enumeration for certificate related error code.
+    *
+    */
+    public enum PDF_CERT_ERROR_CODE {
+    	PDF_CERT_ERROR_SUCESSS = 0,
+    	/** @brief    File format error or invalid file. */
+    	PDF_CERT_ERROR_FILE,
+    	/** @brief    Invalid password. */
+    	PDF_CERT_ERROR_PASSWORD
+    }
+
 }

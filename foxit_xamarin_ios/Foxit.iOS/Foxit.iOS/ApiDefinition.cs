@@ -1282,6 +1282,14 @@ namespace Foxit.iOS
 		[Export ("getCharWidth:")]
 		float GetCharWidth (uint unicode);
 
+		// -(FSRectI *)getCharBBoxWithDoc:(unsigned int)unicode document:(FSPDFDoc *)document;
+		[Export ("getCharBBoxWithDoc:document:")]
+		FSRectI GetCharBBoxWithDoc (uint unicode, FSPDFDoc document);
+
+		// -(float)getCharWidthWithDoc:(unsigned int)unicode document:(FSPDFDoc *)document;
+		[Export ("getCharWidthWithDoc:document:")]
+		float GetCharWidthWithDoc (uint unicode, FSPDFDoc document);
+
 		// -(unsigned int)getStyles:(FSPDFDoc *)document;
 		[Export ("getStyles:")]
 		uint GetStyles (FSPDFDoc document);
@@ -1331,6 +1339,10 @@ namespace Foxit.iOS
 		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithFile_read:(id<FSFileReaderCallback>)file_read face_index:(int)face_index;
+		[Export ("initWithFile_read:face_index:")]
+		IntPtr Constructor (FSFileReaderCallback file_read, int face_index);
 
 		// -(id)initWithOther:(FSFontMapResult *)other;
 		[Export ("initWithOther:")]
@@ -1915,6 +1927,14 @@ namespace Foxit.iOS
 		[Export ("initWithClientid:user_token:content_key:type:file_path:")]
 		IntPtr Constructor (string clientid, string user_token, string content_key, FSConnectedPDFEncryptType type, string file_path);
 
+		// -(id)initWithClientid:(NSString *)clientid user_token:(NSString *)user_token content_key:(NSString *)content_key type:(FSConnectedPDFEncryptType)type file_read:(id<FSFileReaderCallback>)file_read;
+		[Export ("initWithClientid:user_token:content_key:type:file_read:")]
+		IntPtr Constructor (string clientid, string user_token, string content_key, FSConnectedPDFEncryptType type, FSFileReaderCallback file_read);
+
+		// -(id)initWithClientid:(NSString *)clientid user_token:(NSString *)user_token content_key:(NSString *)content_key type:(FSConnectedPDFEncryptType)type document:(FSPDFDoc *)document;
+		[Export ("initWithClientid:user_token:content_key:type:document:")]
+		IntPtr Constructor (string clientid, string user_token, string content_key, FSConnectedPDFEncryptType type, FSPDFDoc document);
+
 		// -(id)initWithConnected_pdf:(FSConnectedPDF *)connected_pdf;
 		[Export ("initWithConnected_pdf:")]
 		IntPtr Constructor (FSConnectedPDF connected_pdf);
@@ -2025,6 +2045,10 @@ namespace Foxit.iOS
 		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOption_label:(NSString *)option_label selected:(BOOL)selected;
+		[Export ("initWithOption_label:selected:")]
+		IntPtr Constructor (string option_label, bool selected);
 
 		// -(id)initWithOption:(FSWidgetChoiceOption *)option;
 		[Export ("initWithOption:")]
@@ -2158,6 +2182,10 @@ namespace Foxit.iOS
 		// -(void)flattenTo:(NSString *)output_file_path;
 		[Export ("flattenTo:")]
 		void FlattenTo (string output_file_path);
+
+		// -(void)flattenToWithStreamCallback:(id<FSStreamCallback>)stream;
+		[Export ("flattenToWithStreamCallback:")]
+		void FlattenToWithStreamCallback (FSStreamCallback stream);
 
 		// -(void)processEvent:(FSXFADocEventType)event_type;
 		[Export ("processEvent:")]
@@ -6087,6 +6115,10 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
+		// -(id)initWithAnnot:(FSAnnot *)annot;
+		[Export ("initWithAnnot:")]
+		IntPtr Constructor (FSAnnot annot);
+
 		// -(FSPDFStream *)getSoundStream;
 		[Export ("getSoundStream")]
 		//[Verify (MethodToProperty)]
@@ -6660,6 +6692,10 @@ namespace Foxit.iOS
 		[Export ("startSaveAs:save_flags:pause:")]
 		FSProgressive StartSaveAs (string file_path, uint save_flags, FSPauseCallback pause);
 
+		// -(FSProgressive *)startSaveAsWithWriterCallback:(id<FSFileWriterCallback>)file save_flags:(unsigned int)save_flags pause:(id<FSPauseCallback>)pause;
+		[Export ("startSaveAsWithWriterCallback:save_flags:pause:")]
+		FSProgressive StartSaveAsWithWriterCallback (FSFileWriterCallback file, uint save_flags, FSPauseCallback pause);
+
 		// -(FSBookmark *)getRootBookmark;
 		[Export ("getRootBookmark")]
 		//[Verify (MethodToProperty)]
@@ -6829,6 +6865,10 @@ namespace Foxit.iOS
 		[Export ("startExtractPages:options:page_range:pause:")]
 		FSProgressive StartExtractPages (string file_path, uint options, FSRange page_range, FSPauseCallback pause);
 
+		// -(FSProgressive *)startExtractPagesWithWriterCallback:(id<FSFileWriterCallback>)file options:(unsigned int)options page_range:(FSRange *)page_range pause:(id<FSPauseCallback>)pause;
+		[Export ("startExtractPagesWithWriterCallback:options:page_range:pause:")]
+		FSProgressive StartExtractPagesWithWriterCallback (FSFileWriterCallback file, uint options, FSRange page_range, FSPauseCallback pause);
+
 		// -(void)insertDocument:(int)dest_index src_doc:(FSPDFDoc *)src_doc options:(unsigned int)options;
 		[Export ("insertDocument:src_doc:options:")]
 		void InsertDocument (int dest_index, FSPDFDoc src_doc, uint options);
@@ -6986,6 +7026,10 @@ namespace Foxit.iOS
 		// -(BOOL)embed:(NSString *)file_path;
 		[Export ("embed:")]
 		bool Embed (string file_path);
+
+		// -(BOOL)embedWithStreamCallback:(id<FSStreamCallback>)stream;
+		[Export ("embedWithStreamCallback:")]
+		bool EmbedWithStreamCallback (FSStreamCallback stream);
 
 		// -(BOOL)isEmbedded;
 		[Export ("isEmbedded")]
@@ -8181,6 +8225,14 @@ namespace Foxit.iOS
 		// -(FSSignature *)addSignature:(FSRectF *)rect;
 		[Export ("addSignature:")]
 		FSSignature AddSignature (FSRectF rect);
+
+		// -(FSSignature *)addSignatureWithFieldName:(FSRectF *)rect field_name:(NSString *)field_name;
+		[Export ("addSignatureWithFieldName:field_name:")]
+		FSSignature AddSignatureWithFieldName (FSRectF rect, string field_name);
+
+		// -(FSSignature *)addSignatureWithSignatureType:(FSRectF *)rect field_name:(NSString *)field_name signature_type:(FSSignatureSignatureType)signature_type;
+		[Export ("addSignatureWithSignatureType:field_name:signature_type:")]
+		FSSignature AddSignatureWithSignatureType (FSRectF rect, string field_name, FSSignatureSignatureType signature_type);
 
 		// -(BOOL)hasWatermark;
 		[Export ("hasWatermark")]
@@ -10502,20 +10554,30 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSTimeStampServer DefaultServer { get; }
 
-		// +(void)setDefaultServer:(int)index;
+		// +(void)setDefaultServerWithIndex:(int)index;
+		[Static]
+		[Export ("setDefaultServerWithIndex:")]
+		void SetDefaultServerWithIndex (int index);
+
+		// +(void)setDefaultServer:(FSTimeStampServer *)server;
 		[Static]
 		[Export ("setDefaultServer:")]
-		void SetDefaultServer (int index);
+		void SetDefaultServer (FSTimeStampServer server);
 
 		// +(FSTimeStampServer *)addServer:(NSString *)server_name server_url:(NSString *)server_url user_name:(NSString *)user_name password:(NSString *)password;
 		[Static]
 		[Export ("addServer:server_url:user_name:password:")]
 		FSTimeStampServer AddServer (string server_name, string server_url, string user_name, string password);
 
-		// +(void)removeServer:(int)index;
+		// +(void)removeServerWithIndex:(int)index;
+		[Static]
+		[Export ("removeServerWithIndex:")]
+		void RemoveServerWithIndex (int index);
+
+		// +(void)removeServer:(FSTimeStampServer *)server;
 		[Static]
 		[Export ("removeServer:")]
-		void RemoveServer (int index);
+		void RemoveServer (FSTimeStampServer server);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]

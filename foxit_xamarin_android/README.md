@@ -1,13 +1,316 @@
-# foxit_xamarin_android
-Use the Foxit PDF SDK for Android with Xamarin
+## Implement Foxit PDF SDK for Android using Xamarin
+Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for Android into your Xamarin.Android application. 
 
-## Introduction
+- [System Requirements](#System-Requirements)
+- [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
+- [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
+- [More](#More)
+- [How to run the foxit_xamarin_android.](#How-to-run-the-foxit_xamarin_android.)
+- [License](#License)
 
-This sample project works with the  `Foxit PDF SDK for Android 7.0` and is a direct port of the `complete_pdf_viewer`  sample project included in the RDK.
+## System Requirements
 
-## Installation
+* Visual Studio 2017
+* Android SDK
+* JDK 1.8
+* Foxit PDF SDK for Android
 
-### Install By NuGet
+## Integrate Foxit PDF SDK into your Xamarin project
+**There are two ways to integrate Foxit PDF SDK into your Xamarin project:**
+- [Install By NuGet](#Install-By-NuGet)
+- [Integrate manually by building and referencing DLLs](#Integrate-manually-by-building-and-referencing-DLLs)
+
+  #### Install By NuGet
+  It is now possible to integrate Foxit PDF SDK into your Xamarin project through NuGet packages, which is much easier than the second way [Integrate manually by building and referencing DLLs](#Integrate-manually-by-building-and-referencing-DLLs) , and can save
+you much time.  
+  
+  To integrate Foxit PDF SDK into your Xamarin project through Nuget packages, please follow the steps below:  
+  - In the Solution Explorer, right-click the References node of your project, and click `Manage NuGet Packages…`
+ 
+    ![screenshot1](./Screenshot/screenshot1.jpg)
+  -  Then select the Browse tab, search for `Foxit.Android` , `Foxit.Android.UIExtensions` , `Foxit.Android.RxAndroid` and `Foxit.Android.Cropper` , and then install them.  
+  
+     ![screenshot2](./Screenshot/screenshot2.jpg)
+   -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.
+   - _**Optional**_  
+   If you want to open a RMS protected PDF document, you should install the
+ `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.RMSSDK` and `Foxit.Android.RMSSDK.UI`.  
+ 
+     ![screenshot3](./Screenshot/screenshot3.jpg)
+  
+  #### Integrate manually by building and referencing DLLs
+  To integrate manually, you should first build DLLs, and then add it as a reference to your project.  
+  - Download or Clone [Foxit PDF SDK for Android](https://github.com/foxitsoftware/xamarin-foxitpdf/tree/master/foxit_xamarin_android),  then copy the following files (libraries
+and licenses) in the `libs` folder of the extracted package to `foxit_xamarin_android\libs`
+directory:
+    > `FoxitRDK.aar`  
+    > `FoxitRDKUIExtensions.aar`  
+    >`rdk_key.txt`  
+    >`rdk_sn.txt`
+  - Build DLLs
+    - Get `FoxitRDK.dll` .  This is the heart of the SDK including the core functionalities of Foxit PDF SDK for Android.
+  
+      Load FoxitRDK.sln in Visual Studio 2017 under the `foxit_xamarin_android\FoxitRDK` directory.
+Choose Build -> Build Solution to build the project, then the `FoxitRDK.dll` will be generated in
+`foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.
+
+    - Get `FoxitRDKUIExtensions.dll` which extends more powerful PDF related features including UI and resource files.
+
+      Load FoxitUIExtensions.sln in Visual Studio 2017 under `foxit_xamarin_android\FoxitUIExtensions` directory. Choose Build -> Build Solution to build
+the project, then the `FoxitUIExtensions.dll` will be generated in
+`foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)` directory.
+
+    - Get `Cropper.dll`.  
+     Load Cropper.sln in Visual Studio 2017 under `foxit_xamarin_android\Cropper` directory. Choose Build -> Build Solution to build
+the project, then the `Cropper.dll` will be generated in
+`foxit_xamarin_android\Cropper\Cropper\bin\Debug (or release)` directory.
+
+    - Get `RxAndroid.dll`.  
+     Load RxAndroid.sln in Visual Studio 2017 under `foxit_xamarin_android\RxAndroid` directory. Choose Build -> Build Solution to build
+the project, then the `RxAndroid.dll` will be generated in
+`foxit_xamarin_android\RxAndroid\RxAndroid\bin\Debug (or release)` directory.
+
+  -  Add the built DLLs as references to your project  
+  This section takes `FoxitRDK.dll` as an example to show you how to add it as a reference to your project.
+For other DLLs, do the same steps with `FoxitRDK.dll`. We assume that you have got the `FoxitRDK.dll`, if
+not, please refer to [Build DLLs](Build-DLLs) section to build the FoxitRDK project and generate the `FoxitRDK.dll`.  
+
+      - In the Solution Explorer, right-click the References node of your project and select `Add Reference… `  
+      
+        ![screenshot4](./Screenshot/screenshot4.jpg)
+       - In the Reference Manager dialog, click Browse… to find the `FoxitRDK.dll` (in the
+`foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)` folder), select it and then
+click Add:  
+
+          ![screenshot5](./Screenshot/screenshot5.jpg)  
+          ![screenshot6](./Screenshot/screenshot6.jpg)  
+          
+          Then, the FoxitRDK.dll will appear in the list and has already been checked. Click OK:  
+      
+          ![screenshot7](./Screenshot/screenshot7.jpg)  
+  - Add the `FoxitUIExtensions.dll` , `RxAndroid.dll` and `Cropperd.dll` to you demo refer to the steps of adding `FoxitRDK.dll`.
+  - _**Optional**_:  
+If you want to open a RMS protected PDF file, please refer to [Build DLLs](Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `RMSSDK`, and `RMSSDK_UI`
+projects in the `foxit_xamarin_android` folder to get the following three DLLs:  
+`Microsoft_Aad_Aadl\Microsoft_Aad_Aadl\bin\Debug(Release)\Microsoft_Aad_Aadl.dll`  
+`RMSSDK\RMSSDK\bin\Debug(Release)\RMSSDK.dll`  
+`RMSSDK_UI\RMSSDK_UI\bin\Debug(Release)\RMSSDK_UI.dll`  
+Add the above three DLLs libraries as references to the project (refer to the steps of adding
+`FoxitRDK.dll` ).
+
+  After finishing the above steps, the References of your project will look like:  
+  ![screenshot8](./Screenshot/screenshot8.jpg)  
+  
+## Build a Xamarin Android project using Foxit PDF SDK for Android
+**This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
+step-by-step instructions provided.**
+
+- Create a new Xamarin Android project
+- Integrate Foxit PDF SDK into the project
+- Initialize Foxit PDF SDK Library
+- Display a PDF document using PDFViewCtrl
+
+#### 1. Create a new Xamarin Android project
+Open Visual Studio 2017, choose `File -> New -> Project… `  to start the New Project. Let's take `TestXamarin` as an example .Create a new Xamarin Android project called `TestXamarin` ,Then click OK:  
+
+![screenshot9](./Screenshot/screenshot9.jpg)  
+
+In the New Android App dialog, select Single View App,Then, click OK:  
+
+![screenshot10](./Screenshot/screenshot10.jpg)  
+
+#### 2. Integrate Foxit PDF SDK into the project
+Please refer to [Integrate Foxit PDF SDK into your Xamarin project](Integrate-Foxit-PDF-SDK-into-your-Xamarin-project) to integrate the Foxit PDF
+SDK into the created project. We recommend using the first way [Integrate with NuGet](Integrate-with-NuGett), which is more
+easy and convenient.
+#### 3. Initialize Foxit PDF SDK Library
+Before calling any APIs, you must first initialize Foxit PDF SDK library by using the function
+Library.Initialize(sn, key). Below you can see an example of how to initialize the SDK library. The
+next section will show you where to include this code in `xxx\xamarin-foxitpdf\foxit_xamarin_android\complete_pdf_viewer\complete_pdf_viewer\MainActivity.cs` file:
+```
+using Com.Foxit.Sdk;
+using Com.Foxit.Sdk.Common;
+...
+String sn = "xxx";
+String key = "xxx";
+int errCode = Library.Initialize(sn, key);
+if (errCode != Constants.EErrSuccess)
+return;
+```
+Note: The value of `sn` can be found in the `rdk_sn.txt` (the string after `SN=`) and the value of `key` can be found
+in the `rdk_key.txt` (the string after `Sign=`). The trial license files (rdk_sn.txt and rdk_key.txt) can be found in the
+`foxit_xamarin_android\libs` folder or in the `libs` folder of Foxit PDF SDK for Android package
+
+#### 4. Display a PDF document using PDFViewCtrl
+To display a PDF document, please follow the steps below:  
+
+ **1) Instantiate a PDFViewCtrl object to show an existing document.**  
+  In `xxx\xamarin-foxitpdf\foxit_xamarin_android\complete_pdf_viewer\complete_pdf_viewer\MainActivity.cs` file, instantiate a PDFViewCtrl object, and call PDFViewCtrl.OpenDoc
+function to open and render the PDF document:  
+
+```
+using Com.Foxit.Sdk;
+...
+private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
+private PDFViewCtrl pdfViewCtrl;
+...
+// Instantiate a PDFViewCtrl object.
+pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
+// Open and Render a PDF document.
+pdfViewCtrl.OpenDoc(path, null);
+SetContentView(pdfViewCtrl);
+```
+Note: Please make sure you have pushed the`complete_pdf_viewer_guide_android.pdf`
+document found in the `samples/test_files` folder of Foxit PDF SDK for Android package into the
+SD card of the Android device or emulator that will be used to run this project. Certainly, you can
+change the file path with your own files.
+
+Update MainActivity.cs as follows:
+```
+using System;
+using Android.App;
+using Android.OS;
+using Android.Support.V7.App;
+using Com.Foxit.Sdk;
+using Com.Foxit.Sdk.Common;
+namespace TestXamarin
+{
+[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",
+MainLauncher = true)]
+public class MainActivity : AppCompatActivity
+{
+// The value of "sn" can be found in the "rdk_sn.txt".
+// The value of "key" can be found in the "rdk_key.txt".
+  private String sn = "xxx";
+  private String key = "xxx";
+  private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
+private PDFViewCtrl pdfViewCtrl;
+  protected override void OnCreate(Bundle savedInstanceState)
+  {
+base.OnCreate(savedInstanceState);
+// Initialize Foxit SDK Library.
+int errCode = Library.Initialize(sn, key);
+if (errCode != Constants.EErrSuccess)
+return;
+// Instantiate a PDFViewCtrl object.
+pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
+// Open and Render a PDF document.
+pdfViewCtrl.OpenDoc(path, null);
+SetContentView(pdfViewCtrl);
+   }
+  }
+}
+```
+**2) Set permissions to write and read the SD card of the Android devices or emulators**  
+Note: If you want to run this project on an Android 6.0 (API 23) or higher devices/emulators, you
+can do one of the following:
+- Change the android:targetSdkVersion in "AndroidManifest.xml" to a lower SDK version
+that is less than 23, such as 21
+- Write additional code to require the authorization of runtime permissions.
+  - Change the android:targetSdkVersion in "AndroidManifest.xml"  
+  
+    In this case, set the "users-permission" in the "AndroidManifest.xml" found in the
+"TestXamarin\Properties" to give the project permission to write and read the SD card of the Android devices or emulators:  
+
+    ![screenshot11](./Screenshot/screenshot11.jpg)  
+   - Write additional code to require the authorization of runtime permissions.  
+   In the MainActivity.cs file, add code to require the authorization of runtime permissions.   
+   So,update the whole MainActivity.cs as follows:
+ ```
+using System;
+using Android.App;
+using Android.OS;
+using Android.Runtime;
+using Android.Support.V7.App;
+using Com.Foxit.Sdk;
+using Com.Foxit.Sdk.Common;
+using Android;
+using Android.Content.PM;
+using Android.Support.V4.Content;
+using Android.Support.V4.App;
+namespace TestXamarin
+{
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",
+MainLauncher = true)]
+    public class MainActivity : AppCompatActivity
+    {
+      public static int REQUEST_EXTERNAL_STORAGE = 1;
+      private static string[] PERMISSIONS_STORAGE = {
+      Manifest.Permission.ReadExternalStorage,
+      Manifest.Permission.WriteExternalStorage
+      };
+      // The value of "sn" can be found in the "rdk_sn.txt".
+      // The value of "key" can be found in the "rdk_key.txt".
+      private String sn = "xxx";
+       private String key = "xxx";Foxit PDF SDK for Android Developer Guide
+147
+      private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
+      private PDFViewCtrl pdfViewCtrl;
+      protected override void OnCreate(Bundle savedInstanceState)
+     {
+      base.OnCreate(savedInstanceState);
+      // Initialize Foxit SDK Library.
+      int errCode = Library.Initialize(sn, key);
+      if (errCode != Constants.EErrSuccess)
+       return;
+     // Instantiate a PDFViewCtrl object.
+     pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
+    // Require the authorization of runtime permissions.
+    if (Build.VERSION.SdkInt > BuildVersionCodes.M)
+   {
+    Permission permission = ContextCompat.CheckSelfPermission(this.ApplicationContext, Manifest.Permission.WriteExternalStorage);
+    if (permission != Permission.Granted)
+     {
+     ActivityCompat.RequestPermissions(this, PERMISSIONS_STORAGE,
+     REQUEST_EXTERNAL_STORAGE);
+     return;
+     }
+   }
+   // Open and Render a PDF document.
+   pdfViewCtrl.OpenDoc(path, null);
+    SetContentView(pdfViewCtrl);
+   }
+   public override void OnRequestPermissionsResult(int requestCode, string[]
+permissions, [GeneratedEnum] Permission[] grantResults)
+  {
+    if (requestCode == REQUEST_EXTERNAL_STORAGE
+    && grantResults[0] == Permission.Granted)
+   {
+   if (pdfViewCtrl != null)
+   {
+   pdfViewCtrl.OpenDoc(path, null);
+   }
+  }
+  else
+   {
+  base.OnRequestPermissionsResult(requestCode, permissions,
+   grantResults);
+   }
+  }
+}
+}
+```
+**3) Enable Multi-Dex. If you don't, you may encounter the problem "error MSB6006: "java.exe" exited with code 2.**  
+Right-click the TestXamarin project, choose Properties, check Enable Multi-Dex under Android Options -> Packaging properties:  
+
+![screenshot12](./Screenshot/screenshot12.jpg)  
+
+In this chapter, we build and run the project on an AVD targeting 9.0 (API 28), and use the second
+method (require authorization of runtime permissions) to get the permissions to write and read the SD
+card of the emulator.  
+
+After building the project and installing APK on the emulator, tap Allow on the pop-up window to allow
+the project to access files on the device, and then you will see that the `complete_pdf_viewer_guide_android.pdf` document is displayed . Now, this
+sample app has some basic PDF features, such as zooming in/out and page turning.  
+
+![screenshot13](./Screenshot/screenshot13.jpg) 
+
+## More
+For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
+
+
+
+## How to run the foxit_xamarin_android.
 
 1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
 

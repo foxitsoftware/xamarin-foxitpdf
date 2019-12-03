@@ -120,13 +120,12 @@ In the New Android App dialog, select Single View App,Then, click OK:
 ![screenshot10](./Screenshot/screenshot10.jpg)  
 
 #### 2. Integrate Foxit PDF SDK into the project
-Please refer to [Integrate Foxit PDF SDK into your Xamarin project](Integrate-Foxit-PDF-SDK-into-your-Xamarin-project) to integrate the Foxit PDF
-SDK into the created project. We recommend using the first way [Integrate with NuGet](Integrate-with-NuGett), which is more
+Please refer to [Integrate Foxit PDF SDK into your Xamarin project](Integrate-Foxit-PDF-SDK-into-your-Xamarin-project) to integrate the Foxit PDF SDK into the created project. We recommend using the first way [Integrate with NuGet](Integrate-with-NuGett), which is more
 easy and convenient.
 #### 3. Initialize Foxit PDF SDK Library
 Before calling any APIs, you must first initialize Foxit PDF SDK library by using the function
 Library.Initialize(sn, key). Below you can see an example of how to initialize the SDK library. The
-next section will show you where to include this code in `xxx\xamarin-foxitpdf\foxit_xamarin_android\complete_pdf_viewer\complete_pdf_viewer\MainActivity.cs` file:
+next section will show you where to include this code in `MainActivity.cs` file:
 ```
 using Com.Foxit.Sdk;
 using Com.Foxit.Sdk.Common;
@@ -145,8 +144,7 @@ in the `rdk_key.txt` (the string after `Sign=`). The trial license files (rdk_sn
 To display a PDF document, please follow the steps below:  
 
  **1) Instantiate a PDFViewCtrl object to show an existing document.**  
-  In `xxx\xamarin-foxitpdf\foxit_xamarin_android\complete_pdf_viewer\complete_pdf_viewer\MainActivity.cs` file, instantiate a PDFViewCtrl object, and call PDFViewCtrl.OpenDoc
-function to open and render the PDF document:  
+  In `MainActivity.cs` file, instantiate a PDFViewCtrl object, and call `PDFViewCtrl#OpenDoc` function to open and render the PDF document:  
 
 ```
 using Com.Foxit.Sdk;
@@ -160,9 +158,8 @@ pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
 pdfViewCtrl.OpenDoc(path, null);
 SetContentView(pdfViewCtrl);
 ```
-Note: Please make sure you have pushed the`complete_pdf_viewer_guide_android.pdf`
-document found in the `samples/test_files` folder of Foxit PDF SDK for Android package into the
-SD card of the Android device or emulator that will be used to run this project. Certainly, you can
+Note: Please make sure you have pushed the [complete_pdf_viewer_guide_android.pdf](https://github.com/foxitsoftware/xamarin-foxitpdf/tree/master/foxit_xamarin_android/complete_pdf_viewer/complete_pdf_viewer/Assets/complete_pdf_viewer_guide_android.pdf)
+document into the SD card of the Android device or emulator that will be used to run this project. Certainly, you can
 change the file path with your own files.
 
 Update MainActivity.cs as follows:
@@ -175,120 +172,124 @@ using Com.Foxit.Sdk;
 using Com.Foxit.Sdk.Common;
 namespace TestXamarin
 {
-[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",
-MainLauncher = true)]
-public class MainActivity : AppCompatActivity
-{
-// The value of "sn" can be found in the "rdk_sn.txt".
-// The value of "key" can be found in the "rdk_key.txt".
-  private String sn = "xxx";
-  private String key = "xxx";
-  private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
-private PDFViewCtrl pdfViewCtrl;
-  protected override void OnCreate(Bundle savedInstanceState)
-  {
-base.OnCreate(savedInstanceState);
-// Initialize Foxit SDK Library.
-int errCode = Library.Initialize(sn, key);
-if (errCode != Constants.EErrSuccess)
-return;
-// Instantiate a PDFViewCtrl object.
-pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
-// Open and Render a PDF document.
-pdfViewCtrl.OpenDoc(path, null);
-SetContentView(pdfViewCtrl);
-   }
-  }
+[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",MainLauncher = true)]
+    public class MainActivity : AppCompatActivity
+    {
+        // The value of "sn" can be found in the "rdk_sn.txt".
+        // The value of "key" can be found in the "rdk_key.txt".
+        private String sn = "xxx";
+        private String key = "xxx";
+        private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
+        private PDFViewCtrl pdfViewCtrl;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+               // Initialize Foxit SDK Library.
+               int errCode = Library.Initialize(sn, key);
+               if (errCode != Constants.EErrSuccess)
+                   return;
+               // Instantiate a PDFViewCtrl object.
+               pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
+               // Open and Render a PDF document.
+               pdfViewCtrl.OpenDoc(path, null);
+               SetContentView(pdfViewCtrl);
+        }
+    }
 }
 ```
 **2) Set permissions to write and read the SD card of the Android devices or emulators**  
 Note: If you want to run this project on an Android 6.0 (API 23) or higher devices/emulators, you
 can do one of the following:
-- Change the android:targetSdkVersion in "AndroidManifest.xml" to a lower SDK version
+- **a)** Change the android:targetSdkVersion in "AndroidManifest.xml" to a lower SDK version
 that is less than 23, such as 21
-- Write additional code to require the authorization of runtime permissions.
-  - Change the android:targetSdkVersion in "AndroidManifest.xml"  
-  
-    In this case, set the "users-permission" in the "AndroidManifest.xml" found in the
-"TestXamarin\Properties" to give the project permission to write and read the SD card of the Android devices or emulators:  
+- **b)** Write additional code to require the authorization of runtime permissions.  
 
-    ![screenshot11](./Screenshot/screenshot11.jpg)  
-   - Write additional code to require the authorization of runtime permissions.  
-   In the MainActivity.cs file, add code to require the authorization of runtime permissions.   
-   So,update the whole MainActivity.cs as follows:
+- _**a) Change the android:targetSdkVersion in  `AndroidManifest.xml`**_
+  
+    In this case, set the `users-permission` in the `AndroidManifest.xml` found in the
+`TestXamarin\Properties` to give the project permission to write and read the SD card of the Android devices or emulators:  
+   ![screenshot11](./Screenshot/screenshot11.jpg)  
+```
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+```
+- _**b) Write additional code to require the authorization of runtime permissions.**_  
+   In the `MainActivity.cs`  file, add code to require the authorization of runtime permissions.   
+   So, update the whole MainActivity.cs as follows:
  ```
-using System;
-using Android.App;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.V7.App;
-using Com.Foxit.Sdk;
-using Com.Foxit.Sdk.Common;
-using Android;
-using Android.Content.PM;
-using Android.Support.V4.Content;
-using Android.Support.V4.App;
-namespace TestXamarin
-{
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",
-MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    using System;
+    using Android.App;
+    using Android.OS;
+    using Android.Runtime;
+    using Android.Support.V7.App;
+    using Com.Foxit.Sdk;
+    using Com.Foxit.Sdk.Common;
+    using Android;
+    using Android.Content.PM;
+    using Android.Support.V4.Content;
+    using Android.Support.V4.App;
+    namespace TestXamarin
     {
-      public static int REQUEST_EXTERNAL_STORAGE = 1;
-      private static string[] PERMISSIONS_STORAGE = {
-      Manifest.Permission.ReadExternalStorage,
-      Manifest.Permission.WriteExternalStorage
-      };
-      // The value of "sn" can be found in the "rdk_sn.txt".
-      // The value of "key" can be found in the "rdk_key.txt".
-      private String sn = "xxx";
-       private String key = "xxx";Foxit PDF SDK for Android Developer Guide
-147
-      private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
-      private PDFViewCtrl pdfViewCtrl;
-      protected override void OnCreate(Bundle savedInstanceState)
-     {
-      base.OnCreate(savedInstanceState);
-      // Initialize Foxit SDK Library.
-      int errCode = Library.Initialize(sn, key);
-      if (errCode != Constants.EErrSuccess)
-       return;
-     // Instantiate a PDFViewCtrl object.
-     pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
-    // Require the authorization of runtime permissions.
-    if (Build.VERSION.SdkInt > BuildVersionCodes.M)
-   {
-    Permission permission = ContextCompat.CheckSelfPermission(this.ApplicationContext, Manifest.Permission.WriteExternalStorage);
-    if (permission != Permission.Granted)
-     {
-     ActivityCompat.RequestPermissions(this, PERMISSIONS_STORAGE,
-     REQUEST_EXTERNAL_STORAGE);
-     return;
-     }
-   }
-   // Open and Render a PDF document.
-   pdfViewCtrl.OpenDoc(path, null);
-    SetContentView(pdfViewCtrl);
-   }
-   public override void OnRequestPermissionsResult(int requestCode, string[]
-permissions, [GeneratedEnum] Permission[] grantResults)
-  {
-    if (requestCode == REQUEST_EXTERNAL_STORAGE
-    && grantResults[0] == Permission.Granted)
-   {
-   if (pdfViewCtrl != null)
-   {
-   pdfViewCtrl.OpenDoc(path, null);
-   }
-  }
-  else
-   {
-  base.OnRequestPermissionsResult(requestCode, permissions,
-   grantResults);
-   }
-  }
-}
-}
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",MainLauncher = true)]
+        public class MainActivity : AppCompatActivity
+        {
+            public static int REQUEST_EXTERNAL_STORAGE = 1;
+            private static string[] PERMISSIONS_STORAGE = {
+                    Manifest.Permission.ReadExternalStorage,
+                    Manifest.Permission.WriteExternalStorage
+            };
+           // The value of "sn" can be found in the "rdk_sn.txt".
+           // The value of "key" can be found in the "rdk_key.txt".
+            private String sn = "xxx";
+            private String key = "xxx";Foxit PDF SDK for Android
+            Developer Guide
+            147
+            private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
+            private PDFViewCtrl pdfViewCtrl;
+            protected override void OnCreate(Bundle savedInstanceState)
+            {
+                base.OnCreate(savedInstanceState);
+                // Initialize Foxit SDK Library.
+                int errCode = Library.Initialize(sn, key);
+                if (errCode != Constants.EErrSuccess)
+                    return;
+                // Instantiate a PDFViewCtrl object.
+                pdfViewCtrl = new PDFViewCtrl(this.ApplicationContext);
+                // Require the authorization of runtime permissions.
+                if (Build.VERSION.SdkInt > BuildVersionCodes.M)
+                {
+                    Permission permission =
+                            ContextCompat.CheckSelfPermission(this.ApplicationContext,
+                                    Manifest.Permission.WriteExternalStorage);
+                    if (permission != Permission.Granted)
+                    {
+                        ActivityCompat.RequestPermissions(this, PERMISSIONS_STORAGE,
+                                REQUEST_EXTERNAL_STORAGE);
+                        return;
+                    }
+                }
+                // Open and Render a PDF document.
+                pdfViewCtrl.OpenDoc(path, null);
+                SetContentView(pdfViewCtrl);
+            }
+            public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+            {
+                if (requestCode == REQUEST_EXTERNAL_STORAGE
+                        && grantResults[0] == Permission.Granted)
+                {
+                    if (pdfViewCtrl != null)
+                    {
+                        pdfViewCtrl.OpenDoc(path, null);
+                    }
+                }
+                else
+                {
+                    base.OnRequestPermissionsResult(requestCode, permissions,
+                            grantResults);
+                }
+            }
+        }
+    }
 ```
 **3) Enable Multi-Dex. If you don't, you may encounter the problem "error MSB6006: "java.exe" exited with code 2.**  
 Right-click the TestXamarin project, choose Properties, check Enable Multi-Dex under Android Options -> Packaging properties:  
@@ -311,6 +312,8 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 
 ## How to run the foxit_xamarin_android
+
+**Please use Foxit PDF SDK for Android 7.1.0**  
 
 1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
 

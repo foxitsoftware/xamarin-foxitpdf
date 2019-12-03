@@ -5,7 +5,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 - [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
 - [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [More](#More)
-- [How to run the foxit_xamarin_android.](#How-to-run-the-foxit_xamarin_android.)
+- [How to run the foxit_xamarin_android](#How-to-run-the-foxit_xamarin_android)
 - [License](#License)
 
 ## System Requirements
@@ -310,7 +310,7 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 
 
-## How to run the foxit_xamarin_android.
+## How to run the foxit_xamarin_android
 
 1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
 

@@ -56,12 +56,6 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
 
-		/*
-		// @property (nonatomic, strong) BlockButton * _Nonnull signBtn;
-		[Export ("signBtn", ArgumentSemantic.Strong)]
-		BlockButton SignBtn { get; set; }
-		*/
-
 		// @property (nonatomic, strong) UIToolbar * _Nonnull topToolbar;
 		[Export ("topToolbar", ArgumentSemantic.Strong)]
 		UIToolbar TopToolbar { get; set; }
@@ -813,11 +807,6 @@ namespace Foxit.iOS.UIExtensions
 		// @optional -(void)quitUIExtensionsManager:(UIExtensionsManager * _Nonnull)uiextensionsManager button:(UIButton * _Nonnull)button;
 		[Export ("quitUIExtensionsManager:button:")]
 		void QuitUIExtensionsManager (UIExtensionsManager uiextensionsManager, UIButton button);
-
-		// @optional -(FSClientInfo * _Nonnull)getClientInfo;
-		[Export ("getClientInfo")]
-		//[Verify (MethodToProperty)]
-		FSClientInfo ClientInfo { get; }
 	}
 
 	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener, UIToolbarDelegate>

@@ -327,13 +327,6 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSConnectedPDFEncryptType 
-	{
-		Aes = 1,
-		Sm4cbc = 2
-	}
-
-	//[Native]
 	public enum FSAppProviderCallbackAppInfo 
 	{
 		Version = 0,

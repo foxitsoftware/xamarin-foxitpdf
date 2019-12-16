@@ -13,7 +13,6 @@ using Com.Foxit.Uiextensions.Home.Local;
 using Com.Foxit.Uiextensions.Utils;
 using Com.Foxit.Pdfreader;
 using Android.App;
-using Com.Foxit.Uiextensions.Modules.Connectpdf.Account;
 using Android.Content.Res;
 
 namespace Com.Foxit.Home
@@ -74,8 +73,6 @@ namespace Com.Foxit.Home
             App.Instance().GetLocalModule(filter).SetFileItemEventListener(this);
             App.Instance().GetLocalModule(filter).SetCompareListener(this);
 
-            AccountModule.Instance.OnCreate(this, savedInstanceState);
-
             View view = App.Instance().GetLocalModule(filter).GetContentView(this.ApplicationContext);
             ViewGroup parent = (ViewGroup)view.Parent;
             if (parent != null)
@@ -92,7 +89,6 @@ namespace Com.Foxit.Home
             if (mLicenseValid)
             {
                 App.Instance().UnloadLocalModule(filter);
-                AccountModule.Instance.OnDestroy(this);
             }
             base.OnDestroy();
         }

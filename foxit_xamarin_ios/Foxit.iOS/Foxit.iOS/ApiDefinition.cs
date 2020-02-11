@@ -2245,6 +2245,11 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		string ToolTip { get; }
 
+		// -(FSBitmap *)getBitmap;
+		[Export ("getBitmap")]
+		//[Verify (MethodToProperty)]
+		FSBitmap Bitmap { get; }
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -2550,6 +2555,162 @@ namespace Foxit.iOS
 		// -(FSPDFDoc *)generateComparedDoc:(unsigned int)compare_flags;
 		[Export ("generateComparedDoc:")]
 		FSPDFDoc GenerateComparedDoc (uint compare_flags);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSOptimizer : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSOptimizer
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// +(FSProgressive *)optimize:(FSPDFDoc *)doc settings:(FSOptimizerSettings *)settings pause:(id<FSPauseCallback>)pause;
+		[Static]
+		[Export ("optimize:settings:pause:")]
+		FSProgressive Optimize (FSPDFDoc doc, FSOptimizerSettings settings, FSPauseCallback pause);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSImageSettings : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSImageSettings
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSImageSettings *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSImageSettings other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)setStretchMode:(FSImageSettingsStretchMode)mode;
+		[Export ("setStretchMode:")]
+		void SetStretchMode (FSImageSettingsStretchMode mode);
+
+		// -(void)setImageDPI:(int)dpi;
+		[Export ("setImageDPI:")]
+		void SetImageDPI (int dpi);
+
+		// -(void)setCompressionMode:(FSImageSettingsImageCompressMode)mode;
+		[Export ("setCompressionMode:")]
+		void SetCompressionMode (FSImageSettingsImageCompressMode mode);
+
+		// -(void)setQuality:(FSImageSettingsImageCompressQuality)quality;
+		[Export ("setQuality:")]
+		void SetQuality (FSImageSettingsImageCompressQuality quality);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSMonoImageSettings : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSMonoImageSettings
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSMonoImageSettings *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSMonoImageSettings other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)setImageDPI:(int)dpi;
+		[Export ("setImageDPI:")]
+		void SetImageDPI (int dpi);
+
+		// -(void)setCompressionMode:(FSMonoImageSettingsMonoImageCompressMode)mode;
+		[Export ("setCompressionMode:")]
+		void SetCompressionMode (FSMonoImageSettingsMonoImageCompressMode mode);
+
+		// -(void)setStretchMode:(FSMonoImageSettingsStretchMode)mode;
+		[Export ("setStretchMode:")]
+		void SetStretchMode (FSMonoImageSettingsStretchMode mode);
+
+		// -(void)setQuality:(FSMonoImageSettingsMonoImageCompressQuality)quality;
+		[Export ("setQuality:")]
+		void SetQuality (FSMonoImageSettingsMonoImageCompressQuality quality);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSOptimizerSettings : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSOptimizerSettings
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSOptimizerSettings *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSOptimizerSettings other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)setOptimizerOptions:(unsigned int)optimize_options;
+		[Export ("setOptimizerOptions:")]
+		void SetOptimizerOptions (uint optimize_options);
+
+		// -(void)setColorGrayImageSettings:(FSImageSettings *)settings;
+		[Export ("setColorGrayImageSettings:")]
+		void SetColorGrayImageSettings (FSImageSettings settings);
+
+		// -(void)setMonoImageSettings:(FSMonoImageSettings *)settings;
+		[Export ("setMonoImageSettings:")]
+		void SetMonoImageSettings (FSMonoImageSettings settings);
+
+		// -(void)setCleanUpOptions:(unsigned int)clean_up_options;
+		[Export ("setCleanUpOptions:")]
+		void SetCleanUpOptions (uint clean_up_options);
+
+		// -(void)setDiscardObjectsOptions:(unsigned int)discard_objects_options;
+		[Export ("setDiscardObjectsOptions:")]
+		void SetDiscardObjectsOptions (uint discard_objects_options);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -5713,6 +5874,11 @@ namespace Foxit.iOS
 		[Export ("initWithAnnot:")]
 		IntPtr Constructor (FSAnnot annot);
 
+		// -(FSMarkup *)getParent;
+		[Export ("getParent")]
+		//[Verify (MethodToProperty)]
+		FSMarkup Parent { get; }
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -6198,6 +6364,176 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSHeaderFooterContent : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSHeaderFooterContent
+	{
+		// @property (getter = getHeader_left_content, nonatomic, weak) NSString * header_left_content;
+		[Export ("header_left_content", ArgumentSemantic.Weak)]
+		string Header_left_content { [Bind ("getHeader_left_content")] get; set; }
+
+		// @property (getter = getHeader_center_content, nonatomic, weak) NSString * header_center_content;
+		[Export ("header_center_content", ArgumentSemantic.Weak)]
+		string Header_center_content { [Bind ("getHeader_center_content")] get; set; }
+
+		// @property (getter = getHeader_right_content, nonatomic, weak) NSString * header_right_content;
+		[Export ("header_right_content", ArgumentSemantic.Weak)]
+		string Header_right_content { [Bind ("getHeader_right_content")] get; set; }
+
+		// @property (getter = getFooter_left_content, nonatomic, weak) NSString * footer_left_content;
+		[Export ("footer_left_content", ArgumentSemantic.Weak)]
+		string Footer_left_content { [Bind ("getFooter_left_content")] get; set; }
+
+		// @property (getter = getFooter_center_content, nonatomic, weak) NSString * footer_center_content;
+		[Export ("footer_center_content", ArgumentSemantic.Weak)]
+		string Footer_center_content { [Bind ("getFooter_center_content")] get; set; }
+
+		// @property (getter = getFooter_right_content, nonatomic, weak) NSString * footer_right_content;
+		[Export ("footer_right_content", ArgumentSemantic.Weak)]
+		string Footer_right_content { [Bind ("getFooter_right_content")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithHeader_left_content:(NSString *)header_left_content header_center_content:(NSString *)header_center_content header_right_content:(NSString *)header_right_content footer_left_content:(NSString *)footer_left_content footer_center_content:(NSString *)footer_center_content footer_right_content:(NSString *)footer_right_content;
+		[Export ("initWithHeader_left_content:header_center_content:header_right_content:footer_left_content:footer_center_content:footer_right_content:")]
+		IntPtr Constructor (string header_left_content, string header_center_content, string header_right_content, string footer_left_content, string footer_center_content, string footer_right_content);
+
+		// -(id)initWithOther:(FSHeaderFooterContent *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSHeaderFooterContent other);
+
+		// -(void)set:(NSString *)header_left_content header_center_content:(NSString *)header_center_content header_right_content:(NSString *)header_right_content footer_left_content:(NSString *)footer_left_content footer_center_content:(NSString *)footer_center_content footer_right_content:(NSString *)footer_right_content;
+		[Export ("set:header_center_content:header_right_content:footer_left_content:footer_center_content:footer_right_content:")]
+		void Set (string header_left_content, string header_center_content, string header_right_content, string footer_left_content, string footer_center_content, string footer_right_content);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSHeaderFooter : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSHeaderFooter
+	{
+		// @property (getter = getFont, nonatomic, weak) FSFont * font;
+		[Export ("font", ArgumentSemantic.Weak)]
+		FSFont Font { [Bind ("getFont")] get; set; }
+
+		// @property (getter = getText_size, nonatomic) float text_size;
+		[Export ("text_size")]
+		float Text_size { [Bind ("getText_size")] get; set; }
+
+		// @property (getter = getText_color, nonatomic) unsigned int text_color;
+		[Export ("text_color")]
+		uint Text_color { [Bind ("getText_color")] get; set; }
+
+		// @property (getter = getPage_range, nonatomic, weak) FSRange * page_range;
+		[Export ("page_range", ArgumentSemantic.Weak)]
+		FSRange Page_range { [Bind ("getPage_range")] get; set; }
+
+		// @property (getter = getPage_margin, nonatomic, weak) FSRectF * page_margin;
+		[Export ("page_margin", ArgumentSemantic.Weak)]
+		FSRectF Page_margin { [Bind ("getPage_margin")] get; set; }
+
+		// @property (getter = getHas_text_shrinked, nonatomic) BOOL has_text_shrinked;
+		[Export ("has_text_shrinked")]
+		bool Has_text_shrinked { [Bind ("getHas_text_shrinked")] get; set; }
+
+		// @property (getter = getHas_fixedsize_for_print, nonatomic) BOOL has_fixedsize_for_print;
+		[Export ("has_fixedsize_for_print")]
+		bool Has_fixedsize_for_print { [Bind ("getHas_fixedsize_for_print")] get; set; }
+
+		// @property (getter = getStart_page_number, nonatomic) int start_page_number;
+		[Export ("start_page_number")]
+		int Start_page_number { [Bind ("getStart_page_number")] get; set; }
+
+		// @property (getter = getContent, nonatomic, weak) FSHeaderFooterContent * content;
+		[Export ("content", ArgumentSemantic.Weak)]
+		FSHeaderFooterContent Content { [Bind ("getContent")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
+		[Export ("initWithFont:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:")]
+		IntPtr Constructor (FSFont font, float text_size, uint text_color, FSRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
+
+		// -(id)initWithOther:(FSHeaderFooter *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSHeaderFooter other);
+
+		// -(void)set:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
+		[Export ("set:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:")]
+		void Set (FSFont font, float text_size, uint text_color, FSRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSHeaderFooterContentGenerator : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSHeaderFooterContentGenerator
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSHeaderFooterContentGenerator *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSHeaderFooterContentGenerator other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)addDate:(FSHeaderFooterContentGeneratorDateFormatType)format_type;
+		[Export ("addDate:")]
+		void AddDate (FSHeaderFooterContentGeneratorDateFormatType format_type);
+
+		// -(void)addPageNumber:(FSHeaderFooterContentGeneratorPageNumberFormat)format_type;
+		[Export ("addPageNumber:")]
+		void AddPageNumber (FSHeaderFooterContentGeneratorPageNumberFormat format_type);
+
+		// -(void)addString:(NSString *)string;
+		[Export ("addString:")]
+		void AddString (string @string);
+
+		// -(void)clear;
+		[Export ("clear")]
+		void Clear ();
+
+		// -(NSString *)generateContent;
+		[Export ("generateContent")]
+		//[Verify (MethodToProperty)]
+		string GenerateContent { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSWrapperData : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSWrapperData
@@ -6500,6 +6836,29 @@ namespace Foxit.iOS
 		// -(BOOL)removeBookmark:(FSBookmark *)bookmark;
 		[Export ("removeBookmark:")]
 		bool RemoveBookmark (FSBookmark bookmark);
+
+		// -(BOOL)hasHeaderFooter;
+		[Export ("hasHeaderFooter")]
+		//[Verify (MethodToProperty)]
+		bool HasHeaderFooter { get; }
+
+		// -(FSHeaderFooter *)getEditableHeaderFooter;
+		[Export ("getEditableHeaderFooter")]
+		//[Verify (MethodToProperty)]
+		FSHeaderFooter EditableHeaderFooter { get; }
+
+		// -(void)addHeaderFooter:(FSHeaderFooter *)headerfooter;
+		[Export ("addHeaderFooter:")]
+		void AddHeaderFooter (FSHeaderFooter headerfooter);
+
+		// -(void)updateHeaderFooter:(FSHeaderFooter *)headerfooter;
+		[Export ("updateHeaderFooter:")]
+		void UpdateHeaderFooter (FSHeaderFooter headerfooter);
+
+		// -(BOOL)removeAllHeaderFooters;
+		[Export ("removeAllHeaderFooters")]
+		//[Verify (MethodToProperty)]
+		bool RemoveAllHeaderFooters { get; }
 
 		// -(int)getPageCount;
 		[Export ("getPageCount")]
@@ -7536,6 +7895,10 @@ namespace Foxit.iOS
 		[Export ("getShadingObject")]
 		//[Verify (MethodToProperty)]
 		FSShadingObject ShadingObject { get; }
+
+		// -(void)rotate:(int)angle;
+		[Export ("rotate:")]
+		void Rotate (int angle);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -10023,6 +10386,10 @@ namespace Foxit.iOS
 		[Export ("addControl:field_name:field_type:rect:")]
 		FSControl AddControl (FSPDFPage page, string field_name, FSFieldType field_type, FSRectF rect);
 
+		// -(BOOL)moveControl:(FSControl *)control field_name:(NSString *)field_name;
+		[Export ("moveControl:field_name:")]
+		bool MoveControl (FSControl control, string field_name);
+
 		// -(void)removeField:(FSField *)field;
 		[Export ("removeField:")]
 		void RemoveField (FSField field);
@@ -10087,6 +10454,10 @@ namespace Foxit.iOS
 		// @property (getter = getExportValue, nonatomic, weak) NSString * exportValue;
 		[Export ("exportValue", ArgumentSemantic.Weak)]
 		string ExportValue { [Bind ("getExportValue")] get; set; }
+
+		// @property (getter = getDefaultAppearance, nonatomic, weak) FSDefaultAppearance * defaultAppearance;
+		[Export ("defaultAppearance", ArgumentSemantic.Weak)]
+		FSDefaultAppearance DefaultAppearance { [Bind ("getDefaultAppearance")] get; set; }
 
 		// -(void *)getCptr;
 		[Export ("getCptr")]
@@ -10205,9 +10576,17 @@ namespace Foxit.iOS
 		[Export ("startSign:cert_password:digest_algorithm:save_path:client_data:pause:")]
 		FSProgressive StartSign (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, FSPauseCallback pause);
 
+		// -(FSProgressive *)startSignByCertStream:(id<FSStreamCallback>)cert_file_stream cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
+		[Export ("startSignByCertStream:cert_password:digest_algorithm:save_path:client_data:pause:")]
+		FSProgressive StartSignByCertStream (FSStreamCallback cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, FSPauseCallback pause);
+
 		// -(FSProgressive *)startSignToStream:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm stream_callback:(id<FSStreamCallback>)stream_callback client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSignToStream:cert_password:digest_algorithm:stream_callback:client_data:pause:")]
 		FSProgressive StartSignToStream (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSStreamCallback stream_callback, NSData client_data, FSPauseCallback pause);
+
+		// -(FSProgressive *)startSignToStreamByCertStream:(id<FSStreamCallback>)cert_file_stream cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm stream_callback:(id<FSStreamCallback>)stream_callback client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
+		[Export ("startSignToStreamByCertStream:cert_password:digest_algorithm:stream_callback:client_data:pause:")]
+		FSProgressive StartSignToStreamByCertStream (FSStreamCallback cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSStreamCallback stream_callback, NSData client_data, FSPauseCallback pause);
 
 		// -(FSProgressive *)startVerify:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startVerify:pause:")]
@@ -11016,6 +11395,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("getDocChangeMark:")]
 		bool GetDocChangeMark (FSPDFDoc document);
+
+		// @required -(unsigned int)verifySignature:(FSPDFDoc *)document signature:(FSSignature *)signature;
+		[Abstract]
+		[Export ("verifySignature:signature:")]
+		uint VerifySignature (FSPDFDoc document, FSSignature signature);
 	}
 
 	// @protocol FSIconProviderCallback <NSObject>
@@ -11342,6 +11726,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("sign:certPath:certPassword:digestAlgorithm:clientData:")]
 		unsafe NSData Sign (NSData digest, string certPath, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
+
+		// @required -(NSData *)sign:(NSData *)digest digest_length:(int)digest_length certStream:(id<FSStreamCallback>)certStream certPassword:(NSString *)certPassword digestAlgorithm:(FSSignatureDigestAlgorithm)digestAlgorithm clientData:(void *)clientData;
+		[Abstract]
+		[Export ("sign:digest_length:certStream:certPassword:digestAlgorithm:clientData:")]
+		unsafe NSData Sign (NSData digest, int digest_length, FSStreamCallback certStream, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
 
 		// @required -(FSSignatureStates)verifySigState:(NSData *)digest signedData:(NSData *)signedData clientData:(void *)clientData;
 		[Abstract]

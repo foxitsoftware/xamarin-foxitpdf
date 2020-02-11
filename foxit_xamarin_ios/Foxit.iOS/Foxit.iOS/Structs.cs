@@ -75,7 +75,16 @@ namespace Foxit.iOS
 		NeedSigned = 54,
 		ComplianceResourceFile = 55,
 		TimeStampServerMgrNoDefaltServer = 56,
-		DefaultTimeStampServer = 57
+		DefaultTimeStampServer = 57,
+		NoConnectedPDFModuleRight = 58,
+		NoXFAModuleRight = 59,
+		NoRedactionModuleRight = 60,
+		NoRMSModuleRight = 61,
+		NoOCRModuleRight = 62,
+		NoComparisonModuleRight = 63,
+		NoComplianceModuleRight = 64,
+		NoOptimizerModuleRight = 65,
+		NoConversionModuleRight = 66
 	}
 
 	//[Native]
@@ -592,7 +601,8 @@ namespace Foxit.iOS
 		Rectangle = 12,
 		TextEdit = 13,
 		Unknown = 14,
-		ExclGroup = 15
+		ExclGroup = 15,
+		Image = 16
 	}
 
 	//[Native]
@@ -668,6 +678,91 @@ namespace Foxit.iOS
 	{
 		All = 0,
 		Text = 1
+	}
+
+	//[Native]
+	public enum FSImageSettingsImageCompressMode 
+	{
+		High = 10003,
+		jpeg = 10005,
+		jpeg2000 = 10006,
+		Retain = 10007
+	}
+
+	//[Native]
+	public enum FSImageSettingsImageCompressQuality 
+	{
+		Minimum = 1,
+		Low = 2,
+		Medium = 3,
+		High = 4,
+		Maximum = 5
+	}
+
+	//[Native]
+	public enum FSImageSettingsStretchMode 
+	{
+		Off = 0,
+		Interpol = 32,
+		Downsample = 4,
+		Bicubic = 128,
+		NoSmooth = 256
+	}
+
+	//[Native]
+	public enum FSMonoImageSettingsMonoImageCompressMode 
+	{
+		Ccitt3 = 10001,
+		Ccitt4 = 10002,
+		High = 10003,
+		jpeg2 = 10004,
+		Retain = 10007,
+		RunLength = 10008
+	}
+
+	//[Native]
+	public enum FSMonoImageSettingsMonoImageCompressQuality 
+	{
+		less = 1,
+		y = 2
+	}
+
+	//[Native]
+	public enum FSMonoImageSettingsStretchMode 
+	{
+		Off = 0,
+		Interpol = 32,
+		Downsample = 4,
+		Bicubic = 128,
+		NoSmooth = 256
+	}
+
+	//[Native]
+	public enum FSOptimizerSettingsOptimizerOptions 
+	{
+		CompressImages = 1,
+		CleanUp = 2,
+		DiscardObjects = 4
+	}
+
+	//[Native]
+	public enum FSOptimizerSettingsCleanUpOptions 
+	{
+		UseFlateForNonEncodedStream = 1,
+		UseFlateInsteadOfLZW = 2,
+		RemoveInvalidBookmarks = 4,
+		RemoveInvalidLinks = 8
+	}
+
+	//[Native]
+	public enum FSOptimizerSettingsDiscardObjectsOptions 
+	{
+		FormActions = 1,
+		FlattenFormFields = 2,
+		JavaScriptActions = 4,
+		EmbeddedPageThumbnails = 8,
+		EmbeddedPrintSettings = 16,
+		Bookmarks = 32
 	}
 
 	//[Native]
@@ -1173,6 +1268,42 @@ namespace Foxit.iOS
 		EncryptedPayload = 5,
 		FormData = 6,
 		Schema = 7
+	}
+
+	//[Native]
+	public enum FSHeaderFooterContentGeneratorDateFormatType 
+	{
+		MSlashD = 0,
+		MSlashDSlashYY = 1,
+		MSlashDSlashYYYY = 2,
+		MMSlashDDSlashYY = 3,
+		MMSlashDDSlashYYYY = 4,
+		DSlashMSlashYY = 5,
+		DSlashMSlashYYYY = 6,
+		DDSlashMMSlashYY = 7,
+		DDSlashMMSlashYYYY = 8,
+		MMSlashYY = 9,
+		MMSlashYYYY = 10,
+		MDotDDotYY = 11,
+		MDotDDotYYYY = 12,
+		MMDotDDDotYY = 13,
+		MMDotDDDotYYYY = 14,
+		MMDotYY = 15,
+		DDotMDotYYYY = 16,
+		DDDotMMDotYY = 17,
+		DDDotMMDotYYYY = 18,
+		YYHyphenMMHyphenDD = 19,
+		YYYYHyphenMMHyphenDD = 20
+	}
+
+	//[Native]
+	public enum FSHeaderFooterContentGeneratorPageNumberFormat 
+	{
+		Default = 0,
+		NumberOfCount = 1,
+		NumberSlashCount = 2,
+		PageNumber = 3,
+		PageNumberOfCount = 4
 	}
 
 	//[Native]
@@ -1683,7 +1814,9 @@ namespace Foxit.iOS
 		VerifyTimestampIssueUnknown = 8388608,
 		VerifyTimestampIssueValid = 16777216,
 		VerifyTimestampTimeBefore = 33554432,
-		CertCannotGetVRI = 67108864
+		CertCannotGetVRI = 67108864,
+		VerifyChangeLegal = 134217728,
+		VerifyChangeIllegal = 268435456
 	}
 
 	//[Native]

@@ -1410,4 +1410,34 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("initWithJSONData:")]
 		IntPtr Constructor (NSData data);
 	}
+
+	// typedef void (^ScanPDFSaveAsCallBack)(NSError * _Nullable, NSString * _Nullable);
+	delegate void ScanPDFSaveAsCallBack ([NullAllowed] NSError arg0, [NullAllowed] string arg1);
+
+	// @interface PDFScanManager : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface PDFScanManager
+	{
+		// @property (copy, nonatomic, class) ScanPDFSaveAsCallBack _Nonnull saveAsCallBack;
+		[Static]
+		[Export ("saveAsCallBack", ArgumentSemantic.Copy)]
+		ScanPDFSaveAsCallBack SaveAsCallBack { get; set; }
+
+		// +(FSErrorCode)initializeScanner:(unsigned long)serial1 serial2:(unsigned long)serial2;
+		[Static]
+		[Export ("initializeScanner:serial2:")]
+		FSErrorCode InitializeScanner (nuint serial1, nuint serial2);
+
+		// +(FSErrorCode)initializeCompression:(unsigned long)serial1 serial2:(unsigned long)serial2;
+		[Static]
+		[Export ("initializeCompression:serial2:")]
+		FSErrorCode InitializeCompression (nuint serial1, nuint serial2);
+
+		// +(__kindof UIViewController * _Nonnull)getPDFScanView;
+		[Static]
+		[Export ("getPDFScanView")]
+		//[Verify (MethodToProperty)]
+		UIViewController PDFScanView { get; }
+	}
 }

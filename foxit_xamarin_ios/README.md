@@ -5,7 +5,7 @@ Now we had support rdk 7.1.0
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for iOS 7.1` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for iOS 7.2` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
 
 ## Installation
 

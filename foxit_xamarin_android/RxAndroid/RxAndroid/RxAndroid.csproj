@@ -14,7 +14,7 @@
     <AssemblyName>RxAndroid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,10 +44,10 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\rxandroid-2.1.0.aar">
+    <LibraryProjectZip Include="..\..\libs\rxandroid-2.1.1.aar">
       <Link>Jars\rxandroid-2.1.0.aar</Link>
     </LibraryProjectZip>
-    <EmbeddedJar Include="..\..\libs\rxjava-2.2.2.jar">
+    <EmbeddedJar Include="..\..\libs\rxjava-2.2.16.jar">
       <Link>Jars\rxjava-2.2.2.jar</Link>
     </EmbeddedJar>
   </ItemGroup>

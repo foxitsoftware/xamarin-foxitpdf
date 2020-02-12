@@ -49,6 +49,8 @@
   <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='RecipientId']"/>
   <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='RecipientInformation']"/>
 
+  <remove-node path="/api/package[@name='org.bouncycastle.pkix.jcajce']/class[@name='X509RevocationChecker']"/>
+  
   <!-- bcprov -->
   <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.crypto')]"/>
   <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.jcajce')]"/>

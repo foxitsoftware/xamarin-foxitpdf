@@ -8,12 +8,15 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 - [How to run the foxit_xamarin_android](#How-to-run-the-foxit_xamarin_android)
 - [License](#License)
 
-## System Requirements
+## Prerequisites
 
-* Visual Studio 2017
-* Android SDK
-* JDK 1.8
-* Foxit PDF SDK for Android
+* __Visual Studio 2019__
+* __TargetFrameworkVersion >= Android 9.0__  
+ ![screenshot14](./Screenshot/screenshot14.png)      
+* __Minimum: API 16 (Using Android Support Libraries)__  
+  __Recommended target: API 29__
+* __JDK Version >= 1.8__
+
 
 ## Integrate Foxit PDF SDK into your Xamarin project
 **There are two ways to integrate Foxit PDF SDK into your Xamarin project:**
@@ -50,23 +53,23 @@ directory:
   - Build DLLs
     - Get `FoxitRDK.dll` .  This is the heart of the SDK including the core functionalities of Foxit PDF SDK for Android.
   
-      Load FoxitRDK.sln in Visual Studio 2017 under the `foxit_xamarin_android\FoxitRDK` directory.
+      Load FoxitRDK.sln in Visual Studio 2019 under the `foxit_xamarin_android\FoxitRDK` directory.
 Choose Build -> Build Solution to build the project, then the `FoxitRDK.dll` will be generated in
 `foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.
 
     - Get `FoxitRDKUIExtensions.dll` which extends more powerful PDF related features including UI and resource files.
 
-      Load FoxitUIExtensions.sln in Visual Studio 2017 under `foxit_xamarin_android\FoxitUIExtensions` directory. Choose Build -> Build Solution to build
+      Load FoxitUIExtensions.sln in Visual Studio 2019 under `foxit_xamarin_android\FoxitUIExtensions` directory. Choose Build -> Build Solution to build
 the project, then the `FoxitUIExtensions.dll` will be generated in
 `foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)` directory.
 
     - Get `Cropper.dll`.  
-     Load Cropper.sln in Visual Studio 2017 under `foxit_xamarin_android\Cropper` directory. Choose Build -> Build Solution to build
+     Load Cropper.sln in Visual Studio 2019 under `foxit_xamarin_android\Cropper` directory. Choose Build -> Build Solution to build
 the project, then the `Cropper.dll` will be generated in
 `foxit_xamarin_android\Cropper\Cropper\bin\Debug (or release)` directory.
 
     - Get `RxAndroid.dll`.  
-     Load RxAndroid.sln in Visual Studio 2017 under `foxit_xamarin_android\RxAndroid` directory. Choose Build -> Build Solution to build
+     Load RxAndroid.sln in Visual Studio 2019 under `foxit_xamarin_android\RxAndroid` directory. Choose Build -> Build Solution to build
 the project, then the `RxAndroid.dll` will be generated in
 `foxit_xamarin_android\RxAndroid\RxAndroid\bin\Debug (or release)` directory.
 
@@ -111,7 +114,7 @@ step-by-step instructions provided.**
 - Display a PDF document using PDFViewCtrl
 
 #### 1. Create a new Xamarin Android project
-Open Visual Studio 2017, choose `File -> New -> Project… `  to start the New Project. Let's take `TestXamarin` as an example .Create a new Xamarin Android project called `TestXamarin` ,Then click OK:  
+Open Visual Studio 2019, choose `File -> New -> Project… `  to start the New Project. Let's take `TestXamarin` as an example .Create a new Xamarin Android project called `TestXamarin` ,Then click OK:  
 
 ![screenshot9](./Screenshot/screenshot9.jpg)  
 
@@ -313,7 +316,7 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 ## How to run the foxit_xamarin_android
 
-**Please use Foxit PDF SDK for Android 7.1.0**  
+**Please use Foxit PDF SDK for Android 7.2.0**  
 
 1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
 

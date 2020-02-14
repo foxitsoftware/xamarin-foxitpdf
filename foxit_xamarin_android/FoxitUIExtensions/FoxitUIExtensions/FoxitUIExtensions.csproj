@@ -60,6 +60,9 @@
     <Reference Include="Xamarin.AndroidX.AsyncLayoutInflater, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.AsyncLayoutInflater.1.0.0-rc3\lib\monoandroid90\Xamarin.AndroidX.AsyncLayoutInflater.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.AndroidX.CardView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.AndroidX.CardView.1.0.0-preview06\lib\monoandroid90\Xamarin.AndroidX.CardView.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.AndroidX.Collection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.Collection.1.1.0-rc3\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
     </Reference>
@@ -135,6 +138,9 @@
     <Reference Include="Xamarin.AndroidX.SwipeRefreshLayout, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0-rc3\lib\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.AndroidX.Transition, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.AndroidX.Transition.1.2.0-preview06\lib\monoandroid90\Xamarin.AndroidX.Transition.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.AndroidX.VectorDrawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.VectorDrawable.1.1.0-rc3\lib\monoandroid90\Xamarin.AndroidX.VectorDrawable.dll</HintPath>
     </Reference>
@@ -146,6 +152,9 @@
     </Reference>
     <Reference Include="Xamarin.AndroidX.ViewPager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.ViewPager.1.0.0-rc3\lib\monoandroid90\Xamarin.AndroidX.ViewPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.Android.Material, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Google.Android.Material.1.1.0-preview06\lib\monoandroid90\Xamarin.Google.Android.Material.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +231,9 @@
   <Import Project="..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0-rc3\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets" Condition="Exists('..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0-rc3\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets')" />
   <Import Project="..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0-rc3\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0-rc3\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets')" />
   <Import Project="..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0-rc3\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0-rc3\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets')" />
+  <Import Project="..\packages\Xamarin.AndroidX.CardView.1.0.0-preview06\build\monoandroid90\Xamarin.AndroidX.CardView.targets" Condition="Exists('..\packages\Xamarin.AndroidX.CardView.1.0.0-preview06\build\monoandroid90\Xamarin.AndroidX.CardView.targets')" />
+  <Import Project="..\packages\Xamarin.AndroidX.Transition.1.2.0-preview06\build\monoandroid90\Xamarin.AndroidX.Transition.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Transition.1.2.0-preview06\build\monoandroid90\Xamarin.AndroidX.Transition.targets')" />
+  <Import Project="..\packages\Xamarin.Google.Android.Material.1.1.0-preview06\build\monoandroid90\Xamarin.Google.Android.Material.targets" Condition="Exists('..\packages\Xamarin.Google.Android.Material.1.1.0-preview06\build\monoandroid90\Xamarin.Google.Android.Material.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -2,12 +2,11 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
-using Android.Support.V7.App;
 using Android.Views;
 using Android.Content;
-
+using AndroidX.AppCompat.App;
+using AndroidX.Core.Content;
+using AndroidX.Core.App;
 using Com.Foxit.Uiextensions.Home;
 using Com.Foxit.Uiextensions.Home.Local;
 using Com.Foxit.Uiextensions.Utils;

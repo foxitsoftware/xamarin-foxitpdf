@@ -2,11 +2,10 @@
 using Android.OS;
 using Android.Views;
 using Android.Content.Res;
-using Android.Support.V7.App;
 using Android.Content.PM;
 using Android.Content;
 using Android.Runtime;
-
+using AndroidX.AppCompat.App;
 using Com.Foxit.Sdk;
 using Com.Foxit.Uiextensions;
 

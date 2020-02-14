@@ -45,10 +45,10 @@
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
     <LibraryProjectZip Include="..\..\libs\rxandroid-2.1.1.aar">
-      <Link>Jars\rxandroid-2.1.0.aar</Link>
+      <Link>Jars\rxandroid-2.1.1.aar</Link>
     </LibraryProjectZip>
     <EmbeddedJar Include="..\..\libs\rxjava-2.2.16.jar">
-      <Link>Jars\rxjava-2.2.2.jar</Link>
+      <Link>Jars\rxjava-2.2.16.jar</Link>
     </EmbeddedJar>
   </ItemGroup>
   <ItemGroup>

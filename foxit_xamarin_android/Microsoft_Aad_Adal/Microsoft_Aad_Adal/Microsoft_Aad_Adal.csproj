@@ -152,7 +152,7 @@
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
     <LibraryProjectZip Include="..\..\libs\adal-1.16.3.aar">
-      <Link>Jars\adal-1.1.16.aar</Link>
+      <Link>Jars\adal-1.16.3.aar</Link>
     </LibraryProjectZip>
     <EmbeddedJar Include="..\..\libs\gson-2.8.4.jar">
       <Link>Jars\gson-2.8.4.jar</Link>

@@ -166,10 +166,10 @@
     <LibraryProjectZip Include="..\..\libs\FoxitRDKUIExtensions.aar">
       <Link>Jars\FoxitRDKUIExtensions.aar</Link>
     </LibraryProjectZip>
-    <EmbeddedJar Include="..\..\libs\bcpkix-jdk15on-1.64.jar">
+    <EmbeddedJar Include="..\..\libs\bcpkix-jdk15on-1.60.jar">
       <Link>Jars\bcpkix-jdk15on-1.60.jar</Link>
     </EmbeddedJar>
-    <EmbeddedJar Include="..\..\libs\bcprov-jdk15on-1.64.jar">
+    <EmbeddedJar Include="..\..\libs\bcprov-jdk15on-1.60.jar">
       <Link>Jars\bcprov-jdk15on-1.60.jar</Link>
     </EmbeddedJar>
     <None Include="packages.config">

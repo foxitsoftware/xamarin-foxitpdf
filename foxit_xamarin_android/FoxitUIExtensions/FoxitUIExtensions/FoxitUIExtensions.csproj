@@ -99,6 +99,9 @@
     <Reference Include="Xamarin.AndroidX.Lifecycle.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.Lifecycle.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
     </Reference>
@@ -222,4 +225,5 @@
   <Import Project="..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets')" />
   <Import Project="..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets')" />
   <Import Project="..\packages\Xamarin.AndroidX.RecyclerView.1.1.0\build\monoandroid90\Xamarin.AndroidX.RecyclerView.targets" Condition="Exists('..\packages\Xamarin.AndroidX.RecyclerView.1.1.0\build\monoandroid90\Xamarin.AndroidX.RecyclerView.targets')" />
+  <Import Project="..\packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets')" />
 </Project>

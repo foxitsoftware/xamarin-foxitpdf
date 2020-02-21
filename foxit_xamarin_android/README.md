@@ -36,8 +36,11 @@ you much time.
      ![screenshot2](./Screenshot/screenshot2.jpg)
    -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.
    - _**Optional**_  
-   If you want to open a RMS protected PDF document, you should install the
- `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.RMSSDK` and `Foxit.Android.RMSSDK.UI`.  
+   If you want to open a RMS protected PDF document, you should install the  
+  `Foxit.Android.Microsoft.Aad.Adal`,  
+  `Foxit.Android.Microsoft.Identity.Common`,  
+  `Foxit.Android.RMSSDK`,   
+  `Foxit.Android.RMSSDK.UI`.  
  
      ![screenshot3](./Screenshot/screenshot3.jpg)
   
@@ -337,11 +340,11 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 If you want to open a RMS protected PDF file, you should:
 
-1: If you have already add reference `Microsoft_Aad_Aadl.dll`, `RMSSDK.dll` or `RMSSDK_UI.dll`, please remove them first.
+1: If you have already add reference  `Microsoft_Aad_Adal.dll`, `MS_Common.dll`, `RMSSDK.dll` or `RMSSDK_UI.dll`, please remove them first.
 
 2: Right-click the References node of the `complete_pdf_viewer`  project and select Manager NuGet Packages...
 
-3: Select the `Browse` tab, search for `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.RMSSDK` and `Foxit.Android.RMSSDK.UI` and install them.
+3: Select the `Browse` tab, search for `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.Microsoft.Identity.Common`, `Foxit.Android.RMSSDK` and `Foxit.Android.RMSSDK.UI` and install them.
 
 4:` Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
 
@@ -368,13 +371,13 @@ If you want to open a RMS protected PDF file, you should:
 
 If you want to open a RMS protected PDF file, you should:
 
-1: If you have already add NuGet `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.RMSSDK` or `Foxit.Android.RMSSDK.UI`, please remove them first.
+1: If you have already add NuGet `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.Microsoft.Identity.Common`, `Foxit.Android.RMSSDK` or `Foxit.Android.RMSSDK.UI`, please remove them first.
 
-2: `Rebuild` the `Microsoft_Aad_Aadl` , `RMSSDK` and `RMSSDK_UI` project.
+2: `Rebuild` the `Microsoft_Aad_Adal` , `MS_Common` , `RMSSDK` and `RMSSDK_UI` project.
 
 3: Right-click the References node of the `complete_pdf_viewer`  project and select Add Reference...
 
-4: Select the  `xxx\Microsoft_Aad_Aadl\obj\Debug\Microsoft_Aad_Aadl.dll` , `xxx\RMSSDK\obj\Debug\RMSSDK.dll` and `xxx\RMSSDK_UI\obj\Debug\RMSSDK_UI.dll` and click OK ( the `xxx` represents the file path).
+4: Select the  `xxx\Microsoft_Aad_Adal\obj\Debug\Microsoft_Aad_Adal.dll` , `xxx\MS_Common\obj\Debug\MS_Common.dll` , `xxx\RMSSDK\obj\Debug\RMSSDK.dll` and `xxx\RMSSDK_UI\obj\Debug\RMSSDK_UI.dll` and click OK ( the `xxx` represents the file path).
 
 5:` Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
   

@@ -17,9 +17,6 @@
 
   <!--com.google.gson  begin -->
   //CS0534
-  <!--
-  <attr path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']/method[@name='deepCopy']" name="managedName">deepCopy1</attr>
-  -->
   <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']/method[@name='deepCopy']"/>
   <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']">
     <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
@@ -54,6 +51,5 @@
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='TimeTypeAdapter']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal']/class[@name='LinkedTreeMap']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal']/class[@name='LinkedHashTreeMap']"/>
-
   <!--com.google.gson  end -->
 </metadata>

@@ -51,6 +51,9 @@
     <Reference Include="Xamarin.AndroidX.AppCompat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.AppCompat.1.1.0\lib\monoandroid90\Xamarin.AndroidX.AppCompat.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.AndroidX.AppCompat.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.AndroidX.AppCompat.Resources.1.1.0\lib\monoandroid90\Xamarin.AndroidX.AppCompat.Resources.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
     </Reference>

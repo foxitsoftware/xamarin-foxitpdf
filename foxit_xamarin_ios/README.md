@@ -1,7 +1,7 @@
 # foxit_xamarin_ios
 Use the Foxit Mobile PDF SDK with Xamarin on iOS
 
-Now we had support rdk 7.1.0
+Now we had support rdk 7.2.0
 
 ## Introduction
 

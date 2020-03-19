@@ -112,7 +112,7 @@ Add the above three DLLs libraries as references to the project (refer to the st
   - _**Note**_:  
   If you integrate manually by building dlls, you must manually install the following dependencies.    
  Install Xamarin.AndroidX and related Nuget packages. In the Solution Explorer, right-click the References node of your project, and click Manage NuGet Packages… .Then select the Browse tab, search for the Nuget packages as below:  
-`Xamarin.AndroidX.Browser`  	
+`Xamarin.AndroidX.Browser`  
 `Xamarin.Google.Android.Material`  
 `Xamarin.AndroidX.AppCompat`  
 `Xamarin.AndroidX.Legacy.Support.V4`  

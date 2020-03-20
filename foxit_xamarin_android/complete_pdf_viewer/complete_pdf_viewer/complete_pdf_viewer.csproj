@@ -65,6 +65,9 @@
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidSupportedAbis />
     <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <AndroidDexTool>dx</AndroidDexTool>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cropper">

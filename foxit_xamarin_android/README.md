@@ -42,7 +42,19 @@ you much time.
   `Foxit.Android.RMSSDK`,   
   `Foxit.Android.RMSSDK.UI`.  
  
-     ![screenshot3](./Screenshot/screenshot3.jpg)
+     ![screenshot3](./Screenshot/screenshot3.jpg)  
+     
+  
+   - _**Note**_:  
+  If the following nupkg is not installed automatically, you need to install it manually, otherwise the compilation may fail.
+ You can installation the Solution Explorer, right-click the References node of your project, and click Manage NuGet Packages… .Then select the Browse tab, search for the Nuget packages as below:  
+`Xamarin.AndroidX.Browser`  
+`Xamarin.Google.Android.Material`  
+`Xamarin.AndroidX.AppCompat`  
+`Xamarin.AndroidX.Legacy.Support.V4`  
+`Xamarin.AndroidX.Lifecycle.LiveData`  
+`Xamarin.AndroidX.RecyclerView`  
+`Xamarin.Android.Support.v7.AppCompat` (required for opening a RMS protected PDF file)  
   
   #### Integrate manually by building and referencing DLLs
   To integrate manually, you should first build DLLs, and then add it as a reference to your project.  

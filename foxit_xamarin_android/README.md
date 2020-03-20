@@ -13,7 +13,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 * __Visual Studio 2019__
 * __TargetFrameworkVersion >= Android 9.0__  
  ![screenshot14](./Screenshot/screenshot14.png)      
-* __Minimum: API 16 (Using Android Support Libraries)__  
+* __Minimum Android Version: API 16 (Android4.1)__  
   __Recommended target: API 29__
 * __JDK Version >= 1.8__
 
@@ -96,9 +96,10 @@ click Add:
           ![screenshot7](./Screenshot/screenshot7.jpg)  
   - Add the `FoxitUIExtensions.dll` , `RxAndroid.dll` and `Cropperd.dll` to you demo refer to the steps of adding `FoxitRDK.dll`.
   - _**Optional**_:  
-If you want to open a RMS protected PDF file, please refer to [Build DLLs](Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `RMSSDK`, and `RMSSDK_UI`
+If you want to open a RMS protected PDF file, please refer to [Build DLLs](Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `MS_Common`,`RMSSDK`, and `RMSSDK_UI`
 projects in the `foxit_xamarin_android` folder to get the following three DLLs:  
 `Microsoft_Aad_Aadl\Microsoft_Aad_Aadl\bin\Debug(Release)\Microsoft_Aad_Aadl.dll`  
+`MS_Common\MS_Common\bin\Debug(Release)\MS_Common.dll`  
 `RMSSDK\RMSSDK\bin\Debug(Release)\RMSSDK.dll`  
 `RMSSDK_UI\RMSSDK_UI\bin\Debug(Release)\RMSSDK_UI.dll`  
 Add the above three DLLs libraries as references to the project (refer to the steps of adding
@@ -106,6 +107,19 @@ Add the above three DLLs libraries as references to the project (refer to the st
 
   After finishing the above steps, the References of your project will look like:  
   ![screenshot8](./Screenshot/screenshot8.jpg)  
+    
+    
+  - _**Note**_:  
+  If you integrate manually by building dlls, you must manually install the following dependencies.    
+ Install Xamarin.AndroidX and related Nuget packages. In the Solution Explorer, right-click the References node of your project, and click Manage NuGet Packages… .Then select the Browse tab, search for the Nuget packages as below:  
+`Xamarin.AndroidX.Browser`  
+`Xamarin.Google.Android.Material`  
+`Xamarin.AndroidX.AppCompat`  
+`Xamarin.AndroidX.Legacy.Support.V4`  
+`Xamarin.AndroidX.Lifecycle.LiveData`  
+`Xamarin.AndroidX.RecyclerView`  
+`Xamarin.Android.Support.v7.AppCompat` (required for opening a RMS protected PDF file)  
+  
   
 ## Build a Xamarin Android project using Foxit PDF SDK for Android
 **This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
@@ -173,7 +187,7 @@ Update MainActivity.cs as follows:
 using System;
 using Android.App;
 using Android.OS;
-using Android.Support.V7.App;
+using AndroidX.AppCompat.App;
 using Com.Foxit.Sdk;
 using Com.Foxit.Sdk.Common;
 namespace TestXamarin
@@ -227,13 +241,13 @@ that is less than 23, such as 21
     using Android.App;
     using Android.OS;
     using Android.Runtime;
-    using Android.Support.V7.App;
+    using AndroidX.AppCompat.App;
     using Com.Foxit.Sdk;
     using Com.Foxit.Sdk.Common;
     using Android;
     using Android.Content.PM;
-    using Android.Support.V4.Content;
-    using Android.Support.V4.App;
+    using AndroidX.Core.Content;
+    using AndroidX.Core.App;
     namespace TestXamarin
     {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar",MainLauncher = true)]

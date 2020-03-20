@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft_Aad_Adal", "Microsoft_Aad_Adal\Microsoft_Aad_Adal.csproj", "{888A3015-4D14-48E1-9BEC-ABEE0112D672}"
 EndProject

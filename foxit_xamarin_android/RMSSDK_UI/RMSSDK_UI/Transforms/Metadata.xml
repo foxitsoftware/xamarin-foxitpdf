@@ -6,7 +6,6 @@
   This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
-  
   //CS0234
   <attr path="/api/package[@name='com.microsoft.rightsmanagement.ui']/class[@name='BaseActivity']" name="visibility">public</attr>
 </metadata>

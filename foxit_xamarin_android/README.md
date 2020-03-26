@@ -345,7 +345,7 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 ## How to run the foxit_xamarin_android
 
-**Please use Foxit PDF SDK for Android 7.2.0**  
+**Please use Foxit PDF SDK for Android 7.2.1**  
 
 1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
 

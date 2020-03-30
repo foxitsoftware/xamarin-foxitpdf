@@ -88,6 +88,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) UIColor * titleSelectedColor;
 		[Export ("titleSelectedColor", ArgumentSemantic.Strong)]
 		UIColor TitleSelectedColor { get; set; }
+
+		// @property (readonly, assign, nonatomic) BOOL selected;
+		[Export ("selected")]
+		bool Selected { get; }
 	}
 
 	// @protocol SegmentDelegate <NSObject>
@@ -1151,6 +1155,14 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) UIColor * _Nonnull textColor;
 		[Export ("textColor", ArgumentSemantic.Strong)]
 		UIColor TextColor { get; set; }
+
+		// @property (assign, nonatomic) BOOL multipleSelection;
+		[Export ("multipleSelection")]
+		bool MultipleSelection { get; set; }
+
+		// @property (assign, nonatomic) BOOL customText;
+		[Export ("customText")]
+		bool CustomText { get; set; }
 	}
 
 	// @interface Annotations : NSObject
@@ -1250,6 +1262,31 @@ namespace Foxit.iOS.UIExtensions
 		SettingObj Redaction { get; set; }
 	}
 
+	// @interface Form : NSObject
+	[BaseType (typeof(NSObject))]
+	interface Form
+	{
+		// @property (nonatomic, strong) SettingObj * _Nonnull textField;
+		[Export ("textField", ArgumentSemantic.Strong)]
+		SettingObj TextField { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull checkBox;
+		[Export ("checkBox", ArgumentSemantic.Strong)]
+		SettingObj CheckBox { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull radioButton;
+		[Export ("radioButton", ArgumentSemantic.Strong)]
+		SettingObj RadioButton { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull comboBox;
+		[Export ("comboBox", ArgumentSemantic.Strong)]
+		SettingObj ComboBox { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull listBox;
+		[Export ("listBox", ArgumentSemantic.Strong)]
+		SettingObj ListBox { get; set; }
+	}
+
 	// @interface UISettingsModel : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UISettingsModel
@@ -1309,6 +1346,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) Annotations * _Nonnull annotations;
 		[Export ("annotations", ArgumentSemantic.Strong)]
 		Annotations Annotations { get; set; }
+
+		// @property (nonatomic, strong) Form * _Nonnull form;
+		[Export ("form", ArgumentSemantic.Strong)]
+		Form Form { get; set; }
 
 		// @property (nonatomic, strong) SettingObj * _Nonnull signature;
 		[Export ("signature", ArgumentSemantic.Strong)]
@@ -1409,35 +1450,5 @@ namespace Foxit.iOS.UIExtensions
 		// -(id _Nullable)initWithJSONData:(NSData * _Nonnull)data;
 		[Export ("initWithJSONData:")]
 		IntPtr Constructor (NSData data);
-	}
-
-	// typedef void (^ScanPDFSaveAsCallBack)(NSError * _Nullable, NSString * _Nullable);
-	delegate void ScanPDFSaveAsCallBack ([NullAllowed] NSError arg0, [NullAllowed] string arg1);
-
-	// @interface PDFScanManager : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface PDFScanManager
-	{
-		// @property (copy, nonatomic, class) ScanPDFSaveAsCallBack _Nonnull saveAsCallBack;
-		[Static]
-		[Export ("saveAsCallBack", ArgumentSemantic.Copy)]
-		ScanPDFSaveAsCallBack SaveAsCallBack { get; set; }
-
-		// +(FSErrorCode)initializeScanner:(unsigned long)serial1 serial2:(unsigned long)serial2;
-		[Static]
-		[Export ("initializeScanner:serial2:")]
-		FSErrorCode InitializeScanner (nuint serial1, nuint serial2);
-
-		// +(FSErrorCode)initializeCompression:(unsigned long)serial1 serial2:(unsigned long)serial2;
-		[Static]
-		[Export ("initializeCompression:serial2:")]
-		FSErrorCode InitializeCompression (nuint serial1, nuint serial2);
-
-		// +(__kindof UIViewController * _Nonnull)getPDFScanView;
-		[Static]
-		[Export ("getPDFScanView")]
-		//[Verify (MethodToProperty)]
-		UIViewController PDFScanView { get; }
 	}
 }

@@ -74,7 +74,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cropper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Foxit.Android.Cropper.1.0.0\lib\monoandroid90\Cropper.dll</HintPath>
+      <HintPath>..\packages\Foxit.Android.Cropper.2.0.0\lib\monoandroid90\Cropper.dll</HintPath>
     </Reference>
     <Reference Include="FoxitRDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Foxit.Android.7.2.0\lib\monoandroid90\FoxitRDK.dll</HintPath>

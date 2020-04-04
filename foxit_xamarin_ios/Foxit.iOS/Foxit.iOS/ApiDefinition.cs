@@ -613,6 +613,11 @@ namespace Foxit.iOS
 		[Export ("getBBox:nPoints:")]
 		FSRectF GetBBox (FSPointF pPoints, int nPoints);
 
+		// +(BOOL)IsRectAdjacent:(FSRectF *)rect1 rect2:(FSRectF *)rect2 alignmentTolerance:(float)alignmentTolerance distanceTolerance:(float)distanceTolerance direction:(int)direction;
+		[Static]
+		[Export ("IsRectAdjacent:rect2:alignmentTolerance:distanceTolerance:direction:")]
+		bool IsRectAdjacent (FSRectF rect1, FSRectF rect2, float alignmentTolerance, float distanceTolerance, int direction);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -6364,6 +6369,49 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSPageNumberRange : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSPageNumberRange
+	{
+		// @property (getter = getStart_number, nonatomic) int start_number;
+		[Export ("start_number")]
+		int Start_number { [Bind ("getStart_number")] get; set; }
+
+		// @property (getter = getEnd_number, nonatomic) int end_number;
+		[Export ("end_number")]
+		int End_number { [Bind ("getEnd_number")] get; set; }
+
+		// @property (getter = getFilter, nonatomic) FSRangeFilter filter;
+		[Export ("filter", ArgumentSemantic.Assign)]
+		FSRangeFilter Filter { [Bind ("getFilter")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithStart_number:(int)start_number end_number:(int)end_number filter:(FSRangeFilter)filter;
+		[Export ("initWithStart_number:end_number:filter:")]
+		IntPtr Constructor (int start_number, int end_number, FSRangeFilter filter);
+
+		// -(id)initWithPage_range:(FSPageNumberRange *)page_range;
+		[Export ("initWithPage_range:")]
+		IntPtr Constructor (FSPageNumberRange page_range);
+
+		// -(void)set:(int)start_number end_number:(int)end_number filter:(FSRangeFilter)filter;
+		[Export ("set:end_number:filter:")]
+		void Set (int start_number, int end_number, FSRangeFilter filter);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSHeaderFooterContent : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -6436,9 +6484,9 @@ namespace Foxit.iOS
 		[Export ("text_color")]
 		uint Text_color { [Bind ("getText_color")] get; set; }
 
-		// @property (getter = getPage_range, nonatomic, weak) FSRange * page_range;
+		// @property (getter = getPage_range, nonatomic, weak) FSPageNumberRange * page_range;
 		[Export ("page_range", ArgumentSemantic.Weak)]
-		FSRange Page_range { [Bind ("getPage_range")] get; set; }
+		FSPageNumberRange Page_range { [Bind ("getPage_range")] get; set; }
 
 		// @property (getter = getPage_margin, nonatomic, weak) FSRectF * page_margin;
 		[Export ("page_margin", ArgumentSemantic.Weak)]
@@ -6460,6 +6508,10 @@ namespace Foxit.iOS
 		[Export ("content", ArgumentSemantic.Weak)]
 		FSHeaderFooterContent Content { [Bind ("getContent")] get; set; }
 
+		// @property (getter = getIs_replace_font, nonatomic) BOOL is_replace_font;
+		[Export ("is_replace_font")]
+		bool Is_replace_font { [Bind ("getIs_replace_font")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -6469,17 +6521,17 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
+		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSPageNumberRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
 		[Export ("initWithFont:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:")]
-		IntPtr Constructor (FSFont font, float text_size, uint text_color, FSRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
+		IntPtr Constructor (FSFont font, float text_size, uint text_color, FSPageNumberRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
 
 		// -(id)initWithOther:(FSHeaderFooter *)other;
 		[Export ("initWithOther:")]
 		IntPtr Constructor (FSHeaderFooter other);
 
-		// -(void)set:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
+		// -(void)set:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSPageNumberRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
 		[Export ("set:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:")]
-		void Set (FSFont font, float text_size, uint text_color, FSRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
+		void Set (FSFont font, float text_size, uint text_color, FSPageNumberRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -6516,9 +6568,9 @@ namespace Foxit.iOS
 		[Export ("addPageNumber:")]
 		void AddPageNumber (FSHeaderFooterContentGeneratorPageNumberFormat format_type);
 
-		// -(void)addString:(NSString *)string;
+		// -(void)addString:(NSString *)new_string;
 		[Export ("addString:")]
-		void AddString (string @string);
+		void AddString (string new_string);
 
 		// -(void)clear;
 		[Export ("clear")]
@@ -11727,10 +11779,10 @@ namespace Foxit.iOS
 		[Export ("sign:certPath:certPassword:digestAlgorithm:clientData:")]
 		unsafe NSData Sign (NSData digest, string certPath, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
 
-		// @required -(NSData *)sign:(NSData *)digest digest_length:(int)digest_length certStream:(id<FSStreamCallback>)certStream certPassword:(NSString *)certPassword digestAlgorithm:(FSSignatureDigestAlgorithm)digestAlgorithm clientData:(void *)clientData;
+		// @required -(NSData *)sign:(NSData *)digest certStream:(id<FSStreamCallback>)certStream certPassword:(NSString *)certPassword digestAlgorithm:(FSSignatureDigestAlgorithm)digestAlgorithm clientData:(void *)clientData;
 		[Abstract]
-		[Export ("sign:digest_length:certStream:certPassword:digestAlgorithm:clientData:")]
-		unsafe NSData Sign (NSData digest, int digest_length, FSStreamCallback certStream, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
+		[Export ("sign:certStream:certPassword:digestAlgorithm:clientData:")]
+		unsafe NSData Sign (NSData digest, FSStreamCallback certStream, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
 
 		// @required -(FSSignatureStates)verifySigState:(NSData *)digest signedData:(NSData *)signedData clientData:(void *)clientData;
 		[Abstract]

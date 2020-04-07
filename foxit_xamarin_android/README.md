@@ -91,7 +91,7 @@ the project, then the `RxAndroid.dll` will be generated in
   -  Add the built DLLs as references to your project  
   This section takes `FoxitRDK.dll` as an example to show you how to add it as a reference to your project.
 For other DLLs, do the same steps with `FoxitRDK.dll`. We assume that you have got the `FoxitRDK.dll`, if
-not, please refer to [Build DLLs](Build-DLLs) section to build the FoxitRDK project and generate the `FoxitRDK.dll`.  
+not, please refer to [Build DLLs](#Build-DLLs) section to build the FoxitRDK project and generate the `FoxitRDK.dll`.  
 
       - In the Solution Explorer, right-click the References node of your project and select `Add Reference… `  
       
@@ -108,7 +108,7 @@ click Add:
           ![screenshot7](./Screenshot/screenshot7.jpg)  
   - Add the `FoxitUIExtensions.dll` , `RxAndroid.dll` and `Cropperd.dll` to you demo refer to the steps of adding `FoxitRDK.dll`.
   - _**Optional**_:  
-If you want to open a RMS protected PDF file, please refer to [Build DLLs](Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `MS_Common`,`RMSSDK`, and `RMSSDK_UI`
+If you want to open a RMS protected PDF file, please refer to [Build DLLs](#Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `MS_Common`,`RMSSDK`, and `RMSSDK_UI`
 projects in the `foxit_xamarin_android` folder to get the following three DLLs:  
 `Microsoft_Aad_Aadl\Microsoft_Aad_Aadl\bin\Debug(Release)\Microsoft_Aad_Aadl.dll`  
 `MS_Common\MS_Common\bin\Debug(Release)\MS_Common.dll`  
@@ -152,7 +152,7 @@ In the New Android App dialog, select Single View App,Then, click OK:
 ![screenshot10](./Screenshot/screenshot10.jpg)  
 
 #### 2. Integrate Foxit PDF SDK into the project
-Please refer to [Integrate Foxit PDF SDK into your Xamarin project](Integrate-Foxit-PDF-SDK-into-your-Xamarin-project) to integrate the Foxit PDF SDK into the created project. We recommend using the first way [Integrate with NuGet](Integrate-with-NuGett), which is more
+Please refer to [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project) to integrate the Foxit PDF SDK into the created project. We recommend using the first way [Integrate with NuGet](#Install-By-NuGet), which is more
 easy and convenient.
 #### 3. Initialize Foxit PDF SDK Library
 Before calling any APIs, you must first initialize Foxit PDF SDK library by using the function
@@ -347,65 +347,18 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 **Please use Foxit PDF SDK for Android 7.2.0**  
 
-1: If you have already add reference `RxAndroid.dll`, `FoxitRDK.dll`, `FoxitRDKUIExtensions.dll` or `Cropper.dll`, please remove them first.
+The nupkg installation package is used in the demo, and we recommend using [this way](#Install-By-NuGet), which is more
+easy and convenient.  
 
-2: Right-click the References node of the `complete_pdf_viewer`  project and select Manager NuGet Packages...
-
-3: Select the `Browse` tab, search for `Foxit.Android`, `Foxit.Android.UIExtensions`,`Foxit.Android.RxAndroid` and `Foxit.Android.Cropper` and install them.
-
-4: If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.
-
-5: unzip the `foxitpdfsdk_(version_no)_android.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
-
-* `rdk_key.txt`
-* `rdk_sn.txt`
-
-6: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
-
-#### (Optional - NuGet)   
-
-If you want to open a RMS protected PDF file, you should:
-
-1: If you have already add reference  `Microsoft_Aad_Adal.dll`, `MS_Common.dll`, `RMSSDK.dll` or `RMSSDK_UI.dll`, please remove them first.
-
-2: Right-click the References node of the `complete_pdf_viewer`  project and select Manager NuGet Packages...
-
-3: Select the `Browse` tab, search for `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.Microsoft.Identity.Common`, `Foxit.Android.RMSSDK` and `Foxit.Android.RMSSDK.UI` and install them.
-
-4:` Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
-
-### Install By Reference
-
-1: If you have already add NuGet `Foxit.Android`, `Foxit.Android.UIExtensions` , `Foxit.Android.RxAndroid` or `Foxit.Android.Cropper`, please remove them first.
-
-2: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
-
-3: unzip the `foxitpdfsdk_(version_no)_android.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_android/libs` directory:
-
+1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/), then unzip the `foxitpdfsdk_(version_no)_android.zip`, and enter the `libs` directory,copy the following files into the `foxit_xamarin_android/libs` directory:  
 * `FoxitRDK.aar`
 * `FoxitRDKUIExtensions.aar`
 * `rdk_key.txt`
 * `rdk_sn.txt`
 
-4: Click the `complete_pdf_viewer.sln`
+2: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.  
 
-5: `Rebuild` the `FoxitRDK` , `FoxitUIExtensions` , `RxAndroid` and `Cropper` project
 
-6: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
-
-#### (Optional - Reference)   
-
-If you want to open a RMS protected PDF file, you should:
-
-1: If you have already add NuGet `Foxit.Android.Microsoft.Aad.Adal`, `Foxit.Android.Microsoft.Identity.Common`, `Foxit.Android.RMSSDK` or `Foxit.Android.RMSSDK.UI`, please remove them first.
-
-2: `Rebuild` the `Microsoft_Aad_Adal` , `MS_Common` , `RMSSDK` and `RMSSDK_UI` project.
-
-3: Right-click the References node of the `complete_pdf_viewer`  project and select Add Reference...
-
-4: Select the  `xxx\Microsoft_Aad_Adal\obj\Debug\Microsoft_Aad_Adal.dll` , `xxx\MS_Common\obj\Debug\MS_Common.dll` , `xxx\RMSSDK\obj\Debug\RMSSDK.dll` and `xxx\RMSSDK_UI\obj\Debug\RMSSDK_UI.dll` and click OK ( the `xxx` represents the file path).
-
-5:` Run` the `complete_pdf_viewer` project in the simulator or on a physical device.
   
 ## License
 

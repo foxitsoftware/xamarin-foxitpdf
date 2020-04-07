@@ -343,9 +343,7 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 
 
-## How to run the foxit_xamarin_android
-
-**Please use Foxit PDF SDK for Android 7.2.0**  
+## How to run the foxit_xamarin_android  
 
 The nupkg installation package is used in the demo, and we recommend using [this way](#Install-By-NuGet), which is more
 easy and convenient.  

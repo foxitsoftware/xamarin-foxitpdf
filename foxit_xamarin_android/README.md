@@ -35,7 +35,7 @@ you much time.
   
      ![screenshot2](./Screenshot/screenshot2.jpg)
    -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.  
-   -  Lastly, turn on Multi-Dex, and set Dex compiler to d8, Code shrinker to r8.  
+   -  Lastly, set `Dex compiler` to d8, `Code shrinker` to r8.  
 
       ![screenshot3](./Screenshot/screenshot15.png)
    - _**Optional**_  
@@ -111,7 +111,7 @@ click Add:
           ![screenshot7](./Screenshot/screenshot7.jpg)  
   - Add the `FoxitUIExtensions.dll` , `RxAndroid.dll` and `Cropperd.dll` to you demo refer to the steps of adding `FoxitRDK.dll`.  
 
-  -  Lastly, turn on Multi-Dex, and set Dex compiler to d8, Code shrinker to r8.  
+  -  Lastly, set `Dex compiler` to d8, `Code shrinker` to r8.  
 
      ![screenshot3](./Screenshot/screenshot15.png)
   - _**Optional**_:  

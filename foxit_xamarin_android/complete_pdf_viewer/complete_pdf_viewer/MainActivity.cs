@@ -47,7 +47,7 @@ namespace Com.Foxit.Home
             if (!mLicenseValid)
                 return;
 
-            if (this.Intent != null)
+            if (this.Intent != null && this.Intent.Action != null)
             {
                 filter = Intent.Action;
             }

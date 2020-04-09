@@ -36,7 +36,7 @@ This sample project works with the  `Foxit PDF SDK for iOS 7.2.1` and is a direc
 
 * `FoxitRDK.framework`
 * `uiextensionsDynamic.framework`
-* `FoxitPDFScan-UI.framework`
+* `FoxitPDFScanUI.framework`
 * `rdk_key.txt`
 * `rdk_sn.txt`
 

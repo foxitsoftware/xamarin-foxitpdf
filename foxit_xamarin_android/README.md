@@ -35,9 +35,7 @@ you much time.
   
      ![screenshot2](./Screenshot/screenshot2.jpg)
    -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.  
-   -  Lastly, set `Dex compiler` to d8, `Code shrinker` to r8.  
 
-      ![screenshot3](./Screenshot/screenshot15.png)
    - _**Optional**_  
    If you want to open a RMS protected PDF document, you should install the  
   `Foxit.Android.Microsoft.Aad.Adal`,  
@@ -110,10 +108,8 @@ click Add:
       
           ![screenshot7](./Screenshot/screenshot7.jpg)  
   - Add the `FoxitUIExtensions.dll` , `RxAndroid.dll` and `Cropperd.dll` to you demo refer to the steps of adding `FoxitRDK.dll`.  
+  
 
-  -  Lastly, set `Dex compiler` to d8, `Code shrinker` to r8.  
-
-     ![screenshot3](./Screenshot/screenshot15.png)
   - _**Optional**_:  
 If you want to open a RMS protected PDF file, please refer to [Build DLLs](#Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `MS_Common`,`RMSSDK`, and `RMSSDK_UI`
 projects in the `foxit_xamarin_android` folder to get the following three DLLs:  
@@ -352,8 +348,7 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 ## How to run the foxit_xamarin_android  
 
-The nupkg installation package is used in the demo, and we recommend using [this way](#Install-By-NuGet), which is more
-easy and convenient.  
+The nupkg installation package is used in the demo, and we recommend using [this way](#Install-By-NuGet), which is more easy and convenient.  
 
 1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/), then unzip the `foxitpdfsdk_(version_no)_android.zip`, and enter the `libs` directory,copy the following files into the `foxit_xamarin_android/libs` directory:  
 * `FoxitRDK.aar`

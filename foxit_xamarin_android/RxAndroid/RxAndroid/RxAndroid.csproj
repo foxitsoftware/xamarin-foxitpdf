@@ -50,6 +50,9 @@
     <EmbeddedJar Include="..\..\libs\rxjava-2.2.16.jar">
       <Link>Jars\rxjava-2.2.16.jar</Link>
     </EmbeddedJar>
+    <EmbeddedJar Include="..\..\libs\reactive-streams-1.0.3.jar">
+      <Link>Jars\reactive-streams-1.0.3.jar</Link>
+    </EmbeddedJar>
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />

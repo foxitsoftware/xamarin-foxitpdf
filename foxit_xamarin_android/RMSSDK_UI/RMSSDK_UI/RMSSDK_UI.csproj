@@ -48,7 +48,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\rms-sdk-ui.aar">
+    <LibraryProjectZip Include="..\..\libs\rms\rms-sdk-ui.aar">
       <Link>Jars\rms-sdk-ui.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>

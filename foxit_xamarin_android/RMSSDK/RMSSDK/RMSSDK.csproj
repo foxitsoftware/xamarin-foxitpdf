@@ -45,7 +45,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\RMSSDK-4.2-release.aar">
+    <LibraryProjectZip Include="..\..\libs\rms\RMSSDK-4.2-release.aar">
       <Link>Jars\RMSSDK-4.2-release.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>

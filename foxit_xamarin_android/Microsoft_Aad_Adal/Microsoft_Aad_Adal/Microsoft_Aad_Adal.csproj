@@ -49,10 +49,10 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\adal-1.16.3.aar">
+    <LibraryProjectZip Include="..\..\libs\rms\adal-1.16.3.aar">
       <Link>Jars\adal-1.16.3.aar</Link>
     </LibraryProjectZip>
-    <EmbeddedJar Include="..\..\libs\gson-2.8.4.jar">
+    <EmbeddedJar Include="..\..\libs\rms\gson-2.8.4.jar">
       <Link>Jars\gson-2.8.4.jar</Link>
     </EmbeddedJar>
   </ItemGroup>

@@ -45,16 +45,16 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\microsoft-identity-common-0.0.10.aar">
+    <LibraryProjectZip Include="..\..\libs\rms\microsoft-identity-common-0.0.10.aar">
       <Link>Jars\microsoft-identity-common-0.0.10.aar</Link>
     </LibraryProjectZip>
-    <EmbeddedJar Include="..\..\libs\nimbus-jose-jwt-5.7.jar">
+    <EmbeddedJar Include="..\..\libs\rms\nimbus-jose-jwt-5.7.jar">
       <Link>Jars\nimbus-jose-jwt-5.7.jar</Link>
     </EmbeddedJar>
-    <EmbeddedJar Include="..\..\libs\json-smart-2.3.jar">
+    <EmbeddedJar Include="..\..\libs\rms\json-smart-2.3.jar">
       <Link>Jars\json-smart-2.3.jar</Link>
     </EmbeddedJar>
-    <EmbeddedJar Include="..\..\libs\accessors-smart-1.2.jar">
+    <EmbeddedJar Include="..\..\libs\rms\accessors-smart-1.2.jar">
       <Link>Jars\accessors-smart-1.2.jar</Link>
     </EmbeddedJar>
   </ItemGroup>

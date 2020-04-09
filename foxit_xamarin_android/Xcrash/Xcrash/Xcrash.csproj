@@ -48,7 +48,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\xcrash-android-lib-2.4.9.aar">
+    <LibraryProjectZip Include="..\..\libs\xcrash\xcrash-android-lib-2.4.9.aar">
       <Link>Jars\xcrash-android-lib-2.4.9.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>

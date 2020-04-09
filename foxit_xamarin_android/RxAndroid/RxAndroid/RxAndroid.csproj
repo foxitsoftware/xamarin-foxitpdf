@@ -44,13 +44,13 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\rxandroid-2.1.1.aar">
+    <LibraryProjectZip Include="..\..\libs\rxandroid\rxandroid-2.1.1.aar">
       <Link>Jars\rxandroid-2.1.1.aar</Link>
     </LibraryProjectZip>
-    <EmbeddedJar Include="..\..\libs\rxjava-2.2.16.jar">
+    <EmbeddedJar Include="..\..\libs\rxandroid\rxjava-2.2.16.jar">
       <Link>Jars\rxjava-2.2.16.jar</Link>
     </EmbeddedJar>
-    <EmbeddedJar Include="..\..\libs\reactive-streams-1.0.3.jar">
+    <EmbeddedJar Include="..\..\libs\rxandroid\reactive-streams-1.0.3.jar">
       <Link>Jars\reactive-streams-1.0.3.jar</Link>
     </EmbeddedJar>
   </ItemGroup>

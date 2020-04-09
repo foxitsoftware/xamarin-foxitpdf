@@ -425,4 +425,10 @@ Copyright 2015 The RxAndroid authors
     See the License for the specific language governing permissions and
     limitations under the License.
 
+### lisense for Xcrash
+[https://github.com/iqiyi/xCrash](https://github.com/iqiyi/xCrash)
+
+xCrash is MIT licensed, as found in the [LICENSE](https://github.com/iqiyi/xCrash/blob/master/LICENSE) file.
+
+xCrash documentation is Creative Commons licensed, as found in the [LICENSE-docs](https://github.com/iqiyi/xCrash/blob/master/LICENSE-docs) file.
 

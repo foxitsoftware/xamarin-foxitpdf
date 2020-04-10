@@ -5,7 +5,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 - [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
 - [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [More](#More)
-- [How to run the foxit_xamarin_android](#How-to-run-the-foxit_xamarin_android)
+- [How to run the complete_pdf_viewer](#How-to-run-the-complete_pdf_viewer)
 - [License](#License)
 
 ## Prerequisites
@@ -345,15 +345,12 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)  
 
 
-## How to run the foxit_xamarin_android  
-
-The nupkg installation package is used in the demo, and we recommend using [this way](#Install-By-NuGet), which is more easy and convenient.  
+## How to run the complete_pdf_viewer 
 
 1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/), then unzip the `foxitpdfsdk_(version_no)_android.zip`, and enter the `libs` directory,copy the following files into the `foxit_xamarin_android/libs` directory:  
-* `FoxitRDK.aar`
-* `FoxitRDKUIExtensions.aar`
+
 * `rdk_key.txt`
-* `rdk_sn.txt`
+* `rdk_sn.txt`  
 
 2: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.  
 

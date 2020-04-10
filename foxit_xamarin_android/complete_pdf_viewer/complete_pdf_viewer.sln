@@ -4,12 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "complete_pdf_viewer", "complete_pdf_viewer\complete_pdf_viewer.csproj", "{910A5E50-36CD-4D47-BFCA-49DDABB49DCD}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C3F70847-6341-4BEF-8C9B-224FF64065AE} = {C3F70847-6341-4BEF-8C9B-224FF64065AE}
-		{56CA4DBD-6301-40E4-B60A-55522674A0C0} = {56CA4DBD-6301-40E4-B60A-55522674A0C0}
-		{5C736DEF-108D-4948-B06B-C7C7569F1E72} = {5C736DEF-108D-4948-B06B-C7C7569F1E72}
-		{58B9B4FA-694C-448F-A979-1DD42A5ADA87} = {58B9B4FA-694C-448F-A979-1DD42A5ADA87}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cropper", "..\Cropper\Cropper\Cropper.csproj", "{56CA4DBD-6301-40E4-B60A-55522674A0C0}"
 EndProject

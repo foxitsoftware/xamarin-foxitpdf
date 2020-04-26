@@ -17,4 +17,6 @@
   <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.NewThreadTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
   <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.IOTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
   <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.ComputationTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+ 
+  <remove-node path="/api/package[@name='org.reactivestreams']/interface[@name='Subscriber']/method[@name='onNext' and count(parameter)=1 and parameter[1][@type='T']]"/>
 </metadata>

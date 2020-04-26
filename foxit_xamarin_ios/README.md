@@ -1,11 +1,11 @@
 # foxit_xamarin_ios
 Use the Foxit Mobile PDF SDK with Xamarin on iOS
 
-Now we had support rdk 7.2.0
+Now we had support rdk 7.2.1
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for iOS 7.2` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for iOS 7.2.1` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
 
 ## Installation
 
@@ -15,7 +15,7 @@ This sample project works with the  `Foxit PDF SDK for iOS 7.2` and is a direct 
 
 2: Right-click the References node of the `FoxitRDKDemo`  project and select Manager NuGet Packages...
 
-3: Select the `Browse` tab, search for `Foxit.iOS`, `Foxit.iOS.UIExtensions` install.
+3: Select the `Browse` tab, search for `Foxit.iOS`, `Foxit.iOS.UIExtensions` and`Foxit.iOS.Scanning.UI`install.
 
 4: If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_ios.zip` from [https://developers.foxitsoftware.com/pdf-sdk/ios/](https://developers.foxitsoftware.com/pdf-sdk/ios/) to get the key.
 
@@ -28,7 +28,7 @@ This sample project works with the  `Foxit PDF SDK for iOS 7.2` and is a direct 
 
 ### Install By Reference
 
-1: If you have already add NuGet `Foxit.iOS`, `Foxit.iOS.UIExtensions`, please remove them first
+1: If you have already add NuGet `Foxit.iOS`, `Foxit.iOS.UIExtensions`and`Foxit.iOS.Scanning.UI`, please remove them first
 
 2: Download `foxitpdfsdk_(version_no)_ios.zip` from [https://developers.foxitsoftware.com/pdf-sdk/ios/](https://developers.foxitsoftware.com/pdf-sdk/ios/)
 
@@ -36,15 +36,16 @@ This sample project works with the  `Foxit PDF SDK for iOS 7.2` and is a direct 
 
 * `FoxitRDK.framework`
 * `uiextensionsDynamic.framework`
+* `FoxitPDFScanUI.framework`
 * `rdk_key.txt`
 * `rdk_sn.txt`
 
 4: Click the `Foxit.iOS.UIExtensions.sln`
 
-5: `Rebuild` the `Foxit.iOS` , `Foxit.iOS.UIExtensions`
+5: `Rebuild` the `Foxit.iOS` , `Foxit.iOS.UIExtensions`and`Foxit.iOS.Scanning.UI`.
 
 6: Click the `FoxitRDKDemo.sln`
 
-7: Add the `Foxit.iOS`,`Foxit.iOS.UIExtensions` project or `dll-files`.
+7: Add the `Foxit.iOS`,`Foxit.iOS.UIExtensions`,`Foxit.iOS.Scanning.UI` project or `dll-files`.
 
 8: `Run` the `FoxitRDKDemo` project in the simulator or on a physical device.

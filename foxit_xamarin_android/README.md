@@ -342,8 +342,7 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 ![screenshot13](./Screenshot/screenshot13.jpg) 
 
 ## More
-For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)
-
+For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)  
 
 
 ## How to run the complete_pdf_viewer 
@@ -423,4 +422,10 @@ Copyright 2015 The RxAndroid authors
     See the License for the specific language governing permissions and
     limitations under the License.
 
+### lisense for Xcrash
+[https://github.com/iqiyi/xCrash](https://github.com/iqiyi/xCrash)
+
+xCrash is MIT licensed, as found in the [LICENSE](https://github.com/iqiyi/xCrash/blob/master/LICENSE) file.
+
+xCrash documentation is Creative Commons licensed, as found in the [LICENSE-docs](https://github.com/iqiyi/xCrash/blob/master/LICENSE-docs) file.
 

@@ -207,4 +207,7 @@ name="managedReturn">Java.Lang.Object</attr>
   <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='ArrayWriter']"/>
   <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='BeansWriterASMRemap']"/>
   <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='JsonWriter']"/>
+
+
+  <remove-node path="/api/package[@name='net.minidev.asm']/class[@name='ConvertDate.StringCmpNS']"/>
 </metadata>

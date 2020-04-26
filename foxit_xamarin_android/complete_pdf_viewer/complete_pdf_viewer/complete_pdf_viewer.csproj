@@ -14,6 +14,7 @@
     <RootNamespace>complete_pdf_viewer</RootNamespace>
     <AssemblyName>complete_pdf_viewer</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -23,12 +24,14 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
-    <DebugType>Full</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
@@ -41,7 +44,7 @@
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <AndroidSupportedAbis />
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidDexTool>dx</AndroidDexTool>
@@ -49,7 +52,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
-    <DebugType>PdbOnly</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>True</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -63,7 +66,7 @@
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <AndroidSupportedAbis />
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidDexTool>dx</AndroidDexTool>
@@ -225,7 +228,7 @@
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.axml">
+    <AndroidResource Include="Resources\layout\activity_main.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
@@ -250,8 +253,55 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.AndroidX.MultiDex.2.0.1\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('..\packages\Xamarin.AndroidX.MultiDex.2.0.1\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.MultiDex.2.0.1\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.MultiDex.2.0.1\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Migration.1.0.0\build\monoandroid90\Xamarin.AndroidX.Migration.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Migration.1.0.0\build\monoandroid90\Xamarin.AndroidX.Migration.props'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Migration.1.0.0\build\monoandroid90\Xamarin.AndroidX.Migration.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Migration.1.0.0\build\monoandroid90\Xamarin.AndroidX.Migration.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Collection.1.1.0\build\monoandroid90\Xamarin.AndroidX.Collection.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Collection.1.1.0\build\monoandroid90\Xamarin.AndroidX.Collection.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.CursorAdapter.1.0.0\build\monoandroid90\Xamarin.AndroidX.CursorAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.CursorAdapter.1.0.0\build\monoandroid90\Xamarin.AndroidX.CursorAdapter.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.DocumentFile.1.0.1\build\monoandroid90\Xamarin.AndroidX.DocumentFile.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.DocumentFile.1.0.1\build\monoandroid90\Xamarin.AndroidX.DocumentFile.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Interpolator.1.0.0\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Interpolator.1.0.0\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Lifecycle.Common.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Lifecycle.Common.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.LocalBroadcastManager.1.0.0\build\monoandroid90\Xamarin.AndroidX.LocalBroadcastManager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.LocalBroadcastManager.1.0.0\build\monoandroid90\Xamarin.AndroidX.LocalBroadcastManager.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Print.1.0.0\build\monoandroid90\Xamarin.AndroidX.Print.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Print.1.0.0\build\monoandroid90\Xamarin.AndroidX.Print.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.SavedState.1.0.0\build\monoandroid90\Xamarin.AndroidX.SavedState.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.SavedState.1.0.0\build\monoandroid90\Xamarin.AndroidX.SavedState.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.VersionedParcelable.1.1.0\build\monoandroid90\Xamarin.AndroidX.VersionedParcelable.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.VersionedParcelable.1.1.0\build\monoandroid90\Xamarin.AndroidX.VersionedParcelable.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Core.1.1.0\build\monoandroid90\Xamarin.AndroidX.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Core.1.1.0\build\monoandroid90\Xamarin.AndroidX.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Activity.1.0.0\build\monoandroid90\Xamarin.AndroidX.Activity.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Activity.1.0.0\build\monoandroid90\Xamarin.AndroidX.Activity.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.AsyncLayoutInflater.1.0.0\build\monoandroid90\Xamarin.AndroidX.AsyncLayoutInflater.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.AsyncLayoutInflater.1.0.0\build\monoandroid90\Xamarin.AndroidX.AsyncLayoutInflater.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.CustomView.1.0.0\build\monoandroid90\Xamarin.AndroidX.CustomView.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.CustomView.1.0.0\build\monoandroid90\Xamarin.AndroidX.CustomView.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.CoordinatorLayout.1.1.0\build\monoandroid90\Xamarin.AndroidX.CoordinatorLayout.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.CoordinatorLayout.1.1.0\build\monoandroid90\Xamarin.AndroidX.CoordinatorLayout.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.DrawerLayout.1.0.0\build\monoandroid90\Xamarin.AndroidX.DrawerLayout.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.DrawerLayout.1.0.0\build\monoandroid90\Xamarin.AndroidX.DrawerLayout.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Loader.1.1.0\build\monoandroid90\Xamarin.AndroidX.Loader.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Loader.1.1.0\build\monoandroid90\Xamarin.AndroidX.Loader.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Legacy.Support.Core.Utils.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.Utils.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Legacy.Support.Core.Utils.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.Utils.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Media.1.1.0\build\monoandroid90\Xamarin.AndroidX.Media.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Media.1.1.0\build\monoandroid90\Xamarin.AndroidX.Media.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.RecyclerView.1.1.0\build\monoandroid90\Xamarin.AndroidX.RecyclerView.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.RecyclerView.1.1.0\build\monoandroid90\Xamarin.AndroidX.RecyclerView.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.SlidingPaneLayout.1.0.0\build\monoandroid90\Xamarin.AndroidX.SlidingPaneLayout.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.SlidingPaneLayout.1.0.0\build\monoandroid90\Xamarin.AndroidX.SlidingPaneLayout.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.SwipeRefreshLayout.1.0.0\build\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.VectorDrawable.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.VectorDrawable.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.AppCompat.Resources.1.1.0\build\monoandroid90\Xamarin.AndroidX.AppCompat.Resources.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.AppCompat.Resources.1.1.0\build\monoandroid90\Xamarin.AndroidX.AppCompat.Resources.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.ViewPager.1.0.0\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.ViewPager.1.0.0\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Fragment.1.1.0\build\monoandroid90\Xamarin.AndroidX.Fragment.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Fragment.1.1.0\build\monoandroid90\Xamarin.AndroidX.Fragment.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.AppCompat.1.1.0\build\monoandroid90\Xamarin.AndroidX.AppCompat.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.AppCompat.1.1.0\build\monoandroid90\Xamarin.AndroidX.AppCompat.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Legacy.Support.Core.UI.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.Core.UI.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.AndroidX.Legacy.Support.V4.1.0.0\build\monoandroid90\Xamarin.AndroidX.Legacy.Support.V4.targets'))" />
+  </Target>
   <Import Project="..\packages\Xamarin.AndroidX.Migration.1.0.0\build\monoandroid90\Xamarin.AndroidX.Migration.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Migration.1.0.0\build\monoandroid90\Xamarin.AndroidX.Migration.targets')" />
   <Import Project="..\packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />
   <Import Project="..\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets" Condition="Exists('..\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets')" />

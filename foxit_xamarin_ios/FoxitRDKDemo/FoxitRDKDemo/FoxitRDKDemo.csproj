@@ -24,12 +24,13 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>52247</IOSDebuggerPort>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
     <MtouchExtraArgs>-cxx -gcc_flags "-lc++"</MtouchExtraArgs>
 <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+<MtouchSdkVersion>13.4</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -917,6 +918,9 @@
     <BundleResource Include="Resources\uiextensions_config.json" />
     <BundleResource Include="..\..\test_files\complete_pdf_viewer_guide_ios.pdf"><Link>Resources\complete_pdf_viewer_guide_ios.pdf</Link></BundleResource>
     <BundleResource Include="..\..\test_files\Sample.pdf"><Link>Resources\Sample.pdf</Link></BundleResource>
+    <BundleResource Include="Resources\UIExtensionsResource\scan\scan.png" />
+    <BundleResource Include="Resources\UIExtensionsResource\scan\scan%402x.png" />
+    <BundleResource Include="Resources\UIExtensionsResource\scan\scan%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

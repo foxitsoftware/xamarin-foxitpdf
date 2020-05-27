@@ -17,6 +17,8 @@ using Foundation;
 using CoreFoundation;
 using Foxit.iOS;
 using Foxit.iOS.UIExtensions;
+using Foxit.iOS.Scanning.UI;
+using ObjCRuntime;
 
 namespace FoxitRDKDemo
 {
@@ -78,6 +80,37 @@ namespace FoxitRDKDemo
             };
 
             this.pdfViewControl.ExtensionsManager = extensionsMgr;
+
+
+            PDFScanManager.InitializeScanner(0, 0);
+            PDFScanManager.InitializeCompression(0, 0);
+
+            UIButton button = new UIButton();
+            button.TouchUpInside += openScan;
+            button.SetImage(UIImage.FromBundle("UIExtensionsResource/scan/scan"), UIControlState.Normal);
+            fileListViewController.View.AddSubview(button);
+            button.TranslatesAutoresizingMaskIntoConstraints = false;
+            button.WidthAnchor.ConstraintEqualTo(60).Active = true;
+            button.HeightAnchor.ConstraintEqualTo(60).Active = true;
+            button.BottomAnchor.ConstraintEqualTo(fileListViewController.View.SafeAreaLayoutGuide.BottomAnchor, -15).Active = true;
+            button.RightAnchor.ConstraintEqualTo(fileListViewController.View.RightAnchor, -15).Active = true;
+        }
+        public void openScan(object sender, EventArgs e)
+        {
+            var PDFScanView = PDFScanManager.PDFScanView;
+            if (PDFScanView != null) PresentViewController(PDFScanView, true, null);
+            PDFScanManager.SaveAsCallBack = (error, savePath) =>
+            {
+                if (savePath != null)
+                {
+                    if (PDFScanView.PresentingViewController != null)
+                    {
+                        PDFScanView.PresentingViewController.DismissViewController(false, null);
+                    }
+                    PDFScanView.DismissViewController(false, null);
+                    DidFileSelected(savePath);
+                }
+            };
         }
 
         public override void DidReceiveMemoryWarning()

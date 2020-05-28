@@ -54,7 +54,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\libs\FoxitPDFScan-UI.framework">
+    <NativeReference Include="..\..\libs\FoxitPDFScanUI.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>

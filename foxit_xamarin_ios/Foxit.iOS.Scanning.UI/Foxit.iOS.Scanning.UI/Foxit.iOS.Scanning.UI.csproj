@@ -44,9 +44,6 @@
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingCoreSource Include="Structs.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions.csproj">
       <Project>{F01A4156-B22E-4825-967F-AD9EC355E4EF}</Project>
       <Name>Foxit.iOS.UIExtensions</Name>

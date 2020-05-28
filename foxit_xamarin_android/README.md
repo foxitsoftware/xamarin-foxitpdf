@@ -31,32 +31,11 @@ you much time.
   - In the Solution Explorer, right-click the References node of your project, and click `Manage NuGet Packages…`
  
     ![screenshot1](./Screenshot/screenshot1.jpg)
-  -  Then select the Browse tab, search for `Foxit.Android` , `Foxit.Android.UIExtensions` , `Foxit.Android.RxAndroid` and `Foxit.Android.Cropper` , and then install them.  
+  -  Then select the Browse tab, search for `Foxit.Android`, Foxit.Android.UIExtensions` and install them.  
   
      ![screenshot2](./Screenshot/screenshot2.jpg)
    -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.  
-
-   - _**Optional**_  
-   If you want to open a RMS protected PDF document, you should install the  
-  `Foxit.Android.Microsoft.Aad.Adal`,  
-  `Foxit.Android.Microsoft.Identity.Common`,  
-  `Foxit.Android.RMSSDK`,   
-  `Foxit.Android.RMSSDK.UI`.  
- 
-     ![screenshot3](./Screenshot/screenshot3.jpg)  
-     
-  
-   - _**Note**_:  
-  If the following nupkg is not installed automatically, you need to install it manually, otherwise the compilation may fail.
- You can installation the Solution Explorer, right-click the References node of your project, and click Manage NuGet Packages… .Then select the Browse tab, search for the Nuget packages as below:  
-`Xamarin.AndroidX.Browser`  
-`Xamarin.Google.Android.Material`  
-`Xamarin.AndroidX.AppCompat`  
-`Xamarin.AndroidX.Legacy.Support.V4`  
-`Xamarin.AndroidX.Lifecycle.LiveData`  
-`Xamarin.AndroidX.RecyclerView`  
-`Xamarin.Android.Support.v7.AppCompat` (required for opening a RMS protected PDF file)  
-  
+   
   #### Integrate manually by building and referencing DLLs
   To integrate manually, you should first build DLLs, and then add it as a reference to your project.  
   - Download or Clone [Foxit PDF SDK for Android](https://github.com/foxitsoftware/xamarin-foxitpdf/tree/master/foxit_xamarin_android),  then copy the following files (libraries
@@ -64,31 +43,57 @@ and licenses) in the `libs` folder of the extracted package to `foxit_xamarin_an
 directory:
     > `FoxitRDK.aar`  
     > `FoxitRDKUIExtensions.aar`  
-    >`rdk_key.txt`  
-    >`rdk_sn.txt`
-  - Build DLLs
-    - Get `FoxitRDK.dll` .  This is the heart of the SDK including the core functionalities of Foxit PDF SDK for Android.
-  
-      Load FoxitRDK.sln in Visual Studio 2019 under the `foxit_xamarin_android\FoxitRDK` directory.
-Choose Build -> Build Solution to build the project, then the `FoxitRDK.dll` will be generated in
-`foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.
+    > `rdk_key.txt`  
+    > `rdk_sn.txt`  
+    
+  - Build DLLs  
+    You need to manually compile to get the following dll：  
+    > `FoxitRDK.dll`  
+    > `Microsoft_Aad_Adal.dll`  
+    > `MS_Common.dll`  
+    > `RMSSDK.dll`  
+    > `RMSSDK_UI.dll`  
+    > `XCrash.dll`  
+    > `FoxitUIExtensions.dll`  
+    > `RxAndroid.dll`  
+    > `Cropper.dll`  
+    
+    -  Get  
+      `FoxitRDK.dll`  
+      `Microsoft_Aad_Adal.dll`  
+      `MS_Common.dll` 
+      `RMSSDK.dll`  
+      `RMSSDK_UI.dll`  
+      `XCrash.dll`  
+      This is the heart of the SDK including the core functionalities of Foxit PDF SDK for Android.  
+      
+        Compilation steps：  
+        Step1: Load `FoxitRDK.sln` in Visual Studio 2019 under the `foxit_xamarin_android\FoxitRDK` directory.  
+        Step2: Right-click FoxitRDK project, click Build/Rebuild to build the FoxitRDK project.  
+        Step3: If build is successful, the  
+        `FoxitRDK.dll`  
+        `Microsoft_Aad_Adal.dll`  
+        `MS_Common.dll`  
+        `RMSSDK.dll`  
+        `RMSSDK_UI.dll`  
+        `XCrash.dll`  
+        will be generated in `foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.
 
-    - Get `FoxitRDKUIExtensions.dll` which extends more powerful PDF related features including UI and resource files.
-
-      Load FoxitUIExtensions.sln in Visual Studio 2019 under `foxit_xamarin_android\FoxitUIExtensions` directory. Choose Build -> Build Solution to build
-the project, then the `FoxitUIExtensions.dll` will be generated in
-`foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)` directory.
-
-    - Get `Cropper.dll`.  
-     Load Cropper.sln in Visual Studio 2019 under `foxit_xamarin_android\Cropper` directory. Choose Build -> Build Solution to build
-the project, then the `Cropper.dll` will be generated in
-`foxit_xamarin_android\Cropper\Cropper\bin\Debug (or release)` directory.
-
-    - Get `RxAndroid.dll`.  
-     Load RxAndroid.sln in Visual Studio 2019 under `foxit_xamarin_android\RxAndroid` directory. Choose Build -> Build Solution to build
-the project, then the `RxAndroid.dll` will be generated in
-`foxit_xamarin_android\RxAndroid\RxAndroid\bin\Debug (or release)` directory.
-
+    - Get  
+      `FoxitRDKUIExtensions.dll`  
+      `RxAndroid.dll`  
+      `Cropper.dll`  
+      which extends more powerful PDF related features including UI and resource files.
+      
+       Compilation steps:  
+       Step1: Load FoxitUIExtensions.sln in Visual Studio 2019 under `foxit_xamarin_android\FoxitUIExtensions` directory.  
+       Step2: Right-click FoxitRDK project, click Build/Rebuild to build the FoxitUIExtensions project.  
+       Step3: If build is successful, the  
+       `FoxitRDKUIExtensions.dll`  
+       `RxAndroid.dll`  
+       `Cropper.dll`  
+       will be generated in `foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)`directory.  
+          
   -  Add the built DLLs as references to your project  
   This section takes `FoxitRDK.dll` as an example to show you how to add it as a reference to your project.
 For other DLLs, do the same steps with `FoxitRDK.dll`. We assume that you have got the `FoxitRDK.dll`, if
@@ -107,26 +112,18 @@ click Add:
           Then, the FoxitRDK.dll will appear in the list and has already been checked. Click OK:  
       
           ![screenshot7](./Screenshot/screenshot7.jpg)  
-  - Add the `FoxitUIExtensions.dll` , `RxAndroid.dll` and `Cropperd.dll` to you demo refer to the steps of adding `FoxitRDK.dll`.  
-  
-
-  - _**Optional**_:  
-If you want to open a RMS protected PDF file, please refer to [Build DLLs](#Build-DLLs) section to build the `Microsoft_Aad_Aadl`, `MS_Common`,`RMSSDK`, and `RMSSDK_UI`
-projects in the `foxit_xamarin_android` folder to get the following three DLLs:  
-`Microsoft_Aad_Aadl\Microsoft_Aad_Aadl\bin\Debug(Release)\Microsoft_Aad_Aadl.dll`  
-`MS_Common\MS_Common\bin\Debug(Release)\MS_Common.dll`  
-`RMSSDK\RMSSDK\bin\Debug(Release)\RMSSDK.dll`  
-`RMSSDK_UI\RMSSDK_UI\bin\Debug(Release)\RMSSDK_UI.dll`  
-Add the above three DLLs libraries as references to the project (refer to the steps of adding
-`FoxitRDK.dll` ).
-
-  After finishing the above steps, the References of your project will look like:  
-  ![screenshot8](./Screenshot/screenshot8.jpg)  
-    
+  - Add the following dll to you demo refer to the steps of adding `FoxitRDK.dll`.  
+    > `Microsoft_Aad_Adal.dll`  
+    > `MS_Common.dll`  
+    > `RMSSDK.dll`  
+    > `RMSSDK_UI.dll`  
+    > `XCrash.dll`  
+    > `FoxitUIExtensions.dll`  
+    > `RxAndroid.dll`  
+    > `Cropper.dll`  
     
   - _**Note**_:  
-  If you integrate manually by building dlls, you must manually install the following dependencies.    
- Install Xamarin.AndroidX and related Nuget packages. In the Solution Explorer, right-click the References node of your project, and click Manage NuGet Packages… .Then select the Browse tab, search for the Nuget packages as below:  
+  If you integrate manually by building dlls, you must manually install the following dependencies.  
 `Xamarin.AndroidX.Browser`  
 `Xamarin.Google.Android.Material`  
 `Xamarin.AndroidX.AppCompat`  
@@ -134,16 +131,19 @@ Add the above three DLLs libraries as references to the project (refer to the st
 `Xamarin.AndroidX.Lifecycle.LiveData`  
 `Xamarin.AndroidX.RecyclerView`  
 `Xamarin.Android.Support.v7.AppCompat` (required for opening a RMS protected PDF file)  
+
+  After finishing the above steps, the References of your project will look like:  
+  ![screenshot8](./Screenshot/screenshot8.jpg)  
   
   
 ## Build a Xamarin Android project using Foxit PDF SDK for Android
 **This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
 step-by-step instructions provided.**
 
-- Create a new Xamarin Android project
-- Integrate Foxit PDF SDK into the project
-- Initialize Foxit PDF SDK Library
-- Display a PDF document using PDFViewCtrl
+- [Create a new Xamarin Android project](#Create-a-new-Xamarin-Android-project)
+- [Integrate Foxit PDF SDK into the project](#Integrate-Foxit-PDF-SDK-into-the-project)
+- [Initialize Foxit PDF SDK Library](#Initialize-Foxit-PDF-SDK-Library)
+- [Display a PDF document using PDFViewCtrl](#Display-a-PDF-document-using-PDFViewCtrl)
 
 #### 1. Create a new Xamarin Android project
 Open Visual Studio 2019, choose `File -> New -> Project… `  to start the New Project. Let's take `TestXamarin` as an example .Create a new Xamarin Android project called `TestXamarin` ,Then click OK:  

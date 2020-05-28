@@ -63,7 +63,7 @@ namespace Com.Foxit
 
             errCode = Library.Initialize(sn, key);
 
-            Android.Util.Log.Info("mytag","key:"+ key+" sn:"+ sn);
+            Android.Util.Log.Info("mytag", "key:" + key + " sn:" + sn);
             isInitLibrary = true;
         }
 
@@ -122,7 +122,7 @@ namespace Com.Foxit
             }
         }
 
-        private string GetValueFromPropFile(Stream stream,string key) 
+        private string GetValueFromPropFile(Stream stream, string key)
         {
             Properties props = new Properties();
             props.Load(stream);

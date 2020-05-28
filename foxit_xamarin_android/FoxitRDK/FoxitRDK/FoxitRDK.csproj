@@ -54,6 +54,28 @@
     <TransformFile Include="Transforms\EnumFields.xml" />
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Microsoft_Aad_Adal\Microsoft_Aad_Adal\Microsoft_Aad_Adal.csproj">
+      <Project>{888a3015-4d14-48e1-9bec-abee0112d672}</Project>
+      <Name>Microsoft_Aad_Adal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MS_Common\MS_Common\MS_Common.csproj">
+      <Project>{4113430f-7c86-45a6-89db-a2b78df51790}</Project>
+      <Name>MS_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RMSSDK\RMSSDK\RMSSDK.csproj">
+      <Project>{16819400-81ce-41d5-b4dc-143e497294a3}</Project>
+      <Name>RMSSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RMSSDK_UI\RMSSDK_UI\RMSSDK_UI.csproj">
+      <Project>{b71d0f8e-edd4-4c67-9b05-9647c334516a}</Project>
+      <Name>RMSSDK_UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xcrash\Xcrash\XCrash.csproj">
+      <Project>{6a76571e-f970-45a6-83d8-6825d4c50906}</Project>
+      <Name>XCrash</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

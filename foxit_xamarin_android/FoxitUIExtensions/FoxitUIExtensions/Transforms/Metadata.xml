@@ -23,8 +23,9 @@
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail']/class[@name='I']" />
   
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.tts']/class[@name='SpeechRateAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.form']/class[@name='ChoiceOptionsAdapter']" />
-  <remove-node path="/api/package[@name='com.foxit.uiextensions.browser.adapter']/class[@name='FileAttachmentAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.filespec']/class[@name='FileAttachmentAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.signature']/class[@name='SignatureAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail']/class[@name='ThumbnailAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.security.trustcertificate']/class[@name='TrustCertificateListAdapter']" />

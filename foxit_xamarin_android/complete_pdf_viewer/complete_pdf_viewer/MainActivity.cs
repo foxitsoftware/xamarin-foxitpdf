@@ -42,6 +42,7 @@ namespace Com.Foxit.Home
         {
             RequestWindowFeature(Android.Views.WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             mLicenseValid = App.Instance().CheckLicense();
             if (!mLicenseValid)
@@ -127,7 +128,7 @@ namespace Com.Foxit.Home
         {
             if (mLicenseValid && requestCode == REQUEST_EXTERNAL_STORAGE)
             {
-                if(grantResults[0] == Permission.Granted)
+                if (grantResults[0] == Permission.Granted)
                 {
                     App.Instance().CopyGuideFiles(App.Instance().GetLocalModule(filter));
                     App.Instance().GetLocalModule(filter).UpdateStoragePermissionGranted();
@@ -140,6 +141,7 @@ namespace Com.Foxit.Home
             else
             {
                 base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             }
         }
 

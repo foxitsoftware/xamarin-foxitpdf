@@ -134,7 +134,7 @@ namespace Com.Foxit.Pdfreader
             base.OnActivityResult(requestCode, resultCode, data);
             if (uiExtensionsManager != null)
             {
-                uiExtensionsManager.HandleActivityResult(this,requestCode, (int)resultCode, data);
+                uiExtensionsManager.HandleActivityResult(this, requestCode, (int)resultCode, data);
             }
         }
 

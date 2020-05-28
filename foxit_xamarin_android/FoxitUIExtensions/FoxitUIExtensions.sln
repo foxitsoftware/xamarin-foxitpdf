@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxitUIExtensions", "FoxitUIExtensions\FoxitUIExtensions.csproj", "{5C736DEF-108D-4948-B06B-C7C7569F1E72}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C3F70847-6341-4BEF-8C9B-224FF64065AE} = {C3F70847-6341-4BEF-8C9B-224FF64065AE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxitRDK", "..\FoxitRDK\FoxitRDK\FoxitRDK.csproj", "{C3F70847-6341-4BEF-8C9B-224FF64065AE}"
 EndProject

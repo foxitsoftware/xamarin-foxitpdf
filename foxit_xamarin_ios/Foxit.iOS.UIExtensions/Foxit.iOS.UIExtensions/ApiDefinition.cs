@@ -323,6 +323,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("settingBarCrop:")]
 		void SettingBarCrop (SettingBar settingBar);
 
+		// @optional -(void)settingBarSpeech:(SettingBar *)settingBar;
+		[Export ("settingBarSpeech:")]
+		void SettingBarSpeech (SettingBar settingBar);
+
 		// @optional -(void)settingBarPanAndZoom:(SettingBar *)settingBar;
 		[Export ("settingBarPanAndZoom:")]
 		void SettingBarPanAndZoom (SettingBar settingBar);
@@ -904,6 +908,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (assign, nonatomic) BOOL isMultiFileMode;
 		[Export ("isMultiFileMode")]
 		bool IsMultiFileMode { get; set; }
+
+		// @property (assign, nonatomic, setter = autoSaveDoc:) BOOL isAutoSaveDoc;
+		[Export ("isAutoSaveDoc")]
+		bool IsAutoSaveDoc { get; [Bind ("autoSaveDoc:")] set; }
 
 		// @property (assign, nonatomic) FSPDFDocSaveFlags docSaveFlag;
 		[Export ("docSaveFlag", ArgumentSemantic.Assign)]

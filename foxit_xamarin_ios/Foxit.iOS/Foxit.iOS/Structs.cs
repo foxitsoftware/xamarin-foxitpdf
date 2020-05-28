@@ -84,7 +84,10 @@ namespace Foxit.iOS
 		NoComparisonModuleRight = 63,
 		NoComplianceModuleRight = 64,
 		NoOptimizerModuleRight = 65,
-		NoConversionModuleRight = 66
+		NoConversionModuleRight = 66,
+		OfficeComNotInit = 67,
+		NoMicroOfficeInstalled = 68,
+		ExcelHasNoContent = 69
 	}
 
 	//[Native]
@@ -139,6 +142,24 @@ namespace Foxit.iOS
 		Compliance = 7,
 		Optimizer = 8,
 		Conversion = 9
+	}
+
+	//[Native]
+	public enum FSColorSpaceType 
+	{
+		Invalid = 0,
+		DeviceGray = 1,
+		DeviceRGB = 2,
+		DeviceCMYK = 3,
+		CalGray = 4,
+		CalRGB = 5,
+		Lab = 6,
+		Separation = 8,
+		DeviceN = 9,
+		Pattern = 11,
+		ICCBasedDeviceGray = 12,
+		ICCBasedDeviceRGB = 13,
+		ICCBasedDeviceCMYK = 14
 	}
 
 	//[Native]
@@ -257,6 +278,15 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSColorSpaceRenderingIntent 
+	{
+		Perceptual = 0,
+		RelColorimetric = 1,
+		Saturation = 2,
+		AbsColorimetric = 3
+	}
+
+	//[Native]
 	public enum FSBitmapDIBFormat 
 	{
 		Invalid = 0,
@@ -296,6 +326,7 @@ namespace Foxit.iOS
 	public enum FSRendererColorMode 
 	{
 		Normal = 0,
+		MappingGray = 1,
 		Mapping = 2
 	}
 
@@ -742,7 +773,9 @@ namespace Foxit.iOS
 	{
 		CompressImages = 1,
 		CleanUp = 2,
-		DiscardObjects = 4
+		DiscardObjects = 4,
+		UnembeddedFonts = 8,
+		DiscardUserData = 16
 	}
 
 	//[Native]
@@ -762,7 +795,21 @@ namespace Foxit.iOS
 		JavaScriptActions = 4,
 		EmbeddedPageThumbnails = 8,
 		EmbeddedPrintSettings = 16,
-		Bookmarks = 32
+		Bookmarks = 32,
+		AlternateImages = 64,
+		DocumentTags = 128,
+		EmbeddedSearchIndex = 256
+	}
+
+	//[Native]
+	public enum FSOptimizerSettingsDiscardUserDataOptions 
+	{
+		AllAnnotsFormsAndMultimedia = 1,
+		ExternalCrossReferences = 2,
+		DocumentInfoAndMetaData = 4,
+		FileAttchments = 8,
+		PrivateDataOfOtherApp = 16,
+		Layer = 32
 	}
 
 	//[Native]
@@ -1469,24 +1516,6 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSImageObjectColorSpace 
-	{
-		Invalid = 0,
-		DeviceGray = 1,
-		DeviceRGB = 2,
-		DeviceCMYK = 3,
-		CalGray = 4,
-		CalRGB = 5,
-		Lab = 6,
-		Separation = 8,
-		DeviceN = 9,
-		Pattern = 11,
-		ICCBasedDeviceGray = 12,
-		ICCBasedDeviceRGB = 13,
-		ICCBasedDeviceCMYK = 14
-	}
-
-	//[Native]
 	public enum FSPDFPageParseFlags 
 	{
 		Normal = 0,
@@ -1782,7 +1811,7 @@ namespace Foxit.iOS
 		TextDoNotScroll = 1024,
 		TextComb = 2048,
 		ComboEdit = 256,
-		ChoiseMultiSelect = 256
+		ChoiceMultiSelect = 256
 	}
 
 	//[Native]

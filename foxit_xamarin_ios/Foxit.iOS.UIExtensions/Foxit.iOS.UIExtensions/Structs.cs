@@ -41,7 +41,8 @@ namespace Foxit.iOS.UIExtensions
 		Panzoom,
 		Fitpage,
 		Fitwidth,
-		Rotate
+		Rotate,
+		Speech
 	}
 
 	//[Native]

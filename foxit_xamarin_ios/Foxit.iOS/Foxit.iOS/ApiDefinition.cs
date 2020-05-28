@@ -1447,6 +1447,96 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSColorSpace : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSColorSpace
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithType:(FSColorSpaceType)type;
+		[Export ("initWithType:")]
+		IntPtr Constructor (FSColorSpaceType type);
+
+		// -(id)initWithOther:(FSColorSpace *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSColorSpace other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(int)getComponentCount;
+		[Export ("getComponentCount")]
+		//[Verify (MethodToProperty)]
+		int ComponentCount { get; }
+
+		// -(FSColorSpaceType)getColorSpaceType;
+		[Export ("getColorSpaceType")]
+		//[Verify (MethodToProperty)]
+		FSColorSpaceType ColorSpaceType { get; }
+
+		// -(FSColor *)convertColor:(FSColor *)color;
+		[Export ("convertColor:")]
+		FSColor ConvertColor (FSColor color);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSColor : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSColor
+	{
+		// @property (getter = getValue, nonatomic, weak) FSFloatArray * value;
+		[Export ("value", ArgumentSemantic.Weak)]
+		FSFloatArray Value { [Bind ("getValue")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSColor *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSColor other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(FSColorSpace *)getColorSpace;
+		[Export ("getColorSpace")]
+		//[Verify (MethodToProperty)]
+		FSColorSpace ColorSpace { get; }
+
+		// -(FSColor *)convertToRGB:(FSColorSpaceRenderingIntent)intent;
+		[Export ("convertToRGB:")]
+		FSColor ConvertToRGB (FSColorSpaceRenderingIntent intent);
+
+		// -(FSColor *)convertToCMYK:(FSColorSpaceRenderingIntent)intent;
+		[Export ("convertToCMYK:")]
+		FSColor ConvertToCMYK (FSColorSpaceRenderingIntent intent);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSBitmap : FSBase
 	[BaseType (typeof(FSBase))]
 	interface FSBitmap
@@ -1719,6 +1809,10 @@ namespace Foxit.iOS
 		// -(void)setRenderContentFlags:(unsigned int)render_content_flags;
 		[Export ("setRenderContentFlags:")]
 		void SetRenderContentFlags (uint render_content_flags);
+
+		// -(void)setRenderAnnotsForThumbnail:(BOOL)is_render_annots_for_thumbnail;
+		[Export ("setRenderAnnotsForThumbnail:")]
+		void SetRenderAnnotsForThumbnail (bool is_render_annots_for_thumbnail);
 
 		// -(void)setRenderFormField:(BOOL)is_render_formfield;
 		[Export ("setRenderFormField:")]
@@ -2584,6 +2678,11 @@ namespace Foxit.iOS
 		[Export ("optimize:settings:pause:")]
 		FSProgressive Optimize (FSPDFDoc doc, FSOptimizerSettings settings, FSPauseCallback pause);
 
+		// +(FSProgressive *)startSubsetEmbedFont:(FSPDFDoc *)doc pause:(id<FSPauseCallback>)pause;
+		[Static]
+		[Export ("startSubsetEmbedFont:pause:")]
+		FSProgressive StartSubsetEmbedFont (FSPDFDoc doc, FSPauseCallback pause);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -2675,6 +2774,37 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSUnembeddedFontSettings : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSUnembeddedFontSettings
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSUnembeddedFontSettings *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSUnembeddedFontSettings other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)setUnembeddedFontNameArray:(NSArray<NSString *> *)font_name_array;
+		[Export ("setUnembeddedFontNameArray:")]
+		void SetUnembeddedFontNameArray (string[] font_name_array);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSOptimizerSettings : FSBase
 	[BaseType (typeof(FSBase))]
 	interface FSOptimizerSettings
@@ -2709,6 +2839,10 @@ namespace Foxit.iOS
 		[Export ("setMonoImageSettings:")]
 		void SetMonoImageSettings (FSMonoImageSettings settings);
 
+		// -(void)setUnembeddedFontSettings:(FSUnembeddedFontSettings *)settings;
+		[Export ("setUnembeddedFontSettings:")]
+		void SetUnembeddedFontSettings (FSUnembeddedFontSettings settings);
+
 		// -(void)setCleanUpOptions:(unsigned int)clean_up_options;
 		[Export ("setCleanUpOptions:")]
 		void SetCleanUpOptions (uint clean_up_options);
@@ -2716,6 +2850,10 @@ namespace Foxit.iOS
 		// -(void)setDiscardObjectsOptions:(unsigned int)discard_objects_options;
 		[Export ("setDiscardObjectsOptions:")]
 		void SetDiscardObjectsOptions (uint discard_objects_options);
+
+		// -(void)setDiscardUserDataOptions:(unsigned int)discard_userdata_options;
+		[Export ("setDiscardUserDataOptions:")]
+		void SetDiscardUserDataOptions (uint discard_userdata_options);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -4899,6 +5037,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSPDFDictionary Dict { get; }
 
+		// -(BOOL)hasProperty:(FSAnnotProperty)property;
+		[Export ("hasProperty:")]
+		bool HasProperty (FSAnnotProperty property);
+
 		// -(BOOL)removeProperty:(FSAnnotProperty)property;
 		[Export ("removeProperty:")]
 		bool RemoveProperty (FSAnnotProperty property);
@@ -5550,6 +5692,11 @@ namespace Foxit.iOS
 		[Export ("enableCaption:")]
 		void EnableCaption (bool cap);
 
+		// -(NSString *)getMeasureRatioW;
+		[Export ("getMeasureRatioW")]
+		//[Verify (MethodToProperty)]
+		string MeasureRatioW { get; }
+
 		// -(void)setMeasureUnit:(FSMarkupMeasureType)measure_type unit:(NSString *)unit;
 		[Export ("setMeasureUnit:unit:")]
 		void SetMeasureUnit (FSMarkupMeasureType measure_type, string unit);
@@ -5557,6 +5704,10 @@ namespace Foxit.iOS
 		// -(NSString *)getMeasureUnit:(FSMarkupMeasureType)measure_type;
 		[Export ("getMeasureUnit:")]
 		string GetMeasureUnit (FSMarkupMeasureType measure_type);
+
+		// -(NSString *)getMeasureUnitW:(FSMarkupMeasureType)measure_type;
+		[Export ("getMeasureUnitW:")]
+		string GetMeasureUnitW (FSMarkupMeasureType measure_type);
 
 		// -(void)setMeasureConversionFactor:(FSMarkupMeasureType)measure_type factor:(float)factor;
 		[Export ("setMeasureConversionFactor:factor:")]
@@ -5718,6 +5869,11 @@ namespace Foxit.iOS
 		[Export ("initWithAnnot:")]
 		IntPtr Constructor (FSAnnot annot);
 
+		// -(NSString *)getMeasureRatioW;
+		[Export ("getMeasureRatioW")]
+		//[Verify (MethodToProperty)]
+		string MeasureRatioW { get; }
+
 		// -(void)setMeasureUnit:(FSMarkupMeasureType)measure_type unit:(NSString *)unit;
 		[Export ("setMeasureUnit:unit:")]
 		void SetMeasureUnit (FSMarkupMeasureType measure_type, string unit);
@@ -5725,6 +5881,10 @@ namespace Foxit.iOS
 		// -(NSString *)getMeasureUnit:(FSMarkupMeasureType)measure_type;
 		[Export ("getMeasureUnit:")]
 		string GetMeasureUnit (FSMarkupMeasureType measure_type);
+
+		// -(NSString *)getMeasureUnitW:(FSMarkupMeasureType)measure_type;
+		[Export ("getMeasureUnitW:")]
+		string GetMeasureUnitW (FSMarkupMeasureType measure_type);
 
 		// -(void)setMeasureConversionFactor:(FSMarkupMeasureType)measure_type factor:(float)factor;
 		[Export ("setMeasureConversionFactor:factor:")]
@@ -5776,6 +5936,11 @@ namespace Foxit.iOS
 		[Export ("initWithAnnot:")]
 		IntPtr Constructor (FSAnnot annot);
 
+		// -(NSString *)getMeasureRatioW;
+		[Export ("getMeasureRatioW")]
+		//[Verify (MethodToProperty)]
+		string MeasureRatioW { get; }
+
 		// -(void)setMeasureUnit:(FSMarkupMeasureType)measure_type unit:(NSString *)unit;
 		[Export ("setMeasureUnit:unit:")]
 		void SetMeasureUnit (FSMarkupMeasureType measure_type, string unit);
@@ -5783,6 +5948,10 @@ namespace Foxit.iOS
 		// -(NSString *)getMeasureUnit:(FSMarkupMeasureType)measure_type;
 		[Export ("getMeasureUnit:")]
 		string GetMeasureUnit (FSMarkupMeasureType measure_type);
+
+		// -(NSString *)getMeasureUnitW:(FSMarkupMeasureType)measure_type;
+		[Export ("getMeasureUnitW:")]
+		string GetMeasureUnitW (FSMarkupMeasureType measure_type);
 
 		// -(void)setMeasureConversionFactor:(FSMarkupMeasureType)measure_type factor:(float)factor;
 		[Export ("setMeasureConversionFactor:factor:")]
@@ -6724,6 +6893,36 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSEmbeddedFontData : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSEmbeddedFontData
+	{
+		// @property (getter = getNonstandard_font_name_array, nonatomic, weak) NSArray<NSString *> * nonstandard_font_name_array;
+		[Export ("nonstandard_font_name_array", ArgumentSemantic.Weak)]
+		string[] Nonstandard_font_name_array { [Bind ("getNonstandard_font_name_array")] get; set; }
+
+		// @property (getter = getStandard_font_name_array, nonatomic, weak) NSArray<NSString *> * standard_font_name_array;
+		[Export ("standard_font_name_array", ArgumentSemantic.Weak)]
+		string[] Standard_font_name_array { [Bind ("getStandard_font_name_array")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSEmbeddedFontData *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSEmbeddedFontData other);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSPDFDoc : FSBase
 	[BaseType (typeof(FSBase))]
 	interface FSPDFDoc
@@ -6888,6 +7087,11 @@ namespace Foxit.iOS
 		// -(BOOL)removeBookmark:(FSBookmark *)bookmark;
 		[Export ("removeBookmark:")]
 		bool RemoveBookmark (FSBookmark bookmark);
+
+		// -(BOOL)hasLayer;
+		[Export ("hasLayer")]
+		//[Verify (MethodToProperty)]
+		bool HasLayer { get; }
 
 		// -(BOOL)hasHeaderFooter;
 		[Export ("hasHeaderFooter")]
@@ -7142,6 +7346,11 @@ namespace Foxit.iOS
 		// -(FSPageBasicInfo *)getPageBasicInfo:(int)index;
 		[Export ("getPageBasicInfo:")]
 		FSPageBasicInfo GetPageBasicInfo (int index);
+
+		// -(FSEmbeddedFontData *)getEmbeddedFontData;
+		[Export ("getEmbeddedFontData")]
+		//[Verify (MethodToProperty)]
+		FSEmbeddedFontData EmbeddedFontData { get; }
 
 		// -(void)createDSS;
 		[Export ("createDSS")]
@@ -7754,6 +7963,42 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSColorState : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSColorState
+	{
+		// @property (getter = getFillColor, nonatomic, weak) FSColor * fillColor;
+		[Export ("fillColor", ArgumentSemantic.Weak)]
+		FSColor FillColor { [Bind ("getFillColor")] get; set; }
+
+		// @property (getter = getStrokeColor, nonatomic, weak) FSColor * strokeColor;
+		[Export ("strokeColor", ArgumentSemantic.Weak)]
+		FSColor StrokeColor { [Bind ("getStrokeColor")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSColorState *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSColorState other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSMarkedContent : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -7813,6 +8058,10 @@ namespace Foxit.iOS
 		// @property (getter = getFillColor, nonatomic) unsigned int fillColor;
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
+
+		// @property (getter = getColorState, nonatomic, weak) FSColorState * colorState;
+		[Export ("colorState", ArgumentSemantic.Weak)]
+		FSColorState ColorState { [Bind ("getColorState")] get; set; }
 
 		// @property (getter = getFillOpacity, nonatomic) float fillOpacity;
 		[Export ("fillOpacity")]
@@ -8050,10 +8299,10 @@ namespace Foxit.iOS
 		[Export ("cloneBitmap:")]
 		FSBitmap CloneBitmap (FSGraphicsObjects graphics_objects);
 
-		// -(FSImageObjectColorSpace)getColorSpace;
+		// -(FSColorSpaceType)getColorSpace;
 		[Export ("getColorSpace")]
 		//[Verify (MethodToProperty)]
-		FSImageObjectColorSpace ColorSpace { get; }
+		FSColorSpaceType ColorSpace { get; }
 
 		// -(FSPDFStream *)getStream;
 		[Export ("getStream")]
@@ -8286,6 +8535,15 @@ namespace Foxit.iOS
 		// -(BOOL)removeGraphicsObjectByPosition:(SWIGTYPE_p_void *)position;
 		[Export ("removeGraphicsObjectByPosition:")]
 		bool RemoveGraphicsObjectByPosition (SWIGTYPE_p_void position);
+
+		// -(int)getGraphicsObjectCount;
+		[Export ("getGraphicsObjectCount")]
+		//[Verify (MethodToProperty)]
+		int GraphicsObjectCount { get; }
+
+		// -(int)getGraphicsObjectIndex:(FSGraphicsObject *)graphics_object;
+		[Export ("getGraphicsObjectIndex:")]
+		int GetGraphicsObjectIndex (FSGraphicsObject graphics_object);
 
 		// -(BOOL)generateContent;
 		[Export ("generateContent")]
@@ -12038,6 +12296,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("isCertTrusted:")]
 		bool IsCertTrusted (NSData cert);
+
+		// @required -(BOOL)isCertTrustedRoot:(NSData *)cert;
+		[Abstract]
+		[Export ("isCertTrustedRoot:")]
+		bool IsCertTrustedRoot (NSData cert);
 	}
 
 	// @protocol FSFontMapperCallback <NSObject>

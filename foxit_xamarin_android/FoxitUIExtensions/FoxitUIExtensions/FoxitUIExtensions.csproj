@@ -64,6 +64,10 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Cropper\Cropper\Cropper.csproj">
+      <Project>{56ca4dbd-6301-40e4-b60a-55522674a0c0}</Project>
+      <Name>Cropper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FoxitRDK\FoxitRDK\FoxitRDK.csproj">
       <Project>{c3f70847-6341-4bef-8c9b-224ff64065ae}</Project>
       <Name>FoxitRDK</Name>

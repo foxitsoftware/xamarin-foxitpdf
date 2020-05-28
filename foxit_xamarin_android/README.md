@@ -31,7 +31,7 @@ you much time.
   - In the Solution Explorer, right-click the References node of your project, and click `Manage NuGet Packages…`
  
     ![screenshot1](./Screenshot/screenshot1.jpg)
-  -  Then select the Browse tab, search for `Foxit.Android`, Foxit.Android.UIExtensions` and install them.  
+  -  Then select the Browse tab, search for `Foxit.Android`, `Foxit.Android.UIExtensions` and install them.  
   
      ![screenshot2](./Screenshot/screenshot2.jpg)
    -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.  

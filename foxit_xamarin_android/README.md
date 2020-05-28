@@ -140,10 +140,10 @@ click Add:
 **This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
 step-by-step instructions provided.**
 
-- [Create a new Xamarin Android project](#Create-a-new-Xamarin-Android-project)
-- [Integrate Foxit PDF SDK into the project](#Integrate-Foxit-PDF-SDK-into-the-project)
-- [Initialize Foxit PDF SDK Library](#Initialize-Foxit-PDF-SDK-Library)
-- [Display a PDF document using PDFViewCtrl](#Display-a-PDF-document-using-PDFViewCtrl)
+- [Create a new Xamarin Android project](#1-Create-a-new-Xamarin-Android-project)
+- [Integrate Foxit PDF SDK into the project](#2-Integrate-Foxit-PDF-SDK-into-the-project)
+- [Initialize Foxit PDF SDK Library](#3-Initialize-Foxit-PDF-SDK-Library)
+- [Display a PDF document using PDFViewCtrl](#4-Display-a-PDF-document-using-PDFViewCtrl)
 
 #### 1. Create a new Xamarin Android project
 Open Visual Studio 2019, choose `File -> New -> Project… `  to start the New Project. Let's take `TestXamarin` as an example .Create a new Xamarin Android project called `TestXamarin` ,Then click OK:  

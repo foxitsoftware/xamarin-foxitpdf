@@ -23,7 +23,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 - [Install By NuGet](#Install-By-NuGet)
 - [Integrate manually by building and referencing DLLs](#Integrate-manually-by-building-and-referencing-DLLs)
 
-  #### Install By NuGet
+  #### ***Install By NuGet***
   It is now possible to integrate Foxit PDF SDK into your Xamarin project through NuGet packages, which is much easier than the second way [Integrate manually by building and referencing DLLs](#Integrate-manually-by-building-and-referencing-DLLs) , and can save
 you much time.  
   
@@ -36,7 +36,12 @@ you much time.
      ![screenshot2](./Screenshot/screenshot2.jpg)
    -  Get key. If you do not already have a valid Foxit license key, please download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/) to get the key.  
    
-  #### Integrate manually by building and referencing DLLs
+   After finishing the above steps, the References of your project will look like:  
+   ![screenshot3](./Screenshot/screenshot3.jpg)  
+   
+   ***
+   
+  #### ***Integrate manually by building and referencing DLLs***
   To integrate manually, you should first build DLLs, and then add it as a reference to your project.  
   - Download or Clone [Foxit PDF SDK for Android](https://github.com/foxitsoftware/xamarin-foxitpdf/tree/master/foxit_xamarin_android),  then copy the following files (libraries
 and licenses) in the `libs` folder of the extracted package to `foxit_xamarin_android\libs`

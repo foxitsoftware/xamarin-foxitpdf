@@ -1,157 +1,112 @@
 {
-  "images": [
+  "images" : [
     {
-      "idiom": "iphone",
-      "size": "29x29",
-      "scale": "1x"
+      "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "2x"
     },
     {
-      "idiom": "iphone",
-      "size": "29x29",
-      "scale": "2x"
+      "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "3x"
     },
     {
-      "idiom": "iphone",
-      "size": "29x29",
-      "scale": "3x"
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "foxit-complete-pdf-viewer-58x58.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "iphone",
-      "size": "40x40",
-      "scale": "2x"
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "foxit-complete-pdf-viewer-87x87.jpg",
+      "scale" : "3x"
     },
     {
-      "idiom": "iphone",
-      "size": "40x40",
-      "scale": "3x"
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "foxit-complete-pdf-viewer-80x80.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "iphone",
-      "size": "57x57",
-      "scale": "1x"
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "foxit-complete-pdf-viewer-120x120.jpg",
+      "scale" : "3x"
     },
     {
-      "idiom": "iphone",
-      "size": "57x57",
-      "scale": "2x"
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "foxit-complete-pdf-viewer-120x120-1.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "iphone",
-      "size": "60x60",
-      "scale": "2x"
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "foxit-complete-pdf-viewer-180x180.jpg",
+      "scale" : "3x"
     },
     {
-      "idiom": "iphone",
-      "size": "60x60",
-      "scale": "3x"
+      "idiom" : "ipad",
+      "size" : "20x20",
+      "scale" : "1x"
     },
     {
-      "idiom": "ipad",
-      "size": "29x29",
-      "scale": "1x"
+      "idiom" : "ipad",
+      "size" : "20x20",
+      "scale" : "2x"
     },
     {
-      "idiom": "ipad",
-      "size": "29x29",
-      "scale": "2x"
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-29x29.jpg",
+      "scale" : "1x"
     },
     {
-      "idiom": "ipad",
-      "size": "40x40",
-      "scale": "1x"
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-58x58-1.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "ipad",
-      "size": "40x40",
-      "scale": "2x"
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-40x40.jpg",
+      "scale" : "1x"
     },
     {
-      "idiom": "ipad",
-      "size": "50x50",
-      "scale": "1x"
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-80x80-1.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "ipad",
-      "size": "50x50",
-      "scale": "2x"
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-76x76.jpg",
+      "scale" : "1x"
     },
     {
-      "idiom": "ipad",
-      "size": "72x72",
-      "scale": "1x"
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-152x152.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "ipad",
-      "size": "72x72",
-      "scale": "2x"
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "foxit-complete-pdf-viewer-167x167.jpg",
+      "scale" : "2x"
     },
     {
-      "idiom": "ipad",
-      "size": "76x76",
-      "scale": "1x"
-    },
-    {
-      "idiom": "ipad",
-      "size": "76x76",
-      "scale": "2x"
-    },
-    {
-      "size": "24x24",
-      "idiom": "watch",
-      "scale": "2x",
-      "role": "notificationCenter",
-      "subtype": "38mm"
-    },
-    {
-      "size": "27.5x27.5",
-      "idiom": "watch",
-      "scale": "2x",
-      "role": "notificationCenter",
-      "subtype": "42mm"
-    },
-    {
-      "size": "29x29",
-      "idiom": "watch",
-      "role": "companionSettings",
-      "scale": "2x"
-    },
-    {
-      "size": "29x29",
-      "idiom": "watch",
-      "role": "companionSettings",
-      "scale": "3x"
-    },
-    {
-      "size": "40x40",
-      "idiom": "watch",
-      "scale": "2x",
-      "role": "appLauncher",
-      "subtype": "38mm"
-    },
-    {
-      "size": "44x44",
-      "idiom": "watch",
-      "scale": "2x",
-      "role": "longLook",
-      "subtype": "42mm"
-    },
-    {
-      "size": "86x86",
-      "idiom": "watch",
-      "scale": "2x",
-      "role": "quickLook",
-      "subtype": "38mm"
-    },
-    {
-      "size": "98x98",
-      "idiom": "watch",
-      "scale": "2x",
-      "role": "quickLook",
-      "subtype": "42mm"
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "1024.jpg",
+      "scale" : "1x"
     }
   ],
-  "info": {
-    "version": 1,
-    "author": "xcode"
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
   }
 }

@@ -346,9 +346,6 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 
 ![screenshot13](./Screenshot/screenshot13.jpg) 
 
-## More
-For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)  
-
 
 ## How to run the complete_pdf_viewer 
 
@@ -359,6 +356,9 @@ For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\d
 
 2: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.  
 
+
+## More
+For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)  
 
   
 ## License

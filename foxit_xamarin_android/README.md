@@ -281,9 +281,7 @@ that is less than 23, such as 21
            // The value of "sn" can be found in the "rdk_sn.txt".
            // The value of "key" can be found in the "rdk_key.txt".
             private String sn = "xxx";
-            private String key = "xxx";Foxit PDF SDK for Android
-            Developer Guide
-            147
+            private String key = "xxx";
             private String path = "/mnt/sdcard/complete_pdf_viewer_guide_android.pdf";
             private PDFViewCtrl pdfViewCtrl;
             protected override void OnCreate(Bundle savedInstanceState)

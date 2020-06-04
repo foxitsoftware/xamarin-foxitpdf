@@ -5,6 +5,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 - [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
 - [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [How to run the complete_pdf_viewer](#How-to-run-the-complete_pdf_viewer)
+- [Issues](#Issues)
 - [More](#More)
 - [License](#License)
 
@@ -330,9 +331,9 @@ that is less than 23, such as 21
     }
 ```
 **3) Enable Multi-Dex. If you don't, you may encounter the problem "error MSB6006: "java.exe" exited with code 2.**  
-Right-click the TestXamarin project, choose Properties, check Enable Multi-Dex under Android Options -> Packaging properties:  
+Right-click the `Properties` node of TestXamarin project, find `Android Options` then check `Enable Multi-Dex` and set `Dex compiler` to d8:  
 
-![screenshot12](./Screenshot/screenshot12.jpg)  
+![screenshot16](./Screenshot/screenshot16.jpg)  
 
 In this chapter, we build and run the project on an AVD targeting 9.0 (API 28), and use the second
 method (require authorization of runtime permissions) to get the permissions to write and read the SD
@@ -354,6 +355,19 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 
 2: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.  
 
+## Issues
+
+#### 1: java.lang.OutOfMemoryError. Consider increasing the value of $(JavaMaximumHeapSize)
+
+Solution：Right-click the `Properties` node of your project, and open it. Find `Android Options` and click `Advanced` button find `Java Max Heap Size` set it to 2G. As show below:  
+
+![screenshot15](./Screenshot/screenshot15.jpg)  
+
+#### 2: invalid opcode ba - invokedynamic requires --min-sdk-version >= 26 (currently 13), Cannot fit requested classes in a single dex file (# methods: 87605 > 65536)  
+
+Solution：Right-click the `Properties` node of your project, and open it. Find `Android Options` and check `Enable Multi-Dex` and set `Dex compiler` to d8. As show below:  
+
+![screenshot16](./Screenshot/screenshot16.jpg)  
 
 ## More
 For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)  

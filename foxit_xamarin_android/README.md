@@ -93,7 +93,7 @@ directory:
       
        Compilation steps:  
        Step1: Load FoxitUIExtensions.sln in Visual Studio 2019 under `foxit_xamarin_android\FoxitUIExtensions` directory.  
-       Step2: Right-click FoxitRDK project, click Build/Rebuild to build the FoxitUIExtensions project.  
+       Step2: Right-click FoxitUIExtensions project, click Build/Rebuild to build the FoxitUIExtensions project.  
        Step3: If build is successful, the  
        `FoxitRDKUIExtensions.dll`  
        `RxAndroid.dll`  

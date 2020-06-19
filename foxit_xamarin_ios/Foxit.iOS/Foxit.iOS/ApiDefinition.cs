@@ -1488,6 +1488,14 @@ namespace Foxit.iOS
 		[Export ("convertColor:")]
 		FSColor ConvertColor (FSColor color);
 
+		// -(FSColor *)convertColorRGB:(int)r_value g_value:(int)g_value b_value:(int)b_value;
+		[Export ("convertColorRGB:g_value:b_value:")]
+		FSColor ConvertColorRGB (int r_value, int g_value, int b_value);
+
+		// -(FSColor *)convertColorCMYK:(int)c_value m_value:(int)m_value y_value:(int)y_value k_value:(int)k_value;
+		[Export ("convertColorCMYK:m_value:y_value:k_value:")]
+		FSColor ConvertColorCMYK (int c_value, int m_value, int y_value, int k_value);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -1509,6 +1517,10 @@ namespace Foxit.iOS
 		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithColor_space:(FSColorSpace *)color_space;
+		[Export ("initWithColor_space:")]
+		IntPtr Constructor (FSColorSpace color_space);
 
 		// -(id)initWithOther:(FSColor *)other;
 		[Export ("initWithOther:")]
@@ -7791,6 +7803,11 @@ namespace Foxit.iOS
 		[Export ("removeUsage:")]
 		bool RemoveUsage (FSLayerContextUsageType usage_type);
 
+		// -(FSPDFDictionary *)getDict;
+		[Export ("getDict")]
+		//[Verify (MethodToProperty)]
+		FSPDFDictionary Dict { get; }
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -8544,6 +8561,10 @@ namespace Foxit.iOS
 		// -(int)getGraphicsObjectIndex:(FSGraphicsObject *)graphics_object;
 		[Export ("getGraphicsObjectIndex:")]
 		int GetGraphicsObjectIndex (FSGraphicsObject graphics_object);
+
+		// -(FSGraphicsObject *)getGraphicsObjectWithIndex:(int)index;
+		[Export ("getGraphicsObjectWithIndex:")]
+		FSGraphicsObject GetGraphicsObjectWithIndex (int index);
 
 		// -(BOOL)generateContent;
 		[Export ("generateContent")]
@@ -10835,6 +10856,10 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSSignature
 	{
+		// @property (getter = getDocPermission, nonatomic) FSSignatureDocPermission docPermission;
+		[Export ("docPermission", ArgumentSemantic.Assign)]
+		FSSignatureDocPermission DocPermission { [Bind ("getDocPermission")] get; set; }
+
 		// @property (getter = getAppearanceFlags, nonatomic) unsigned int appearanceFlags;
 		[Export ("appearanceFlags")]
 		uint AppearanceFlags { [Bind ("getAppearanceFlags")] get; set; }
@@ -10881,6 +10906,20 @@ namespace Foxit.iOS
 		[Export ("isSigned")]
 		//[Verify (MethodToProperty)]
 		bool IsSigned { get; }
+
+		// -(void)setFieldMDPActionFields:(FSSignatureFieldMDPAction)action field_array:(NSArray<NSString *> *)field_array;
+		[Export ("setFieldMDPActionFields:field_array:")]
+		void SetFieldMDPActionFields (FSSignatureFieldMDPAction action, string[] field_array);
+
+		// -(FSSignatureFieldMDPAction)getFieldMDPAction;
+		[Export ("getFieldMDPAction")]
+		//[Verify (MethodToProperty)]
+		FSSignatureFieldMDPAction FieldMDPAction { get; }
+
+		// -(NSArray<NSString *> *)getFieldMDPActionFields;
+		[Export ("getFieldMDPActionFields")]
+		//[Verify (MethodToProperty)]
+		string[] FieldMDPActionFields { get; }
 
 		// -(FSProgressive *)startSign:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSign:cert_password:digest_algorithm:save_path:client_data:pause:")]

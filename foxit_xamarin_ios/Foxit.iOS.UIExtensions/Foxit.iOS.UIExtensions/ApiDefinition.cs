@@ -909,9 +909,9 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("isMultiFileMode")]
 		bool IsMultiFileMode { get; set; }
 
-		// @property (assign, nonatomic, setter = autoSaveDoc:) BOOL isAutoSaveDoc;
+		// @property (assign, nonatomic, setter = setAutoSaveDoc:) BOOL isAutoSaveDoc;
 		[Export ("isAutoSaveDoc")]
-		bool IsAutoSaveDoc { get; [Bind ("autoSaveDoc:")] set; }
+		bool IsAutoSaveDoc { get; [Bind ("setAutoSaveDoc:")] set; }
 
 		// @property (assign, nonatomic) FSPDFDocSaveFlags docSaveFlag;
 		[Export ("docSaveFlag", ArgumentSemantic.Assign)]

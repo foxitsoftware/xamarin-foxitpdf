@@ -1901,6 +1901,24 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSSignatureDocPermission 
+	{
+		Unrestricted = 0,
+		NoChangesAllowed = 1,
+		FillingFormAndSigning = 2,
+		FillingFormSigningAndAnnotating = 3
+	}
+
+	//[Native]
+	public enum FSSignatureFieldMDPAction 
+	{
+		None = 0,
+		All = 1,
+		Include = 2,
+		Exclude = 3
+	}
+
+	//[Native]
 	public enum FSSignatureCallbackCertValidity 
 	{
 		Valid = 0,

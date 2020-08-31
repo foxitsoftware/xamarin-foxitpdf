@@ -821,6 +821,10 @@ namespace Foxit.iOS.UIExtensions
 	[BaseType (typeof(NSObject))]
 	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener, IUIToolbarDelegate
 	{
+		// @property (copy, nonatomic) NSString * _Nonnull annotAuthor;
+		[Export ("annotAuthor")]
+		string AnnotAuthor { get; set; }
+
 		// @property (readonly, nonatomic, strong) FSPDFViewCtrl * _Nonnull pdfViewCtrl;
 		[Export ("pdfViewCtrl", ArgumentSemantic.Strong)]
 		FSPDFViewCtrl PdfViewCtrl { get; }
@@ -841,6 +845,10 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("currentToolHandler", ArgumentSemantic.Strong)]
 		IToolHandler CurrentToolHandler { get; set; }
 
+		// @property (assign, nonatomic) BOOL canUpdateAnnotDefaultProperties;
+		[Export ("canUpdateAnnotDefaultProperties")]
+		bool CanUpdateAnnotDefaultProperties { get; set; }
+
 		// @property (nonatomic, strong) FSAnnot * _Nullable currentAnnot;
 		[NullAllowed, Export ("currentAnnot", ArgumentSemantic.Strong)]
 		FSAnnot CurrentAnnot { get; set; }
@@ -853,6 +861,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("enableHighlightLinks")]
 		bool EnableHighlightLinks { get; set; }
 
+		// @property (assign, nonatomic) BOOL enableHighlightForm;
+		[Export ("enableHighlightForm")]
+		bool EnableHighlightForm { get; set; }
+
 		// @property (nonatomic, strong) UIColor * _Nonnull linksHighlightColor;
 		[Export ("linksHighlightColor", ArgumentSemantic.Strong)]
 		UIColor LinksHighlightColor { get; set; }
@@ -860,6 +872,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) UIColor * _Nonnull selectionHighlightColor;
 		[Export ("selectionHighlightColor", ArgumentSemantic.Strong)]
 		UIColor SelectionHighlightColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull highlightFormColor;
+		[Export ("highlightFormColor", ArgumentSemantic.Strong)]
+		UIColor HighlightFormColor { get; set; }
 
 		// @property (copy, nonatomic) void (^ _Nullable)(void) goBack;
 		[NullAllowed, Export ("goBack", ArgumentSemantic.Copy)]

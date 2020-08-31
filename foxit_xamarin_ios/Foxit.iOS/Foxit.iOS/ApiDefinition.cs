@@ -1079,6 +1079,11 @@ namespace Foxit.iOS
 		[Export ("setFontMapperCallback:")]
 		bool SetFontMapperCallback (FSFontMapperCallback callback);
 
+		// +(void)setDefaultICCProfilesPath:(NSString *)icc_profile_folder_path;
+		[Static]
+		[Export ("setDefaultICCProfilesPath:")]
+		void SetDefaultICCProfilesPath (string icc_profile_folder_path);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -1319,6 +1324,10 @@ namespace Foxit.iOS
 		[Export ("getBaseFontName:")]
 		string GetBaseFontName (FSPDFDoc document);
 
+		// -(BOOL)isVertWriting:(FSPDFDoc *)document;
+		[Export ("isVertWriting:")]
+		bool IsVertWriting (FSPDFDoc document);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -1483,6 +1492,16 @@ namespace Foxit.iOS
 		[Export ("getColorSpaceType")]
 		//[Verify (MethodToProperty)]
 		FSColorSpaceType ColorSpaceType { get; }
+
+		// -(BOOL)isSpotColorSpace;
+		[Export ("isSpotColorSpace")]
+		//[Verify (MethodToProperty)]
+		bool IsSpotColorSpace { get; }
+
+		// -(NSArray<NSData *> *)getComponentNames;
+		[Export ("getComponentNames")]
+		//[Verify (MethodToProperty)]
+		NSData[] ComponentNames { get; }
 
 		// -(FSColor *)convertColor:(FSColor *)color;
 		[Export ("convertColor:")]
@@ -3277,6 +3296,15 @@ namespace Foxit.iOS
 		[Export ("cloneObject")]
 		//[Verify (MethodToProperty)]
 		FSPDFObject CloneObject { get; }
+
+		// -(FSPDFObject *)deepCloneObject;
+		[Export ("deepCloneObject")]
+		//[Verify (MethodToProperty)]
+		FSPDFObject DeepCloneObject { get; }
+
+		// -(BOOL)isIdentical:(FSPDFObject *)pdf_obj;
+		[Export ("isIdentical:")]
+		bool IsIdentical (FSPDFObject pdf_obj);
 
 		// -(FSPDFObjectType)getType;
 		[Export ("getType")]
@@ -5203,6 +5231,53 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSNoteArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSNoteArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSNoteArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSNoteArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSNote *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSNote GetAt (nuint index);
+
+		// -(void)add:(FSNote *)element;
+		[Export ("add:")]
+		void Add (FSNote element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSNote *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSNote element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSMarkup : FSAnnot
 	[BaseType (typeof(FSAnnot))]
 	interface FSMarkup
@@ -5287,17 +5362,13 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		bool Ungroup { get; }
 
-		// -(int)getStateAnnotCount:(FSMarkupStateModel)model;
-		[Export ("getStateAnnotCount:")]
-		int GetStateAnnotCount (FSMarkupStateModel model);
+		// -(FSNoteArray *)getStateAnnots:(FSMarkupStateModel)model;
+		[Export ("getStateAnnots:")]
+		FSNoteArray GetStateAnnots (FSMarkupStateModel model);
 
-		// -(FSNote *)getStateAnnot:(FSMarkupStateModel)model index:(int)index;
-		[Export ("getStateAnnot:index:")]
-		FSNote GetStateAnnot (FSMarkupStateModel model, int index);
-
-		// -(FSNote *)addStateAnnot:(FSMarkupStateModel)model state:(FSMarkupState)state;
-		[Export ("addStateAnnot:state:")]
-		FSNote AddStateAnnot (FSMarkupStateModel model, FSMarkupState state);
+		// -(FSNote *)addStateAnnot:(NSString *)title model:(FSMarkupStateModel)model state:(FSMarkupState)state;
+		[Export ("addStateAnnot:model:state:")]
+		FSNote AddStateAnnot (string title, FSMarkupStateModel model, FSMarkupState state);
 
 		// -(BOOL)removeAllStateAnnots;
 		[Export ("removeAllStateAnnots")]
@@ -7477,6 +7548,255 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSTextFillSignObjectData : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSTextFillSignObjectData
+	{
+		// @property (getter = getText_state, nonatomic, weak) FSTextState * text_state;
+		[Export ("text_state", ArgumentSemantic.Weak)]
+		FSTextState Text_state { [Bind ("getText_state")] get; set; }
+
+		// @property (getter = getText, nonatomic, weak) NSString * text;
+		[Export ("text", ArgumentSemantic.Weak)]
+		string Text { [Bind ("getText")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithText_state:(FSTextState *)text_state text:(NSString *)text;
+		[Export ("initWithText_state:text:")]
+		IntPtr Constructor (FSTextState text_state, string text);
+
+		// -(id)initWithText_data:(FSTextFillSignObjectData *)text_data;
+		[Export ("initWithText_data:")]
+		IntPtr Constructor (FSTextFillSignObjectData text_data);
+
+		// -(void)set:(FSTextState *)text_state text:(NSString *)text;
+		[Export ("set:text:")]
+		void Set (FSTextState text_state, string text);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSTextFillSignObjectDataArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSTextFillSignObjectDataArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSTextFillSignObjectDataArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSTextFillSignObjectDataArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSTextFillSignObjectData *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSTextFillSignObjectData GetAt (nuint index);
+
+		// -(void)add:(FSTextFillSignObjectData *)element;
+		[Export ("add:")]
+		void Add (FSTextFillSignObjectData element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSTextFillSignObjectData *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSTextFillSignObjectData element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSFillSign : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSFillSign
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithPage:(FSPDFPage *)page;
+		[Export ("initWithPage:")]
+		IntPtr Constructor (FSPDFPage page);
+
+		// -(id)initWithOther:(FSFillSign *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSFillSign other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(FSFillSignObject *)addObject:(FSFillSignFillSignObjectType)type point:(FSPointF *)point width:(float)width height:(float)height rotation:(FSRotation)rotation;
+		[Export ("addObject:point:width:height:rotation:")]
+		FSFillSignObject AddObject (FSFillSignFillSignObjectType type, FSPointF point, float width, float height, FSRotation rotation);
+
+		// -(FSFillSignObject *)addTextObject:(FSTextFillSignObjectDataArray *)text_data point:(FSPointF *)point width:(float)width height:(float)height rotation:(FSRotation)rotation is_comb_field_mode:(BOOL)is_comb_field_mode;
+		[Export ("addTextObject:point:width:height:rotation:is_comb_field_mode:")]
+		FSFillSignObject AddTextObject (FSTextFillSignObjectDataArray text_data, FSPointF point, float width, float height, FSRotation rotation, bool is_comb_field_mode);
+
+		// -(BOOL)removeObject:(FSFillSignObject *)fillsign_object;
+		[Export ("removeObject:")]
+		bool RemoveObject (FSFillSignObject fillsign_object);
+
+		// -(FSFillSignObject *)getObjectAtPoint:(FSPointF *)point;
+		[Export ("getObjectAtPoint:")]
+		FSFillSignObject GetObjectAtPoint (FSPointF point);
+
+		// -(FSFillSignObject *)getObjectAtDevicePoint:(FSPointF *)point matrix:(FSMatrix2D *)matrix;
+		[Export ("getObjectAtDevicePoint:matrix:")]
+		FSFillSignObject GetObjectAtDevicePoint (FSPointF point, FSMatrix2D matrix);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSFillSignObject : FSBase
+	[BaseType (typeof(FSBase))]
+	interface FSFillSignObject
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSFillSignObject *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSFillSignObject other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(FSFillSignFillSignObjectType)getType;
+		[Export ("getType")]
+		//[Verify (MethodToProperty)]
+		FSFillSignFillSignObjectType Type { get; }
+
+		// -(void)move:(FSPointF *)point width:(float)width height:(float)height rotation:(FSRotation)rotation;
+		[Export ("move:width:height:rotation:")]
+		void Move (FSPointF point, float width, float height, FSRotation rotation);
+
+		// -(FSRectF *)getRect;
+		[Export ("getRect")]
+		//[Verify (MethodToProperty)]
+		FSRectF Rect { get; }
+
+		// -(BOOL)generateContent;
+		[Export ("generateContent")]
+		//[Verify (MethodToProperty)]
+		bool GenerateContent { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSTextFillSignObject : FSFillSignObject
+	[BaseType (typeof(FSFillSignObject))]
+	[DisableDefaultCtor]
+	interface FSTextFillSignObject
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithFillsign_object:(FSFillSignObject *)fillsign_object;
+		[Export ("initWithFillsign_object:")]
+		IntPtr Constructor (FSFillSignObject fillsign_object);
+
+		// -(FSTextFillSignObjectDataArray *)getTextDataArray;
+		[Export ("getTextDataArray")]
+		//[Verify (MethodToProperty)]
+		FSTextFillSignObjectDataArray TextDataArray { get; }
+
+		// -(BOOL)isCombFieldMode;
+		[Export ("isCombFieldMode")]
+		//[Verify (MethodToProperty)]
+		bool IsCombFieldMode { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSSignatureFillSignObject : FSFillSignObject
+	[BaseType (typeof(FSFillSignObject))]
+	[DisableDefaultCtor]
+	interface FSSignatureFillSignObject
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithFillsign_object:(FSFillSignObject *)fillsign_object;
+		[Export ("initWithFillsign_object:")]
+		IntPtr Constructor (FSFillSignObject fillsign_object);
+
+		// -(BOOL)isInitialsType;
+		[Export ("isInitialsType")]
+		//[Verify (MethodToProperty)]
+		bool IsInitialsType { get; }
+
+		// -(void)setBitmap:(FSBitmap *)bitmap;
+		[Export ("setBitmap:")]
+		void SetBitmap (FSBitmap bitmap);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSLayerNodeArray : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSLayerNodeArray
@@ -7607,6 +7927,44 @@ namespace Foxit.iOS
 		[Export ("getOCGs")]
 		//[Verify (MethodToProperty)]
 		FSPDFArray OCGs { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSLayerPrintData : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSLayerPrintData
+	{
+		// @property (getter = getSubtype, nonatomic, weak) NSString * subtype;
+		[Export ("subtype", ArgumentSemantic.Weak)]
+		string Subtype { [Bind ("getSubtype")] get; set; }
+
+		// @property (getter = getPrint_state, nonatomic) FSLayerTreeUsageState print_state;
+		[Export ("print_state", ArgumentSemantic.Assign)]
+		FSLayerTreeUsageState Print_state { [Bind ("getPrint_state")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithSubtype:(NSString *)subtype print_state:(FSLayerTreeUsageState)print_state;
+		[Export ("initWithSubtype:print_state:")]
+		IntPtr Constructor (string subtype, FSLayerTreeUsageState print_state);
+
+		// -(id)initWithData:(FSLayerPrintData *)data;
+		[Export ("initWithData:")]
+		IntPtr Constructor (FSLayerPrintData data);
+
+		// -(void)set:(NSString *)subtype print_state:(FSLayerTreeUsageState)print_state;
+		[Export ("set:print_state:")]
+		void Set (string subtype, FSLayerTreeUsageState print_state);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -7807,44 +8165,6 @@ namespace Foxit.iOS
 		[Export ("getDict")]
 		//[Verify (MethodToProperty)]
 		FSPDFDictionary Dict { get; }
-
-		// -(void)dealloc;
-		[Export ("dealloc")]
-		void Dealloc ();
-	}
-
-	// @interface FSLayerPrintData : NSObject
-	[BaseType (typeof(NSObject))]
-	interface FSLayerPrintData
-	{
-		// @property (getter = getSubtype, nonatomic, weak) NSString * subtype;
-		[Export ("subtype", ArgumentSemantic.Weak)]
-		string Subtype { [Bind ("getSubtype")] get; set; }
-
-		// @property (getter = getPrint_state, nonatomic) FSLayerTreeUsageState print_state;
-		[Export ("print_state", ArgumentSemantic.Assign)]
-		FSLayerTreeUsageState Print_state { [Bind ("getPrint_state")] get; set; }
-
-		// -(void *)getCptr;
-		[Export ("getCptr")]
-		//[Verify (MethodToProperty)]
-		IntPtr Cptr { get; }
-
-		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
-		[Export ("initWithCptr:swigOwnCObject:")]
-		IntPtr Constructor (IntPtr cptr, bool ownCObject);
-
-		// -(id)initWithSubtype:(NSString *)subtype print_state:(FSLayerTreeUsageState)print_state;
-		[Export ("initWithSubtype:print_state:")]
-		IntPtr Constructor (string subtype, FSLayerTreeUsageState print_state);
-
-		// -(id)initWithData:(FSLayerPrintData *)data;
-		[Export ("initWithData:")]
-		IntPtr Constructor (FSLayerPrintData data);
-
-		// -(void)set:(NSString *)subtype print_state:(FSLayerTreeUsageState)print_state;
-		[Export ("set:print_state:")]
-		void Set (string subtype, FSLayerTreeUsageState print_state);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -8690,6 +9010,10 @@ namespace Foxit.iOS
 		[Export ("moveAnnotToNext:")]
 		void MoveAnnotToNext (FSAnnot annot);
 
+		// -(void)updateAnnotList;
+		[Export ("updateAnnotList")]
+		void UpdateAnnotList ();
+
 		// -(BOOL)hasTransparency;
 		[Export ("hasTransparency")]
 		//[Verify (MethodToProperty)]
@@ -8768,6 +9092,14 @@ namespace Foxit.iOS
 		// -(FSGraphicsObjectArray *)getGraphicsObjectsAtDevicePoint:(FSPointF *)point tolerance:(float)tolerance matrix:(FSMatrix2D *)matrix filter:(FSGraphicsObjectType)filter;
 		[Export ("getGraphicsObjectsAtDevicePoint:tolerance:matrix:filter:")]
 		FSGraphicsObjectArray GetGraphicsObjectsAtDevicePoint (FSPointF point, float tolerance, FSMatrix2D matrix, FSGraphicsObjectType filter);
+
+		// -(FSGraphicsObject *)getGraphicsObjectAtRectangle:(FSRectF *)rect filter:(FSGraphicsObjectType)filter;
+		[Export ("getGraphicsObjectAtRectangle:filter:")]
+		FSGraphicsObject GetGraphicsObjectAtRectangle (FSRectF rect, FSGraphicsObjectType filter);
+
+		// -(FSGraphicsObjectArray *)getGraphicsObjectsAtRectangle:(FSRectF *)rect filter:(FSGraphicsObjectType)filter;
+		[Export ("getGraphicsObjectsAtRectangle:filter:")]
+		FSGraphicsObjectArray GetGraphicsObjectsAtRectangle (FSRectF rect, FSGraphicsObjectType filter);
 
 		// -(BOOL)addImageFromFilePath:(NSString *)file_path position:(FSPointF *)position width:(float)width height:(float)height auto_generate_content:(BOOL)auto_generate_content;
 		[Export ("addImageFromFilePath:position:width:height:auto_generate_content:")]
@@ -9323,9 +9655,9 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithDocument:(FSPDFDoc *)document cancel:(id<FSSearchCancelCallback>)cancel;
-		[Export ("initWithDocument:cancel:")]
-		IntPtr Constructor (FSPDFDoc document, FSSearchCancelCallback cancel);
+		// -(id)initWithDocument:(FSPDFDoc *)document cancel:(id<FSSearchCancelCallback>)cancel flags:(int)flags;
+		[Export ("initWithDocument:cancel:flags:")]
+		IntPtr Constructor (FSPDFDoc document, FSSearchCancelCallback cancel, int flags);
 
 		// -(id)initWithXfa_document:(FSXFADoc *)xfa_document;
 		[Export ("initWithXfa_document:")]
@@ -9355,6 +9687,10 @@ namespace Foxit.iOS
 		// -(BOOL)setEndPage:(int)page_index;
 		[Export ("setEndPage:")]
 		bool SetEndPage (int page_index);
+
+		// -(BOOL)setStartCharacter:(int)char_index;
+		[Export ("setStartCharacter:")]
+		bool SetStartCharacter (int char_index);
 
 		// -(BOOL)setSearchFlags:(unsigned int)search_flags;
 		[Export ("setSearchFlags:")]
@@ -9967,9 +10303,9 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithIs_encrypt_metadata:(BOOL)is_encrypt_metadata publish_license:(NSString *)publish_license server_eul_list:(NSArray<NSData *> *)server_eul_list irm_version:(float)irm_version;
+		// -(id)initWithIs_encrypt_metadata:(BOOL)is_encrypt_metadata publish_license:(NSData *)publish_license server_eul_list:(NSArray<NSData *> *)server_eul_list irm_version:(float)irm_version;
 		[Export ("initWithIs_encrypt_metadata:publish_license:server_eul_list:irm_version:")]
-		IntPtr Constructor (bool is_encrypt_metadata, string publish_license, NSData[] server_eul_list, float irm_version);
+		IntPtr Constructor (bool is_encrypt_metadata, NSData publish_license, NSData[] server_eul_list, float irm_version);
 
 		// -(id)initWithOther:(FSRMSEncryptData *)other;
 		[Export ("initWithOther:")]

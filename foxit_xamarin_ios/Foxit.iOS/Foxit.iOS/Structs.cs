@@ -87,7 +87,8 @@ namespace Foxit.iOS
 		NoConversionModuleRight = 66,
 		OfficeComNotInit = 67,
 		NoMicroOfficeInstalled = 68,
-		ExcelHasNoContent = 69
+		ExcelHasNoContent = 69,
+		NoLayoutRecognitionModuleRight = 70
 	}
 
 	//[Native]
@@ -141,7 +142,8 @@ namespace Foxit.iOS
 		Comparison = 6,
 		Compliance = 7,
 		Optimizer = 8,
-		Conversion = 9
+		Conversion = 9,
+		LayoutRecognition = 10
 	}
 
 	//[Native]
@@ -491,7 +493,9 @@ namespace Foxit.iOS
 		ValidateNumberError = 99,
 		ScriptFailedError = 100,
 		ScriptInvalidValue = 101,
-		SubmitValidateNullError = 102
+		SubmitValidateNullError = 102,
+		InvalidBarcodeValue = 103,
+		ScriptArgumentMismatch = 104
 	}
 
 	//[Native]
@@ -746,7 +750,7 @@ namespace Foxit.iOS
 		Ccitt3 = 10001,
 		Ccitt4 = 10002,
 		High = 10003,
-		jpeg2 = 10004,
+		jbig2 = 10004,
 		Retain = 10007,
 		RunLength = 10008
 	}
@@ -1449,6 +1453,19 @@ namespace Foxit.iOS
 		None = 0,
 		Foxit = 1,
 		Pdfv2 = 2
+	}
+
+	//[Native]
+	public enum FSFillSignFillSignObjectType 
+	{
+		Text = 0,
+		CrossMark = 1,
+		CheckMark = 2,
+		RoundRectangle = 3,
+		Line = 4,
+		Dot = 5,
+		Signature = 6,
+		InitialsSignature = 7
 	}
 
 	//[Native]

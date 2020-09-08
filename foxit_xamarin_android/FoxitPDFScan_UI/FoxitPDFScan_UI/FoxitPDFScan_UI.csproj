@@ -62,10 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.AppCompat">
-      <Version>1.1.0</Version>
+      <Version>1.2.0.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.RecyclerView">
-      <Version>1.1.0</Version>
+      <Version>1.1.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

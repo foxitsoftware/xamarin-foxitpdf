@@ -135,7 +135,6 @@ click Add:
 `Xamarin.AndroidX.AppCompat`  
 `Xamarin.AndroidX.Legacy.Support.V4`  
 `Xamarin.AndroidX.Lifecycle.LiveData`  
-`Xamarin.AndroidX.RecyclerView`  
 `Xamarin.Android.Support.v7.AppCompat` (required for opening a RMS protected PDF file)  
 
   After finishing the above steps, the References of your project will look like:  

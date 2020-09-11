@@ -54,7 +54,6 @@ namespace Com.Foxit
 
         private void InitLibrary()
         {
-            Java.Lang.JavaSystem.LoadLibrary("rdk");
             var inputstream = mContext.Assets.Open("rdk_sn.txt");
             string sn = GetValueFromPropFile(inputstream, "SN");
 

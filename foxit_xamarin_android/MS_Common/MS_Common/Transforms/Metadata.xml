@@ -164,6 +164,9 @@ name="managedReturn">Java.Lang.Object</attr>
   <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSAEncrypter']"/>
   <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSASSASigner']"/>
   <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSASSAVerifier']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='EncryptionMethod.Family']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWEAlgorithm.Family']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWSAlgorithm.Family']"/>
   <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWEObject']"/>
   <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWSHeader']"/>
   <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWSObject']"/>

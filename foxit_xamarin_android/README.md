@@ -64,18 +64,9 @@ directory:
     > `RxAndroid.dll`  
     > `Cropper.dll`  
     
-    -  Get  
-      `FoxitRDK.dll`  
-      `Microsoft_Aad_Adal.dll`  
-      `MS_Common.dll` 
-      `RMSSDK.dll`  
-      `RMSSDK_UI.dll`  
-      `XCrash.dll`  
-      This is the heart of the SDK including the core functionalities of Foxit PDF SDK for Android.  
-      
         Compilation steps：  
-        Step1: Load `FoxitRDK.sln` in Visual Studio 2019 under the `foxit_xamarin_android\FoxitRDK` directory.  
-        Step2: Right-click FoxitRDK project, click Build/Rebuild to build the FoxitRDK project.  
+        Step1: Load `FoxitUIExtensions.sln` in Visual Studio 2019 under the `foxit_xamarin_android\FoxitUIExtensions` directory.  
+        Step2: Right-click FoxitUIExtensions project, click Build/Rebuild .  
         Step3: If build is successful, the  
         `FoxitRDK.dll`  
         `Microsoft_Aad_Adal.dll`  
@@ -83,23 +74,14 @@ directory:
         `RMSSDK.dll`  
         `RMSSDK_UI.dll`  
         `XCrash.dll`  
-        will be generated in `foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.
-
-    - Get  
-      `FoxitRDKUIExtensions.dll`  
-      `RxAndroid.dll`  
-      `Cropper.dll`  
-      which extends more powerful PDF related features including UI and resource files.
-      
-       Compilation steps:  
-       Step1: Load FoxitUIExtensions.sln in Visual Studio 2019 under `foxit_xamarin_android\FoxitUIExtensions` directory.  
-       Step2: Right-click FoxitUIExtensions project, click Build/Rebuild to build the FoxitUIExtensions project.  
-       Step3: If build is successful, the  
-       `FoxitRDKUIExtensions.dll`  
-       `RxAndroid.dll`  
-       `Cropper.dll`  
-       will be generated in `foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)`directory.  
-          
+        will be generated in `foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.  
+        
+        the  
+        `FoxitRDKUIExtensions.dll`  
+        `RxAndroid.dll`  
+        `Cropper.dll`  
+        will be generated in `foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)`directory. 
+ 
   -  Add the built DLLs as references to your project  
   This section takes `FoxitRDK.dll` as an example to show you how to add it as a reference to your project.
 For other DLLs, do the same steps with `FoxitRDK.dll`. We assume that you have got the `FoxitRDK.dll`, if

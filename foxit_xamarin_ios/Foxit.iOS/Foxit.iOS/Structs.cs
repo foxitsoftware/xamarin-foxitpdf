@@ -1469,6 +1469,42 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSOutputPreviewShowType 
+	{
+		All = 0,
+		DeviceCMYK = 1,
+		NotDeviceCMYK = 2,
+		ICCBasedCMYK = 3,
+		SpotColor = 4,
+		DeviceCMYKAndSpot = 5,
+		NotDeviceCMYKOrSpot = 6,
+		DeviceN = 7,
+		Cmyk = 8,
+		Rgb = 9,
+		DeviceRGB = 10,
+		ICCBasedRGB = 11,
+		Gray = 12,
+		DeviceGray = 13,
+		CalGray = 14,
+		Calibrated = 15,
+		Lab = 16,
+		Device = 17,
+		Images = 18,
+		SolidColor = 19,
+		SmoothShades = 20,
+		RegistrationColor = 21,
+		Text = 22,
+		LineArt = 23
+	}
+
+	//[Native]
+	public enum FSOutputPreviewColorantType 
+	{
+		Process = 0,
+		Spot = 1
+	}
+
+	//[Native]
 	public enum FSLayerTreeUsageState 
 	{
 		On = 0,

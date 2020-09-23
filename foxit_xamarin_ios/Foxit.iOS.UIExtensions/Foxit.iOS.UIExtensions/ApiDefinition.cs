@@ -1439,6 +1439,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("loadSignature")]
 		bool LoadSignature { get; set; }
 
+		// @property (assign, nonatomic) BOOL fillSign;
+		[Export ("fillSign")]
+		bool FillSign { get; set; }
+
 		// @property (assign, nonatomic) BOOL loadSearch;
 		[Export ("loadSearch")]
 		bool LoadSearch { get; set; }

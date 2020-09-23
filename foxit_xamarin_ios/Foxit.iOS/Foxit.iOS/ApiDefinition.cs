@@ -7797,6 +7797,62 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSOutputPreview : FSBase
+	[BaseType (typeof(FSBase))]
+	[DisableDefaultCtor]
+	interface FSOutputPreview
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithPdf_doc:(FSPDFDoc *)pdf_doc;
+		[Export ("initWithPdf_doc:")]
+		IntPtr Constructor (FSPDFDoc pdf_doc);
+
+		// -(id)initWithOther:(FSOutputPreview *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSOutputPreview other);
+
+		// -(BOOL)isEmpty;
+		[Export ("isEmpty")]
+		//[Verify (MethodToProperty)]
+		bool IsEmpty { get; }
+
+		// -(void)setSimulationProfile:(NSString *)icc_profile_path;
+		[Export ("setSimulationProfile:")]
+		void SetSimulationProfile (string icc_profile_path);
+
+		// -(void)setShowType:(FSOutputPreviewShowType)show_type;
+		[Export ("setShowType:")]
+		void SetShowType (FSOutputPreviewShowType show_type);
+
+		// -(NSArray<NSData *> *)getPlates:(FSOutputPreviewColorantType)colorant_type;
+		[Export ("getPlates:")]
+		NSData[] GetPlates (FSOutputPreviewColorantType colorant_type);
+
+		// -(void)setCheckStatus:(NSString *)plate_name to_check:(BOOL)to_check;
+		[Export ("setCheckStatus:to_check:")]
+		void SetCheckStatus (string plate_name, bool to_check);
+
+		// -(BOOL)isChecked:(NSString *)plate_name;
+		[Export ("isChecked:")]
+		bool IsChecked (string plate_name);
+
+		// -(FSBitmap *)generatePreviewBitmap:(FSPDFPage *)page matrix:(FSMatrix2D *)matrix renderer:(FSRenderer *)renderer;
+		[Export ("generatePreviewBitmap:matrix:renderer:")]
+		FSBitmap GeneratePreviewBitmap (FSPDFPage page, FSMatrix2D matrix, FSRenderer renderer);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSLayerNodeArray : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSLayerNodeArray
@@ -10303,9 +10359,9 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithIs_encrypt_metadata:(BOOL)is_encrypt_metadata publish_license:(NSData *)publish_license server_eul_list:(NSArray<NSData *> *)server_eul_list irm_version:(float)irm_version;
+		// -(id)initWithIs_encrypt_metadata:(BOOL)is_encrypt_metadata publish_license:(NSString *)publish_license server_eul_list:(NSArray<NSData *> *)server_eul_list irm_version:(float)irm_version;
 		[Export ("initWithIs_encrypt_metadata:publish_license:server_eul_list:irm_version:")]
-		IntPtr Constructor (bool is_encrypt_metadata, NSData publish_license, NSData[] server_eul_list, float irm_version);
+		IntPtr Constructor (bool is_encrypt_metadata, string publish_license, NSData[] server_eul_list, float irm_version);
 
 		// -(id)initWithOther:(FSRMSEncryptData *)other;
 		[Export ("initWithOther:")]
@@ -13510,8 +13566,7 @@ namespace Foxit.iOS
 
 		// -(void)setPageSpacing:(int)pageSpace;
 		[Export ("setPageSpacing:")]
-		void SetPageSpacing (int pageSpace);/*
-		
+		void SetPageSpacing (int pageSpace);
 
 		// -(void)setPageSpacing:(int)pageSpace direction:(FS_PAGESPACING_DIRECTION)direction;
 		[Export ("setPageSpacing:direction:")]
@@ -13520,7 +13575,8 @@ namespace Foxit.iOS
 		// +(void)setExceptionLogger:(id<FSExceptionLoggerDelegate> _Nullable)logger;
 		[Static]
 		[Export ("setExceptionLogger:")]
-		void SetExceptionLogger ([NullAllowed] FSExceptionLoggerDelegate logger);
+		void SetExceptionLogger ([NullAllowed] FSExceptionLoggerDelegate logger);/*
+		
 	}
 
 	// @interface xfa (FSPDFViewCtrl)

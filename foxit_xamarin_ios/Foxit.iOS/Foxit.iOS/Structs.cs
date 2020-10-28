@@ -1972,6 +1972,16 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSSignatureLabelName 
+	{
+		Signer = 0,
+		Location = 1,
+		Reason = 2,
+		SignTime = 3,
+		Dn = 4
+	}
+
+	//[Native]
 	public enum FSSignatureCallbackCertValidity 
 	{
 		Valid = 0,
@@ -2183,6 +2193,13 @@ namespace Foxit.iOS
     	/** @brief    Insert page music style. */
     	PDF_PAGE_STYLE_TYPE_MUSIC
     }
+    public enum FS_PAGESPACING_DIRECTION {
+    	/** @brief    PageSpcaing horizontal direction. */
+    	FS_PAGESPACING_HORIZONTAL = 0x0001,
+    	/** @brief    PageSpcaing vertical direction. */
+    	FS_PAGESPACING_VERTICAL = 0x0002,
+    }
+
     /**
     * @brief    Enumeration for certificate related error code.
     *
@@ -2194,5 +2211,7 @@ namespace Foxit.iOS
     	/** @brief    Invalid password. */
     	PDF_CERT_ERROR_PASSWORD
     }
+    
+
 
 }

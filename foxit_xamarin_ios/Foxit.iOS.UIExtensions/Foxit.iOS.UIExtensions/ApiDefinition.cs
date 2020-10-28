@@ -799,6 +799,16 @@ namespace Foxit.iOS.UIExtensions
 		bool LocationInfo (NSObject link, CGPoint pointParam);
 	}
 
+	// @protocol IDocModifiedEventListener <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IDocModifiedEventListener
+	{
+		// @optional -(void)onDocModified:(FSPDFDoc * _Nonnull)doc;
+		[Export ("onDocModified:")]
+		void OnDocModified (FSPDFDoc doc);
+	}
+
 	// @protocol UIExtensionsManagerDelegate <NSObject>
 	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
@@ -917,9 +927,9 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("preventOverrideFilePath", ArgumentSemantic.Strong)]
 		string PreventOverrideFilePath { get; set; }
 
-		// @property (assign, nonatomic) BOOL isDocModified;
+		// @property (assign, nonatomic, setter = setDocModified:) BOOL isDocModified;
 		[Export ("isDocModified")]
-		bool IsDocModified { get; set; }
+		bool IsDocModified { get; [Bind ("setDocModified:")] set; }
 
 		// @property (assign, nonatomic) BOOL isMultiFileMode;
 		[Export ("isMultiFileMode")]
@@ -940,6 +950,14 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) FSXFAWidget * _Nullable currentWidget;
 		[NullAllowed, Export ("currentWidget", ArgumentSemantic.Strong)]
 		FSXFAWidget CurrentWidget { get; set; }
+
+		// @property (assign, nonatomic, setter = setAutoSaveSignedDoc:) BOOL isAutoSaveSignedDoc;
+		[Export ("isAutoSaveSignedDoc")]
+		bool IsAutoSaveSignedDoc { get; [Bind ("setAutoSaveSignedDoc:")] set; }
+
+		// @property (nonatomic, strong) NSString * _Nonnull signedDocSavePath;
+		[Export ("signedDocSavePath", ArgumentSemantic.Strong)]
+		string SignedDocSavePath { get; set; }
 
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]
@@ -1024,6 +1042,14 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)unregisterToolEventListener:(id<IToolEventListener> _Nonnull)listener;
 		[Export ("unregisterToolEventListener:")]
 		void UnregisterToolEventListener (IToolEventListener listener);
+
+		// -(void)registerDocModifiedEventListener:(id<IDocModifiedEventListener> _Nonnull)listener;
+		[Export ("registerDocModifiedEventListener:")]
+		void RegisterDocModifiedEventListener (IDocModifiedEventListener listener);
+
+		// -(void)unregisterDocModifiedEventListener:(id<IDocModifiedEventListener> _Nonnull)listener;
+		[Export ("unregisterDocModifiedEventListener:")]
+		void UnregisterDocModifiedEventListener (IDocModifiedEventListener listener);
 
 		// -(void)registerLinkEventListener:(id<ILinkEventListener> _Nonnull)listener;
 		[Export ("registerLinkEventListener:")]

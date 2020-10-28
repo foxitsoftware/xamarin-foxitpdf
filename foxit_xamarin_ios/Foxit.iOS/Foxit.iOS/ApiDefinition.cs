@@ -1113,8 +1113,8 @@ namespace Foxit.iOS
 		[Export ("dash_phase")]
 		float Dash_phase { [Bind ("getDash_phase")] get; set; }
 
-		// @property (getter = getDashes, nonatomic, weak) FSFloatArray * dashes;
-		[Export ("dashes", ArgumentSemantic.Weak)]
+		// @property (getter = getDashes, copy, nonatomic) FSFloatArray * dashes;
+		[Export ("dashes", ArgumentSemantic.Copy)]
 		FSFloatArray Dashes { [Bind ("getDashes")] get; set; }
 
 		// -(void *)getCptr;
@@ -1524,8 +1524,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSBase))]
 	interface FSColor
 	{
-		// @property (getter = getValue, nonatomic, weak) FSFloatArray * value;
-		[Export ("value", ArgumentSemantic.Weak)]
+		// @property (getter = getValue, copy, nonatomic) FSFloatArray * value;
+		[Export ("value", ArgumentSemantic.Copy)]
 		FSFloatArray Value { [Bind ("getValue")] get; set; }
 
 		// -(void *)getCptr;
@@ -1970,8 +1970,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(NSObject))]
 	interface FSWidgetChoiceOption
 	{
-		// @property (getter = getOption_label, nonatomic, weak) NSString * option_label;
-		[Export ("option_label", ArgumentSemantic.Weak)]
+		// @property (getter = getOption_label, copy, nonatomic) NSString * option_label;
+		[Export ("option_label")]
 		string Option_label { [Bind ("getOption_label")] get; set; }
 
 		// @property (getter = getSelected, nonatomic) BOOL selected;
@@ -2236,8 +2236,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSXFAWidget
 	{
-		// @property (getter = getValue, nonatomic, weak) NSString * value;
-		[Export ("value", ArgumentSemantic.Weak)]
+		// @property (getter = getValue, copy, nonatomic) NSString * value;
+		[Export ("value")]
 		string Value { [Bind ("getValue")] get; set; }
 
 		// -(void *)getCptr;
@@ -2535,12 +2535,12 @@ namespace Foxit.iOS
 		[Export ("type", ArgumentSemantic.Assign)]
 		FSCompareResultInfoCompareResultType Type { [Bind ("getType")] get; set; }
 
-		// @property (getter = getRect_array, nonatomic, weak) FSRectFArray * rect_array;
-		[Export ("rect_array", ArgumentSemantic.Weak)]
+		// @property (getter = getRect_array, copy, nonatomic) FSRectFArray * rect_array;
+		[Export ("rect_array", ArgumentSemantic.Copy)]
 		FSRectFArray Rect_array { [Bind ("getRect_array")] get; set; }
 
-		// @property (getter = getDiff_contents, nonatomic, weak) NSString * diff_contents;
-		[Export ("diff_contents", ArgumentSemantic.Weak)]
+		// @property (getter = getDiff_contents, copy, nonatomic) NSString * diff_contents;
+		[Export ("diff_contents")]
 		string Diff_contents { [Bind ("getDiff_contents")] get; set; }
 
 		// -(void *)getCptr;
@@ -2617,12 +2617,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSCompareResults
 	{
-		// @property (getter = getBase_doc_results, nonatomic, weak) FSCompareResultInfoArray * base_doc_results;
-		[Export ("base_doc_results", ArgumentSemantic.Weak)]
+		// @property (getter = getBase_doc_results, copy, nonatomic) FSCompareResultInfoArray * base_doc_results;
+		[Export ("base_doc_results", ArgumentSemantic.Copy)]
 		FSCompareResultInfoArray Base_doc_results { [Bind ("getBase_doc_results")] get; set; }
 
-		// @property (getter = getCompared_doc_results, nonatomic, weak) FSCompareResultInfoArray * compared_doc_results;
-		[Export ("compared_doc_results", ArgumentSemantic.Weak)]
+		// @property (getter = getCompared_doc_results, copy, nonatomic) FSCompareResultInfoArray * compared_doc_results;
+		[Export ("compared_doc_results", ArgumentSemantic.Copy)]
 		FSCompareResultInfoArray Compared_doc_results { [Bind ("getCompared_doc_results")] get; set; }
 
 		// -(void *)getCptr;
@@ -2971,8 +2971,8 @@ namespace Foxit.iOS
 		[Export ("level")]
 		int Level { [Bind ("getLevel")] get; set; }
 
-		// @property (getter = getName, nonatomic, weak) NSString * name;
-		[Export ("name", ArgumentSemantic.Weak)]
+		// @property (getter = getName, copy, nonatomic) NSString * name;
+		[Export ("name")]
 		string Name { [Bind ("getName")] get; set; }
 
 		// -(void *)getCptr;
@@ -3052,20 +3052,20 @@ namespace Foxit.iOS
 	[BaseType (typeof(NSObject))]
 	interface FSIdentityProperties
 	{
-		// @property (getter = getCorporation, nonatomic, weak) NSString * corporation;
-		[Export ("corporation", ArgumentSemantic.Weak)]
+		// @property (getter = getCorporation, copy, nonatomic) NSString * corporation;
+		[Export ("corporation")]
 		string Corporation { [Bind ("getCorporation")] get; set; }
 
-		// @property (getter = getEmail, nonatomic, weak) NSString * email;
-		[Export ("email", ArgumentSemantic.Weak)]
+		// @property (getter = getEmail, copy, nonatomic) NSString * email;
+		[Export ("email")]
 		string Email { [Bind ("getEmail")] get; set; }
 
-		// @property (getter = getLogin_name, nonatomic, weak) NSString * login_name;
-		[Export ("login_name", ArgumentSemantic.Weak)]
+		// @property (getter = getLogin_name, copy, nonatomic) NSString * login_name;
+		[Export ("login_name")]
 		string Login_name { [Bind ("getLogin_name")] get; set; }
 
-		// @property (getter = getName, nonatomic, weak) NSString * name;
-		[Export ("name", ArgumentSemantic.Weak)]
+		// @property (getter = getName, copy, nonatomic) NSString * name;
+		[Export ("name")]
 		string Name { [Bind ("getName")] get; set; }
 
 		// -(void *)getCptr;
@@ -3560,17 +3560,17 @@ namespace Foxit.iOS
 		[Export ("getElement:")]
 		FSPDFObject GetElement (string key);
 
-		// -(SWIGTYPE_p_void *)moveNext:(SWIGTYPE_p_void *)position;
+		// -(long)moveNext:(long)position;
 		[Export ("moveNext:")]
-		SWIGTYPE_p_void MoveNext (SWIGTYPE_p_void position);
+		nint MoveNext (nint position);
 
-		// -(NSString *)getKey:(SWIGTYPE_p_void *)position;
+		// -(NSString *)getKey:(long)position;
 		[Export ("getKey:")]
-		string GetKey (SWIGTYPE_p_void position);
+		string GetKey (nint position);
 
-		// -(FSPDFObject *)getValue:(SWIGTYPE_p_void *)position;
+		// -(FSPDFObject *)getValue:(long)position;
 		[Export ("getValue:")]
-		FSPDFObject GetValue (SWIGTYPE_p_void position);
+		FSPDFObject GetValue (nint position);
 
 		// -(void)setAt:(NSString *)key pdf_object:(FSPDFObject *)pdf_object;
 		[Export ("setAt:pdf_object:")]
@@ -3684,28 +3684,28 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSRendition
 	{
-		// @property (getter = getRenditionName, nonatomic, weak) NSString * renditionName;
-		[Export ("renditionName", ArgumentSemantic.Weak)]
+		// @property (getter = getRenditionName, copy, nonatomic) NSString * renditionName;
+		[Export ("renditionName")]
 		string RenditionName { [Bind ("getRenditionName")] get; set; }
 
-		// @property (getter = getMediaClipName, nonatomic, weak) NSString * mediaClipName;
-		[Export ("mediaClipName", ArgumentSemantic.Weak)]
+		// @property (getter = getMediaClipName, copy, nonatomic) NSString * mediaClipName;
+		[Export ("mediaClipName")]
 		string MediaClipName { [Bind ("getMediaClipName")] get; set; }
 
-		// @property (getter = getMediaClipFile, nonatomic, weak) FSFileSpec * mediaClipFile;
-		[Export ("mediaClipFile", ArgumentSemantic.Weak)]
+		// @property (getter = getMediaClipFile, copy, nonatomic) FSFileSpec * mediaClipFile;
+		[Export ("mediaClipFile", ArgumentSemantic.Copy)]
 		FSFileSpec MediaClipFile { [Bind ("getMediaClipFile")] get; set; }
 
-		// @property (getter = getMediaClipContentType, nonatomic, weak) NSString * mediaClipContentType;
-		[Export ("mediaClipContentType", ArgumentSemantic.Weak)]
+		// @property (getter = getMediaClipContentType, copy, nonatomic) NSString * mediaClipContentType;
+		[Export ("mediaClipContentType")]
 		string MediaClipContentType { [Bind ("getMediaClipContentType")] get; set; }
 
 		// @property (getter = getPermission, nonatomic) FSRenditionMediaPermission permission;
 		[Export ("permission", ArgumentSemantic.Assign)]
 		FSRenditionMediaPermission Permission { [Bind ("getPermission")] get; set; }
 
-		// @property (getter = getMediaDescriptions, nonatomic, weak) NSArray<NSString *> * mediaDescriptions;
-		[Export ("mediaDescriptions", ArgumentSemantic.Weak)]
+		// @property (getter = getMediaDescriptions, copy, nonatomic) NSArray<NSString *> * mediaDescriptions;
+		[Export ("mediaDescriptions", ArgumentSemantic.Copy)]
 		string[] MediaDescriptions { [Bind ("getMediaDescriptions")] get; set; }
 
 		// -(void *)getCptr;
@@ -3942,12 +3942,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSMediaPlayer
 	{
-		// @property (getter = getSoftwareURI, nonatomic, weak) NSString * softwareURI;
-		[Export ("softwareURI", ArgumentSemantic.Weak)]
+		// @property (getter = getSoftwareURI, copy, nonatomic) NSString * softwareURI;
+		[Export ("softwareURI")]
 		string SoftwareURI { [Bind ("getSoftwareURI")] get; set; }
 
-		// @property (getter = getOSIdentifiers, nonatomic, weak) NSArray<NSData *> * oSIdentifiers;
-		[Export ("oSIdentifiers", ArgumentSemantic.Weak)]
+		// @property (getter = getOSIdentifiers, copy, nonatomic) NSArray<NSData *> * oSIdentifiers;
+		[Export ("oSIdentifiers", ArgumentSemantic.Copy)]
 		NSData[] OSIdentifiers { [Bind ("getOSIdentifiers")] get; set; }
 
 		// -(void *)getCptr;
@@ -4189,8 +4189,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSGotoAction
 	{
-		// @property (getter = getDestination, nonatomic, weak) FSDestination * destination;
-		[Export ("destination", ArgumentSemantic.Weak)]
+		// @property (getter = getDestination, copy, nonatomic) FSDestination * destination;
+		[Export ("destination", ArgumentSemantic.Copy)]
 		FSDestination Destination { [Bind ("getDestination")] get; set; }
 
 		// -(void *)getCptr;
@@ -4216,8 +4216,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSURIAction
 	{
-		// @property (getter = getURI, nonatomic, weak) NSString * uRI;
-		[Export ("uRI", ArgumentSemantic.Weak)]
+		// @property (getter = getURI, copy, nonatomic) NSString * uRI;
+		[Export ("uRI")]
 		string URI { [Bind ("getURI")] get; set; }
 
 		// -(void *)getCptr;
@@ -4252,8 +4252,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSJavaScriptAction
 	{
-		// @property (getter = getScript, nonatomic, weak) NSString * script;
-		[Export ("script", ArgumentSemantic.Weak)]
+		// @property (getter = getScript, copy, nonatomic) NSString * script;
+		[Export ("script")]
 		string Script { [Bind ("getScript")] get; set; }
 
 		// -(void *)getCptr;
@@ -4279,8 +4279,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSNamedAction
 	{
-		// @property (getter = getName, nonatomic, weak) NSString * name;
-		[Export ("name", ArgumentSemantic.Weak)]
+		// @property (getter = getName, copy, nonatomic) NSString * name;
+		[Export ("name")]
 		string Name { [Bind ("getName")] get; set; }
 
 		// -(void *)getCptr;
@@ -4306,16 +4306,16 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSRemoteGotoAction
 	{
-		// @property (getter = getDestination, nonatomic, weak) FSDestination * destination;
-		[Export ("destination", ArgumentSemantic.Weak)]
+		// @property (getter = getDestination, copy, nonatomic) FSDestination * destination;
+		[Export ("destination", ArgumentSemantic.Copy)]
 		FSDestination Destination { [Bind ("getDestination")] get; set; }
 
-		// @property (getter = getDestinationName, nonatomic, weak) NSString * destinationName;
-		[Export ("destinationName", ArgumentSemantic.Weak)]
+		// @property (getter = getDestinationName, copy, nonatomic) NSString * destinationName;
+		[Export ("destinationName")]
 		string DestinationName { [Bind ("getDestinationName")] get; set; }
 
-		// @property (getter = getFileSpec, nonatomic, weak) FSFileSpec * fileSpec;
-		[Export ("fileSpec", ArgumentSemantic.Weak)]
+		// @property (getter = getFileSpec, copy, nonatomic) FSFileSpec * fileSpec;
+		[Export ("fileSpec", ArgumentSemantic.Copy)]
 		FSFileSpec FileSpec { [Bind ("getFileSpec")] get; set; }
 
 		// @property (getter = getNewWindowFlag, nonatomic) FSActionNewWindowFlag newWindowFlag;
@@ -4345,12 +4345,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSEmbeddedGotoTarget
 	{
-		// @property (getter = getRelationship, nonatomic, weak) NSString * relationship;
-		[Export ("relationship", ArgumentSemantic.Weak)]
+		// @property (getter = getRelationship, copy, nonatomic) NSString * relationship;
+		[Export ("relationship")]
 		string Relationship { [Bind ("getRelationship")] get; set; }
 
-		// @property (getter = getAttachedFileName, nonatomic, weak) NSString * attachedFileName;
-		[Export ("attachedFileName", ArgumentSemantic.Weak)]
+		// @property (getter = getAttachedFileName, copy, nonatomic) NSString * attachedFileName;
+		[Export ("attachedFileName")]
 		string AttachedFileName { [Bind ("getAttachedFileName")] get; set; }
 
 		// @property (getter = getPageIndex, nonatomic) int pageIndex;
@@ -4361,8 +4361,8 @@ namespace Foxit.iOS
 		[Export ("fileAttachmentAnnotIndex")]
 		int FileAttachmentAnnotIndex { [Bind ("getFileAttachmentAnnotIndex")] get; set; }
 
-		// @property (getter = getTarget, nonatomic, weak) FSEmbeddedGotoTarget * target;
-		[Export ("target", ArgumentSemantic.Weak)]
+		// @property (getter = getTarget, copy, nonatomic) FSEmbeddedGotoTarget * target;
+		[Export ("target", ArgumentSemantic.Copy)]
 		FSEmbeddedGotoTarget Target { [Bind ("getTarget")] get; set; }
 
 		// -(void *)getCptr;
@@ -4406,24 +4406,24 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSEmbeddedGotoAction
 	{
-		// @property (getter = getDestination, nonatomic, weak) FSDestination * destination;
-		[Export ("destination", ArgumentSemantic.Weak)]
+		// @property (getter = getDestination, copy, nonatomic) FSDestination * destination;
+		[Export ("destination", ArgumentSemantic.Copy)]
 		FSDestination Destination { [Bind ("getDestination")] get; set; }
 
-		// @property (getter = getDestinationName, nonatomic, weak) NSString * destinationName;
-		[Export ("destinationName", ArgumentSemantic.Weak)]
+		// @property (getter = getDestinationName, copy, nonatomic) NSString * destinationName;
+		[Export ("destinationName")]
 		string DestinationName { [Bind ("getDestinationName")] get; set; }
 
-		// @property (getter = getRootFile, nonatomic, weak) FSFileSpec * rootFile;
-		[Export ("rootFile", ArgumentSemantic.Weak)]
+		// @property (getter = getRootFile, copy, nonatomic) FSFileSpec * rootFile;
+		[Export ("rootFile", ArgumentSemantic.Copy)]
 		FSFileSpec RootFile { [Bind ("getRootFile")] get; set; }
 
 		// @property (getter = getNewWindowFlag, nonatomic) FSActionNewWindowFlag newWindowFlag;
 		[Export ("newWindowFlag", ArgumentSemantic.Assign)]
 		FSActionNewWindowFlag NewWindowFlag { [Bind ("getNewWindowFlag")] get; set; }
 
-		// @property (getter = getTarget, nonatomic, weak) FSEmbeddedGotoTarget * target;
-		[Export ("target", ArgumentSemantic.Weak)]
+		// @property (getter = getTarget, copy, nonatomic) FSEmbeddedGotoTarget * target;
+		[Export ("target", ArgumentSemantic.Copy)]
 		FSEmbeddedGotoTarget Target { [Bind ("getTarget")] get; set; }
 
 		// -(void *)getCptr;
@@ -4449,12 +4449,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSSubmitFormAction
 	{
-		// @property (getter = getURL, nonatomic, weak) NSString * uRL;
-		[Export ("uRL", ArgumentSemantic.Weak)]
+		// @property (getter = getURL, copy, nonatomic) NSString * uRL;
+		[Export ("uRL")]
 		string URL { [Bind ("getURL")] get; set; }
 
-		// @property (getter = getFieldNames, nonatomic, weak) NSArray<NSString *> * fieldNames;
-		[Export ("fieldNames", ArgumentSemantic.Weak)]
+		// @property (getter = getFieldNames, copy, nonatomic) NSArray<NSString *> * fieldNames;
+		[Export ("fieldNames", ArgumentSemantic.Copy)]
 		string[] FieldNames { [Bind ("getFieldNames")] get; set; }
 
 		// @property (getter = getFlags, nonatomic) unsigned int flags;
@@ -4484,8 +4484,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSResetFormAction
 	{
-		// @property (getter = getFieldNames, nonatomic, weak) NSArray<NSString *> * fieldNames;
-		[Export ("fieldNames", ArgumentSemantic.Weak)]
+		// @property (getter = getFieldNames, copy, nonatomic) NSArray<NSString *> * fieldNames;
+		[Export ("fieldNames", ArgumentSemantic.Copy)]
 		string[] FieldNames { [Bind ("getFieldNames")] get; set; }
 
 		// @property (getter = getFlags, nonatomic) unsigned int flags;
@@ -4515,8 +4515,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSImportDataAction
 	{
-		// @property (getter = getFDFFileSpec, nonatomic, weak) FSFileSpec * fDFFileSpec;
-		[Export ("fDFFileSpec", ArgumentSemantic.Weak)]
+		// @property (getter = getFDFFileSpec, copy, nonatomic) FSFileSpec * fDFFileSpec;
+		[Export ("fDFFileSpec", ArgumentSemantic.Copy)]
 		FSFileSpec FDFFileSpec { [Bind ("getFDFFileSpec")] get; set; }
 
 		// -(void *)getCptr;
@@ -4542,8 +4542,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSHideAction
 	{
-		// @property (getter = getFieldNames, nonatomic, weak) NSArray<NSString *> * fieldNames;
-		[Export ("fieldNames", ArgumentSemantic.Weak)]
+		// @property (getter = getFieldNames, copy, nonatomic) NSArray<NSString *> * fieldNames;
+		[Export ("fieldNames", ArgumentSemantic.Copy)]
 		string[] FieldNames { [Bind ("getFieldNames")] get; set; }
 
 		// @property (getter = getHideState, nonatomic) BOOL hideState;
@@ -4573,8 +4573,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSLaunchAction
 	{
-		// @property (getter = getFileSpec, nonatomic, weak) FSFileSpec * fileSpec;
-		[Export ("fileSpec", ArgumentSemantic.Weak)]
+		// @property (getter = getFileSpec, copy, nonatomic) FSFileSpec * fileSpec;
+		[Export ("fileSpec", ArgumentSemantic.Copy)]
 		FSFileSpec FileSpec { [Bind ("getFileSpec")] get; set; }
 
 		// @property (getter = getNewWindowFlag, nonatomic) FSActionNewWindowFlag newWindowFlag;
@@ -4632,12 +4632,12 @@ namespace Foxit.iOS
 		[Export ("operationType", ArgumentSemantic.Assign)]
 		FSRenditionActionOperationType OperationType { [Bind ("getOperationType")] get; set; }
 
-		// @property (getter = getScreenAnnot, nonatomic, weak) FSScreen * screenAnnot;
-		[Export ("screenAnnot", ArgumentSemantic.Weak)]
+		// @property (getter = getScreenAnnot, copy, nonatomic) FSScreen * screenAnnot;
+		[Export ("screenAnnot", ArgumentSemantic.Copy)]
 		FSScreen ScreenAnnot { [Bind ("getScreenAnnot")] get; set; }
 
-		// @property (getter = getJavaScript, nonatomic, weak) NSString * javaScript;
-		[Export ("javaScript", ArgumentSemantic.Weak)]
+		// @property (getter = getJavaScript, copy, nonatomic) NSString * javaScript;
+		[Export ("javaScript")]
 		string JavaScript { [Bind ("getJavaScript")] get; set; }
 
 		// -(void *)getCptr;
@@ -4757,8 +4757,8 @@ namespace Foxit.iOS
 		[Export ("text_color")]
 		uint Text_color { [Bind ("getText_color")] get; set; }
 
-		// @property (getter = getFont, nonatomic, weak) FSFont * font;
-		[Export ("font", ArgumentSemantic.Weak)]
+		// @property (getter = getFont, copy, nonatomic) FSFont * font;
+		[Export ("font", ArgumentSemantic.Copy)]
 		FSFont Font { [Bind ("getFont")] get; set; }
 
 		// -(void *)getCptr;
@@ -4807,8 +4807,8 @@ namespace Foxit.iOS
 		[Export ("dash_phase")]
 		float Dash_phase { [Bind ("getDash_phase")] get; set; }
 
-		// @property (getter = getDashes, nonatomic, weak) FSFloatArray * dashes;
-		[Export ("dashes", ArgumentSemantic.Weak)]
+		// @property (getter = getDashes, copy, nonatomic) FSFloatArray * dashes;
+		[Export ("dashes", ArgumentSemantic.Copy)]
 		FSFloatArray Dashes { [Bind ("getDashes")] get; set; }
 
 		// -(void *)getCptr;
@@ -4841,20 +4841,20 @@ namespace Foxit.iOS
 	[BaseType (typeof(NSObject))]
 	interface FSQuadPoints
 	{
-		// @property (getter = getFirst, nonatomic, weak) FSPointF * first;
-		[Export ("first", ArgumentSemantic.Weak)]
+		// @property (getter = getFirst, copy, nonatomic) FSPointF * first;
+		[Export ("first", ArgumentSemantic.Copy)]
 		FSPointF First { [Bind ("getFirst")] get; set; }
 
-		// @property (getter = getSecond, nonatomic, weak) FSPointF * second;
-		[Export ("second", ArgumentSemantic.Weak)]
+		// @property (getter = getSecond, copy, nonatomic) FSPointF * second;
+		[Export ("second", ArgumentSemantic.Copy)]
 		FSPointF Second { [Bind ("getSecond")] get; set; }
 
-		// @property (getter = getThird, nonatomic, weak) FSPointF * third;
-		[Export ("third", ArgumentSemantic.Weak)]
+		// @property (getter = getThird, copy, nonatomic) FSPointF * third;
+		[Export ("third", ArgumentSemantic.Copy)]
 		FSPointF Third { [Bind ("getThird")] get; set; }
 
-		// @property (getter = getFourth, nonatomic, weak) FSPointF * fourth;
-		[Export ("fourth", ArgumentSemantic.Weak)]
+		// @property (getter = getFourth, copy, nonatomic) FSPointF * fourth;
+		[Export ("fourth", ArgumentSemantic.Copy)]
 		FSPointF Fourth { [Bind ("getFourth")] get; set; }
 
 		// -(void *)getCptr;
@@ -4984,24 +4984,24 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSBase))]
 	interface FSAnnot
 	{
-		// @property (getter = getContent, nonatomic, weak) NSString * content;
-		[Export ("content", ArgumentSemantic.Weak)]
+		// @property (getter = getContent, copy, nonatomic) NSString * content;
+		[Export ("content")]
 		string Content { [Bind ("getContent")] get; set; }
 
-		// @property (getter = getModifiedDateTime, nonatomic, weak) FSDateTime * modifiedDateTime;
-		[Export ("modifiedDateTime", ArgumentSemantic.Weak)]
+		// @property (getter = getModifiedDateTime, copy, nonatomic) FSDateTime * modifiedDateTime;
+		[Export ("modifiedDateTime", ArgumentSemantic.Copy)]
 		FSDateTime ModifiedDateTime { [Bind ("getModifiedDateTime")] get; set; }
 
 		// @property (getter = getFlags, nonatomic) unsigned int flags;
 		[Export ("flags")]
 		uint Flags { [Bind ("getFlags")] get; set; }
 
-		// @property (getter = getUniqueID, nonatomic, weak) NSString * uniqueID;
-		[Export ("uniqueID", ArgumentSemantic.Weak)]
+		// @property (getter = getUniqueID, copy, nonatomic) NSString * uniqueID;
+		[Export ("uniqueID")]
 		string UniqueID { [Bind ("getUniqueID")] get; set; }
 
-		// @property (getter = getBorderInfo, nonatomic, weak) FSBorderInfo * borderInfo;
-		[Export ("borderInfo", ArgumentSemantic.Weak)]
+		// @property (getter = getBorderInfo, copy, nonatomic) FSBorderInfo * borderInfo;
+		[Export ("borderInfo", ArgumentSemantic.Copy)]
 		FSBorderInfo BorderInfo { [Bind ("getBorderInfo")] get; set; }
 
 		// @property (getter = getBorderColor, nonatomic) unsigned int borderColor;
@@ -5282,28 +5282,28 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSAnnot))]
 	interface FSMarkup
 	{
-		// @property (getter = getPopup, nonatomic, weak) FSPopup * popup;
-		[Export ("popup", ArgumentSemantic.Weak)]
+		// @property (getter = getPopup, copy, nonatomic) FSPopup * popup;
+		[Export ("popup", ArgumentSemantic.Copy)]
 		FSPopup Popup { [Bind ("getPopup")] get; set; }
 
-		// @property (getter = getTitle, nonatomic, weak) NSString * title;
-		[Export ("title", ArgumentSemantic.Weak)]
+		// @property (getter = getTitle, copy, nonatomic) NSString * title;
+		[Export ("title")]
 		string Title { [Bind ("getTitle")] get; set; }
 
-		// @property (getter = getSubject, nonatomic, weak) NSString * subject;
-		[Export ("subject", ArgumentSemantic.Weak)]
+		// @property (getter = getSubject, copy, nonatomic) NSString * subject;
+		[Export ("subject")]
 		string Subject { [Bind ("getSubject")] get; set; }
 
 		// @property (getter = getOpacity, nonatomic) float opacity;
 		[Export ("opacity")]
 		float Opacity { [Bind ("getOpacity")] get; set; }
 
-		// @property (getter = getIntent, nonatomic, weak) NSString * intent;
-		[Export ("intent", ArgumentSemantic.Weak)]
+		// @property (getter = getIntent, copy, nonatomic) NSString * intent;
+		[Export ("intent")]
 		string Intent { [Bind ("getIntent")] get; set; }
 
-		// @property (getter = getCreationDateTime, nonatomic, weak) FSDateTime * creationDateTime;
-		[Export ("creationDateTime", ArgumentSemantic.Weak)]
+		// @property (getter = getCreationDateTime, copy, nonatomic) FSDateTime * creationDateTime;
+		[Export ("creationDateTime", ArgumentSemantic.Copy)]
 		FSDateTime CreationDateTime { [Bind ("getCreationDateTime")] get; set; }
 
 		// -(void *)getCptr;
@@ -5388,8 +5388,8 @@ namespace Foxit.iOS
 		[Export ("openStatus")]
 		bool OpenStatus { [Bind ("getOpenStatus")] get; set; }
 
-		// @property (getter = getIconName, nonatomic, weak) NSString * iconName;
-		[Export ("iconName", ArgumentSemantic.Weak)]
+		// @property (getter = getIconName, copy, nonatomic) NSString * iconName;
+		[Export ("iconName")]
 		string IconName { [Bind ("getIconName")] get; set; }
 
 		// @property (getter = getState, nonatomic) FSMarkupState state;
@@ -5433,8 +5433,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSTextMarkup
 	{
-		// @property (getter = getQuadPoints, nonatomic, weak) FSQuadPointsArray * quadPoints;
-		[Export ("quadPoints", ArgumentSemantic.Weak)]
+		// @property (getter = getQuadPoints, copy, nonatomic) FSQuadPointsArray * quadPoints;
+		[Export ("quadPoints", ArgumentSemantic.Copy)]
 		FSQuadPointsArray QuadPoints { [Bind ("getQuadPoints")] get; set; }
 
 		// -(void *)getCptr;
@@ -5547,16 +5547,16 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSAnnot))]
 	interface FSLink
 	{
-		// @property (getter = getQuadPoints, nonatomic, weak) FSQuadPointsArray * quadPoints;
-		[Export ("quadPoints", ArgumentSemantic.Weak)]
+		// @property (getter = getQuadPoints, copy, nonatomic) FSQuadPointsArray * quadPoints;
+		[Export ("quadPoints", ArgumentSemantic.Copy)]
 		FSQuadPointsArray QuadPoints { [Bind ("getQuadPoints")] get; set; }
 
 		// @property (getter = getHighlightingMode, nonatomic) FSAnnotHighlightingMode highlightingMode;
 		[Export ("highlightingMode", ArgumentSemantic.Assign)]
 		FSAnnotHighlightingMode HighlightingMode { [Bind ("getHighlightingMode")] get; set; }
 
-		// @property (getter = getAction, nonatomic, weak) FSAction * action;
-		[Export ("action", ArgumentSemantic.Weak)]
+		// @property (getter = getAction, copy, nonatomic) FSAction * action;
+		[Export ("action", ArgumentSemantic.Copy)]
 		FSAction Action { [Bind ("getAction")] get; set; }
 
 		// -(void *)getCptr;
@@ -5590,8 +5590,8 @@ namespace Foxit.iOS
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
 
-		// @property (getter = getInnerRect, nonatomic, weak) FSRectF * innerRect;
-		[Export ("innerRect", ArgumentSemantic.Weak)]
+		// @property (getter = getInnerRect, copy, nonatomic) FSRectF * innerRect;
+		[Export ("innerRect", ArgumentSemantic.Copy)]
 		FSRectF InnerRect { [Bind ("getInnerRect")] get; set; }
 
 		// -(void *)getCptr;
@@ -5620,8 +5620,8 @@ namespace Foxit.iOS
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
 
-		// @property (getter = getInnerRect, nonatomic, weak) FSRectF * innerRect;
-		[Export ("innerRect", ArgumentSemantic.Weak)]
+		// @property (getter = getInnerRect, copy, nonatomic) FSRectF * innerRect;
+		[Export ("innerRect", ArgumentSemantic.Copy)]
 		FSRectF InnerRect { [Bind ("getInnerRect")] get; set; }
 
 		// -(void *)getCptr;
@@ -5654,20 +5654,20 @@ namespace Foxit.iOS
 		[Export ("alignment", ArgumentSemantic.Assign)]
 		FSAlignment Alignment { [Bind ("getAlignment")] get; set; }
 
-		// @property (getter = getInnerRect, nonatomic, weak) FSRectF * innerRect;
-		[Export ("innerRect", ArgumentSemantic.Weak)]
+		// @property (getter = getInnerRect, copy, nonatomic) FSRectF * innerRect;
+		[Export ("innerRect", ArgumentSemantic.Copy)]
 		FSRectF InnerRect { [Bind ("getInnerRect")] get; set; }
 
 		// @property (getter = getCalloutLineEndingStyle, nonatomic) FSMarkupEndingStyle calloutLineEndingStyle;
 		[Export ("calloutLineEndingStyle", ArgumentSemantic.Assign)]
 		FSMarkupEndingStyle CalloutLineEndingStyle { [Bind ("getCalloutLineEndingStyle")] get; set; }
 
-		// @property (getter = getCalloutLinePoints, nonatomic, weak) FSPointFArray * calloutLinePoints;
-		[Export ("calloutLinePoints", ArgumentSemantic.Weak)]
+		// @property (getter = getCalloutLinePoints, copy, nonatomic) FSPointFArray * calloutLinePoints;
+		[Export ("calloutLinePoints", ArgumentSemantic.Copy)]
 		FSPointFArray CalloutLinePoints { [Bind ("getCalloutLinePoints")] get; set; }
 
-		// @property (getter = getTextMatrix, nonatomic, weak) FSMatrix2D * textMatrix;
-		[Export ("textMatrix", ArgumentSemantic.Weak)]
+		// @property (getter = getTextMatrix, copy, nonatomic) FSMatrix2D * textMatrix;
+		[Export ("textMatrix", ArgumentSemantic.Copy)]
 		FSMatrix2D TextMatrix { [Bind ("getTextMatrix")] get; set; }
 
 		// @property (getter = getRotation, nonatomic) FSRotation rotation;
@@ -5721,20 +5721,20 @@ namespace Foxit.iOS
 		[Export ("styleFillColor")]
 		uint StyleFillColor { [Bind ("getStyleFillColor")] get; set; }
 
-		// @property (getter = getStartPoint, nonatomic, weak) FSPointF * startPoint;
-		[Export ("startPoint", ArgumentSemantic.Weak)]
+		// @property (getter = getStartPoint, copy, nonatomic) FSPointF * startPoint;
+		[Export ("startPoint", ArgumentSemantic.Copy)]
 		FSPointF StartPoint { [Bind ("getStartPoint")] get; set; }
 
-		// @property (getter = getEndPoint, nonatomic, weak) FSPointF * endPoint;
-		[Export ("endPoint", ArgumentSemantic.Weak)]
+		// @property (getter = getEndPoint, copy, nonatomic) FSPointF * endPoint;
+		[Export ("endPoint", ArgumentSemantic.Copy)]
 		FSPointF EndPoint { [Bind ("getEndPoint")] get; set; }
 
 		// @property (getter = getCaptionPositionType, nonatomic) FSLineCapPos captionPositionType;
 		[Export ("captionPositionType", ArgumentSemantic.Assign)]
 		FSLineCapPos CaptionPositionType { [Bind ("getCaptionPositionType")] get; set; }
 
-		// @property (getter = getCaptionOffset, nonatomic, weak) FSPointF * captionOffset;
-		[Export ("captionOffset", ArgumentSemantic.Weak)]
+		// @property (getter = getCaptionOffset, copy, nonatomic) FSPointF * captionOffset;
+		[Export ("captionOffset", ArgumentSemantic.Copy)]
 		FSPointF CaptionOffset { [Bind ("getCaptionOffset")] get; set; }
 
 		// @property (getter = getLeaderLineLength, nonatomic) float leaderLineLength;
@@ -5749,8 +5749,8 @@ namespace Foxit.iOS
 		[Export ("leaderLineOffset")]
 		float LeaderLineOffset { [Bind ("getLeaderLineOffset")] get; set; }
 
-		// @property (getter = getMeasureRatio, nonatomic, weak) NSString * measureRatio;
-		[Export ("measureRatio", ArgumentSemantic.Weak)]
+		// @property (getter = getMeasureRatio, copy, nonatomic) NSString * measureRatio;
+		[Export ("measureRatio")]
 		string MeasureRatio { [Bind ("getMeasureRatio")] get; set; }
 
 		// -(void *)getCptr;
@@ -5809,8 +5809,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSInk
 	{
-		// @property (getter = getInkList, nonatomic, weak) FSPath * inkList;
-		[Export ("inkList", ArgumentSemantic.Weak)]
+		// @property (getter = getInkList, copy, nonatomic) FSPath * inkList;
+		[Export ("inkList", ArgumentSemantic.Copy)]
 		FSPath InkList { [Bind ("getInkList")] get; set; }
 
 		// -(void *)getCptr;
@@ -5835,8 +5835,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSStamp
 	{
-		// @property (getter = getIconName, nonatomic, weak) NSString * iconName;
-		[Export ("iconName", ArgumentSemantic.Weak)]
+		// @property (getter = getIconName, copy, nonatomic) NSString * iconName;
+		[Export ("iconName")]
 		string IconName { [Bind ("getIconName")] get; set; }
 
 		// @property (getter = getRotation, nonatomic) int rotation;
@@ -5877,8 +5877,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSAnnot))]
 	interface FSScreen
 	{
-		// @property (getter = getMKDict, nonatomic, weak) FSPDFDictionary * mKDict;
-		[Export ("mKDict", ArgumentSemantic.Weak)]
+		// @property (getter = getMKDict, copy, nonatomic) FSPDFDictionary * mKDict;
+		[Export ("mKDict", ArgumentSemantic.Copy)]
 		FSPDFDictionary MKDict { [Bind ("getMKDict")] get; set; }
 
 		// @property (getter = getRotation, nonatomic) FSRotation rotation;
@@ -5889,12 +5889,12 @@ namespace Foxit.iOS
 		[Export ("opacity")]
 		float Opacity { [Bind ("getOpacity")] get; set; }
 
-		// @property (getter = getTitle, nonatomic, weak) NSString * title;
-		[Export ("title", ArgumentSemantic.Weak)]
+		// @property (getter = getTitle, copy, nonatomic) NSString * title;
+		[Export ("title")]
 		string Title { [Bind ("getTitle")] get; set; }
 
-		// @property (getter = getAction, nonatomic, weak) FSAction * action;
-		[Export ("action", ArgumentSemantic.Weak)]
+		// @property (getter = getAction, copy, nonatomic) FSAction * action;
+		[Export ("action", ArgumentSemantic.Copy)]
 		FSAction Action { [Bind ("getAction")] get; set; }
 
 		// -(void *)getCptr;
@@ -5931,12 +5931,12 @@ namespace Foxit.iOS
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
 
-		// @property (getter = getVertexes, nonatomic, weak) FSPointFArray * vertexes;
-		[Export ("vertexes", ArgumentSemantic.Weak)]
+		// @property (getter = getVertexes, copy, nonatomic) FSPointFArray * vertexes;
+		[Export ("vertexes", ArgumentSemantic.Copy)]
 		FSPointFArray Vertexes { [Bind ("getVertexes")] get; set; }
 
-		// @property (getter = getMeasureRatio, nonatomic, weak) NSString * measureRatio;
-		[Export ("measureRatio", ArgumentSemantic.Weak)]
+		// @property (getter = getMeasureRatio, copy, nonatomic) NSString * measureRatio;
+		[Export ("measureRatio")]
 		string MeasureRatio { [Bind ("getMeasureRatio")] get; set; }
 
 		// -(void *)getCptr;
@@ -5990,8 +5990,8 @@ namespace Foxit.iOS
 		[Export ("styleFillColor")]
 		uint StyleFillColor { [Bind ("getStyleFillColor")] get; set; }
 
-		// @property (getter = getVertexes, nonatomic, weak) FSPointFArray * vertexes;
-		[Export ("vertexes", ArgumentSemantic.Weak)]
+		// @property (getter = getVertexes, copy, nonatomic) FSPointFArray * vertexes;
+		[Export ("vertexes", ArgumentSemantic.Copy)]
 		FSPointFArray Vertexes { [Bind ("getVertexes")] get; set; }
 
 		// @property (getter = getLineStartStyle, nonatomic) FSMarkupEndingStyle lineStartStyle;
@@ -6002,8 +6002,8 @@ namespace Foxit.iOS
 		[Export ("lineEndStyle", ArgumentSemantic.Assign)]
 		FSMarkupEndingStyle LineEndStyle { [Bind ("getLineEndStyle")] get; set; }
 
-		// @property (getter = getMeasureRatio, nonatomic, weak) NSString * measureRatio;
-		[Export ("measureRatio", ArgumentSemantic.Weak)]
+		// @property (getter = getMeasureRatio, copy, nonatomic) NSString * measureRatio;
+		[Export ("measureRatio")]
 		string MeasureRatio { [Bind ("getMeasureRatio")] get; set; }
 
 		// -(void *)getCptr;
@@ -6053,8 +6053,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSCaret
 	{
-		// @property (getter = getInnerRect, nonatomic, weak) FSRectF * innerRect;
-		[Export ("innerRect", ArgumentSemantic.Weak)]
+		// @property (getter = getInnerRect, copy, nonatomic) FSRectF * innerRect;
+		[Export ("innerRect", ArgumentSemantic.Copy)]
 		FSRectF InnerRect { [Bind ("getInnerRect")] get; set; }
 
 		// -(void *)getCptr;
@@ -6079,8 +6079,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSFileAttachment
 	{
-		// @property (getter = getIconName, nonatomic, weak) NSString * iconName;
-		[Export ("iconName", ArgumentSemantic.Weak)]
+		// @property (getter = getIconName, copy, nonatomic) NSString * iconName;
+		[Export ("iconName")]
 		string IconName { [Bind ("getIconName")] get; set; }
 
 		// -(void *)getCptr;
@@ -6171,8 +6171,8 @@ namespace Foxit.iOS
 		[Export ("highlightingMode", ArgumentSemantic.Assign)]
 		FSAnnotHighlightingMode HighlightingMode { [Bind ("getHighlightingMode")] get; set; }
 
-		// @property (getter = getAction, nonatomic, weak) FSAction * action;
-		[Export ("action", ArgumentSemantic.Weak)]
+		// @property (getter = getAction, copy, nonatomic) FSAction * action;
+		[Export ("action", ArgumentSemantic.Copy)]
 		FSAction Action { [Bind ("getAction")] get; set; }
 
 		// @property (getter = getMKRotation, nonatomic) FSRotation mKRotation;
@@ -6187,40 +6187,40 @@ namespace Foxit.iOS
 		[Export ("mKBackgroundColor")]
 		uint MKBackgroundColor { [Bind ("getMKBackgroundColor")] get; set; }
 
-		// @property (getter = getMKNormalCaption, nonatomic, weak) NSString * mKNormalCaption;
-		[Export ("mKNormalCaption", ArgumentSemantic.Weak)]
+		// @property (getter = getMKNormalCaption, copy, nonatomic) NSString * mKNormalCaption;
+		[Export ("mKNormalCaption")]
 		string MKNormalCaption { [Bind ("getMKNormalCaption")] get; set; }
 
-		// @property (getter = getMKRolloverCaption, nonatomic, weak) NSString * mKRolloverCaption;
-		[Export ("mKRolloverCaption", ArgumentSemantic.Weak)]
+		// @property (getter = getMKRolloverCaption, copy, nonatomic) NSString * mKRolloverCaption;
+		[Export ("mKRolloverCaption")]
 		string MKRolloverCaption { [Bind ("getMKRolloverCaption")] get; set; }
 
-		// @property (getter = getMKDownCaption, nonatomic, weak) NSString * mKDownCaption;
-		[Export ("mKDownCaption", ArgumentSemantic.Weak)]
+		// @property (getter = getMKDownCaption, copy, nonatomic) NSString * mKDownCaption;
+		[Export ("mKDownCaption")]
 		string MKDownCaption { [Bind ("getMKDownCaption")] get; set; }
 
-		// @property (getter = getMKNormalIconBitmap, nonatomic, weak) FSBitmap * mKNormalIconBitmap;
-		[Export ("mKNormalIconBitmap", ArgumentSemantic.Weak)]
+		// @property (getter = getMKNormalIconBitmap, copy, nonatomic) FSBitmap * mKNormalIconBitmap;
+		[Export ("mKNormalIconBitmap", ArgumentSemantic.Copy)]
 		FSBitmap MKNormalIconBitmap { [Bind ("getMKNormalIconBitmap")] get; set; }
 
-		// @property (getter = getMKRolloverIconBitmap, nonatomic, weak) FSBitmap * mKRolloverIconBitmap;
-		[Export ("mKRolloverIconBitmap", ArgumentSemantic.Weak)]
+		// @property (getter = getMKRolloverIconBitmap, copy, nonatomic) FSBitmap * mKRolloverIconBitmap;
+		[Export ("mKRolloverIconBitmap", ArgumentSemantic.Copy)]
 		FSBitmap MKRolloverIconBitmap { [Bind ("getMKRolloverIconBitmap")] get; set; }
 
-		// @property (getter = getMKDownIconBitmap, nonatomic, weak) FSBitmap * mKDownIconBitmap;
-		[Export ("mKDownIconBitmap", ArgumentSemantic.Weak)]
+		// @property (getter = getMKDownIconBitmap, copy, nonatomic) FSBitmap * mKDownIconBitmap;
+		[Export ("mKDownIconBitmap", ArgumentSemantic.Copy)]
 		FSBitmap MKDownIconBitmap { [Bind ("getMKDownIconBitmap")] get; set; }
 
-		// @property (getter = getMKIconFit, nonatomic, weak) FSIconFit * mKIconFit;
-		[Export ("mKIconFit", ArgumentSemantic.Weak)]
+		// @property (getter = getMKIconFit, copy, nonatomic) FSIconFit * mKIconFit;
+		[Export ("mKIconFit", ArgumentSemantic.Copy)]
 		FSIconFit MKIconFit { [Bind ("getMKIconFit")] get; set; }
 
 		// @property (getter = getMKIconCaptionRelation, nonatomic) FSAnnotMKIconCaptionRelation mKIconCaptionRelation;
 		[Export ("mKIconCaptionRelation", ArgumentSemantic.Assign)]
 		FSAnnotMKIconCaptionRelation MKIconCaptionRelation { [Bind ("getMKIconCaptionRelation")] get; set; }
 
-		// @property (getter = getAppearanceState, nonatomic, weak) NSString * appearanceState;
-		[Export ("appearanceState", ArgumentSemantic.Weak)]
+		// @property (getter = getAppearanceState, copy, nonatomic) NSString * appearanceState;
+		[Export ("appearanceState")]
 		string AppearanceState { [Bind ("getAppearanceState")] get; set; }
 
 		// -(void *)getCptr;
@@ -6284,8 +6284,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSMarkup))]
 	interface FSRedact
 	{
-		// @property (getter = getQuadPoints, nonatomic, weak) FSQuadPointsArray * quadPoints;
-		[Export ("quadPoints", ArgumentSemantic.Weak)]
+		// @property (getter = getQuadPoints, copy, nonatomic) FSQuadPointsArray * quadPoints;
+		[Export ("quadPoints", ArgumentSemantic.Copy)]
 		FSQuadPointsArray QuadPoints { [Bind ("getQuadPoints")] get; set; }
 
 		// @property (getter = getFillColor, nonatomic) unsigned int fillColor;
@@ -6296,8 +6296,8 @@ namespace Foxit.iOS
 		[Export ("applyFillColor")]
 		uint ApplyFillColor { [Bind ("getApplyFillColor")] get; set; }
 
-		// @property (getter = getOverlayText, nonatomic, weak) NSString * overlayText;
-		[Export ("overlayText", ArgumentSemantic.Weak)]
+		// @property (getter = getOverlayText, copy, nonatomic) NSString * overlayText;
+		[Export ("overlayText")]
 		string OverlayText { [Bind ("getOverlayText")] get; set; }
 
 		// @property (getter = getOverlayTextAlignment, nonatomic) FSAlignment overlayTextAlignment;
@@ -6398,12 +6398,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSBookmark
 	{
-		// @property (getter = getDestination, nonatomic, weak) FSDestination * destination;
-		[Export ("destination", ArgumentSemantic.Weak)]
+		// @property (getter = getDestination, copy, nonatomic) FSDestination * destination;
+		[Export ("destination", ArgumentSemantic.Copy)]
 		FSDestination Destination { [Bind ("getDestination")] get; set; }
 
-		// @property (getter = getTitle, nonatomic, weak) NSString * title;
-		[Export ("title", ArgumentSemantic.Weak)]
+		// @property (getter = getTitle, copy, nonatomic) NSString * title;
+		[Export ("title")]
 		string Title { [Bind ("getTitle")] get; set; }
 
 		// @property (getter = getColor, nonatomic) unsigned int color;
@@ -6414,8 +6414,8 @@ namespace Foxit.iOS
 		[Export ("style")]
 		uint Style { [Bind ("getStyle")] get; set; }
 
-		// @property (getter = getAction, nonatomic, weak) FSAction * action;
-		[Export ("action", ArgumentSemantic.Weak)]
+		// @property (getter = getAction, copy, nonatomic) FSAction * action;
+		[Export ("action", ArgumentSemantic.Copy)]
 		FSAction Action { [Bind ("getAction")] get; set; }
 
 		// -(void *)getCptr;
@@ -6669,28 +6669,28 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSHeaderFooterContent
 	{
-		// @property (getter = getHeader_left_content, nonatomic, weak) NSString * header_left_content;
-		[Export ("header_left_content", ArgumentSemantic.Weak)]
+		// @property (getter = getHeader_left_content, copy, nonatomic) NSString * header_left_content;
+		[Export ("header_left_content")]
 		string Header_left_content { [Bind ("getHeader_left_content")] get; set; }
 
-		// @property (getter = getHeader_center_content, nonatomic, weak) NSString * header_center_content;
-		[Export ("header_center_content", ArgumentSemantic.Weak)]
+		// @property (getter = getHeader_center_content, copy, nonatomic) NSString * header_center_content;
+		[Export ("header_center_content")]
 		string Header_center_content { [Bind ("getHeader_center_content")] get; set; }
 
-		// @property (getter = getHeader_right_content, nonatomic, weak) NSString * header_right_content;
-		[Export ("header_right_content", ArgumentSemantic.Weak)]
+		// @property (getter = getHeader_right_content, copy, nonatomic) NSString * header_right_content;
+		[Export ("header_right_content")]
 		string Header_right_content { [Bind ("getHeader_right_content")] get; set; }
 
-		// @property (getter = getFooter_left_content, nonatomic, weak) NSString * footer_left_content;
-		[Export ("footer_left_content", ArgumentSemantic.Weak)]
+		// @property (getter = getFooter_left_content, copy, nonatomic) NSString * footer_left_content;
+		[Export ("footer_left_content")]
 		string Footer_left_content { [Bind ("getFooter_left_content")] get; set; }
 
-		// @property (getter = getFooter_center_content, nonatomic, weak) NSString * footer_center_content;
-		[Export ("footer_center_content", ArgumentSemantic.Weak)]
+		// @property (getter = getFooter_center_content, copy, nonatomic) NSString * footer_center_content;
+		[Export ("footer_center_content")]
 		string Footer_center_content { [Bind ("getFooter_center_content")] get; set; }
 
-		// @property (getter = getFooter_right_content, nonatomic, weak) NSString * footer_right_content;
-		[Export ("footer_right_content", ArgumentSemantic.Weak)]
+		// @property (getter = getFooter_right_content, copy, nonatomic) NSString * footer_right_content;
+		[Export ("footer_right_content")]
 		string Footer_right_content { [Bind ("getFooter_right_content")] get; set; }
 
 		// -(void *)getCptr;
@@ -6724,8 +6724,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSHeaderFooter
 	{
-		// @property (getter = getFont, nonatomic, weak) FSFont * font;
-		[Export ("font", ArgumentSemantic.Weak)]
+		// @property (getter = getFont, copy, nonatomic) FSFont * font;
+		[Export ("font", ArgumentSemantic.Copy)]
 		FSFont Font { [Bind ("getFont")] get; set; }
 
 		// @property (getter = getText_size, nonatomic) float text_size;
@@ -6736,12 +6736,12 @@ namespace Foxit.iOS
 		[Export ("text_color")]
 		uint Text_color { [Bind ("getText_color")] get; set; }
 
-		// @property (getter = getPage_range, nonatomic, weak) FSPageNumberRange * page_range;
-		[Export ("page_range", ArgumentSemantic.Weak)]
+		// @property (getter = getPage_range, copy, nonatomic) FSPageNumberRange * page_range;
+		[Export ("page_range", ArgumentSemantic.Copy)]
 		FSPageNumberRange Page_range { [Bind ("getPage_range")] get; set; }
 
-		// @property (getter = getPage_margin, nonatomic, weak) FSRectF * page_margin;
-		[Export ("page_margin", ArgumentSemantic.Weak)]
+		// @property (getter = getPage_margin, copy, nonatomic) FSRectF * page_margin;
+		[Export ("page_margin", ArgumentSemantic.Copy)]
 		FSRectF Page_margin { [Bind ("getPage_margin")] get; set; }
 
 		// @property (getter = getHas_text_shrinked, nonatomic) BOOL has_text_shrinked;
@@ -6756,9 +6756,17 @@ namespace Foxit.iOS
 		[Export ("start_page_number")]
 		int Start_page_number { [Bind ("getStart_page_number")] get; set; }
 
-		// @property (getter = getContent, nonatomic, weak) FSHeaderFooterContent * content;
-		[Export ("content", ArgumentSemantic.Weak)]
+		// @property (getter = getContent, copy, nonatomic) FSHeaderFooterContent * content;
+		[Export ("content", ArgumentSemantic.Copy)]
 		FSHeaderFooterContent Content { [Bind ("getContent")] get; set; }
+
+		// @property (getter = getIs_to_embed_font, nonatomic) BOOL is_to_embed_font;
+		[Export ("is_to_embed_font")]
+		bool Is_to_embed_font { [Bind ("getIs_to_embed_font")] get; set; }
+
+		// @property (getter = getIs_underline, nonatomic) BOOL is_underline;
+		[Export ("is_underline")]
+		bool Is_underline { [Bind ("getIs_underline")] get; set; }
 
 		// @property (getter = getIs_replace_font, nonatomic) BOOL is_replace_font;
 		[Export ("is_replace_font")]
@@ -6773,17 +6781,17 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSPageNumberRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
-		[Export ("initWithFont:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:")]
-		IntPtr Constructor (FSFont font, float text_size, uint text_color, FSPageNumberRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
+		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSPageNumberRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content is_to_embed_font:(BOOL)is_to_embed_font is_underline:(BOOL)is_underline;
+		[Export ("initWithFont:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:is_to_embed_font:is_underline:")]
+		IntPtr Constructor (FSFont font, float text_size, uint text_color, FSPageNumberRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content, bool is_to_embed_font, bool is_underline);
 
 		// -(id)initWithOther:(FSHeaderFooter *)other;
 		[Export ("initWithOther:")]
 		IntPtr Constructor (FSHeaderFooter other);
 
-		// -(void)set:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSPageNumberRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content;
-		[Export ("set:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:")]
-		void Set (FSFont font, float text_size, uint text_color, FSPageNumberRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content);
+		// -(void)set:(FSFont *)font text_size:(float)text_size text_color:(unsigned int)text_color page_range:(FSPageNumberRange *)page_range page_margin:(FSRectF *)page_margin has_text_shrinked:(BOOL)has_text_shrinked has_fixedsize_for_print:(BOOL)has_fixedsize_for_print start_page_number:(int)start_page_number content:(FSHeaderFooterContent *)content is_to_embed_font:(BOOL)is_to_embed_font is_underline:(BOOL)is_underline;
+		[Export ("set:text_size:text_color:page_range:page_margin:has_text_shrinked:has_fixedsize_for_print:start_page_number:content:is_to_embed_font:is_underline:")]
+		void Set (FSFont font, float text_size, uint text_color, FSPageNumberRange page_range, FSRectF page_margin, bool has_text_shrinked, bool has_fixedsize_for_print, int start_page_number, FSHeaderFooterContent content, bool is_to_embed_font, bool is_underline);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -6846,20 +6854,20 @@ namespace Foxit.iOS
 		[Export ("version")]
 		int Version { [Bind ("getVersion")] get; set; }
 
-		// @property (getter = getType, nonatomic, weak) NSString * type;
-		[Export ("type", ArgumentSemantic.Weak)]
+		// @property (getter = getType, copy, nonatomic) NSString * type;
+		[Export ("type")]
 		string Type { [Bind ("getType")] get; set; }
 
-		// @property (getter = getApp_id, nonatomic, weak) NSString * app_id;
-		[Export ("app_id", ArgumentSemantic.Weak)]
+		// @property (getter = getApp_id, copy, nonatomic) NSString * app_id;
+		[Export ("app_id")]
 		string App_id { [Bind ("getApp_id")] get; set; }
 
-		// @property (getter = getUri, nonatomic, weak) NSString * uri;
-		[Export ("uri", ArgumentSemantic.Weak)]
+		// @property (getter = getUri, copy, nonatomic) NSString * uri;
+		[Export ("uri")]
 		string Uri { [Bind ("getUri")] get; set; }
 
-		// @property (getter = getDescription, nonatomic, weak) NSString * description;
-		[Export ("description", ArgumentSemantic.Weak)]
+		// @property (getter = getDescription, copy, nonatomic) NSString * description;
+		[Export ("description")]
 		string Description { [Bind ("getDescription")] get; set; }
 
 		// -(void *)getCptr;
@@ -6896,20 +6904,20 @@ namespace Foxit.iOS
 		[Export ("version")]
 		float Version { [Bind ("getVersion")] get; set; }
 
-		// @property (getter = getCrypto_filter, nonatomic, weak) NSString * crypto_filter;
-		[Export ("crypto_filter", ArgumentSemantic.Weak)]
+		// @property (getter = getCrypto_filter, copy, nonatomic) NSString * crypto_filter;
+		[Export ("crypto_filter")]
 		string Crypto_filter { [Bind ("getCrypto_filter")] get; set; }
 
-		// @property (getter = getFile_name, nonatomic, weak) NSString * file_name;
-		[Export ("file_name", ArgumentSemantic.Weak)]
+		// @property (getter = getFile_name, copy, nonatomic) NSString * file_name;
+		[Export ("file_name")]
 		string File_name { [Bind ("getFile_name")] get; set; }
 
 		// @property (getter = getFile_size, nonatomic) long long file_size;
 		[Export ("file_size")]
 		long File_size { [Bind ("getFile_size")] get; set; }
 
-		// @property (getter = getDescription, nonatomic, weak) NSString * description;
-		[Export ("description", ArgumentSemantic.Weak)]
+		// @property (getter = getDescription, copy, nonatomic) NSString * description;
+		[Export ("description")]
 		string Description { [Bind ("getDescription")] get; set; }
 
 		// -(void *)getCptr;
@@ -6980,12 +6988,12 @@ namespace Foxit.iOS
 	[BaseType (typeof(NSObject))]
 	interface FSEmbeddedFontData
 	{
-		// @property (getter = getNonstandard_font_name_array, nonatomic, weak) NSArray<NSString *> * nonstandard_font_name_array;
-		[Export ("nonstandard_font_name_array", ArgumentSemantic.Weak)]
+		// @property (getter = getNonstandard_font_name_array, copy, nonatomic) NSArray<NSString *> * nonstandard_font_name_array;
+		[Export ("nonstandard_font_name_array", ArgumentSemantic.Copy)]
 		string[] Nonstandard_font_name_array { [Bind ("getNonstandard_font_name_array")] get; set; }
 
-		// @property (getter = getStandard_font_name_array, nonatomic, weak) NSArray<NSString *> * standard_font_name_array;
-		[Export ("standard_font_name_array", ArgumentSemantic.Weak)]
+		// @property (getter = getStandard_font_name_array, copy, nonatomic) NSArray<NSString *> * standard_font_name_array;
+		[Export ("standard_font_name_array", ArgumentSemantic.Copy)]
 		string[] Standard_font_name_array { [Bind ("getStandard_font_name_array")] get; set; }
 
 		// -(void *)getCptr;
@@ -7453,32 +7461,32 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSFileSpec
 	{
-		// @property (getter = getFileName, nonatomic, weak) NSString * fileName;
-		[Export ("fileName", ArgumentSemantic.Weak)]
+		// @property (getter = getFileName, copy, nonatomic) NSString * fileName;
+		[Export ("fileName")]
 		string FileName { [Bind ("getFileName")] get; set; }
 
 		// @property (getter = getAssociteFileRelationship, nonatomic) FSAssociatedFilesRelationship associteFileRelationship;
 		[Export ("associteFileRelationship", ArgumentSemantic.Assign)]
 		FSAssociatedFilesRelationship AssociteFileRelationship { [Bind ("getAssociteFileRelationship")] get; set; }
 
-		// @property (getter = getDescription, nonatomic, weak) NSString * description;
-		[Export ("description", ArgumentSemantic.Weak)]
+		// @property (getter = getDescription, copy, nonatomic) NSString * description;
+		[Export ("description")]
 		string Description { [Bind ("getDescription")] get; set; }
 
-		// @property (getter = getCreationDateTime, nonatomic, weak) FSDateTime * creationDateTime;
-		[Export ("creationDateTime", ArgumentSemantic.Weak)]
+		// @property (getter = getCreationDateTime, copy, nonatomic) FSDateTime * creationDateTime;
+		[Export ("creationDateTime", ArgumentSemantic.Copy)]
 		FSDateTime CreationDateTime { [Bind ("getCreationDateTime")] get; set; }
 
-		// @property (getter = getModifiedDateTime, nonatomic, weak) FSDateTime * modifiedDateTime;
-		[Export ("modifiedDateTime", ArgumentSemantic.Weak)]
+		// @property (getter = getModifiedDateTime, copy, nonatomic) FSDateTime * modifiedDateTime;
+		[Export ("modifiedDateTime", ArgumentSemantic.Copy)]
 		FSDateTime ModifiedDateTime { [Bind ("getModifiedDateTime")] get; set; }
 
-		// @property (getter = getSubtype, nonatomic, weak) NSString * subtype;
-		[Export ("subtype", ArgumentSemantic.Weak)]
+		// @property (getter = getSubtype, copy, nonatomic) NSString * subtype;
+		[Export ("subtype")]
 		string Subtype { [Bind ("getSubtype")] get; set; }
 
-		// @property (getter = getChecksum, nonatomic, weak) NSData * checksum;
-		[Export ("checksum", ArgumentSemantic.Weak)]
+		// @property (getter = getChecksum, copy, nonatomic) NSData * checksum;
+		[Export ("checksum", ArgumentSemantic.Copy)]
 		NSData Checksum { [Bind ("getChecksum")] get; set; }
 
 		// -(void *)getCptr;
@@ -7553,12 +7561,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSTextFillSignObjectData
 	{
-		// @property (getter = getText_state, nonatomic, weak) FSTextState * text_state;
-		[Export ("text_state", ArgumentSemantic.Weak)]
+		// @property (getter = getText_state, copy, nonatomic) FSTextState * text_state;
+		[Export ("text_state", ArgumentSemantic.Copy)]
 		FSTextState Text_state { [Bind ("getText_state")] get; set; }
 
-		// @property (getter = getText, nonatomic, weak) NSString * text;
-		[Export ("text", ArgumentSemantic.Weak)]
+		// @property (getter = getText, copy, nonatomic) NSString * text;
+		[Export ("text")]
 		string Text { [Bind ("getText")] get; set; }
 
 		// -(void *)getCptr;
@@ -7993,8 +8001,8 @@ namespace Foxit.iOS
 	[BaseType (typeof(NSObject))]
 	interface FSLayerPrintData
 	{
-		// @property (getter = getSubtype, nonatomic, weak) NSString * subtype;
-		[Export ("subtype", ArgumentSemantic.Weak)]
+		// @property (getter = getSubtype, copy, nonatomic) NSString * subtype;
+		[Export ("subtype")]
 		string Subtype { [Bind ("getSubtype")] get; set; }
 
 		// @property (getter = getPrint_state, nonatomic) FSLayerTreeUsageState print_state;
@@ -8232,12 +8240,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSMetadata
 	{
-		// @property (getter = getCreationDateTime, nonatomic, weak) FSDateTime * creationDateTime;
-		[Export ("creationDateTime", ArgumentSemantic.Weak)]
+		// @property (getter = getCreationDateTime, copy, nonatomic) FSDateTime * creationDateTime;
+		[Export ("creationDateTime", ArgumentSemantic.Copy)]
 		FSDateTime CreationDateTime { [Bind ("getCreationDateTime")] get; set; }
 
-		// @property (getter = getModifiedDateTime, nonatomic, weak) FSDateTime * modifiedDateTime;
-		[Export ("modifiedDateTime", ArgumentSemantic.Weak)]
+		// @property (getter = getModifiedDateTime, copy, nonatomic) FSDateTime * modifiedDateTime;
+		[Export ("modifiedDateTime", ArgumentSemantic.Copy)]
 		FSDateTime ModifiedDateTime { [Bind ("getModifiedDateTime")] get; set; }
 
 		// -(void *)getCptr;
@@ -8361,12 +8369,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSColorState
 	{
-		// @property (getter = getFillColor, nonatomic, weak) FSColor * fillColor;
-		[Export ("fillColor", ArgumentSemantic.Weak)]
+		// @property (getter = getFillColor, copy, nonatomic) FSColor * fillColor;
+		[Export ("fillColor", ArgumentSemantic.Copy)]
 		FSColor FillColor { [Bind ("getFillColor")] get; set; }
 
-		// @property (getter = getStrokeColor, nonatomic, weak) FSColor * strokeColor;
-		[Export ("strokeColor", ArgumentSemantic.Weak)]
+		// @property (getter = getStrokeColor, copy, nonatomic) FSColor * strokeColor;
+		[Export ("strokeColor", ArgumentSemantic.Copy)]
 		FSColor StrokeColor { [Bind ("getStrokeColor")] get; set; }
 
 		// -(void *)getCptr;
@@ -8452,8 +8460,8 @@ namespace Foxit.iOS
 		[Export ("fillColor")]
 		uint FillColor { [Bind ("getFillColor")] get; set; }
 
-		// @property (getter = getColorState, nonatomic, weak) FSColorState * colorState;
-		[Export ("colorState", ArgumentSemantic.Weak)]
+		// @property (getter = getColorState, copy, nonatomic) FSColorState * colorState;
+		[Export ("colorState", ArgumentSemantic.Copy)]
 		FSColorState ColorState { [Bind ("getColorState")] get; set; }
 
 		// @property (getter = getFillOpacity, nonatomic) float fillOpacity;
@@ -8464,20 +8472,20 @@ namespace Foxit.iOS
 		[Export ("strokeOpacity")]
 		float StrokeOpacity { [Bind ("getStrokeOpacity")] get; set; }
 
-		// @property (getter = getMatrix, nonatomic, weak) FSMatrix2D * matrix;
-		[Export ("matrix", ArgumentSemantic.Weak)]
+		// @property (getter = getMatrix, copy, nonatomic) FSMatrix2D * matrix;
+		[Export ("matrix", ArgumentSemantic.Copy)]
 		FSMatrix2D Matrix { [Bind ("getMatrix")] get; set; }
 
-		// @property (getter = getGraphState, nonatomic, weak) FSGraphState * graphState;
-		[Export ("graphState", ArgumentSemantic.Weak)]
+		// @property (getter = getGraphState, copy, nonatomic) FSGraphState * graphState;
+		[Export ("graphState", ArgumentSemantic.Copy)]
 		FSGraphState GraphState { [Bind ("getGraphState")] get; set; }
 
 		// @property (getter = getBlendMode, nonatomic) FSGraphicsObjectBlendMode blendMode;
 		[Export ("blendMode", ArgumentSemantic.Assign)]
 		FSGraphicsObjectBlendMode BlendMode { [Bind ("getBlendMode")] get; set; }
 
-		// @property (getter = getClipRect, nonatomic, weak) FSRectF * clipRect;
-		[Export ("clipRect", ArgumentSemantic.Weak)]
+		// @property (getter = getClipRect, copy, nonatomic) FSRectF * clipRect;
+		[Export ("clipRect", ArgumentSemantic.Copy)]
 		FSRectF ClipRect { [Bind ("getClipRect")] get; set; }
 
 		// -(void *)getCptr;
@@ -8623,16 +8631,16 @@ namespace Foxit.iOS
 		[Export ("textmode", ArgumentSemantic.Assign)]
 		FSTextStateMode Textmode { [Bind ("getTextmode")] get; set; }
 
-		// @property (getter = getTextmatrix, nonatomic, weak) NSArray<NSNumber *> * textmatrix;
-		[Export ("textmatrix", ArgumentSemantic.Weak)]
+		// @property (getter = getTextmatrix, copy, nonatomic) NSArray<NSNumber *> * textmatrix;
+		[Export ("textmatrix", ArgumentSemantic.Copy)]
 		NSNumber[] Textmatrix { [Bind ("getTextmatrix")] get; set; }
 
-		// @property (getter = getOrigin_position, nonatomic, weak) FSPointF * origin_position;
-		[Export ("origin_position", ArgumentSemantic.Weak)]
+		// @property (getter = getOrigin_position, copy, nonatomic) FSPointF * origin_position;
+		[Export ("origin_position", ArgumentSemantic.Copy)]
 		FSPointF Origin_position { [Bind ("getOrigin_position")] get; set; }
 
-		// @property (getter = getFont, nonatomic, weak) FSFont * font;
-		[Export ("font", ArgumentSemantic.Weak)]
+		// @property (getter = getFont, copy, nonatomic) FSFont * font;
+		[Export ("font", ArgumentSemantic.Copy)]
 		FSFont Font { [Bind ("getFont")] get; set; }
 
 		// -(void *)getCptr;
@@ -8722,8 +8730,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSTextObject
 	{
-		// @property (getter = getText, nonatomic, weak) NSString * text;
-		[Export ("text", ArgumentSemantic.Weak)]
+		// @property (getter = getText, copy, nonatomic) NSString * text;
+		[Export ("text")]
 		string Text { [Bind ("getText")] get; set; }
 
 		// -(void *)getCptr;
@@ -8784,8 +8792,8 @@ namespace Foxit.iOS
 		[Export ("strokeState")]
 		bool StrokeState { [Bind ("getStrokeState")] get; set; }
 
-		// @property (getter = getPathData, nonatomic, weak) FSPath * pathData;
-		[Export ("pathData", ArgumentSemantic.Weak)]
+		// @property (getter = getPathData, copy, nonatomic) FSPath * pathData;
+		[Export ("pathData", ArgumentSemantic.Copy)]
 		FSPath PathData { [Bind ("getPathData")] get; set; }
 
 		// -(void *)getCptr;
@@ -8897,37 +8905,45 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		bool IsEmpty { get; }
 
-		// -(SWIGTYPE_p_void *)getFirstGraphicsObjectPosition:(FSGraphicsObjectType)filter;
+		// -(long)getFirstGraphicsObjectPosition:(FSGraphicsObjectType)filter;
 		[Export ("getFirstGraphicsObjectPosition:")]
-		SWIGTYPE_p_void GetFirstGraphicsObjectPosition (FSGraphicsObjectType filter);
+		nint GetFirstGraphicsObjectPosition (FSGraphicsObjectType filter);
 
-		// -(SWIGTYPE_p_void *)getNextGraphicsObjectPosition:(SWIGTYPE_p_void *)position filter:(FSGraphicsObjectType)filter;
+		// -(long)getNextGraphicsObjectPosition:(long)position filter:(FSGraphicsObjectType)filter;
 		[Export ("getNextGraphicsObjectPosition:filter:")]
-		SWIGTYPE_p_void GetNextGraphicsObjectPosition (SWIGTYPE_p_void position, FSGraphicsObjectType filter);
+		nint GetNextGraphicsObjectPosition (nint position, FSGraphicsObjectType filter);
 
-		// -(SWIGTYPE_p_void *)getLastGraphicsObjectPosition:(FSGraphicsObjectType)filter;
+		// -(long)getLastGraphicsObjectPosition:(FSGraphicsObjectType)filter;
 		[Export ("getLastGraphicsObjectPosition:")]
-		SWIGTYPE_p_void GetLastGraphicsObjectPosition (FSGraphicsObjectType filter);
+		nint GetLastGraphicsObjectPosition (FSGraphicsObjectType filter);
 
-		// -(SWIGTYPE_p_void *)getPrevGraphicsObjectPosition:(SWIGTYPE_p_void *)position filter:(FSGraphicsObjectType)filter;
+		// -(long)getPrevGraphicsObjectPosition:(long)position filter:(FSGraphicsObjectType)filter;
 		[Export ("getPrevGraphicsObjectPosition:filter:")]
-		SWIGTYPE_p_void GetPrevGraphicsObjectPosition (SWIGTYPE_p_void position, FSGraphicsObjectType filter);
+		nint GetPrevGraphicsObjectPosition (nint position, FSGraphicsObjectType filter);
 
-		// -(FSGraphicsObject *)getGraphicsObject:(SWIGTYPE_p_void *)position;
+		// -(FSGraphicsObject *)getGraphicsObject:(long)position;
 		[Export ("getGraphicsObject:")]
-		FSGraphicsObject GetGraphicsObject (SWIGTYPE_p_void position);
+		FSGraphicsObject GetGraphicsObject (nint position);
 
-		// -(SWIGTYPE_p_void *)insertGraphicsObject:(SWIGTYPE_p_void *)position_insert_after graphics_object:(FSGraphicsObject *)graphics_object;
+		// -(long)insertGraphicsObject:(long)position_insert_after graphics_object:(FSGraphicsObject *)graphics_object;
 		[Export ("insertGraphicsObject:graphics_object:")]
-		SWIGTYPE_p_void InsertGraphicsObject (SWIGTYPE_p_void position_insert_after, FSGraphicsObject graphics_object);
+		nint InsertGraphicsObject (nint position_insert_after, FSGraphicsObject graphics_object);
 
 		// -(BOOL)removeGraphicsObject:(FSGraphicsObject *)graphics_object;
 		[Export ("removeGraphicsObject:")]
 		bool RemoveGraphicsObject (FSGraphicsObject graphics_object);
 
-		// -(BOOL)removeGraphicsObjectByPosition:(SWIGTYPE_p_void *)position;
+		// -(BOOL)removeGraphicsObjectByPosition:(long)position;
 		[Export ("removeGraphicsObjectByPosition:")]
-		bool RemoveGraphicsObjectByPosition (SWIGTYPE_p_void position);
+		bool RemoveGraphicsObjectByPosition (nint position);
+
+		// -(long)moveGraphicsObjectByPosition:(long)current_position position_move_after:(long)position_move_after;
+		[Export ("moveGraphicsObjectByPosition:position_move_after:")]
+		nint MoveGraphicsObjectByPosition (nint current_position, nint position_move_after);
+
+		// -(long)getGraphicsObjectPosition:(FSGraphicsObject *)graphics_object;
+		[Export ("getGraphicsObjectPosition:")]
+		nint GetGraphicsObjectPosition (FSGraphicsObject graphics_object);
 
 		// -(int)getGraphicsObjectCount;
 		[Export ("getGraphicsObjectCount")]
@@ -9157,6 +9173,10 @@ namespace Foxit.iOS
 		[Export ("getGraphicsObjectsAtRectangle:filter:")]
 		FSGraphicsObjectArray GetGraphicsObjectsAtRectangle (FSRectF rect, FSGraphicsObjectType filter);
 
+		// -(BOOL)addImage:(FSImage *)image frame_index:(int)frame_index position:(FSPointF *)position width:(float)width height:(float)height auto_generate_content:(BOOL)auto_generate_content;
+		[Export ("addImage:frame_index:position:width:height:auto_generate_content:")]
+		bool AddImage (FSImage image, int frame_index, FSPointF position, float width, float height, bool auto_generate_content);
+
 		// -(BOOL)addImageFromFilePath:(NSString *)file_path position:(FSPointF *)position width:(float)width height:(float)height auto_generate_content:(BOOL)auto_generate_content;
 		[Export ("addImageFromFilePath:position:width:height:auto_generate_content:")]
 		bool AddImageFromFilePath (string file_path, FSPointF position, float width, float height, bool auto_generate_content);
@@ -9231,8 +9251,8 @@ namespace Foxit.iOS
 		[Export ("printCopies")]
 		int PrintCopies { [Bind ("getPrintCopies")] get; set; }
 
-		// @property (getter = getPrintRange, nonatomic, weak) FSRange * printRange;
-		[Export ("printRange", ArgumentSemantic.Weak)]
+		// @property (getter = getPrintRange, copy, nonatomic) FSRange * printRange;
+		[Export ("printRange", ArgumentSemantic.Copy)]
 		FSRange PrintRange { [Bind ("getPrintRange")] get; set; }
 
 		// -(void *)getCptr;
@@ -9419,8 +9439,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSReadingBookmark
 	{
-		// @property (getter = getTitle, nonatomic, weak) NSString * title;
-		[Export ("title", ArgumentSemantic.Weak)]
+		// @property (getter = getTitle, copy, nonatomic) NSString * title;
+		[Export ("title")]
 		string Title { [Bind ("getTitle")] get; set; }
 
 		// @property (getter = getPageIndex, nonatomic) int pageIndex;
@@ -9554,8 +9574,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSTextPageCharInfo
 	{
-		// @property (getter = getFont, nonatomic, weak) FSFont * font;
-		[Export ("font", ArgumentSemantic.Weak)]
+		// @property (getter = getFont, copy, nonatomic) FSFont * font;
+		[Export ("font", ArgumentSemantic.Copy)]
 		FSFont Font { [Bind ("getFont")] get; set; }
 
 		// @property (getter = getFlag, nonatomic) FSTextPageCharInfoTextCharFlag flag;
@@ -9574,16 +9594,16 @@ namespace Foxit.iOS
 		[Export ("origin_y")]
 		float Origin_y { [Bind ("getOrigin_y")] get; set; }
 
-		// @property (getter = getChar_box, nonatomic, weak) FSRectF * char_box;
-		[Export ("char_box", ArgumentSemantic.Weak)]
+		// @property (getter = getChar_box, copy, nonatomic) FSRectF * char_box;
+		[Export ("char_box", ArgumentSemantic.Copy)]
 		FSRectF Char_box { [Bind ("getChar_box")] get; set; }
 
-		// @property (getter = getChar_outbox, nonatomic, weak) FSRectF * char_outbox;
-		[Export ("char_outbox", ArgumentSemantic.Weak)]
+		// @property (getter = getChar_outbox, copy, nonatomic) FSRectF * char_outbox;
+		[Export ("char_outbox", ArgumentSemantic.Copy)]
 		FSRectF Char_outbox { [Bind ("getChar_outbox")] get; set; }
 
-		// @property (getter = getMatrix, nonatomic, weak) FSMatrix2D * matrix;
-		[Export ("matrix", ArgumentSemantic.Weak)]
+		// @property (getter = getMatrix, copy, nonatomic) FSMatrix2D * matrix;
+		[Export ("matrix", ArgumentSemantic.Copy)]
 		FSMatrix2D Matrix { [Bind ("getMatrix")] get; set; }
 
 		// -(void *)getCptr;
@@ -10078,8 +10098,8 @@ namespace Foxit.iOS
 		[Export ("cipher", ArgumentSemantic.Assign)]
 		FSSecurityHandlerCipherType Cipher { [Bind ("getCipher")] get; set; }
 
-		// @property (getter = getEnvelopes, nonatomic, weak) NSArray<NSData *> * envelopes;
-		[Export ("envelopes", ArgumentSemantic.Weak)]
+		// @property (getter = getEnvelopes, copy, nonatomic) NSArray<NSData *> * envelopes;
+		[Export ("envelopes", ArgumentSemantic.Copy)]
 		NSData[] Envelopes { [Bind ("getEnvelopes")] get; set; }
 
 		// -(void *)getCptr;
@@ -10177,8 +10197,8 @@ namespace Foxit.iOS
 		[Export ("is_encrypt_metadata")]
 		bool Is_encrypt_metadata { [Bind ("getIs_encrypt_metadata")] get; set; }
 
-		// @property (getter = getSub_filter, nonatomic, weak) NSString * sub_filter;
-		[Export ("sub_filter", ArgumentSemantic.Weak)]
+		// @property (getter = getSub_filter, copy, nonatomic) NSString * sub_filter;
+		[Export ("sub_filter")]
 		string Sub_filter { [Bind ("getSub_filter")] get; set; }
 
 		// @property (getter = getCipher, nonatomic) FSSecurityHandlerCipherType cipher;
@@ -10270,12 +10290,12 @@ namespace Foxit.iOS
 		[Export ("is_encrypt_metadata")]
 		bool Is_encrypt_metadata { [Bind ("getIs_encrypt_metadata")] get; set; }
 
-		// @property (getter = getFilter, nonatomic, weak) NSString * filter;
-		[Export ("filter", ArgumentSemantic.Weak)]
+		// @property (getter = getFilter, copy, nonatomic) NSString * filter;
+		[Export ("filter")]
 		string Filter { [Bind ("getFilter")] get; set; }
 
-		// @property (getter = getSub_filter, nonatomic, weak) NSString * sub_filter;
-		[Export ("sub_filter", ArgumentSemantic.Weak)]
+		// @property (getter = getSub_filter, copy, nonatomic) NSString * sub_filter;
+		[Export ("sub_filter")]
 		string Sub_filter { [Bind ("getSub_filter")] get; set; }
 
 		// -(void *)getCptr;
@@ -10338,12 +10358,12 @@ namespace Foxit.iOS
 		[Export ("is_encrypt_metadata")]
 		bool Is_encrypt_metadata { [Bind ("getIs_encrypt_metadata")] get; set; }
 
-		// @property (getter = getPublish_license, nonatomic, weak) NSString * publish_license;
-		[Export ("publish_license", ArgumentSemantic.Weak)]
+		// @property (getter = getPublish_license, copy, nonatomic) NSString * publish_license;
+		[Export ("publish_license")]
 		string Publish_license { [Bind ("getPublish_license")] get; set; }
 
-		// @property (getter = getServer_eul_list, nonatomic, weak) NSArray<NSData *> * server_eul_list;
-		[Export ("server_eul_list", ArgumentSemantic.Weak)]
+		// @property (getter = getServer_eul_list, copy, nonatomic) NSArray<NSData *> * server_eul_list;
+		[Export ("server_eul_list", ArgumentSemantic.Copy)]
 		NSData[] Server_eul_list { [Bind ("getServer_eul_list")] get; set; }
 
 		// @property (getter = getIrm_version, nonatomic) float irm_version;
@@ -10608,8 +10628,8 @@ namespace Foxit.iOS
 		[Export ("alignment", ArgumentSemantic.Assign)]
 		FSAlignment Alignment { [Bind ("getAlignment")] get; set; }
 
-		// @property (getter = getFont, nonatomic, weak) FSFont * font;
-		[Export ("font", ArgumentSemantic.Weak)]
+		// @property (getter = getFont, copy, nonatomic) FSFont * font;
+		[Export ("font", ArgumentSemantic.Copy)]
 		FSFont Font { [Bind ("getFont")] get; set; }
 
 		// -(void *)getCptr;
@@ -10833,12 +10853,12 @@ namespace Foxit.iOS
 	[BaseType (typeof(NSObject))]
 	interface FSChoiceOption
 	{
-		// @property (getter = getOption_value, nonatomic, weak) NSString * option_value;
-		[Export ("option_value", ArgumentSemantic.Weak)]
+		// @property (getter = getOption_value, copy, nonatomic) NSString * option_value;
+		[Export ("option_value")]
 		string Option_value { [Bind ("getOption_value")] get; set; }
 
-		// @property (getter = getOption_label, nonatomic, weak) NSString * option_label;
-		[Export ("option_label", ArgumentSemantic.Weak)]
+		// @property (getter = getOption_label, copy, nonatomic) NSString * option_label;
+		[Export ("option_label")]
 		string Option_label { [Bind ("getOption_label")] get; set; }
 
 		// @property (getter = getSelected, nonatomic) BOOL selected;
@@ -10930,36 +10950,36 @@ namespace Foxit.iOS
 		[Export ("flags")]
 		uint Flags { [Bind ("getFlags")] get; set; }
 
-		// @property (getter = getDefaultValue, nonatomic, weak) NSString * defaultValue;
-		[Export ("defaultValue", ArgumentSemantic.Weak)]
+		// @property (getter = getDefaultValue, copy, nonatomic) NSString * defaultValue;
+		[Export ("defaultValue")]
 		string DefaultValue { [Bind ("getDefaultValue")] get; set; }
 
-		// @property (getter = getValue, nonatomic, weak) NSString * value;
-		[Export ("value", ArgumentSemantic.Weak)]
+		// @property (getter = getValue, copy, nonatomic) NSString * value;
+		[Export ("value")]
 		string Value { [Bind ("getValue")] get; set; }
 
 		// @property (getter = getAlignment, nonatomic) FSAlignment alignment;
 		[Export ("alignment", ArgumentSemantic.Assign)]
 		FSAlignment Alignment { [Bind ("getAlignment")] get; set; }
 
-		// @property (getter = getAlternateName, nonatomic, weak) NSString * alternateName;
-		[Export ("alternateName", ArgumentSemantic.Weak)]
+		// @property (getter = getAlternateName, copy, nonatomic) NSString * alternateName;
+		[Export ("alternateName")]
 		string AlternateName { [Bind ("getAlternateName")] get; set; }
 
-		// @property (getter = getDefaultAppearance, nonatomic, weak) FSDefaultAppearance * defaultAppearance;
-		[Export ("defaultAppearance", ArgumentSemantic.Weak)]
+		// @property (getter = getDefaultAppearance, copy, nonatomic) FSDefaultAppearance * defaultAppearance;
+		[Export ("defaultAppearance", ArgumentSemantic.Copy)]
 		FSDefaultAppearance DefaultAppearance { [Bind ("getDefaultAppearance")] get; set; }
 
-		// @property (getter = getMappingName, nonatomic, weak) NSString * mappingName;
-		[Export ("mappingName", ArgumentSemantic.Weak)]
+		// @property (getter = getMappingName, copy, nonatomic) NSString * mappingName;
+		[Export ("mappingName")]
 		string MappingName { [Bind ("getMappingName")] get; set; }
 
 		// @property (getter = getMaxLength, nonatomic) int maxLength;
 		[Export ("maxLength")]
 		int MaxLength { [Bind ("getMaxLength")] get; set; }
 
-		// @property (getter = getOptions, nonatomic, weak) FSChoiceOptionArray * options;
-		[Export ("options", ArgumentSemantic.Weak)]
+		// @property (getter = getOptions, copy, nonatomic) FSChoiceOptionArray * options;
+		[Export ("options", ArgumentSemantic.Copy)]
 		FSChoiceOptionArray Options { [Bind ("getOptions")] get; set; }
 
 		// @property (getter = getTopVisibleIndex, nonatomic) int topVisibleIndex;
@@ -11045,12 +11065,12 @@ namespace Foxit.iOS
 		[Export ("alignment", ArgumentSemantic.Assign)]
 		FSAlignment Alignment { [Bind ("getAlignment")] get; set; }
 
-		// @property (getter = getDefaultAppearance, nonatomic, weak) FSDefaultAppearance * defaultAppearance;
-		[Export ("defaultAppearance", ArgumentSemantic.Weak)]
+		// @property (getter = getDefaultAppearance, copy, nonatomic) FSDefaultAppearance * defaultAppearance;
+		[Export ("defaultAppearance", ArgumentSemantic.Copy)]
 		FSDefaultAppearance DefaultAppearance { [Bind ("getDefaultAppearance")] get; set; }
 
-		// @property (getter = getFieldsInCalculationOrder, nonatomic, weak) FSFieldArray * fieldsInCalculationOrder;
-		[Export ("fieldsInCalculationOrder", ArgumentSemantic.Weak)]
+		// @property (getter = getFieldsInCalculationOrder, copy, nonatomic) FSFieldArray * fieldsInCalculationOrder;
+		[Export ("fieldsInCalculationOrder", ArgumentSemantic.Copy)]
 		FSFieldArray FieldsInCalculationOrder { [Bind ("getFieldsInCalculationOrder")] get; set; }
 
 		// -(void *)getCptr;
@@ -11174,12 +11194,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSControl
 	{
-		// @property (getter = getExportValue, nonatomic, weak) NSString * exportValue;
-		[Export ("exportValue", ArgumentSemantic.Weak)]
+		// @property (getter = getExportValue, copy, nonatomic) NSString * exportValue;
+		[Export ("exportValue")]
 		string ExportValue { [Bind ("getExportValue")] get; set; }
 
-		// @property (getter = getDefaultAppearance, nonatomic, weak) FSDefaultAppearance * defaultAppearance;
-		[Export ("defaultAppearance", ArgumentSemantic.Weak)]
+		// @property (getter = getDefaultAppearance, copy, nonatomic) FSDefaultAppearance * defaultAppearance;
+		[Export ("defaultAppearance", ArgumentSemantic.Copy)]
 		FSDefaultAppearance DefaultAppearance { [Bind ("getDefaultAppearance")] get; set; }
 
 		// -(void *)getCptr;
@@ -11256,20 +11276,20 @@ namespace Foxit.iOS
 		[Export ("appearanceFlags")]
 		uint AppearanceFlags { [Bind ("getAppearanceFlags")] get; set; }
 
-		// @property (getter = getSignTime, nonatomic, weak) FSDateTime * signTime;
-		[Export ("signTime", ArgumentSemantic.Weak)]
+		// @property (getter = getSignTime, copy, nonatomic) FSDateTime * signTime;
+		[Export ("signTime", ArgumentSemantic.Copy)]
 		FSDateTime SignTime { [Bind ("getSignTime")] get; set; }
 
-		// @property (getter = getFilter, nonatomic, weak) NSString * filter;
-		[Export ("filter", ArgumentSemantic.Weak)]
+		// @property (getter = getFilter, copy, nonatomic) NSString * filter;
+		[Export ("filter")]
 		string Filter { [Bind ("getFilter")] get; set; }
 
-		// @property (getter = getSubFilter, nonatomic, weak) NSString * subFilter;
-		[Export ("subFilter", ArgumentSemantic.Weak)]
+		// @property (getter = getSubFilter, copy, nonatomic) NSString * subFilter;
+		[Export ("subFilter")]
 		string SubFilter { [Bind ("getSubFilter")] get; set; }
 
-		// @property (getter = getBitmap, nonatomic, weak) FSBitmap * bitmap;
-		[Export ("bitmap", ArgumentSemantic.Weak)]
+		// @property (getter = getBitmap, copy, nonatomic) FSBitmap * bitmap;
+		[Export ("bitmap", ArgumentSemantic.Copy)]
 		FSBitmap Bitmap { [Bind ("getBitmap")] get; set; }
 
 		// -(void *)getCptr;
@@ -11367,6 +11387,14 @@ namespace Foxit.iOS
 		// -(void)setKeyValue:(FSSignatureKeyName)key value:(NSString *)value;
 		[Export ("setKeyValue:value:")]
 		void SetKeyValue (FSSignatureKeyName key, string value);
+
+		// -(void)setKeyLabel:(FSSignatureLabelName)label_name label_value:(NSString *)label_value;
+		[Export ("setKeyLabel:label_value:")]
+		void SetKeyLabel (FSSignatureLabelName label_name, string label_value);
+
+		// -(NSString *)getKeyLabel:(FSSignatureLabelName)label_name;
+		[Export ("getKeyLabel:")]
+		string GetKeyLabel (FSSignatureLabelName label_name);
 
 		// -(void)setImage:(FSImage *)image frame_index:(int)frame_index;
 		[Export ("setImage:frame_index:")]
@@ -11541,8 +11569,8 @@ namespace Foxit.iOS
 		[Export ("type", ArgumentSemantic.Assign)]
 		FSResponseResponseType Type { [Bind ("getType")] get; set; }
 
-		// @property (getter = getResponse_data, nonatomic, weak) NSString * response_data;
-		[Export ("response_data", ArgumentSemantic.Weak)]
+		// @property (getter = getResponse_data, copy, nonatomic) NSString * response_data;
+		[Export ("response_data")]
 		string Response_data { [Bind ("getResponse_data")] get; set; }
 
 		// -(void *)getCptr;
@@ -11576,12 +11604,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSTimeRange
 	{
-		// @property (getter = getStart_time, nonatomic, weak) FSDateTime * start_time;
-		[Export ("start_time", ArgumentSemantic.Weak)]
+		// @property (getter = getStart_time, copy, nonatomic) FSDateTime * start_time;
+		[Export ("start_time", ArgumentSemantic.Copy)]
 		FSDateTime Start_time { [Bind ("getStart_time")] get; set; }
 
-		// @property (getter = getEnd_time, nonatomic, weak) FSDateTime * end_time;
-		[Export ("end_time", ArgumentSemantic.Weak)]
+		// @property (getter = getEnd_time, copy, nonatomic) FSDateTime * end_time;
+		[Export ("end_time", ArgumentSemantic.Copy)]
 		FSDateTime End_time { [Bind ("getEnd_time")] get; set; }
 
 		// -(void *)getCptr;
@@ -11615,8 +11643,8 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSCertVerifyResult
 	{
-		// @property (getter = getCert, nonatomic, weak) NSString * cert;
-		[Export ("cert", ArgumentSemantic.Weak)]
+		// @property (getter = getCert, copy, nonatomic) NSString * cert;
+		[Export ("cert")]
 		string Cert { [Bind ("getCert")] get; set; }
 
 		// @property (getter = getIs_ca, nonatomic) BOOL is_ca;
@@ -11627,16 +11655,16 @@ namespace Foxit.iOS
 		[Export ("is_trusted")]
 		bool Is_trusted { [Bind ("getIs_trusted")] get; set; }
 
-		// @property (getter = getResponse, nonatomic, weak) FSResponse * response;
-		[Export ("response", ArgumentSemantic.Weak)]
+		// @property (getter = getResponse, copy, nonatomic) FSResponse * response;
+		[Export ("response", ArgumentSemantic.Copy)]
 		FSResponse Response { [Bind ("getResponse")] get; set; }
 
-		// @property (getter = getResponse_effect_time_range, nonatomic, weak) FSTimeRange * response_effect_time_range;
-		[Export ("response_effect_time_range", ArgumentSemantic.Weak)]
+		// @property (getter = getResponse_effect_time_range, copy, nonatomic) FSTimeRange * response_effect_time_range;
+		[Export ("response_effect_time_range", ArgumentSemantic.Copy)]
 		FSTimeRange Response_effect_time_range { [Bind ("getResponse_effect_time_range")] get; set; }
 
-		// @property (getter = getRevoke_time, nonatomic, weak) FSDateTime * revoke_time;
-		[Export ("revoke_time", ArgumentSemantic.Weak)]
+		// @property (getter = getRevoke_time, copy, nonatomic) FSDateTime * revoke_time;
+		[Export ("revoke_time", ArgumentSemantic.Copy)]
 		FSDateTime Revoke_time { [Bind ("getRevoke_time")] get; set; }
 
 		// @property (getter = getCert_status, nonatomic) FSCertVerifyResultCertStatus cert_status;
@@ -11647,24 +11675,24 @@ namespace Foxit.iOS
 		[Export ("reason", ArgumentSemantic.Assign)]
 		FSCertVerifyResultRevocationReason Reason { [Bind ("getReason")] get; set; }
 
-		// @property (getter = getCert_check_time, nonatomic, weak) FSDateTime * cert_check_time;
-		[Export ("cert_check_time", ArgumentSemantic.Weak)]
+		// @property (getter = getCert_check_time, copy, nonatomic) FSDateTime * cert_check_time;
+		[Export ("cert_check_time", ArgumentSemantic.Copy)]
 		FSDateTime Cert_check_time { [Bind ("getCert_check_time")] get; set; }
 
 		// @property (getter = getExist_signature_vri_creation_time, nonatomic) BOOL exist_signature_vri_creation_time;
 		[Export ("exist_signature_vri_creation_time")]
 		bool Exist_signature_vri_creation_time { [Bind ("getExist_signature_vri_creation_time")] get; set; }
 
-		// @property (getter = getSignature_vri_creation_time, nonatomic, weak) FSDateTime * signature_vri_creation_time;
-		[Export ("signature_vri_creation_time", ArgumentSemantic.Weak)]
+		// @property (getter = getSignature_vri_creation_time, copy, nonatomic) FSDateTime * signature_vri_creation_time;
+		[Export ("signature_vri_creation_time", ArgumentSemantic.Copy)]
 		FSDateTime Signature_vri_creation_time { [Bind ("getSignature_vri_creation_time")] get; set; }
 
 		// @property (getter = getExist_response_signature_vri_creation_time, nonatomic) BOOL exist_response_signature_vri_creation_time;
 		[Export ("exist_response_signature_vri_creation_time")]
 		bool Exist_response_signature_vri_creation_time { [Bind ("getExist_response_signature_vri_creation_time")] get; set; }
 
-		// @property (getter = getResponse_signature_vri_creation_time, nonatomic, weak) FSDateTime * response_signature_vri_creation_time;
-		[Export ("response_signature_vri_creation_time", ArgumentSemantic.Weak)]
+		// @property (getter = getResponse_signature_vri_creation_time, copy, nonatomic) FSDateTime * response_signature_vri_creation_time;
+		[Export ("response_signature_vri_creation_time", ArgumentSemantic.Copy)]
 		FSDateTime Response_signature_vri_creation_time { [Bind ("getResponse_signature_vri_creation_time")] get; set; }
 
 		// @property (getter = getResponse_info_location, nonatomic) FSCertVerifyResultResponseInfoLocation response_info_location;
@@ -11749,12 +11777,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSCertIssuerPair
 	{
-		// @property (getter = getCert, nonatomic, weak) NSString * cert;
-		[Export ("cert", ArgumentSemantic.Weak)]
+		// @property (getter = getCert, copy, nonatomic) NSString * cert;
+		[Export ("cert")]
 		string Cert { [Bind ("getCert")] get; set; }
 
-		// @property (getter = getIssuer, nonatomic, weak) NSString * issuer;
-		[Export ("issuer", ArgumentSemantic.Weak)]
+		// @property (getter = getIssuer, copy, nonatomic) NSString * issuer;
+		[Export ("issuer")]
 		string Issuer { [Bind ("getIssuer")] get; set; }
 
 		// -(void *)getCptr;
@@ -11788,12 +11816,12 @@ namespace Foxit.iOS
 	[DisableDefaultCtor]
 	interface FSRevocationArrayInfo
 	{
-		// @property (getter = getOcsp_array, nonatomic, weak) NSArray<NSData *> * ocsp_array;
-		[Export ("ocsp_array", ArgumentSemantic.Weak)]
+		// @property (getter = getOcsp_array, copy, nonatomic) NSArray<NSData *> * ocsp_array;
+		[Export ("ocsp_array", ArgumentSemantic.Copy)]
 		NSData[] Ocsp_array { [Bind ("getOcsp_array")] get; set; }
 
-		// @property (getter = getCrl_array, nonatomic, weak) NSArray<NSData *> * crl_array;
-		[Export ("crl_array", ArgumentSemantic.Weak)]
+		// @property (getter = getCrl_array, copy, nonatomic) NSArray<NSData *> * crl_array;
+		[Export ("crl_array", ArgumentSemantic.Copy)]
 		NSData[] Crl_array { [Bind ("getCrl_array")] get; set; }
 
 		// -(void *)getCptr;

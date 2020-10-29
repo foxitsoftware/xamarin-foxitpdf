@@ -261,11 +261,11 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerPanelChangedListener:(id<IPanelChangedListener>)listener;
 		[Export ("registerPanelChangedListener:")]
-		void RegisterPanelChangedListener (IPanelChangedListener listener);
+		void RegisterPanelChangedListener (NSObject listener);
 
 		// -(void)unregisterPanelChangedListener:(id<IPanelChangedListener>)listener;
 		[Export ("unregisterPanelChangedListener:")]
-		void UnregisterPanelChangedListener (IPanelChangedListener listener);
+		void UnregisterPanelChangedListener (NSObject listener);
 	}
 
 	// @protocol IAppLifecycleListener <NSObject>
@@ -973,27 +973,27 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerFullScreenListener:(id<IFullScreenListener> _Nonnull)listener;
 		[Export ("registerFullScreenListener:")]
-		void RegisterFullScreenListener (IFullScreenListener listener);
+		void RegisterFullScreenListener (NSObject listener);
 
 		// -(void)unregisterFullScreenListener:(id<IFullScreenListener> _Nonnull)listener;
 		[Export ("unregisterFullScreenListener:")]
-		void UnregisterFullScreenListener (IFullScreenListener listener);
+		void UnregisterFullScreenListener (NSObject listener);
 
 		// -(void)registerPageNumberListener:(id<IPageNumberListener> _Nonnull)listener;
 		[Export ("registerPageNumberListener:")]
-		void RegisterPageNumberListener (IPageNumberListener listener);
+		void RegisterPageNumberListener (NSObject listener);
 
 		// -(void)unregisterPageNumerListener:(id<IPageNumberListener> _Nonnull)listener;
 		[Export ("unregisterPageNumerListener:")]
-		void UnregisterPageNumerListener (IPageNumberListener listener);
+		void UnregisterPageNumerListener (NSObject listener);
 
 		// -(void)registerRotateChangedListener:(id<IRotationEventListener> _Nonnull)listener;
 		[Export ("registerRotateChangedListener:")]
-		void RegisterRotateChangedListener (IRotationEventListener listener);
+		void RegisterRotateChangedListener (NSObject listener);
 
 		// -(void)unregisterRotateChangedListener:(id<IRotationEventListener> _Nonnull)listener;
 		[Export ("unregisterRotateChangedListener:")]
-		void UnregisterRotateChangedListener (IRotationEventListener listener);
+		void UnregisterRotateChangedListener (NSObject listener);
 
 		// -(void)enableTopToolbar:(BOOL)isEnabled;
 		[Export ("enableTopToolbar:")]
@@ -1029,35 +1029,35 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerAnnotEventListener:(id<IAnnotEventListener> _Nonnull)listener;
 		[Export ("registerAnnotEventListener:")]
-		void RegisterAnnotEventListener (IAnnotEventListener listener);
+		void RegisterAnnotEventListener (NSObject listener);
 
 		// -(void)unregisterAnnotEventListener:(id<IAnnotEventListener> _Nonnull)listener;
 		[Export ("unregisterAnnotEventListener:")]
-		void UnregisterAnnotEventListener (IAnnotEventListener listener);
+		void UnregisterAnnotEventListener (NSObject listener);
 
 		// -(void)registerToolEventListener:(id<IToolEventListener> _Nonnull)listener;
 		[Export ("registerToolEventListener:")]
-		void RegisterToolEventListener (IToolEventListener listener);
+		void RegisterToolEventListener (NSObject listener);
 
 		// -(void)unregisterToolEventListener:(id<IToolEventListener> _Nonnull)listener;
 		[Export ("unregisterToolEventListener:")]
-		void UnregisterToolEventListener (IToolEventListener listener);
+		void UnregisterToolEventListener (NSObject listener);
 
 		// -(void)registerDocModifiedEventListener:(id<IDocModifiedEventListener> _Nonnull)listener;
 		[Export ("registerDocModifiedEventListener:")]
-		void RegisterDocModifiedEventListener (IDocModifiedEventListener listener);
+		void RegisterDocModifiedEventListener (NSObject listener);
 
 		// -(void)unregisterDocModifiedEventListener:(id<IDocModifiedEventListener> _Nonnull)listener;
 		[Export ("unregisterDocModifiedEventListener:")]
-		void UnregisterDocModifiedEventListener (IDocModifiedEventListener listener);
+		void UnregisterDocModifiedEventListener (NSObject listener);
 
 		// -(void)registerLinkEventListener:(id<ILinkEventListener> _Nonnull)listener;
 		[Export ("registerLinkEventListener:")]
-		void RegisterLinkEventListener (ILinkEventListener listener);
+		void RegisterLinkEventListener (NSObject listener);
 
 		// -(void)unregisterLinkEventListener:(id<ILinkEventListener> _Nonnull)listener;
 		[Export ("unregisterLinkEventListener:")]
-		void UnregisterLinkEventListener (ILinkEventListener listener);
+		void UnregisterLinkEventListener (NSObject listener);
 
 		// -(void)showProperty:(FSAnnotType)annotType rect:(CGRect)rect inView:(UIView * _Nonnull)view;
 		[Export ("showProperty:rect:inView:")]
@@ -1077,11 +1077,11 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerSearchEventListener:(id<ISearchEventListener> _Nonnull)listener;
 		[Export ("registerSearchEventListener:")]
-		void RegisterSearchEventListener (ISearchEventListener listener);
+		void RegisterSearchEventListener (NSObject listener);
 
 		// -(void)unregisterSearchEventListener:(id<ISearchEventListener> _Nonnull)listener;
 		[Export ("unregisterSearchEventListener:")]
-		void UnregisterSearchEventListener (ISearchEventListener listener);
+		void UnregisterSearchEventListener (NSObject listener);
 
 		// -(NSString * _Nonnull)getCurrentSelectedText;
 		[Export ("getCurrentSelectedText")]

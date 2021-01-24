@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleName</key>
-	<string>FoxitRDKDemo</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.foxitcorporation.XamarinViewCtrlDemo</string>
 	<key>CFBundleShortVersionString</key>
@@ -13,7 +11,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>10.3</string>
+	<string>11.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -49,5 +47,7 @@
 	<string>RDK need to add picture permissions,please allow</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>For adding pictures to your PDF files.</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

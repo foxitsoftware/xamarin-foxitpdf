@@ -1106,6 +1106,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSRichTextStyleCornerMarkStyle 
+	{
+		None = 1,
+		Superscript = 2,
+		Subscript = 3
+	}
+
+	//[Native]
 	public enum FSBorderInfoStyle 
 	{
 		Solid = 0,
@@ -1119,6 +1127,7 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSIconFitScaleWayType 
 	{
+		None = 0,
 		Always = 1,
 		Bigger = 2,
 		Smaller = 3,

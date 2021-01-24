@@ -4787,6 +4787,73 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSRichTextStyle : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSRichTextStyle
+	{
+		// @property (getter = getFont, copy, nonatomic) FSFont * font;
+		[Export ("font", ArgumentSemantic.Copy)]
+		FSFont Font { [Bind ("getFont")] get; set; }
+
+		// @property (getter = getText_size, nonatomic) float text_size;
+		[Export ("text_size")]
+		float Text_size { [Bind ("getText_size")] get; set; }
+
+		// @property (getter = getText_alignment, nonatomic) FSAlignment text_alignment;
+		[Export ("text_alignment", ArgumentSemantic.Assign)]
+		FSAlignment Text_alignment { [Bind ("getText_alignment")] get; set; }
+
+		// @property (getter = getText_color, nonatomic) unsigned int text_color;
+		[Export ("text_color")]
+		uint Text_color { [Bind ("getText_color")] get; set; }
+
+		// @property (getter = getIs_bold, nonatomic) BOOL is_bold;
+		[Export ("is_bold")]
+		bool Is_bold { [Bind ("getIs_bold")] get; set; }
+
+		// @property (getter = getIs_italic, nonatomic) BOOL is_italic;
+		[Export ("is_italic")]
+		bool Is_italic { [Bind ("getIs_italic")] get; set; }
+
+		// @property (getter = getIs_underline, nonatomic) BOOL is_underline;
+		[Export ("is_underline")]
+		bool Is_underline { [Bind ("getIs_underline")] get; set; }
+
+		// @property (getter = getIs_strikethrough, nonatomic) BOOL is_strikethrough;
+		[Export ("is_strikethrough")]
+		bool Is_strikethrough { [Bind ("getIs_strikethrough")] get; set; }
+
+		// @property (getter = getMark_style, nonatomic) FSRichTextStyleCornerMarkStyle mark_style;
+		[Export ("mark_style", ArgumentSemantic.Assign)]
+		FSRichTextStyleCornerMarkStyle Mark_style { [Bind ("getMark_style")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_alignment:(FSAlignment)text_alignment text_color:(unsigned int)text_color is_bold:(BOOL)is_bold is_italic:(BOOL)is_italic is_underline:(BOOL)is_underline is_strikethrough:(BOOL)is_strikethrough mark_style:(FSRichTextStyleCornerMarkStyle)mark_style;
+		[Export ("initWithFont:text_size:text_alignment:text_color:is_bold:is_italic:is_underline:is_strikethrough:mark_style:")]
+		IntPtr Constructor (FSFont font, float text_size, FSAlignment text_alignment, uint text_color, bool is_bold, bool is_italic, bool is_underline, bool is_strikethrough, FSRichTextStyleCornerMarkStyle mark_style);
+
+		// -(id)initWithStyle:(FSRichTextStyle *)style;
+		[Export ("initWithStyle:")]
+		IntPtr Constructor (FSRichTextStyle style);
+
+		// -(void)set:(FSFont *)font text_size:(float)text_size text_alignment:(FSAlignment)text_alignment text_color:(unsigned int)text_color is_bold:(BOOL)is_bold is_italic:(BOOL)is_italic is_underline:(BOOL)is_underline is_strikethrough:(BOOL)is_strikethrough mark_style:(FSRichTextStyleCornerMarkStyle)mark_style;
+		[Export ("set:text_size:text_alignment:text_color:is_bold:is_italic:is_underline:is_strikethrough:mark_style:")]
+		void Set (FSFont font, float text_size, FSAlignment text_alignment, uint text_color, bool is_bold, bool is_italic, bool is_underline, bool is_strikethrough, FSRichTextStyleCornerMarkStyle mark_style);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSBorderInfo : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSBorderInfo
@@ -5375,6 +5442,39 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		bool RemoveAllStateAnnots { get; }
 
+		// -(int)getRichTextCount;
+		[Export ("getRichTextCount")]
+		//[Verify (MethodToProperty)]
+		int RichTextCount { get; }
+
+		// -(NSString *)getRichTextContent:(int)index;
+		[Export ("getRichTextContent:")]
+		string GetRichTextContent (int index);
+
+		// -(void)setRichTextContent:(int)index content:(NSString *)content;
+		[Export ("setRichTextContent:content:")]
+		void SetRichTextContent (int index, string content);
+
+		// -(FSRichTextStyle *)getRichTextStyle:(int)index;
+		[Export ("getRichTextStyle:")]
+		FSRichTextStyle GetRichTextStyle (int index);
+
+		// -(void)setRichTextStyle:(int)index style:(FSRichTextStyle *)style;
+		[Export ("setRichTextStyle:style:")]
+		void SetRichTextStyle (int index, FSRichTextStyle style);
+
+		// -(void)addRichText:(NSString *)content style:(FSRichTextStyle *)style;
+		[Export ("addRichText:style:")]
+		void AddRichText (string content, FSRichTextStyle style);
+
+		// -(void)insertRichText:(int)index content:(NSString *)content style:(FSRichTextStyle *)style;
+		[Export ("insertRichText:content:style:")]
+		void InsertRichText (int index, string content, FSRichTextStyle style);
+
+		// -(void)removeRichText:(int)index;
+		[Export ("removeRichText:")]
+		void RemoveRichText (int index);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -5825,6 +5925,10 @@ namespace Foxit.iOS
 		// -(id)initWithAnnot:(FSAnnot *)annot;
 		[Export ("initWithAnnot:")]
 		IntPtr Constructor (FSAnnot annot);
+
+		// -(void)enableUseBezier:(BOOL)use_bezier;
+		[Export ("enableUseBezier:")]
+		void EnableUseBezier (bool use_bezier);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -13635,6 +13739,11 @@ namespace Foxit.iOS
 	interface FSPDFViewCtrl_rms
 	{
 		*/
+		// +(BOOL)handleADALResponse:(NSURL * _Nonnull)response sourceApplication:(NSString * _Nullable)sourceApplication;
+		[Static]
+		[Export ("handleADALResponse:sourceApplication:")]
+		bool HandleADALResponse (NSUrl response, [NullAllowed] string sourceApplication);
+
 		// -(void)setRMSAppClientId:(NSString * _Nonnull)appClientId redirectURI:(NSString * _Nonnull)redirectURI;
 		[Export ("setRMSAppClientId:redirectURI:")]
 		void SetRMSAppClientId (string appClientId, string redirectURI);

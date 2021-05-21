@@ -28,4 +28,6 @@
   <remove-node path="/api/package[@name='com.microsoft.rightsmanagement.flows']/class[@name='CreatePolicyWithParametersFlow']"/>
   <remove-node path="/api/package[@name='com.microsoft.rightsmanagement.flows']/class[@name='ConsumptionRMSFlow']"/>
 
+  <remove-node path="/api/package[@name='com.microsoft.rightsmanagement.streams.crypto']/class[@name='OfflineKeyManager']/method[@name='retrieveOfflineKey']"/>
+  <remove-node path="/api/package[@name='com.microsoft.rightsmanagement.utils']/class[@name='SecureTimeStorage']/method[@name='store']"/>
 </metadata>

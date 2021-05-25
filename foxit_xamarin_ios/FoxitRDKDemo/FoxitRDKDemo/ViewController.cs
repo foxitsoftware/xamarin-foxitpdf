@@ -87,7 +87,7 @@ namespace FoxitRDKDemo
 
             UIButton button = new UIButton();
             button.TouchUpInside += openScan;
-            button.SetImage(UIImage.FromBundle("UIExtensionsResource/scan/scan"), UIControlState.Normal);
+            button.SetImage(UIImage.FromBundle("scan"), UIControlState.Normal);
             fileListViewController.View.AddSubview(button);
             button.TranslatesAutoresizingMaskIntoConstraints = false;
             button.WidthAnchor.ConstraintEqualTo(60).Active = true;

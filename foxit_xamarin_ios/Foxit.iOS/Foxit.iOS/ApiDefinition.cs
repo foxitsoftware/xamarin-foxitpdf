@@ -15050,7 +15050,7 @@ namespace Foxit.iOS
 		// +(void)setExceptionLogger:(id<FSExceptionLoggerDelegate> _Nullable)logger;
 		[Static]
 		[Export ("setExceptionLogger:")]
-		void SetExceptionLogger ([NullAllowed] FSExceptionLoggerDelegate logger);/*
+		void SetExceptionLogger ([NullAllowed] NSObject logger);/*
 		
 	}
 

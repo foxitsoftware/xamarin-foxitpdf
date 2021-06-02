@@ -50,7 +50,7 @@ namespace Foxit.iOS.UIExtensions
 	{
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
-		FSFileSelectDelegate Delegate { get; set; }
+		NSObject Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<FSFileSelectDelegate> _Nullable delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
@@ -125,7 +125,7 @@ namespace Foxit.iOS.UIExtensions
 
 		// @property (nonatomic, strong) id<IPanelSpec> currentSpec;
 		[Export ("currentSpec", ArgumentSemantic.Strong)]
-		IPanelSpec CurrentSpec { get; set; }
+		NSObject CurrentSpec { get; set; }
 
 		// @property (nonatomic, strong) UIView * contentView;
 		[Export ("contentView", ArgumentSemantic.Strong)]
@@ -133,15 +133,15 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)addSpec:(id<IPanelSpec>)spec;
 		[Export ("addSpec:")]
-		void AddSpec (IPanelSpec spec);
+		void AddSpec (NSObject spec);
 
 		// -(void)insertSpec:(id<IPanelSpec>)spec atIndex:(int)index;
 		[Export ("insertSpec:atIndex:")]
-		void InsertSpec (IPanelSpec spec, int index);
+		void InsertSpec (NSObject spec, int index);
 
 		// -(void)removeSpec:(id<IPanelSpec>)spec;
 		[Export ("removeSpec:")]
-		void RemoveSpec (IPanelSpec spec);
+		void RemoveSpec (NSObject spec);
 
 		// -(void)reloadData;
 		[Export ("reloadData")]
@@ -182,7 +182,7 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(id<IPanelSpec>)getPanel:(FSPanelType)type;
 		[Export ("getPanel:")]
-		IPanelSpec GetPanel (FSPanelType type);
+		NSObject GetPanel (FSPanelType type);
 
 		// -(BOOL)isPanelHidden:(FSPanelType)type;
 		[Export ("isPanelHidden:")]
@@ -194,11 +194,11 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerPanelChangedListener:(id<IPanelChangedListener>)listener;
 		[Export ("registerPanelChangedListener:")]
-		void RegisterPanelChangedListener (IPanelChangedListener listener);
+		void RegisterPanelChangedListener (NSObject listener);
 
 		// -(void)unregisterPanelChangedListener:(id<IPanelChangedListener>)listener;
 		[Export ("unregisterPanelChangedListener:")]
-		void UnregisterPanelChangedListener (IPanelChangedListener listener);
+		void UnregisterPanelChangedListener (NSObject listener);
 	}
 
 	// @protocol IAppLifecycleListener <NSObject>
@@ -306,7 +306,7 @@ namespace Foxit.iOS.UIExtensions
 		UIView ContentView { get; set; }
 
 		[Wrap ("WeakDelegate")]
-		FSSettingBarDelegate Delegate { get; set; }
+		NSObject Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<FSSettingBarDelegate> delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
@@ -588,7 +588,7 @@ namespace Foxit.iOS.UIExtensions
 		// @required -(void)onClick:(id<MoreItemProtocol> _Nonnull)item;
 		[Abstract]
 		[Export ("onClick:")]
-		void OnClick (MoreItemProtocol item);
+		void OnClick (NSObject item);
 	}
 
 	// @protocol MoreItemProtocol <NSObject>
@@ -633,7 +633,7 @@ namespace Foxit.iOS.UIExtensions
 
 		// @property (nonatomic, weak) id<MoreItemActionProtocol> _Nullable callBack;
 		[NullAllowed, Export ("callBack", ArgumentSemantic.Weak)]
-		MoreItemActionProtocol CallBack { get; set; }
+		NSObject CallBack { get; set; }
 
 		// @property (nonatomic, strong) UIView * _Nonnull menuView;
 		[Export ("menuView", ArgumentSemantic.Strong)]
@@ -659,7 +659,7 @@ namespace Foxit.iOS.UIExtensions
 
 		// @property (nonatomic, weak) id<MoreItemActionProtocol> _Nullable callBack;
 		[NullAllowed, Export ("callBack", ArgumentSemantic.Weak)]
-		MoreItemActionProtocol CallBack { get; set; }
+		NSObject CallBack { get; set; }
 
 		// -(void)setItems:(NSMutableArray * _Nonnull)arr;
 		[Export ("setItems:")]
@@ -1245,11 +1245,11 @@ namespace Foxit.iOS.UIExtensions
 	{
 		// -(void)setMenuView:(id<FSMenuView> _Nonnull)menuView forMenuViewType:(FSMenuViewType)menuViewType;
 		[Export ("setMenuView:forMenuViewType:")]
-		void SetMenuView (FSMenuView menuView, FSMenuViewType menuViewType);
+		void SetMenuView (NSObject menuView, FSMenuViewType menuViewType);
 
 		// -(id<FSMenuView> _Nonnull)getMenuViewForMenuViewType:(FSMenuViewType)menuViewType;
 		[Export ("getMenuViewForMenuViewType:")]
-		FSMenuView GetMenuViewForMenuViewType (FSMenuViewType menuViewType);
+		NSObject GetMenuViewForMenuViewType (FSMenuViewType menuViewType);
 
 		// -(void)addMenuItemGroup:(FSMenuItemGroup * _Nonnull)group forMenuViewType:(FSMenuViewType)menuViewType;
 		[Export ("addMenuItemGroup:forMenuViewType:")]
@@ -1857,7 +1857,7 @@ namespace Foxit.iOS.UIExtensions
 
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
-		UIExtensionsManagerDelegate Delegate { get; set; }
+		NSObject Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<UIExtensionsManagerDelegate> _Nullable delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
@@ -1865,7 +1865,7 @@ namespace Foxit.iOS.UIExtensions
 
 		// @property (nonatomic, strong) id<IToolHandler> _Nullable currentToolHandler;
 		[NullAllowed, Export ("currentToolHandler", ArgumentSemantic.Strong)]
-		IToolHandler CurrentToolHandler { get; set; }
+		NSObject CurrentToolHandler { get; set; }
 
 		// @property (assign, nonatomic) BOOL canUpdateAnnotDefaultProperties;
 		[Export ("canUpdateAnnotDefaultProperties")]
@@ -1973,7 +1973,7 @@ namespace Foxit.iOS.UIExtensions
 
 		[Wrap ("WeakAnnotPermissionDelegate")]
 		[NullAllowed]
-		FSAnnotPermissionDelegate AnnotPermissionDelegate { get; set; }
+		NSObject AnnotPermissionDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<FSAnnotPermissionDelegate> _Nullable annotPermissionDelegate;
 		[NullAllowed, Export ("annotPermissionDelegate", ArgumentSemantic.Weak)]
@@ -1981,7 +1981,7 @@ namespace Foxit.iOS.UIExtensions
 
 		[Wrap ("WeakMenuControlDelegate")]
 		[NullAllowed]
-		FSMenuControlDelegate MenuControlDelegate { get; set; }
+		NSObject MenuControlDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<FSMenuControlDelegate> _Nullable menuControlDelegate;
 		[NullAllowed, Export ("menuControlDelegate", ArgumentSemantic.Weak)]
@@ -2009,19 +2009,19 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerFullScreenListener:(id<IFullScreenListener> _Nonnull)listener;
 		[Export ("registerFullScreenListener:")]
-		void RegisterFullScreenListener (IFullScreenListener listener);
+		void RegisterFullScreenListener (NSObject listener);
 
 		// -(void)unregisterFullScreenListener:(id<IFullScreenListener> _Nonnull)listener;
 		[Export ("unregisterFullScreenListener:")]
-		void UnregisterFullScreenListener (IFullScreenListener listener);
+		void UnregisterFullScreenListener (NSObject listener);
 
 		// -(void)registerPageNumberListener:(id<IPageNumberListener> _Nonnull)listener;
 		[Export ("registerPageNumberListener:")]
-		void RegisterPageNumberListener (IPageNumberListener listener);
+		void RegisterPageNumberListener (NSObject listener);
 
 		// -(void)unregisterPageNumerListener:(id<IPageNumberListener> _Nonnull)listener;
 		[Export ("unregisterPageNumerListener:")]
-		void UnregisterPageNumerListener (IPageNumberListener listener);
+		void UnregisterPageNumerListener (NSObject listener);
 
 		// -(void)registerRotateChangedListener:(id<IRotationEventListener> _Nonnull)listener;
 		[Export ("registerRotateChangedListener:")]
@@ -2041,67 +2041,67 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(id<IToolHandler> _Nonnull)getToolHandlerByName:(NSString * _Nonnull)name;
 		[Export ("getToolHandlerByName:")]
-		IToolHandler GetToolHandlerByName (string name);
+		NSObject GetToolHandlerByName (string name);
 
 		// -(id<IAnnotHandler> _Nonnull)getAnnotHandlerByType:(FSAnnotType)type;
 		[Export ("getAnnotHandlerByType:")]
-		IAnnotHandler GetAnnotHandlerByType (FSAnnotType type);
+		NSObject GetAnnotHandlerByType (FSAnnotType type);
 
 		// -(void)registerToolHandler:(id<IToolHandler> _Nonnull)toolHandler;
 		[Export ("registerToolHandler:")]
-		void RegisterToolHandler (IToolHandler toolHandler);
+		void RegisterToolHandler (NSObject toolHandler);
 
 		// -(void)unregisterToolHandler:(id<IToolHandler> _Nonnull)toolHandler;
 		[Export ("unregisterToolHandler:")]
-		void UnregisterToolHandler (IToolHandler toolHandler);
+		void UnregisterToolHandler (NSObject toolHandler);
 
 		// -(void)registerAnnotHandler:(id<IAnnotHandler> _Nonnull)annotHandler;
 		[Export ("registerAnnotHandler:")]
-		void RegisterAnnotHandler (IAnnotHandler annotHandler);
+		void RegisterAnnotHandler (NSObject annotHandler);
 
 		// -(void)unregisterAnnotHandler:(id<IAnnotHandler> _Nonnull)annotHandler;
 		[Export ("unregisterAnnotHandler:")]
-		void UnregisterAnnotHandler (IAnnotHandler annotHandler);
+		void UnregisterAnnotHandler (NSObject annotHandler);
 
 		// -(void)registerAnnotEventListener:(id<IAnnotEventListener> _Nonnull)listener;
 		[Export ("registerAnnotEventListener:")]
-		void RegisterAnnotEventListener (IAnnotEventListener listener);
+		void RegisterAnnotEventListener (NSObject listener);
 
 		// -(void)unregisterAnnotEventListener:(id<IAnnotEventListener> _Nonnull)listener;
 		[Export ("unregisterAnnotEventListener:")]
-		void UnregisterAnnotEventListener (IAnnotEventListener listener);
+		void UnregisterAnnotEventListener (NSObject listener);
 
 		// -(void)registerToolEventListener:(id<IToolEventListener> _Nonnull)listener;
 		[Export ("registerToolEventListener:")]
-		void RegisterToolEventListener (IToolEventListener listener);
+		void RegisterToolEventListener (NSObject listener);
 
 		// -(void)unregisterToolEventListener:(id<IToolEventListener> _Nonnull)listener;
 		[Export ("unregisterToolEventListener:")]
-		void UnregisterToolEventListener (IToolEventListener listener);
+		void UnregisterToolEventListener (NSObject listener);
 
 		// -(void)registerDocModifiedEventListener:(id<IDocModifiedEventListener> _Nonnull)listener;
 		[Export ("registerDocModifiedEventListener:")]
-		void RegisterDocModifiedEventListener (IDocModifiedEventListener listener);
+		void RegisterDocModifiedEventListener (NSObject listener);
 
 		// -(void)unregisterDocModifiedEventListener:(id<IDocModifiedEventListener> _Nonnull)listener;
 		[Export ("unregisterDocModifiedEventListener:")]
-		void UnregisterDocModifiedEventListener (IDocModifiedEventListener listener);
+		void UnregisterDocModifiedEventListener (NSObject listener);
 
 		// -(void)registerLinkEventListener:(id<ILinkEventListener> _Nonnull)listener;
 		[Export ("registerLinkEventListener:")]
-		void RegisterLinkEventListener (ILinkEventListener listener);
+		void RegisterLinkEventListener (NSObject listener);
 
 		// -(void)unregisterLinkEventListener:(id<ILinkEventListener> _Nonnull)listener;
 		[Export ("unregisterLinkEventListener:")]
-		void UnregisterLinkEventListener (ILinkEventListener listener);
+		void UnregisterLinkEventListener (NSObject listener);
 
 		// -(void)registerSignatureEventListener:(id<ISignatureEventListener> _Nonnull)listener;
 		[Export ("registerSignatureEventListener:")]
-		void RegisterSignatureEventListener (ISignatureEventListener listener);
+		void RegisterSignatureEventListener (NSObject listener);
 
 		// -(void)unregisterSignatureEventListener:(id<ISignatureEventListener> _Nonnull)listener;
 		[Export ("unregisterSignatureEventListener:")]
-		void UnregisterSignatureEventListener (ISignatureEventListener listener);
+		void UnregisterSignatureEventListener (NSObject listener);
 
 		// -(void)showPropertyWithToolSettings:(FSReadToolSettings * _Nonnull)toolSettings rect:(CGRect)rect inView:(UIView * _Nonnull)view;
 		[Export ("showPropertyWithToolSettings:rect:inView:")]
@@ -2113,11 +2113,11 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(void)registerSearchEventListener:(id<ISearchEventListener> _Nonnull)listener;
 		[Export ("registerSearchEventListener:")]
-		void RegisterSearchEventListener (ISearchEventListener listener);
+		void RegisterSearchEventListener (NSObject listener);
 
 		// -(void)unregisterSearchEventListener:(id<ISearchEventListener> _Nonnull)listener;
 		[Export ("unregisterSearchEventListener:")]
-		void UnregisterSearchEventListener (ISearchEventListener listener);
+		void UnregisterSearchEventListener (NSObject listener);
 
 		// -(NSString * _Nonnull)getCurrentSelectedText;
 		[Export ("getCurrentSelectedText")]
@@ -2126,7 +2126,7 @@ namespace Foxit.iOS.UIExtensions
 
 		// -(__kindof id<IModule> _Nonnull)getModuleByName:(FSModuleStringName _Nonnull)name;
 		[Export ("getModuleByName:")]
-		IModule GetModuleByName (string name);
+		NSObject GetModuleByName (string name);
 
 		// -(void)setFullScreen:(BOOL)fullScreen;
 		[Export ("setFullScreen:")]

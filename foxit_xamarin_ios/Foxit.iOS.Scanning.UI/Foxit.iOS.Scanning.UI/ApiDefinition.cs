@@ -120,11 +120,11 @@ namespace Foxit.iOS.Scanning.UI
 	{
 		// -(void)setMenuView:(id<PDFScanMenuView> _Nonnull)menuView forMenuViewType:(PDFScanMenuViewType)menuViewType;
 		[Export ("setMenuView:forMenuViewType:")]
-		void SetMenuView (PDFScanMenuView menuView, PDFScanMenuViewType menuViewType);
+		void SetMenuView (NSObject menuView, PDFScanMenuViewType menuViewType);
 
 		// -(id<PDFScanMenuView> _Nonnull)getMenuViewForMenuViewType:(PDFScanMenuViewType)menuViewType;
 		[Export ("getMenuViewForMenuViewType:")]
-		PDFScanMenuView GetMenuViewForMenuViewType (PDFScanMenuViewType menuViewType);
+		NSObject GetMenuViewForMenuViewType (PDFScanMenuViewType menuViewType);
 
 		// -(void)addMenuItemGroup:(PDFScanMenuItemGroup * _Nonnull)group forMenuViewType:(PDFScanMenuViewType)menuViewType;
 		[Export ("addMenuItemGroup:forMenuViewType:")]

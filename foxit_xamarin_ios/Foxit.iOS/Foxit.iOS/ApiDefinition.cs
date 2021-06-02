@@ -1052,32 +1052,32 @@ namespace Foxit.iOS
 		// +(BOOL)setAnnotIconProviderCallback:(id<FSIconProviderCallback>)annot_icon_provider;
 		[Static]
 		[Export ("setAnnotIconProviderCallback:")]
-		bool SetAnnotIconProviderCallback (FSIconProviderCallback annot_icon_provider);
+		bool SetAnnotIconProviderCallback (NSObject annot_icon_provider);
 
 		// +(BOOL)setNotifierCallback:(id<FSNotifierCallback>)notifier;
 		[Static]
 		[Export ("setNotifierCallback:")]
-		bool SetNotifierCallback (FSNotifierCallback notifier);
+		bool SetNotifierCallback (NSObject notifier);
 
 		// +(BOOL)setActionCallback:(id<FSActionCallback>)action_callback;
 		[Static]
 		[Export ("setActionCallback:")]
-		bool SetActionCallback (FSActionCallback action_callback);
+		bool SetActionCallback (NSObject action_callback);
 
 		// +(BOOL)setDocEventCallback:(id<FSDocEventCallback>)callback;
 		[Static]
 		[Export ("setDocEventCallback:")]
-		bool SetDocEventCallback (FSDocEventCallback callback);
+		bool SetDocEventCallback (NSObject callback);
 
 		// +(BOOL)registerSignatureCallback:(NSString *)filter sub_filter:(NSString *)sub_filter signature_callback:(id<FSSignatureCallback>)signature_callback;
 		[Static]
 		[Export ("registerSignatureCallback:sub_filter:signature_callback:")]
-		bool RegisterSignatureCallback (string filter, string sub_filter, FSSignatureCallback signature_callback);
+		bool RegisterSignatureCallback (string filter, string sub_filter, NSObject signature_callback);
 
 		// +(BOOL)registerSecurityCallback:(NSString *)filter callback:(id<FSSecurityCallback>)callback;
 		[Static]
 		[Export ("registerSecurityCallback:callback:")]
-		bool RegisterSecurityCallback (string filter, FSSecurityCallback callback);
+		bool RegisterSecurityCallback (string filter, NSObject callback);
 
 		// +(BOOL)unregisterSecurityCallback:(NSString *)filter;
 		[Static]
@@ -1093,7 +1093,7 @@ namespace Foxit.iOS
 		// +(void)registerXFAAppProviderCallback:(id<FSAppProviderCallback>)callback;
 		[Static]
 		[Export ("registerXFAAppProviderCallback:")]
-		void RegisterXFAAppProviderCallback (FSAppProviderCallback callback);
+		void RegisterXFAAppProviderCallback (NSObject callback);
 
 		// +(void)setRenderTextGamma:(float)gamma;
 		[Static]
@@ -1108,7 +1108,7 @@ namespace Foxit.iOS
 		// +(BOOL)setFontMapperCallback:(id<FSFontMapperCallback>)callback;
 		[Static]
 		[Export ("setFontMapperCallback:")]
-		bool SetFontMapperCallback (FSFontMapperCallback callback);
+		bool SetFontMapperCallback (NSObject callback);
 
 		// +(void)setDefaultICCProfilesPath:(NSString *)icc_profile_folder_path;
 		[Static]
@@ -1381,7 +1381,7 @@ namespace Foxit.iOS
 	{
 		// @property (getter = getFile_read, nonatomic) id<FSFileReaderCallback> file_read;
 		[Export ("file_read", ArgumentSemantic.Assign)]
-		FSFileReaderCallback File_read { [Bind ("getFile_read")] get; set; }
+		NSObject File_read { [Bind ("getFile_read")] get; set; }
 
 		// @property (getter = getFace_index, nonatomic) int face_index;
 		[Export ("face_index")]
@@ -1398,7 +1398,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithFile_read:(id<FSFileReaderCallback>)file_read face_index:(int)face_index;
 		[Export ("initWithFile_read:face_index:")]
-		IntPtr Constructor (FSFileReaderCallback file_read, int face_index);
+		IntPtr Constructor (NSObject file_read, int face_index);
 
 		// -(id)initWithOther:(FSFontMapResult *)other;
 		[Export ("initWithOther:")]
@@ -1406,7 +1406,7 @@ namespace Foxit.iOS
 
 		// -(void)set:(id<FSFileReaderCallback>)file_read face_index:(int)face_index;
 		[Export ("set:face_index:")]
-		void Set (FSFileReaderCallback file_read, int face_index);
+		void Set (NSObject file_read, int face_index);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -1781,7 +1781,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithFile_read:(id<FSFileReaderCallback>)file_read;
 		[Export ("initWithFile_read:")]
-		IntPtr Constructor (FSFileReaderCallback file_read);
+		IntPtr Constructor (NSObject file_read);
 
 		// -(id)initWithOther:(FSImage *)other;
 		[Export ("initWithOther:")]
@@ -1880,23 +1880,23 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startQuickRender:(FSPDFPage *)page matrix:(FSMatrix2D *)matrix pause:(id<FSPauseCallback>)pause;
 		[Export ("startQuickRender:matrix:pause:")]
-		FSProgressive StartQuickRender (FSPDFPage page, FSMatrix2D matrix, FSPauseCallback pause);
+		FSProgressive StartQuickRender (FSPDFPage page, FSMatrix2D matrix, NSObject pause);
 
 		// -(FSProgressive *)startRender:(FSPDFPage *)page matrix:(FSMatrix2D *)matrix pause:(id<FSPauseCallback>)pause;
 		[Export ("startRender:matrix:pause:")]
-		FSProgressive StartRender (FSPDFPage page, FSMatrix2D matrix, FSPauseCallback pause);
+		FSProgressive StartRender (FSPDFPage page, FSMatrix2D matrix, NSObject pause);
 
 		// -(FSProgressive *)startRenderReflowPage:(FSReflowPage *)reflow_page matrix:(FSMatrix2D *)matrix pause:(id<FSPauseCallback>)pause;
 		[Export ("startRenderReflowPage:matrix:pause:")]
-		FSProgressive StartRenderReflowPage (FSReflowPage reflow_page, FSMatrix2D matrix, FSPauseCallback pause);
+		FSProgressive StartRenderReflowPage (FSReflowPage reflow_page, FSMatrix2D matrix, NSObject pause);
 
 		// -(FSProgressive *)startRenderXFAPage:(FSXFAPage *)xfa_page_view matrix:(FSMatrix2D *)matrix is_highlight:(BOOL)is_highlight pause:(id<FSPauseCallback>)pause;
 		[Export ("startRenderXFAPage:matrix:is_highlight:pause:")]
-		FSProgressive StartRenderXFAPage (FSXFAPage xfa_page_view, FSMatrix2D matrix, bool is_highlight, FSPauseCallback pause);
+		FSProgressive StartRenderXFAPage (FSXFAPage xfa_page_view, FSMatrix2D matrix, bool is_highlight, NSObject pause);
 
 		// -(FSProgressive *)startRenderBitmap:(FSBitmap *)bitmap matrix:(FSMatrix2D *)matrix clip_rect:(FSRectI *)clip_rect interpolation:(unsigned int)interpolation pause:(id<FSPauseCallback>)pause;
 		[Export ("startRenderBitmap:matrix:clip_rect:interpolation:pause:")]
-		FSProgressive StartRenderBitmap (FSBitmap bitmap, FSMatrix2D matrix, FSRectI clip_rect, uint interpolation, FSPauseCallback pause);
+		FSProgressive StartRenderBitmap (FSBitmap bitmap, FSMatrix2D matrix, FSRectI clip_rect, uint interpolation, NSObject pause);
 
 		// -(void)setRenderAnnotAppearanceType:(FSAnnotAppearanceType)ap_type;
 		[Export ("setRenderAnnotAppearanceType:")]
@@ -2176,7 +2176,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithDocument:(FSPDFDoc *)document xfa_doc_provider_handler:(id<FSDocProviderCallback>)xfa_doc_provider_handler;
 		[Export ("initWithDocument:xfa_doc_provider_handler:")]
-		IntPtr Constructor (FSPDFDoc document, FSDocProviderCallback xfa_doc_provider_handler);
+		IntPtr Constructor (FSPDFDoc document, NSObject xfa_doc_provider_handler);
 
 		// -(id)initWithDocument:(FSPDFDoc *)document;
 		[Export ("initWithDocument:")]
@@ -2193,11 +2193,11 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startLoad:(id<FSPauseCallback>)pause;
 		[Export ("startLoad:")]
-		FSProgressive StartLoad (FSPauseCallback pause);
+		FSProgressive StartLoad (NSObject pause);
 
 		// -(void)setDocProviderCallback:(id<FSDocProviderCallback>)doc_provider_callback;
 		[Export ("setDocProviderCallback:")]
-		void SetDocProviderCallback (FSDocProviderCallback doc_provider_callback);
+		void SetDocProviderCallback (NSObject doc_provider_callback);
 
 		// -(FSXFADocType)getType;
 		[Export ("getType")]
@@ -2235,7 +2235,7 @@ namespace Foxit.iOS
 
 		// -(void)flattenToWithStreamCallback:(id<FSStreamCallback>)stream;
 		[Export ("flattenToWithStreamCallback:")]
-		void FlattenToWithStreamCallback (FSStreamCallback stream);
+		void FlattenToWithStreamCallback (NSObject stream);
 
 		// -(void)processEvent:(FSXFADocEventType)event_type;
 		[Export ("processEvent:")]
@@ -2816,12 +2816,12 @@ namespace Foxit.iOS
 		// +(FSProgressive *)optimize:(FSPDFDoc *)doc settings:(FSOptimizerSettings *)settings pause:(id<FSPauseCallback>)pause;
 		[Static]
 		[Export ("optimize:settings:pause:")]
-		FSProgressive Optimize (FSPDFDoc doc, FSOptimizerSettings settings, FSPauseCallback pause);
+		FSProgressive Optimize (FSPDFDoc doc, FSOptimizerSettings settings, NSObject pause);
 
 		// +(FSProgressive *)startSubsetEmbedFont:(FSPDFDoc *)doc pause:(id<FSPauseCallback>)pause;
 		[Static]
 		[Export ("startSubsetEmbedFont:pause:")]
-		FSProgressive StartSubsetEmbedFont (FSPDFDoc doc, FSPauseCallback pause);
+		FSProgressive StartSubsetEmbedFont (FSPDFDoc doc, NSObject pause);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -3024,7 +3024,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithFile_read:(id<FSFileReaderCallback>)file_read;
 		[Export ("initWithFile_read:")]
-		IntPtr Constructor (FSFileReaderCallback file_read);
+		IntPtr Constructor (NSObject file_read);
 
 		// -(id)initWithType:(FSFDFDocType)type;
 		[Export ("initWithType:")]
@@ -3271,7 +3271,7 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startUpdateIndex:(FSDocumentsSource *)source pause:(id<FSPauseCallback>)pause reupdate:(BOOL)reupdate;
 		[Export ("startUpdateIndex:pause:reupdate:")]
-		FSProgressive StartUpdateIndex (FSDocumentsSource source, FSPauseCallback pause, bool reupdate);
+		FSProgressive StartUpdateIndex (FSDocumentsSource source, NSObject pause, bool reupdate);
 
 		// -(BOOL)updateIndexWithFilePath:(NSString *)file_path;
 		[Export ("updateIndexWithFilePath:")]
@@ -3279,7 +3279,7 @@ namespace Foxit.iOS
 
 		// -(BOOL)searchOf:(NSString *)match_string rank_mode:(FSFullTextSearchRankMode)rank_mode callback:(id<FSSearchCallback>)callback;
 		[Export ("searchOf:rank_mode:callback:")]
-		bool SearchOf (string match_string, FSFullTextSearchRankMode rank_mode, FSSearchCallback callback);
+		bool SearchOf (string match_string, FSFullTextSearchRankMode rank_mode, NSObject callback);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -3538,11 +3538,11 @@ namespace Foxit.iOS
 
 		// -(void)importData:(id<FSFileReaderCallback>)file_read stream_filter:(FSPDFStreamFilter)stream_filter;
 		[Export ("importData:stream_filter:")]
-		void ImportData (FSFileReaderCallback file_read, FSPDFStreamFilter stream_filter);
+		void ImportData (NSObject file_read, FSPDFStreamFilter stream_filter);
 
 		// -(id<FSFileReaderCallback>)exportData:(BOOL)is_raw_data;
 		[Export ("exportData:")]
-		FSFileReaderCallback ExportData (bool is_raw_data);
+		NSObject ExportData (bool is_raw_data);
 
 		// -(NSData *)getData:(BOOL)is_raw_data;
 		[Export ("getData:")]
@@ -7476,7 +7476,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithFile_read:(id<FSFileReaderCallback>)file_read is_async:(BOOL)is_async;
 		[Export ("initWithFile_read:is_async:")]
-		IntPtr Constructor (FSFileReaderCallback file_read, bool is_async);
+		IntPtr Constructor (NSObject file_read, bool is_async);
 
 		// -(id)initWithOther:(FSPDFDoc *)other;
 		[Export ("initWithOther:")]
@@ -7517,11 +7517,11 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startLoad:(NSString *)password is_cache_stream:(BOOL)is_cache_stream pause:(id<FSPauseCallback>)pause;
 		[Export ("startLoad:is_cache_stream:pause:")]
-		FSProgressive StartLoad (string password, bool is_cache_stream, FSPauseCallback pause);
+		FSProgressive StartLoad (string password, bool is_cache_stream, NSObject pause);
 
 		// -(FSProgressive *)startLoadW:(NSString *)password is_cache_stream:(BOOL)is_cache_stream pause:(id<FSPauseCallback>)pause;
 		[Export ("startLoadW:is_cache_stream:pause:")]
-		FSProgressive StartLoadW (string password, bool is_cache_stream, FSPauseCallback pause);
+		FSProgressive StartLoadW (string password, bool is_cache_stream, NSObject pause);
 
 		// -(int)getFirstAvailPageIndex;
 		[Export ("getFirstAvailPageIndex")]
@@ -7599,11 +7599,11 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startSaveAs:(NSString *)file_path save_flags:(unsigned int)save_flags pause:(id<FSPauseCallback>)pause;
 		[Export ("startSaveAs:save_flags:pause:")]
-		FSProgressive StartSaveAs (string file_path, uint save_flags, FSPauseCallback pause);
+		FSProgressive StartSaveAs (string file_path, uint save_flags, NSObject pause);
 
 		// -(FSProgressive *)startSaveAsWithWriterCallback:(id<FSFileWriterCallback>)file save_flags:(unsigned int)save_flags pause:(id<FSPauseCallback>)pause;
 		[Export ("startSaveAsWithWriterCallback:save_flags:pause:")]
-		FSProgressive StartSaveAsWithWriterCallback (FSFileWriterCallback file, uint save_flags, FSPauseCallback pause);
+		FSProgressive StartSaveAsWithWriterCallback (NSObject file, uint save_flags, NSObject pause);
 
 		// -(FSBookmark *)getRootBookmark;
 		[Export ("getRootBookmark")]
@@ -7730,7 +7730,7 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startGetPayloadFile:(id<FSFileWriterCallback>)payload_file pause:(id<FSPauseCallback>)pause;
 		[Export ("startGetPayloadFile:pause:")]
-		FSProgressive StartGetPayloadFile (FSFileWriterCallback payload_file, FSPauseCallback pause);
+		FSProgressive StartGetPayloadFile (NSObject payload_file, NSObject pause);
 
 		// -(BOOL)saveAsWrapperFile:(NSString *)file_path wrapper_data:(FSWrapperData *)wrapper_data user_permissions:(unsigned int)user_permissions owner_password:(NSString *)owner_password;
 		[Export ("saveAsWrapperFile:wrapper_data:user_permissions:owner_password:")]
@@ -7738,7 +7738,7 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startSaveAsPayloadFile:(NSString *)file_path payload_file_path:(NSString *)payload_file_path crypto_filter:(NSString *)crypto_filter description:(NSString *)description version:(float)version save_flags:(unsigned int)save_flags pause:(id<FSPauseCallback>)pause;
 		[Export ("startSaveAsPayloadFile:payload_file_path:crypto_filter:description:version:save_flags:pause:")]
-		FSProgressive StartSaveAsPayloadFile (string file_path, string payload_file_path, string crypto_filter, string description, float version, uint save_flags, FSPauseCallback pause);
+		FSProgressive StartSaveAsPayloadFile (string file_path, string payload_file_path, string crypto_filter, string description, float version, uint save_flags, NSObject pause);
 
 		// -(BOOL)hasForm;
 		[Export ("hasForm")]
@@ -7797,19 +7797,19 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startImportPagesFromFilePath:(int)dest_index src_file_path:(NSString *)src_file_path password:(NSString *)password flags:(unsigned int)flags layer_name:(NSString *)layer_name page_range:(FSRange *)page_range pause:(id<FSPauseCallback>)pause;
 		[Export ("startImportPagesFromFilePath:src_file_path:password:flags:layer_name:page_range:pause:")]
-		FSProgressive StartImportPagesFromFilePath (int dest_index, string src_file_path, string password, uint flags, string layer_name, FSRange page_range, FSPauseCallback pause);
+		FSProgressive StartImportPagesFromFilePath (int dest_index, string src_file_path, string password, uint flags, string layer_name, FSRange page_range, NSObject pause);
 
 		// -(FSProgressive *)startImportPages:(int)dest_index src_doc:(FSPDFDoc *)src_doc flags:(unsigned int)flags layer_name:(NSString *)layer_name page_range:(FSRange *)page_range pause:(id<FSPauseCallback>)pause;
 		[Export ("startImportPages:src_doc:flags:layer_name:page_range:pause:")]
-		FSProgressive StartImportPages (int dest_index, FSPDFDoc src_doc, uint flags, string layer_name, FSRange page_range, FSPauseCallback pause);
+		FSProgressive StartImportPages (int dest_index, FSPDFDoc src_doc, uint flags, string layer_name, FSRange page_range, NSObject pause);
 
 		// -(FSProgressive *)startExtractPages:(NSString *)file_path options:(unsigned int)options page_range:(FSRange *)page_range pause:(id<FSPauseCallback>)pause;
 		[Export ("startExtractPages:options:page_range:pause:")]
-		FSProgressive StartExtractPages (string file_path, uint options, FSRange page_range, FSPauseCallback pause);
+		FSProgressive StartExtractPages (string file_path, uint options, FSRange page_range, NSObject pause);
 
 		// -(FSProgressive *)startExtractPagesWithWriterCallback:(id<FSFileWriterCallback>)file options:(unsigned int)options page_range:(FSRange *)page_range pause:(id<FSPauseCallback>)pause;
 		[Export ("startExtractPagesWithWriterCallback:options:page_range:pause:")]
-		FSProgressive StartExtractPagesWithWriterCallback (FSFileWriterCallback file, uint options, FSRange page_range, FSPauseCallback pause);
+		FSProgressive StartExtractPagesWithWriterCallback (NSObject file, uint options, FSRange page_range, NSObject pause);
 
 		// -(void)insertDocument:(int)dest_index src_doc:(FSPDFDoc *)src_doc options:(unsigned int)options;
 		[Export ("insertDocument:src_doc:options:")]
@@ -7981,7 +7981,7 @@ namespace Foxit.iOS
 		// -(id<FSFileReaderCallback>)getFileData;
 		[Export ("getFileData")]
 		//[Verify (MethodToProperty)]
-		FSFileReaderCallback FileData { get; }
+		NSObject FileData { get; }
 
 		// -(BOOL)embed:(NSString *)file_path;
 		[Export ("embed:")]
@@ -7989,7 +7989,7 @@ namespace Foxit.iOS
 
 		// -(BOOL)embedWithStreamCallback:(id<FSStreamCallback>)stream;
 		[Export ("embedWithStreamCallback:")]
-		bool EmbedWithStreamCallback (FSStreamCallback stream);
+		bool EmbedWithStreamCallback (NSObject stream);
 
 		// -(BOOL)isEmbedded;
 		[Export ("isEmbedded")]
@@ -8007,7 +8007,7 @@ namespace Foxit.iOS
 
 		// -(BOOL)exportToFileStream:(id<FSStreamCallback>)stream;
 		[Export ("exportToFileStream:")]
-		bool ExportToFileStream (FSStreamCallback stream);
+		bool ExportToFileStream (NSObject stream);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -9478,7 +9478,7 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startParse:(unsigned int)flags pause:(id<FSPauseCallback>)pause is_reparse:(BOOL)is_reparse;
 		[Export ("startParse:pause:is_reparse:")]
-		FSProgressive StartParse (uint flags, FSPauseCallback pause, bool is_reparse);
+		FSProgressive StartParse (uint flags, NSObject pause, bool is_reparse);
 
 		// -(int)getIndex;
 		[Export ("getIndex")]
@@ -9873,7 +9873,7 @@ namespace Foxit.iOS
 
 		// -(void)setCallback:(id<FSPSICallback>)callback;
 		[Export ("setCallback:")]
-		void SetCallback (FSPSICallback callback);
+		void SetCallback (NSObject callback);
 
 		// -(void)setColor:(unsigned int)color;
 		[Export ("setColor:")]
@@ -10011,7 +10011,7 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startParse:(id<FSPauseCallback>)pause;
 		[Export ("startParse:")]
-		FSProgressive StartParse (FSPauseCallback pause);
+		FSProgressive StartParse (NSObject pause);
 
 		// -(float)getContentWidth;
 		[Export ("getContentWidth")]
@@ -10209,7 +10209,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithDocument:(FSPDFDoc *)document cancel:(id<FSSearchCancelCallback>)cancel flags:(int)flags;
 		[Export ("initWithDocument:cancel:flags:")]
-		IntPtr Constructor (FSPDFDoc document, FSSearchCancelCallback cancel, int flags);
+		IntPtr Constructor (FSPDFDoc document, NSObject cancel, int flags);
 
 		// -(id)initWithXfa_document:(FSXFADoc *)xfa_document;
 		[Export ("initWithXfa_document:")]
@@ -10819,7 +10819,7 @@ namespace Foxit.iOS
 
 		// -(BOOL)initialize:(FSCustomEncryptData *)encrypt_data callback:(id<FSCustomSecurityCallback>)callback encrypt_info:(NSString *)encrypt_info;
 		[Export ("initialize:callback:encrypt_info:")]
-		bool Initialize (FSCustomEncryptData encrypt_data, FSCustomSecurityCallback callback, string encrypt_info);
+		bool Initialize (FSCustomEncryptData encrypt_data, NSObject callback, string encrypt_info);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -10891,7 +10891,7 @@ namespace Foxit.iOS
 
 		// -(BOOL)initialize:(FSRMSEncryptData *)encrypt_data callback:(id<FSRMSSecurityCallback>)callback;
 		[Export ("initialize:callback:")]
-		bool Initialize (FSRMSEncryptData encrypt_data, FSRMSSecurityCallback callback);
+		bool Initialize (FSRMSEncryptData encrypt_data, NSObject callback);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -11173,7 +11173,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithForm:(FSForm *)form assist:(id<FSFillerAssistCallback>)assist;
 		[Export ("initWithForm:assist:")]
-		IntPtr Constructor (FSForm form, FSFillerAssistCallback assist);
+		IntPtr Constructor (FSForm form, NSObject assist);
 
 		// -(id)initWithOther:(FSFiller *)other;
 		[Export ("initWithOther:")]
@@ -11819,23 +11819,23 @@ namespace Foxit.iOS
 
 		// -(FSProgressive *)startSign:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSign:cert_password:digest_algorithm:save_path:client_data:pause:")]
-		FSProgressive StartSign (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, FSPauseCallback pause);
+		FSProgressive StartSign (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, NSObject pause);
 
 		// -(FSProgressive *)startSignByCertStream:(id<FSStreamCallback>)cert_file_stream cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSignByCertStream:cert_password:digest_algorithm:save_path:client_data:pause:")]
-		FSProgressive StartSignByCertStream (FSStreamCallback cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, FSPauseCallback pause);
+		FSProgressive StartSignByCertStream (NSObject cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, NSObject pause);
 
 		// -(FSProgressive *)startSignToStream:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm stream_callback:(id<FSStreamCallback>)stream_callback client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSignToStream:cert_password:digest_algorithm:stream_callback:client_data:pause:")]
-		FSProgressive StartSignToStream (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSStreamCallback stream_callback, NSData client_data, FSPauseCallback pause);
+		FSProgressive StartSignToStream (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, NSObject stream_callback, NSData client_data, NSObject pause);
 
 		// -(FSProgressive *)startSignToStreamByCertStream:(id<FSStreamCallback>)cert_file_stream cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm stream_callback:(id<FSStreamCallback>)stream_callback client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSignToStreamByCertStream:cert_password:digest_algorithm:stream_callback:client_data:pause:")]
-		FSProgressive StartSignToStreamByCertStream (FSStreamCallback cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSStreamCallback stream_callback, NSData client_data, FSPauseCallback pause);
+		FSProgressive StartSignToStreamByCertStream (NSObject cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, NSObject stream_callback, NSData client_data, NSObject pause);
 
 		// -(FSProgressive *)startVerify:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startVerify:pause:")]
-		FSProgressive StartVerify (NSData client_data, FSPauseCallback pause);
+		FSProgressive StartVerify (NSData client_data, NSObject pause);
 
 		// -(NSString *)getCertificateInfo:(NSString *)key;
 		[Export ("getCertificateInfo:")]
@@ -12410,7 +12410,7 @@ namespace Foxit.iOS
 
 		// -(void)setRevocationCallback:(id<FSRevocationCallback>)callback;
 		[Export ("setRevocationCallback:")]
-		void SetRevocationCallback (FSRevocationCallback callback);
+		void SetRevocationCallback (NSObject callback);
 
 		// -(void)setVerifyMode:(FSLTVVerifierVerifyMode)mode;
 		[Export ("setVerifyMode:")]
@@ -12418,7 +12418,7 @@ namespace Foxit.iOS
 
 		// -(void)setTrustedCertStoreCallback:(id<FSTrustedCertStoreCallback>)callback;
 		[Export ("setTrustedCertStoreCallback:")]
-		void SetTrustedCertStoreCallback (FSTrustedCertStoreCallback callback);
+		void SetTrustedCertStoreCallback (NSObject callback);
 
 		// -(FSSignatureVerifyResultArray *)verify;
 		[Export ("verify")]
@@ -12628,7 +12628,7 @@ namespace Foxit.iOS
 
 		// -(FSPortfolioFileNode *)addFileWithStreamCallback:(id<FSStreamCallback>)file_stream file_name:(NSString *)file_name;
 		[Export ("addFileWithStreamCallback:file_name:")]
-		FSPortfolioFileNode AddFileWithStreamCallback (FSStreamCallback file_stream, string file_name);
+		FSPortfolioFileNode AddFileWithStreamCallback (NSObject file_stream, string file_name);
 
 		// -(FSPortfolioFileNode *)addPDFDoc:(FSPDFDoc *)pdf_doc file_name:(NSString *)file_name;
 		[Export ("addPDFDoc:file_name:")]
@@ -12972,11 +12972,11 @@ namespace Foxit.iOS
 
 		// -(void)setCallback:(id<FSAnnotationSummaryCallback>)callback;
 		[Export ("setCallback:")]
-		void SetCallback (FSAnnotationSummaryCallback callback);
+		void SetCallback (NSObject callback);
 
 		// -(FSProgressive *)startSummarize:(NSString *)dest_file_path settings:(FSAnnotationSummarySettings *)settings pause:(id<FSPauseCallback>)pause;
 		[Export ("startSummarize:settings:pause:")]
-		FSProgressive StartSummarize (string dest_file_path, FSAnnotationSummarySettings settings, FSPauseCallback pause);
+		FSProgressive StartSummarize (string dest_file_path, FSAnnotationSummarySettings settings, NSObject pause);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -13003,7 +13003,7 @@ namespace Foxit.iOS
 
 		// -(id)initWithDoc:(FSPDFDoc *)doc provider:(id<FSEditorPageCallback>)provider;
 		[Export ("initWithDoc:provider:")]
-		IntPtr Constructor (FSPDFDoc doc, FSEditorPageCallback provider);
+		IntPtr Constructor (FSPDFDoc doc, NSObject provider);
 
 		// -(id)initWithOther:(FSEditor *)other;
 		[Export ("initWithOther:")]
@@ -13761,12 +13761,12 @@ namespace Foxit.iOS
 		// @required -(BOOL)startCalcDigest:(id<FSFileReaderCallback>)file byteRangeArray:(NSArray<NSNumber *> *)byteRangeArray signature:(FSSignature *)signature clientData:(void *)clientData;
 		[Abstract]
 		[Export ("startCalcDigest:byteRangeArray:signature:clientData:")]
-		unsafe bool StartCalcDigest (FSFileReaderCallback file, NSNumber[] byteRangeArray, FSSignature signature, IntPtr clientData);
+		unsafe bool StartCalcDigest (NSObject file, NSNumber[] byteRangeArray, FSSignature signature, IntPtr clientData);
 
 		// @required -(FSProgressiveState)continueCalcDigest:(id<FSPauseCallback>)pause clientData:(void *)clientData;
 		[Abstract]
 		[Export ("continueCalcDigest:clientData:")]
-		unsafe FSProgressiveState ContinueCalcDigest (FSPauseCallback pause, IntPtr clientData);
+		unsafe FSProgressiveState ContinueCalcDigest (NSObject pause, IntPtr clientData);
 
 		// @required -(NSData *)getDigest:(void *)clientData;
 		[Abstract]
@@ -13781,7 +13781,7 @@ namespace Foxit.iOS
 		// @required -(NSData *)sign:(NSData *)digest certStream:(id<FSStreamCallback>)certStream certPassword:(NSString *)certPassword digestAlgorithm:(FSSignatureDigestAlgorithm)digestAlgorithm clientData:(void *)clientData;
 		[Abstract]
 		[Export ("sign:certStream:certPassword:digestAlgorithm:clientData:")]
-		unsafe NSData Sign (NSData digest, FSStreamCallback certStream, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
+		unsafe NSData Sign (NSData digest, NSObject certStream, string certPassword, FSSignatureDigestAlgorithm digestAlgorithm, IntPtr clientData);
 
 		// @required -(FSSignatureStates)verifySigState:(NSData *)digest signedData:(NSData *)signedData clientData:(void *)clientData;
 		[Abstract]
@@ -13828,7 +13828,7 @@ namespace Foxit.iOS
 		// @required -(id<FSFileReaderCallback>)downLoadUrl:(NSString *)url;
 		[Abstract]
 		[Export ("downLoadUrl:")]
-		FSFileReaderCallback DownLoadUrl (string url);
+		NSObject DownLoadUrl (string url);
 
 		// @required -(NSString *)postRequestURL:(NSString *)url data:(NSString *)data content_type:(NSString *)content_type encode:(NSString *)encode header:(NSString *)header;
 		[Abstract]
@@ -14625,7 +14625,7 @@ namespace Foxit.iOS
 
 		// -(void)registerViewAppleEventListener:(id<IViewAppleEventListener> _Nonnull)listener;
 		[Export ("registerViewAppleEventListener:")]
-		void RegisterViewAppleEventListener (IViewAppleEventListener listener);
+		void RegisterViewAppleEventListener (NSObject listener);
 
 		// -(void)unregisteRecoveryEventListener:(id<IRecoveryEventListener> _Nonnull)listener;
 		[Export ("unregisteRecoveryEventListener:")]
@@ -14657,7 +14657,7 @@ namespace Foxit.iOS
 
 		// -(void)unregisterViewAppleEventListener:(id<IViewAppleEventListener> _Nonnull)listener;
 		[Export ("unregisterViewAppleEventListener:")]
-		void UnregisterViewAppleEventListener (IViewAppleEventListener listener);
+		void UnregisterViewAppleEventListener (NSObject listener);
 
 		// -(void)setDoc:(FSPDFDoc * _Nonnull)doc;
 		[Export ("setDoc:")]
@@ -14697,7 +14697,7 @@ namespace Foxit.iOS
 
 		// -(void)openDocFromFileReader:(id<FSFileReaderCallback> _Nonnull)fileReader password:(NSString * _Nullable)password completion:(void (^ _Nullable)(FSErrorCode))completion;
 		[Export ("openDocFromFileReader:password:completion:")]
-		void OpenDocFromFileReader (FSFileReaderCallback fileReader, [NullAllowed] string password, [NullAllowed] Action<FSErrorCode> completion);
+		void OpenDocFromFileReader (NSObject fileReader, [NullAllowed] string password, [NullAllowed] Action<FSErrorCode> completion);
 
 		// -(void)closeDoc:(void (^ _Nullable)(void))cleanup;
 		[Export ("closeDoc:")]
@@ -14709,7 +14709,7 @@ namespace Foxit.iOS
 
 		// -(BOOL)saveDocToFileWriter:(id<FSFileWriterCallback> _Nonnull)fileWriter flag:(FSPDFDocSaveFlags)flag;
 		[Export ("saveDocToFileWriter:flag:")]
-		bool SaveDocToFileWriter (FSFileWriterCallback fileWriter, FSPDFDocSaveFlags flag);
+		bool SaveDocToFileWriter (NSObject fileWriter, FSPDFDocSaveFlags flag);
 
 		// -(int)getPageCount;
 		[Export ("getPageCount")]

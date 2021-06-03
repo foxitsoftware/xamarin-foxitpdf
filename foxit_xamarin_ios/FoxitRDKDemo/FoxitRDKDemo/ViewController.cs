@@ -87,7 +87,7 @@ namespace FoxitRDKDemo
 
             UIButton button = new UIButton();
             button.TouchUpInside += openScan;
-            button.SetImage(UIImage.FromBundle("UIExtensionsResource/scan/scan"), UIControlState.Normal);
+            button.SetImage(UIImage.FromBundle("scan"), UIControlState.Normal);
             fileListViewController.View.AddSubview(button);
             button.TranslatesAutoresizingMaskIntoConstraints = false;
             button.WidthAnchor.ConstraintEqualTo(60).Active = true;
@@ -97,7 +97,7 @@ namespace FoxitRDKDemo
         }
         public void openScan(object sender, EventArgs e)
         {
-            var PDFScanView = PDFScanManager.PDFScanView;
+            var PDFScanView = PDFScanManager.ShareManager.PDFScanView;
             if (PDFScanView != null) PresentViewController(PDFScanView, true, null);
             PDFScanManager.SaveAsCallBack = (error, savePath) =>
             {
@@ -192,13 +192,13 @@ namespace FoxitRDKDemo
                                 pdfViewController.AutomaticallyAdjustsScrollViewInsets = false;
                             }
 
-                            //Push to display the document on pdf view control.
-                            rootNav.PushViewController(pdfViewController, true);
+                                //Push to display the document on pdf view control.
+                                rootNav.PushViewController(pdfViewController, true);
                         });
                     }
                 }
             });
         }
-        #endregion
-    }
+    #endregion
+}
 }

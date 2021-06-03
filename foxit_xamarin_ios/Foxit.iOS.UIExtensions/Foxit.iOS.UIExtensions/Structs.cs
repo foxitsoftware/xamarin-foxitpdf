@@ -22,27 +22,196 @@ namespace Foxit.iOS.UIExtensions
 		Attachment,
 		Outline,
 		ReadingBookmark,
-		DigitalSignature
+		DigitalSignature,
+		Custom
 	}
 
 	//[Native]
 	public enum SettingItemType 
 	{
 		Single,
-		Continuous,
 		Doublepage,
 		Coverpage,
-		Thumbnail,
-		Reflow,
-		Croppage,
-		Lockscreen,
-		Brightness,
+		Daymode,
+		Pagecolor,
 		Nightmode,
-		Panzoom,
+		Continuous,
 		Fitpage,
 		Fitwidth,
+		Reflow,
+		Croppage,
+		Speech,
+		Autoflip,
 		Rotate,
-		Speech
+		Panzoom
+	}
+
+	//[Native]
+	public enum FSUIManagerState 
+	{
+		Normal = 1,
+		Reflow,
+		Search,
+		AnnotTool,
+		PanZoom,
+		PageNavigate,
+		CreateForm,
+		Speech,
+		FillSign,
+		AutoFlip,
+		Redaction,
+		Comparision
+	}
+
+	//[Native]
+	public enum FSNightColorMode 
+	{
+		Default,
+		MappingGray
+	}
+
+	//[Native]
+	public enum FSReadToolSettingsType 
+	{
+		Text = 1,
+		Image,
+		Audio,
+		Video,
+		Link,
+		Note = 100,
+		Attachments,
+		Stamp,
+		Typewriter,
+		Textbox,
+		Callout,
+		Highlight,
+		Underline,
+		Squiggly,
+		Strikeout,
+		ReplaceText,
+		InsertText,
+		AreaHighlight,
+		Measure,
+		ImageAnnotation,
+		Pencil = 200,
+		Highlighter,
+		Eraser,
+		Rectangle,
+		Oval,
+		Line,
+		Arrow,
+		Polygon,
+		PolyLine,
+		Cloud,
+		TextField = 300,
+		CheckBox,
+		RadioButton,
+		ComboBox,
+		ListBox,
+		SignatureField,
+		FillSignText = 400,
+		FillSignSegText,
+		FillSignProfile,
+		FillSignCheckMark,
+		FillSignCrossMark,
+		FillSignDot,
+		FillSignLine,
+		FillSignRoundRectangle,
+		DigitalSignature = 500,
+		Redact
+	}
+
+	//[Native]
+	public enum FSReadToolbarItemType 
+	{
+		Exist,
+		Custom
+	}
+
+	//[Native]
+	public enum FSMenuViewType 
+	{
+		ThumbnailInsertBlankPagePop = 0,
+		Extract,
+		SaveAs
+	}
+
+	//[Native]
+	public enum FSMainToolbarItemPosition 
+	{
+		Left = 0,
+		Center,
+		Right
+	}
+
+	//[Native]
+	public enum FSMainTopbarToolTag 
+	{
+		Home,
+		Edit,
+		Comment,
+		Drawing,
+		View,
+		Form,
+		Sign,
+		Custom
+	}
+
+	//[Native]
+	public enum FSMainToolbarItemType 
+	{
+		Unknown = 0,
+		Back,
+		More,
+		Search,
+		Pan,
+		AddTool,
+		Redo,
+		Undo,
+		Property,
+		MultiSelect,
+		Divide,
+		Panel,
+		ViewSettings,
+		Thumbnail,
+		ReadingBookmark
+	}
+
+	//[Native]
+	public enum FSTopbarSubitemContentViewPosition 
+	{
+		Top,
+		Left,
+		Right
+	}
+
+	//[Native]
+	public enum FSMenuControlScene 
+	{
+		SelectedText,
+		BlankSpace
+	}
+
+	//[Native]
+	public enum FSPermissionState 
+	{
+		FSPermissionStateShow,
+		FSPermissionStateNo,
+		PermissionStateHide
+	}
+
+	//[Native]
+	public enum FSFunction 
+	{
+		MultiMediaEdit,
+		DocInfoEdit,
+		Edit,
+		Reduce,
+		PDFDigitalSignAdd,
+		Rms,
+		DigitalSignField,
+		Redaction,
+		CanSaveToLocal
 	}
 
 	//[Native]

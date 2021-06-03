@@ -165,6 +165,20 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSLocaleID 
+	{
+		Unspecified = 0,
+		HongKong = 1,
+		Taiwan = 2,
+		Netherlands = 3,
+		France = 4,
+		Germany = 5,
+		Italy = 6,
+		Korea = 7,
+		Japan = 8
+	}
+
+	//[Native]
 	public enum FSProgressiveState 
 	{
 		Error = 0,
@@ -737,6 +751,7 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSImageSettingsStretchMode 
 	{
+		Default = -1,
 		Off = 0,
 		Interpol = 32,
 		Downsample = 4,
@@ -765,6 +780,7 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSMonoImageSettingsStretchMode 
 	{
+		Default = -1,
 		Off = 0,
 		Interpol = 32,
 		Downsample = 4,
@@ -1164,7 +1180,8 @@ namespace Foxit.iOS
 		Watermark = 24,
 		FSAnnot3D = 25,
 		Popup = 26,
-		Redact = 27
+		Redact = 27,
+		RichMedia = 28
 	}
 
 	//[Native]
@@ -1870,8 +1887,10 @@ namespace Foxit.iOS
 		ButtonRadiosInUnison = 512,
 		TextMultiline = 256,
 		TextPassword = 512,
-		TextDoNotScroll = 1024,
-		TextComb = 2048,
+		TextFileSelect = 1024,
+		TextNoSpellCheck = 2048,
+		TextDoNotScroll = 4096,
+		TextComb = 8192,
 		ComboEdit = 256,
 		ChoiceMultiSelect = 256
 	}
@@ -2070,8 +2089,7 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSLTVVerifierVerifyMode 
 	{
-		Etsi = 0,
-		Acrobat = 1
+		FSLTVVerifierVerifyModeAcrobat = 1
 	}
 
 	//[Native]
@@ -2080,6 +2098,82 @@ namespace Foxit.iOS
 		Inactive = 0,
 		Enable = 1,
 		NotEnable = 2
+	}
+
+	//[Native]
+	public enum FSPortfolioNodeType 
+	{
+		Unknown = 0,
+		Folder = 1,
+		File = 2
+	}
+
+	//[Native]
+	public enum FSPortfolioInitialViewMode 
+	{
+		UnknownMode = 0,
+		DetailMode = 1,
+		TileMode = 2,
+		Hidden = 3
+	}
+
+	//[Native]
+	public enum FSAnnotationSummaryCallbackAnnotationSummaryStringID 
+	{
+		Author = 0,
+		Date = 1,
+		Page = 2,
+		Type = 3,
+		DocumentTitle = 4,
+		PageTitle = 5,
+		NoAnnotations = 6,
+		Number = 7,
+		Subject = 8
+	}
+
+	//[Native]
+	public enum FSAnnotationSummarySettingsSummaryLayout 
+	{
+		SeparatePagesWithLine = 0,
+		SinglePageWithLine = 1,
+		AnnotationOnly = 2,
+		SeparatePagesWithSequenceNumber = 3,
+		SinglePageWithSequenceNumber = 4
+	}
+
+	//[Native]
+	public enum FSAnnotationSummarySettingsSortType 
+	{
+		Author = 0,
+		Date = 1,
+		Page = 2,
+		AnnotationType = 3
+	}
+
+	//[Native]
+	public enum FSAnnotationSummarySettingsFontSizeType 
+	{
+		Small = 0,
+		Medium = 1,
+		Large = 2
+	}
+
+	//[Native]
+	public enum FSEditorPageEditAlignment 
+	{
+		Left = 0,
+		Mid = 1,
+		Right = 2,
+		Justify = 3
+	}
+
+	//[Native]
+	public enum FSEditorPageEditMenus 
+	{
+		Select = 1,
+		SelectAll = 1 << 1,
+		Paste = 1 << 2,
+		Copy = 1 << 3
 	}
 
 	public enum PdfLayoutMode 

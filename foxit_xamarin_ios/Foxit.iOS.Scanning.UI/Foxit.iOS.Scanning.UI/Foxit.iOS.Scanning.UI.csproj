@@ -4,12 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{F888F730-691E-4070-BFF3-9241246E11A9}</ProjectGuid>
+    <ProjectGuid>{C40E52D9-A835-47FD-855E-C1135E0E2F71}</ProjectGuid>
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Foxit.iOS.Scanning.UI</RootNamespace>
+    <RootNamespace>NativeLibrary</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Foxit.iOS.Scanning.UI</AssemblyName>
+    <AssemblyName>NativeLibrary</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,13 +44,16 @@
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions.csproj">
-      <Project>{F01A4156-B22E-4825-967F-AD9EC355E4EF}</Project>
-      <Name>Foxit.iOS.UIExtensions</Name>
-    </ProjectReference>
+    <ObjcBindingCoreSource Include="Structs.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Foxit.iOS\Foxit.iOS\Foxit.iOS.csproj">
       <Project>{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}</Project>
       <Name>Foxit.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions.csproj">
+      <Project>{F01A4156-B22E-4825-967F-AD9EC355E4EF}</Project>
+      <Name>Foxit.iOS.UIExtensions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

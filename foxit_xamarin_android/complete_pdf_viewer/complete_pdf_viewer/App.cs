@@ -1,6 +1,11 @@
 ﻿
-using Com.Foxit.Sdk.Common;
+using Android.App;
 using Android.Content;
+using Android.Text;
+using Android.Net;
+using AndroidX.DocumentFile.Provider;
+using Com.Foxit.Home;
+using Com.Foxit.Sdk.Common;
 using Com.Foxit.Uiextensions.Utils;
 using Com.Foxit.Uiextensions.Home.Local;
 
@@ -102,21 +107,52 @@ namespace Com.Foxit
         {
             if (Environment.ExternalStorageState.Equals(Environment.MediaMounted))
             {
-                string curPath = Environment.ExternalStorageDirectory.Path + Java.IO.File.Separator + "FoxitSDK";
-                Java.IO.File file = new Java.IO.File(curPath);
-                if (!file.Exists())
-                    file.Mkdirs();
-
-                Java.IO.File sampleFile = new Java.IO.File(curPath + Java.IO.File.Separator + "Sample.pdf");
-                if (!sampleFile.Exists())
+                string curPath = AppStorageManager.GetInstance(mContext).DefaultFolder;
+                if (!AppFileUtil.NeedScopedStorageAdaptation()) 
                 {
-                    localModule.CopyFileFromAssertsToTargetFile(sampleFile);
+                    curPath = AppFileUtil.DefaultDocumentDirectory;
+                    Java.IO.File file = new Java.IO.File(curPath);
+                    if (!file.Exists())
+                    {
+                        if (!file.Mkdirs())
+                            return;
+                    }
+                    Java.IO.File sampleFile = new Java.IO.File(curPath + Java.IO.File.Separator + "Sample.pdf");
+                    if (!sampleFile.Exists())
+                    {
+                        localModule.CopyFileFromAssertsToTargetFile(sampleFile);
+                    }
+
+                    Java.IO.File guideFile = new Java.IO.File(curPath + Java.IO.File.Separator + "complete_pdf_viewer_guide_android.pdf");
+                    if (!guideFile.Exists())
+                    {
+                        localModule.CopyFileFromAssertsToTargetFile(guideFile);
+                    }
                 }
-
-                Java.IO.File guideFile = new Java.IO.File(curPath + Java.IO.File.Separator + "complete_pdf_viewer_guide_android.pdf");
-                if (!guideFile.Exists())
+                else if (!TextUtils.IsEmpty(curPath))
                 {
-                    localModule.CopyFileFromAssertsToTargetFile(guideFile);
+                    Uri uri = AppFileUtil.ToDocumentUriFromPath(curPath);
+                    if (AppFileUtil.IsDocumentTreeUri(uri))
+                    {
+                        DocumentFile directory = AppStorageManager.GetInstance(mContext).GetExistingDocumentFile(uri);
+                        if (directory == null) return;
+                        string fileName = "Sample.pdf";
+                        DocumentFile file = directory.FindFile(fileName);
+                        if (file == null)
+                        {
+                            file = directory.CreateFile(AppFileUtil.GetMimeType(fileName), fileName);
+                            localModule.CopyFileFromAssertsToTargetFile(file);
+                        }
+
+                        fileName = "complete_pdf_viewer_guide_android.pdf";
+                        file = directory.FindFile(fileName);
+                        if (file == null)
+                        {
+                            file = directory.CreateFile(AppFileUtil.GetMimeType(fileName), fileName);
+                            localModule.CopyFileFromAssertsToTargetFile(file);
+                        }
+                    }
+                    localModule.SetCurrentPath(curPath);
                 }
             }
         }
@@ -129,5 +165,20 @@ namespace Com.Foxit
             return value;
         }
 
+
+        public void SelectDefaultFolderOrNot(Activity activity)
+        {
+            if (AppFileUtil.NeedScopedStorageAdaptation())
+            {
+                if (activity != null && TextUtils.IsEmpty(AppStorageManager.GetInstance(activity).DefaultFolder))
+                {
+                    AppFileUtil.CheckCallDocumentTreeUriPermission(activity, MainActivity.REQUEST_SELECT_DEFAULT_FOLDER,
+                            Uri.Parse(AppFileUtil.ExternalRootDocumentTreeUriPath));
+                    UIToast.GetInstance(activity).Show("Please select the default folder,you can create one when it not exists.");
+                }
+            }
+        }
+
     }
+
 }

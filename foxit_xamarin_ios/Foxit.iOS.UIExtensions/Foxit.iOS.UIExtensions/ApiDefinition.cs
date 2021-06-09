@@ -512,6 +512,62 @@ namespace Foxit.iOS.UIExtensions
 		[Field ("Module_Speech", "__Internal")]
 		NSString Module_Speech { get; }
 
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_BACK;
+		[Field ("FS_TOOLBAR_ITEM_TAG_BACK", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_BACK { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_MORE;
+		[Field ("FS_TOOLBAR_ITEM_TAG_MORE", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_MORE { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_SEARCH;
+		[Field ("FS_TOOLBAR_ITEM_TAG_SEARCH", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_SEARCH { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_PANEL;
+		[Field ("FS_TOOLBAR_ITEM_TAG_PANEL", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_PANEL { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_VIEW_SETTINGS;
+		[Field ("FS_TOOLBAR_ITEM_TAG_VIEW_SETTINGS", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_VIEW_SETTINGS { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_THUMBNAIL;
+		[Field ("FS_TOOLBAR_ITEM_TAG_THUMBNAIL", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_THUMBNAIL { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_READING_BOOKMARK;
+		[Field ("FS_TOOLBAR_ITEM_TAG_READING_BOOKMARK", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_READING_BOOKMARK { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_HOME;
+		[Field ("FS_TOOLBAR_ITEM_TAG_HOME", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_HOME { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_EDIT;
+		[Field ("FS_TOOLBAR_ITEM_TAG_EDIT", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_EDIT { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_COMMENT;
+		[Field ("FS_TOOLBAR_ITEM_TAG_COMMENT", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_COMMENT { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_DRAWING;
+		[Field ("FS_TOOLBAR_ITEM_TAG_DRAWING", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_DRAWING { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_VIEW;
+		[Field ("FS_TOOLBAR_ITEM_TAG_VIEW", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_VIEW { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_FORM;
+		[Field ("FS_TOOLBAR_ITEM_TAG_FORM", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_FORM { get; }
+
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_SIGN;
+		[Field ("FS_TOOLBAR_ITEM_TAG_SIGN", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_SIGN { get; }
+
 		// extern const int TAG_GROUP_PROTECT;
 		[Field ("TAG_GROUP_PROTECT", "__Internal")]
 		int TAG_GROUP_PROTECT { get; }
@@ -702,6 +758,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("getIndividualMenuItemWithTag:")]
 		MoreMenuItem GetIndividualMenuItemWithTag (nuint itemTag);
 
+		// -(void)setIndividualMenuItemHiddenWithItemTag:(NSUInteger)itemTag hidden:(BOOL)isHidden;
+		[Export ("setIndividualMenuItemHiddenWithItemTag:hidden:")]
+		void SetIndividualMenuItemHiddenWithItemTag (nuint itemTag, bool isHidden);
+
 		// -(UIView * _Nonnull)getContentView;
 		[Export ("getContentView")]
 		//[Verify (MethodToProperty)]
@@ -801,6 +861,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("highlight", ArgumentSemantic.Strong)]
 		SettingObj Highlight { get; set; }
 
+		// @property (nonatomic, strong) SettingObj * _Nonnull areaHighlight;
+		[Export ("areaHighlight", ArgumentSemantic.Strong)]
+		SettingObj AreaHighlight { get; set; }
+
 		// @property (nonatomic, strong) SettingObj * _Nonnull underline;
 		[Export ("underline", ArgumentSemantic.Strong)]
 		SettingObj Underline { get; set; }
@@ -840,6 +904,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) SettingObj * _Nonnull pencil;
 		[Export ("pencil", ArgumentSemantic.Strong)]
 		SettingObj Pencil { get; set; }
+
+		// @property (nonatomic, strong) SettingObj * _Nonnull highlighter;
+		[Export ("highlighter", ArgumentSemantic.Strong)]
+		SettingObj Highlighter { get; set; }
 
 		// @property (nonatomic, strong) SettingObj * _Nonnull polygon;
 		[Export ("polygon", ArgumentSemantic.Strong)]
@@ -2170,6 +2238,15 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)setMoreItemClikedCallback:(void (^ _Nonnull)(UIView * _Nonnull))clickedCallback;
 		[Export ("setMoreItemClikedCallback:")]
 		void SetMoreItemClikedCallback (Action<UIView> clickedCallback);
+
+		// -(NSMutableDictionary * _Nonnull)getToolbarItemHiddenStatus;
+		[Export ("getToolbarItemHiddenStatus")]
+		//[Verify (MethodToProperty)]
+		NSMutableDictionary ToolbarItemHiddenStatus { get; }
+
+		// -(void)setToolbarItemHiddenWithTag:(FS_TOOLBAR_ITEM_TAG)itemTag hidden:(BOOL)isHidden;
+		[Export ("setToolbarItemHiddenWithTag:hidden:")]
+		void SetToolbarItemHiddenWithTag (int itemTag, bool isHidden);
 	}
 
 	// @interface SignatureModule : NSObject <IDocEventListener, IToolEventListener>

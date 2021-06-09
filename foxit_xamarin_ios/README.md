@@ -1,11 +1,11 @@
 # foxit_xamarin_ios
 Use the Foxit Mobile PDF SDK with Xamarin on iOS
 
-Now we had support rdk 7.5.1
+Now we had support rdk 8.0
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for iOS 7.5.1` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for iOS 8.0` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
 
 ## Installation
 
@@ -49,3 +49,32 @@ This sample project works with the  `Foxit PDF SDK for iOS 7.5.1` and is a direc
 7: Add the `Foxit.iOS`,`Foxit.iOS.UIExtensions`,`Foxit.iOS.Scanning.UI` project or `dll-files`.
 
 8: `Run` the `FoxitRDKDemo` project in the simulator or on a physical device.
+
+
+## How to update api definition
+Download[objective-sharpie](https://docs.microsoft.com/en-us/xamarin/cross-platform/macios/binding/objective-sharpie/releases/)
+1. Download `foxitpdfsdk_(version_no)_ios.zip` from [https://developers.foxitsoftware.com/pdf-sdk/ios/](https://developers.foxitsoftware.com/pdf-sdk/ios/)
+2. Unzip the `foxitpdfsdk_(version_no)_ios.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_ios/libs` directory:
+3. Modify the native to the Xcode SDK version
+```ruby
+$ sharpie xcode -sdks sdk: iphoneos12.1     arch: arm64
+```
+Respectively```FoxitRDK.framework/Info.plist```、```FoxitRDK.framework/Info.plist```and```sharpie_bind_framework.py```  ```DTSDKName```、```DTPlatformVersion```and```sdk_version```change to the version of the local environment.（iphoneos14.5，14.5)
+4. f a new class needs to be added in``ApiDefinitionAppending``, if a new enumeration type needs to be added in``StructsAppending``,the compiler error needs to add a new rule in``replace_api.py``.
+
+### The last
+```ruby
+$ cd ./replace_api
+$ python sharpie_bind_framework.py
+```
+
+
+### Direct use of biplist:
+Installing biplist relies on Python
+1. Same as above
+2. Same as above
+3. Same as above
+```ruby
+$ python biplist_sharpie_bind_framework.py
+```
+4. Same as above

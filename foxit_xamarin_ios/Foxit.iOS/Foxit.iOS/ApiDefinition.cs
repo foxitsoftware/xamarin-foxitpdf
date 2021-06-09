@@ -13451,6 +13451,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("verifySignature:signature:")]
 		uint VerifySignature (FSPDFDoc document, FSSignature signature);
+
+		// @required -(NSString *)browseFile:(BOOL)is_open_dialog file_format:(NSString *)file_format file_filter:(NSString *)file_filter;
+		[Abstract]
+		[Export ("browseFile:file_format:file_filter:")]
+		string BrowseFile (bool is_open_dialog, string file_format, string file_filter);
 	}
 
 	// @protocol FSIconProviderCallback <NSObject>

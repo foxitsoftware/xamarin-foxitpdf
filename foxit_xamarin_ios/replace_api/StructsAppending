@@ -1,0 +1,84 @@
+    public enum PDF_LAYOUT_MODE
+    {
+        /** @brief  Unknown page mode. */
+        PDF_LAYOUT_MODE_UNKNOWN = 0,
+        /** @brief  Continuous page mode. */
+        PDF_LAYOUT_MODE_CONTINUOUS,
+        /** @brief  Single page mode. */
+        PDF_LAYOUT_MODE_SINGLE,
+        /** @brief  Facing mode. */
+        PDF_LAYOUT_MODE_TWO,
+        /** @brief  Reflow mode. */
+        PDF_LAYOUT_MODE_REFLOW,
+        /** @brief  Facing mode. Cover page left */
+        PDF_LAYOUT_MODE_TWO_LEFT,
+        /** @brief  Facing mode. Cover page right */
+        PDF_LAYOUT_MODE_TWO_RIGHT,
+        /** @brief  Facing mode. Cover page middle */
+        PDF_LAYOUT_MODE_TWO_MIDDLE
+    }
+
+    public enum PDF_REFLOW_REFLOWMODE
+    {
+        /** @brief  No reflow. */
+        PDF_REFLOW_NONE = -1,
+        /** @brief Reflow both text and image on PDF page. */
+        PDF_REFLOW_WITHIMAGE = 0,
+        /** @brief Reflow just text on PDF page. */
+        PDF_REFLOW_ONLYTEXT
+    }
+
+    public enum PDF_DISPLAY_ZOOMMODE
+    {
+        /** @brief  Zoom mode: unknown. */
+        PDF_DISPLAY_ZOOMMODE_UNKNOWN = 0,
+        /** @brief  Zoom mode: fit page. */
+        PDF_DISPLAY_ZOOMMODE_FITPAGE,
+        /** @brief  Zoom mode: fit page width. */
+        PDF_DISPLAY_ZOOMMODE_FITWIDTH,
+        /** @brief  Zoom mode: fit page height. */
+        PDF_DISPLAY_ZOOMMODE_FITHEIGHT
+    }
+
+    public enum PDF_CROP_MODE {
+        /** @brief  No crop. */
+        PDF_CROP_MODE_NONE = -1,
+        /** @brief  Crop margin according to bounding box of all contents. */
+        PDF_CROP_MODE_CONTENTSBOX,
+        /** @brief  Crop margin by detecting paths or images. */
+        PDF_CROP_MODE_DETECTION,
+        /** @brief  Crop margin with specified pages & rects */
+        PDF_CROP_MODE_CUSTOMIZED,
+    }
+    public enum PDF_PAGE_STYLE_TYPE {
+	/** @brief    Insert page blank style. */
+    	PDF_PAGE_STYLE_TYPE_BLANK = 0,
+    	/** @brief    Insert page lined style. */
+    	PDF_PAGE_STYLE_TYPE_LINED,
+    	/** @brief    Insert page grid style. */
+    	PDF_PAGE_STYLE_TYPE_GRID,
+    	/** @brief    Insert page graph style. */
+    	PDF_PAGE_STYLE_TYPE_GRAPH,
+    	/** @brief    Insert page music style. */
+    	PDF_PAGE_STYLE_TYPE_MUSIC
+    }
+    public enum FS_PAGESPACING_DIRECTION {
+    	/** @brief    PageSpcaing horizontal direction. */
+    	FS_PAGESPACING_HORIZONTAL = 0x0001,
+    	/** @brief    PageSpcaing vertical direction. */
+    	FS_PAGESPACING_VERTICAL = 0x0002,
+    }
+
+    /**
+    * @brief    Enumeration for certificate related error code.
+    *
+    */
+    public enum PDF_CERT_ERROR_CODE {
+    	PDF_CERT_ERROR_SUCESSS = 0,
+    	/** @brief    File format error or invalid file. */
+    	PDF_CERT_ERROR_FILE,
+    	/** @brief    Invalid password. */
+    	PDF_CERT_ERROR_PASSWORD
+    }
+    
+

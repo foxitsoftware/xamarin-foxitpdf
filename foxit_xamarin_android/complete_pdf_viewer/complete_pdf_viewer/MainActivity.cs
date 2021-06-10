@@ -187,7 +187,7 @@ namespace Com.Foxit.Home
             App app = App.Instance();
             app.CopyGuideFiles(App.Instance().GetLocalModule(filter));
             if (AppFileUtil.NeedScopedStorageAdaptation())
-                app.GetLocalModule(filter).SetCurrentPath(AppStorageManager.GetInstance(this).DefaultFolder);
+                app.GetLocalModule(filter).SetCurrentPath(AppStorageManager.GetInstance(ApplicationContext).DefaultFolder);
             app.GetLocalModule(filter).UpdateStoragePermissionGranted();
         }
 
@@ -208,7 +208,7 @@ namespace Com.Foxit.Home
         {
             if (AppFileUtil.NeedScopedStorageAdaptation())
             {
-                if (path == null || AppStorageManager.GetInstance(this).IsRootVolumePath(path)) return;
+                if (path == null || AppStorageManager.GetInstance(ApplicationContext).IsRootVolumePath(path)) return;
                 AppFileUtil.CheckCallDocumentTreeUriPermission(this, REQUEST_OPEN_DOCUMENT_TREE, AppFileUtil.ToDocumentUriFromPath(path));
             }
         }
@@ -241,7 +241,7 @@ namespace Com.Foxit.Home
                     ActivityFlags modeFlags = data.Flags & (ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
                     ContentResolver.TakePersistableUriPermission(uri, modeFlags);
                     LocalModule localModule = App.Instance().GetLocalModule(filter);
-                    AppStorageManager storageManager = AppStorageManager.GetInstance(this);
+                    AppStorageManager storageManager = AppStorageManager.GetInstance(ApplicationContext);
                     if (TextUtils.IsEmpty(storageManager.DefaultFolder))
                     {
                         string defaultPath = AppFileUtil.ToPathFromDocumentTreeUri(uri);

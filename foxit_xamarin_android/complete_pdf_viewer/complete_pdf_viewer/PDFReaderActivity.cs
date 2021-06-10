@@ -5,13 +5,17 @@ using Android.Content.Res;
 using Android.Content.PM;
 using Android.Content;
 using Android.Runtime;
+using Android.Net;
+using Android.Text;
 using AndroidX.AppCompat.App;
 using Com.Foxit.Sdk;
 using Com.Foxit.Uiextensions;
+using Com.Foxit.Home;
 
 using Com.Foxit.Uiextensions.Utils;
 using Com.Foxit.Uiextensions.Home;
 using Com.Foxit.Uiextensions.Config;
+using Com.Foxit.Uiextensions.Home.Local;
 
 namespace Com.Foxit.Pdfreader
 {
@@ -43,7 +47,7 @@ namespace Com.Foxit.Pdfreader
 
             System.IO.Stream stream = Assets.Open("uiextensions_config.json");
             Config config = new Config(stream);
-            uiExtensionsManager = new UIExtensionsManager(this, pdfViewCtrl, config);
+            uiExtensionsManager = new UIExtensionsManager(ApplicationContext, pdfViewCtrl, config);
             uiExtensionsManager.AttachedActivity = this;
             uiExtensionsManager.RegisterModule(App.Instance().GetLocalModule(filter));
 
@@ -132,6 +136,32 @@ namespace Com.Foxit.Pdfreader
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok)
+            {
+                if (requestCode == AppStorageManager.OpenTreeRequestCode
+                    || requestCode == MainActivity.REQUEST_SELECT_DEFAULT_FOLDER)
+                {
+                    if (data == null || data.Data == null) return;
+
+                    Uri uri = data.Data;
+                    ActivityFlags modeFlags = data.Flags & (ActivityFlags.GrantReadUriPermission | ActivityFlags.GrantWriteUriPermission);
+                    ContentResolver.TakePersistableUriPermission(uri, modeFlags);
+                    LocalModule localModule = App.Instance().GetLocalModule(filter);
+                    AppStorageManager storageManager = AppStorageManager.GetInstance(ApplicationContext);
+                    if (TextUtils.IsEmpty(storageManager.DefaultFolder))
+                    {
+                        string defaultPath = AppFileUtil.ToPathFromDocumentTreeUri(uri);
+                        storageManager.DefaultFolder = defaultPath;
+                        App.Instance().CopyGuideFiles(localModule);
+                        localModule.SetCurrentPath(defaultPath);
+                    }
+                    else
+                    {
+                        localModule.ReloadCurrentFilePath();
+                    }
+                }
+            }
+
             if (uiExtensionsManager != null)
             {
                 uiExtensionsManager.HandleActivityResult(this, requestCode, (int)resultCode, data);

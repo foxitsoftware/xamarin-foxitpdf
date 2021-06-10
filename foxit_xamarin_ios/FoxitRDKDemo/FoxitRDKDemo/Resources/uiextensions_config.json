@@ -65,6 +65,10 @@
                 "color" : "#ffff00",
                 "opacity" : 1.0
             },
+            "areaHighlight": {
+                "color": "#ffff00",
+                "opacity": 1.0
+            },
             "underline": {
                 "color" : "#66cc33",
                 "opacity" : 1.0
@@ -109,6 +113,11 @@
                 "color" : "#ff0000",
                 "opacity" : 1.0,
                 "thickness" : 2
+            },
+            "highlighter": {
+                "color" : "#ffff00",
+                "opacity" : 0.5,
+                "thickness" : 12
             },
             "polygon": {
                 "color" : "#ff0000",

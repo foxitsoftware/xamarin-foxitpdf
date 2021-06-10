@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata minClientVersion="">
+    <id>Foxit.iOS.UIExtensions</id>
+    <version>8.0.0</version>
+    <title>Foxit.iOS.UIExtensions</title>
+    <authors>Foxit Software Incorporated</authors>
+    <owners>Foxit Software Incorporated</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://developers.foxitsoftware.com/pdf-sdk/ios/</projectUrl>
+    <description>Foxit PDF SDK provides high-performance libraries to help any software developer add robust PDF
+functionality to their enterprise, mobile and cloud applications across all platforms (includes Windows,
+Mac, Linux, Web, Android, iOS, and UWP), using the most popular development languages and
+environments.
+Application developers who use Foxit PDF SDK can leverage Foxit’s powerful, standard-compliant PDF
+technology to securely display, create, edit, annotate, format, organize, print, share, secure, search
+documents as well as to fill PDF forms. Additionally, Foxit PDF SDK includes a built-in, embeddable PDF
+Viewer, making the development process easier and faster. For more detailed information, please visit
+the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
+    <copyright>Copyright (C) 2003-2021, Foxit Software Inc.</copyright>
+    <tags>Foxit PDF SDK</tags>
+    <summary></summary>
+    <releaseNotes></releaseNotes>
+    <language></language>
+    <dependencies>
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="Foxit.iOS" version="8.0.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+      <file src="LICENSE.txt" target="" />
+  </files>
+</package>

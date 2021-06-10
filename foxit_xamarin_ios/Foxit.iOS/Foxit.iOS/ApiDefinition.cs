@@ -13749,6 +13749,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("encryptData:objNum:genNum:srcData:srcDataLen:dstBuffer:dstBufferLen:")]
 		unsafe bool EncryptData (IntPtr context, int objNum, int genNum, IntPtr srcData, uint srcDataLen, IntPtr dstBuffer, uint dstBufferLen);
+
+		// @required -(BOOL)useStandardCryptoMethod:(void *)context;
+		[Abstract]
+		[Export ("useStandardCryptoMethod:")]
+		unsafe bool UseStandardCryptoMethod (IntPtr context);
 	}
 
 	// @protocol FSRMSSecurityCallback <FSCustomSecurityCallback>

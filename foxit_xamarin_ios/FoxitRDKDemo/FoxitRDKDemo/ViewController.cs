@@ -149,6 +149,12 @@ namespace FoxitRDKDemo
         {
             this.extensionsMgr.DidRotateFromInterfaceOrientation(fromInterfaceOrientation);
         }
+
+        public override bool PrefersStatusBarHidden()
+        {
+            return this.extensionsMgr.PrefersStatusBarHidden;
+        }
+
         #endregion
 
         #region <IDocEventListener>

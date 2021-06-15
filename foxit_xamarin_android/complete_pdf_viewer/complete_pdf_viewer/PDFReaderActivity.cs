@@ -43,7 +43,7 @@ namespace Com.Foxit.Pdfreader
             filter = this.Intent.GetStringExtra("filter");
             Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 
-            pdfViewCtrl = new PDFViewCtrl(this);
+            pdfViewCtrl = new PDFViewCtrl(ApplicationContext);
 
             System.IO.Stream stream = Assets.Open("uiextensions_config.json");
             Config config = new Config(stream);

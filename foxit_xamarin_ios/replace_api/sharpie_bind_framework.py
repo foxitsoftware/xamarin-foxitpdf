@@ -7,9 +7,9 @@ def sharpie_bind(bind_name,namespace,sdk_version):
 def main():
 
     current_path=os.getcwd()
-    libs_path=current_path+r'/libs'
+    libs_path=current_path+r'/../libs'
     os.chdir(libs_path)
-    sdk_version='13.2'
+    sdk_version='14.5'
     sharpie_bind('FoxitRDK','Foxit.iOS',sdk_version)
     sharpie_bind('uiextensionsDynamic','Foxit.iOS.UIExtensions',sdk_version)
     sharpie_bind('FoxitPDFScanUI','Foxit.iOS.Scanning.UI',sdk_version)

@@ -14,7 +14,7 @@
     <AssemblyName>FoxitRDK</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
   </PropertyGroup>
@@ -56,13 +56,13 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Microsoft_Aad_Adal\Microsoft_Aad_Adal\Microsoft_Aad_Adal.csproj">
-      <Project>{888a3015-4d14-48e1-9bec-abee0112d672}</Project>
-      <Name>Microsoft_Aad_Adal</Name>
+    <ProjectReference Include="..\..\MSAL\MSAL\MSAL.csproj">
+      <Project>{b5dffac1-ab50-4c58-8eef-912011e1d7ca}</Project>
+      <Name>MSAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MS_Common\MS_Common\MS_Common.csproj">
-      <Project>{4113430f-7c86-45a6-89db-a2b78df51790}</Project>
-      <Name>MS_Common</Name>
+    <ProjectReference Include="..\..\MSCommon\MSCommon\MSCommon.csproj">
+      <Project>{9ef5f2da-9804-4f7a-bf87-58e77ebb96a2}</Project>
+      <Name>MSCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\RMSSDK\RMSSDK\RMSSDK.csproj">
       <Project>{16819400-81ce-41d5-b4dc-143e497294a3}</Project>

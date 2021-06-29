@@ -35,8 +35,8 @@ namespace Com.Foxit.Home
         IHomeModuleOnFilePathChangeListener
     {
 
-        public const int REQUEST_EXTERNAL_STORAGE_MANAGER = 1;
-        public const int REQUEST_EXTERNAL_STORAGE = 2;
+        public const int REQUEST_EXTERNAL_STORAGE_MANAGER = 111;
+        public const int REQUEST_EXTERNAL_STORAGE = 222;
 
         public const int REQUEST_OPEN_DOCUMENT_TREE = 0xF001;
         public const int REQUEST_SELECT_DEFAULT_FOLDER = 0xF002;

@@ -11,7 +11,9 @@
   <attr path="/api/package[@name='com.foxit.uiextensions.utils']/class[@name='Event']" name="managedName">IEvent</attr>
 
 
-  <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='UIExtensionsManager']/method[@name='getDocumentManager']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getPropertyBar']" />
+  
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='UIExtensionsManager']/method[@name='getDocumentManager']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='DocumentManager']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='IPDFReader']/method[@name='getMainFrame']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='IPDFReader']/method[@name='getDocumentManager']" />

@@ -64,13 +64,6 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSNightColorMode 
-	{
-		Default,
-		MappingGray
-	}
-
-	//[Native]
 	public enum FSReadToolSettingsType 
 	{
 		Text = 1,

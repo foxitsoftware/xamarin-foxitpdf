@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.UIExtensions</id>
-    <version>8.0.0</version>
+    <version>8.1.0</version>
     <title>Foxit.iOS.UIExtensions</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>

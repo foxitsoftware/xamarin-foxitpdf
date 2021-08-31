@@ -21,9 +21,10 @@ namespace Com.Foxit.Pdfreader
 {
 
     [Activity(Label = "@string/app_name",
-    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize,
+    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.SmallestScreenSize,
     ScreenOrientation = ScreenOrientation.FullSensor,
     Theme = "@style/AppTheme")]
+    [Layout(MinHeight = "700dp", MinWidth = "520dp", Gravity = "center")]
     [MetaData("android.support.PARENT_ACTIVITY", Value = "Com.Foxit.Home.MainActivity")]
     public class PDFReaderActivity : AppCompatActivity
     {
@@ -39,6 +40,7 @@ namespace Com.Foxit.Pdfreader
             base.OnCreate(savedInstanceState);
             AppTheme.SetThemeFullScreen(this);
             AppTheme.SetThemeNeedMenuKey(this);
+            ActManager.Instance.CurrentActivity = this;
 
             filter = this.Intent.GetStringExtra("filter");
             Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);

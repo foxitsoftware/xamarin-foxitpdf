@@ -21,11 +21,12 @@ namespace Com.Foxit.Home
 {
 
     [Activity(Label = "@string/app_name",
-    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Locale | ConfigChanges.LayoutDirection,
+    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Locale | ConfigChanges.LayoutDirection | ConfigChanges.SmallestScreenSize,
     LaunchMode = LaunchMode.SingleTop,
     Theme = "@style/AppTheme",
     WindowSoftInputMode = SoftInput.AdjustPan,
     MainLauncher = true)]
+    [Layout(MinHeight ="700dp",MinWidth ="520dp", Gravity = "center")]
     [IntentFilter(new[] { Intent.ActionView },
         Categories = new[] { Intent.CategoryDefault },
         DataMimeType = "application/pdf")]

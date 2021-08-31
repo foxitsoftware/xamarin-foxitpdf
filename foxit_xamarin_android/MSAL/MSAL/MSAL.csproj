@@ -51,9 +51,6 @@
     <LibraryProjectZip Include="..\..\libs\rms\microsoft-identity-client-msal-2.1.0.aar">
       <Link>Jars\microsoft-identity-client-msal-2.1.0.aar</Link>
     </LibraryProjectZip>
-    <EmbeddedJar Include="..\..\libs\rms\gson-2.8.5.jar">
-      <Link>Jars\gson-2.8.5.jar</Link>
-    </EmbeddedJar>
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />

@@ -6,45 +6,10 @@
   This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
-  
-  <!--com.google.gson start-->
-  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
-  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='SqlDateTypeAdapter']"/>
-  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='TimeTypeAdapter']"/>
-
-  <remove-node path="/api/package[@name='com.google.gson.internal']/class[@name='LinkedHashTreeMap']"/>
-  <remove-node path="/api/package[@name='com.google.gson.internal']/class[@name='LinkedTreeMap']"/>
-
-  //CS0534
-  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']/method[@name='deepCopy']"/>
-  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']">
-    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
-    </method>
-  </add-node>
-
-  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonArray']/method[@name='deepCopy']"/>
-  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonArray']">
-    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
-    </method>
-  </add-node>
-
-  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonNull']/method[@name='deepCopy']"/>
-  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonNull']">
-    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
-    </method>
-  </add-node>
-
-  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonObject']/method[@name='deepCopy']"/>
-  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonObject']">
-    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
-    </method>
-  </add-node>
-  
-  //CS0738
-  <attr path="/api/package[@name='com.google.gson']/class[@name='JsonStreamParser']/method[@name='next' and count(parameter)=0]"
-    name="managedReturn">Java.Lang.Object</attr>
-  <!--com.google.gson end-->
-
+	
+	//CS0738
+	<attr path="/api/package[@name='com.microsoft.identity.client.internal.configuration']/class[@name='LogLevelDeserializer']/method[@name='deserialize' and count(parameter)=3 and parameter[1][@type='com.google.gson.JsonElement'] and parameter[2][@type='java.lang.reflect.Type'] and parameter[3][@type='com.google.gson.JsonDeserializationContext']]"
+  name="managedReturn">Java.Lang.Object</attr>
 
   <!--microsoft-identity-client-msal start-->
   //CS0534

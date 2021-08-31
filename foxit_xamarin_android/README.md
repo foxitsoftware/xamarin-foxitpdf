@@ -112,12 +112,12 @@ click Add:
     
   - _**Note**_:  
   If you integrate manually by building dlls, you must manually install the following dependencies.  
-`Xamarin.AndroidX.Browser`(Recommended version: 1.2.0)  
-`Xamarin.Google.Android.Material`(Recommended version: 1.0.0)  
-`Xamarin.AndroidX.AppCompat`(Recommended version: 1.1.0)  
-`Xamarin.AndroidX.Legacy.Support.V4`(Recommended version: 1.0.0)  
-`Xamarin.AndroidX.Lifecycle.LiveData`(Recommended version: 2.2.0)  
-`Xamarin.Android.Support.v7.AppCompat` (Recommended version: 28.0.0.3, it's required for opening a RMS protected PDF file)  
+`Xamarin.AndroidX.Browser`
+`Xamarin.Google.Android.Material`
+`Xamarin.AndroidX.AppCompat`
+`Xamarin.AndroidX.Legacy.Support.V4`
+`Xamarin.AndroidX.Lifecycle.LiveData`
+`Xamarin.AndroidX.ConstraintLayout` (It's required for opening a RMS protected PDF file)  
 
   After finishing the above steps, the References of your project will look like:  
   ![screenshot8](./Screenshot/screenshot8.jpg)  

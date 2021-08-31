@@ -55,8 +55,8 @@ directory:
   - Build DLLs  
     You need to manually compile to get the following dll：  
     > `FoxitRDK.dll`  
-    > `Microsoft_Aad_Adal.dll`  
-    > `MS_Common.dll`  
+    > `MSAL.dll`  
+    > `MSCommon.dll`  
     > `RMSSDK.dll`  
     > `RMSSDK_UI.dll`  
     > `XCrash.dll`  
@@ -69,8 +69,8 @@ directory:
        Step2: Right-click FoxitUIExtensions project, click Build/Rebuild .  
        Step3: If build is successful, the  
        `FoxitRDK.dll`  
-       `Microsoft_Aad_Adal.dll`  
-       `MS_Common.dll`  
+       `MSAL.dll`  
+       `MSCommon.dll`  
        `RMSSDK.dll`  
        `RMSSDK_UI.dll`  
        `XCrash.dll`  
@@ -101,8 +101,8 @@ click Add:
       
           ![screenshot7](./Screenshot/screenshot7.jpg)  
   - Add the following dll to you demo refer to the steps of adding `FoxitRDK.dll`.  
-    > `Microsoft_Aad_Adal.dll`  
-    > `MS_Common.dll`  
+    > `MSAL.dll`  
+    > `MSCommon.dll`  
     > `RMSSDK.dll`  
     > `RMSSDK_UI.dll`  
     > `XCrash.dll`  

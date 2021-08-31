@@ -633,6 +633,17 @@ namespace Foxit.iOS.UIExtensions
 		int TAG_ITEM_SCREENCAPTURE { get; }
 	}
 
+	// @protocol IMoreMenuViewListener <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IMoreMenuViewListener
+	{
+		// @required -(void)onMoreMenuChanged:(BOOL)isHidden;
+		[Abstract]
+		[Export ("onMoreMenuChanged:")]
+		void OnMoreMenuChanged (bool isHidden);
+	}
+
 	// typedef void (^CancelCallback)();
 	delegate void CancelCallback ();
 
@@ -782,6 +793,14 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)setMoreViewItemHiddenWithGroup:(NSUInteger)groupTag andItemTag:(NSUInteger)itemTag hidden:(BOOL)isHidden;
 		[Export ("setMoreViewItemHiddenWithGroup:andItemTag:hidden:")]
 		void SetMoreViewItemHiddenWithGroup (nuint groupTag, nuint itemTag, bool isHidden);
+
+		// -(void)registerEventListener:(id<IMoreMenuViewListener> _Nonnull)listener;
+		[Export ("registerEventListener:")]
+		void RegisterEventListener (NSObject listener);
+
+		// -(void)unregisterEventListener:(id<IMoreMenuViewListener> _Nonnull)listener;
+		[Export ("unregisterEventListener:")]
+		void UnregisterEventListener (NSObject listener);
 	}
 
 	// @interface SettingObj : NSObject <NSCoding>
@@ -1889,9 +1908,9 @@ namespace Foxit.iOS.UIExtensions
 		void QuitUIExtensionsManager (UIExtensionsManager uiextensionsManager, UIControl control);
 	}
 
-	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener, ISignatureEventListener>
+	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener, UIToolbarDelegate, ISignatureEventListener>
 	[BaseType (typeof(NSObject))]
-	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener, ISignatureEventListener
+	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener, IUIToolbarDelegate, ISignatureEventListener
 	{
 		// @property (assign, nonatomic, class) UIStatusBarStyle preferredStatusBarStyle;
 		[Static]
@@ -2058,10 +2077,6 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) FSPermissionProvider * _Nonnull permissionProvider;
 		[Export ("permissionProvider", ArgumentSemantic.Strong)]
 		FSPermissionProvider PermissionProvider { get; set; }
-
-		// @property (assign, nonatomic) FSNightColorMode nightColorMode;
-		[Export ("nightColorMode", ArgumentSemantic.Assign)]
-		FSNightColorMode NightColorMode { get; set; }
 
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]

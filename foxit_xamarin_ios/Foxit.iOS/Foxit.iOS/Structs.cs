@@ -891,7 +891,9 @@ namespace Foxit.iOS
 	{
 		Dests = 1,
 		JavaScript = 2,
-		EmbeddedFiles = 3
+		EmbeddedFiles = 3,
+		Pages = 4,
+		Templates = 5
 	}
 
 	//[Native]
@@ -1264,13 +1266,15 @@ namespace Foxit.iOS
 	//[Native]
 	public enum FSMarkupState 
 	{
+		None = 0,
 		Marked = 1,
 		Unmarked = 2,
 		Accepted = 3,
 		Rejected = 4,
 		Cancelled = 5,
 		Completed = 6,
-		None = 7
+		Deferred = 7,
+		Future = 8
 	}
 
 	//[Native]
@@ -1304,6 +1308,16 @@ namespace Foxit.iOS
 	{
 		Inline = 0,
 		Top = 1
+	}
+
+	//[Native]
+	public enum FSWidgetLineSpacingStyle 
+	{
+		Single = 0,
+		OneAndHalf = 1,
+		Double = 2,
+		ExactValue = 3,
+		Auto = 4
 	}
 
 	//[Native]
@@ -1758,6 +1772,17 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSFillerAssistCallbackPopupMenuItem 
+	{
+		None = 0,
+		Cut = 1,
+		Copy = 2,
+		Paste = 3,
+		Delete = 4,
+		SelectAll = 5
+	}
+
+	//[Native]
 	public enum FSFillerVirtualKeyCode 
 	{
 		Unknown = 0,
@@ -1892,7 +1917,10 @@ namespace Foxit.iOS
 		TextDoNotScroll = 4096,
 		TextComb = 8192,
 		ComboEdit = 256,
-		ChoiceMultiSelect = 256
+		ChoiceMultiSelect = 256,
+		TextRichText = 16384,
+		ChoiceSort = 512,
+		ChoiceCommitOnSelChange = 1024
 	}
 
 	//[Native]
@@ -2158,24 +2186,6 @@ namespace Foxit.iOS
 		Large = 2
 	}
 
-	//[Native]
-	public enum FSEditorPageEditAlignment 
-	{
-		Left = 0,
-		Mid = 1,
-		Right = 2,
-		Justify = 3
-	}
-
-	//[Native]
-	public enum FSEditorPageEditMenus 
-	{
-		Select = 1,
-		SelectAll = 1 << 1,
-		Paste = 1 << 2,
-		Copy = 1 << 3
-	}
-
 	public enum PdfLayoutMode 
 	{
 		Unknown = 0,
@@ -2224,6 +2234,13 @@ namespace Foxit.iOS
 		Grid,
 		Graph,
 		Music
+	}
+
+	//[Native]
+	public enum FSNightColorMode 
+	{
+		Default,
+		MappingGray
 	}
 
 	public enum PdfCertErrorCode 

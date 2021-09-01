@@ -25,7 +25,7 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
     <language></language>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Foxit.iOS" version="8.0.0" />
+        <dependency id="Foxit.iOS" version="8.1.0" />
       </group>
     </dependencies>
     <frameworkAssemblies>

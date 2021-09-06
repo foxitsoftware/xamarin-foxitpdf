@@ -55,6 +55,9 @@ namespace Com.Foxit.Home
             RequestWindowFeature(Android.Views.WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            AppTheme.SetThemeFullScreen(this);
+            AppTheme.SetThemeNeedMenuKey(this);
+            ActManager.Instance.CurrentActivity = this;
 
             mLicenseValid = App.Instance().CheckLicense();
             if (!mLicenseValid)

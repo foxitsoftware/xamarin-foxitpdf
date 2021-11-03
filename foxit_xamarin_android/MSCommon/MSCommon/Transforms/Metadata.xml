@@ -7,6 +7,10 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
+ //SDK-19760
+ <remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='StorageHelper']/field[@name='LAST_KNOWN_THUMBPRINT']"/>
+ <remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='StorageHelper']/method[@name='testThumbprint' and count(parameter)=0]"/>
+
   <!--com.google.gson start-->
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='SqlDateTypeAdapter']"/>

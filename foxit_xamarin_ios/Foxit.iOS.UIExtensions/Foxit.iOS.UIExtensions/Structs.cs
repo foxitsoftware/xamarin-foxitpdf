@@ -10,13 +10,12 @@
 * Review legal.txt for additional license and legal information.
 */
 
-using System;
 using ObjCRuntime;
 
 namespace Foxit.iOS.UIExtensions
 {
 	//[Native]
-	public enum FSPanelType 
+	public enum FSPanelType : ulong
 	{
 		Annotation = 1,
 		Attachment,
@@ -27,7 +26,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum SettingItemType 
+	public enum SettingItemType : ulong
 	{
 		Single,
 		Doublepage,
@@ -47,24 +46,24 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSUIManagerState 
+	public enum FSUIManagerState : ulong
 	{
 		Normal = 1,
 		Reflow,
 		Search,
 		AnnotTool,
 		PanZoom,
-		PageNavigate,
 		CreateForm,
 		Speech,
 		FillSign,
 		AutoFlip,
 		Redaction,
-		Comparision
+		Comparision,
+		Editor
 	}
 
 	//[Native]
-	public enum FSReadToolSettingsType 
+	public enum FSReadToolSettingsType : ulong
 	{
 		Text = 1,
 		Image,
@@ -115,14 +114,14 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSReadToolbarItemType 
+	public enum FSReadToolbarItemType : ulong
 	{
 		Exist,
 		Custom
 	}
 
 	//[Native]
-	public enum FSMenuViewType 
+	public enum FSMenuViewType : ulong
 	{
 		ThumbnailInsertBlankPagePop = 0,
 		Extract,
@@ -130,7 +129,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSMainToolbarItemPosition 
+	public enum FSMainToolbarItemPosition : long
 	{
 		Left = 0,
 		Center,
@@ -138,7 +137,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSMainTopbarToolTag 
+	public enum FSMainTopbarToolTag : ulong
 	{
 		Home,
 		Edit,
@@ -151,7 +150,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSMainToolbarItemType 
+	public enum FSMainToolbarItemType : ulong
 	{
 		Unknown = 0,
 		Back,
@@ -171,7 +170,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSTopbarSubitemContentViewPosition 
+	public enum FSTopbarSubitemContentViewPosition : ulong
 	{
 		Top,
 		Left,
@@ -179,14 +178,14 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSMenuControlScene 
+	public enum FSMenuControlScene : ulong
 	{
 		SelectedText,
 		BlankSpace
 	}
 
 	//[Native]
-	public enum FSPermissionState 
+	public enum FSPermissionState : ulong
 	{
 		FSPermissionStateShow,
 		FSPermissionStateNo,
@@ -194,7 +193,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
-	public enum FSFunction 
+	public enum FSFunction : ulong
 	{
 		MultiMediaEdit,
 		DocInfoEdit,
@@ -204,11 +203,13 @@ namespace Foxit.iOS.UIExtensions
 		Rms,
 		DigitalSignField,
 		Redaction,
-		CanSaveToLocal
+		CanSaveToLocal,
+		StandEncrypt,
+		Flatten
 	}
 
 	//[Native]
-	public enum FSToolbarType 
+	public enum FSToolbarType : ulong
 	{
 		TopBar = 1,
 		BottomBar

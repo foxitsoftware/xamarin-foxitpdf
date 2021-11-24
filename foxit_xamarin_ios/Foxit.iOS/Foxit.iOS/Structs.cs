@@ -10,13 +10,12 @@
 * Review legal.txt for additional license and legal information.
 */
 
-using System;
 using ObjCRuntime;
 
 namespace Foxit.iOS
 {
 	//[Native]
-	public enum FSErrorCode 
+	public enum FSErrorCode : long
 	{
 		Success = 0,
 		File = 1,
@@ -88,11 +87,12 @@ namespace Foxit.iOS
 		OfficeComNotInit = 67,
 		NoMicroOfficeInstalled = 68,
 		ExcelHasNoContent = 69,
-		NoLayoutRecognitionModuleRight = 70
+		NoLayoutRecognitionModuleRight = 70,
+		WPSEngineNotFound = 71
 	}
 
 	//[Native]
-	public enum FSRotation 
+	public enum FSRotation : long
 	{
 		FSRotation0 = 0,
 		FSRotation90 = 1,
@@ -102,7 +102,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAlignment 
+	public enum FSAlignment : long
 	{
 		Left = 0,
 		Center = 1,
@@ -110,7 +110,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFillMode 
+	public enum FSFillMode : long
 	{
 		None = 0,
 		Alternate = 1,
@@ -118,7 +118,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPosition 
+	public enum FSPosition : long
 	{
 		TopLeft = 0,
 		TopCenter = 1,
@@ -132,7 +132,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSModuleName 
+	public enum FSModuleName : long
 	{
 		ConnectedPDF = 1,
 		Xfa = 2,
@@ -147,7 +147,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSColorSpaceType 
+	public enum FSColorSpaceType : long
 	{
 		Invalid = 0,
 		DeviceGray = 1,
@@ -165,7 +165,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSLocaleID 
+	public enum FSLocaleID : long
 	{
 		Unspecified = 0,
 		HongKong = 1,
@@ -179,7 +179,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSProgressiveState 
+	public enum FSProgressiveState : long
 	{
 		Error = 0,
 		ToBeContinued = 1,
@@ -187,7 +187,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSGraphStateLineCapStyle 
+	public enum FSGraphStateLineCapStyle : long
 	{
 		Butt = 0,
 		Round = 1,
@@ -195,7 +195,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSGraphStateLineJoinStyle 
+	public enum FSGraphStateLineJoinStyle : long
 	{
 		Miter = 0,
 		Round = 1,
@@ -203,7 +203,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRangeFilter 
+	public enum FSRangeFilter : long
 	{
 		All = 0,
 		Even = 1,
@@ -211,7 +211,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFontStyles 
+	public enum FSFontStyles : long
 	{
 		FixedPitch = 1,
 		Serif = 2,
@@ -225,7 +225,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFontCharset 
+	public enum FSFontCharset : long
 	{
 		Ansi = 0,
 		Default = 1,
@@ -245,7 +245,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFontCIDCharset 
+	public enum FSFontCIDCharset : long
 	{
 		Unknown = 0,
 		Gb1 = 1,
@@ -256,7 +256,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFontStandardID 
+	public enum FSFontStandardID : long
 	{
 		Courier = 0,
 		CourierB = 1,
@@ -275,7 +275,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFontFontTypes 
+	public enum FSFontFontTypes : long
 	{
 		Type1 = 1,
 		TrueType = 2,
@@ -284,7 +284,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPathPointType 
+	public enum FSPathPointType : long
 	{
 		MoveTo = 1,
 		LineTo = 2,
@@ -294,7 +294,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSColorSpaceRenderingIntent 
+	public enum FSColorSpaceRenderingIntent : long
 	{
 		Perceptual = 0,
 		RelColorimetric = 1,
@@ -303,7 +303,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSBitmapDIBFormat 
+	public enum FSBitmapDIBFormat : long
 	{
 		Invalid = 0,
 		Rgb = 24,
@@ -317,7 +317,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSBitmapInterpolationFlag 
+	public enum FSBitmapInterpolationFlag : long
 	{
 		Downsample = 1,
 		Quadratic = 2,
@@ -325,7 +325,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSImageType 
+	public enum FSImageType : long
 	{
 		Unknown = -1,
 		None = 0,
@@ -339,7 +339,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRendererColorMode 
+	public enum FSRendererColorMode : long
 	{
 		Normal = 0,
 		MappingGray = 1,
@@ -347,21 +347,21 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRendererContentFlag 
+	public enum FSRendererContentFlag : long
 	{
 		Page = 1,
 		Annot = 2
 	}
 
 	//[Native]
-	public enum FSRendererDeviceType 
+	public enum FSRendererDeviceType : long
 	{
 		Display = 1,
 		Printer = 2
 	}
 
 	//[Native]
-	public enum FSBarcodeFormat 
+	public enum FSBarcodeFormat : long
 	{
 		Code39 = 0,
 		Code128 = 1,
@@ -374,7 +374,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSBarcodeQRErrorCorrectionLevel 
+	public enum FSBarcodeQRErrorCorrectionLevel : long
 	{
 		Low = 0,
 		Medium = 1,
@@ -383,7 +383,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAppProviderCallbackAppInfo 
+	public enum FSAppProviderCallbackAppInfo : long
 	{
 		Version = 0,
 		Language = 1,
@@ -394,7 +394,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAppProviderCallbackBeepType 
+	public enum FSAppProviderCallbackBeepType : long
 	{
 		Error = 0,
 		Warning = 1,
@@ -404,7 +404,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAppProviderCallbackStringID 
+	public enum FSAppProviderCallbackStringID : long
 	{
 		ValidateFailed = 1,
 		CalcOverride = 2,
@@ -513,7 +513,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAppProviderCallbackMsgBoxIconType 
+	public enum FSAppProviderCallbackMsgBoxIconType : long
 	{
 		Error = 0,
 		Warning = 1,
@@ -522,7 +522,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAppProviderCallbackMsgBoxButtonType 
+	public enum FSAppProviderCallbackMsgBoxButtonType : long
 	{
 		Ok = 0,
 		OKCancel = 1,
@@ -531,7 +531,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAppProviderCallbackMsgBoxButtonID 
+	public enum FSAppProviderCallbackMsgBoxButtonID : long
 	{
 		Ok = 1,
 		Cancel = 2,
@@ -540,14 +540,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDocProviderCallbackInvalidateFlag 
+	public enum FSDocProviderCallbackInvalidateFlag : long
 	{
 		AllPages = 0,
 		CurrentPage = 1
 	}
 
 	//[Native]
-	public enum FSDocProviderCallbackPrintOption 
+	public enum FSDocProviderCallbackPrintOption : long
 	{
 		ShowDialog = 1,
 		CanCancel = 2,
@@ -558,7 +558,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDocProviderCallbackSubmitFormat 
+	public enum FSDocProviderCallbackSubmitFormat : long
 	{
 		Xdp = 0,
 		Pdf = 1,
@@ -568,7 +568,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDocProviderCallbackTextEncoding 
+	public enum FSDocProviderCallbackTextEncoding : long
 	{
 		None = 0,
 		Big5 = 1,
@@ -585,7 +585,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDocProviderCallbackPageViewEventType 
+	public enum FSDocProviderCallbackPageViewEventType : long
 	{
 		Added = 0,
 		Removed = 1,
@@ -593,14 +593,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDocProviderCallbackWidgetEventType 
+	public enum FSDocProviderCallbackWidgetEventType : long
 	{
 		Added = 0,
 		BeforeRemoved = 1
 	}
 
 	//[Native]
-	public enum FSXFADocEventType 
+	public enum FSXFADocEventType : long
 	{
 		Unknown = 0,
 		PostPrint = 1,
@@ -608,7 +608,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFADocType 
+	public enum FSXFADocType : long
 	{
 		Dynamic = 0,
 		Static = 1,
@@ -616,7 +616,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFADocExportDataType 
+	public enum FSXFADocExportDataType : long
 	{
 		Xml = 0,
 		StaticXDP = 1,
@@ -624,7 +624,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetHitTestArea 
+	public enum FSXFAWidgetHitTestArea : long
 	{
 		Unknown = 0,
 		Client = 1,
@@ -633,7 +633,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetWidgetType 
+	public enum FSXFAWidgetWidgetType : long
 	{
 		Barcode = 0,
 		PushButton = 1,
@@ -655,7 +655,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetPresenceProperty 
+	public enum FSXFAWidgetPresenceProperty : long
 	{
 		Unknown = 0,
 		Visible = 1,
@@ -665,7 +665,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetWidgetNameType 
+	public enum FSXFAWidgetWidgetNameType : long
 	{
 		Field = 0,
 		Caption = 1,
@@ -673,7 +673,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetWidgetHAlignType 
+	public enum FSXFAWidgetWidgetHAlignType : long
 	{
 		Center = 128,
 		Justify = 156,
@@ -684,7 +684,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetWidgetVAlignType 
+	public enum FSXFAWidgetWidgetVAlignType : long
 	{
 		Top = 33,
 		Bottom = 85,
@@ -692,7 +692,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSXFAWidgetWidgetEdgePosition 
+	public enum FSXFAWidgetWidgetEdgePosition : long
 	{
 		Top = 0,
 		Right = 1,
@@ -701,7 +701,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSCompareResultInfoCompareResultType 
+	public enum FSCompareResultInfoCompareResultType : long
 	{
 		None = -1,
 		DeleteText = 0,
@@ -723,14 +723,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSComparisonCompareType 
+	public enum FSComparisonCompareType : long
 	{
 		All = 0,
 		Text = 1
 	}
 
 	//[Native]
-	public enum FSImageSettingsImageCompressMode 
+	public enum FSImageSettingsImageCompressMode : long
 	{
 		High = 10003,
 		jpeg = 10005,
@@ -739,7 +739,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSImageSettingsImageCompressQuality 
+	public enum FSImageSettingsImageCompressQuality : long
 	{
 		Minimum = 1,
 		Low = 2,
@@ -749,7 +749,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSImageSettingsStretchMode 
+	public enum FSImageSettingsStretchMode : long
 	{
 		Default = -1,
 		Off = 0,
@@ -760,7 +760,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSMonoImageSettingsMonoImageCompressMode 
+	public enum FSMonoImageSettingsMonoImageCompressMode : long
 	{
 		Ccitt3 = 10001,
 		Ccitt4 = 10002,
@@ -771,14 +771,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSMonoImageSettingsMonoImageCompressQuality 
+	public enum FSMonoImageSettingsMonoImageCompressQuality : long
 	{
 		less = 1,
 		y = 2
 	}
 
 	//[Native]
-	public enum FSMonoImageSettingsStretchMode 
+	public enum FSMonoImageSettingsStretchMode : long
 	{
 		Default = -1,
 		Off = 0,
@@ -789,7 +789,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSOptimizerSettingsOptimizerOptions 
+	public enum FSOptimizerSettingsOptimizerOptions : long
 	{
 		CompressImages = 1,
 		CleanUp = 2,
@@ -799,7 +799,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSOptimizerSettingsCleanUpOptions 
+	public enum FSOptimizerSettingsCleanUpOptions : long
 	{
 		UseFlateForNonEncodedStream = 1,
 		UseFlateInsteadOfLZW = 2,
@@ -808,7 +808,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSOptimizerSettingsDiscardObjectsOptions 
+	public enum FSOptimizerSettingsDiscardObjectsOptions : long
 	{
 		FormActions = 1,
 		FlattenFormFields = 2,
@@ -822,7 +822,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSOptimizerSettingsDiscardUserDataOptions 
+	public enum FSOptimizerSettingsDiscardUserDataOptions : long
 	{
 		AllAnnotsFormsAndMultimedia = 1,
 		ExternalCrossReferences = 2,
@@ -833,14 +833,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFDFDocType 
+	public enum FSFDFDocType : long
 	{
 		Fdf = 0,
 		Xfdf = 1
 	}
 
 	//[Native]
-	public enum FSActionCallbackLanguage 
+	public enum FSActionCallbackLanguage : long
 	{
 		Unknown = 0,
 		Chs = 1,
@@ -861,7 +861,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSActionCallbackAppInfoType 
+	public enum FSActionCallbackAppInfoType : long
 	{
 		FormsVersion = 0,
 		ViewerType = 1,
@@ -871,7 +871,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSActionCallbackMailType 
+	public enum FSActionCallbackMailType : long
 	{
 		Doc = 0,
 		Form = 1,
@@ -879,7 +879,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFullTextSearchRankMode 
+	public enum FSFullTextSearchRankMode : long
 	{
 		None = 0,
 		HitCountASC = 1,
@@ -887,7 +887,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFNameTreeType 
+	public enum FSPDFNameTreeType : long
 	{
 		Dests = 1,
 		JavaScript = 2,
@@ -897,7 +897,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFObjectType 
+	public enum FSPDFObjectType : long
 	{
 		InvalidType = 0,
 		Boolean = 1,
@@ -912,7 +912,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFStreamFilter 
+	public enum FSPDFStreamFilter : long
 	{
 		Unknown = -1,
 		NoneDecode = 0,
@@ -929,20 +929,20 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFNumberTreeType 
+	public enum FSPDFNumberTreeType : long
 	{
 		FSPDFNumberTreePageLabels = 1
 	}
 
 	//[Native]
-	public enum FSRenditionMediaOptionType 
+	public enum FSRenditionMediaOptionType : long
 	{
 		MustBeHonored = 0,
 		BestEffort = 1
 	}
 
 	//[Native]
-	public enum FSRenditionMediaPermission 
+	public enum FSRenditionMediaPermission : long
 	{
 		Never = 0,
 		Extract = 1,
@@ -951,7 +951,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionMediaPlayerType 
+	public enum FSRenditionMediaPlayerType : long
 	{
 		MustUsed = 0,
 		Available = 1,
@@ -959,7 +959,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionMediaPlayerFitStyle 
+	public enum FSRenditionMediaPlayerFitStyle : long
 	{
 		Meet = 0,
 		Slice = 1,
@@ -970,7 +970,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionWindowType 
+	public enum FSRenditionWindowType : long
 	{
 		Floating = 0,
 		FullScreen = 1,
@@ -979,7 +979,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionMonitorSpecifier 
+	public enum FSRenditionMonitorSpecifier : long
 	{
 		Largest = 0,
 		Smallest = 1,
@@ -991,7 +991,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionFloatingWindowRelatedWindowType 
+	public enum FSRenditionFloatingWindowRelatedWindowType : long
 	{
 		Document = 0,
 		Application = 1,
@@ -1000,7 +1000,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionFloatingWindowResizeType 
+	public enum FSRenditionFloatingWindowResizeType : long
 	{
 		No = 0,
 		AspectRatio = 1,
@@ -1008,7 +1008,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionFloatingWindowOffscreenEvent 
+	public enum FSRenditionFloatingWindowOffscreenEvent : long
 	{
 		None = 0,
 		MoveResize = 1,
@@ -1016,7 +1016,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDestinationZoomMode 
+	public enum FSDestinationZoomMode : long
 	{
 		Xyz = 1,
 		FitPage = 2,
@@ -1029,7 +1029,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSActionType 
+	public enum FSActionType : long
 	{
 		Unknown = 0,
 		Goto = 1,
@@ -1053,7 +1053,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSActionNewWindowFlag 
+	public enum FSActionNewWindowFlag : long
 	{
 		False = 0,
 		True = 1,
@@ -1061,7 +1061,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSubmitFormActionFlags 
+	public enum FSSubmitFormActionFlags : long
 	{
 		Exclude = 1,
 		IncludeNoValueFields = 2,
@@ -1079,7 +1079,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRenditionActionOperationType 
+	public enum FSRenditionActionOperationType : long
 	{
 		None = -1,
 		Associate = 0,
@@ -1090,7 +1090,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAdditionalActionTriggerEvent 
+	public enum FSAdditionalActionTriggerEvent : long
 	{
 		PageOpened = 0,
 		PageClosed = 1,
@@ -1116,7 +1116,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDefaultAppearanceDefAPFlags 
+	public enum FSDefaultAppearanceDefAPFlags : long
 	{
 		Font = 1,
 		TextColor = 2,
@@ -1124,7 +1124,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSRichTextStyleCornerMarkStyle 
+	public enum FSRichTextStyleCornerMarkStyle : long
 	{
 		None = 1,
 		Superscript = 2,
@@ -1132,7 +1132,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSBorderInfoStyle 
+	public enum FSBorderInfoStyle : long
 	{
 		Solid = 0,
 		Dashed = 1,
@@ -1143,7 +1143,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSIconFitScaleWayType 
+	public enum FSIconFitScaleWayType : long
 	{
 		None = 0,
 		Always = 1,
@@ -1153,7 +1153,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotType 
+	public enum FSAnnotType : long
 	{
 		UnknownType = 0,
 		Note = 1,
@@ -1187,7 +1187,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotFlags 
+	public enum FSAnnotFlags : long
 	{
 		Invisible = 1,
 		Hidden = 2,
@@ -1202,7 +1202,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotHighlightingMode 
+	public enum FSAnnotHighlightingMode : long
 	{
 		None = 0,
 		Invert = 1,
@@ -1212,7 +1212,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotProperty 
+	public enum FSAnnotProperty : long
 	{
 		ModifiedDate = 0,
 		CreationDate = 1,
@@ -1221,7 +1221,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotMKEntry 
+	public enum FSAnnotMKEntry : long
 	{
 		Rotation = 0,
 		BorderColor = 1,
@@ -1237,7 +1237,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotMKIconCaptionRelation 
+	public enum FSAnnotMKIconCaptionRelation : long
 	{
 		NoIcon = 0,
 		NoCaption = 1,
@@ -1249,7 +1249,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotAppearanceType 
+	public enum FSAnnotAppearanceType : long
 	{
 		Normal = 0,
 		Rollover = 1,
@@ -1257,14 +1257,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSMarkupStateModel 
+	public enum FSMarkupStateModel : long
 	{
 		Marked = 1,
 		Review = 2
 	}
 
 	//[Native]
-	public enum FSMarkupState 
+	public enum FSMarkupState : long
 	{
 		None = 0,
 		Marked = 1,
@@ -1278,7 +1278,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSMarkupEndingStyle 
+	public enum FSMarkupEndingStyle : long
 	{
 		None = 0,
 		Square = 1,
@@ -1293,7 +1293,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSMarkupMeasureType 
+	public enum FSMarkupMeasureType : long
 	{
 		X = 0,
 		Y = 1,
@@ -1304,14 +1304,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSLineCapPos 
+	public enum FSLineCapPos : long
 	{
 		Inline = 0,
 		Top = 1
 	}
 
 	//[Native]
-	public enum FSWidgetLineSpacingStyle 
+	public enum FSWidgetLineSpacingStyle : long
 	{
 		Single = 0,
 		OneAndHalf = 1,
@@ -1321,7 +1321,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSoundSampleEncodingFormat 
+	public enum FSSoundSampleEncodingFormat : long
 	{
 		Raw = 0,
 		Signed = 1,
@@ -1330,7 +1330,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSBookmarkStyle 
+	public enum FSBookmarkStyle : long
 	{
 		Normal = 0,
 		Italic = 1,
@@ -1338,7 +1338,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSBookmarkPosition 
+	public enum FSBookmarkPosition : long
 	{
 		FirstChild = 0,
 		LastChild = 1,
@@ -1349,7 +1349,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAssociatedFilesRelationship 
+	public enum FSAssociatedFilesRelationship : long
 	{
 		Unspecified = 0,
 		Source = 1,
@@ -1362,7 +1362,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSHeaderFooterContentGeneratorDateFormatType 
+	public enum FSHeaderFooterContentGeneratorDateFormatType : long
 	{
 		MSlashD = 0,
 		MSlashDSlashYY = 1,
@@ -1388,7 +1388,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSHeaderFooterContentGeneratorPageNumberFormat 
+	public enum FSHeaderFooterContentGeneratorPageNumberFormat : long
 	{
 		Default = 0,
 		NumberOfCount = 1,
@@ -1398,7 +1398,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocPasswordType 
+	public enum FSPDFDocPasswordType : long
 	{
 		Invalid = 0,
 		NoPassword = 1,
@@ -1407,7 +1407,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocEncryptType 
+	public enum FSPDFDocEncryptType : long
 	{
 		Unknown = -1,
 		None = 0,
@@ -1420,7 +1420,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocUserPermissions 
+	public enum FSPDFDocUserPermissions : long
 	{
 		Print = 4,
 		Modify = 8,
@@ -1433,7 +1433,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocSaveFlags 
+	public enum FSPDFDocSaveFlags : long
 	{
 		Normal = 0,
 		Incremental = 1,
@@ -1444,7 +1444,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocImportPageFlags 
+	public enum FSPDFDocImportPageFlags : long
 	{
 		Normal = 0,
 		WithLayers = 1,
@@ -1452,7 +1452,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocExtractPagesOptions 
+	public enum FSPDFDocExtractPagesOptions : long
 	{
 		Annotation = 1,
 		StructureTree = 2,
@@ -1463,13 +1463,13 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocInsertDocOptions 
+	public enum FSPDFDocInsertDocOptions : long
 	{
 		FSPDFDocInsertDocOptionAttachments = 1
 	}
 
 	//[Native]
-	public enum FSPDFDocDisplayMode 
+	public enum FSPDFDocDisplayMode : long
 	{
 		UseNone = 0,
 		UseOutlines = 1,
@@ -1480,7 +1480,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocDataType 
+	public enum FSPDFDocDataType : long
 	{
 		Forms = 1,
 		Annots = 2,
@@ -1488,7 +1488,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFDocWrapperType 
+	public enum FSPDFDocWrapperType : long
 	{
 		None = 0,
 		Foxit = 1,
@@ -1496,7 +1496,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFillSignFillSignObjectType 
+	public enum FSFillSignFillSignObjectType : long
 	{
 		Text = 0,
 		CrossMark = 1,
@@ -1509,7 +1509,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSOutputPreviewShowType 
+	public enum FSOutputPreviewShowType : long
 	{
 		All = 0,
 		DeviceCMYK = 1,
@@ -1538,14 +1538,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSOutputPreviewColorantType 
+	public enum FSOutputPreviewColorantType : long
 	{
 		Process = 0,
 		Spot = 1
 	}
 
 	//[Native]
-	public enum FSLayerTreeUsageState 
+	public enum FSLayerTreeUsageState : long
 	{
 		On = 0,
 		Off = 1,
@@ -1554,7 +1554,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSLayerContextUsageType 
+	public enum FSLayerContextUsageType : long
 	{
 		View = 0,
 		Design = 1,
@@ -1564,7 +1564,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSGraphicsObjectBlendMode 
+	public enum FSGraphicsObjectBlendMode : long
 	{
 		Normal = 0,
 		Multiply = 1,
@@ -1585,7 +1585,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSGraphicsObjectType 
+	public enum FSGraphicsObjectType : long
 	{
 		All = 0,
 		Text = 1,
@@ -1596,7 +1596,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSTextStateMode 
+	public enum FSTextStateMode : long
 	{
 		Fill = 0,
 		Stroke = 1,
@@ -1609,21 +1609,21 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFPageParseFlags 
+	public enum FSPDFPageParseFlags : long
 	{
 		Normal = 0,
 		TextOnly = 1
 	}
 
 	//[Native]
-	public enum FSPDFPageCalcMarginMode 
+	public enum FSPDFPageCalcMarginMode : long
 	{
 		ContentsBox = 0,
 		Detection = 1
 	}
 
 	//[Native]
-	public enum FSPDFPageFlattenOptions 
+	public enum FSPDFPageFlattenOptions : long
 	{
 		All = 0,
 		NoAnnot = 1,
@@ -1631,7 +1631,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFPageBoxType 
+	public enum FSPDFPageBoxType : long
 	{
 		MediaBox = 0,
 		CropBox = 1,
@@ -1641,7 +1641,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPDFPageSize 
+	public enum FSPDFPageSize : long
 	{
 		Letter = 1,
 		Legal = 2,
@@ -1658,14 +1658,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSDocViewerPrefsPrintScale 
+	public enum FSDocViewerPrefsPrintScale : long
 	{
 		None = 0,
 		AppDefault = 1
 	}
 
 	//[Native]
-	public enum FSDocViewerPrefsViewerPref 
+	public enum FSDocViewerPrefsViewerPref : long
 	{
 		HideToolbar = 0,
 		HideMenubar = 1,
@@ -1676,7 +1676,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPageLabelsStyle 
+	public enum FSPageLabelsStyle : long
 	{
 		None = 0,
 		DecimalNums = 1,
@@ -1687,7 +1687,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSReflowPageFlags 
+	public enum FSReflowPageFlags : long
 	{
 		Normal = 0,
 		WithImage = 1,
@@ -1695,7 +1695,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSTextPageCharInfoTextCharFlag 
+	public enum FSTextPageCharInfoTextCharFlag : long
 	{
 		Unknown = -1,
 		Normal = 0,
@@ -1706,7 +1706,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSTextPageTextParseFlags 
+	public enum FSTextPageTextParseFlags : long
 	{
 		Normal = 0,
 		OutputHyphen = 1,
@@ -1714,14 +1714,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSTextPageTextOrderFlag 
+	public enum FSTextPageTextOrderFlag : long
 	{
 		StreamOrder = 0,
 		DisplayOrder = 1
 	}
 
 	//[Native]
-	public enum FSTextSearchSearchFlags 
+	public enum FSTextSearchSearchFlags : long
 	{
 		Normal = 0,
 		MatchCase = 1,
@@ -1730,7 +1730,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSecurityHandlerCipherType 
+	public enum FSSecurityHandlerCipherType : long
 	{
 		None = 0,
 		Rc4 = 1,
@@ -1738,7 +1738,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSStdSecurityHandlerModifyFlag 
+	public enum FSStdSecurityHandlerModifyFlag : long
 	{
 		Permission = 1,
 		UserPassword = 2,
@@ -1746,7 +1746,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSTabOrderMgrOrderType 
+	public enum FSTabOrderMgrOrderType : long
 	{
 		None = 0,
 		Row = 1,
@@ -1755,24 +1755,25 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSWatermarkSettingsFlags 
+	public enum FSWatermarkSettingsFlags : long
 	{
 		ASPageContents = 0,
 		ASAnnot = 1,
 		OnTop = 2,
 		NoPrint = 4,
-		Invisible = 8
+		Invisible = 8,
+		ShareImageStream = 16
 	}
 
 	//[Native]
-	public enum FSWatermarkTextPropertiesFontStyle 
+	public enum FSWatermarkTextPropertiesFontStyle : long
 	{
 		Normal = 0,
 		Underline = 1
 	}
 
 	//[Native]
-	public enum FSFillerAssistCallbackPopupMenuItem 
+	public enum FSFillerAssistCallbackPopupMenuItem : long
 	{
 		None = 0,
 		Cut = 1,
@@ -1783,7 +1784,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFillerVirtualKeyCode 
+	public enum FSFillerVirtualKeyCode : long
 	{
 		Unknown = 0,
 		Back = 8,
@@ -1875,7 +1876,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFillerEventFlags 
+	public enum FSFillerEventFlags : long
 	{
 		ShiftKey = 1,
 		ControlKey = 2,
@@ -1890,7 +1891,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFieldType 
+	public enum FSFieldType : long
 	{
 		Unknown = 0,
 		PushButton = 1,
@@ -1903,7 +1904,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSFieldFlags 
+	public enum FSFieldFlags : long
 	{
 		ReadOnly = 1,
 		Required = 2,
@@ -1924,7 +1925,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureStates : long
+	public enum FSSignatureStates : long: ulong
 	{
 		Unknown = 2147483648L,
 		NoSignData = 512,
@@ -1958,7 +1959,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureAPFlags 
+	public enum FSSignatureAPFlags : long
 	{
 		FoxitFlag = 1,
 		Label = 2,
@@ -1972,7 +1973,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureKeyName 
+	public enum FSSignatureKeyName : long
 	{
 		Signer = 0,
 		Location = 1,
@@ -1983,7 +1984,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureDigestAlgorithm 
+	public enum FSSignatureDigestAlgorithm : long
 	{
 		FSSignatureDigestSHA1 = 0,
 		FSSignatureDigestSHA256 = 1,
@@ -1992,14 +1993,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureSignatureType 
+	public enum FSSignatureSignatureType : long
 	{
 		Ordinary = 0,
 		TimeStamp = 3
 	}
 
 	//[Native]
-	public enum FSSignaturePAdESLevel 
+	public enum FSSignaturePAdESLevel : long
 	{
 		NotPAdES = 0,
 		None = 1,
@@ -2010,7 +2011,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureDocPermission 
+	public enum FSSignatureDocPermission : long
 	{
 		Unrestricted = 0,
 		NoChangesAllowed = 1,
@@ -2019,7 +2020,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureFieldMDPAction 
+	public enum FSSignatureFieldMDPAction : long
 	{
 		None = 0,
 		All = 1,
@@ -2028,7 +2029,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureLabelName 
+	public enum FSSignatureLabelName : long
 	{
 		Signer = 0,
 		Location = 1,
@@ -2038,7 +2039,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureCallbackCertValidity 
+	public enum FSSignatureCallbackCertValidity : long
 	{
 		Valid = 0,
 		Expired = 1,
@@ -2051,7 +2052,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSTimeStampServerSendRequestResult 
+	public enum FSTimeStampServerSendRequestResult : long
 	{
 		Success = 0,
 		FailToCreateSocket = 1,
@@ -2064,7 +2065,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSResponseResponseType 
+	public enum FSResponseResponseType : long
 	{
 		None = 0,
 		Crl = 1,
@@ -2072,7 +2073,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSCertVerifyResultCertStatus 
+	public enum FSCertVerifyResultCertStatus : long
 	{
 		Valid = 0,
 		Revoked = 1,
@@ -2081,7 +2082,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSCertVerifyResultRevocationReason 
+	public enum FSCertVerifyResultRevocationReason : long
 	{
 		NoStatus = -1,
 		Unspecified = 0,
@@ -2097,7 +2098,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSCertVerifyResultResponseInfoLocation 
+	public enum FSCertVerifyResultResponseInfoLocation : long
 	{
 		NotSet = 0,
 		Dss = 1,
@@ -2106,7 +2107,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSLTVVerifierTimeType 
+	public enum FSLTVVerifierTimeType : long
 	{
 		SignatureCreationTime = 0,
 		SignatureTSTTime = 1,
@@ -2115,13 +2116,13 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSLTVVerifierVerifyMode 
+	public enum FSLTVVerifierVerifyMode : long
 	{
 		FSLTVVerifierVerifyModeAcrobat = 1
 	}
 
 	//[Native]
-	public enum FSSignatureVerifyResultLTVState 
+	public enum FSSignatureVerifyResultLTVState : long
 	{
 		Inactive = 0,
 		Enable = 1,
@@ -2129,7 +2130,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPortfolioNodeType 
+	public enum FSPortfolioNodeType : long
 	{
 		Unknown = 0,
 		Folder = 1,
@@ -2137,7 +2138,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSPortfolioInitialViewMode 
+	public enum FSPortfolioInitialViewMode : long
 	{
 		UnknownMode = 0,
 		DetailMode = 1,
@@ -2146,7 +2147,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotationSummaryCallbackAnnotationSummaryStringID 
+	public enum FSAnnotationSummaryCallbackAnnotationSummaryStringID : long
 	{
 		Author = 0,
 		Date = 1,
@@ -2160,7 +2161,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotationSummarySettingsSummaryLayout 
+	public enum FSAnnotationSummarySettingsSummaryLayout : long
 	{
 		SeparatePagesWithLine = 0,
 		SinglePageWithLine = 1,
@@ -2170,7 +2171,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotationSummarySettingsSortType 
+	public enum FSAnnotationSummarySettingsSortType : long
 	{
 		Author = 0,
 		Date = 1,
@@ -2179,7 +2180,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSAnnotationSummarySettingsFontSizeType 
+	public enum FSAnnotationSummarySettingsFontSizeType : long
 	{
 		Small = 0,
 		Medium = 1,
@@ -2221,7 +2222,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FsPagespacingDirection 
+	public enum FsPagespacingDirection : long
 	{
 		Horizontal = 1,
 		Vertical = 2
@@ -2237,7 +2238,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSNightColorMode 
+	public enum FSNightColorMode : ulong
 	{
 		Default,
 		MappingGray

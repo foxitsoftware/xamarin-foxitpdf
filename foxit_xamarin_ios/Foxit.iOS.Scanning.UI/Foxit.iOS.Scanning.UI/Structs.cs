@@ -10,19 +10,18 @@
 * Review legal.txt for additional license and legal information.
 */
 
-using System;
 using ObjCRuntime;
 
 namespace Foxit.iOS.Scanning.UI
 {
 	//[Native]
-	public enum FSPDFScanToolbarType 
+	public enum FSPDFScanToolbarType : ulong
 	{
 		FSPDFScanToolbarTypeBottombar
 	}
 
 	//[Native]
-	public enum PDFScanMenuViewType 
+	public enum PDFScanMenuViewType : ulong
 	{
 		ThumbnailInsertBlankPagePop = 0,
 		Extract,
@@ -30,7 +29,7 @@ namespace Foxit.iOS.Scanning.UI
 	}
 
 	//[Native]
-	public enum FSScanCameraControllerItemType 
+	public enum FSScanCameraControllerItemType : ulong
 	{
 		FlashLight,
 		SingleShooting,

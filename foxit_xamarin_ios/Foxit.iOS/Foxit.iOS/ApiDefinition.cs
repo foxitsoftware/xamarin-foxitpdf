@@ -13427,10 +13427,10 @@ namespace Foxit.iOS
 		[Export ("focusLostFromControl:value:")]
 		void FocusLostFromControl (FSControl control, string value);
 
-		// @required -(void)reportInvalidValue:(NSString *)form_field_name invalid_value:(NSString *)form_field_name;
+		// @required -(void)reportInvalidValue:(NSString *)form_field_name invalid_value:(NSString *)invalid_value;
 		[Abstract]
 		[Export ("reportInvalidValue:invalid_value:")]
-		void ReportInvalidValue (string form_field_name, string form_field_name);
+		void ReportInvalidValue (string form_field_name, string invalid_value);
 
 		// @optional -(void *)createPopupMenu;
 		[Export ("createPopupMenu")]

@@ -1925,7 +1925,7 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
-	public enum FSSignatureStates : long: ulong
+	public enum FSSignatureStates : ulong
 	{
 		Unknown = 2147483648L,
 		NoSignData = 512,

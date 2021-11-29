@@ -257,8 +257,7 @@ def replace_structs(srcPath,destPath,foxitrdk = False):
 
     replace_file_string(destPath,'using FoxitRDK;\n','')
     replace_file_string(destPath,'using uiextensionsDynamic;\n','')
-
-    replace_file_string(destPath,'public enum FSSignatureStates ','public enum FSSignatureStates : long')
+    
     replace_file_string(destPath,'\[Native\]','//[Native]')
     replace_file_string(destPath,': uint','')
     replace_file_string(destPath,': nuint','')

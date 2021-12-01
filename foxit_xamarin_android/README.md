@@ -350,6 +350,26 @@ Solution：Right-click the `Properties` node of your project, and open it. Find 
 
 ![screenshot16](./Screenshot/screenshot16.jpg)  
 
+#### 3: Attribute application@theme value=(@style/AppTheme) from AndroidManifest.xml is also present at AndroidManifest.xml value=(@style/fx_app_theme).
+
+Suggestion: add 'tools:replace="android:theme"' to <application> element at AndroidManifest.xml.  
+
+ ```diff
+   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
++             xmlns:tools="http://schemas.android.com/tools"
+              ...>
+   
+      ...
+      ...
+   
+       <application
+           ...
++          tools:replace="android:theme">
+           ...
+       </application>
+   </manifest>
+```  
+ 
 ## More
 For more usage of xamarin, you can refer to  `foxitpdfsdk_(version_no)_android\docs\developer_guide_android.pdf` the section 9.3 . the `foxitpdfsdk_(version_no)_android.zip` can download from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/)  
 

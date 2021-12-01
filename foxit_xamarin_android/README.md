@@ -12,7 +12,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 ## Prerequisites
 
 * __Visual Studio 2019__
-* __TargetFrameworkVersion >= Android 9.0__  
+* __TargetFrameworkVersion >= Android 10.0__  
  ![screenshot14](./Screenshot/screenshot14.png)      
 * __Minimum Android Version: API 19 (Android4.4)__  
   __Recommended target: API 29__

@@ -152,7 +152,7 @@ namespace FoxitRDKDemo
 
         public override bool PrefersStatusBarHidden()
         {
-            return this.extensionsMgr.PrefersStatusBarHidden;
+            return this.extensionsMgr == null ? base.PrefersStatusBarHidden() : this.extensionsMgr.PrefersStatusBarHidden;
         }
 
         #endregion

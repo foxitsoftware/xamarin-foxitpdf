@@ -39,6 +39,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>RDK only lets you connect to apple pencil or keyboard.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>RDK only lets you connect to apple pencil or keyboard.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>For adding photographs to your PDF files.</string>
 	<key>NSMicrophoneUsageDescription</key>

@@ -12,6 +12,8 @@
 
 
 
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getToolbar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getCurToolbar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getPropertyBar']" />
   

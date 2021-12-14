@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.Scanning.UI</id>
-    <version>2.1.0.1/version>
+    <version>2.1.0.1</version>
     <title>Foxit.iOS.Scanning.UI</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>

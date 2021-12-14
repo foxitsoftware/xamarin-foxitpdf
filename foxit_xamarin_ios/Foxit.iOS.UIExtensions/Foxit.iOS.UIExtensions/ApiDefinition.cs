@@ -75,15 +75,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPanelSpec <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IPanelSpec
 	{
@@ -157,15 +149,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPanelChangedListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IPanelChangedListener
 	{
@@ -218,15 +202,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAppLifecycleListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IAppLifecycleListener
 	{
@@ -658,15 +634,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IMoreMenuViewListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IMoreMenuViewListener
 	{
@@ -680,15 +648,7 @@ namespace Foxit.iOS.UIExtensions
 	delegate void CancelCallback ();
 
 	// @protocol MoreItemActionProtocol <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface MoreItemActionProtocol
 	{
@@ -699,15 +659,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol MoreItemProtocol <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface MoreItemProtocol
 	{
@@ -1353,15 +1305,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol FSMenuView <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface FSMenuView
 	{
@@ -1594,15 +1538,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IModule <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IModule
 	{
@@ -1632,15 +1568,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAnnotEventListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IAnnotEventListener
 	{
@@ -1678,15 +1606,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IToolEventListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IToolEventListener
 	{
@@ -1697,15 +1617,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ISearchEventListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface ISearchEventListener
 	{
@@ -1719,15 +1631,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IToolHandler <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IToolHandler
 	{
@@ -1808,15 +1712,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAnnotHandler <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IAnnotHandler
 	{
@@ -1947,15 +1843,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IFullScreenListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IFullScreenListener
 	{
@@ -1966,15 +1854,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPageNumberListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IPageNumberListener
 	{
@@ -1985,15 +1865,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ILinkEventListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface ILinkEventListener
 	{
@@ -2003,15 +1875,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IDocModifiedEventListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IDocModifiedEventListener
 	{
@@ -2021,15 +1885,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ISignatureEventListener <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol]
+	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface ISignatureEventListener
 	{

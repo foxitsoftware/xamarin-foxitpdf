@@ -233,6 +233,16 @@ def replace_api_definitions(srcPath,destPath,foxitrdk = False):
 		[Export ("insertMenuItemGroup:afterGroup:forMenuViewType:")]
 		void InsertMenuItemGroupAfter (PDFScanMenuItemGroup group, PDFScanMenuItemGroup siblingGroup, PDFScanMenuViewType menuViewType);''', True)
 
+    replace_file_string(destPath,'''	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
+''','	[Protocol, Model]\n', True)
     replace_file_string(destPath,'using FoxitRDK;\n','')
     replace_file_string(destPath,'using uiextensionsDynamic;\n','')
     replace_file_string(destPath,'using FoxitPDFScanUI;\n','')
@@ -257,7 +267,7 @@ def replace_structs(srcPath,destPath,foxitrdk = False):
 
     replace_file_string(destPath,'using FoxitRDK;\n','')
     replace_file_string(destPath,'using uiextensionsDynamic;\n','')
-    
+
     replace_file_string(destPath,'\[Native\]','//[Native]')
     replace_file_string(destPath,': uint','')
     replace_file_string(destPath,': nuint','')

@@ -179,6 +179,19 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSFileFormatType : long
+	{
+		Fdf = 0,
+		Xfdf = 1,
+		Html = 2,
+		Xdp = 3,
+		Xml = 4,
+		Xfd = 5,
+		Pdf = 6,
+		Txt = 7
+	}
+
+	//[Native]
 	public enum FSProgressiveState : long
 	{
 		Error = 0,
@@ -306,6 +319,7 @@ namespace Foxit.iOS
 	public enum FSBitmapDIBFormat : long
 	{
 		Invalid = 0,
+		FSBitmapDIB1bpp = 1,
 		Rgb = 24,
 		Rgb32 = 32,
 		Argb = 544,
@@ -1183,7 +1197,8 @@ namespace Foxit.iOS
 		FSAnnot3D = 25,
 		Popup = 26,
 		Redact = 27,
-		RichMedia = 28
+		RichMedia = 28,
+		PagingSeal = 29
 	}
 
 	//[Native]
@@ -1609,6 +1624,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSGraphicsObjectsTextMergeOption : long
+	{
+		None = 0,
+		Tjy = 1,
+		Btet = 2
+	}
+
+	//[Native]
 	public enum FSPDFPageParseFlags : long
 	{
 		Normal = 0,
@@ -1996,7 +2019,8 @@ namespace Foxit.iOS
 	public enum FSSignatureSignatureType : long
 	{
 		Ordinary = 0,
-		TimeStamp = 3
+		TimeStamp = 3,
+		PagingSeal = 4
 	}
 
 	//[Native]
@@ -2062,6 +2086,25 @@ namespace Foxit.iOS
 		FailToRequest = 5,
 		FailToGetData = 6,
 		OutOfMemory = 7
+	}
+
+	//[Native]
+	public enum FSPagingSealConfigPagingSealPosition : long
+	{
+		Left = 1,
+		Right = 2,
+		Top = 3,
+		Bottom = 4
+	}
+
+	//[Native]
+	public enum FSPagingSealSignaturePagingSealAPState : long
+	{
+		Unknown = 0,
+		Unsigned = 1,
+		Signed = 2,
+		Valid = 3,
+		Invalid = 4
 	}
 
 	//[Native]

@@ -75,7 +75,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPanelSpec <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IPanelSpec
 	{
@@ -149,7 +157,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPanelChangedListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IPanelChangedListener
 	{
@@ -202,7 +218,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAppLifecycleListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IAppLifecycleListener
 	{
@@ -311,6 +335,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, weak) id<FSSettingBarDelegate> delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
+
+		// @property (copy, nonatomic) void (^continueItemStateCallback)(BOOL);
+		[Export ("continueItemStateCallback", ArgumentSemantic.Copy)]
+		Action<bool> ContinueItemStateCallback { get; set; }
 
 		// -(NSMutableDictionary *)getItemHiddenStatus;
 		[Export ("getItemHiddenStatus")]
@@ -512,6 +540,10 @@ namespace Foxit.iOS.UIExtensions
 		[Field ("Module_Speech", "__Internal")]
 		NSString Module_Speech { get; }
 
+		// extern const FSModuleStringName Module_History_Data;
+		[Field ("Module_History_Data", "__Internal")]
+		NSString Module_History_Data { get; }
+
 		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_BACK;
 		[Field ("FS_TOOLBAR_ITEM_TAG_BACK", "__Internal")]
 		int FS_TOOLBAR_ITEM_TAG_BACK { get; }
@@ -634,7 +666,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IMoreMenuViewListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IMoreMenuViewListener
 	{
@@ -648,7 +688,15 @@ namespace Foxit.iOS.UIExtensions
 	delegate void CancelCallback ();
 
 	// @protocol MoreItemActionProtocol <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface MoreItemActionProtocol
 	{
@@ -659,7 +707,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol MoreItemProtocol <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface MoreItemProtocol
 	{
@@ -797,6 +853,10 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)setTitleBarHidden:(BOOL)isHidden;
 		[Export ("setTitleBarHidden:")]
 		void SetTitleBarHidden (bool isHidden);
+
+		// -(void)setFileLocationIcon:(UIImage * _Nonnull)icon;
+		[Export ("setFileLocationIcon:")]
+		void SetFileLocationIcon (UIImage icon);
 
 		// -(void)registerEventListener:(id<IMoreMenuViewListener> _Nonnull)listener;
 		[Export ("registerEventListener:")]
@@ -1304,8 +1364,29 @@ namespace Foxit.iOS.UIExtensions
 		IntPtr Constructor ([NullAllowed] string title, FSMenuItem[] items);
 	}
 
+	// @interface FSActionControlAttribute : NSString
+	[BaseType (typeof(NSString))]
+	interface FSActionControlAttribute
+	{
+		// @property (copy, nonatomic) NSString * _Nonnull normalTitle;
+		[Export ("normalTitle")]
+		string NormalTitle { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull normalTitleColor;
+		[Export ("normalTitleColor", ArgumentSemantic.Strong)]
+		UIColor NormalTitleColor { get; set; }
+	}
+
 	// @protocol FSMenuView <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSMenuView
 	{
@@ -1327,6 +1408,15 @@ namespace Foxit.iOS.UIExtensions
 		// @optional -(void)presentActionInMenuView;
 		[Export ("presentActionInMenuView")]
 		void PresentActionInMenuView ();
+
+		// @optional -(void)presentActionInMenuViewByViewController:(UIViewController * _Nonnull (^ _Nonnull)(void))controller;
+		[Export ("presentActionInMenuViewByViewController:")]
+		void PresentActionInMenuViewByViewController (Func<UIViewController> controller);
+
+		// @optional -(FSActionControlAttribute * _Nonnull)getActionControlAttribute;
+		[Export ("getActionControlAttribute")]
+		//[Verify (MethodToProperty)]
+		FSActionControlAttribute ActionControlAttribute { get; }
 	}
 
 	// @interface FSMenuViewManager : NSObject
@@ -1410,6 +1500,10 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("itemsForPositionRight", ArgumentSemantic.Copy)]
 		FSMainToolbarItem[] ItemsForPositionRight { get; set; }
 
+		// @property (assign, nonatomic) CGFloat contentHeight;
+		[Export ("contentHeight")]
+		nfloat ContentHeight { get; set; }
+
 		// -(__kindof UIStackView * _Nonnull)getToolbarContentView;
 		[Export ("getToolbarContentView")]
 		//[Verify (MethodToProperty)]
@@ -1453,6 +1547,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("toolTag", ArgumentSemantic.Assign)]
 		FSMainTopbarToolTag ToolTag { get; }
 
+		// @property (readonly, assign, nonatomic) BOOL isOnToolbar;
+		[Export ("isOnToolbar")]
+		bool IsOnToolbar { get; }
+
 		// +(instancetype _Nonnull)ItemWithToolTag:(FSMainTopbarToolTag)toolTag readToolbarItems:(NSArray<FSReadToolbarItem *> * _Nullable)readToolbarItems;
 		[Static]
 		[Export ("ItemWithToolTag:readToolbarItems:")]
@@ -1474,6 +1572,14 @@ namespace Foxit.iOS.UIExtensions
 		// @property (assign, nonatomic) FSTopbarSubitemContentViewPosition subitemContentPosition;
 		[Export ("subitemContentPosition", ArgumentSemantic.Assign)]
 		FSTopbarSubitemContentViewPosition SubitemContentPosition { get; set; }
+
+		// @property (assign, nonatomic) CGFloat horizontalContentHeight;
+		[Export ("horizontalContentHeight")]
+		nfloat HorizontalContentHeight { get; set; }
+
+		// @property (assign, nonatomic) CGFloat verticalContentWidth;
+		[Export ("verticalContentWidth")]
+		nfloat VerticalContentWidth { get; set; }
 
 		// @property (nonatomic, strong) __kindof UIView * _Nullable attachView;
 		[NullAllowed, Export ("attachView", ArgumentSemantic.Strong)]
@@ -1532,13 +1638,21 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("checkPermission:checkPermissionState:")]
 		void CheckPermission (FSFunction function, CheckPermissionState checkPermissionState);
 
-		// -(BOOL)checkPermission:(FSFunction)function;
+		// -(FSPermissionState)checkPermission:(FSFunction)function;
 		[Export ("checkPermission:")]
-		bool CheckPermission (FSFunction function);
+		FSPermissionState CheckPermission (FSFunction function);
 	}
 
 	// @protocol IModule <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IModule
 	{
@@ -1549,26 +1663,37 @@ namespace Foxit.iOS.UIExtensions
 		string Name { get; }
 	}
 
-	// @protocol FSAnnotPermissionDelegate <NSObject>
+	// @protocol FSAnnotsPermissionDelegate <NSObject>
 	[Protocol, Model (AutoGeneratedName = true)]
 	[BaseType (typeof(NSObject))]
-	interface FSAnnotPermissionDelegate
+	interface FSAnnotsPermissionDelegate
 	{
-		// @optional -(BOOL)canModifyAnnot:(FSAnnot * _Nonnull)annot;
-		[Export ("canModifyAnnot:")]
-		bool CanModifyAnnot (FSAnnot annot);
+		// @optional -(BOOL)canAddAnnot;
+		[Export ("canAddAnnot")]
+		//[Verify (MethodToProperty)]
+		bool CanAddAnnot { get; }
 
-		// @optional -(BOOL)canDeleteAnnot:(FSAnnot * _Nonnull)annot;
-		[Export ("canDeleteAnnot:")]
-		bool CanDeleteAnnot (FSAnnot annot);
+		// @optional -(BOOL)canModifyAnnot;
+		[Export ("canModifyAnnot")]
+		//[Verify (MethodToProperty)]
+		bool CanModifyAnnot { get; }
 
-		// @optional -(BOOL)canReplyAnnot:(FSAnnot * _Nonnull)annot;
-		[Export ("canReplyAnnot:")]
-		bool CanReplyAnnot (FSAnnot annot);
+		// @optional -(BOOL)canDeleteAnnot;
+		[Export ("canDeleteAnnot")]
+		//[Verify (MethodToProperty)]
+		bool CanDeleteAnnot { get; }
 	}
 
 	// @protocol IAnnotEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IAnnotEventListener
 	{
@@ -1606,7 +1731,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IToolEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IToolEventListener
 	{
@@ -1617,7 +1750,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ISearchEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface ISearchEventListener
 	{
@@ -1631,7 +1772,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IToolHandler <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IToolHandler
 	{
@@ -1712,7 +1861,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAnnotHandler <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IAnnotHandler
 	{
@@ -1843,7 +2000,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IFullScreenListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IFullScreenListener
 	{
@@ -1854,7 +2019,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPageNumberListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IPageNumberListener
 	{
@@ -1865,7 +2038,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ILinkEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface ILinkEventListener
 	{
@@ -1875,7 +2056,15 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IDocModifiedEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IDocModifiedEventListener
 	{
@@ -1885,13 +2074,58 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ISignatureEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface ISignatureEventListener
 	{
 		// @optional -(void)onDigitalSignatureSigned:(BOOL)success;
 		[Export ("onDigitalSignatureSigned:")]
 		void OnDigitalSignatureSigned (bool success);
+
+		// @optional -(void)onDigitalSignatureSigned:(BOOL)success originalDoc:(FSPDFDoc * _Nonnull)originalDoc outputPath:(NSString * _Nonnull)outputPath;
+		[Export ("onDigitalSignatureSigned:originalDoc:outputPath:")]
+		void OnDigitalSignatureSigned (bool success, FSPDFDoc originalDoc, string outputPath);
+
+		// @optional -(BOOL)canReplaceDigitalSignatureOriginalFile:(NSString * _Nonnull)originalFile;
+		[Export ("canReplaceDigitalSignatureOriginalFile:")]
+		bool CanReplaceDigitalSignatureOriginalFile (string originalFile);
+	}
+
+	// @protocol IUIInteractionEventListener <NSObject>
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
+	[BaseType (typeof(NSObject))]
+	interface IUIInteractionEventListener
+	{
+		// @required -(void)onUIInteractElementClicked:(FSUIElementType)element;
+		[Abstract]
+		[Export ("onUIInteractElementClicked:")]
+		void OnUIInteractElementClicked (FSUIElementType element);
+	}
+
+	// @protocol FSExtFileOpenDelegate <NSObject>
+	[Protocol, Model (AutoGeneratedName = true)]
+	[BaseType (typeof(NSObject))]
+	interface FSExtFileOpenDelegate
+	{
+		// @optional -(BOOL)openFileAtPath:(NSString * _Nonnull)filePath;
+		[Export ("openFileAtPath:")]
+		bool OpenFileAtPath (string filePath);
 	}
 
 	// @protocol UIExtensionsManagerDelegate <NSObject>
@@ -1912,9 +2146,9 @@ namespace Foxit.iOS.UIExtensions
 		void QuitUIExtensionsManager (UIExtensionsManager uiextensionsManager, UIControl control);
 	}
 
-	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener, UIToolbarDelegate, ISignatureEventListener>
+	// @interface UIExtensionsManager : NSObject <FSPDFUIExtensionsManager, IDocEventListener, IPageEventListener, IRotationEventListener, IAnnotEventListener, IRecoveryEventListener, ILinkEventListener, UIToolbarDelegate, ISignatureEventListener, IUIInteractionEventListener>
 	[BaseType (typeof(NSObject))]
-	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener, IUIToolbarDelegate, ISignatureEventListener
+	interface UIExtensionsManager : IFSPDFUIExtensionsManager, IIDocEventListener, IIPageEventListener, IIRotationEventListener, IAnnotEventListener, IIRecoveryEventListener, ILinkEventListener, IUIToolbarDelegate, ISignatureEventListener, IUIInteractionEventListener
 	{
 		// @property (assign, nonatomic, class) UIStatusBarStyle preferredStatusBarStyle;
 		[Static]
@@ -2062,13 +2296,13 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("prefersStatusBarHidden")]
 		bool PrefersStatusBarHidden { get; }
 
-		[Wrap ("WeakAnnotPermissionDelegate")]
+		[Wrap ("WeakAnnotsPermissionDelegate")]
 		[NullAllowed]
-		NSObject AnnotPermissionDelegate { get; set; }
+		NSObject AnnotsPermissionDelegate { get; set; }
 
-		// @property (nonatomic, weak) id<FSAnnotPermissionDelegate> _Nullable annotPermissionDelegate;
-		[NullAllowed, Export ("annotPermissionDelegate", ArgumentSemantic.Weak)]
-		NSObject WeakAnnotPermissionDelegate { get; set; }
+		// @property (nonatomic, weak) id<FSAnnotsPermissionDelegate> _Nullable annotsPermissionDelegate;
+		[NullAllowed, Export ("annotsPermissionDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakAnnotsPermissionDelegate { get; set; }
 
 		[Wrap ("WeakMenuControlDelegate")]
 		[NullAllowed]
@@ -2081,6 +2315,14 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) FSPermissionProvider * _Nonnull permissionProvider;
 		[Export ("permissionProvider", ArgumentSemantic.Strong)]
 		FSPermissionProvider PermissionProvider { get; set; }
+
+		[Wrap ("WeakExtFileOpenDelegate")]
+		[NullAllowed]
+		NSObject ExtFileOpenDelegate { get; set; }
+
+		// @property (nonatomic, weak) id<FSExtFileOpenDelegate> _Nullable extFileOpenDelegate;
+		[NullAllowed, Export ("extFileOpenDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakExtFileOpenDelegate { get; set; }
 
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]
@@ -2198,6 +2440,14 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("unregisterSignatureEventListener:")]
 		void UnregisterSignatureEventListener (NSObject listener);
 
+		// -(void)registerUIInteractionEventListener:(id<IUIInteractionEventListener> _Nonnull)listener;
+		[Export ("registerUIInteractionEventListener:")]
+		void RegisterUIInteractionEventListener (NSObject listener);
+
+		// -(void)unregisterUIInteractionEventListener:(id<IUIInteractionEventListener> _Nonnull)listener;
+		[Export ("unregisterUIInteractionEventListener:")]
+		void UnregisterUIInteractionEventListener (NSObject listener);
+
 		// -(void)showPropertyWithToolSettings:(FSReadToolSettings * _Nonnull)toolSettings rect:(CGRect)rect inView:(UIView * _Nonnull)view;
 		[Export ("showPropertyWithToolSettings:rect:inView:")]
 		void ShowPropertyWithToolSettings (FSReadToolSettings toolSettings, CGRect rect, UIView view);
@@ -2274,6 +2524,10 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)setToolbarItemHiddenWithTag:(FS_TOOLBAR_ITEM_TAG)itemTag hidden:(BOOL)isHidden;
 		[Export ("setToolbarItemHiddenWithTag:hidden:")]
 		void SetToolbarItemHiddenWithTag (int itemTag, bool isHidden);
+
+		// -(void)enableModification:(BOOL)isEnabled;
+		[Export ("enableModification:")]
+		void EnableModification (bool isEnabled);
 	}
 
 	// @interface SignatureModule : NSObject <IDocEventListener, IToolEventListener>

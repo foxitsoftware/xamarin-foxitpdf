@@ -46,6 +46,129 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	//[Native]
+	public enum FSUIElementType : ulong
+	{
+		Panel = 20000,
+		PanelBookmark,
+		PanelOutline,
+		PanelComment,
+		PanelAttachment,
+		PanelDigitalSignature,
+		View,
+		ViewSinglePage,
+		ViewFacing,
+		ViewCoverFacing,
+		ViewDay,
+		ViewNight,
+		ViewPageColor,
+		ViewContinuousScrolling,
+		ViewFitPage,
+		ViewFitWidth,
+		ViewReflow,
+		ViewCropMode,
+		ViewSpeak,
+		ViewAutoFlip,
+		ViewRotateView,
+		ViewPanZoom,
+		Thumbnial,
+		Bookmark,
+		Share,
+		RecentList,
+		ToolsTabHome,
+		ToolsTabEdit,
+		ToolsTabComment,
+		ToolsTabDrawing,
+		ToolsTabView,
+		ToolsTabForm,
+		ToolsTabFillSign,
+		HomeBarAddTools,
+		ToolbarMultipleSelection,
+		EditBarText,
+		EditBarImage,
+		EditBarAudio,
+		EditBarVideo,
+		CommentBarNote,
+		CommentBarAttachment,
+		CommentBarStamp,
+		CommentBarTypeWriter,
+		CommentBarCallout,
+		CommentBarTextbox,
+		CommentBarHighlight,
+		CommentBarUnderline,
+		CommentBarSquiggly,
+		CommentBarStrikeout,
+		CommentBarInsertText,
+		CommentBarReplaceText,
+		CommentBarAreaHighlight,
+		CommentBarDistance,
+		CommentBarImage,
+		DrawingBarPencil,
+		DrawingBarHighlight,
+		DrawingBarEraser,
+		DrawingBarRectangle,
+		DrawingBarOval,
+		DrawingBarLine,
+		DrawingBarArrow,
+		DrawingBarPolyline,
+		DrawingBarPolygon,
+		DrawingBarCloud,
+		FormBarTextField,
+		FormBarCheckBox,
+		FormBarRadioButton,
+		FormBarListBox,
+		FormBarComboBox,
+		FormBarSignatureField,
+		FormBarImageField,
+		FormBarReset,
+		AnnotPopMenuAppearance,
+		AnnotPopMenuDelete,
+		FillSignTypeWriter,
+		FillSignComboText,
+		FillSignV,
+		FillSignX,
+		FillSignDot,
+		FillSignRectangle,
+		FillSignLine,
+		FillSignPredefined,
+		FillSignSign,
+		Search,
+		MoreFileProperty,
+		MoreProtectRedaction,
+		MoreProtectFileEncryption,
+		MoreProtectTrustedCertificates,
+		MoreProtectCertificateProtect,
+		MoreProtectRMSProtect,
+		MoreCommentFieldImortComments,
+		MoreCommentFieldExportComments,
+		MoreCommentFieldSummarizeComments,
+		MoreCommentFieldResetFormFields,
+		MoreCommentFieldImportFormFields,
+		MoreCommentFieldExportFormFields,
+		MoreSaveAs,
+		MoreExportPDF,
+		MoreReduceFileSize,
+		MoreTags,
+		MorePrint,
+		MoreFlatten,
+		MoreScreenCapture,
+		LongPressComment,
+		LongPressRedaction,
+		LongPressSign,
+		LongPressCopyText,
+		LongPressHighlight,
+		LongPressUnderline,
+		LongPressStrikeout,
+		LongPressSquiggly,
+		LongPressSpeak,
+		GotoPage,
+		FullScreenBookmark,
+		FullScreenToolbar,
+		FullScreenToolbarDrag,
+		ToolbarDrag,
+		FreeTrial
+	}
+
+	//[Native]
 	public enum FSUIManagerState : ulong
 	{
 		Normal = 1,
@@ -60,6 +183,20 @@ namespace Foxit.iOS.UIExtensions
 		Redaction,
 		Comparision,
 		Editor
+	}
+
+	//[Native]
+	public enum FSInteractiveScene : ulong
+	{
+		Undefine,
+		FillingForms
+	}
+
+	//[Native]
+	public enum FSDataSortComparison : ulong
+	{
+		Ascending,
+		Descending
 	}
 
 	//[Native]
@@ -101,6 +238,7 @@ namespace Foxit.iOS.UIExtensions
 		ComboBox,
 		ListBox,
 		SignatureField,
+		ImageField,
 		FillSignText = 400,
 		FillSignSegText,
 		FillSignProfile,
@@ -125,7 +263,9 @@ namespace Foxit.iOS.UIExtensions
 	{
 		ThumbnailInsertBlankPagePop = 0,
 		Extract,
-		SaveAs
+		SaveAs,
+		ViewSecurityPermission,
+		Unsupported
 	}
 
 	//[Native]
@@ -187,9 +327,9 @@ namespace Foxit.iOS.UIExtensions
 	//[Native]
 	public enum FSPermissionState : ulong
 	{
-		FSPermissionStateShow,
-		FSPermissionStateNo,
-		PermissionStateHide
+		Show,
+		No,
+		Hide
 	}
 
 	//[Native]
@@ -205,7 +345,12 @@ namespace Foxit.iOS.UIExtensions
 		Redaction,
 		CanSaveToLocal,
 		StandEncrypt,
-		Flatten
+		Flatten,
+		PDFSign,
+		PDFBookMark,
+		SmallBottomBarToolItem,
+		ImageAnnoteItem,
+		AttachmentsPanelAddItem
 	}
 
 	//[Native]

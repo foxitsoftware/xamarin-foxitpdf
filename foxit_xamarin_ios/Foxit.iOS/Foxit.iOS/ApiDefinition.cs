@@ -1987,6 +1987,10 @@ namespace Foxit.iOS
 		[Export ("setRenderPathAntiAliasing:")]
 		void SetRenderPathAntiAliasing (bool is_render_path_antialiasing);
 
+		// -(void)setRenderPathFullCovered:(BOOL)is_render_path_full_covered;
+		[Export ("setRenderPathFullCovered:")]
+		void SetRenderPathFullCovered (bool is_render_path_full_covered);
+
 		// -(void)setRenderImageAntiAliasing:(BOOL)is_render_image_antialiasing;
 		[Export ("setRenderImageAntiAliasing:")]
 		void SetRenderImageAntiAliasing (bool is_render_image_antialiasing);
@@ -3093,44 +3097,6 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
-	// @interface FSMenuList : NSObject
-	[BaseType (typeof(NSObject))]
-	interface FSMenuList
-	{
-		// @property (getter = getLevel, nonatomic) int level;
-		[Export ("level")]
-		int Level { [Bind ("getLevel")] get; set; }
-
-		// @property (getter = getName, copy, nonatomic) NSString * name;
-		[Export ("name")]
-		string Name { [Bind ("getName")] get; set; }
-
-		// -(void *)getCptr;
-		[Export ("getCptr")]
-		//[Verify (MethodToProperty)]
-		IntPtr Cptr { get; }
-
-		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
-		[Export ("initWithCptr:swigOwnCObject:")]
-		IntPtr Constructor (IntPtr cptr, bool ownCObject);
-
-		// -(id)initWithLevel:(int)level name:(NSString *)name;
-		[Export ("initWithLevel:name:")]
-		IntPtr Constructor (int level, string name);
-
-		// -(id)initWithMenu_list:(FSMenuList *)menu_list;
-		[Export ("initWithMenu_list:")]
-		IntPtr Constructor (FSMenuList menu_list);
-
-		// -(void)set:(int)level name:(NSString *)name;
-		[Export ("set:name:")]
-		void Set (int level, string name);
-
-		// -(void)dealloc;
-		[Export ("dealloc")]
-		void Dealloc ();
-	}
-
 	// @interface FSMenuListArray : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSMenuListArray
@@ -3172,6 +3138,137 @@ namespace Foxit.iOS
 		// -(void)removeAll;
 		[Export ("removeAll")]
 		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSMenuItemExArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSMenuItemExArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSMenuItemExArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSMenuItemExArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSMenuItemEx *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSMenuItemEx GetAt (nuint index);
+
+		// -(void)add:(FSMenuItemEx *)element;
+		[Export ("add:")]
+		void Add (FSMenuItemEx element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSMenuItemEx *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSMenuItemEx element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSMenuList : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSMenuList
+	{
+		// @property (getter = getLevel, nonatomic) int level;
+		[Export ("level")]
+		int Level { [Bind ("getLevel")] get; set; }
+
+		// @property (getter = getName, copy, nonatomic) NSString * name;
+		[Export ("name")]
+		string Name { [Bind ("getName")] get; set; }
+
+		// @property (getter = getSub_menu_list_array, copy, nonatomic) FSMenuListArray * sub_menu_list_array;
+		[Export ("sub_menu_list_array", ArgumentSemantic.Copy)]
+		FSMenuListArray Sub_menu_list_array { [Bind ("getSub_menu_list_array")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithMenu_list:(FSMenuList *)menu_list;
+		[Export ("initWithMenu_list:")]
+		IntPtr Constructor (FSMenuList menu_list);
+
+		// -(void)set:(int)level name:(NSString *)name sub_menu_list_array:(FSMenuListArray *)sub_menu_list_array;
+		[Export ("set:name:sub_menu_list_array:")]
+		void Set (int level, string name, FSMenuListArray sub_menu_list_array);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSMenuItemEx : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSMenuItemEx
+	{
+		// @property (getter = getItem_name, copy, nonatomic) NSString * item_name;
+		[Export ("item_name")]
+		string Item_name { [Bind ("getItem_name")] get; set; }
+
+		// @property (getter = getReturn_name, copy, nonatomic) NSString * return_name;
+		[Export ("return_name")]
+		string Return_name { [Bind ("getReturn_name")] get; set; }
+
+		// @property (getter = getIs_checked, nonatomic) BOOL is_checked;
+		[Export ("is_checked")]
+		bool Is_checked { [Bind ("getIs_checked")] get; set; }
+
+		// @property (getter = getIs_enabled, nonatomic) BOOL is_enabled;
+		[Export ("is_enabled")]
+		bool Is_enabled { [Bind ("getIs_enabled")] get; set; }
+
+		// @property (getter = getSub_menu_item_array, copy, nonatomic) FSMenuItemExArray * sub_menu_item_array;
+		[Export ("sub_menu_item_array", ArgumentSemantic.Copy)]
+		FSMenuItemExArray Sub_menu_item_array { [Bind ("getSub_menu_item_array")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithMenu_item:(FSMenuItemEx *)menu_item;
+		[Export ("initWithMenu_item:")]
+		IntPtr Constructor (FSMenuItemEx menu_item);
+
+		// -(void)set:(NSString *)item_name return_name:(NSString *)return_name is_checked:(BOOL)is_checked is_enabled:(BOOL)is_enabled sub_menu_item_array:(FSMenuItemExArray *)sub_menu_item_array;
+		[Export ("set:return_name:is_checked:is_enabled:sub_menu_item_array:")]
+		void Set (string item_name, string return_name, bool is_checked, bool is_enabled, FSMenuItemExArray sub_menu_item_array);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -6147,10 +6244,10 @@ namespace Foxit.iOS
 		[Export ("enableUseBezier:")]
 		void EnableUseBezier (bool use_bezier);
 
-		// -(FSPathArray *)getEiaInkList;
-		[Export ("getEiaInkList")]
+		// -(FSPathArray *)getEIAInkList;
+		[Export ("getEIAInkList")]
 		//[Verify (MethodToProperty)]
-		FSPathArray EiaInkList { get; }
+		FSPathArray EIAInkList { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -6726,6 +6823,34 @@ namespace Foxit.iOS
 		[Export ("getFileSpec")]
 		//[Verify (MethodToProperty)]
 		FSFileSpec FileSpec { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSPagingSeal : FSAnnot
+	[BaseType (typeof(FSAnnot))]
+	[DisableDefaultCtor]
+	interface FSPagingSeal
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithAnnot:(FSAnnot *)annot;
+		[Export ("initWithAnnot:")]
+		IntPtr Constructor (FSAnnot annot);
+
+		// -(FSPagingSealSignature *)getPagingSealSignature;
+		[Export ("getPagingSealSignature")]
+		//[Verify (MethodToProperty)]
+		FSPagingSealSignature PagingSealSignature { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -7897,6 +8022,10 @@ namespace Foxit.iOS
 		// -(NSString *)getPageText:(int)page_index;
 		[Export ("getPageText:")]
 		string GetPageText (int page_index);
+
+		// -(FSPagingSealSignature *)addPagingSealSignature:(FSRange *)page_range width:(float)width height:(float)height;
+		[Export ("addPagingSealSignature:width:height:")]
+		FSPagingSealSignature AddPagingSealSignature (FSRange page_range, float width, float height);
 
 		// -(id)initWithBuffer:(NSData *)buffer;
 		[Export ("initWithBuffer:")]
@@ -11829,7 +11958,6 @@ namespace Foxit.iOS
 
 	// @interface FSSignature : FSField
 	[BaseType (typeof(FSField))]
-	[DisableDefaultCtor]
 	interface FSSignature
 	{
 		// @property (getter = getDocPermission, nonatomic) FSSignatureDocPermission docPermission;
@@ -12118,6 +12246,81 @@ namespace Foxit.iOS
 		[Export ("getTimeStampMessage")]
 		//[Verify (MethodToProperty)]
 		string TimeStampMessage { get; }
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSPagingSealConfig : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSPagingSealConfig
+	{
+		// @property (getter = getPaging_seal_position, nonatomic) FSPagingSealConfigPagingSealPosition paging_seal_position;
+		[Export ("paging_seal_position", ArgumentSemantic.Assign)]
+		FSPagingSealConfigPagingSealPosition Paging_seal_position { [Bind ("getPaging_seal_position")] get; set; }
+
+		// @property (getter = getOffset, nonatomic) float offset;
+		[Export ("offset")]
+		float Offset { [Bind ("getOffset")] get; set; }
+
+		// @property (getter = getFirst_page_percent, nonatomic) float first_page_percent;
+		[Export ("first_page_percent")]
+		float First_page_percent { [Bind ("getFirst_page_percent")] get; set; }
+
+		// @property (getter = getIs_on_perforation, nonatomic) BOOL is_on_perforation;
+		[Export ("is_on_perforation")]
+		bool Is_on_perforation { [Bind ("getIs_on_perforation")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithPaging_seal_position:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation;
+		[Export ("initWithPaging_seal_position:offset:first_page_percent:is_on_perforation:")]
+		IntPtr Constructor (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation);
+
+		// -(void)set:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation;
+		[Export ("set:offset:first_page_percent:is_on_perforation:")]
+		void Set (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSPagingSealSignature : FSSignature
+	[BaseType (typeof(FSSignature))]
+	[DisableDefaultCtor]
+	interface FSPagingSealSignature
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(void)setPagingSealConfig:(FSPagingSealConfig *)paging_seal_config;
+		[Export ("setPagingSealConfig:")]
+		void SetPagingSealConfig (FSPagingSealConfig paging_seal_config);
+
+		// -(void)setAPStateBitmap:(FSPagingSealSignaturePagingSealAPState)ap_state bitmap:(FSBitmap *)bitmap;
+		[Export ("setAPStateBitmap:bitmap:")]
+		void SetAPStateBitmap (FSPagingSealSignaturePagingSealAPState ap_state, FSBitmap bitmap);
+
+		// -(BOOL)generateAppearance;
+		[Export ("generateAppearance")]
+		//[Verify (MethodToProperty)]
+		bool GenerateAppearance { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -13064,7 +13267,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSPauseCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSPauseCallback
 	{
@@ -13076,7 +13287,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSFileReaderCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSFileReaderCallback
 	{
@@ -13093,7 +13312,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSFileWriterCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSFileWriterCallback
 	{
@@ -13116,7 +13343,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSStreamCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSStreamCallback
 	{
@@ -13156,7 +13391,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSActionCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSActionCallback
 	{
@@ -13201,6 +13444,11 @@ namespace Foxit.iOS
 		[Export ("getDocChangeMark:")]
 		bool GetDocChangeMark (FSPDFDoc document);
 
+		// @required -(BOOL)submitForm:(FSPDFDoc *)document formData:(NSData *)formData url:(NSString *)url file_format_type:(FSFileFormatType)file_format_type;
+		[Abstract]
+		[Export ("submitForm:formData:url:file_format_type:")]
+		bool SubmitForm (FSPDFDoc document, NSData formData, string url, FSFileFormatType file_format_type);
+
 		// @required -(unsigned int)verifySignature:(FSPDFDoc *)document signature:(FSSignature *)signature;
 		[Abstract]
 		[Export ("verifySignature:signature:")]
@@ -13213,7 +13461,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSIconProviderCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSIconProviderCallback
 	{
@@ -13261,7 +13517,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSNotifierCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSNotifierCallback
 	{
@@ -13272,7 +13536,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSDocEventCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSDocEventCallback
 	{
@@ -13303,7 +13575,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSAsyncReaderCallback <FSFileReaderCallback>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	interface FSAsyncReaderCallback : FSFileReaderCallback
 	{
 		// @required -(BOOL)isDataAvail:(int)offset size:(int)size;
@@ -13318,7 +13598,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSFillerAssistCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSFillerAssistCallback
 	{
@@ -13384,7 +13672,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSSearchCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSSearchCallback
 	{
@@ -13395,7 +13691,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSSearchCancelCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSSearchCancelCallback
 	{
@@ -13407,7 +13711,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSPSICallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSPSICallback
 	{
@@ -13418,7 +13730,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSSecurityCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSSecurityCallback
 	{
@@ -13430,7 +13750,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSCertificateSecurityCallback <FSSecurityCallback>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	interface FSCertificateSecurityCallback : FSSecurityCallback
 	{
 		// @required -(NSData *)getDecryptionKey:(NSData *)envelope_buffer;
@@ -13440,7 +13768,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSDRMSecurityCallback <FSSecurityCallback>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	interface FSDRMSecurityCallback : FSSecurityCallback
 	{
 		// @required -(BOOL)isOwner:(FSPDFDoc *)document subFilter:(NSString *)sub_filter;
@@ -13475,7 +13811,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSCustomSecurityCallback <FSSecurityCallback>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType(typeof(NSObject))]
 	interface FSCustomSecurityCallback : FSSecurityCallback
 	{
@@ -13546,14 +13890,30 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSRMSSecurityCallback <FSCustomSecurityCallback>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType(typeof(NSObject))]
 	interface FSRMSSecurityCallback : FSCustomSecurityCallback
 	{
 	}
 
 	// @protocol FSSignatureCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSSignatureCallback
 	{
@@ -13600,7 +13960,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSAppProviderCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSAppProviderCallback
 	{
@@ -13651,7 +14019,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSDocProviderCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSDocProviderCallback
 	{
@@ -13742,7 +14118,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSRevocationCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSRevocationCallback
 	{
@@ -13828,7 +14212,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSTrustedCertStoreCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSTrustedCertStoreCallback
 	{
@@ -13844,7 +14236,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSFontMapperCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSFontMapperCallback
 	{
@@ -13855,7 +14255,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSAnnotationSummaryCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSAnnotationSummaryCallback
 	{
@@ -13878,7 +14286,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSTimeStampCallback <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface FSTimeStampCallback
 	{
@@ -13949,6 +14365,10 @@ namespace Foxit.iOS
 		// extern const FSLocalizationLanguageOptional FSLocalizationLanguageOptionalDutch;
 		[Field ("FSLocalizationLanguageOptionalDutch", "__Internal")]
 		nuint FSLocalizationLanguageOptionalDutch { get; }
+
+		// extern const FSLocalizationLanguageOptional FSLocalizationLanguageOptionalJapanese;
+		[Field ("FSLocalizationLanguageOptionalJapanese", "__Internal")]
+		nuint FSLocalizationLanguageOptionalJapanese { get; }
 	}
 
 	// @interface FSLocalization : NSObject
@@ -13984,7 +14404,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IRecoveryEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IRecoveryEventListener
 	{
@@ -13998,7 +14426,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IRotationEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IRotationEventListener
 	{
@@ -14016,7 +14452,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IDocEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IDocEventListener
 	{
@@ -14046,7 +14490,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IPageEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IPageEventListener
 	{
@@ -14096,7 +14548,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol ILayoutEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface ILayoutEventListener
 	{
@@ -14110,7 +14570,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IScrollViewEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IScrollViewEventListener
 	{
@@ -14148,7 +14616,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IViewAppleEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IViewAppleEventListener
 	{
@@ -14162,7 +14638,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IGestureEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IGestureEventListener
 	{
@@ -14192,7 +14676,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol IDrawEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface IDrawEventListener
 	{
@@ -14203,7 +14695,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol ITouchEventListener <NSObject>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	[BaseType (typeof(NSObject))]
 	interface ITouchEventListener
 	{
@@ -14225,7 +14725,15 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSPDFUIExtensionsManager <IGestureEventListener, IDrawEventListener, ITouchEventListener>
-	[Protocol, Model]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol]
 	interface FSPDFUIExtensionsManager : IGestureEventListener, IDrawEventListener, ITouchEventListener
 	{
 		// @optional -(BOOL)shouldDrawAnnot:(FSAnnot * _Nonnull)annot;
@@ -14623,6 +15131,10 @@ namespace Foxit.iOS
 		[Export ("setPageLayoutMode:")]
 		void SetPageLayoutMode (PDF_LAYOUT_MODE mode);
 
+		// -(void)setDefaultPageWhenDocumentOpened:(int)index;
+		[Export ("setDefaultPageWhenDocumentOpened:")]
+		void SetDefaultPageWhenDocumentOpened (int index);
+
 		// -(BOOL)isContinuous;
 		[Export ("isContinuous")]
 		//[Verify (MethodToProperty)]
@@ -14794,6 +15306,10 @@ namespace Foxit.iOS
 		[Export ("refresh:pageIndex:needRender:")]
 		void Refresh (CGRect rect, int pageIndex, bool needRender);
 
+		// -(void)refresh:(CGRect)rect pageIndex:(int)pageIndex needRender:(BOOL)needRender pageContentChange:(BOOL)pageContentChange;
+		[Export ("refresh:pageIndex:needRender:pageContentChange:")]
+		void Refresh (CGRect rect, int pageIndex, bool needRender, bool pageContentChange);
+
 		// -(void)refresh:(int)pageIndex;
 		[Export ("refresh:")]
 		void Refresh (int pageIndex);
@@ -14809,6 +15325,10 @@ namespace Foxit.iOS
 		// -(void)refreshOverlay;
 		[Export ("refreshOverlay")]
 		void RefreshOverlay ();
+
+		// -(void)clearRenderCache;
+		[Export ("clearRenderCache")]
+		void ClearRenderCache ();
 
 		// +(void)recoverForOOM;
 		[Static]
@@ -14832,6 +15352,10 @@ namespace Foxit.iOS
 		// -(void)setPageViewEdgeInsets:(UIEdgeInsets)pageViewEdgeInsets moveOffset:(BOOL)moveOffset;
 		[Export ("setPageViewEdgeInsets:moveOffset:")]
 		void SetPageViewEdgeInsets (UIEdgeInsets pageViewEdgeInsets, bool moveOffset);
+
+		// -(UITapGestureRecognizer * _Nonnull)getPageViewDoubleTapGesture:(int)pageIndex;
+		[Export ("getPageViewDoubleTapGesture:")]
+		UITapGestureRecognizer GetPageViewDoubleTapGesture (int pageIndex);
 	}
 
 	// @interface xfa (FSPDFViewCtrl)
@@ -14862,10 +15386,10 @@ namespace Foxit.iOS
 	interface FSPDFViewCtrl_rms
 	{
 		*/
-		// +(BOOL)handleADALResponse:(NSURL * _Nonnull)response sourceApplication:(NSString * _Nullable)sourceApplication;
+		// +(BOOL)handleMSALResponse:(NSUrl * _Nonnull)response sourceApplication:(NSString * _Nullable)sourceApplication;
 		[Static]
-		[Export ("handleADALResponse:sourceApplication:")]
-		bool HandleADALResponse (NSUrl response, [NullAllowed] string sourceApplication);
+		[Export ("handleMSALResponse:sourceApplication:")]
+		bool HandleMSALResponse (NSUrl response, [NullAllowed] string sourceApplication);
 
 		// -(void)setRMSAppClientId:(NSString * _Nonnull)appClientId redirectURI:(NSString * _Nonnull)redirectURI;
 		[Export ("setRMSAppClientId:redirectURI:")]
@@ -14908,11 +15432,11 @@ namespace Foxit.iOS
 	[BaseType (typeof(FSPDFViewCtrl))]
 	interface FSPDFViewCtrl_async
 	{
-		// -(void)openDocAtURL:(NSURL * _Nonnull)url password:(NSString * _Nonnull)password completion:(void (^ _Nonnull)(FSErrorCode))completion;
+		// -(void)openDocAtURL:(NSUrl * _Nonnull)url password:(NSString * _Nonnull)password completion:(void (^ _Nonnull)(FSErrorCode))completion;
 		[Export ("openDocAtURL:password:completion:")]
 		void OpenDocAtURL (NSUrl url, string password, Action<FSErrorCode> completion);
 
-		// -(void)openDocFromURL:(NSURL * _Nonnull)url password:(NSString * _Nonnull)password cacheOption:(CacheFileOption * _Nullable)cacheOption httpRequestProperties:(HttpRequestProperties * _Nullable)properties completion:(void (^ _Nonnull)(FSErrorCode))completion;
+		// -(void)openDocFromURL:(NSUrl * _Nonnull)url password:(NSString * _Nonnull)password cacheOption:(CacheFileOption * _Nullable)cacheOption httpRequestProperties:(HttpRequestProperties * _Nullable)properties completion:(void (^ _Nonnull)(FSErrorCode))completion;
 		[Export ("openDocFromURL:password:cacheOption:httpRequestProperties:completion:")]
 		void OpenDocFromURL (NSUrl url, string password, [NullAllowed] CacheFileOption cacheOption, [NullAllowed] HttpRequestProperties properties, Action<FSErrorCode> completion);
 

@@ -70,7 +70,7 @@ def replace_api_definitions_Iprotocol(srcPath,foxitrdk):
     foxitrdk_Iprotocols = ['IIGestureEventListener', 'IIDrawEventListener', 'IITouchEventListener', 'IConnectedPDFDelegate', 
     'IIRotationEventListener', 'IFSPageOrganizerDelegate', 'IFSFileReaderCallback', 'IFSSecurityCallback', 
     'IFSRMSSecurityCallback', 'IFSCustomSecurityCallback']
-    foxitrdk_uiextensions_Iprotocols=['IIAppLifecycleListener','IIAnnotEventListener','IILinkEventListener', 'IMoreItemProtocol', 'IIModule', 'IIToolEventListener', 'IISignatureEventListener']
+    foxitrdk_uiextensions_Iprotocols=['IIAppLifecycleListener','IIAnnotEventListener','IILinkEventListener', 'IMoreItemProtocol', 'IIModule', 'IIToolEventListener', 'IISignatureEventListener','IIUIInteractionEventListener']
 
     fopen=open(srcPath,'r')
     try:
@@ -198,6 +198,7 @@ def replace_api_definitions(srcPath,destPath,foxitrdk = False):
     replace_file_string(destPath,'void\*','IntPtr')
     replace_file_string(destPath,'int\*','int')
     replace_file_string(destPath,'float\*','float')
+    replace_file_string(destPath,'NSURL','NSUrl')
     replace_file_string(destPath,'unsafe IntPtr Constructor','IntPtr Constructor')
     replace_file_string(destPath,'dispatch_block_t', 'Action')
     replace_file_string(destPath,'NSData Size \(ulong offset, ulong size\)', 'NSData readBlock (ulong offset, ulong size)')

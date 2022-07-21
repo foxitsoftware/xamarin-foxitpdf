@@ -12,7 +12,7 @@
 
 
 
-
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getDragToolBar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getToolbar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getCurToolbar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getPropertyBar']" />
@@ -24,7 +24,10 @@
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.home']/interface[@name='IHomeModule']/method[@name='getTopToolbar' and count(parameter)=0]" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail']/class[@name='I']" />
-  
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.stamp.adapter']/class[@name='CommonStampAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.stamp.adapter']/class[@name='ImageStampAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.stamp.adapter']/class[@name='TextStampAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.tts']/class[@name='SpeechRateAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.form']/class[@name='ChoiceOptionsAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.annot']/class[@name='AnnotAdapter']" />
@@ -37,6 +40,8 @@
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail.createpage']/class[@name='PageColorAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail.createpage']/class[@name='PageStyleAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar.drag.addtools']/class[@name='AddedToolsAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.outline']/class[@name='OutlineModule.MoveOutlineAdapter']" />
+
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog.sheetmenu']/class[@name='UISheetMenu']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog']/class[@name='UIPopupWindow']" />

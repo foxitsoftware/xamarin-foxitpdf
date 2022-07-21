@@ -2248,6 +2248,13 @@ namespace Foxit.iOS
 		Onlytext
 	}
 
+	public enum PdfPageBindingEdge 
+	{
+		Unknown = 0,
+		LeftEdge = 1,
+		RightEdge = 2
+	}
+
 	public enum PdfDisplayZoommode 
 	{
 		Unknown = 0,
@@ -2376,6 +2383,20 @@ namespace Foxit.iOS
     	PDF_CERT_ERROR_PASSWORD
     }
     
+    /**
+    * @brief    Enumeration for page binding edge.
+    *
+    * @details    Values of this enumeration should be used alone..
+    */
+    public enum PDF_PAGE_BINDING_EDGE {
+        /** The document doesn’t explicitly define a page binding, so the behavior is the same as it is with LEFT_EDGE or RIGHT_EDGE.*/
+        PDF_PAGE_BINDING_UNKNOWN = 0,
+        /** The document flows from left to right.*/
+        PDF_PAGE_BINDING_LEFT_EDGE = 1,
+        /** The document flows from right to left.*/
+        PDF_PAGE_BINDING_RIGHT_EDGE = 2,
+    }
+
 
 
 }

@@ -576,6 +576,10 @@ namespace Foxit.iOS.UIExtensions
 		[Field ("FS_TOOLBAR_ITEM_TAG_SIGN", "__Internal")]
 		int FS_TOOLBAR_ITEM_TAG_SIGN { get; }
 
+		// extern const FS_TOOLBAR_ITEM_TAG FS_TOOLBAR_ITEM_TAG_PROTECT;
+		[Field ("FS_TOOLBAR_ITEM_TAG_PROTECT", "__Internal")]
+		int FS_TOOLBAR_ITEM_TAG_PROTECT { get; }
+
 		// extern const int TAG_GROUP_PROTECT;
 		[Field ("TAG_GROUP_PROTECT", "__Internal")]
 		int TAG_GROUP_PROTECT { get; }
@@ -2420,5 +2424,77 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)improtDocumentFromPath:(NSString * _Nonnull)path success:(void (^ _Nonnull)(NSString * _Nonnull))success error:(void (^ _Nonnull)(NSString * _Nonnull))error;
 		[Export ("improtDocumentFromPath:success:error:")]
 		void ImprotDocumentFromPath (string path, Action<NSString> success, Action<NSString> error);
+	}
+
+	// @interface FSHistoryDataItem : NSObject <NSCoding>
+	[BaseType (typeof(NSObject))]
+	interface FSHistoryDataItem : INSCoding
+	{
+		// @property (nonatomic, strong) NSDate * _Nonnull createDate;
+		[Export ("createDate", ArgumentSemantic.Strong)]
+		NSDate CreateDate { get; set; }
+
+		// @property (nonatomic, strong) NSDate * _Nonnull lastUseDate;
+		[Export ("lastUseDate", ArgumentSemantic.Strong)]
+		NSDate LastUseDate { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull content;
+		[Export ("content")]
+		string Content { get; set; }
+	}
+
+	// @interface FSHistoryDataConfig : NSObject <NSCoding>
+	[BaseType (typeof(NSObject))]
+	interface FSHistoryDataConfig : INSCoding
+	{
+		// @property (assign, nonatomic) BOOL enable;
+		[Export ("enable")]
+		bool Enable { get; set; }
+
+		// @property (assign, nonatomic) FSInteractiveScene scene;
+		[Export ("scene", ArgumentSemantic.Assign)]
+		FSInteractiveScene Scene { get; set; }
+
+		// @property (assign, nonatomic) FSHistoryDataSortKey sortKey;
+		[Export ("sortKey", ArgumentSemantic.Assign)]
+		FSHistoryDataSortKey SortKey { get; set; }
+
+		// @property (assign, nonatomic) FSDataSortComparison sortOrder;
+		[Export ("sortOrder", ArgumentSemantic.Assign)]
+		FSDataSortComparison SortOrder { get; set; }
+
+		// @property (assign, nonatomic) FSHistoryDataSortRule sortRule;
+		[Export ("sortRule", ArgumentSemantic.Assign)]
+		FSHistoryDataSortRule SortRule { get; set; }
+
+		// @property (assign, nonatomic) NSUInteger maxCount;
+		[Export ("maxCount")]
+		nuint MaxCount { get; set; }
+
+		// @property (copy, nonatomic) NSArray<FSHistoryDataItem *> * _Nonnull items;
+		[Export ("items", ArgumentSemantic.Copy)]
+		FSHistoryDataItem[] Items { get; set; }
+	}
+
+	// @interface FSHistoryDataModule : NSObject <IModule>
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface FSHistoryDataModule : IModule
+	{
+		// -(void)configScene:(FSHistoryDataConfig * _Nonnull)config;
+		[Export ("configScene:")]
+		void ConfigScene (FSHistoryDataConfig config);
+
+		// -(FSHistoryDataConfig * _Nonnull)configForScene:(FSInteractiveScene)scene;
+		[Export ("configForScene:")]
+		FSHistoryDataConfig ConfigForScene (FSInteractiveScene scene);
+
+		// -(NSArray<FSHistoryDataItem *> * _Nonnull)currentItemsFromScene:(FSInteractiveScene)scene;
+		[Export ("currentItemsFromScene:")]
+		FSHistoryDataItem[] CurrentItemsFromScene (FSInteractiveScene scene);
+
+		// -(NSArray<FSHistoryDataItem *> * _Nonnull)sortItemsByKeyword:(NSString * _Nonnull)keyword fromScene:(FSInteractiveScene)scene;
+		[Export ("sortItemsByKeyword:fromScene:")]
+		FSHistoryDataItem[] SortItemsByKeyword (string keyword, FSInteractiveScene scene);
 	}
 }

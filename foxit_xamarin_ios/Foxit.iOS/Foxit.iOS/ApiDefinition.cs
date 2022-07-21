@@ -14575,6 +14575,10 @@ namespace Foxit.iOS
 		[Export ("minimumPressDuration")]
 		double MinimumPressDuration { get; set; }
 
+		// @property (assign, nonatomic) PDF_PAGE_BINDING_EDGE pageBindingEdge;
+		[Export ("pageBindingEdge", ArgumentSemantic.Assign)]
+		PDF_PAGE_BINDING_EDGE PageBindingEdge { get; set; }
+
 		// -(instancetype _Nonnull)initWithFrame:(CGRect)frame;
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (CGRect frame);

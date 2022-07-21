@@ -248,7 +248,11 @@ namespace Foxit.iOS.UIExtensions
 		FillSignLine,
 		FillSignRoundRectangle,
 		DigitalSignature = 500,
-		Redact
+		Redact,
+		PassWord,
+		TrutedCertificates,
+		Rms,
+		Aip
 	}
 
 	//[Native]
@@ -286,6 +290,7 @@ namespace Foxit.iOS.UIExtensions
 		View,
 		Form,
 		Sign,
+		Protect,
 		Custom
 	}
 
@@ -358,5 +363,21 @@ namespace Foxit.iOS.UIExtensions
 	{
 		TopBar = 1,
 		BottomBar
+	}
+
+	//[Native]
+	public enum FSHistoryDataSortKey : ulong
+	{
+		Default,
+		Date,
+		Char
+	}
+
+	//[Native]
+	public enum FSHistoryDataSortRule : ulong
+	{
+		hNormal = 0,
+		hCase = 1,
+		Consecutive = 2
 	}
 }

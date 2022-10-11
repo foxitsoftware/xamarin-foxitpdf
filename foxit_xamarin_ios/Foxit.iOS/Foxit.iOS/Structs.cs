@@ -88,7 +88,11 @@ namespace Foxit.iOS
 		NoMicroOfficeInstalled = 68,
 		ExcelHasNoContent = 69,
 		NoLayoutRecognitionModuleRight = 70,
-		WPSEngineNotFound = 71
+		WPSEngineNotFound = 71,
+		LibreofficeEngineNotFound = 72,
+		NoAccessibilityModuleRight = 73,
+		ODAEngineNotFound = 74,
+		NoTableMakerModuleRight = 75
 	}
 
 	//[Native]
@@ -143,7 +147,9 @@ namespace Foxit.iOS
 		Compliance = 7,
 		Optimizer = 8,
 		Conversion = 9,
-		LayoutRecognition = 10
+		LayoutRecognition = 10,
+		Accessibility = 11,
+		TableMaker = 12
 	}
 
 	//[Native]
@@ -323,6 +329,7 @@ namespace Foxit.iOS
 		Rgb = 24,
 		Rgb32 = 32,
 		Argb = 544,
+		Cmyk = 1056,
 		FSBitmapDIB8bppMask = 264,
 		FSBitmapDIB8bpp = 8,
 		FSBitmapDIB8bppGray = 4104,
@@ -740,7 +747,8 @@ namespace Foxit.iOS
 	public enum FSComparisonCompareType : long
 	{
 		All = 0,
-		Text = 1
+		Text = 1,
+		Annotation = 2
 	}
 
 	//[Native]
@@ -854,6 +862,115 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSPrintParamsPrintContent : long
+	{
+		Document = 0,
+		DocAndAnnots = 1,
+		FormFieldsOnly = 2
+	}
+
+	//[Native]
+	public enum FSPrintParamsDuplexType : long
+	{
+		Simplex = 0,
+		DuplexFlipLongEdge = 1,
+		DuplexFlipShortEdge = 2
+	}
+
+	//[Native]
+	public enum FSPrintParamsBookletDuplexMode : long
+	{
+		BothSides = 0,
+		FrontSideOnly = 1,
+		BackSideOnly = 2
+	}
+
+	//[Native]
+	public enum FSPrintParamsBookletBinding : long
+	{
+		Right = 0,
+		Left = 1,
+		LeftTall = 2,
+		RightTall = 3
+	}
+
+	//[Native]
+	public enum FSPrintParamsPageOrder : long
+	{
+		Horizontal = 0,
+		HorizontalReversed = 1,
+		Vertical = 2
+	}
+
+	//[Native]
+	public enum FSPrintParamsPrintHandling : long
+	{
+		None = 0,
+		FitPaper = 1,
+		ReducePaper = 2,
+		MultiplePages = 3,
+		TileLargePages = 4,
+		Booklet = 5
+	}
+
+	//[Native]
+	public enum FSFloatingInfoWindowPosition : long
+	{
+		TopLeft = 0,
+		TopCenter = 1,
+		TopRight = 2,
+		CenterLeft = 3,
+		Center = 4,
+		CenterRight = 5,
+		BottomLeft = 6,
+		BottomCenter = 7,
+		BottomRight = 8
+	}
+
+	//[Native]
+	public enum FSFloatingInfoRelativeTarget : long
+	{
+		PageWindow = 0,
+		AppWindow = 1,
+		Desktop = 2,
+		Monitor = 3
+	}
+
+	//[Native]
+	public enum FSFloatingInfoResizeType : long
+	{
+		No = 0,
+		KeepRatio = 1,
+		Yes = 2
+	}
+
+	//[Native]
+	public enum FSFloatingInfoOffScreenAction : long
+	{
+		Allow = 0,
+		ForceOnScreen = 1,
+		Cancel = 2
+	}
+
+	//[Native]
+	public enum FSMediaSettingsPlayerWindowType : long
+	{
+		DockedPage = 1,
+		Floating = 2,
+		FullScreen = 4
+	}
+
+	//[Native]
+	public enum FSMediaPlayerCallbackJSMediaPlayerState : long
+	{
+		Open = 0,
+		Close = 1,
+		Playing = 2,
+		Stop = 3,
+		Suspend = 4
+	}
+
+	//[Native]
 	public enum FSActionCallbackLanguage : long
 	{
 		Unknown = 0,
@@ -890,6 +1007,41 @@ namespace Foxit.iOS
 		Doc = 0,
 		Form = 1,
 		Msg = 2
+	}
+
+	//[Native]
+	public enum FSActionCallbackJSFieldValueChangeType : long
+	{
+		Format = 0,
+		Calculation = 1,
+		Set = 2
+	}
+
+	//[Native]
+	public enum FSActionCallbackJSMediaPlayerState : long
+	{
+		Open = 0,
+		Close = 1,
+		Playing = 2,
+		Stop = 3,
+		Suspend = 4
+	}
+
+	//[Native]
+	public enum FSActionCallbackLayoutMode : long
+	{
+		SinglePage = 0,
+		Continuous = 1,
+		Facing = 2,
+		ContinuousFacing = 3
+	}
+
+	//[Native]
+	public enum FSActionCallbackJsMailResult : long
+	{
+		Failed = 0,
+		Success = 1,
+		UserAbort = 2
 	}
 
 	//[Native]
@@ -1197,8 +1349,7 @@ namespace Foxit.iOS
 		FSAnnot3D = 25,
 		Popup = 26,
 		Redact = 27,
-		RichMedia = 28,
-		PagingSeal = 29
+		RichMedia = 28
 	}
 
 	//[Native]

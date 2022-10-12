@@ -1,0 +1,99 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <!-- uiextensions -->
+  <attr path="/api/package[@name='com.foxit.uiextensions.utils']/class[@name='Event']" name="managedName">IEvent</attr>
+
+
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getDragToolBar']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getToolbar']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getCurToolbar']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getPropertyBar']" />
+  
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='UIExtensionsManager']/method[@name='getDocumentManager']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='DocumentManager']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='IPDFReader']/method[@name='getMainFrame']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions']/interface[@name='IPDFReader']/method[@name='getDocumentManager']" />
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.home']/interface[@name='IHomeModule']/method[@name='getTopToolbar' and count(parameter)=0]" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail']/class[@name='I']" />
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.stamp.adapter']/class[@name='CommonStampAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.stamp.adapter']/class[@name='ImageStampAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.stamp.adapter']/class[@name='TextStampAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.tts']/class[@name='SpeechRateAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.annots.form']/class[@name='ChoiceOptionsAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.annot']/class[@name='AnnotAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.annot']/class[@name='AnnotFilterAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.bookmark']/class[@name='ReadingBookmarkAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.filespec']/class[@name='FileAttachmentAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.signature']/class[@name='SignatureAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail']/class[@name='ThumbnailAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.security.trustcertificate']/class[@name='TrustCertificateListAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail.createpage']/class[@name='PageColorAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail.createpage']/class[@name='PageStyleAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar.drag.addtools']/class[@name='AddedToolsAdapter']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.outline']/class[@name='OutlineModule.MoveOutlineAdapter']" />
+
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog.sheetmenu']/class[@name='UISheetMenu']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog']/class[@name='UIPopupWindow']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.theme']/class[@name='IThemeConfig']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.theme']/class[@name='ThemeConfig']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog']/class[@name='RoundCornerDialog']" />
+
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem.IItemLayoutListener']"/>
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem.OnItemClickListener']"/>
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem.OnItemLongPressListener']"/>
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setItemLayoutListener']"/>
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setOnItemClickListener']"/>
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setOnItemLongPressListener']"/>
+
+  <!-- Rxjava -->
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.internal')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.observers')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.subjects')]"/>
+
+  <remove-node path="/api/package[@name='io.reactivex.schedulers']/class[@name='TestScheduler']"/>
+
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.SingleTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.NewThreadTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.IOTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='io.reactivex.schedulers']/class[@name='Schedulers.ComputationTask']/method[@name='call' and count(parameter)=0]" name="managedReturn">Java.Lang.Object</attr>
+
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.subjects')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'io.reactivex.subjects')]"/>
+
+  <!-- bcpkix -->
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.est')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.openssl')]"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.cms.bc']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms.jcajce']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cert.ocsp']"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='CMSAbsentContent']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='CMSProcessableFile']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='CMSProcessableByteArray']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='RecipientId']"/>
+  <remove-node path="/api/package[@name='org.bouncycastle.cms']/class[@name='RecipientInformation']"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.pkix.jcajce']/class[@name='X509RevocationChecker']"/>
+  
+  <!-- bcprov -->
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.crypto')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.jcajce')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.jce')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.pqc')]"/>
+  <remove-node path="/api/package[starts-with(@name, 'org.bouncycastle.x509')]"/>
+
+  <remove-node path="/api/package[@name='org.bouncycastle.util']/class[@name='Strings']"/>
+  
+</metadata>

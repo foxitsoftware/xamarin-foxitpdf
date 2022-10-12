@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxitPDFScan_UI", "FoxitPDFScan_UI\FoxitPDFScan_UI.csproj", "{EB2477D4-7E58-4858-A3CE-34B13F8A2C1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxitUIExtensions", "..\FoxitUIExtensions\FoxitUIExtensions\FoxitUIExtensions.csproj", "{5C736DEF-108D-4948-B06B-C7C7569F1E72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoxitMobileScanningRDK", "..\FoxitMobileScanningRDK\FoxitMobileScanningRDK\FoxitMobileScanningRDK.csproj", "{62CC7AAA-76FA-47DB-841D-D8E3FFDD9464}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB2477D4-7E58-4858-A3CE-34B13F8A2C1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2477D4-7E58-4858-A3CE-34B13F8A2C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2477D4-7E58-4858-A3CE-34B13F8A2C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2477D4-7E58-4858-A3CE-34B13F8A2C1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C736DEF-108D-4948-B06B-C7C7569F1E72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62CC7AAA-76FA-47DB-841D-D8E3FFDD9464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62CC7AAA-76FA-47DB-841D-D8E3FFDD9464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62CC7AAA-76FA-47DB-841D-D8E3FFDD9464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62CC7AAA-76FA-47DB-841D-D8E3FFDD9464}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC8E5AF5-9CBE-4482-B455-892D12668B8B}
+	EndGlobalSection
+EndGlobal

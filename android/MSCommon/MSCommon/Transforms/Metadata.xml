@@ -1,0 +1,197 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+ //SDK-19760
+ <remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='StorageHelper']/field[@name='LAST_KNOWN_THUMBPRINT']"/>
+ <remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='StorageHelper']/method[@name='testThumbprint' and count(parameter)=0]"/>
+
+  <!--com.google.gson start-->
+  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
+  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='SqlDateTypeAdapter']"/>
+  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='TimeTypeAdapter']"/>
+  
+  <remove-node path="/api/package[@name='com.google.gson.internal']/class[@name='LinkedHashTreeMap']"/>
+  <remove-node path="/api/package[@name='com.google.gson.internal']/class[@name='LinkedTreeMap']"/>
+  
+  //CS0534
+  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']/method[@name='deepCopy']"/>
+  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonPrimitive']">
+    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
+    </method>
+  </add-node>
+  
+  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonArray']/method[@name='deepCopy']"/>
+  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonArray']">
+    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
+    </method>
+  </add-node>
+  
+  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonNull']/method[@name='deepCopy']"/>
+  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonNull']">
+    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
+    </method>
+  </add-node>
+  
+  <remove-node path="/api/package[@name='com.google.gson']/class[@name='JsonObject']/method[@name='deepCopy']"/>
+  <add-node path="/api/package[@name='com.google.gson']/class[@name='JsonObject']">
+    <method abstract="false" deprecated="not deprecated" final="false" name="deepCopy" native="false" return="com.google.gson.JsonElement" static="false" synchronized="false" visibility="public">
+    </method>
+  </add-node>
+
+  //CS0738
+  <attr path="/api/package[@name='com.google.gson']/class[@name='JsonStreamParser']/method[@name='next' and count(parameter)=0]"
+    name="managedReturn">Java.Lang.Object</attr>
+  <!--com.google.gson end-->
+  
+  
+  <!--microsoft.identity.common  start-->
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.telemetry.adapter']/class[@name='TelemetryAggregationAdapter']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.telemetry.adapter']/class[@name='TelemetryDefaultAdapter']"/>
+
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.net']/class[@name='StatusCodeAndExceptionRetry']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.net']/class[@name='NoRetryPolicy']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.net']/class[@name='UrlConnectionHttpClient']"/>
+
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2012R2']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2012R2OAuth2Strategy']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2016']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2016OAuth2Strategy']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServicesAuthorizationRequest']"/>
+  
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.cache']/class[@name='AccountDeletionRecord']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.cache']/class[@name='ADALOAuth2TokenCache']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.cache']/class[@name='BrokerOAuth2TokenCache']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.cache']/class[@name='MsalCppOAuth2TokenCache']"/>
+  
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.platform']/class[@name='AndroidKeystoreAsymmetricRsaKeyFactory']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.platform']/interface[@name='AsymmetricRsaKeyFactory']"/>
+  
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectory']/class[@name='AzureActiveDirectory']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectory']/class[@name='AzureActiveDirectoryOAuth2Strategy']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectory']/class[@name='AzureActiveDirectoryAuthorizationRequest']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectory']/class[@name='AzureActiveDirectoryAuthorizationResultFactory']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectoryb2c']/class[@name='AzureActiveDirectoryB2C']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectoryb2c']/class[@name='AzureActiveDirectoryB2COAuth2Strategy']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.azureactivedirectoryb2c']/class[@name='AzureActiveDirectoryB2CAuthorizationRequest']"/>
+
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='BrokerInteractiveTokenCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='BrokerSilentTokenCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='DeviceCodeFlowCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='GenerateShrCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='InteractiveTokenCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='RemoveAccountCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='SilentTokenCommandParameters']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands.parameters']/class[@name='TokenCommandParameters']"/>
+
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='DeviceCodeFlowCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='GenerateShrCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='GetCurrentAccountCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='GetDeviceModeCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='InteractiveTokenCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='LoadAccountCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='RemoveAccountCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='RemoveCurrentAccountCommand']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.commands']/class[@name='SilentTokenCommand']"/>
+
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.oauth2']/class[@name='TokenResult']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAuthorizationResult']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAuthorizationRequest']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.microsoftsts']/class[@name='MicrosoftSts']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.microsoftsts']/class[@name='MicrosoftStsAuthorizationRequest']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.microsoftsts']/class[@name='MicrosoftStsAuthorizationResultFactory']"/>
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.microsoftsts']/class[@name='MicrosoftStsOAuth2Strategy']"/>
+
+  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.util']/class[@name='QueryParamsAdapter']"/>
+  
+  //CS0738
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']/method[@name='get' and count(parameter)=0]"
+  name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']/method[@name='get' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='java.util.concurrent.TimeUnit']]"
+   name="managedReturn">Java.Lang.Object</attr>
+
+
+  //CS0546
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setEnvironment' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+      name="managedName">setEnvironment2</attr>
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setFamilyName' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+      name="managedName">setFamilyName2</attr>
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setFirstName' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+      name="managedName">setFirstName3</attr>
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setName' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+      name="managedName">setName2</attr>
+
+  <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftRefreshToken']/method[@name='setEnvironment' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+  name="managedName">setEnvironment2</attr>
+  <!--microsoft.identity.common  end-->
+
+  
+  <!--nimbus-jose-jwt  start-->
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='AESDecrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='DirectDecrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='ECDHDecrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='AESEncrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='DirectEncrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='ECDHEncrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='ECDSASigner']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='ECDSAVerifier']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='MACSigner']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='MACVerifier']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='PasswordBasedDecrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSADecrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSAEncrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSASSASigner']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='RSASSAVerifier']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='EncryptionMethod.Family']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWEAlgorithm.Family']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWSAlgorithm.Family']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWEObject']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWSHeader']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWSObject']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='JWEHeader']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='PlainObject']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose']/class[@name='PlainHeader']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.factories']/class[@name='DefaultJWEDecrypterFactory']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.proc']/class[@name='JWEDecryptionKeySelector']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.proc']/class[@name='JWSVerificationKeySelector']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.proc']/class[@name='JWSAlgorithmFamilyJWSKeySelector']"/>
+
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk']/class[@name='ECKey']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk']/class[@name='OctetKeyPair']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk']/class[@name='OctetSequenceKey']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk']/class[@name='RSAKey']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk.gen']/class[@name='ECKeyGenerator']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk.gen']/class[@name='OctetKeyPairGenerator']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk.gen']/class[@name='OctetSequenceKeyGenerator']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.jwk.gen']/class[@name='RSAKeyGenerator']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto']/class[@name='PasswordBasedEncrypter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.impl']/class[@name='BaseJWSProvider']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.impl']/class[@name='AESCryptoProvider']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.impl']/class[@name='DirectCryptoProvider']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.impl']/class[@name='ECDHCryptoProvider']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.impl']/class[@name='PasswordBasedCryptoProvider']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.crypto.impl']/class[@name='RSACryptoProvider']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.shaded.json.parser']/class[@name='FakeContainerFactory']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.shaded.json.reader']/class[@name='BeansWriter']"/>
+  <remove-node path="/api/package[@name='com.nimbusds.jose.shaded.json.reader']/class[@name='ArrayWriter']"/>
+  <!--nimbus-jose-jwt  end-->
+  
+  
+  <!--accessors-smart start-->
+  <remove-node path="/api/package[@name='net.minidev.asm']/class[@name='ConvertDate.StringCmpNS']"/>
+  <!--accessors-smart end-->
+
+  
+  <!--json-smart start-->
+  <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='ArrayWriter']"/>
+  <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='BeansWriter']"/>
+  <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='BeansWriterASM']"/>
+  <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='BeansWriterASMRemap']"/>
+  <remove-node path="/api/package[@name='net.minidev.json.reader']/class[@name='JsonWriter']"/>
+  <!--json-smart end-->
+</metadata>

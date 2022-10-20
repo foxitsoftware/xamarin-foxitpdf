@@ -2176,6 +2176,10 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("extFileOpenDelegate", ArgumentSemantic.Weak)]
 		NSObject WeakExtFileOpenDelegate { get; set; }
 
+		// @property (assign, nonatomic) BOOL disableFingerWhenLinkApplePencil;
+		[Export ("disableFingerWhenLinkApplePencil")]
+		bool DisableFingerWhenLinkApplePencil { get; set; }
+
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]
 		IntPtr Constructor (FSPDFViewCtrl viewctrl);

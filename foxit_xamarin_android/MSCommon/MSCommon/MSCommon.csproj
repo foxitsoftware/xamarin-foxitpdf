@@ -48,8 +48,8 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\rms\microsoft-identity-common-3.4.4.aar">
-      <Link>Jars\microsoft-identity-common-3.4.4.aar</Link>
+    <LibraryProjectZip Include="..\..\libs\rms\microsoft-identity-common-3.6.7.aar">
+      <Link>Jars\microsoft-identity-common-3.6.7.aar</Link>
     </LibraryProjectZip>
     <EmbeddedJar Include="..\..\libs\rms\nimbus-jose-jwt-9.9.jar">
       <Link>Jars\nimbus-jose-jwt-9.9.jar</Link>

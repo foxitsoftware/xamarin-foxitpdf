@@ -60,10 +60,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("topToolbar", ArgumentSemantic.Strong)]
 		UIToolbar TopToolbar { get; set; }
 
-		// -(instancetype)initWithWindowScene:(UIWindowScene *)windowScene __attribute__((availability(ios, introduced=13.0)));
+		// -(instancetype)initWithWindowScene:(UIWindowScene * _Nullable)windowScene __attribute__((availability(ios, introduced=13.0)));
 		[iOS (13,0)]
 		[Export ("initWithWindowScene:")]
-		IntPtr Constructor (UIWindowScene windowScene);
+		IntPtr Constructor ([NullAllowed] UIWindowScene windowScene);
 	}
 
 	// @interface TabItem : NSObject
@@ -1443,6 +1443,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("width")]
 		nfloat Width { get; set; }
 
+		// @property (readonly, nonatomic, strong) UIView * _Nullable customView;
+		[NullAllowed, Export ("customView", ArgumentSemantic.Strong)]
+		UIView CustomView { get; }
+
 		// -(instancetype _Nonnull)initWithCustomView:(UIView * _Nonnull)customView;
 		[Export ("initWithCustomView:")]
 		IntPtr Constructor (UIView customView);
@@ -1522,6 +1526,28 @@ namespace Foxit.iOS.UIExtensions
 		FSMainTopbarToolTagItem ItemWithToolTag (FSMainTopbarToolTag toolTag, [NullAllowed] FSReadToolbarItem[] readToolbarItems);
 	}
 
+	// @protocol IFSMainTopbarEventListener <NSObject>
+    [Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IFSMainTopbarEventListener
+	{
+		// @optional -(void)didShowTagTabPopuper;
+		[Export ("didShowTagTabPopuper")]
+		void DidShowTagTabPopuper ();
+
+		// @optional -(void)didDismissTagTabPopuper;
+		[Export ("didDismissTagTabPopuper")]
+		void DidDismissTagTabPopuper ();
+
+		// @optional -(void)didSetCurrentTagItem:(FSMainTopbarToolTagItem * _Nonnull)curTagItem lastTagItem:(FSMainTopbarToolTagItem * _Nonnull)lastTagItem;
+		[Export ("didSetCurrentTagItem:lastTagItem:")]
+		void DidSetCurrentTagItem (FSMainTopbarToolTagItem curTagItem, FSMainTopbarToolTagItem lastTagItem);
+
+		// @optional -(void)onSubitemViewChanged:(FSTopbarSubitemContentViewPosition)position;
+		[Export ("onSubitemViewChanged:")]
+		void OnSubitemViewChanged (FSTopbarSubitemContentViewPosition position);
+	}
+
 	// @interface FSMainTopbar : FSMainToolbar
 	[BaseType (typeof(FSMainToolbar))]
 	interface FSMainTopbar
@@ -1529,6 +1555,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (copy, nonatomic) NSArray<FSMainTopbarToolTagItem *> * _Nullable tagItems;
 		[NullAllowed, Export ("tagItems", ArgumentSemantic.Copy)]
 		FSMainTopbarToolTagItem[] TagItems { get; set; }
+
+		// @property (copy, nonatomic) NSArray<FSMainTopbarToolTagItem *> * _Nullable currentNewTagItems;
+		[NullAllowed, Export ("currentNewTagItems", ArgumentSemantic.Copy)]
+		FSMainTopbarToolTagItem[] CurrentNewTagItems { get; set; }
 
 		// @property (readonly, nonatomic, strong) FSMainTopbarToolTagItem * _Nonnull currentTagItem;
 		[Export ("currentTagItem", ArgumentSemantic.Strong)]
@@ -1553,6 +1583,14 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)resetCurrentTagItem;
 		[Export ("resetCurrentTagItem")]
 		void ResetCurrentTagItem ();
+
+		// -(void)registerEventListener:(id<IFSMainTopbarEventListener> _Nonnull)listener;
+		[Export ("registerEventListener:")]
+		void RegisterEventListener (NSObject listener);
+
+		// -(void)unregisterEventListener:(id<IFSMainTopbarEventListener> _Nonnull)listener;
+		[Export ("unregisterEventListener:")]
+		void UnregisterEventListener (NSObject listener);
 	}
 
 	// @interface FSMainBottombar : FSMainToolbar
@@ -2204,6 +2242,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, weak) id<FSExtFileOpenDelegate> _Nullable extFileOpenDelegate;
 		[NullAllowed, Export ("extFileOpenDelegate", ArgumentSemantic.Weak)]
 		NSObject WeakExtFileOpenDelegate { get; set; }
+
+		// @property (assign, nonatomic) BOOL disableFingerWhenLinkApplePencil;
+		[Export ("disableFingerWhenLinkApplePencil")]
+		bool DisableFingerWhenLinkApplePencil { get; set; }
 
 		// @property (readonly, nonatomic, weak) API_AVAILABLE(ios(13.0)) UIWindowScene * windowScene __attribute__((availability(ios, introduced=13.0)));
 		[iOS (13, 0)]

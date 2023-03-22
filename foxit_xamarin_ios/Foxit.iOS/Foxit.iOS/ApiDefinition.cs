@@ -12651,6 +12651,53 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSSignatureArray : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSSignatureArray
+	{
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithOther:(FSSignatureArray *)other;
+		[Export ("initWithOther:")]
+		IntPtr Constructor (FSSignatureArray other);
+
+		// -(unsigned long)getSize;
+		[Export ("getSize")]
+		//[Verify (MethodToProperty)]
+		nuint Size { get; }
+
+		// -(FSSignature *)getAt:(unsigned long)index;
+		[Export ("getAt:")]
+		FSSignature GetAt (nuint index);
+
+		// -(void)add:(FSSignature *)element;
+		[Export ("add:")]
+		void Add (FSSignature element);
+
+		// -(void)removeAt:(unsigned long)index;
+		[Export ("removeAt:")]
+		void RemoveAt (nuint index);
+
+		// -(void)insertAt:(unsigned long)index element:(FSSignature *)element;
+		[Export ("insertAt:element:")]
+		void InsertAt (nuint index, FSSignature element);
+
+		// -(void)removeAll;
+		[Export ("removeAll")]
+		void RemoveAll ();
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSSignature : FSField
 	[BaseType (typeof(FSField))]
 	interface FSSignature
@@ -12723,6 +12770,14 @@ namespace Foxit.iOS
 		// -(FSProgressive *)startSign:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSign:cert_password:digest_algorithm:save_path:client_data:pause:")]
 		FSProgressive StartSign (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, NSObject pause);
+
+		// -(FSProgressive *)startSignBySignArray:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
+		[Export ("startSignBySignArray:cert_password:digest_algorithm:signature_array:save_path:client_data:pause:")]
+		FSProgressive StartSignBySignArray (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, string save_path, NSData client_data, NSObject pause);
+
+		// -(FSProgressive *)startSignBySignArrayAdditionalDict:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array additional_dict:(FSPDFDictionary *)additional_dict save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
+		[Export ("startSignBySignArrayAdditionalDict:cert_password:digest_algorithm:signature_array:additional_dict:save_path:client_data:pause:")]
+		FSProgressive StartSignBySignArrayAdditionalDict (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, FSPDFDictionary additional_dict, string save_path, NSData client_data, NSObject pause);
 
 		// -(FSProgressive *)startSignByCertStream:(id<FSStreamCallback>)cert_file_stream cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSignByCertStream:cert_password:digest_algorithm:save_path:client_data:pause:")]
@@ -14094,6 +14149,11 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSIdentityProperties IdentityProperties { get; }
 
+		// @required -(BOOL)invalidateRect:(FSPDFDoc *)document page_index:(int)page_index pdf_rect:(FSRectF *)pdf_rect;
+		[Abstract]
+		[Export ("invalidateRect:page_index:pdf_rect:")]
+		bool InvalidateRect (FSPDFDoc document, int page_index, FSRectF pdf_rect);
+
 		// @required -(BOOL)setDocChangeMark:(FSPDFDoc *)document change_mark:(BOOL)change_mark;
 		[Abstract]
 		[Export ("setDocChangeMark:change_mark:")]
@@ -14118,6 +14178,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("browseFile:file_format:file_filter:")]
 		string BrowseFile (bool is_open_dialog, string file_format, string file_filter);
+
+		// @required -(NSString *)getAppInfo:(FSActionCallbackAppInfoType)type;
+		[Abstract]
+		[Export ("getAppInfo:")]
+		string GetAppInfo (FSActionCallbackAppInfoType type);
 	}
 
 	// @protocol FSIconProviderCallback <NSObject>
@@ -15005,6 +15070,14 @@ namespace Foxit.iOS
 		// @optional -(void)onPagesInsertedAtRange:(NSRange)range;
 		[Export ("onPagesInsertedAtRange:")]
 		void OnPagesInsertedAtRange (NSRange range);
+
+		// @optional -(void)onPagesWillFlatten:(int)index;
+		[Export ("onPagesWillFlatten:")]
+		void OnPagesWillFlatten (int index);
+
+		// @optional -(void)onPagesFlattened:(int)index;
+		[Export ("onPagesFlattened:")]
+		void OnPagesFlattened (int index);
 	}
 
 	// @protocol ILayoutEventListener <NSObject>
@@ -15165,6 +15238,11 @@ namespace Foxit.iOS
 		[Abstract]
 		[Export ("deletePagesAtIndexes:")]
 		bool DeletePagesAtIndexes (NSNumber[] pageIndexes);
+
+		// @required -(BOOL)flattenPageAtIndex:(int)pageIndex display:(BOOL)display options:(FSPDFPageFlattenOptions)options;
+		[Abstract]
+		[Export ("flattenPageAtIndex:display:options:")]
+		bool FlattenPageAtIndex (int pageIndex, bool display, FSPDFPageFlattenOptions options);
 
 		// @required -(BOOL)rotatePagesAtIndexes:(NSArray<NSNumber *> * _Nonnull)pageIndexes clockwise:(BOOL)clockwise;
 		[Abstract]

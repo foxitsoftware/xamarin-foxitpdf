@@ -358,7 +358,8 @@ namespace Foxit.iOS.UIExtensions
 		PDFBookMark,
 		SmallBottomBarToolItem,
 		ImageAnnoteItem,
-		AttachmentsPanelAddItem
+		AttachmentsPanelAddItem,
+		PDFEsign
 	}
 
 	//[Native]

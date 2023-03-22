@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.Scanning.UI</id>
-    <version>2.1.0.1</version>
+    <version>2.2.0</version>
     <title>Foxit.iOS.Scanning.UI</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>
@@ -25,8 +25,8 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
     <language></language>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Foxit.iOS" version="8.2.0.1" />
-        <dependency id="Foxit.iOS.UIExtensions" version="8.2.0.1" />
+        <dependency id="Foxit.iOS" version="8.4" />
+        <dependency id="Foxit.iOS.UIExtensions" version="8.4" />
       </group>
     </dependencies>
     <frameworkAssemblies>

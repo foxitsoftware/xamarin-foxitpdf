@@ -13,17 +13,15 @@ pack_lib(){
     rm -rf $1/obj
     
     dotnet pack -c Release $1/$2.csproj -p:NuspecFile=${basepath}/nuspec/$2.nuspec
-    mv $1/bin/Release/$2*.nupkg ./nupkg/
-
+    mv $1/bin/Release/$2*.nupkg ${basepath}/nupkg/
 }
 
 PWD=`pwd`
 
 cd ${basepath}
 
-if [ ! -d "${basepath}/nupkg" ]; then
-    mkdir nupkg
-fi
+rm -rf ./nupkg/
+mkdir nupkg
 
 zip_frameworks FoxitRDK.xcframework
 

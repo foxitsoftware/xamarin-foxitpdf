@@ -4,7 +4,7 @@
     <Target Name="_FoxitUIScanningResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
         
         <ItemGroup>
-            <NativeReference Include="..\..\libs\FoxitUIScanning.framework" Condition="Exists('..\..\libs\FoxitUIScanning.framework')" >
+            <NativeReference Include="..\..\libs\FoxitPDFScanUI.framework" Condition="Exists('..\..\libs\FoxitPDFScanUI.framework')" >
                 <Kind>Framework</Kind>
                 <SmartLink>False</SmartLink>
             </NativeReference>

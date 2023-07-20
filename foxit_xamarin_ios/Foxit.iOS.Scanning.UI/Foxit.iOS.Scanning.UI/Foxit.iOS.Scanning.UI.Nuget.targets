@@ -2,24 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-      <_FoxitUIScanningExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitUIScanningExtract\</_FoxitUIScanningExpandNativeReferencesPath>
+      <_FoxitPDFScanUIExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
     </PropertyGroup>
 
-    <Target Name="_FoxitUIScanningResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
-        <RemoveDir Directories="$(_FoxitUIScanningExpandNativeReferencesPath)" />
-        <MakeDir Directories="$(_FoxitUIScanningExpandNativeReferencesPath)" />
+    <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+        <RemoveDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
+        <MakeDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
         
-        <Exec Command ="unzip -d $(_FoxitUIScanningExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\FoxitUIScanning.framework.zip" />
+        <Exec Command ="unzip -d $(_FoxitPDFScanUIExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\FoxitPDFScanUI.framework.zip" />
 
         <ItemGroup>
-            <NativeReference Include="$(_FoxitUIScanningExpandNativeReferencesPath)\FoxitUIScanning.framework" >
+            <NativeReference Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.framework" >
                 <Kind>Framework</Kind>
                 <SmartLink>False</SmartLink>
             </NativeReference>
         </ItemGroup>
 
         <ItemGroup>
-            <FileWrites Include="$(_FoxitUIScanningExpandNativeReferencesPath)\**" />
+            <FileWrites Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\**" />
         </ItemGroup>
     </Target>
 </Project>

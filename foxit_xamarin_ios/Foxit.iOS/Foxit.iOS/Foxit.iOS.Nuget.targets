@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+      <_FoxitRDKExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitRDKExtract\</_FoxitRDKExpandNativeReferencesPath>
+    </PropertyGroup>
+
+    <Target Name="_FoxitRDKResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+        <PropertyGroup>
+            <_FoxitRDKXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'False'">ios-arm64</_FoxitRDKXCFArch>
+            <_FoxitRDKXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'True'">ios-x86_64-simulator</_FoxitRDKXCFArch>
+            <_FoxitRDKXCFArch Condition="'$(_PlatformName)' == 'MacCatalyst'">ios-x86_64-maccatalyst</_FoxitRDKXCFArch>
+        </PropertyGroup>
+        <RemoveDir Directories="$(_FoxitRDKExpandNativeReferencesPath)" />
+        <MakeDir Directories="$(_FoxitRDKExpandNativeReferencesPath)" />
+        
+        <Exec Command ="unzip -d $(_FoxitRDKExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\FoxitRDK.xcframework.zip" />
+
+        <ItemGroup>
+            <NativeReference Include="$(_FoxitRDKExpandNativeReferencesPath)\FoxitRDK.xcframework\$(_FoxitRDKXCFArch)\FoxitRDK.framework" >
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+
+        <ItemGroup>
+            <FileWrites Include="$(_FoxitRDKExpandNativeReferencesPath)\**" />
+        </ItemGroup>
+    </Target>
+</Project>

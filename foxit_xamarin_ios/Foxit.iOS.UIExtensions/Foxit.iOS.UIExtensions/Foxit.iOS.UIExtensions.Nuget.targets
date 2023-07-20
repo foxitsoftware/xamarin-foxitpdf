@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+      <_UIextensionsDynamicExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\UIextensionsDynamicExtract\</_UIextensionsDynamicExpandNativeReferencesPath>
+    </PropertyGroup>
+
+    <Target Name="_UIextensionsDynamicesolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+        <PropertyGroup>
+            <_UIextensionsDynamicXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'False'">ios-arm64</_UIextensionsDynamicXCFArch>
+            <_UIextensionsDynamicXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'True'">ios-x86_64-simulator</_UIextensionsDynamicXCFArch>
+            <_UIextensionsDynamicXCFArch Condition="'$(_PlatformName)' == 'MacCatalyst'">ios-x86_64-maccatalyst</_UIextensionsDynamicXCFArch>
+        </PropertyGroup>
+        <RemoveDir Directories="$(_UIextensionsDynamicExpandNativeReferencesPath)" />
+        <MakeDir Directories="$(_UIextensionsDynamicExpandNativeReferencesPath)" />
+        
+        <Exec Command ="unzip -d $(_UIextensionsDynamicExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\uiextensionsDynamic.xcframework.zip" />
+
+        <ItemGroup>
+            <NativeReference Include="$(_UIextensionsDynamicExpandNativeReferencesPath)\UIextensionsDynamic.xcframework\$(_UIextensionsDynamicXCFArch)\uiextensionsDynamic.framework" >
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+
+        <ItemGroup>
+            <FileWrites Include="$(_UIextensionsDynamicExpandNativeReferencesPath)\**" />
+        </ItemGroup>
+    </Target>
+</Project>

@@ -1,66 +1,68 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{C40E52D9-A835-47FD-855E-C1135E0E2F71}</ProjectGuid>
-    <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Foxit.iOS.Scanning.UI</RootNamespace>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Foxit.iOS.Scanning.UI</AssemblyName>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  	  <IsXamarinIOS>false</IsXamarinIOS>
+	  <IsXamarinIOS Condition="'$(TargetFramework)'=='xamarin.ios10'">true</IsXamarinIOS>
+
+      <_IsIOS>false</_IsIOS>
+      <_IsIOS Condition="$(IsXamarinIOS) or '$(TargetFramework)'=='net6.0-ios'">true</_IsIOS>
+
+      <_IsCatalyst>false</_IsCatalyst>
+      <_IsCatalyst Condition="$(_IsCatalyst) or '$(TargetFramework)'=='net6.0-maccatalyst'">true</_IsCatalyst>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  <PropertyGroup>
+      <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
+      <NoNFloatUsing Condition="$(IsXamarinIOS)">true</NoNFloatUsing>
+      <Nullable>enable</Nullable>
+      <ImplicitUsings>true</ImplicitUsings>
+      <IsBindingProject>true</IsBindingProject>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
+      <OutputType>Library</OutputType>
+      <SupportedOSPlatformVersion Condition="$(_IsIOS)">11.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion Condition="$(_IsCatalyst)">13.1</SupportedOSPlatformVersion>
+	  <TargetPlatformVersion Condition="$(_IsIOS)">11.0</TargetPlatformVersion>
+	  <TargetPlatformVersion Condition="$(_IsCatalyst)">13.1</TargetPlatformVersion>
+      <RootNamespace>Foxit.iOS.Scanning.UI</RootNamespace>
+      <AssemblyName>Foxit.iOS.Scanning.UI</AssemblyName>
+      <AssemblyVersion>2.2.0.1</AssemblyVersion>
+      <FileVersion>2.2.0.1</FileVersion>
+      <AssemblyInformationalVersion>2.2.0.1</AssemblyInformationalVersion>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  <PropertyGroup>
+      <PackageId>Foxit.iOS.Scanning.UI</PackageId>
+      <Title>Foxit.iOS.Scanning.UI</Title>
+      <Summary>C# binding for Foxit PDF iOS SDK Scanning UI</Summary>
+      <Description>Foxit PDF SDK provides high-performance libraries to help any software developer add robust PDF
+functionality to their enterprise, mobile and cloud applications across all platforms (includes Windows,
+Mac, Linux, Web, Android, iOS, and UWP), using the most popular development languages and
+environments.
+Application developers who use Foxit PDF SDK can leverage Foxit’s powerful, standard-compliant PDF
+technology to securely display, create, edit, annotate, format, organize, print, share, secure, search
+documents as well as to fill PDF forms. Additionally, Foxit PDF SDK includes a built-in, embeddable PDF
+Viewer, making the development process easier and faster. For more detailed information, please visit
+the website https://developers.foxitsoftware.com/pdf-sdk/</Description>
+      <Authors>Foxit Software Incorporated</Authors>
+      <Owners>Foxit Software Incorporated</Owners>
+      <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
+      <PackageProjectUrl>https://developers.foxitsoftware.com/pdf-sdk/ios/</PackageProjectUrl>
+      <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <PackageVersion>2.2.0.1</PackageVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="Xamarin.iOS" />
+
+  <Import Project="Foxit.iOS.Scanning.UI.Framework.targets" />
+
+  <ItemGroup Condition="$(IsXamarinIOS)">
+      <Compile Remove="ApiDefinition.cs" />
+      <Compile Remove="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+      <ObjcBindingApiDefinition Include="ApiDefinition.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+      <ObjcBindingCoreSource Include="Structs.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\Foxit.iOS\Foxit.iOS\Foxit.iOS.csproj" />
+    <ProjectReference Include="..\..\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingCoreSource Include="Structs.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Foxit.iOS\Foxit.iOS\Foxit.iOS.csproj">
-      <Project>{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}</Project>
-      <Name>Foxit.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions\Foxit.iOS.UIExtensions.csproj">
-      <Project>{F01A4156-B22E-4825-967F-AD9EC355E4EF}</Project>
-      <Name>Foxit.iOS.UIExtensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <NativeReference Include="..\..\libs\FoxitPDFScanUI.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

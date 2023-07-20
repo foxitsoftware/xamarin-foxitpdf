@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <Target Name="_UIextensionsDynamicesolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+        
+        <ItemGroup>
+            <NativeReference Include="..\..\libs\uiextensionsDynamic.xcframework" Condition="Exists('..\..\libs\uiextensionsDynamic.xcframework')" >
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+
+            <NativeReference Include="..\..\libs\uiextensionsDynamic.framework" Condition="Exists('..\..\libs\uiextensionsDynamic.framework') AND !Exists('..\..\libs\uiextensionsDynamic.xcframework')" >
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+    </Target>
+</Project>

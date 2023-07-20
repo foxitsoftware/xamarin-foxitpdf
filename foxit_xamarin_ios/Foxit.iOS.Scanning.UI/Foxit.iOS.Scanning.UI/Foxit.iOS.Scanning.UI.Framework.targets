@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <Target Name="_FoxitUIScanningResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+        
+        <ItemGroup>
+            <NativeReference Include="..\..\libs\FoxitUIScanning.framework" Condition="Exists('..\..\libs\FoxitUIScanning.framework')" >
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+    </Target>
+</Project>

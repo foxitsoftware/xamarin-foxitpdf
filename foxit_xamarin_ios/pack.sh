@@ -3,7 +3,7 @@ basepath=$(cd `dirname $0`; pwd)
 
 zip_frameworks(){
   cd ${basepath}/libs
-  zip -q -r $1.zip $1
+  zip -ry $1.zip $1
 }
 
 pack_lib(){

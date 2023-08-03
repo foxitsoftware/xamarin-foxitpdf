@@ -41,8 +41,10 @@
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.thumbnail.createpage']/class[@name='PageStyleAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar.drag.addtools']/class[@name='AddedToolsAdapter']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.modules.panel.outline']/class[@name='OutlineModule.MoveOutlineAdapter']" />
-
-
+	<remove-node path="/api/package[@name='com.foxit.uiextensions.modules.signature.appearance']/class[@name='SignatureOptionalAdapter']" />
+	<remove-node path="/api/package[@name='com.foxit.uiextensions.modules.signature.appearance']/class[@name='SignatureTitleAdapter']" />
+	<remove-node path="/api/package[@name='com.foxit.uiextensions.modules.signature.appearance']/class[@name='SignatureReasonAdapter']" />
+	
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog.sheetmenu']/class[@name='UISheetMenu']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog']/class[@name='UIPopupWindow']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.theme']/class[@name='IThemeConfig']" />

@@ -48,61 +48,6 @@
   <remove-node path="/api/package[@name='com.microsoft.identity.client']/interface[@name='ITokenShare']/method[@name='getMsaFamilyRefreshTokenWithMetadata']"/>
   <remove-node path="/api/package[@name='com.microsoft.identity.client']/interface[@name='ITokenShare']/method[@name='getOrgIdFamilyRefreshTokenWithMetadata']"/>
 
-   //CS0738,CS0102,CS0226
-  <attr path="/api/package[@name='com.microsoft.identity.client']/class[@name='PublicClientApplication']/method[@name='getMsaFamilyRefreshTokenWithMetadata' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
-        name="name">getPublicMsaFamilyRefreshTokenWithMetadata</attr>
-  <add-node path="/api/package[@name='com.microsoft.identity.client']/class[@name='PublicClientApplication']">
-   <method
-        abstract="false"
-        deprecated="not deprecated"
-        final="false"
-        name="getMsaFamilyRefreshTokenWithMetadata"
-        native="false"
-        return="com.microsoft.identity.common.adal.internal.tokensharing.ITokenShareResultInternal"
-        jni-return="Lcom/microsoft/identity/common/adal/internal/tokensharing/ITokenShareResultInternal;"
-        static="false"
-        synchronized="false"
-        visibility="public"
-        bridge="false"
-        synthetic="false"
-        jni-signature="(Ljava/lang/String;)Lcom/microsoft/identity/common/adal/internal/tokensharing/ITokenShareResultInternal;">
-        <parameter
-          name="p0"
-          type="java.lang.String"
-          jni-type="Ljava/lang/String;" />
-        <exception
-          name="java/lang/Exception"
-          type="java.lang.Exception"
-          type-generic-aware="java.lang.Exception" />
-      </method>
-    </add-node>
-    <attr path="/api/package[@name='com.microsoft.identity.client']/class[@name='PublicClientApplication']/method[@name='getOrgIdFamilyRefreshTokenWithMetadata' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
-          name="name">getPublicOrgIdFamilyRefreshTokenWithMetadata</attr>
-    <add-node path="/api/package[@name='com.microsoft.identity.client']/class[@name='PublicClientApplication']">
-      <method
-        abstract="false"
-        deprecated="not deprecated"
-        final="false"
-        name="getOrgIdFamilyRefreshTokenWithMetadata"
-        native="false"
-        return="com.microsoft.identity.common.adal.internal.tokensharing.ITokenShareResultInternal"
-        jni-return="Lcom/microsoft/identity/common/adal/internal/tokensharing/ITokenShareResultInternal;"
-        static="false"
-        synchronized="false"
-        visibility="public"
-        bridge="false"
-        synthetic="false"
-        jni-signature="(Ljava/lang/String;)Lcom/microsoft/identity/common/adal/internal/tokensharing/ITokenShareResultInternal;">
-        <parameter
-          name="p0"
-          type="java.lang.String"
-          jni-type="Ljava/lang/String;" />
-        <exception
-          name="java/lang/Exception"
-          type="java.lang.Exception"
-          type-generic-aware="java.lang.Exception" />
-      </method>
-    </add-node>
   <!--microsoft-identity-client-msal end-->
 
 

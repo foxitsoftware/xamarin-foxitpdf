@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cropper", "Cropper\Cropper.csproj", "{56CA4DBD-6301-40E4-B60A-55522674A0C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cropper", "Cropper\Cropper.csproj", "{3E056179-AF4C-4A4F-907C-CF6701D9B1D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56CA4DBD-6301-40E4-B60A-55522674A0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E056179-AF4C-4A4F-907C-CF6701D9B1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E056179-AF4C-4A4F-907C-CF6701D9B1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E056179-AF4C-4A4F-907C-CF6701D9B1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E056179-AF4C-4A4F-907C-CF6701D9B1D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {130294D7-80E8-4D77-B447-10BA2B7594E5}
+		SolutionGuid = {31513048-CB8E-4787-BF0C-FD0F120626ED}
 	EndGlobalSection
 EndGlobal

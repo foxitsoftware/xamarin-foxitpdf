@@ -1,49 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EB2477D4-7E58-4858-A3CE-34B13F8A2C1E}</ProjectGuid>
-    <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TemplateGuid>{77efb91c-a7e9-4b0e-a7c5-31eeec3c6d46}</TemplateGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FoxitPDFScan_UI</RootNamespace>
-    <AssemblyName>FoxitPDFScan_UI</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>True</Deterministic>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworks>monoandroid12.0;net6.0-android</TargetFrameworks>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <AssemblyName>Foxit.Android.Scanning.UI</AssemblyName>
+    <NoWarn>CS0108;CS0114;CS0618;CS8764;CS8766;BG8A00;BG8604;CS8800;BG8801;BG8C00;BG8401</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>portable</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <PackageId>Foxit.Android.Scanning.UI</PackageId>
+    <PackageVersion>3.0.0</PackageVersion>
+    <Title>Foxit.Android.Scanning.UI</Title>
+    <Authors>Foxit Software Incorporated</Authors>
+    <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+    <PackageProjectUrl>https://developers.foxitsoftware.com/pdf-sdk/android/</PackageProjectUrl>
+    <Description>The UI Library for Foxit Mobile Scanning for Android provides Android Activities that implement the UI required for the SDK functionality. This library is optional and a developer may choose to build their own UI when using Foxit Mobile Scanning.</Description>
+    <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
+    <PackageTags>Foxit PDF Scan Scanning UI</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Android" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="LICENSE.txt" Pack="true" PackagePath=""/>
   </ItemGroup>
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
@@ -78,12 +61,4 @@
       <Name>FoxitUIExtensions</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

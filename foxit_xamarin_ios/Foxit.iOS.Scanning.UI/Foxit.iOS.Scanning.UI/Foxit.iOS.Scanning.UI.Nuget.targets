@@ -4,12 +4,16 @@
     <PropertyGroup>
       <_FoxitPDFScanUIExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
     </PropertyGroup>
+    <PropertyGroup>
+      <_LinkerCachesPath>obj\$(Configuration)\$(TargetFramework)\$(RuntimeIdentifier)\linker-cache\</_LinkerCachesPath>
+    </PropertyGroup>
 
     <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
         <RemoveDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
         <MakeDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
         
         <Exec Command ="unzip -d $(_FoxitPDFScanUIExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\FoxitPDFScanUI.framework.zip" />
+        <Exec Command ="cp -rf $(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.framework $(_LinkerCachesPath)" />
 
         <ItemGroup>
             <NativeReference Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.framework" >

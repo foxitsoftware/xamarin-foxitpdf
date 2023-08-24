@@ -2,13 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-      <_FoxitPDFScanUIExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
-    </PropertyGroup>
-    <PropertyGroup>
-      <_LinkerCachesPath>obj\$(Configuration)\$(TargetFramework)\$(RuntimeIdentifier)\linker-cache\</_LinkerCachesPath>
+      <_LinkerCachesPath Condition="$(TargetFramework.Contains('net'))">obj\$(Configuration)\$(TargetFramework)\$(RuntimeIdentifier)\linker-cache\</_LinkerCachesPath>
+
+      <_FoxitPDFScanUIExpandNativeReferencesPath Condition="$(TargetFramework.Contains('net'))">obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
     </PropertyGroup>
 
-    <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+    <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' and $(TargetFramework.Contains('net'))">
         <RemoveDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
         <MakeDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
         

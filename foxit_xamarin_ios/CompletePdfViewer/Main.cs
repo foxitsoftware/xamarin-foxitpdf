@@ -12,7 +12,7 @@
 
 using UIKit;
 
-namespace FoxitRDKDemo
+namespace CompletePdfViewer
 {
     public class Application
     {

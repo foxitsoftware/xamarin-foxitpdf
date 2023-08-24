@@ -17,10 +17,14 @@ using Foundation;
 using CoreFoundation;
 using Foxit.iOS;
 using Foxit.iOS.UIExtensions;
-using Foxit.iOS.Scanning.UI;
+
+#if !MACCATALYST
+    using Foxit.iOS.Scanning.UI;
+#endif
+
 using ObjCRuntime;
 
-namespace FoxitRDKDemo
+namespace CompletePdfViewer
 {
     public partial class ViewController : UIViewController, IIDocEventListener, IFSFileSelectDelegate
     {
@@ -29,10 +33,12 @@ namespace FoxitRDKDemo
         private UIExtensionsManager extensionsMgr;
         private UIViewController pdfViewController;
 
+#if !NET
         protected ViewController(IntPtr handle) : base(handle)
         {
             // Note: this .ctor should not contain any initialization logic.
         }
+#endif
 
         public override void ViewDidLoad()
         {
@@ -81,7 +87,7 @@ namespace FoxitRDKDemo
 
             this.pdfViewControl.ExtensionsManager = extensionsMgr;
 
-
+#if !MACCATALYST
             PDFScanManager.InitializeScanner(0, 0);
             PDFScanManager.InitializeCompression(0, 0);
 
@@ -94,6 +100,7 @@ namespace FoxitRDKDemo
             button.HeightAnchor.ConstraintEqualTo(60).Active = true;
             button.BottomAnchor.ConstraintEqualTo(fileListViewController.View.SafeAreaLayoutGuide.BottomAnchor, -15).Active = true;
             button.RightAnchor.ConstraintEqualTo(fileListViewController.View.RightAnchor, -15).Active = true;
+
         }
         public void openScan(object sender, EventArgs e)
         {
@@ -111,6 +118,7 @@ namespace FoxitRDKDemo
                     DidFileSelected(savePath);
                 }
             };
+#endif
         }
 
         public override void DidReceiveMemoryWarning()

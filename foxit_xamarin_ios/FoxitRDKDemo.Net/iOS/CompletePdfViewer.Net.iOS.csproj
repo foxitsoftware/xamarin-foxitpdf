@@ -1,0 +1,105 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\libs\rdk_key.txt">
+      <Link>Resources\rdk_key.txt</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\libs\rdk_sn.txt">
+      <Link>Resources\rdk_sn.txt</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\CompletePdfViewer\Resources\uiextensions_config.json">
+      <Link>Resources\uiextensions_config.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\test_files\complete_pdf_viewer_guide_ios.pdf">
+      <Link>Resources\complete_pdf_viewer_guide_ios.pdf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\test_files\Sample.pdf">
+      <Link>Resources\Sample.pdf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\CompletePdfViewer\LaunchScreen.storyboard">
+      <Link>LaunchScreen.storyboard</Link>
+    </BundleResource>
+        <BundleResource Include="..\..\CompletePdfViewer\Main.storyboard">
+      <Link>Main.storyboard</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="packages.config" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\CompletePdfViewer\Main.cs" />
+    <Compile Include="..\..\CompletePdfViewer\AppDelegate.cs" />
+    <Compile Include="..\..\CompletePdfViewer\ViewController.cs" />
+    <Compile Include="..\..\CompletePdfViewer\ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\Contents.json">
+      <Link>Assets.xcassets\Contents.json</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\1024.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\1024.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-180x180.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-180x180.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58-1.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58-1.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-152x152.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-152x152.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-29x29.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-29x29.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-120x120.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-120x120.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-76x76.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-76x76.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-120x120-1.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-120x120-1.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-40x40.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-40x40.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-87x87.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-87x87.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Link>Assets.xcassets\AppIcon.appiconset\Contents.json</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-167x167.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-167x167.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80-1.jpg">
+      <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80-1.jpg</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\scan.imageset\Contents.json">
+      <Link>Assets.xcassets\scan.imageset\Contents.json</Link>
+    </ImageAsset>
+    <ImageAsset Include="..\..\CompletePdfViewer\Assets.xcassets\scan.imageset\scan.pdf">
+      <Link>Assets.xcassets\scan.imageset\scan.pdf</Link>
+    </ImageAsset>
+  </ItemGroup>
+</Project>

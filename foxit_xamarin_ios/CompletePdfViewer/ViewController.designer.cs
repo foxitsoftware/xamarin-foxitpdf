@@ -5,7 +5,7 @@
 //
 using Foundation;
 
-namespace FoxitRDKDemo
+namespace CompletePdfViewer
 {
     [Register("ViewController")]
     partial class ViewController

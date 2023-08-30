@@ -45,10 +45,6 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
       <frameworkAssembly assemblyName="System.Xml" targetFramework="Xamarin.iOS1.0" />
       <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
     </frameworkAssemblies>
-    <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
-      <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
-    </frameworkAssemblies>
   </metadata>
   <files>
       <file src="../LICENSE.txt" target="" />

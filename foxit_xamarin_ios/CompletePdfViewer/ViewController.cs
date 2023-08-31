@@ -135,7 +135,7 @@ namespace CompletePdfViewer
 
         public override bool ShouldAutorotate()
         {
-            return !this.extensionsMgr.IsScreenLocked;
+            return this.extensionsMgr == null ? base.ShouldAutorotate() : !this.extensionsMgr.IsScreenLocked;
         }
 
         public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.UIExtensions</id>
-    <version>8.4.0.1</version>
+    <version>8.4.1</version>
     <title>Foxit.iOS.UIExtensions</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>
@@ -25,15 +25,15 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
     <language></language>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Foxit.iOS" version="8.4.0.1" />
+        <dependency id="Foxit.iOS" version="8.4.1" />
       </group>
       <group targetFramework="net6.0-ios11.0">
         <dependency id="System.Runtime.InteropServices.NFloat.Internal" version="6.0.1" exclude="Build,Analyzers" />
-        <dependency id="Foxit.iOS" version="8.4.0.1" />
+        <dependency id="Foxit.iOS" version="8.4.1" />
       </group>
       <group targetFramework="net6.0-maccatalyst13.1">
         <dependency id="System.Runtime.InteropServices.NFloat.Internal" version="6.0.1" exclude="Build,Analyzers" />
-        <dependency id="Foxit.iOS" version="8.4.0.1" />
+        <dependency id="Foxit.iOS" version="8.4.1" />
       </group>
     </dependencies>
     <frameworkAssemblies>

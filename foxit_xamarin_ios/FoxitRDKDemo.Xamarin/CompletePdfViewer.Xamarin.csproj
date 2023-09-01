@@ -79,6 +79,7 @@
         <None Include="Entitlements.plist" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="SceneDelegate.cs" />
         <Compile Include="..\CompletePdfViewer\Main.cs" />
         <Compile Include="..\CompletePdfViewer\AppDelegate.cs" />
         <Compile Include="..\CompletePdfViewer\ViewController.cs" />

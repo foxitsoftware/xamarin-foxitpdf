@@ -27,7 +27,7 @@ namespace Foxit.iOS.UIExtensions
 		double uiextensionsDynamicVersionNumber { get; }
 
 		/*
-		// extern const unsigned char [] uiextensionsDynamicVersionString;
+		// extern const unsigned char[] uiextensionsDynamicVersionString;
 		[Field ("uiextensionsDynamicVersionString", "__Internal")]
 		byte[] uiextensionsDynamicVersionString { get; }
 		*/
@@ -59,6 +59,11 @@ namespace Foxit.iOS.UIExtensions
 		// @property (nonatomic, strong) UIToolbar * _Nonnull topToolbar;
 		[Export ("topToolbar", ArgumentSemantic.Strong)]
 		UIToolbar TopToolbar { get; set; }
+
+		// -(instancetype)initWithWindowScene:(UIWindowScene * _Nullable)windowScene __attribute__((availability(ios, introduced=13.0)));
+		[iOS (13,0)]
+		[Export ("initWithWindowScene:")]
+		IntPtr Constructor ([NullAllowed] UIWindowScene windowScene);
 	}
 
 	// @interface TabItem : NSObject
@@ -75,7 +80,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPanelSpec <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IPanelSpec
 	{
@@ -149,7 +154,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPanelChangedListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IPanelChangedListener
 	{
@@ -202,7 +207,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAppLifecycleListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IAppLifecycleListener
 	{
@@ -295,6 +300,10 @@ namespace Foxit.iOS.UIExtensions
 		// @optional -(void)settingBarDidChangeSize:(FSSettingBar *)settingBar;
 		[Export ("settingBarDidChangeSize:")]
 		void SettingBarDidChangeSize (FSSettingBar settingBar);
+
+		// @optional -(void)settingBarDidChangePageEdge:(FSSettingBar *)settingBar;
+		[Export ("settingBarDidChangePageEdge:")]
+		void SettingBarDidChangePageEdge (FSSettingBar settingBar);
 	}
 
 	// @interface FSSettingBar : NSObject <IAppLifecycleListener>
@@ -315,6 +324,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (copy, nonatomic) void (^continueItemStateCallback)(BOOL);
 		[Export ("continueItemStateCallback", ArgumentSemantic.Copy)]
 		Action<bool> ContinueItemStateCallback { get; set; }
+
+		// @property (copy, nonatomic) void (^pageRTLItemStateCallback)(BOOL);
+		[Export ("pageRTLItemStateCallback", ArgumentSemantic.Copy)]
+		Action<bool> PageRTLItemStateCallback { get; set; }
 
 		// -(NSMutableDictionary *)getItemHiddenStatus;
 		[Export ("getItemHiddenStatus")]
@@ -612,6 +625,10 @@ namespace Foxit.iOS.UIExtensions
 		[Field ("TAG_ITEM_SUMARIZECOMMENT", "__Internal")]
 		int TAG_ITEM_SUMARIZECOMMENT { get; }
 
+		// extern const int TAG_ITEM_EXPORTHIGHLIGHTEDTEXT;
+		[Field ("TAG_ITEM_EXPORTHIGHLIGHTEDTEXT", "__Internal")]
+		int TAG_ITEM_EXPORTHIGHLIGHTEDTEXT { get; }
+
 		// extern const int TAG_ITEM_RESETFORM;
 		[Field ("TAG_ITEM_RESETFORM", "__Internal")]
 		int TAG_ITEM_RESETFORM { get; }
@@ -646,7 +663,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IMoreMenuViewListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IMoreMenuViewListener
 	{
@@ -660,7 +677,7 @@ namespace Foxit.iOS.UIExtensions
 	delegate void CancelCallback ();
 
 	// @protocol MoreItemActionProtocol <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface MoreItemActionProtocol
 	{
@@ -671,7 +688,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol MoreItemProtocol <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface MoreItemProtocol
 	{
@@ -1334,7 +1351,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol FSMenuView <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface FSMenuView
 	{
@@ -1426,6 +1443,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("width")]
 		nfloat Width { get; set; }
 
+		// @property (readonly, nonatomic, strong) UIView * _Nullable customView;
+		[NullAllowed, Export ("customView", ArgumentSemantic.Strong)]
+		UIView CustomView { get; }
+
 		// -(instancetype _Nonnull)initWithCustomView:(UIView * _Nonnull)customView;
 		[Export ("initWithCustomView:")]
 		IntPtr Constructor (UIView customView);
@@ -1505,6 +1526,28 @@ namespace Foxit.iOS.UIExtensions
 		FSMainTopbarToolTagItem ItemWithToolTag (FSMainTopbarToolTag toolTag, [NullAllowed] FSReadToolbarItem[] readToolbarItems);
 	}
 
+	// @protocol IFSMainTopbarEventListener <NSObject>
+    [Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface IFSMainTopbarEventListener
+	{
+		// @optional -(void)didShowTagTabPopuper;
+		[Export ("didShowTagTabPopuper")]
+		void DidShowTagTabPopuper ();
+
+		// @optional -(void)didDismissTagTabPopuper;
+		[Export ("didDismissTagTabPopuper")]
+		void DidDismissTagTabPopuper ();
+
+		// @optional -(void)didSetCurrentTagItem:(FSMainTopbarToolTagItem * _Nonnull)curTagItem lastTagItem:(FSMainTopbarToolTagItem * _Nonnull)lastTagItem;
+		[Export ("didSetCurrentTagItem:lastTagItem:")]
+		void DidSetCurrentTagItem (FSMainTopbarToolTagItem curTagItem, FSMainTopbarToolTagItem lastTagItem);
+
+		// @optional -(void)onSubitemViewChanged:(FSTopbarSubitemContentViewPosition)position;
+		[Export ("onSubitemViewChanged:")]
+		void OnSubitemViewChanged (FSTopbarSubitemContentViewPosition position);
+	}
+
 	// @interface FSMainTopbar : FSMainToolbar
 	[BaseType (typeof(FSMainToolbar))]
 	interface FSMainTopbar
@@ -1512,6 +1555,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (copy, nonatomic) NSArray<FSMainTopbarToolTagItem *> * _Nullable tagItems;
 		[NullAllowed, Export ("tagItems", ArgumentSemantic.Copy)]
 		FSMainTopbarToolTagItem[] TagItems { get; set; }
+
+		// @property (copy, nonatomic) NSArray<FSMainTopbarToolTagItem *> * _Nullable currentNewTagItems;
+		[NullAllowed, Export ("currentNewTagItems", ArgumentSemantic.Copy)]
+		FSMainTopbarToolTagItem[] CurrentNewTagItems { get; set; }
 
 		// @property (readonly, nonatomic, strong) FSMainTopbarToolTagItem * _Nonnull currentTagItem;
 		[Export ("currentTagItem", ArgumentSemantic.Strong)]
@@ -1536,6 +1583,14 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)resetCurrentTagItem;
 		[Export ("resetCurrentTagItem")]
 		void ResetCurrentTagItem ();
+
+		// -(void)registerEventListener:(id<IFSMainTopbarEventListener> _Nonnull)listener;
+		[Export ("registerEventListener:")]
+		void RegisterEventListener (NSObject listener);
+
+		// -(void)unregisterEventListener:(id<IFSMainTopbarEventListener> _Nonnull)listener;
+		[Export ("unregisterEventListener:")]
+		void UnregisterEventListener (NSObject listener);
 	}
 
 	// @interface FSMainBottombar : FSMainToolbar
@@ -1592,7 +1647,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IModule <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IModule
 	{
@@ -1625,7 +1680,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAnnotEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IAnnotEventListener
 	{
@@ -1653,6 +1708,14 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("onAnnotDeselected:annot:")]
 		void OnAnnotDeselected (FSPDFPage page, FSAnnot annot);
 
+		// @optional -(void)onAnnotWillFlatten:(FSPDFPage * _Nonnull)page annot:(FSAnnot * _Nonnull)annot;
+		[Export ("onAnnotWillFlatten:annot:")]
+		void OnAnnotWillFlatten (FSPDFPage page, FSAnnot annot);
+
+		// @optional -(void)onAnnotFlattened:(FSPDFPage * _Nonnull)page annot:(FSAnnot * _Nonnull)annot;
+		[Export ("onAnnotFlattened:annot:")]
+		void OnAnnotFlattened (FSPDFPage page, FSAnnot annot);
+
 		// @optional -(void)onAnnotsAdded:(NSArray<FSAnnot *> * _Nonnull)annots;
 		[Export ("onAnnotsAdded:")]
 		void OnAnnotsAdded (FSAnnot[] annots);
@@ -1663,7 +1726,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IToolEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IToolEventListener
 	{
@@ -1674,7 +1737,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ISearchEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface ISearchEventListener
 	{
@@ -1688,7 +1751,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IToolHandler <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IToolHandler
 	{
@@ -1769,7 +1832,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IAnnotHandler <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IAnnotHandler
 	{
@@ -1811,6 +1874,10 @@ namespace Foxit.iOS.UIExtensions
 		// @optional -(BOOL)removeAnnot:(FSAnnot * _Nonnull)annot addUndo:(BOOL)addUndo;
 		[Export ("removeAnnot:addUndo:")]
 		bool RemoveAnnot (FSAnnot annot, bool addUndo);
+
+		// @optional -(BOOL)flattenAnnot:(FSAnnot * _Nonnull)annot;
+		[Export ("flattenAnnot:")]
+		bool FlattenAnnot (FSAnnot annot);
 
 		// @optional -(BOOL)onPageViewLongPress:(int)pageIndex recognizer:(UILongPressGestureRecognizer * _Nonnull)recognizer annot:(FSAnnot * _Nullable)annot;
 		[Export ("onPageViewLongPress:recognizer:annot:")]
@@ -1900,7 +1967,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IFullScreenListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IFullScreenListener
 	{
@@ -1911,7 +1978,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IPageNumberListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IPageNumberListener
 	{
@@ -1922,7 +1989,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ILinkEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface ILinkEventListener
 	{
@@ -1932,7 +1999,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IDocModifiedEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IDocModifiedEventListener
 	{
@@ -1942,7 +2009,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol ISignatureEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface ISignatureEventListener
 	{
@@ -1960,7 +2027,7 @@ namespace Foxit.iOS.UIExtensions
 	}
 
 	// @protocol IUIInteractionEventListener <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface IUIInteractionEventListener
 	{
@@ -2176,6 +2243,15 @@ namespace Foxit.iOS.UIExtensions
 		[NullAllowed, Export ("extFileOpenDelegate", ArgumentSemantic.Weak)]
 		NSObject WeakExtFileOpenDelegate { get; set; }
 
+		// @property (assign, nonatomic) BOOL disableFingerWhenLinkApplePencil;
+		[Export ("disableFingerWhenLinkApplePencil")]
+		bool DisableFingerWhenLinkApplePencil { get; set; }
+
+		// @property (readonly, nonatomic, weak) API_AVAILABLE(ios(13.0)) UIWindowScene * windowScene __attribute__((availability(ios, introduced=13.0)));
+		[iOS (13, 0)]
+		[Export ("windowScene", ArgumentSemantic.Weak)]
+		UIWindowScene WindowScene { get; }
+
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]
 		IntPtr Constructor (FSPDFViewCtrl viewctrl);
@@ -2337,15 +2413,15 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("resumeAutoFullScreen")]
 		void ResumeAutoFullScreen ();
 
-		// +(void)printDoc:(FSPDFDoc * _Nonnull)doc animated:(BOOL)animated jobName:(NSString * _Nullable)jobName delegate:(id<UIPrintInteractionControllerDelegate> _Nullable)delegate completionHandler:(UIPrintInteractionCompletionHandler _Nullable)completion;
+		// +(void)printDoc:(FSPDFDoc * _Nonnull)doc animated:(BOOL)animated inWindow:(UIWindow * _Nonnull)window jobName:(NSString * _Nullable)jobName delegate:(id<UIPrintInteractionControllerDelegate> _Nullable)delegate completionHandler:(UIPrintInteractionCompletionHandler _Nullable)completion;
 		[Static]
-		[Export ("printDoc:animated:jobName:delegate:completionHandler:")]
-		void PrintDoc (FSPDFDoc doc, bool animated, [NullAllowed] string jobName, [NullAllowed] UIPrintInteractionControllerDelegate @delegate, [NullAllowed] UIPrintInteractionCompletionHandler completion);
+		[Export ("printDoc:animated:inWindow:jobName:delegate:completionHandler:")]
+		void PrintDoc (FSPDFDoc doc, bool animated, UIWindow window, [NullAllowed] string jobName, [NullAllowed] UIPrintInteractionControllerDelegate @delegate, [NullAllowed] UIPrintInteractionCompletionHandler completion);
 
-		// +(void)printDoc:(FSPDFDoc * _Nonnull)doc fromRect:(CGRect)rect inView:(UIView * _Nonnull)view animated:(BOOL)animated jobName:(NSString * _Nullable)jobName delegate:(id<UIPrintInteractionControllerDelegate> _Nullable)delegate completionHandler:(UIPrintInteractionCompletionHandler _Nullable)completion;
+		// +(void)printDoc:(FSPDFDoc * _Nonnull)doc fromRect:(CGRect)rect inView:(UIView * _Nonnull)view animated:(BOOL)animated inWindow:(UIWindow * _Nonnull)window jobName:(NSString * _Nullable)jobName delegate:(id<UIPrintInteractionControllerDelegate> _Nullable)delegate completionHandler:(UIPrintInteractionCompletionHandler _Nullable)completion;
 		[Static]
-		[Export ("printDoc:fromRect:inView:animated:jobName:delegate:completionHandler:")]
-		void PrintDoc (FSPDFDoc doc, CGRect rect, UIView view, bool animated, [NullAllowed] string jobName, [NullAllowed] UIPrintInteractionControllerDelegate @delegate, [NullAllowed] UIPrintInteractionCompletionHandler completion);
+		[Export ("printDoc:fromRect:inView:animated:inWindow:jobName:delegate:completionHandler:")]
+		void PrintDoc (FSPDFDoc doc, CGRect rect, UIView view, bool animated, UIWindow window, [NullAllowed] string jobName, [NullAllowed] UIPrintInteractionControllerDelegate @delegate, [NullAllowed] UIPrintInteractionCompletionHandler completion);
 
 		// -(FSReadToolSettings * _Nonnull)getReadToolSettingsForType:(FSReadToolSettingsType)settingsType;
 		[Export ("getReadToolSettingsForType:")]
@@ -2380,6 +2456,23 @@ namespace Foxit.iOS.UIExtensions
 		// -(void)enableModification:(BOOL)isEnabled;
 		[Export ("enableModification:")]
 		void EnableModification (bool isEnabled);
+	}
+
+	// @interface SupportsMultipleScenes (UIExtensionsManager) <FSPDFMultipleScenes>
+	[Category]
+	[BaseType (typeof(UIExtensionsManager))]
+	interface UIExtensionsManager_SupportsMultipleScenes 
+	{
+		// @property (nonatomic, weak, class) UIExtensionsManager * _Nullable currentExtManager;
+		[Static]
+		[NullAllowed, Export ("currentExtManager", ArgumentSemantic.Weak)]
+		UIExtensionsManager CurrentExtManager { get; set; }
+
+		// +(NSSet<NSObject> * _Nonnull)openedExtensionsManagers;
+		[Static]
+		[Export ("openedExtensionsManagers")]
+		//[Verify (MethodToProperty)]
+		NSSet<NSObject> OpenedExtensionsManagers { get; }
 	}
 
 	// @interface SignatureModule : NSObject <IDocEventListener, IToolEventListener>

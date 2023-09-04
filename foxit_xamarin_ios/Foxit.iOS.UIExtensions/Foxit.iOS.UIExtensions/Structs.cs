@@ -35,6 +35,7 @@ namespace Foxit.iOS.UIExtensions
 		Pagecolor,
 		Nightmode,
 		Continuous,
+		Pagertl,
 		Fitpage,
 		Fitwidth,
 		Reflow,
@@ -70,6 +71,7 @@ namespace Foxit.iOS.UIExtensions
 		ViewAutoFlip,
 		ViewRotateView,
 		ViewPanZoom,
+		ViewPageRTL,
 		Thumbnial,
 		Bookmark,
 		Share,
@@ -141,6 +143,7 @@ namespace Foxit.iOS.UIExtensions
 		MoreCommentFieldImortComments,
 		MoreCommentFieldExportComments,
 		MoreCommentFieldSummarizeComments,
+		MoreCommentFieldExportHighlightedText,
 		MoreCommentFieldResetFormFields,
 		MoreCommentFieldImportFormFields,
 		MoreCommentFieldExportFormFields,
@@ -355,7 +358,8 @@ namespace Foxit.iOS.UIExtensions
 		PDFBookMark,
 		SmallBottomBarToolItem,
 		ImageAnnoteItem,
-		AttachmentsPanelAddItem
+		AttachmentsPanelAddItem,
+		PDFEsign
 	}
 
 	//[Native]

@@ -29,7 +29,7 @@ namespace Foxit.iOS.Scanning.UI
 		double FoxitPDFScanUIVersionNumber { get; }
 
 		/*
-		// extern const unsigned char [] FoxitPDFScanUIVersionString;
+		// extern const unsigned char[] FoxitPDFScanUIVersionString;
 		[Field ("FoxitPDFScanUIVersionString", "__Internal")]
 		byte[] FoxitPDFScanUIVersionString { get; }
 		*/
@@ -98,7 +98,7 @@ namespace Foxit.iOS.Scanning.UI
 	}
 
 	// @protocol PDFScanMenuView <NSObject>
-	[Protocol, Model]
+    [Protocol, Model]
 	[BaseType (typeof(NSObject))]
 	interface PDFScanMenuView
 	{

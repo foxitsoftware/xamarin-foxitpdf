@@ -48,8 +48,8 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\rms\microsoft-identity-client-msal-2.1.0.aar">
-      <Link>Jars\microsoft-identity-client-msal-2.1.0.aar</Link>
+    <LibraryProjectZip Include="..\..\libs\rms\microsoft-identity-client-msal-2.2.3.aar">
+      <Link>Jars\microsoft-identity-client-msal-2.2.3.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>
   <ItemGroup>

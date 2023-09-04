@@ -154,9 +154,9 @@ def comment_useless_codes(srcPath):
             ],
         r'(?<=void SetExceptionLogger \(\[NullAllowed\] FSExceptionLoggerDelegate logger\);).+?(?<={)',
         r'(?<=bool ReloadXFADoc \(FSDocProviderCallbackPageViewEventType page_view_event_type, NSNumber\[\] pageIndexes\);).+?(?<={)',
-        r'(?=// extern const unsigned char \[\] uiextensionsDynamicVersionString).+?(?<=uiextensionsDynamicVersionString { get; })',
+        r'(?=// extern const unsigned char\[\] uiextensionsDynamicVersionString).+?(?<=uiextensionsDynamicVersionString { get; })',
         r'(?=// @property \(nonatomic, strong\) BlockButton \* _Nonnull signBtn;).+?(?<=BlockButton SignBtn { get; set; })',
-        r'(?=// extern const unsigned char \[\] FoxitPDFScanUIVersionString).+?(?<=FoxitPDFScanUIVersionString { get; })',
+        r'(?=// extern const unsigned char\[\] FoxitPDFScanUIVersionString).+?(?<=FoxitPDFScanUIVersionString { get; })',
         r'(?<=void UpdateBtnLayout \(\);\n	}).+?(?<=\[Static\])',
         ]
 
@@ -199,12 +199,14 @@ def replace_api_definitions(srcPath,destPath,foxitrdk = False):
     replace_file_string(destPath,'int\*','int')
     replace_file_string(destPath,'float\*','float')
     replace_file_string(destPath,'NSURL','NSUrl')
+    replace_file_string(destPath,'NativeHandle','IntPtr')
     replace_file_string(destPath,'unsafe IntPtr Constructor','IntPtr Constructor')
     replace_file_string(destPath,'dispatch_block_t', 'Action')
     replace_file_string(destPath,'NSData Size \(ulong offset, ulong size\)', 'NSData readBlock (ulong offset, ulong size)')
     replace_file_string(destPath,'void SettingBar \(SettingBar settingBar, bool isNightMode\)','void SettingBarSetNightMode (SettingBar settingBar, bool isNightMode)')
     replace_file_string(destPath,'FSPDFUIExtensionsManager ExtensionsManager', 'NSObject ExtensionsManager')
     replace_file_string(destPath,r'(?=NSMutableArray\<).+?(?<=\>)','NSMutableArray')
+    replace_file_string(destPath,r'(?=NSSet\<).+?(?<=\>)','NSSet<NSObject>')
     replace_file_string(destPath,'void SettingBar \(FSSettingBar settingBar, bool isLockScreen\)','void SettingBarLockScreen (FSSettingBar settingBar, bool isLockScreen)')
     replace_file_string(destPath,'void SettingBar \(FSSettingBar settingBar, bool isNightMode\)','void SettingBarNightMode (FSSettingBar settingBar, bool isNightMode)')
     replace_file_string(destPath,'''		// -(void)insertMenuItemGroup:(FSMenuItemGroup * _Nonnull)group beforeGroup:(FSMenuItemGroup * _Nonnull)siblingGroup forMenuViewType:(FSMenuViewType)menuViewType;
@@ -242,12 +244,13 @@ def replace_api_definitions(srcPath,destPath,foxitrdk = False):
   the generated interface. If consumers are not supposed to implement this
   protocol, then [Model] is redundant and will generate code that will never
   be used.
-*/[Protocol]
-''','	[Protocol, Model]\n', True)
+*/''','    ', True)
+    replace_file_string(destPath,'\[Protocol\]','[Protocol, Model]', True)
     replace_file_string(destPath,'using FoxitRDK;\n','')
     replace_file_string(destPath,'using uiextensionsDynamic;\n','')
     replace_file_string(destPath,'using FoxitPDFScanUI;\n','')
     replace_file_string(destPath,'namespace Foxit.iOS.Scanning.UI\n','using Foxit.iOS;\nusing Foxit.iOS.UIExtensions;\n\nnamespace Foxit.iOS.Scanning.UI\n')
+    replace_file_string(destPath,': IFSPDFMultipleScenes','')
 
     replace_api_protocols_for_obj_find(destPath)
 

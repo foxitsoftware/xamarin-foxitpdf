@@ -40,7 +40,7 @@ This sample project works with the  `Foxit PDF SDK for iOS 8.4` and is a direct 
 * `rdk_key.txt`
 * `rdk_sn.txt`
 
-4: Click the `Foxit.iOS.UIExtensions.sln`
+4: Click the `Foxit.iOS.Scanning.UI.sln`
 
 5: `Rebuild` the `Foxit.iOS` , `Foxit.iOS.UIExtensions`and`Foxit.iOS.Scanning.UI`.
 
@@ -59,8 +59,8 @@ Download[objective-sharpie](https://docs.microsoft.com/en-us/xamarin/cross-platf
 ```ruby
 $ sharpie xcode -sdks sdk: iphoneos12.1     arch: arm64
 ```
-Respectively```FoxitRDK.framework/Info.plist```、```uiextensionsDynamic.framework/Info.plist``、```uiextensionsDynamic.framework/Info.plist````and```sharpie_bind_framework.py```  ```DTSDKName```、```DTPlatformVersion```and```sdk_version```change to the version of the local environment.（iphoneos14.5，14.5)
-4. If a new class needs to be added in``ApiDefinitionAppending``, if a new enumeration type needs to be added in``StructsAppending``,the compiler error needs to add a new rule in``replace_api.py``.
+Respectively`FoxitRDK.framework/Info.plist`、`uiextensionsDynamic.framework/Info.plist`、`uiextensionsDynamic.framework/Info.plist` and `sharpie_bind_framework.py`  `DTSDKName`、`DTPlatformVersion` and `sdk_version`change to the version of the local environment.（iphoneos14.5，14.5)
+4. If a new class needs to be added in`ApiDefinitionAppending`, if a new enumeration type needs to be added in`StructsAppending`,the compiler error needs to add a new rule in`replace_api.py`.
 
 ### The last
 ```ruby
@@ -73,7 +73,7 @@ $ python sharpie_bind_framework.py
 Install biplist relies on Python
 1. Same as above
 2. Same as above
-3. If a new class needs to be added in``ApiDefinitionAppending``, if a new enumeration type needs to be added in``StructsAppending``,the compiler error needs to add a new rule in``replace_api.py``.
+3. If a new class needs to be added in`ApiDefinitionAppending`, if a new enumeration type needs to be added in`StructsAppending`,the compiler error needs to add a new rule in`replace_api.py`.
 ```ruby
 $ python biplist_sharpie_bind_framework.py
 ```

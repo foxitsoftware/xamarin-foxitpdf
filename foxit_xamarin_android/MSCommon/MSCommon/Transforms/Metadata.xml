@@ -11,7 +11,12 @@
   <remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='StorageHelper']"/>
 	
   <!--com.google.gson start-->
-  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='DateTimeAdapter']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.tokensharing']/class[@name='TokenCacheItemSerializationAdapater']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.authorities']/class[@name='AuthorityDeserializer']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.authorities']/class[@name='AzureActiveDirectoryAudienceDeserializer']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.util']/class[@name='ICacheRecordGsonAdapter']"/>
+  <!--<remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='SqlDateTypeAdapter']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='TimeTypeAdapter']"/>
   
@@ -45,7 +50,7 @@
 
   //CS0738
   <attr path="/api/package[@name='com.google.gson']/class[@name='JsonStreamParser']/method[@name='next' and count(parameter)=0]"
-    name="managedReturn">Java.Lang.Object</attr>
+    name="managedReturn">Java.Lang.Object</attr>-->
   <!--com.google.gson end-->
   
   

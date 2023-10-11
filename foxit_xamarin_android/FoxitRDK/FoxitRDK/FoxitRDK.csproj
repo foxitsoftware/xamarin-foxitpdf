@@ -20,7 +20,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Foxit.Android</PackageId>
-    <PackageVersion>8.4.2</PackageVersion>
+    <PackageVersion>8.4.2.1</PackageVersion>
     <Title>Foxit.Android</Title>
     <Authors>Foxit Software Incorporated</Authors>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>

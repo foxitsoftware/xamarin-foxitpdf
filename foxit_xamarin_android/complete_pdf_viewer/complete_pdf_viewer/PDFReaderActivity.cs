@@ -170,6 +170,19 @@ namespace Com.Foxit.Pdfreader
             }
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (uiExtensionsManager != null)
+            {
+                int[] _grantResults = new int[grantResults.Length];
+                for (int i=0; i < grantResults.Length; i++) {
+                    _grantResults[i] = grantResults[i] == Permission.Granted ? 0 : -1;
+                }
+                uiExtensionsManager.HandleRequestPermissionsResult(requestCode, permissions, _grantResults);
+            }
+        }
+
         public override void OnConfigurationChanged(Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);

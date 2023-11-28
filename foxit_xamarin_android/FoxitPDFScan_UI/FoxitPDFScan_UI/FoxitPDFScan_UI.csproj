@@ -24,20 +24,39 @@
     <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
     <PackageTags>Foxit PDF Scan Scanning UI</PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="LICENSE.txt" Pack="true" PackagePath=""/>
-  </ItemGroup>
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
     <EmbeddedJar Include="..\..\libs\universal-image-loader-1.9.5.jar">
       <Link>Jars\universal-image-loader-1.9.5.jar</Link>
     </EmbeddedJar>
-    <LibraryProjectZip Include="..\..\libs\FoxitPDFScan-UI.aar">
+    <LibraryProjectZip Include="..\..\libs\FoxitPDFScan-UI.aar" Condition="!Exists('..\..\libs\FoxitPDFScan-UI\')">
       <Link>Jars\FoxitPDFScan-UI.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>
+
+  <ItemGroup>
+    <AndroidXNuGetTargetFolders Include="build\monoandroid12.0" />
+    <AndroidXNuGetTargetFolders Include="build\net6.0-android31.0" />
+    <AndroidXNuGetTargetFolders Include="buildTransitive\monoandroid12.0" />
+    <AndroidXNuGetTargetFolders Include="buildTransitive\net6.0-android31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Foxit.Android.Scanning.UI.targets" Pack="True" PackagePath="@@(AndroidXNuGetTargetFolders)" />
+    <None Include="LICENSE.txt" Pack="True" PackagePath="LICENSE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\libs\FoxitPDFScan-UI.aar" Pack="True" PackagePath="aar\FoxitPDFScan-UI.aar" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InputJar Include="..\..\libs\FoxitPDFScan-UI\classes.jar" Condition="Exists('..\..\libs\FoxitPDFScan-UI\')"/>
+  </ItemGroup>
+
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
     <TransformFile Include="Transforms\EnumFields.xml" />

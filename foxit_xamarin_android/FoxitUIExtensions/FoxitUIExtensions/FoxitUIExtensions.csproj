@@ -66,7 +66,7 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</Description>
     <None Include="..\..\libs\FoxitRDKUIExtensions.aar" Pack="True" PackagePath="aar\FoxitRDKUIExtensions.aar" />
   </ItemGroup>
 
-    <ItemGroup>
+  <ItemGroup>
     <InputJar Include="..\..\libs\FoxitRDKUIExtensions\classes.jar" Condition="Exists('..\..\libs\FoxitRDKUIExtensions\')"/>
   </ItemGroup>
 

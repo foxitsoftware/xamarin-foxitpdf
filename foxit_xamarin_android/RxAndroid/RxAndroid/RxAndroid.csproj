@@ -15,7 +15,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Foxit.Android.RxAndroid</PackageId>
-    <PackageVersion>3.0.0</PackageVersion>
+    <PackageVersion>2.1.2.2</PackageVersion>
     <Title>Foxit.Android.RxAndroid</Title>
     <Authors>ReactiveX</Authors>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>

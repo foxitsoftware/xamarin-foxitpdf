@@ -17,7 +17,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Foxit.Android.Xcrash</PackageId>
-    <PackageVersion>3.0.0</PackageVersion>
+    <PackageVersion>2.4.9.2</PackageVersion>
     <Title>Foxit.Android.Xcrash</Title>
     <Authors>iqiyi</Authors>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>

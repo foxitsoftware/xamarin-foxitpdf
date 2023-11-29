@@ -1,0 +1,122 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationId>com.foxit.pdf.viewer</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>9.0.0</ApplicationDisplayVersion>
+    <AndroidManifest>..\complete_pdf_viewer\Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\complete_pdf_viewer\App.cs" />
+    <Compile Include="..\complete_pdf_viewer\MainActivity.cs" />
+    <Compile Include="..\complete_pdf_viewer\MyApplication.cs" />
+    <Compile Include="..\complete_pdf_viewer\PDFReaderActivity.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AndroidAsset Include="..\complete_pdf_viewer\Assets\complete_pdf_viewer_guide_android.pdf">
+      <Link>Assets\complete_pdf_viewer_guide_android.pdf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\complete_pdf_viewer\Assets\Sample.pdf">
+      <Link>Assets\Sample.pdf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\complete_pdf_viewer\Assets\uiextensions_config.json">
+      <Link>Assets\uiextensions_config.json</Link>
+    </AndroidAsset>
+    <None Include="..\complete_pdf_viewer\Assets\AboutAssets.txt">
+      <Link>Assets\AboutAssets.txt</Link>
+    </None>
+    <AndroidAsset Include="..\libs\rdk_key.txt">
+      <Link>Assets\rdk_key.txt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\libs\rdk_sn.txt">
+      <Link>Assets\rdk_sn.txt</Link>
+    </AndroidAsset>
+    <None Include="..\complete_pdf_viewer\Resources\AboutResources.txt">
+      <Link>Resources\AboutResources.txt</Link>
+    </None>
+    <None Include="..\complete_pdf_viewer\Properties\AndroidManifest.xml">
+        <Link>AndroidManifest.xml</Link>
+    </None>
+  </ItemGroup>
+
+<ItemGroup>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\layout\activity_main.xml">
+      <SubType>Designer</SubType>
+      <Link>Resources\layout\activity_main.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\colors.xml">
+       <Link>Resources\values\colors.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\ic_launcher_background.xml">
+       <Link>Resources\values\ic_launcher_background.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\strings.xml">
+       <Link>Resources\values\strings.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\styles.xml">
+       <Link>Resources\values\styles.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-anydpi-v26\appicon.xml">
+       <Link>Resources\mipmap-anydpi-v26\appicon.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-anydpi-v26\appicon_round.xml">
+       <Link>Resources\mipmap-anydpi-v26\appicon_round.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\appicon.png">
+       <Link>Resources\mipmap-hdpi\appicon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\appicon_background.png">
+       <Link>Resources\mipmap-hdpi\appicon_background.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\appicon_foreground.png">
+       <Link>Resources\mipmap-hdpi\appicon_foreground.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\appicon.png">
+       <Link>Resources\mipmap-hdpi\appicon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\appicon_background.png">
+       <Link>Resources\mipmap-hdpi\appicon_background.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\appicon_foreground.png">
+       <Link>Resources\mipmap-hdpi\appicon_foreground.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\appicon.png">
+       <Link>Resources\mipmap-xhdpi\appicon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\appicon_background.png">
+       <Link>Resources\mipmap-xhdpi\appicon_background.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\appicon_foreground.png">
+       <Link>Resources\mipmap-xhdpi\appicon_foreground.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\appicon.png">
+       <Link>Resources\mipmap-xxhdpi\appicon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\appicon_background.png">
+       <Link>Resources\mipmap-xxhdpi\appicon_background.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\appicon_foreground.png">
+       <Link>Resources\mipmap-xxhdpi\appicon_foreground.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\appicon.png">
+       <Link>Resources\mipmap-xxxhdpi\appicon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\appicon_background.png">
+       <Link>Resources\mipmap-xxxhdpi\appicon_background.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\appicon_foreground.png">
+       <Link>Resources\mipmap-xxxhdpi\appicon_foreground.png</Link>
+    </AndroidResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Foxit.Android" Version="9.0.0" />
+    <PackageReference Include="Foxit.Android.UIExtensions" Version="9.0.0" />
+  </ItemGroup>
+</Project>

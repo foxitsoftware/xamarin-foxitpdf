@@ -105,7 +105,7 @@ namespace Com.Foxit
 
         public void CopyGuideFiles(LocalModule localModule)
         {
-            if (Environment.ExternalStorageState.Equals(Environment.MediaMounted))
+            if (Android.OS.Environment.ExternalStorageState.Equals(Android.OS.Environment.MediaMounted))
             {
                 string curPath = AppStorageManager.GetInstance(mContext).DefaultFolder;
                 if (!AppFileUtil.NeedScopedStorageAdaptation()) 
@@ -131,7 +131,7 @@ namespace Com.Foxit
                 }
                 else if (!TextUtils.IsEmpty(curPath))
                 {
-                    Uri uri = AppFileUtil.ToDocumentUriFromPath(curPath);
+                    Android.Net.Uri uri = AppFileUtil.ToDocumentUriFromPath(curPath);
                     if (AppFileUtil.IsDocumentTreeUri(uri))
                     {
                         DocumentFile directory = AppStorageManager.GetInstance(mContext).GetExistingDocumentFile(uri);
@@ -173,7 +173,7 @@ namespace Com.Foxit
                 if (activity != null && TextUtils.IsEmpty(AppStorageManager.GetInstance(activity).DefaultFolder))
                 {
                     AppFileUtil.CheckCallDocumentTreeUriPermission(activity, MainActivity.REQUEST_SELECT_DEFAULT_FOLDER,
-                            Uri.Parse(AppFileUtil.ExternalRootDocumentTreeUriPath));
+                            Android.Net.Uri.Parse(AppFileUtil.ExternalRootDocumentTreeUriPath));
                     UIToast.GetInstance(activity).Show("Please select the default folder,you can create one when it not exists.");
                 }
             }

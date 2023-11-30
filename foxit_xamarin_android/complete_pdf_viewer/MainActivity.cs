@@ -62,8 +62,8 @@ namespace Com.Foxit.Home
 #if !NET
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 #endif
-            AppTheme.SetThemeFullScreen(this);
-            AppTheme.SetThemeNeedMenuKey(this);
+            Uiextensions.Utils.AppTheme.SetThemeFullScreen(this);
+            Uiextensions.Utils.AppTheme.SetThemeNeedMenuKey(this);
             ActManager.Instance.CurrentActivity = this;
 
             mLicenseValid = App.Instance().CheckLicense();
@@ -107,7 +107,7 @@ namespace Com.Foxit.Home
             local.SetCompareListener(this);
             local.SetOnFilePathChangeListener(this);
 
-            View view = local.GetContentView(this.ApplicationContext);
+            Android.Views.View view = local.GetContentView(this.ApplicationContext);
             ViewGroup parent = (ViewGroup)view.Parent;
             if (parent != null)
             {

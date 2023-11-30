@@ -38,8 +38,8 @@ namespace Com.Foxit.Pdfreader
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            AppTheme.SetThemeFullScreen(this);
-            AppTheme.SetThemeNeedMenuKey(this);
+            Uiextensions.Utils.AppTheme.SetThemeFullScreen(this);
+            Uiextensions.Utils.AppTheme.SetThemeNeedMenuKey(this);
             ActManager.Instance.CurrentActivity = this;
 
             filter = this.Intent.GetStringExtra("filter");

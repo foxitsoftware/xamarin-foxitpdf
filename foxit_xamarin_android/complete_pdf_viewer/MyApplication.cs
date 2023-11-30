@@ -8,7 +8,7 @@ using Com.Foxit.Sdk;
 namespace Com.Foxit
 {
     [Application]
-    class MyApplication : Application
+    class MyApplication : Android.App.Application
     {
 
         public MyApplication(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)

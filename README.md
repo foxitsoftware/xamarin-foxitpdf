@@ -9,6 +9,10 @@ This sample project works with the  `Foxit PDF SDK for Android/iOS` and is a dir
 Sample
 -----
 
+## [foxit_maui](/foxit_maui/)
+Use the Foxit PDF SDK with MAUI.  
+If want to customize more,  please refer to [FoxitPDFSDKForMAUI](https://github.com/foxitsoftware/FoxitPDFSDKForMAUI)
+
 ## [foxit_xamarin_android](/foxit_xamarin_android/)
 Use the Foxit PDF SDK for Android with Xamarin
 

@@ -1,5 +1,5 @@
 # xamarin-foxitpdf
-Xamarin bridge for Foxit PDF SDK for Android/iOS to view, annotation and sign PDFs
+Xamarin/.NET/MAUI bridge for Foxit PDF SDK for Android/iOS to view, annotation and sign PDFs
 
 Introduction
 ------------

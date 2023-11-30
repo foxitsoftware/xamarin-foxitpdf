@@ -118,5 +118,6 @@
   <ItemGroup>
     <PackageReference Include="Foxit.Android" Version="9.0.0" />
     <PackageReference Include="Foxit.Android.UIExtensions" Version="9.0.0" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0" />
   </ItemGroup>
 </Project>

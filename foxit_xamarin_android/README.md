@@ -17,7 +17,6 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 * __TargetFrameworkVersion >= Android 10.0__  
  ![screenshot14](./Screenshot/screenshot14.png)      
 * __Minimum Android Version: API 19 (Android4.4)__  
-  __Recommended target: API 29__
 * __JDK Version >= 1.8__
 
 
@@ -329,7 +328,7 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 ![screenshot13](./Screenshot/screenshot13.jpg) 
 
 
-## How to run the complete_pdf_viewer 
+## How to run the complete_pdf_viewer
 
 1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/), then unzip the `foxitpdfsdk_(version_no)_android.zip`, and enter the `libs` directory,copy the following files into the `foxit_xamarin_android/libs` directory:  
 
@@ -346,7 +345,7 @@ Solution：Right-click the `Properties` node of your project, and open it. Find 
 
 ![screenshot15](./Screenshot/screenshot15.jpg)  
 
-#### 2: invalid opcode ba - invokedynamic requires --min-sdk-version >= 26 (currently 13), Cannot fit requested classes in a single dex file (# methods: 87605 > 65536)  
+#### 2: invalid opcode ba - invokedynamic requires --min-sdk-version >= 26 (currently 13), Cannot fit requested classes in a single dex file (# methods: 87605 > 65536)
 
 Solution：Right-click the `Properties` node of your project, and open it. Find `Android Options` and check `Enable Multi-Dex` and set `Dex compiler` to d8. As show below:  
 

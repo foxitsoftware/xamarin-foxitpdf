@@ -2,20 +2,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-      <_LinkerCachesPath Condition="$(TargetFramework.Contains('net'))">obj\$(Configuration)\$(TargetFramework)\$(RuntimeIdentifier)\linker-cache\</_LinkerCachesPath>
-
-      <_FoxitPDFScanUIExpandNativeReferencesPath Condition="$(TargetFramework.Contains('net'))">obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
+      <_FoxitPDFScanUIExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
     </PropertyGroup>
 
-    <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' and $(TargetFramework.Contains('net'))">
-        <RemoveDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
+    <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences">
+
+        <PropertyGroup>
+            <_FoxitPDFScanUIXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'False'">ios-arm64</_FoxitPDFScanUIXCFArch>
+            <_FoxitPDFScanUIXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'True'">ios-x86_64-simulator</_FoxitPDFScanUIXCFArch>
+        </PropertyGroup>
+
+        <RemoveDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" ContinueOnError="True"/>
         <MakeDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
         
-        <Exec Command ="unzip -d $(_FoxitPDFScanUIExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\FoxitPDFScanUI.framework.zip" />
-        <Exec Command ="cp -rf $(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.framework $(_LinkerCachesPath)" />
+        <Exec Command ="tar -zxvf $(MSBuildThisFileDirectory)..\runtimes\FoxitPDFScanUI.xcframework.tar -C $(_FoxitPDFScanUIExpandNativeReferencesPath)" />
 
         <ItemGroup>
-            <NativeReference Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.framework" >
+            <NativeReference Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.xcframework\$(_FoxitPDFScanUIXCFArch)\FoxitPDFScanUI.framework" >
                 <Kind>Framework</Kind>
                 <SmartLink>False</SmartLink>
             </NativeReference>

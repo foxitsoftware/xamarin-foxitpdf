@@ -5,16 +5,16 @@
       <_UIextensionsDynamicExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\UIextensionsDynamicExtract\</_UIextensionsDynamicExpandNativeReferencesPath>
     </PropertyGroup>
 
-    <Target Name="_UIextensionsDynamicesolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+    <Target Name="_UIextensionsDynamicesolveNativeReferences" BeforeTargets="ResolveNativeReferences">
         <PropertyGroup>
             <_UIextensionsDynamicXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'False'">ios-arm64</_UIextensionsDynamicXCFArch>
             <_UIextensionsDynamicXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'True'">ios-x86_64-simulator</_UIextensionsDynamicXCFArch>
             <_UIextensionsDynamicXCFArch Condition="'$(_PlatformName)' == 'MacCatalyst'">ios-x86_64-maccatalyst</_UIextensionsDynamicXCFArch>
         </PropertyGroup>
-        <RemoveDir Directories="$(_UIextensionsDynamicExpandNativeReferencesPath)" />
+        <RemoveDir Directories="$(_UIextensionsDynamicExpandNativeReferencesPath)" ContinueOnError="True"/>
         <MakeDir Directories="$(_UIextensionsDynamicExpandNativeReferencesPath)" />
-        
-        <Exec Command ="unzip -d $(_UIextensionsDynamicExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\uiextensionsDynamic.xcframework.zip" />
+
+        <Exec Command ="tar -zxvf $(MSBuildThisFileDirectory)..\runtimes\uiextensionsDynamic.xcframework.tar -C $(_UIextensionsDynamicExpandNativeReferencesPath)"/>
 
         <ItemGroup>
             <NativeReference Include="$(_UIextensionsDynamicExpandNativeReferencesPath)\UIextensionsDynamic.xcframework\$(_UIextensionsDynamicXCFArch)\uiextensionsDynamic.framework" >

@@ -670,6 +670,10 @@ namespace Foxit.iOS.UIExtensions
 		// extern const int TAG_ITEM_SCREENCAPTURE;
 		[Field ("TAG_ITEM_SCREENCAPTURE", "__Internal")]
 		int TAG_ITEM_SCREENCAPTURE { get; }
+
+		// extern const int TAG_ITEM_INFO;
+		[Field ("TAG_ITEM_INFO", "__Internal")]
+		int TAG_ITEM_INFO { get; }
 	}
 
 	// @protocol IMoreMenuViewListener <NSObject>
@@ -1080,6 +1084,10 @@ namespace Foxit.iOS.UIExtensions
 		// @property (assign, nonatomic) BOOL disableFormNavigationBar;
 		[Export ("disableFormNavigationBar")]
 		bool DisableFormNavigationBar { get; set; }
+
+		// @property (assign, nonatomic) int enableTopbarDraggable;
+		[Export ("enableTopbarDraggable")]
+		int EnableTopbarDraggable { get; set; }
 
 		// @property (nonatomic, strong) UIColor * _Nonnull highlightFormColor;
 		[Export ("highlightFormColor", ArgumentSemantic.Strong)]
@@ -1514,6 +1522,22 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("image", ArgumentSemantic.Strong)]
 		UIImage Image { get; set; }
 
+		// @property (nonatomic) UIEdgeInsets phoneTitleEdgeInsets;
+		[Export ("phoneTitleEdgeInsets", ArgumentSemantic.Assign)]
+		UIEdgeInsets PhoneTitleEdgeInsets { get; set; }
+
+		// @property (nonatomic) UIEdgeInsets phoneImageEdgeInsets;
+		[Export ("phoneImageEdgeInsets", ArgumentSemantic.Assign)]
+		UIEdgeInsets PhoneImageEdgeInsets { get; set; }
+
+		// @property (nonatomic) UIEdgeInsets padTitleEdgeInsets;
+		[Export ("padTitleEdgeInsets", ArgumentSemantic.Assign)]
+		UIEdgeInsets PadTitleEdgeInsets { get; set; }
+
+		// @property (nonatomic) UIEdgeInsets padImageEdgeInsets;
+		[Export ("padImageEdgeInsets", ArgumentSemantic.Assign)]
+		UIEdgeInsets PadImageEdgeInsets { get; set; }
+
 		// @property (copy, nonatomic) NSArray<FSReadToolbarItem *> * _Nullable readToolbarItems;
 		[NullAllowed, Export ("readToolbarItems", ArgumentSemantic.Copy)]
 		FSReadToolbarItem[] ReadToolbarItems { get; set; }
@@ -1658,6 +1682,21 @@ namespace Foxit.iOS.UIExtensions
 		// -(FSPermissionState)checkPermission:(FSFunction)function;
 		[Export ("checkPermission:")]
 		FSPermissionState CheckPermission (FSFunction function);
+	}
+
+	// @interface FSAppInfoProvider : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSAppInfoProvider
+	{
+		// -(NSString * _Nonnull)getAppName;
+		[Export ("getAppName")]
+		//[Verify (MethodToProperty)]
+		string AppName { get; }
+
+		// -(NSString * _Nonnull)getAppVersion;
+		[Export ("getAppVersion")]
+		//[Verify (MethodToProperty)]
+		string AppVersion { get; }
 	}
 
 	// @protocol IModule <NSObject>
@@ -2105,6 +2144,11 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("primaryColor", ArgumentSemantic.Strong)]
 		UIColor PrimaryColor { get; set; }
 
+		// @property (nonatomic, strong, class) UIColor * _Nonnull stateBarColor;
+		[Static]
+		[Export ("stateBarColor", ArgumentSemantic.Strong)]
+		UIColor StateBarColor { get; set; }
+
 		// @property (copy, nonatomic) NSString * _Nonnull annotAuthor;
 		[Export ("annotAuthor")]
 		string AnnotAuthor { get; set; }
@@ -2261,6 +2305,10 @@ namespace Foxit.iOS.UIExtensions
 		[Export ("permissionProvider", ArgumentSemantic.Strong)]
 		FSPermissionProvider PermissionProvider { get; set; }
 
+		// @property (nonatomic, strong) FSAppInfoProvider * _Nonnull appInfoProvider;
+		[Export ("appInfoProvider", ArgumentSemantic.Strong)]
+		FSAppInfoProvider AppInfoProvider { get; set; }
+
 		[Wrap ("WeakExtFileOpenDelegate")]
 		[NullAllowed]
 		NSObject ExtFileOpenDelegate { get; set; }
@@ -2279,6 +2327,10 @@ namespace Foxit.iOS.UIExtensions
 #endif
 		[Export ("windowScene", ArgumentSemantic.Weak)]
 		UIWindowScene WindowScene { get; }
+
+		// @property (assign, nonatomic) BOOL useLogicalPageNumbers;
+		[Export ("useLogicalPageNumbers")]
+		bool UseLogicalPageNumbers { get; set; }
 
 		// -(id _Nonnull)initWithPDFViewControl:(FSPDFViewCtrl * _Nonnull)viewctrl;
 		[Export ("initWithPDFViewControl:")]

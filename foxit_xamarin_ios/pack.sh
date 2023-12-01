@@ -1,9 +1,28 @@
 #!/bin/sh
 basepath=$(cd `dirname $0`; pwd)
 
-zip_frameworks(){
+framework_to_xcfamework(){
   cd ${basepath}/libs
-  zip -ry $1.zip $1
+
+  rm -rf ./iphoneos
+
+  rm -rf ./iphonesimulator
+
+  rm -rf ./$1.xcframework
+
+  mkdir -p iphoneos && cp -rf $1.framework ./iphoneos/$1.framework
+  mkdir -p iphonesimulator && cp -rf $1.framework ./iphonesimulator/$1.framework
+  
+  xcrun lipo -remove x86_64 ./iphoneos/$1.framework/$1 -o ./iphoneos/$1.framework/$1
+  xcrun lipo -remove arm64 ./iphonesimulator/$1.framework/$1 -o ./iphonesimulator/$1.framework/$1
+  
+  xcodebuild -create-xcframework -framework ./iphoneos/$1.framework -framework ./iphonesimulator/$1.framework -output $1.xcframework
+
+}
+
+tar_frameworks(){
+  cd ${basepath}/libs
+  tar -czvf $1.tar $1
 }
 
 pack_lib(){
@@ -23,11 +42,13 @@ cd ${basepath}
 rm -rf ./nupkg/
 mkdir nupkg
 
-zip_frameworks FoxitRDK.xcframework
+framework_to_xcfamework FoxitPDFScanUI
 
-zip_frameworks uiextensionsDynamic.xcframework
+tar_frameworks FoxitRDK.xcframework
 
-zip_frameworks FoxitPDFScanUI.framework
+tar_frameworks uiextensionsDynamic.xcframework
+
+tar_frameworks FoxitPDFScanUI.xcframework
 
 pack_lib ${basepath}/Foxit.iOS/Foxit.iOS  Foxit.iOS
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.Scanning.UI</id>
-    <version>2.2.0.1</version>
+    <version>2.2.0.2</version>
     <title>Foxit.iOS.Scanning.UI</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>
@@ -46,7 +46,7 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
   </metadata>
   <files>
       <file src="../LICENSE.txt" target="" />
-      <file src="../libs/FoxitPDFScanUI.framework.zip" target="runtimes/FoxitPDFScanUI.framework.zip" />
+      <file src="../libs/FoxitPDFScanUI.xcframework.tar" target="runtimes/FoxitPDFScanUI.xcframework.tar" />
       <file src="../Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI.Nuget.targets" target="build/Foxit.iOS.Scanning.UI.targets" />
       <file src="../Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI.Nuget.targets" target="buildTransitive/Foxit.iOS.Scanning.UI.targets" />
       <file src="../Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI/bin/Release/net6.0-ios/Foxit.iOS.Scanning.UI.dll" target="lib/net6.0-ios11.0" />

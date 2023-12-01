@@ -14,15 +14,14 @@
       <ImplicitUsings>true</ImplicitUsings>
       <IsBindingProject>true</IsBindingProject>
       <NoBindingEmbedding>true</NoBindingEmbedding>
-      <NoBindingEmbedding  Condition="$(IsXamarinIOS)">false</NoBindingEmbedding>
       <OutputType>Library</OutputType>
       <SupportedOSPlatformVersion Condition="$(_IsIOS)">11.0</SupportedOSPlatformVersion>
 	  <TargetPlatformVersion Condition="$(_IsIOS)">11.0</TargetPlatformVersion>
       <RootNamespace>Foxit.iOS.Scanning.UI</RootNamespace>
       <AssemblyName>Foxit.iOS.Scanning.UI</AssemblyName>
-      <AssemblyVersion>2.2.0.1</AssemblyVersion>
-      <FileVersion>2.2.0.1</FileVersion>
-      <AssemblyInformationalVersion>2.2.0.1</AssemblyInformationalVersion>
+      <AssemblyVersion>2.2.0.2</AssemblyVersion>
+      <FileVersion>2.2.0.2</FileVersion>
+      <AssemblyInformationalVersion>2.2.0.2</AssemblyInformationalVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>

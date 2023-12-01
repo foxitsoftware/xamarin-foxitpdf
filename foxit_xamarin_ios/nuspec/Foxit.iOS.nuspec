@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS</id>
-    <version>8.4.1</version>
+    <version>9.0.0</version>
     <title>Foxit.iOS</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>
@@ -43,7 +43,7 @@ the website https://developers.foxitsoftware.com/pdf-sdk/</description>
   </metadata>
   <files>
       <file src="../LICENSE.txt" target="" />
-      <file src="../libs/FoxitRDK.xcframework.zip" target="runtimes/FoxitRDK.xcframework.zip" />
+      <file src="../libs/FoxitRDK.xcframework.tar" target="runtimes/FoxitRDK.xcframework.tar" />
       <file src="../Foxit.iOS/Foxit.iOS/Foxit.iOS.Nuget.targets" target="build/Foxit.iOS.targets" />
       <file src="../Foxit.iOS/Foxit.iOS/Foxit.iOS.Nuget.targets" target="buildTransitive/Foxit.iOS.targets" />
       <file src="../Foxit.iOS/Foxit.iOS/bin/Release/net6.0-ios/Foxit.iOS.dll" target="lib/net6.0-ios11.0" />

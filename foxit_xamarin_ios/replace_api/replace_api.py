@@ -127,6 +127,7 @@ def replace_api_protocols_for_obj_find(srcPath):
             if "// @protocol" not in line and "interface" not in line and replace_protocol_str in line:
                 line = line.replace(replace_protocol_str, 'NSObject ')
             w_str+=line 
+        fopen.close()
         wopen=open(srcPath,'w')
         wopen.write(w_str)
         wopen.close()
@@ -183,6 +184,45 @@ def comment_useless_codes(srcPath):
     wopen.write(fopenStr)
     wopen.close()
 
+# 纠正错误的同名方法
+def redress_method_to_property(srcPath):
+    # 同名的方法放到数组中，第一个元素是方法名
+    error_property_codes=[
+        r'ConvertToRGB',
+        r'ConvertToCMYK',
+        r'Clone',
+        r'GenerateContent',
+        r'StartVerify',
+        r'StartParse',
+        r'ResetAppearanceStream',
+        r'StartLoad',
+        r'StartRecognizeForm',
+        r'StartEmbedAllFonts',
+        r'Load',
+        r'LoadW',
+        r'StartLoadW',
+        r'StartLoad',
+        r'StartLoadW',
+        r'StartRecognizeForm',
+        r'StartEmbedAllFonts',
+    ]
+
+    fopen=open(srcPath,'r')
+
+    w_str=""
+    for line in fopen:
+        for error_property_code in error_property_codes:
+            src_code = error_property_code + r' { get; }'
+            dest_code = error_property_code + r' ();'
+            if re.search(src_code,line):
+                line=re.sub(src_code,dest_code,line)
+                break
+        w_str+=line
+    fopen.close()
+    wopen=open(srcPath,'w')
+    wopen.write(w_str)
+    wopen.close()
+
 def replace_api_definitions(srcPath,destPath,foxitrdk = False):
 
     replace_copy_file(srcPath,destPath)
@@ -192,6 +232,7 @@ def replace_api_definitions(srcPath,destPath,foxitrdk = False):
 
     replace_api_definitions_Iprotocol(destPath,foxitrdk)
     comment_useless_codes(destPath)
+    replace_api_definitions_error_property(destPath)
 
     replace_file_string(destPath,'CGContextRef\*','IntPtr')
     replace_file_string(destPath,'unsafe void\*','IntPtr')

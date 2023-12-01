@@ -5,16 +5,17 @@
       <_FoxitRDKExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitRDKExtract\</_FoxitRDKExpandNativeReferencesPath>
     </PropertyGroup>
 
-    <Target Name="_FoxitRDKResolveNativeReferences" BeforeTargets="ResolveNativeReferences" Condition=" '$(OS)' == 'Unix' ">
+    <Target Name="_FoxitRDKResolveNativeReferences" BeforeTargets="ResolveNativeReferences">
         <PropertyGroup>
             <_FoxitRDKXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'False'">ios-arm64</_FoxitRDKXCFArch>
             <_FoxitRDKXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'True'">ios-x86_64-simulator</_FoxitRDKXCFArch>
             <_FoxitRDKXCFArch Condition="'$(_PlatformName)' == 'MacCatalyst'">ios-x86_64-maccatalyst</_FoxitRDKXCFArch>
         </PropertyGroup>
-        <RemoveDir Directories="$(_FoxitRDKExpandNativeReferencesPath)" />
+
+        <RemoveDir Directories="$(_FoxitRDKExpandNativeReferencesPath)" ContinueOnError="True"/>
         <MakeDir Directories="$(_FoxitRDKExpandNativeReferencesPath)" />
         
-        <Exec Command ="unzip -d $(_FoxitRDKExpandNativeReferencesPath) $(MSBuildThisFileDirectory)..\runtimes\FoxitRDK.xcframework.zip" />
+        <Exec Command ="tar -zxvf $(MSBuildThisFileDirectory)..\runtimes\FoxitRDK.xcframework.tar -C $(_FoxitRDKExpandNativeReferencesPath)"/>
 
         <ItemGroup>
             <NativeReference Include="$(_FoxitRDKExpandNativeReferencesPath)\FoxitRDK.xcframework\$(_FoxitRDKXCFArch)\FoxitRDK.framework" >

@@ -97,4 +97,8 @@
       <Link>Assets.xcassets\scan.imageset\scan.pdf</Link>
     </ImageAsset>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Foxit.iOS" Version="9.0.0" />
+    <PackageReference Include="Foxit.iOS.UIExtensions" Version="9.0.0" />
+  </ItemGroup>
 </Project>

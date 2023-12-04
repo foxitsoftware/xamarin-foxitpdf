@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -25,16 +24,13 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<!-- <PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
 		<AndroidManifest>..\..\foxit_xamarin_android\complete_pdf_viewer\Properties\AndroidManifest.xml</AndroidManifest>
 	</PropertyGroup> -->
 
-  	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+  	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
     	<AndroidAsset Include="..\..\foxit_xamarin_android\complete_pdf_viewer\Assets\complete_pdf_viewer_guide_android.pdf">
       		<Link>Platforms\Android\Assets\complete_pdf_viewer_guide_android.pdf</Link>
     	</AndroidAsset>
@@ -55,36 +51,77 @@
     	</None> -->
  	</ItemGroup>
 
- 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+ 	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
     	<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\App.cs">
     		<Link>Platforms\Android\App.cs</Link>
     	</Compile>
-    	<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\MainActivity.cs" >
+    	<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\MainActivity.cs">
     		<Link>Platforms\Android\MainActivity.cs</Link>
     	</Compile>
-    	<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\MyApplication.cs" >
+    	<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\MyApplication.cs">
     		<Link>Platforms\Android\MyApplication.cs</Link>
     	</Compile>
-   		<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\PDFReaderActivity.cs" >
+   		<Compile Include="..\..\foxit_xamarin_android\complete_pdf_viewer\PDFReaderActivity.cs">
    			<Link>Platforms\Android\PDFReaderActivity.cs</Link>
    		</Compile>
     </ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
-     	<AndroidResource Include="..\..\foxit_xamarin_android\complete_pdf_viewer\Resources\values\strings.xml" >
+	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
+     	<AndroidResource Include="..\..\foxit_xamarin_android\complete_pdf_viewer\Resources\values\strings.xml">
        		<Link>Platforms\Android\Resources\values\strings.xml</Link>
     	</AndroidResource>
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
-	  	<PackageReference Include="Foxit.Android">
-	    	<Version>9.0.0</Version>
+	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
+	  	<PackageReference Include="Foxit.Android" Version="9.0.0">
 	  	</PackageReference>
-	  	<PackageReference Include="Foxit.Android.UIExtensions">
-	    	<Version>9.0.0</Version>
+	  	<PackageReference Include="Foxit.Android.UIExtensions" Version="9.0.0">
 	  	</PackageReference>
 	</ItemGroup>
 
+	<ItemGroup Condition="$(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-maccatalyst'))">
+        <BundleResource Include="..\..\foxit_xamarin_ios\libs\rdk_key.txt">
+          <Link>Resources\rdk_key.txt</Link>
+        </BundleResource>
+        <BundleResource Include="..\..\foxit_xamarin_ios\libs\rdk_sn.txt">
+          <Link>Resources\rdk_sn.txt</Link>
+        </BundleResource>
+        <BundleResource Include="..\..\foxit_xamarin_ios\CompletePdfViewer\Resources\uiextensions_config.json">
+          <Link>Resources\uiextensions_config.json</Link>
+        </BundleResource>
+        <BundleResource Include="..\..\foxit_xamarin_ios\test_files\complete_pdf_viewer_guide_ios.pdf">
+          <Link>Resources\complete_pdf_viewer_guide_ios.pdf</Link>
+        </BundleResource>
+        <BundleResource Include="..\..\foxit_xamarin_ios\test_files\Sample.pdf">
+          <Link>Resources\Sample.pdf</Link>
+        </BundleResource>
+        <BundleResource Include="..\..\foxit_xamarin_ios\CompletePdfViewer\LaunchScreen.storyboard">
+          <Link>LaunchScreen.storyboard</Link>
+        </BundleResource>
+            <BundleResource Include="..\..\foxit_xamarin_ios\CompletePdfViewer\Main.storyboard">
+          <Link>Main.storyboard</Link>
+        </BundleResource>
+
+        <Compile Include="..\..\foxit_xamarin_ios\CompletePdfViewer\Main.cs">
+            <Link>Platforms\iOS\Main.cs</Link>
+        </Compile>
+        <Compile Include="..\..\foxit_xamarin_ios\CompletePdfViewer\AppDelegate.cs">
+            <Link>Platforms\iOS\AppDelegate.cs</Link>
+        </Compile>
+        <Compile Include="..\..\foxit_xamarin_ios\CompletePdfViewer\ViewController.cs">
+            <Link>Platforms\iOS\ViewController.cs</Link>
+        </Compile>
+        <Compile Include="..\..\foxit_xamarin_ios\CompletePdfViewer\ViewController.designer.cs">
+          <DependentUpon>ViewController.cs</DependentUpon>
+        </Compile>
+
+        <PackageReference Include="Foxit.iOS" Version="9.0.0" />
+		<PackageReference Include="Foxit.iOS.UIExtensions" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
+		<PackageReference Include="Foxit.iOS.Scanning.UI" Version="2.2.0.2" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->

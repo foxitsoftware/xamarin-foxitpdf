@@ -2,29 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIDeviceFamily</key>
-	<array>
-		<integer>1</integer>
-		<integer>2</integer>
-	</array>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>arm64</string>
-	</array>
+	<key>CFBundleIdentifier</key>
+	<string>com.foxitcorporation.ViewCtrlDemo</string>
+	<key>CFBundleShortVersionString</key>
+	<string>9.0</string>
+	<key>CFBundleVersion</key>
+	<string>9.0</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>RDK only lets you connect to apple pencil or keyboard.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>RDK only lets you connect to apple pencil or keyboard.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For adding photographs to your PDF files.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>RDK need to add record permissions,please allow</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>RDK need to add picture permissions,please allow</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For adding pictures to your PDF files.</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

@@ -1,10 +1,13 @@
-## Implement Foxit PDF SDK for Android using Xamarin
-Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for Android into your Xamarin.Android application. 
+## Implement Foxit PDF SDK for Android using Xamarin/.NET
+Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for Android into your Xamarin.Android/.NET Android application.   
+Let's take creating a xamarin demo as an example, similar to .NET
 
 - [System Requirements](#System-Requirements)
-- [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
+- [Integrate Foxit PDF SDK into your Xamarin.NET project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
 - [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [How to run the complete_pdf_viewer](#How-to-run-the-complete_pdf_viewer)
+- [Xamarin Demo](#Xamarin-Demo)
+- [.NET Demo](#.NET-Demo)
 - [Issues](#Issues)
 - [More](#More)
 - [License](#License)
@@ -23,7 +26,6 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 ## Integrate Foxit PDF SDK into your Xamarin project
 **There are two ways to integrate Foxit PDF SDK into your Xamarin project:**
 - [Install By NuGet](#Install-By-NuGet)
-- [Integrate manually by building and referencing DLLs](#Integrate-manually-by-building-and-referencing-DLLs)
 
   #### ***Install By NuGet***
   It is now possible to integrate Foxit PDF SDK into your Xamarin project through NuGet packages, which is much easier than the second way [Integrate manually by building and referencing DLLs](#Integrate-manually-by-building-and-referencing-DLLs) , and can save
@@ -43,88 +45,8 @@ you much time.
    
    ***
    
-  #### ***Integrate manually by building and referencing DLLs***
-  To integrate manually, you should first build DLLs, and then add it as a reference to your project.  
-  - Download or Clone [Foxit PDF SDK for Android](https://github.com/foxitsoftware/xamarin-foxitpdf/tree/master/foxit_xamarin_android),  then copy the following files (libraries
-and licenses) in the `libs` folder of the extracted package to `foxit_xamarin_android\libs`
-directory:
-    > `FoxitRDK.aar`  
-    > `FoxitRDKUIExtensions.aar`  
-    > `rdk_key.txt`  
-    > `rdk_sn.txt`  
-    
-  - Build DLLs  
-    You need to manually compile to get the following dll：  
-    > `FoxitRDK.dll`  
-    > `MSAL.dll`  
-    > `MSCommon.dll`  
-    > `RMSSDK.dll`  
-    > `RMSSDK_UI.dll`  
-    > `XCrash.dll`  
-    > `FoxitUIExtensions.dll`  
-    > `RxAndroid.dll`  
-    > `Cropper.dll`  
-    
-       Compilation steps：  
-       Step1: Load `FoxitUIExtensions.sln` in Visual Studio 2019 under the `foxit_xamarin_android\FoxitUIExtensions` directory.  
-       Step2: Right-click FoxitUIExtensions project, click Build/Rebuild .  
-       Step3: If build is successful, the  
-       `FoxitRDK.dll`  
-       `MSAL.dll`  
-       `MSCommon.dll`  
-       `RMSSDK.dll`  
-       `RMSSDK_UI.dll`  
-       `XCrash.dll`  
-       will be generated in `foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)`directory.  
-        
-       the  
-       `FoxitRDKUIExtensions.dll`  
-       `RxAndroid.dll`  
-       `Cropper.dll`  
-       will be generated in `foxit_xamarin_android\FoxitUIExtensions\FoxitUIExtensions\bin\Debug (or release)`directory. 
- 
-  -  Add the built DLLs as references to your project  
-  This section takes `FoxitRDK.dll` as an example to show you how to add it as a reference to your project.
-For other DLLs, do the same steps with `FoxitRDK.dll`. We assume that you have got the `FoxitRDK.dll`, if
-not, please refer to [Build DLLs](#Build-DLLs) section to build the FoxitRDK project and generate the `FoxitRDK.dll`.  
-
-      - In the Solution Explorer, right-click the References node of your project and select `Add Reference… `  
-      
-        ![screenshot4](./Screenshot/screenshot4.jpg)
-       - In the Reference Manager dialog, click Browse… to find the `FoxitRDK.dll` (in the
-`foxit_xamarin_android\FoxitRDK\FoxitRDK\bin\Debug (or release)` folder), select it and then
-click Add:  
-
-          ![screenshot5](./Screenshot/screenshot5.jpg)  
-          ![screenshot6](./Screenshot/screenshot6.jpg)  
-          
-          Then, the FoxitRDK.dll will appear in the list and has already been checked. Click OK:  
-      
-          ![screenshot7](./Screenshot/screenshot7.jpg)  
-  - Add the following dll to you demo refer to the steps of adding `FoxitRDK.dll`.  
-    > `MSAL.dll`  
-    > `MSCommon.dll`  
-    > `RMSSDK.dll`  
-    > `RMSSDK_UI.dll`  
-    > `XCrash.dll`  
-    > `FoxitUIExtensions.dll`  
-    > `RxAndroid.dll`  
-    > `Cropper.dll`  
-    
-  - _**Note**_:  
-  If you integrate manually by building dlls, you must manually install the following dependencies.  
-`Xamarin.AndroidX.Browser`
-`Xamarin.Google.Android.Material`
-`Xamarin.AndroidX.AppCompat`
-`Xamarin.AndroidX.Legacy.Support.V4`
-`Xamarin.AndroidX.Lifecycle.LiveData`
-`Xamarin.AndroidX.ConstraintLayout` (It's required for opening a RMS protected PDF file)  
-
-  After finishing the above steps, the References of your project will look like:  
-  ![screenshot8](./Screenshot/screenshot8.jpg)  
   
-  
-## Build a Xamarin Android project using Foxit PDF SDK for Android
+## Build a Xamarin/.NET Android project using Foxit PDF SDK for Android
 **This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
 step-by-step instructions provided.**
 
@@ -327,7 +249,6 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 
 ![screenshot13](./Screenshot/screenshot13.jpg) 
 
-
 ## How to run the complete_pdf_viewer
 
 1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/), then unzip the `foxitpdfsdk_(version_no)_android.zip`, and enter the `libs` directory,copy the following files into the `foxit_xamarin_android/libs` directory:  
@@ -335,7 +256,15 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 * `rdk_key.txt`
 * `rdk_sn.txt`  
 
-2: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.  
+2:   
+__2.1: Xamarin Demo__ `Run` the `FoxitRDKDemo.Xamarin\complete_pdf_viewer.sln` project in the simulator or on a physical device.  
+__2.2: .NET Demo__ `Run` the `FoxitRDKDemo.Net\complete_pdf_viewer.sln` project in the simulator or on a physical device.  
+
+## Xamarin Demo
+Please refer to `FoxitRDKDemo.Xamarin\complete_pdf_viewer.sln` project.
+
+## .NET Demo
+Please refer to `FoxitRDKDemo.Net\complete_pdf_viewer.sln` project.
 
 ## Issues
 

@@ -23,7 +23,7 @@ Foxit PDF SDK for .NET features a powerful, easy-to-use Core API in C# for rende
 ### iOS
 * [Install Foxit.iOS](https://www.nuget.org/packages/Foxit.iOS)
 * [Install Foxit.iOS.UIExtensions](https://www.nuget.org/packages/Foxit.iOS.UIExtensions)
-
+* [Install Foxit.iOS.UIExtensions](https://www.nuget.org/packages/Foxit.iOS.Scanning.UI)
 
 ## More
 ------------

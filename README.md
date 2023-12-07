@@ -14,8 +14,8 @@ Use the Foxit PDF SDK with MAUI.
 If want to customize more,  please refer to [FoxitPDFSDKForMAUI](https://github.com/foxitsoftware/FoxitPDFSDKForMAUI)
 
 ## [foxit_xamarin_android](/foxit_xamarin_android/)
-Use the Foxit PDF SDK for Android with Xamarin
+Use the Foxit PDF SDK for Android with Xamarin/.NET
 
 ## [foxit_xamarin_ios](/foxit_xamarin_ios/)
-Use the Foxit PDF SDK for iOS with Xamarin
+Use the Foxit PDF SDK for iOS with Xamarin/.NET
 

@@ -3,7 +3,7 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 
 - [System Requirements](#System-Requirements)
 - [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
-- [Integrate Foxit PDF SDK into your .NET project](#Integrate-Foxit-PDF-SDK-into-your-.NET-project)
+- [Integrate Foxit PDF SDK into your .NET project](#Integrate-Foxit-PDF-SDK-into-your-NET-project)
 - [Build a Xamarin/.NET Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [How to run the complete_pdf_viewer](#How-to-run-the-complete_pdf_viewer)
 - [Xamarin Demo](#Xamarin-Demo)

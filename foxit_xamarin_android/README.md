@@ -1,10 +1,10 @@
 ## Implement Foxit PDF SDK for Android using Xamarin/.NET
 Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for Android into your Xamarin.Android/.NET Android application.   
-Let's take creating a xamarin demo as an example, similar to .NET
 
 - [System Requirements](#System-Requirements)
-- [Integrate Foxit PDF SDK into your Xamarin.NET project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
-- [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
+- [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
+- [Integrate Foxit PDF SDK into your .NET project](#Integrate-Foxit-PDF-SDK-into-your-.NET-project)
+- [Build a Xamarin/.NET Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [How to run the complete_pdf_viewer](#How-to-run-the-complete_pdf_viewer)
 - [Xamarin Demo](#Xamarin-Demo)
 - [.NET Demo](#.NET-Demo)
@@ -126,6 +126,11 @@ click Add:
   After finishing the above steps, the References of your project will look like:  
   ![screenshot8](./Screenshot/screenshot8.jpg)  
   
+
+## Integrate Foxit PDF SDK into your .Net project
+Similar to Xamarin, but the referencing DLLs method is more complex and .NET does not recommend using it. We recommend using nupkg, please refer to [Integrate with NuGet](#Install-By-NuGet).
+
+
 ## Build a Xamarin/.NET Android project using Foxit PDF SDK for Android
 **This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
 step-by-step instructions provided.**

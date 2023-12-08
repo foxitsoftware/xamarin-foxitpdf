@@ -34,9 +34,9 @@ This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct 
 
 3: unzip the `foxitpdfsdk_(version_no)_ios.zip`,and enter the `libs` directory,copy the following files  into the `foxit_xamarin_ios/libs` directory:
 
-* `FoxitRDK.framework`
-* `uiextensionsDynamic.framework`
-* `FoxitPDFScanUI.framework`
+* `FoxitRDK.framework(or .xcframework)`
+* `uiextensionsDynamic.framework(or .xcframework)`
+* `FoxitPDFScanUI.framework(or .xcframework)`
 * `rdk_key.txt`
 * `rdk_sn.txt`
 

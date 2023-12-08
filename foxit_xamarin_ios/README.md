@@ -1,11 +1,11 @@
 # foxit_xamarin_ios
-Use the Foxit Mobile PDF SDK with Xamarin on iOS
+Use the Foxit Mobile PDF SDK with Xamarin/.NET on iOS/Mac Catalyst
 
 Now we had support rdk 9.0
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct port of the `FoxitRDKDemo`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct port of the `CompletePdfViewer.xxx`  sample project included in the RDK.
 
 ## Installation
 
@@ -13,7 +13,7 @@ This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct 
 
 1: If you have already add reference `FoxitRDK.dll`, please remove them first.
 
-2: Right-click the References node of the `FoxitRDKDemo`  project and select Manager NuGet Packages...
+2: Right-click the References node of the `CompletePdfViewer.xxx`  project and select Manager NuGet Packages...
 
 3: Select the `Browse` tab, search for `Foxit.iOS`, `Foxit.iOS.UIExtensions` and`Foxit.iOS.Scanning.UI`install.
 
@@ -24,7 +24,7 @@ This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct 
 * `rdk_key.txt`
 * `rdk_sn.txt`
 
-6: `Run` the `FoxitRDKDemo` project in the simulator or on a physical device.
+6: `Run` the `CompletePdfViewer.xxx` project in the simulator or on a physical device.
 
 ### Install By Reference
 
@@ -44,11 +44,11 @@ This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct 
 
 5: `Rebuild` the `Foxit.iOS` , `Foxit.iOS.UIExtensions`and`Foxit.iOS.Scanning.UI`.
 
-6: Click the `FoxitRDKDemo.sln`
+6: Click the `CompletePdfViewer.xxx.sln`
 
 7: Add the `Foxit.iOS`,`Foxit.iOS.UIExtensions`,`Foxit.iOS.Scanning.UI` project or `dll-files`.
 
-8: `Run` the `FoxitRDKDemo` project in the simulator or on a physical device.
+8: `Run` the `CompletePdfViewer.xxx` project in the simulator or on a physical device.
 
 
 ## How to update api definition

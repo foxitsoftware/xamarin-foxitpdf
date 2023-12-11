@@ -11,7 +11,12 @@
   <remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='StorageHelper']"/>
 	
   <!--com.google.gson start-->
-  <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.cache']/class[@name='DateTimeAdapter']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.tokensharing']/class[@name='TokenCacheItemSerializationAdapater']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.authorities']/class[@name='AuthorityDeserializer']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.authorities']/class[@name='AzureActiveDirectoryAudienceDeserializer']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.util']/class[@name='ICacheRecordGsonAdapter']"/>
+  <!--<remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='DateTypeAdapter']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='SqlDateTypeAdapter']"/>
   <remove-node path="/api/package[@name='com.google.gson.internal.bind']/class[@name='TimeTypeAdapter']"/>
   
@@ -45,7 +50,7 @@
 
   //CS0738
   <attr path="/api/package[@name='com.google.gson']/class[@name='JsonStreamParser']/method[@name='next' and count(parameter)=0]"
-    name="managedReturn">Java.Lang.Object</attr>
+    name="managedReturn">Java.Lang.Object</attr>-->
   <!--com.google.gson end-->
   
   
@@ -57,6 +62,8 @@
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.net']/class[@name='NoRetryPolicy']"/>
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.net']/class[@name='UrlConnectionHttpClient']"/>
 
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServicesTokenResponse']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2012R2Account']"/>
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2012R2']"/>
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2012R2OAuth2Strategy']"/>
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.activedirectoryfederationservices']/class[@name='ActiveDirectoryFederationServices2016']"/>
@@ -106,17 +113,21 @@
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.microsoftsts']/class[@name='MicrosoftStsAuthorizationResultFactory']"/>
   <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft.microsoftsts']/class[@name='MicrosoftStsOAuth2Strategy']"/>
 
-  <remove-node path="/api/package[@name='com.microsoft.identity.common.internal.util']/class[@name='QueryParamsAdapter']"/>
-  
-  //CS0738
-  <attr path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']/method[@name='get' and count(parameter)=0]"
-  name="managedReturn">Java.Lang.Object</attr>
-  <attr path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']/method[@name='get' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='java.util.concurrent.TimeUnit']]"
-   name="managedReturn">Java.Lang.Object</attr>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.util']/class[@name='QueryParamsAdapter']"/>
+
+	//CS0738
+	<!-- <attr path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']/method[@name='get' and count(parameter)=0]"
+  name="managedType">Java.Lang.Object</attr> -->
+	<!-- <attr path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']/method[@name='get' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='java.util.concurrent.TimeUnit']]"
+	 name="managedReturn">Java.Lang.Object</attr> -->
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.broker.ipc']/interface[@name='IIpcStrategy']/method[@name='getType']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.internal.broker']/class[@name='BrokerResultFuture']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.tokensharing']/interface[@name='ITokenShareInternal']/method[@name='getMsaFamilyRefreshTokenWithMetadata']"/>
+	<remove-node path="/api/package[@name='com.microsoft.identity.common.adal.internal.tokensharing']/interface[@name='ITokenShareInternal']/method[@name='getOrgIdFamilyRefreshTokenWithMetadata']"/>
 
 
-  //CS0546
-  <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setEnvironment' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
+	//CS0546
+	<attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setEnvironment' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
       name="managedName">setEnvironment2</attr>
   <attr path="/api/package[@name='com.microsoft.identity.common.internal.providers.microsoft']/class[@name='MicrosoftAccount']/method[@name='setFamilyName' and count(parameter)=1 and parameter[1][@type='java.lang.String']]"
       name="managedName">setFamilyName2</attr>

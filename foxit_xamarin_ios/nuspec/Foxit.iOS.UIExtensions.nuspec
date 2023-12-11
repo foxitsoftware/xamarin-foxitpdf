@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.UIExtensions</id>
-    <version>8.4</version>
+    <version>9.0.0</version>
     <title>Foxit.iOS.UIExtensions</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>
@@ -18,22 +18,41 @@ technology to securely display, create, edit, annotate, format, organize, print,
 documents as well as to fill PDF forms. Additionally, Foxit PDF SDK includes a built-in, embeddable PDF
 Viewer, making the development process easier and faster. For more detailed information, please visit
 the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
-    <copyright>Copyright (C) 2003-2021, Foxit Software Inc.</copyright>
+    <copyright>Copyright (C) 2003-2023, Foxit Software Inc.</copyright>
     <tags>Foxit PDF SDK</tags>
     <summary></summary>
     <releaseNotes></releaseNotes>
     <language></language>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Foxit.iOS" version="8.4" />
+        <dependency id="Foxit.iOS" version="9.0.0" />
+      </group>
+      <group targetFramework="net6.0-ios11.0">
+        <dependency id="System.Runtime.InteropServices.NFloat.Internal" version="6.0.1" exclude="Build,Analyzers" />
+        <dependency id="Foxit.iOS" version="9.0.0" />
+      </group>
+      <group targetFramework="net6.0-maccatalyst13.1">
+        <dependency id="System.Runtime.InteropServices.NFloat.Internal" version="6.0.1" exclude="Build,Analyzers" />
+        <dependency id="Foxit.iOS" version="9.0.0" />
       </group>
     </dependencies>
     <frameworkAssemblies>
+      <frameworkAssembly assemblyName="mscorlib" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="Xamarin.iOS1.0" />
       <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Numerics" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Numerics.Vectors" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="Xamarin.iOS1.0" />
       <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
     </frameworkAssemblies>
   </metadata>
   <files>
-      <file src="LICENSE.txt" target="" />
+      <file src="../LICENSE.txt" target="" />
+      <file src="../libs/uiextensionsDynamic.xcframework.tar" target="runtimes/uiextensionsDynamic.xcframework.tar" />
+      <file src="../Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions.Nuget.targets" target="build/Foxit.iOS.UIExtensions.targets" />
+      <file src="../Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions.Nuget.targets" target="buildTransitive/Foxit.iOS.UIExtensions.targets" />
+      <file src="../Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/bin/Release/net6.0-ios/Foxit.iOS.UIExtensions.dll" target="lib/net6.0-ios11.0" />
+      <file src="../Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/bin/Release/xamarin.ios10/Foxit.iOS.UIExtensions.dll" target="lib/xamarin.ios10" />
+      <file src="../Foxit.iOS.UIExtensions/Foxit.iOS.UIExtensions/bin/Release/net6.0-maccatalyst/Foxit.iOS.UIExtensions.dll" target="lib/net6.0-maccatalyst13.1" />
   </files>
 </package>

@@ -1,0 +1,10 @@
+Copyright (C) 2003-2023  Foxit Software Incorporated.
+
+https://developers.foxitsoftware.com/pdf-sdk/ios/
+
+Developers should purchase licenses to use Foxit PDF SDK in their solutions. Licenses grant
+developers permission to release their apps which utilize Foxit PDF SDK. However, users are
+prohibited to distribute any documents, sample code, or source code in the released package of
+Foxit PDF SDK to any third party without written permission from Foxit Software Incorporated.
+
+

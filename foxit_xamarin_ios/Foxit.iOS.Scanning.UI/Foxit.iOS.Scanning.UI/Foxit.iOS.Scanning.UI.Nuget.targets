@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+      <_FoxitPDFScanUIExpandNativeReferencesPath>obj\$(Configuration)\$(TargetFramework)\FoxitPDFScanUIExtract\</_FoxitPDFScanUIExpandNativeReferencesPath>
+    </PropertyGroup>
+
+    <Target Name="_FoxitPDFScanUIResolveNativeReferences" BeforeTargets="ResolveNativeReferences">
+
+        <PropertyGroup>
+            <_FoxitPDFScanUIXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'False'">ios-arm64</_FoxitPDFScanUIXCFArch>
+            <_FoxitPDFScanUIXCFArch Condition="'$(_PlatformName)' == 'iOS' And '$(_SdkIsSimulator)' == 'True'">ios-x86_64-simulator</_FoxitPDFScanUIXCFArch>
+        </PropertyGroup>
+
+        <RemoveDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" ContinueOnError="True"/>
+        <MakeDir Directories="$(_FoxitPDFScanUIExpandNativeReferencesPath)" />
+        
+        <Exec Command ="tar -zxvf $(MSBuildThisFileDirectory)..\runtimes\FoxitPDFScanUI.xcframework.tar -C $(_FoxitPDFScanUIExpandNativeReferencesPath)" />
+
+        <ItemGroup>
+            <NativeReference Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\FoxitPDFScanUI.xcframework\$(_FoxitPDFScanUIXCFArch)\FoxitPDFScanUI.framework" >
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+
+        <ItemGroup>
+            <FileWrites Include="$(_FoxitPDFScanUIExpandNativeReferencesPath)\**" />
+        </ItemGroup>
+    </Target>
+</Project>

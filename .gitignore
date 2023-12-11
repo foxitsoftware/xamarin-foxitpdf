@@ -23,7 +23,8 @@ foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.6.4.0/lib/xamarinios10/Foxit.i
 foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.UIExtensions.6.4.0/Foxit.iOS.UIExtensions.6.4.0.nupkg
 foxit_xamarin_ios/FoxitRDKDemo/packages/Foxit.iOS.UIExtensions.6.4.0/lib/xamarinios10/Foxit.iOS.UIExtensions.dll
 foxit_xamarin_ios/Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI/bin
-foxit_xamarin_ios/Foxit.iOS.Scanning.UI/.vs
+*.vs
 foxit_xamarin_ios/FoxitRDKDemo/packages
-foxit_xamarin_ios/Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI/obj
-foxit_xamarin_ios/Foxit.iOS.Scanning.UI/Foxit.iOS.Scanning.UI/.vs
+*obj
+*bin
+foxit_xamarin_ios/nupkg

@@ -1,67 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{62CC7AAA-76FA-47DB-841D-D8E3FFDD9464}</ProjectGuid>
-    <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TemplateGuid>{77efb91c-a7e9-4b0e-a7c5-31eeec3c6d46}</TemplateGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FoxitMobileScanningRDK</RootNamespace>
-    <AssemblyName>FoxitMobileScanningRDK</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworks>monoandroid12.0;net6.0-android</TargetFrameworks>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <AssemblyName>Foxit.Android.Scanning</AssemblyName>
+    <NoWarn>CS0618;CS0465;BG8C00;BG8A00</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <PackageId>Foxit.Android.Scanning</PackageId>
+    <PackageVersion>2.0.0</PackageVersion>
+    <Title>Foxit.Android.Scanning</Title>
+    <Authors>Foxit Software Incorporated</Authors>
+    <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+    <PackageProjectUrl>https://developers.foxitsoftware.com/pdf-sdk/android/</PackageProjectUrl>
+    <Description>The plugin support scanning and generating pdf documents</Description>
+    <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
+    <PackageTags>Foxit PDF Scan Scanning</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>portable</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Mono.Android" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\libs\FoxitMobileScanningRDK.aar">
+    <LibraryProjectZip Include="..\..\libs\FoxitMobileScanningRDK.aar" Condition="!Exists('..\..\libs\FoxitMobileScanningRDK\')">
       <Link>Jars\FoxitMobileScanningRDK.aar</Link>
     </LibraryProjectZip>
   </ItemGroup>
+
+  <ItemGroup>
+    <AndroidXNuGetTargetFolders Include="build\monoandroid12.0" />
+    <AndroidXNuGetTargetFolders Include="build\net6.0-android31.0" />
+    <AndroidXNuGetTargetFolders Include="buildTransitive\monoandroid12.0" />
+    <AndroidXNuGetTargetFolders Include="buildTransitive\net6.0-android31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Foxit.Android.Scanning.targets" Pack="True" PackagePath="@@(AndroidXNuGetTargetFolders)" />
+    <None Include="LICENSE.txt" Pack="True" PackagePath="LICENSE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\libs\FoxitMobileScanningRDK.aar" Pack="True" PackagePath="aar\FoxitMobileScanningRDK.aar" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InputJar Include="..\..\libs\FoxitMobileScanningRDK\classes.jar" Condition="Exists('..\..\libs\FoxitMobileScanningRDK\')"/>
+  </ItemGroup>
+
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
     <TransformFile Include="Transforms\EnumFields.xml" />
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

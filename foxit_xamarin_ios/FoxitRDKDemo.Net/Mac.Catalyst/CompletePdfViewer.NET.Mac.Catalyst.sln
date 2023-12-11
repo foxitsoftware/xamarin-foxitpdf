@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompletePdfViewer.NET.Mac.Catalyst", "CompletePdfViewer.NET.Mac.Catalyst.csproj", "{63D0CAC0-82BF-4333-8858-87C874ED99BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63D0CAC0-82BF-4333-8858-87C874ED99BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D0CAC0-82BF-4333-8858-87C874ED99BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D0CAC0-82BF-4333-8858-87C874ED99BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D0CAC0-82BF-4333-8858-87C874ED99BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {896608D4-C73B-4779-807F-99CC1A86A5D2}
+	EndGlobalSection
+EndGlobal

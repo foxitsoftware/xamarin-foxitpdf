@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F01A4156-B22E-4825-967F-AD9EC355E4EF}</ProjectGuid>
-    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Foxit.iOS.UIExtensions</RootNamespace>
-    <AssemblyName>Foxit.iOS.UIExtensions</AssemblyName>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  	  <IsXamarinIOS>false</IsXamarinIOS>
+	  <IsXamarinIOS Condition="'$(TargetFramework)'=='xamarin.ios10'">true</IsXamarinIOS>
+
+      <_IsIOS>false</_IsIOS>
+      <_IsIOS Condition="$(IsXamarinIOS) or '$(TargetFramework)'=='net6.0-ios'">true</_IsIOS>
+
+      <_IsCatalyst>false</_IsCatalyst>
+      <_IsCatalyst Condition="$(_IsCatalyst) or '$(TargetFramework)'=='net6.0-maccatalyst'">true</_IsCatalyst>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  <PropertyGroup>
+      <TargetFrameworks>xamarin.ios10;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+      <NoNFloatUsing Condition="$(IsXamarinIOS)">true</NoNFloatUsing>
+      <Nullable>enable</Nullable>
+      <ImplicitUsings>true</ImplicitUsings>
+      <IsBindingProject>true</IsBindingProject>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
+      <OutputType>Library</OutputType>
+      <SupportedOSPlatformVersion Condition="$(_IsIOS)">11.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion Condition="$(_IsCatalyst)">13.1</SupportedOSPlatformVersion>
+	  <TargetPlatformVersion Condition="$(_IsIOS)">11.0</TargetPlatformVersion>
+	  <TargetPlatformVersion Condition="$(_IsCatalyst)">13.1</TargetPlatformVersion>
+      <RootNamespace>Foxit.iOS.UIExtensions</RootNamespace>
+      <AssemblyName>Foxit.iOS.UIExtensions</AssemblyName>
+      <AssemblyVersion>9.0.0</AssemblyVersion>
+      <FileVersion>9.0.0</FileVersion>
+      <AssemblyInformationalVersion>9.0.0</AssemblyInformationalVersion>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  <PropertyGroup>
+      <PackageId>Foxit.iOS.UIExtensions</PackageId>
+      <Title>Foxit.iOS.UIExtensions</Title>
+      <Summary>C# binding for Foxit PDF iOS SDK UI Extensions</Summary>
+      <Description>Foxit PDF SDK provides high-performance libraries to help any software developer add robust PDF
+functionality to their enterprise, mobile and cloud applications across all platforms (includes Windows,
+Mac, Linux, Web, Android, iOS, and UWP), using the most popular development languages and
+environments.
+Application developers who use Foxit PDF SDK can leverage Foxit’s powerful, standard-compliant PDF
+technology to securely display, create, edit, annotate, format, organize, print, share, secure, search
+documents as well as to fill PDF forms. Additionally, Foxit PDF SDK includes a built-in, embeddable PDF
+Viewer, making the development process easier and faster. For more detailed information, please visit
+the website https://developers.foxitsoftware.com/pdf-sdk/</Description>
+      <Authors>Foxit Software Incorporated</Authors>
+      <Owners>Foxit Software Incorporated</Owners>
+      <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
+      <PackageProjectUrl>https://developers.foxitsoftware.com/pdf-sdk/ios/</PackageProjectUrl>
+      <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <PackageVersion>8.4.0.1</PackageVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="Xamarin.iOS" />
+
+  <Import Project="Foxit.iOS.UIExtensions.Framework.targets" />
+
+  <ItemGroup Condition="$(IsXamarinIOS)">
+      <Compile Remove="ApiDefinition.cs" />
+      <Compile Remove="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+      <ObjcBindingApiDefinition Include="ApiDefinition.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+      <ObjcBindingCoreSource Include="Structs.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+      <ProjectReference Include="..\..\Foxit.iOS\Foxit.iOS\Foxit.iOS.csproj">
+        <Project>{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}</Project>
+        <Name>Foxit.iOS</Name>
+      </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingCoreSource Include="Structs.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <NativeReference Include="..\..\libs\uiextensionsDynamic.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Foxit.iOS\Foxit.iOS\Foxit.iOS.csproj">
-      <Project>{876B43E6-32FA-46E1-99AB-0D7CBC0FCB7B}</Project>
-      <Name>Foxit.iOS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+
 </Project>

@@ -1,10 +1,13 @@
-## Implement Foxit PDF SDK for Android using Xamarin
-Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for Android into your Xamarin.Android application. 
+## Implement Foxit PDF SDK for Android using Xamarin/.NET
+Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for Android into your Xamarin.Android/.NET Android application.   
 
 - [System Requirements](#System-Requirements)
 - [Integrate Foxit PDF SDK into your Xamarin project](#Integrate-Foxit-PDF-SDK-into-your-Xamarin-project)
-- [Build a Xamarin Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
+- [Integrate Foxit PDF SDK into your .NET project](#Integrate-Foxit-PDF-SDK-into-your-NET-project)
+- [Build a Xamarin/.NET Android project using Foxit PDF SDK for Android](#Build-a-Xamarin-Android-project-using-Foxit-PDF-SDK-for-Android)
 - [How to run the complete_pdf_viewer](#How-to-run-the-complete_pdf_viewer)
+- [Xamarin Demo](#Xamarin-Demo)
+- [.NET Demo](#.NET-Demo)
 - [Issues](#Issues)
 - [More](#More)
 - [License](#License)
@@ -17,7 +20,6 @@ Welcome to foxit. This guide will show you how to integrate Foxit PDF SDK for An
 * __TargetFrameworkVersion >= Android 10.0__  
  ![screenshot14](./Screenshot/screenshot14.png)      
 * __Minimum Android Version: API 19 (Android4.4)__  
-  __Recommended target: API 29__
 * __JDK Version >= 1.8__
 
 
@@ -124,8 +126,12 @@ click Add:
   After finishing the above steps, the References of your project will look like:  
   ![screenshot8](./Screenshot/screenshot8.jpg)  
   
-  
-## Build a Xamarin Android project using Foxit PDF SDK for Android
+
+## Integrate Foxit PDF SDK into your .Net project
+Similar to Xamarin, but the referencing DLLs method is more complex and .NET does not recommend using it. We recommend using nupkg, please refer to [Integrate with NuGet](#Install-By-NuGet).
+
+
+## Build a Xamarin/.NET Android project using Foxit PDF SDK for Android
 **This section will help you to quickly build a full-featured PDF Reader in Xamarin Android platform with
 step-by-step instructions provided.**
 
@@ -328,15 +334,22 @@ sample app has some basic PDF features, such as zooming in/out and page turning.
 
 ![screenshot13](./Screenshot/screenshot13.jpg) 
 
-
-## How to run the complete_pdf_viewer 
+## How to run the complete_pdf_viewer
 
 1: Download `foxitpdfsdk_(version_no)_android.zip` from [https://developers.foxitsoftware.com/pdf-sdk/android/](https://developers.foxitsoftware.com/pdf-sdk/android/), then unzip the `foxitpdfsdk_(version_no)_android.zip`, and enter the `libs` directory,copy the following files into the `foxit_xamarin_android/libs` directory:  
 
 * `rdk_key.txt`
 * `rdk_sn.txt`  
 
-2: `Run` the `complete_pdf_viewer` project in the simulator or on a physical device.  
+2:   
+__2.1: Xamarin Demo__ `Run` the `FoxitRDKDemo.Xamarin\complete_pdf_viewer.sln` project in the simulator or on a physical device.  
+__2.2: .NET Demo__ `Run` the `FoxitRDKDemo.Net\complete_pdf_viewer.sln` project in the simulator or on a physical device.  
+
+## Xamarin Demo
+Please refer to `FoxitRDKDemo.Xamarin\complete_pdf_viewer.sln` project.
+
+## .NET Demo
+Please refer to `FoxitRDKDemo.Net\complete_pdf_viewer.sln` project.
 
 ## Issues
 
@@ -346,7 +359,7 @@ Solution：Right-click the `Properties` node of your project, and open it. Find 
 
 ![screenshot15](./Screenshot/screenshot15.jpg)  
 
-#### 2: invalid opcode ba - invokedynamic requires --min-sdk-version >= 26 (currently 13), Cannot fit requested classes in a single dex file (# methods: 87605 > 65536)  
+#### 2: invalid opcode ba - invokedynamic requires --min-sdk-version >= 26 (currently 13), Cannot fit requested classes in a single dex file (# methods: 87605 > 65536)
 
 Solution：Right-click the `Properties` node of your project, and open it. Find `Android Options` and check `Enable Multi-Dex` and set `Dex compiler` to d8. As show below:  
 

@@ -92,7 +92,12 @@ namespace Foxit.iOS
 		LibreofficeEngineNotFound = 72,
 		NoAccessibilityModuleRight = 73,
 		ODAEngineNotFound = 74,
-		NoTableMakerModuleRight = 75
+		NoTableMakerModuleRight = 75,
+		NoDWG2PDFModuleRight = 76,
+		NoAdvEditModuleRight = 77,
+		NoPDF2OfficeModuleRight = 78,
+		URLInBlackList = 79,
+		NoDocumentPermission = 80
 	}
 
 	//[Native]
@@ -149,7 +154,10 @@ namespace Foxit.iOS
 		Conversion = 9,
 		LayoutRecognition = 10,
 		Accessibility = 11,
-		TableMaker = 12
+		TableMaker = 12,
+		Dwg2pdf = 13,
+		AdvEdit = 14,
+		PDF2Office = 15
 	}
 
 	//[Native]
@@ -855,6 +863,107 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSHTML2PDFSettingDataHTML2PDFPageMode : long
+	{
+		SinglePage = 0,
+		MultiplePage = 1
+	}
+
+	//[Native]
+	public enum FSHTML2PDFSettingDataHTML2PDFScalingMode : long
+	{
+		None = 0,
+		Scale = 1,
+		Enlarge = 2
+	}
+
+	//[Native]
+	public enum FSHTML2PDFSettingDataHTML2PDFEncodingFormat : long
+	{
+		Default = 0,
+		Ascii = 1,
+		Latin2 = 2,
+		Latin3 = 3,
+		Latin4 = 4,
+		Latin5 = 5,
+		Latin6 = 6,
+		Iso88595 = 7,
+		Arabic = 8,
+		Greek = 9,
+		Hebrew = 10,
+		EucJp = 11,
+		Sjs = 12,
+		Jis = 13,
+		Big5 = 14,
+		Gb = 15,
+		EucCn = 16,
+		Ksc = 17,
+		Unicode = 18,
+		Euc = 19,
+		Cns = 20,
+		Big5Cp950 = 21,
+		ASCII_7_bit = 22,
+		Koi8r = 23,
+		Cp852 = 24,
+		Cp866 = 25,
+		Cp874 = 26,
+		Cp932 = 27,
+		Cp1250 = 28,
+		Cp1251 = 29,
+		Cp1252 = 30,
+		Cp1253 = 31,
+		Cp1254 = 32,
+		Cp1255 = 33,
+		Cp1256 = 34,
+		Cp1257 = 35,
+		Koi8u = 36,
+		Iso885915 = 37,
+		Iso885911 = 38,
+		Iso88598I = 39,
+		Visual = 40,
+		Csn369103 = 41,
+		Iso885913 = 42,
+		Iso2022Kr = 43,
+		Gbk = 44,
+		Gb18030 = 45,
+		Big5Hkscs = 46,
+		Iso2022Cn = 47,
+		Tscii = 48,
+		Tam = 49,
+		Tab = 50,
+		Jagran = 51,
+		Macintosh = 52,
+		Utf7 = 53,
+		Bhaskar = 54,
+		Htchanakya = 55,
+		Utf16be = 56,
+		Utf16le = 57,
+		Utf32be = 58,
+		Utf32le = 59,
+		XBinaryenc = 60,
+		HzGb2312 = 61,
+		XUtf8utf8 = 62,
+		XTamElango = 63,
+		XTamLttmbarani = 64,
+		XTamShree = 65,
+		XTamTboomis = 66,
+		XTamTmnews = 67,
+		XTamWebtamil = 68,
+		X_KDDI_Shift_JIS = 69,
+		X_DoCoMo_Shift_JIS = 70,
+		X_SoftBank_Shift_JIS = 71,
+		XKddiIso2022Jp = 72,
+		X_SoftBank_ISO_2022_JP = 73
+	}
+
+	//[Native]
+	public enum FSHTML2PDFSettingDataHTML2PDFMediaStyle : long
+	{
+		Screen = 0,
+		Print = 1
+	}
+
+	//[Native]
 	public enum FSFDFDocType : long
 	{
 		Fdf = 0,
@@ -961,6 +1070,14 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSSearchOptionWordMatching : long
+	{
+		Phrase = 0,
+		AllWords = 1,
+		AnyWord = 2
+	}
+
+	//[Native]
 	public enum FSMediaPlayerCallbackJSMediaPlayerState : long
 	{
 		Open = 0,
@@ -1042,6 +1159,15 @@ namespace Foxit.iOS
 		Failed = 0,
 		Success = 1,
 		UserAbort = 2
+	}
+
+	//[Native]
+	public enum FSActionCallbackSearchScope : long
+	{
+		ActiveDoc = 0,
+		Folder = 1,
+		Index = 2,
+		ActiveIndexes = 3
 	}
 
 	//[Native]
@@ -1349,7 +1475,8 @@ namespace Foxit.iOS
 		FSAnnot3D = 25,
 		Popup = 26,
 		Redact = 27,
-		RichMedia = 28
+		RichMedia = 28,
+		PagingSeal = 29
 	}
 
 	//[Native]
@@ -1606,7 +1733,8 @@ namespace Foxit.iOS
 		NoOriginal = 2,
 		XRefStream = 8,
 		Linearized = 4096,
-		RemoveRedundantObjects = 16
+		RemoveRedundantObjects = 16,
+		NoUpdatingMetadataDateTime = 32
 	}
 
 	//[Native]
@@ -1900,7 +2028,8 @@ namespace Foxit.iOS
 		Normal = 0,
 		MatchCase = 1,
 		MatchWholeWord = 2,
-		Consecutive = 4
+		Consecutive = 4,
+		NotMatchFullWidth = 32
 	}
 
 	//[Native]
@@ -1936,7 +2065,9 @@ namespace Foxit.iOS
 		OnTop = 2,
 		NoPrint = 4,
 		Invisible = 8,
-		ShareImageStream = 16
+		ShareImageStream = 16,
+		ShareTextStream = 32,
+		SharePageStream = 64
 	}
 
 	//[Native]
@@ -2143,7 +2274,9 @@ namespace Foxit.iOS
 		Location = 32,
 		Signer = 64,
 		Bitmap = 128,
-		Text = 256
+		Text = 256,
+		FoxitEditorFlag = 512,
+		Producer = 1024
 	}
 
 	//[Native]
@@ -2154,7 +2287,8 @@ namespace Foxit.iOS
 		Reason = 2,
 		ContactInfo = 3,
 		Dn = 4,
-		Text = 5
+		Text = 5,
+		Producer = 6
 	}
 
 	//[Native]
@@ -2210,7 +2344,8 @@ namespace Foxit.iOS
 		Location = 1,
 		Reason = 2,
 		SignTime = 3,
-		Dn = 4
+		Dn = 4,
+		Producer = 6
 	}
 
 	//[Native]
@@ -2246,6 +2381,13 @@ namespace Foxit.iOS
 		Right = 2,
 		Top = 3,
 		Bottom = 4
+	}
+
+	//[Native]
+	public enum FSPagingSealConfigPagingSealStyle : long
+	{
+		MultipleSignatures = 0,
+		OneSignature = 1
 	}
 
 	//[Native]

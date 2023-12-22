@@ -24,9 +24,9 @@
 	  <TargetPlatformVersion Condition="$(_IsCatalyst)">13.1</TargetPlatformVersion>
       <RootNamespace>Foxit.iOS.UIExtensions</RootNamespace>
       <AssemblyName>Foxit.iOS.UIExtensions</AssemblyName>
-      <AssemblyVersion>9.0.0</AssemblyVersion>
-      <FileVersion>9.0.0</FileVersion>
-      <AssemblyInformationalVersion>9.0.0</AssemblyInformationalVersion>
+      <AssemblyVersion>9.0.1</AssemblyVersion>
+      <FileVersion>9.0.1</FileVersion>
+      <AssemblyInformationalVersion>9.0.1</AssemblyInformationalVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>

@@ -48,7 +48,7 @@ the website https://developers.foxitsoftware.com/pdf-sdk/</Description>
       <PackageProjectUrl>https://developers.foxitsoftware.com/pdf-sdk/ios/</PackageProjectUrl>
       <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
       <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-      <PackageVersion>8.4.0.1</PackageVersion>
+      <PackageVersion>9.0.1</PackageVersion>
   </PropertyGroup>
 
   <Import Project="Foxit.iOS.UIExtensions.Framework.targets" />

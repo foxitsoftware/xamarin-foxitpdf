@@ -97,9 +97,6 @@
       <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-180x180.jpg">
         <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-180x180.jpg</Link>
       </ImageAsset>
-      <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58-1.jpg">
-        <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58-1.jpg</Link>
-      </ImageAsset>
       <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58.jpg">
         <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-58x58.jpg</Link>
       </ImageAsset>
@@ -118,9 +115,6 @@
       <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80.jpg">
         <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80.jpg</Link>
       </ImageAsset>
-      <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-120x120-1.jpg">
-        <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-120x120-1.jpg</Link>
-      </ImageAsset>
       <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-40x40.jpg">
         <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-40x40.jpg</Link>
       </ImageAsset>
@@ -132,9 +126,6 @@
       </ImageAsset>
       <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-167x167.jpg">
         <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-167x167.jpg</Link>
-      </ImageAsset>
-      <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80-1.jpg">
-        <Link>Assets.xcassets\AppIcon.appiconset\foxit-complete-pdf-viewer-80x80-1.jpg</Link>
       </ImageAsset>
       <ImageAsset Include="..\CompletePdfViewer\Assets.xcassets\scan.imageset\Contents.json">
         <Link>Assets.xcassets\scan.imageset\Contents.json</Link>

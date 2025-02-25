@@ -21,7 +21,7 @@ namespace Com.Foxit.Pdfreader
 {
 
     [Activity(Label = "@string/app_name",
-    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.SmallestScreenSize,
+    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Locale | ConfigChanges.LayoutDirection | ConfigChanges.ScreenLayout | ConfigChanges.UiMode | ConfigChanges.SmallestScreenSize,
     ScreenOrientation = ScreenOrientation.FullSensor,
     Theme = "@style/AppTheme")]
     [Layout(MinHeight = "700dp", MinWidth = "520dp", Gravity = "center")]

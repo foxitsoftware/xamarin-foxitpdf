@@ -25,7 +25,6 @@ namespace Com.Foxit.Pdfreader
     ScreenOrientation = ScreenOrientation.FullSensor,
     Theme = "@style/AppTheme")]
     [Layout(MinHeight = "700dp", MinWidth = "520dp", Gravity = "center")]
-    [MetaData("android.support.PARENT_ACTIVITY", Value = "Com.Foxit.Home.MainActivity")]
     public class PDFReaderActivity : AppCompatActivity
     {
 

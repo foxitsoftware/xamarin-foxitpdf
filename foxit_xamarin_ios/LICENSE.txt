@@ -1,4 +1,4 @@
-Copyright (C) 2003-2023  Foxit Software Incorporated.
+Copyright (C) 2003-2025  Foxit Software Incorporated.
 
 https://developers.foxitsoftware.com/pdf-sdk/ios/
 

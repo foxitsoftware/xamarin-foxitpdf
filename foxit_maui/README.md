@@ -30,7 +30,7 @@ Foxit PDF SDK for .NET features a powerful, easy-to-use Core API in C# for rende
   8. Copy foxitpdfsdk_9_0_android\libs\rdk_sn.txt and foxitpdfsdk_9_0_android\libs\rdk_key.txt to xamarin-foxitpdf-master\foxit_xamarin_android\libs
   9. Open xamarin-foxitpdf-master\foxit_maui\foxit_maui.sln with Visual Studio 2022 or higher
   10. Open the "Solution Explorer" right click on the foxit_menu project and select "Manage Nuget Packages"
-  11. Click on "Installed" Confirm that Foxit.Android 9.0.0 and Foxit.Android.UIExtensions 9.0.0 are installed. If not, install them.
+  11. Click on "Installed" Confirm that Foxit.Android 9.1.0 and Foxit.Android.UIExtensions 9.1.0 are installed. If not, install them.
   12. In the Configuration Manager, select the emulated device from step 5.
   13. Click Debug -> "Start Without Debugging."
   14. Select a PDF and open it.

@@ -18,7 +18,7 @@
 		<ApplicationIdGuid>9882713c-121e-4dbd-81aa-f0ab38d7f27c</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>9.0.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>9.1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
@@ -73,9 +73,9 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-	  	<PackageReference Include="Foxit.Android" Version="9.0.0">
+	  	<PackageReference Include="Foxit.Android" Version="9.1.0">
 	  	</PackageReference>
-	  	<PackageReference Include="Foxit.Android.UIExtensions" Version="9.0.0">
+	  	<PackageReference Include="Foxit.Android.UIExtensions" Version="9.1.0">
 	  	</PackageReference>
 	</ItemGroup>
 
@@ -115,8 +115,8 @@
           <DependentUpon>ViewController.cs</DependentUpon>
         </Compile>
 
-        <PackageReference Include="Foxit.iOS" Version="9.0.0" />
-		<PackageReference Include="Foxit.iOS.UIExtensions" Version="9.0.0" />
+        <PackageReference Include="Foxit.iOS" Version="9.1.0" />
+		<PackageReference Include="Foxit.iOS.UIExtensions" Version="9.1.0" />
     </ItemGroup>
 
     <ItemGroup Condition="$(TargetFramework.Contains('-ios'))">

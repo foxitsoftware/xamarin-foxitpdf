@@ -30,7 +30,7 @@ technology to securely display, create, edit, annotate, format, organize, print,
 documents as well as to fill PDF forms. Additionally, Foxit PDF SDK includes a built-in, embeddable PDF
 Viewer, making the development process easier and faster. For more detailed information, please visit
 the website https://developers.foxitsoftware.com/pdf-sdk/.</Description>
-    <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
+    <Copyright>Copyright (C) 2003-2025, Foxit Software Inc.</Copyright>
     <PackageTags>Foxit PDF SDK</PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <!-- Include symbol files (*.pdb) in the built .nupkg -->

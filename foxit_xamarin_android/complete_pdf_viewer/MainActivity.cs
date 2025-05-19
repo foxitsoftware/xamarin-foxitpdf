@@ -21,7 +21,7 @@ namespace Com.Foxit.Home
 {
 
     [Activity(Label = "@string/app_name",
-    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Locale | ConfigChanges.LayoutDirection | ConfigChanges.SmallestScreenSize,
+    ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Locale | ConfigChanges.LayoutDirection | ConfigChanges.ScreenLayout | ConfigChanges.UiMode | ConfigChanges.SmallestScreenSize,
     LaunchMode = LaunchMode.SingleTop,
     Theme = "@style/AppTheme",
     WindowSoftInputMode = SoftInput.AdjustPan,

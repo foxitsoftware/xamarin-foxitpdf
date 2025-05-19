@@ -16,7 +16,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Foxit.Android</PackageId>
-    <PackageVersion>9.0.0</PackageVersion>
+    <PackageVersion>9.1.0</PackageVersion>
     <Title>Foxit.Android</Title>
     <Authors>Foxit Software Incorporated</Authors>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>

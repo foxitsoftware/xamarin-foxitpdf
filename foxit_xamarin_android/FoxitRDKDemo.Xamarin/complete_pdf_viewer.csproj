@@ -90,28 +90,28 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="..\complete_pdf_viewer\Assets\complete_pdf_viewer_guide_android.pdf">
-        <Link>Assets\complete_pdf_viewer_guide_android.pdf</Link>
+      <Link>Assets\complete_pdf_viewer_guide_android.pdf</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\complete_pdf_viewer\Assets\Sample.pdf">
-        <Link>Assets\Sample.pdf</Link>
+      <Link>Assets\Sample.pdf</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\complete_pdf_viewer\Assets\uiextensions_config.json">
-        <Link>Assets\uiextensions_config.json</Link>
+      <Link>Assets\uiextensions_config.json</Link>
     </AndroidAsset>
     <None Include="..\complete_pdf_viewer\Resources\AboutResources.txt">
-        <Link>Resources\AboutResources.txt</Link>
+      <Link>Resources\AboutResources.txt</Link>
     </None>
     <None Include="..\complete_pdf_viewer\Properties\AndroidManifest.xml">
-        <Link>Properties\AndroidManifest.xml</Link>
+      <Link>Properties\AndroidManifest.xml</Link>
     </None>
     <None Include="..\complete_pdf_viewer\Assets\AboutAssets.txt">
-        <Link>Assets\AboutAssets.txt</Link>
+      <Link>Assets\AboutAssets.txt</Link>
     </None>
     <AndroidAsset Include="..\libs\rdk_key.txt">
-        <Link>Assets\rdk_key.txt</Link>
+      <Link>Assets\rdk_key.txt</Link>
     </AndroidAsset>
     <AndroidAsset Include="..\libs\rdk_sn.txt">
-        <Link>Assets\rdk_sn.txt</Link>
+      <Link>Assets\rdk_sn.txt</Link>
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
@@ -120,80 +120,76 @@
       <Link>Resources\layout\activity_main.xml</Link>
     </AndroidResource>
     <AndroidResource Include="..\complete_pdf_viewer\Resources\values\colors.xml">
-       <Link>Resources\values\colors.xml</Link>
+      <Link>Resources\values\colors.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\ic_launcher_background.xml" >
-       <Link>Resources\values\ic_launcher_background.xml</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\ic_launcher_background.xml">
+      <Link>Resources\values\ic_launcher_background.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\strings.xml" >
-       <Link>Resources\values\strings.xml</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\strings.xml">
+      <Link>Resources\values\strings.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\styles.xml" >
-       <Link>Resources\values\styles.xml</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\values\styles.xml">
+      <Link>Resources\values\styles.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-anydpi-v26\ic_launcher.xml" >
-       <Link>Resources\mipmap-anydpi-v26\ic_launcher.xml</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-anydpi-v26\ic_launcher.xml">
+      <Link>Resources\mipmap-anydpi-v26\ic_launcher.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-anydpi-v26\ic_launcher_round.xml" >
-       <Link>Resources\mipmap-anydpi-v26\ic_launcher_round.xml</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-anydpi-v26\ic_launcher_round.xml">
+      <Link>Resources\mipmap-anydpi-v26\ic_launcher_round.xml</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\ic_launcher.png" >
-       <Link>Resources\mipmap-hdpi\ic_launcher.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\ic_launcher.png">
+      <Link>Resources\mipmap-hdpi\ic_launcher.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\ic_launcher_foreground.png" >
-       <Link>Resources\mipmap-hdpi\ic_launcher_foreground.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\ic_launcher_foreground.png">
+      <Link>Resources\mipmap-hdpi\ic_launcher_foreground.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\ic_launcher_round.png" >
-       <Link>Resources\mipmap-hdpi\ic_launcher_round.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-hdpi\ic_launcher_round.png">
+      <Link>Resources\mipmap-hdpi\ic_launcher_round.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\ic_launcher.png" >
-       <Link>Resources\mipmap-hdpi\ic_launcher.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\ic_launcher.png">
+      <Link>Resources\mipmap-hdpi\ic_launcher.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\ic_launcher_foreground.png" >
-       <Link>Resources\mipmap-hdpi\ic_launcher_foreground.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\ic_launcher_foreground.png">
+      <Link>Resources\mipmap-hdpi\ic_launcher_foreground.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\ic_launcher_round.png" >
-       <Link>Resources\mipmap-hdpi\ic_launcher_round.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-mdpi\ic_launcher_round.png">
+      <Link>Resources\mipmap-hdpi\ic_launcher_round.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\ic_launcher.png" >
-       <Link>Resources\mipmap-xhdpi\ic_launcher.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\ic_launcher.png">
+      <Link>Resources\mipmap-xhdpi\ic_launcher.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\ic_launcher_foreground.png" >
-       <Link>Resources\mipmap-xhdpi\ic_launcher_foreground.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\ic_launcher_foreground.png">
+      <Link>Resources\mipmap-xhdpi\ic_launcher_foreground.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\ic_launcher_round.png" >
-       <Link>Resources\mipmap-xhdpi\ic_launcher_round.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xhdpi\ic_launcher_round.png">
+      <Link>Resources\mipmap-xhdpi\ic_launcher_round.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\ic_launcher.png" >
-       <Link>Resources\mipmap-xxhdpi\ic_launcher.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\ic_launcher.png">
+      <Link>Resources\mipmap-xxhdpi\ic_launcher.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\ic_launcher_foreground.png" >
-       <Link>Resources\mipmap-xxhdpi\ic_launcher_foreground.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\ic_launcher_foreground.png">
+      <Link>Resources\mipmap-xxhdpi\ic_launcher_foreground.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\ic_launcher_round.png" >
-       <Link>Resources\mipmap-xxhdpi\ic_launcher_round.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxhdpi\ic_launcher_round.png">
+      <Link>Resources\mipmap-xxhdpi\ic_launcher_round.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\ic_launcher.png" >
-       <Link>Resources\mipmap-xxxhdpi\ic_launcher.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\ic_launcher.png">
+      <Link>Resources\mipmap-xxxhdpi\ic_launcher.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" >
-       <Link>Resources\mipmap-xxxhdpi\ic_launcher_foreground.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\ic_launcher_foreground.png">
+      <Link>Resources\mipmap-xxxhdpi\ic_launcher_foreground.png</Link>
     </AndroidResource>
-    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\ic_launcher_round.png" >
-       <Link>Resources\mipmap-xxxhdpi\ic_launcher_round.png</Link>
+    <AndroidResource Include="..\complete_pdf_viewer\Resources\mipmap-xxxhdpi\ic_launcher_round.png">
+      <Link>Resources\mipmap-xxxhdpi\ic_launcher_round.png</Link>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="..\complete_pdf_viewer\Resources\drawable\" >
-      <Link>Resources\drawable\</Link>
-    </Folder>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Foxit.Android">
-      <Version>9.0.0</Version>
+      <Version>9.1.0</Version>
     </PackageReference>
     <PackageReference Include="Foxit.Android.UIExtensions">
-      <Version>9.0.0</Version>
+      <Version>9.1.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.AppCompat">
       <Version>1.3.0</Version>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="10" android:versionName="9.0.0" package="com.foxit.pdf.viewer" android:installLocation="auto" xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="10" android:versionName="9.1.0" package="com.foxit.pdf.viewer" android:installLocation="auto" xmlns:tools="http://schemas.android.com/tools">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.VIBRATE" />
@@ -11,7 +11,6 @@
 	<uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
-	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 	<queries>
 		<intent>
 			<action android:name="android.intent.action.TTS_SERVICE" />

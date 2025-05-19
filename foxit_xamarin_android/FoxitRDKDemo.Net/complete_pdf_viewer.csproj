@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationId>com.foxit.pdf.viewer</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
-    <ApplicationDisplayVersion>9.0.0</ApplicationDisplayVersion>
+    <ApplicationDisplayVersion>9.1.0</ApplicationDisplayVersion>
     <AndroidManifest>..\complete_pdf_viewer\Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
 
@@ -116,8 +116,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Foxit.Android" Version="9.0.0" />
-    <PackageReference Include="Foxit.Android.UIExtensions" Version="9.0.0" />
+    <PackageReference Include="Foxit.Android" Version="9.1.0" />
+    <PackageReference Include="Foxit.Android.UIExtensions" Version="9.1.0" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0" />
   </ItemGroup>
 </Project>

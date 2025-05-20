@@ -1391,6 +1391,11 @@ namespace Foxit.iOS
 		[Export ("enableThreadSafety:")]
 		void EnableThreadSafety (bool is_enable_thread_safety);
 
+		// +(NSString *)executeJavaScript:(NSString *)java_script;
+		[Static]
+		[Export ("executeJavaScript:")]
+		string ExecuteJavaScript (string java_script);
+
 		// -(void)dealloc;
 		[Export ("dealloc")]
 		void Dealloc ();
@@ -2085,6 +2090,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSBitmap Mask { get; }
 
+		// -(FSBitmap *)fadeOutBackground:(FSBitmapFadeOutEnhancementAlgorithm)enchancement_algorithms threshold_algorithms:(FSBitmapFadeOutThresholdAlogrithm)threshold_algorithms threshold_level:(float)threshold_level;
+		[Export ("fadeOutBackground:threshold_algorithms:threshold_level:")]
+		FSBitmap FadeOutBackground (FSBitmapFadeOutEnhancementAlgorithm enchancement_algorithms, FSBitmapFadeOutThresholdAlogrithm threshold_algorithms, float threshold_level);
+
 		// -(NSData *)getBuffer;
 		[Export ("getBuffer")]
 		//[Verify (MethodToProperty)]
@@ -2175,9 +2184,68 @@ namespace Foxit.iOS
 		[Export ("saveAs:file_extension:")]
 		bool SaveAs (NSObject file, string file_extension);
 
+		// -(FSImageOrientation)getOrientation;
+		[Export ("getOrientation")]
+		//[Verify (MethodToProperty)]
+		FSImageOrientation Orientation { get; }
+
 		// -(id)initWithBuffer:(NSData *)buffer;
 		[Export ("initWithBuffer:")]
 		IntPtr Constructor (NSData buffer);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
+	// @interface FSPrintDeviceSettingData : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSPrintDeviceSettingData
+	{
+		// @property (getter = getDevice_width, nonatomic) int device_width;
+		[Export ("device_width")]
+		int Device_width { [Bind ("getDevice_width")] get; set; }
+
+		// @property (getter = getDevice_height, nonatomic) int device_height;
+		[Export ("device_height")]
+		int Device_height { [Bind ("getDevice_height")] get; set; }
+
+		// @property (getter = getDevice_margin, copy, nonatomic) FSRectF * device_margin;
+		[Export ("device_margin", ArgumentSemantic.Copy)]
+		FSRectF Device_margin { [Bind ("getDevice_margin")] get; set; }
+
+		// @property (getter = getOrientation, nonatomic) FSPrintDeviceSettingDataOrientationFlag orientation;
+		[Export ("orientation", ArgumentSemantic.Assign)]
+		FSPrintDeviceSettingDataOrientationFlag Orientation { [Bind ("getOrientation")] get; set; }
+
+		// @property (getter = getResolution, nonatomic) int resolution;
+		[Export ("resolution")]
+		int Resolution { [Bind ("getResolution")] get; set; }
+
+		// @property (getter = getCopies, nonatomic) unsigned int copies;
+		[Export ("copies")]
+		uint Copies { [Bind ("getCopies")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(id)initWithDevice_width:(int)device_width device_height:(int)device_height device_margin:(FSRectF *)device_margin orientation:(FSPrintDeviceSettingDataOrientationFlag)orientation resolution:(int)resolution copies:(unsigned int)copies;
+		[Export ("initWithDevice_width:device_height:device_margin:orientation:resolution:copies:")]
+		IntPtr Constructor (int device_width, int device_height, FSRectF device_margin, FSPrintDeviceSettingDataOrientationFlag orientation, int resolution, uint copies);
+
+		// -(id)initWithSettings:(FSPrintDeviceSettingData *)settings;
+		[Export ("initWithSettings:")]
+		IntPtr Constructor (FSPrintDeviceSettingData settings);
+
+		// -(void)set:(int)device_width device_height:(int)device_height device_margin:(FSRectF *)device_margin orientation:(FSPrintDeviceSettingDataOrientationFlag)orientation resolution:(int)resolution copies:(unsigned int)copies;
+		[Export ("set:device_height:device_margin:orientation:resolution:copies:")]
+		void Set (int device_width, int device_height, FSRectF device_margin, FSPrintDeviceSettingDataOrientationFlag orientation, int resolution, uint copies);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -2201,6 +2269,10 @@ namespace Foxit.iOS
 		// -(id)initWithBitmap:(FSBitmap *)bitmap is_rgb_order:(BOOL)is_rgb_order;
 		[Export ("initWithBitmap:is_rgb_order:")]
 		IntPtr Constructor (FSBitmap bitmap, bool is_rgb_order);
+
+		// -(id)initWithPrint_param:(FSPrintDeviceSettingData *)print_param dest_file_path:(NSString *)dest_file_path;
+		[Export ("initWithPrint_param:dest_file_path:")]
+		IntPtr Constructor (FSPrintDeviceSettingData print_param, string dest_file_path);
 
 		// -(id)initWithContext:(CGContextRef)context device_type:(FSRendererDeviceType)device_type;
 		[Export ("initWithContext:device_type:")]
@@ -2450,6 +2522,15 @@ namespace Foxit.iOS
 		[Export ("apply")]
 		//[Verify (MethodToProperty)]
 		bool Apply { get; }
+
+		// -(FSProgressive *)startApply:(id<FSPauseCallback>)pause;
+		[Export ("startApply:")]
+		FSProgressive StartApply (NSObject pause);
+
+		// -(FSProgressive *)startApply;
+		[Export ("startApply")]
+		//[Verify (MethodToProperty)]
+		FSProgressive StartApply ();
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -2789,6 +2870,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSWidgetChoiceOptionArray Options { get; }
 
+		// -(BOOL)setOptions:(FSWidgetChoiceOptionArray *)option_array;
+		[Export ("setOptions:")]
+		bool SetOptions (FSWidgetChoiceOptionArray option_array);
+
 		// -(BOOL)isChecked;
 		[Export ("isChecked")]
 		//[Verify (MethodToProperty)]
@@ -2905,6 +2990,30 @@ namespace Foxit.iOS
 		// -(void)setImage:(FSImage *)image;
 		[Export ("setImage:")]
 		void SetImage (FSImage image);
+
+		// -(BOOL)isAllowRichText;
+		[Export ("isAllowRichText")]
+		//[Verify (MethodToProperty)]
+		bool IsAllowRichText { get; }
+
+		// -(BOOL)isReadOnly;
+		[Export ("isReadOnly")]
+		//[Verify (MethodToProperty)]
+		bool IsReadOnly { get; }
+
+		// -(BOOL)isRequired;
+		[Export ("isRequired")]
+		//[Verify (MethodToProperty)]
+		bool IsRequired { get; }
+
+		// -(BOOL)validateValue:(NSString *)value format:(NSString *)format;
+		[Export ("validateValue:format:")]
+		bool ValidateValue (string value, string format);
+
+		// -(NSString *)getJavaScript;
+		[Export ("getJavaScript")]
+		//[Verify (MethodToProperty)]
+		string JavaScript { get; }
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -3414,6 +3523,14 @@ namespace Foxit.iOS
 		[Export ("setColorGrayImageSettings:")]
 		void SetColorGrayImageSettings (FSImageSettings settings);
 
+		// -(void)setColorImageSettings:(FSImageSettings *)settings;
+		[Export ("setColorImageSettings:")]
+		void SetColorImageSettings (FSImageSettings settings);
+
+		// -(void)setGrayscaleImageSettings:(FSImageSettings *)settings;
+		[Export ("setGrayscaleImageSettings:")]
+		void SetGrayscaleImageSettings (FSImageSettings settings);
+
 		// -(void)setMonoImageSettings:(FSMonoImageSettings *)settings;
 		[Export ("setMonoImageSettings:")]
 		void SetMonoImageSettings (FSMonoImageSettings settings);
@@ -3619,6 +3736,92 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
+	// @interface FSDWG2PDFSettingData : NSObject
+	[BaseType (typeof(NSObject))]
+	interface FSDWG2PDFSettingData
+	{
+		// @property (getter = getExport_flags, nonatomic) unsigned int export_flags;
+		[Export ("export_flags")]
+		uint Export_flags { [Bind ("getExport_flags")] get; set; }
+
+		// @property (getter = getExport_hatches_type, nonatomic) FSDWG2PDFSettingDataDWG2PDFExportHatchesType export_hatches_type;
+		[Export ("export_hatches_type", ArgumentSemantic.Assign)]
+		FSDWG2PDFSettingDataDWG2PDFExportHatchesType Export_hatches_type { [Bind ("getExport_hatches_type")] get; set; }
+
+		// @property (getter = getOther_export_hatches_type, nonatomic) FSDWG2PDFSettingDataDWG2PDFExportHatchesType other_export_hatches_type;
+		[Export ("other_export_hatches_type", ArgumentSemantic.Assign)]
+		FSDWG2PDFSettingDataDWG2PDFExportHatchesType Other_export_hatches_type { [Bind ("getOther_export_hatches_type")] get; set; }
+
+		// @property (getter = getGradient_export_hatches_type, nonatomic) FSDWG2PDFSettingDataDWG2PDFExportHatchesType gradient_export_hatches_type;
+		[Export ("gradient_export_hatches_type", ArgumentSemantic.Assign)]
+		FSDWG2PDFSettingDataDWG2PDFExportHatchesType Gradient_export_hatches_type { [Bind ("getGradient_export_hatches_type")] get; set; }
+
+		// @property (getter = getSearchable_text_type, nonatomic) FSDWG2PDFSettingDataDWG2PDFSearchableTextType searchable_text_type;
+		[Export ("searchable_text_type", ArgumentSemantic.Assign)]
+		FSDWG2PDFSettingDataDWG2PDFSearchableTextType Searchable_text_type { [Bind ("getSearchable_text_type")] get; set; }
+
+		// @property (getter = getIs_active_layout, nonatomic) BOOL is_active_layout;
+		[Export ("is_active_layout")]
+		bool Is_active_layout { [Bind ("getIs_active_layout")] get; set; }
+
+		// @property (getter = getOutput_title, copy, nonatomic) NSString * output_title;
+		[Export ("output_title")]
+		string Output_title { [Bind ("getOutput_title")] get; set; }
+
+		// @property (getter = getOutput_author, copy, nonatomic) NSString * output_author;
+		[Export ("output_author")]
+		string Output_author { [Bind ("getOutput_author")] get; set; }
+
+		// @property (getter = getOutput_subject, copy, nonatomic) NSString * output_subject;
+		[Export ("output_subject")]
+		string Output_subject { [Bind ("getOutput_subject")] get; set; }
+
+		// @property (getter = getOutput_keywords, copy, nonatomic) NSString * output_keywords;
+		[Export ("output_keywords")]
+		string Output_keywords { [Bind ("getOutput_keywords")] get; set; }
+
+		// @property (getter = getOutput_creator, copy, nonatomic) NSString * output_creator;
+		[Export ("output_creator")]
+		string Output_creator { [Bind ("getOutput_creator")] get; set; }
+
+		// @property (getter = getOutput_producer, copy, nonatomic) NSString * output_producer;
+		[Export ("output_producer")]
+		string Output_producer { [Bind ("getOutput_producer")] get; set; }
+
+		// @property (getter = getPaper_width, nonatomic) float paper_width;
+		[Export ("paper_width")]
+		float Paper_width { [Bind ("getPaper_width")] get; set; }
+
+		// @property (getter = getPaper_height, nonatomic) float paper_height;
+		[Export ("paper_height")]
+		float Paper_height { [Bind ("getPaper_height")] get; set; }
+
+		// @property (getter = getColor_policy, nonatomic) FSDWG2PDFSettingDataDWG2PDFColorPolicy color_policy;
+		[Export ("color_policy", ArgumentSemantic.Assign)]
+		FSDWG2PDFSettingDataDWG2PDFColorPolicy Color_policy { [Bind ("getColor_policy")] get; set; }
+
+		// @property (getter = getIs_output_progress, nonatomic) BOOL is_output_progress;
+		[Export ("is_output_progress")]
+		bool Is_output_progress { [Bind ("getIs_output_progress")] get; set; }
+
+		// @property (getter = getProgress_callback, nonatomic) void * progress_callback;
+		[Export ("progress_callback", ArgumentSemantic.Assign)]
+		IntPtr Progress_callback { [Bind ("getProgress_callback")] get; set; }
+
+		// -(void *)getCptr;
+		[Export ("getCptr")]
+		//[Verify (MethodToProperty)]
+		IntPtr Cptr { get; }
+
+		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
+		[Export ("initWithCptr:swigOwnCObject:")]
+		IntPtr Constructor (IntPtr cptr, bool ownCObject);
+
+		// -(void)dealloc;
+		[Export ("dealloc")]
+		void Dealloc ();
+	}
+
 	// @interface FSHTML2PDFRelatedResource : NSObject
 	[BaseType (typeof(NSObject))]
 	interface FSHTML2PDFRelatedResource
@@ -3743,6 +3946,11 @@ namespace Foxit.iOS
 		[Static]
 		[Export ("fromImage:saved_pdf_filestream:")]
 		void FromImage (NSObject file_reader, NSObject saved_pdf_filestream);
+
+		// +(BOOL)fromDWG:(NSString *)engine_path src_dwg_path:(NSString *)src_dwg_path saved_pdf_path:(NSString *)saved_pdf_path settings:(FSDWG2PDFSettingData *)settings;
+		[Static]
+		[Export ("fromDWG:src_dwg_path:saved_pdf_path:settings:")]
+		bool FromDWG (string engine_path, string src_dwg_path, string saved_pdf_path, FSDWG2PDFSettingData settings);
 
 		// +(BOOL)toXML:(NSString *)src_pdf_path src_file_password:(NSString *)src_file_password saved_xml_path:(NSString *)saved_xml_path saved_image_folder_path:(NSString *)saved_image_folder_path is_force_to_tagged_pdf:(BOOL)is_force_to_tagged_pdf;
 		[Static]
@@ -6751,6 +6959,14 @@ namespace Foxit.iOS
 		[Export ("mark_style", ArgumentSemantic.Assign)]
 		FSRichTextStyleCornerMarkStyle Mark_style { [Bind ("getMark_style")] get; set; }
 
+		// @property (getter = getChar_space, nonatomic) float char_space;
+		[Export ("char_space")]
+		float Char_space { [Bind ("getChar_space")] get; set; }
+
+		// @property (getter = getWord_space, nonatomic) float word_space;
+		[Export ("word_space")]
+		float Word_space { [Bind ("getWord_space")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -6760,17 +6976,17 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_alignment:(FSAlignment)text_alignment text_color:(unsigned int)text_color is_bold:(BOOL)is_bold is_italic:(BOOL)is_italic is_underline:(BOOL)is_underline is_strikethrough:(BOOL)is_strikethrough mark_style:(FSRichTextStyleCornerMarkStyle)mark_style;
-		[Export ("initWithFont:text_size:text_alignment:text_color:is_bold:is_italic:is_underline:is_strikethrough:mark_style:")]
-		IntPtr Constructor (FSFont font, float text_size, FSAlignment text_alignment, uint text_color, bool is_bold, bool is_italic, bool is_underline, bool is_strikethrough, FSRichTextStyleCornerMarkStyle mark_style);
+		// -(id)initWithFont:(FSFont *)font text_size:(float)text_size text_alignment:(FSAlignment)text_alignment text_color:(unsigned int)text_color is_bold:(BOOL)is_bold is_italic:(BOOL)is_italic is_underline:(BOOL)is_underline is_strikethrough:(BOOL)is_strikethrough mark_style:(FSRichTextStyleCornerMarkStyle)mark_style char_space:(float)char_space word_space:(float)word_space;
+		[Export ("initWithFont:text_size:text_alignment:text_color:is_bold:is_italic:is_underline:is_strikethrough:mark_style:char_space:word_space:")]
+		IntPtr Constructor (FSFont font, float text_size, FSAlignment text_alignment, uint text_color, bool is_bold, bool is_italic, bool is_underline, bool is_strikethrough, FSRichTextStyleCornerMarkStyle mark_style, float char_space, float word_space);
 
 		// -(id)initWithStyle:(FSRichTextStyle *)style;
 		[Export ("initWithStyle:")]
 		IntPtr Constructor (FSRichTextStyle style);
 
-		// -(void)set:(FSFont *)font text_size:(float)text_size text_alignment:(FSAlignment)text_alignment text_color:(unsigned int)text_color is_bold:(BOOL)is_bold is_italic:(BOOL)is_italic is_underline:(BOOL)is_underline is_strikethrough:(BOOL)is_strikethrough mark_style:(FSRichTextStyleCornerMarkStyle)mark_style;
-		[Export ("set:text_size:text_alignment:text_color:is_bold:is_italic:is_underline:is_strikethrough:mark_style:")]
-		void Set (FSFont font, float text_size, FSAlignment text_alignment, uint text_color, bool is_bold, bool is_italic, bool is_underline, bool is_strikethrough, FSRichTextStyleCornerMarkStyle mark_style);
+		// -(void)set:(FSFont *)font text_size:(float)text_size text_alignment:(FSAlignment)text_alignment text_color:(unsigned int)text_color is_bold:(BOOL)is_bold is_italic:(BOOL)is_italic is_underline:(BOOL)is_underline is_strikethrough:(BOOL)is_strikethrough mark_style:(FSRichTextStyleCornerMarkStyle)mark_style char_space:(float)char_space word_space:(float)word_space;
+		[Export ("set:text_size:text_alignment:text_color:is_bold:is_italic:is_underline:is_strikethrough:mark_style:char_space:word_space:")]
+		void Set (FSFont font, float text_size, FSAlignment text_alignment, uint text_color, bool is_bold, bool is_italic, bool is_underline, bool is_strikethrough, FSRichTextStyleCornerMarkStyle mark_style, float char_space, float word_space);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -7308,6 +7524,14 @@ namespace Foxit.iOS
 		[Export ("creationDateTime", ArgumentSemantic.Copy)]
 		FSDateTime CreationDateTime { [Bind ("getCreationDateTime")] get; set; }
 
+		// @property (getter = getBorderOpacity, nonatomic) float borderOpacity;
+		[Export ("borderOpacity")]
+		float BorderOpacity { [Bind ("getBorderOpacity")] get; set; }
+
+		// @property (getter = getFillOpacity, nonatomic) float fillOpacity;
+		[Export ("fillOpacity")]
+		float FillOpacity { [Bind ("getFillOpacity")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -7617,10 +7841,14 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		bool RemoveAction { get; }
 
+		// -(BOOL)executeJavaScriptAction:(FSJavaScriptAction *)javascript_action;
+		[Export ("executeJavaScriptAction:")]
+		bool ExecuteJavaScriptAction (FSJavaScriptAction javascript_action);
+
 		// -(BOOL)executeJavaScriptAction;
 		[Export ("executeJavaScriptAction")]
 		//[Verify (MethodToProperty)]
-		bool ExecuteJavaScriptAction { get; }
+		bool ExecuteJavaScriptAction ();
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -8262,125 +8490,10 @@ namespace Foxit.iOS
 		void Dealloc ();
 	}
 
-	// @interface FSPSInkPointDataArray : NSObject
-	[BaseType (typeof(NSObject))]
-	interface FSPSInkPointDataArray
-	{
-		// -(void *)getCptr;
-		[Export ("getCptr")]
-		//[Verify (MethodToProperty)]
-		IntPtr Cptr { get; }
-
-		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
-		[Export ("initWithCptr:swigOwnCObject:")]
-		IntPtr Constructor (IntPtr cptr, bool ownCObject);
-
-		// -(id)initWithOther:(FSPSInkPointDataArray *)other;
-		[Export ("initWithOther:")]
-		IntPtr Constructor (FSPSInkPointDataArray other);
-
-		// -(unsigned long)getSize;
-		[Export ("getSize")]
-		//[Verify (MethodToProperty)]
-		nuint Size { get; }
-
-		// -(FSPSInkPointData *)getAt:(unsigned long)index;
-		[Export ("getAt:")]
-		FSPSInkPointData GetAt (nuint index);
-
-		// -(void)add:(FSPSInkPointData *)element;
-		[Export ("add:")]
-		void Add (FSPSInkPointData element);
-
-		// -(void)removeAt:(unsigned long)index;
-		[Export ("removeAt:")]
-		void RemoveAt (nuint index);
-
-		// -(void)insertAt:(unsigned long)index element:(FSPSInkPointData *)element;
-		[Export ("insertAt:element:")]
-		void InsertAt (nuint index, FSPSInkPointData element);
-
-		// -(void)removeAll;
-		[Export ("removeAll")]
-		void RemoveAll ();
-
-		// -(void)dealloc;
-		[Export ("dealloc")]
-		void Dealloc ();
-	}
-
-	// @interface FSPSInkPointData : NSObject
-	[BaseType (typeof(NSObject))]
-	interface FSPSInkPointData
-	{
-		// @property (getter = getPointf, copy, nonatomic) FSPointF * pointf;
-		[Export ("pointf", ArgumentSemantic.Copy)]
-		FSPointF Pointf { [Bind ("getPointf")] get; set; }
-
-		// @property (getter = getPath_type, nonatomic) FSPathPointType path_type;
-		[Export ("path_type", ArgumentSemantic.Assign)]
-		FSPathPointType Path_type { [Bind ("getPath_type")] get; set; }
-
-		// @property (getter = getPressure, nonatomic) float pressure;
-		[Export ("pressure")]
-		float Pressure { [Bind ("getPressure")] get; set; }
-
-		// -(void *)getCptr;
-		[Export ("getCptr")]
-		//[Verify (MethodToProperty)]
-		IntPtr Cptr { get; }
-
-		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
-		[Export ("initWithCptr:swigOwnCObject:")]
-		IntPtr Constructor (IntPtr cptr, bool ownCObject);
-
-		// -(void)dealloc;
-		[Export ("dealloc")]
-		void Dealloc ();
-	}
-
-	// @interface FSPSInkData : NSObject
-	[BaseType (typeof(NSObject))]
-	interface FSPSInkData
-	{
-		// @property (getter = getOpacity, nonatomic) float opacity;
-		[Export ("opacity")]
-		float Opacity { [Bind ("getOpacity")] get; set; }
-
-		// @property (getter = getDiameter, nonatomic) int diameter;
-		[Export ("diameter")]
-		int Diameter { [Bind ("getDiameter")] get; set; }
-
-		// @property (getter = getColor, nonatomic) unsigned int color;
-		[Export ("color")]
-		uint Color { [Bind ("getColor")] get; set; }
-
-		// @property (getter = getPsink_point_data_array, copy, nonatomic) FSPSInkPointDataArray * psink_point_data_array;
-		[Export ("psink_point_data_array", ArgumentSemantic.Copy)]
-		FSPSInkPointDataArray Psink_point_data_array { [Bind ("getPsink_point_data_array")] get; set; }
-
-		// -(void *)getCptr;
-		[Export ("getCptr")]
-		//[Verify (MethodToProperty)]
-		IntPtr Cptr { get; }
-
-		// -(id)initWithCptr:(void *)cptr swigOwnCObject:(BOOL)ownCObject;
-		[Export ("initWithCptr:swigOwnCObject:")]
-		IntPtr Constructor (IntPtr cptr, bool ownCObject);
-
-		// -(void)dealloc;
-		[Export ("dealloc")]
-		void Dealloc ();
-	}
-
 	// @interface FSPSInk : FSAnnot
 	[BaseType (typeof(FSAnnot))]
 	interface FSPSInk
 	{
-		// @property (getter = getPSInkData, copy, nonatomic) FSPSInkData * pSInkData;
-		[Export ("pSInkData", ArgumentSemantic.Copy)]
-		FSPSInkData PSInkData { [Bind ("getPSInkData")] get; set; }
-
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -9219,6 +9332,10 @@ namespace Foxit.iOS
 		[Export ("scale")]
 		int Scale { [Bind ("getScale")] get; set; }
 
+		// @property (getter = getFlags, nonatomic) unsigned int flags;
+		[Export ("flags")]
+		uint Flags { [Bind ("getFlags")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -9228,17 +9345,17 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
-		// -(id)initWithRow_space:(float)row_space col_space:(float)col_space rotation:(float)rotation opacity:(int)opacity scale:(int)scale;
-		[Export ("initWithRow_space:col_space:rotation:opacity:scale:")]
-		IntPtr Constructor (float row_space, float col_space, float rotation, int opacity, int scale);
+		// -(id)initWithRow_space:(float)row_space col_space:(float)col_space rotation:(float)rotation opacity:(int)opacity scale:(int)scale flags:(unsigned int)flags;
+		[Export ("initWithRow_space:col_space:rotation:opacity:scale:flags:")]
+		IntPtr Constructor (float row_space, float col_space, float rotation, int opacity, int scale, uint flags);
 
 		// -(id)initWithSettings:(FSTiledWatermarkSettings *)settings;
 		[Export ("initWithSettings:")]
 		IntPtr Constructor (FSTiledWatermarkSettings settings);
 
-		// -(void)set:(float)row_space col_space:(float)col_space rotation:(float)rotation opacity:(int)opacity scale:(int)scale;
-		[Export ("set:col_space:rotation:opacity:scale:")]
-		void Set (float row_space, float col_space, float rotation, int opacity, int scale);
+		// -(void)set:(float)row_space col_space:(float)col_space rotation:(float)rotation opacity:(int)opacity scale:(int)scale flags:(unsigned int)flags;
+		[Export ("set:col_space:rotation:opacity:scale:flags:")]
+		void Set (float row_space, float col_space, float rotation, int opacity, int scale, uint flags);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -10143,6 +10260,14 @@ namespace Foxit.iOS
 		// -(FSProgressive *)startAddTiledWatermarkWithpage:(FSPDFPage *)page settings:(FSTiledWatermarkSettings *)settings page_range:(FSRange *)page_range;
 		[Export ("startAddTiledWatermarkWithpage:settings:page_range:")]
 		FSProgressive StartAddTiledWatermarkWithpage (FSPDFPage page, FSTiledWatermarkSettings settings, FSRange page_range);
+
+		// -(FSAnnotArray *)getAnnotsByIdArray:(NSArray<NSString *> *)unique_id_arr;
+		[Export ("getAnnotsByIdArray:")]
+		FSAnnotArray GetAnnotsByIdArray (string[] unique_id_arr);
+
+		// -(void)loadAnnotsFonts:(FSRange *)page_range;
+		[Export ("loadAnnotsFonts:")]
+		void LoadAnnotsFonts (FSRange page_range);
 
 		// -(id)initWithBuffer:(NSData *)buffer;
 		[Export ("initWithBuffer:")]
@@ -11289,6 +11414,10 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		FSGraphicsObject Clone ();
 
+		// -(FSGraphicsObject *)clone:(FSGraphicsObjects *)src_graphicsobjects dest_graphicsobjects:(FSGraphicsObjects *)dest_graphicsobjects;
+		[Export ("clone:dest_graphicsobjects:")]
+		FSGraphicsObject Clone (FSGraphicsObjects src_graphicsobjects, FSGraphicsObjects dest_graphicsobjects);
+
 		// -(int)getClipPathCount;
 		[Export ("getClipPathCount")]
 		//[Verify (MethodToProperty)]
@@ -11471,6 +11600,15 @@ namespace Foxit.iOS
 		// -(FSBitmap *)cloneBitmap:(FSGraphicsObjects *)graphics_objects;
 		[Export ("cloneBitmap:")]
 		FSBitmap CloneBitmap (FSGraphicsObjects graphics_objects);
+
+		// -(FSBitmap *)cloneBitmap:(FSPDFPage *)page graphics_objects:(FSGraphicsObjects *)graphics_objects;
+		[Export ("cloneBitmap:graphics_objects:")]
+		FSBitmap CloneBitmap (FSPDFPage page, FSGraphicsObjects graphics_objects);
+
+		// +(FSImageObject *)createFromType3TextObject:(FSPDFPage *)page text_obj:(FSTextObject *)text_obj;
+		[Static]
+		[Export ("createFromType3TextObject:text_obj:")]
+		FSImageObject CreateFromType3TextObject (FSPDFPage page, FSTextObject text_obj);
 
 		// -(FSBitmap *)saveAsBitmap:(FSGraphicsObjects *)graphics_objects;
 		[Export ("saveAsBitmap:")]
@@ -11930,6 +12068,11 @@ namespace Foxit.iOS
 		//[Verify (MethodToProperty)]
 		bool HasTransparency { get; }
 
+		// -(BOOL)isScanned;
+		[Export ("isScanned")]
+		//[Verify (MethodToProperty)]
+		bool IsScanned { get; }
+
 		// -(BOOL)flatten:(BOOL)for_display options:(unsigned int)options;
 		[Export ("flatten:options:")]
 		bool Flatten (bool for_display, uint options);
@@ -12109,13 +12252,45 @@ namespace Foxit.iOS
 		[Export ("getSuggestedRect:render_matrix:point:")]
 		FSRectF GetSuggestedRect (FSBitmap render_result, FSMatrix2D render_matrix, FSPointF point);
 
+		// -(BOOL)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style matrix:(FSMatrix2D *)matrix is_each_text:(BOOL)is_each_text disable_embed_font:(BOOL)disable_embed_font;
+		[Export ("addText:rect:style:matrix:is_each_text:disable_embed_font:")]
+		bool AddText (string text, FSRectF rect, FSRichTextStyle style, FSMatrix2D matrix, bool is_each_text, bool disable_embed_font);
+
+		// -(BOOL)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style matrix:(FSMatrix2D *)matrix is_each_text:(BOOL)is_each_text;
+		[Export ("addText:rect:style:matrix:is_each_text:")]
+		bool AddText (string text, FSRectF rect, FSRichTextStyle style, FSMatrix2D matrix, bool is_each_text);
+
+		// -(BOOL)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style matrix:(FSMatrix2D *)matrix;
+		[Export ("addText:rect:style:matrix:")]
+		bool AddText (string text, FSRectF rect, FSRichTextStyle style, FSMatrix2D matrix);
+
 		// -(BOOL)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style;
 		[Export ("addText:rect:style:")]
 		bool AddText (string text, FSRectF rect, FSRichTextStyle style);
 
-		// -(FSRectF *)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(FSRotation)rotation;
+		// -(FSRectF *)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(int)rotation rotate_point:(FSRotationPointOptions)rotate_point disable_embed_font:(BOOL)disable_embed_font;
+		[Export ("addText:rect:style:rotation:rotate_point:disable_embed_font:")]
+		FSRectF AddText (string text, FSRectF rect, FSRichTextStyle style, int rotation, FSRotationPointOptions rotate_point, bool disable_embed_font);
+
+		// -(FSRectF *)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(int)rotation rotate_point:(FSRotationPointOptions)rotate_point;
+		[Export ("addText:rect:style:rotation:rotate_point:")]
+		FSRectF AddText (string text, FSRectF rect, FSRichTextStyle style, int rotation, FSRotationPointOptions rotate_point);
+
+		// -(FSRectF *)addText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(int)rotation;
 		[Export ("addText:rect:style:rotation:")]
-		FSRectF AddText (string text, FSRectF rect, FSRichTextStyle style, FSRotation rotation);
+		FSRectF AddText (string text, FSRectF rect, FSRichTextStyle style, int rotation);
+
+		// -(FSRectF *)calculateNewRectForText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(int)rotation rotate_point:(FSRotationPointOptions)rotate_point disable_embed_font:(BOOL)disable_embed_font;
+		[Export ("calculateNewRectForText:rect:style:rotation:rotate_point:disable_embed_font:")]
+		FSRectF CalculateNewRectForText (string text, FSRectF rect, FSRichTextStyle style, int rotation, FSRotationPointOptions rotate_point, bool disable_embed_font);
+
+		// -(FSRectF *)calculateNewRectForText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(int)rotation rotate_point:(FSRotationPointOptions)rotate_point;
+		[Export ("calculateNewRectForText:rect:style:rotation:rotate_point:")]
+		FSRectF CalculateNewRectForText (string text, FSRectF rect, FSRichTextStyle style, int rotation, FSRotationPointOptions rotate_point);
+
+		// -(FSRectF *)calculateNewRectForText:(NSString *)text rect:(FSRectF *)rect style:(FSRichTextStyle *)style rotation:(int)rotation;
+		[Export ("calculateNewRectForText:rect:style:rotation:")]
+		FSRectF CalculateNewRectForText (string text, FSRectF rect, FSRichTextStyle style, int rotation);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -12709,6 +12884,10 @@ namespace Foxit.iOS
 		[Export ("isEmpty")]
 		//[Verify (MethodToProperty)]
 		bool IsEmpty { get; }
+
+		// -(BOOL)setPattern:(NSString *)key_words is_regex_search:(BOOL)is_regex_search;
+		[Export ("setPattern:is_regex_search:")]
+		bool SetPattern (string key_words, bool is_regex_search);
 
 		// -(BOOL)setPattern:(NSString *)key_words;
 		[Export ("setPattern:")]
@@ -14492,30 +14671,6 @@ namespace Foxit.iOS
 		[Export ("startSign:cert_password:digest_algorithm:save_path:")]
 		FSProgressive StartSign (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path);
 
-		// -(FSProgressive *)startSignBySignArray:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
-		[Export ("startSignBySignArray:cert_password:digest_algorithm:signature_array:save_path:client_data:pause:")]
-		FSProgressive StartSignBySignArray (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, string save_path, NSData client_data, NSObject pause);
-
-		// -(FSProgressive *)startSignBySignArray:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array save_path:(NSString *)save_path client_data:(NSData *)client_data;
-		[Export ("startSignBySignArray:cert_password:digest_algorithm:signature_array:save_path:client_data:")]
-		FSProgressive StartSignBySignArray (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, string save_path, NSData client_data);
-
-		// -(FSProgressive *)startSignBySignArray:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array save_path:(NSString *)save_path;
-		[Export ("startSignBySignArray:cert_password:digest_algorithm:signature_array:save_path:")]
-		FSProgressive StartSignBySignArray (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, string save_path);
-
-		// -(FSProgressive *)startSignBySignArrayAdditionalDict:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array additional_dict:(FSPDFDictionary *)additional_dict save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
-		[Export ("startSignBySignArrayAdditionalDict:cert_password:digest_algorithm:signature_array:additional_dict:save_path:client_data:pause:")]
-		FSProgressive StartSignBySignArrayAdditionalDict (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, FSPDFDictionary additional_dict, string save_path, NSData client_data, NSObject pause);
-
-		// -(FSProgressive *)startSignBySignArrayAdditionalDict:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array additional_dict:(FSPDFDictionary *)additional_dict save_path:(NSString *)save_path client_data:(NSData *)client_data;
-		[Export ("startSignBySignArrayAdditionalDict:cert_password:digest_algorithm:signature_array:additional_dict:save_path:client_data:")]
-		FSProgressive StartSignBySignArrayAdditionalDict (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, FSPDFDictionary additional_dict, string save_path, NSData client_data);
-
-		// -(FSProgressive *)startSignBySignArrayAdditionalDict:(NSString *)cert_path cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm signature_array:(FSSignatureArray *)signature_array additional_dict:(FSPDFDictionary *)additional_dict save_path:(NSString *)save_path;
-		[Export ("startSignBySignArrayAdditionalDict:cert_password:digest_algorithm:signature_array:additional_dict:save_path:")]
-		FSProgressive StartSignBySignArrayAdditionalDict (string cert_path, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, FSSignatureArray signature_array, FSPDFDictionary additional_dict, string save_path);
-
 		// -(FSProgressive *)startSignByCertStream:(id<FSStreamCallback>)cert_file_stream cert_password:(NSString *)cert_password digest_algorithm:(FSSignatureDigestAlgorithm)digest_algorithm save_path:(NSString *)save_path client_data:(NSData *)client_data pause:(id<FSPauseCallback>)pause;
 		[Export ("startSignByCertStream:cert_password:digest_algorithm:save_path:client_data:pause:")]
 		FSProgressive StartSignByCertStream (NSObject cert_file_stream, string cert_password, FSSignatureDigestAlgorithm digest_algorithm, string save_path, NSData client_data, NSObject pause);
@@ -14829,6 +14984,14 @@ namespace Foxit.iOS
 		[Export ("paging_seal_style", ArgumentSemantic.Assign)]
 		FSPagingSealConfigPagingSealStyle Paging_seal_style { [Bind ("getPaging_seal_style")] get; set; }
 
+		// @property (getter = getIs_display_multiple_seal, nonatomic) BOOL is_display_multiple_seal;
+		[Export ("is_display_multiple_seal")]
+		bool Is_display_multiple_seal { [Bind ("getIs_display_multiple_seal")] get; set; }
+
+		// @property (getter = getPage_count_for_each_seal, nonatomic) int page_count_for_each_seal;
+		[Export ("page_count_for_each_seal")]
+		int Page_count_for_each_seal { [Bind ("getPage_count_for_each_seal")] get; set; }
+
 		// -(void *)getCptr;
 		[Export ("getCptr")]
 		//[Verify (MethodToProperty)]
@@ -14838,6 +15001,14 @@ namespace Foxit.iOS
 		[Export ("initWithCptr:swigOwnCObject:")]
 		IntPtr Constructor (IntPtr cptr, bool ownCObject);
 
+		// -(id)initWithPaging_seal_position:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation paging_seal_style:(FSPagingSealConfigPagingSealStyle)paging_seal_style is_display_multiple_seal:(BOOL)is_display_multiple_seal page_count_for_each_seal:(int)page_count_for_each_seal;
+		[Export ("initWithPaging_seal_position:offset:first_page_percent:is_on_perforation:paging_seal_style:is_display_multiple_seal:page_count_for_each_seal:")]
+		IntPtr Constructor (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation, FSPagingSealConfigPagingSealStyle paging_seal_style, bool is_display_multiple_seal, int page_count_for_each_seal);
+
+		// -(id)initWithPaging_seal_position:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation paging_seal_style:(FSPagingSealConfigPagingSealStyle)paging_seal_style is_display_multiple_seal:(BOOL)is_display_multiple_seal;
+		[Export ("initWithPaging_seal_position:offset:first_page_percent:is_on_perforation:paging_seal_style:is_display_multiple_seal:")]
+		IntPtr Constructor (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation, FSPagingSealConfigPagingSealStyle paging_seal_style, bool is_display_multiple_seal);
+
 		// -(id)initWithPaging_seal_position:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation paging_seal_style:(FSPagingSealConfigPagingSealStyle)paging_seal_style;
 		[Export ("initWithPaging_seal_position:offset:first_page_percent:is_on_perforation:paging_seal_style:")]
 		IntPtr Constructor (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation, FSPagingSealConfigPagingSealStyle paging_seal_style);
@@ -14845,6 +15016,14 @@ namespace Foxit.iOS
 		// -(id)initWithPaging_seal_position:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation;
 		[Export ("initWithPaging_seal_position:offset:first_page_percent:is_on_perforation:")]
 		IntPtr Constructor (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation);
+
+		// -(void)set:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation paging_seal_style:(FSPagingSealConfigPagingSealStyle)paging_seal_style is_display_multiple_seal:(BOOL)is_display_multiple_seal page_count_for_each_seal:(int)page_count_for_each_seal;
+		[Export ("set:offset:first_page_percent:is_on_perforation:paging_seal_style:is_display_multiple_seal:page_count_for_each_seal:")]
+		void Set (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation, FSPagingSealConfigPagingSealStyle paging_seal_style, bool is_display_multiple_seal, int page_count_for_each_seal);
+
+		// -(void)set:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation paging_seal_style:(FSPagingSealConfigPagingSealStyle)paging_seal_style is_display_multiple_seal:(BOOL)is_display_multiple_seal;
+		[Export ("set:offset:first_page_percent:is_on_perforation:paging_seal_style:is_display_multiple_seal:")]
+		void Set (FSPagingSealConfigPagingSealPosition paging_seal_position, float offset, float first_page_percent, bool is_on_perforation, FSPagingSealConfigPagingSealStyle paging_seal_style, bool is_display_multiple_seal);
 
 		// -(void)set:(FSPagingSealConfigPagingSealPosition)paging_seal_position offset:(float)offset first_page_percent:(float)first_page_percent is_on_perforation:(BOOL)is_on_perforation paging_seal_style:(FSPagingSealConfigPagingSealStyle)paging_seal_style;
 		[Export ("set:offset:first_page_percent:is_on_perforation:paging_seal_style:")]
@@ -16021,6 +16200,11 @@ namespace Foxit.iOS
 		[Export ("getSignatureAPStyleNameList")]
 		//[Verify (MethodToProperty)]
 		string[] SignatureAPStyleNameList { get; }
+
+		// @required -(NSString *)GetJapaneseEras:(int)year month:(int)month day:(int)day;
+		[Abstract]
+		[Export ("GetJapaneseEras:month:day:")]
+		string GetJapaneseEras (int year, int month, int day);
 	}
 
 	// @protocol FSIconProviderCallback <NSObject>
@@ -16192,6 +16376,18 @@ namespace Foxit.iOS
 		[Export ("getClipboardText")]
 		//[Verify (MethodToProperty)]
 		string ClipboardText { get; }
+
+		// @optional -(void)executeAction:(FSPDFPage *)page action:(FSAction *)action;
+		[Export ("executeAction:action:")]
+		void ExecuteAction (FSPDFPage page, FSAction action);
+
+		// @optional -(void)editingMonitorOnCaretChanged:(int)n_caret_pos;
+		[Export ("editingMonitorOnCaretChanged:")]
+		void EditingMonitorOnCaretChanged (int n_caret_pos);
+
+		// @optional -(void)editingMonitorOnContentChanged:(NSString *)content;
+		[Export ("editingMonitorOnContentChanged:")]
+		void EditingMonitorOnContentChanged (string content);
 	}
 
 	// @protocol FSSearchCallback <NSObject>
@@ -16713,6 +16909,16 @@ namespace Foxit.iOS
 		bool TryBlock (Action block, out NSError error);
 	}
 
+	// @protocol FSDWG2PDFProgressCallback <NSObject>
+    [Protocol, Model]
+	[BaseType (typeof(NSObject))]
+	interface FSDWG2PDFProgressCallback
+	{
+		// @optional -(void)onProgress:(NSString *)message progress:(float)progress;
+		[Export ("onProgress:progress:")]
+		void Progress (string message, float progress);
+	}
+
 	[Static]
 	//[Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
@@ -17093,11 +17299,7 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSPageOrganizerDelegate <NSObject>
-#if !NET
-    [Protocol, Model(AutoGeneratedName = true)]
-#else
 	[Protocol, Model]
-#endif
 	[BaseType (typeof(NSObject))]
 	interface FSPageOrganizerDelegate
 	{
@@ -17149,11 +17351,7 @@ namespace Foxit.iOS
 	}
 
 	// @protocol FSExceptionLoggerDelegate <NSObject>
-#if !NET
-    [Protocol, Model(AutoGeneratedName = true)]
-#else
 	[Protocol, Model]
-#endif
 	[BaseType (typeof(NSObject))]
 	interface FSExceptionLoggerDelegate
 	{
@@ -17249,6 +17447,10 @@ namespace Foxit.iOS
 		// @property (readonly, assign, nonatomic) BOOL supportsMultipleScenes;
 		[Export ("supportsMultipleScenes")]
 		bool SupportsMultipleScenes { get; }
+
+		// @property (assign, nonatomic) BOOL refreshReflowAnnot;
+		[Export ("refreshReflowAnnot")]
+		bool RefreshReflowAnnot { get; set; }
 
 		// -(instancetype _Nonnull)initWithFrame:(CGRect)frame;
 		[Export ("initWithFrame:")]
@@ -17382,6 +17584,10 @@ namespace Foxit.iOS
 		[Export ("saveDoc:flag:")]
 		bool SaveDoc (string filePath, FSPDFDocSaveFlags flag);
 
+		// -(BOOL)saveDoc:(NSString * _Nonnull)filePath flag:(FSPDFDocSaveFlags)flag complete:(void (^ _Nonnull)(FSErrorCode))complete;
+		[Export ("saveDoc:flag:complete:")]
+		bool SaveDoc (string filePath, FSPDFDocSaveFlags flag, Action<FSErrorCode> complete);
+
 		// -(BOOL)saveDocToFileWriter:(id<FSFileWriterCallback> _Nonnull)fileWriter flag:(FSPDFDocSaveFlags)flag;
 		[Export ("saveDocToFileWriter:flag:")]
 		bool SaveDocToFileWriter (NSObject fileWriter, FSPDFDocSaveFlags flag);
@@ -17399,6 +17605,16 @@ namespace Foxit.iOS
 		// -(int)getPageIndex:(CGPoint)displayViewPt;
 		[Export ("getPageIndex:")]
 		int GetPageIndex (CGPoint displayViewPt);
+
+		// -(float)getReflowPageScale;
+		[Export ("getReflowPageScale")]
+		//[Verify (MethodToProperty)]
+		float ReflowPageScale { get; }
+
+		// -(float)getUIDevicePPI;
+		[Export ("getUIDevicePPI")]
+		//[Verify (MethodToProperty)]
+		float UIDevicePPI { get; }
 
 		// -(NSMutableArray * _Nonnull)getVisiblePages;
 		[Export ("getVisiblePages")]
@@ -17425,6 +17641,10 @@ namespace Foxit.iOS
 		// -(BOOL)gotoPage:(int)index withDocPoint:(FSPointF * _Nonnull)point animated:(BOOL)animated;
 		[Export ("gotoPage:withDocPoint:animated:")]
 		bool GotoPage (int index, FSPointF point, bool animated);
+
+		// -(BOOL)gotoPage:(int)index zoomToDocRect:(FSRectF * _Nonnull)rect animated:(BOOL)animated;
+		[Export ("gotoPage:zoomToDocRect:animated:")]
+		bool GotoPage (int index, FSRectF rect, bool animated);
 
 		// -(BOOL)gotoPage:(int)index animated:(BOOL)animated needJumpedNode:(BOOL)needJumpedNode;
 		[Export ("gotoPage:animated:needJumpedNode:")]
@@ -17669,6 +17889,22 @@ namespace Foxit.iOS
 		[Export ("convertPageViewPtToPdfPt:pageIndex:")]
 		FSPointF ConvertPageViewPtToPdfPt (CGPoint point, int pageIndex);
 
+		// -(CGPoint)convertReflowPagePtToPageViewPt:(FSPointF * _Nonnull)point reflowPage:(FSReflowPage * _Nonnull)reflowPage pageIndex:(int)pageIndex;
+		[Export ("convertReflowPagePtToPageViewPt:reflowPage:pageIndex:")]
+		CGPoint ConvertReflowPagePtToPageViewPt (FSPointF point, FSReflowPage reflowPage, int pageIndex);
+
+		// -(FSPointF * _Nonnull)convertPageViewPtToReflowPagePt:(CGPoint)point reflowPage:(FSReflowPage * _Nonnull)reflowPage pageIndex:(int)pageIndex;
+		[Export ("convertPageViewPtToReflowPagePt:reflowPage:pageIndex:")]
+		FSPointF ConvertPageViewPtToReflowPagePt (CGPoint point, FSReflowPage reflowPage, int pageIndex);
+
+		// -(CGRect)convertReflowPageRectToPageViewRect:(FSRectF * _Nonnull)rect reflowPage:(FSReflowPage * _Nonnull)reflowPage pageIndex:(int)pageIndex;
+		[Export ("convertReflowPageRectToPageViewRect:reflowPage:pageIndex:")]
+		CGRect ConvertReflowPageRectToPageViewRect (FSRectF rect, FSReflowPage reflowPage, int pageIndex);
+
+		// -(FSRectF * _Nonnull)convertPageViewRectToReflowPageRect:(CGRect)rect reflowPage:(FSReflowPage * _Nonnull)reflowPage pageIndex:(int)pageIndex;
+		[Export ("convertPageViewRectToReflowPageRect:reflowPage:pageIndex:")]
+		FSRectF ConvertPageViewRectToReflowPageRect (CGRect rect, FSReflowPage reflowPage, int pageIndex);
+
 		// -(CGRect)convertPdfRectToPageViewRect:(FSRectF * _Nonnull)rect pageIndex:(int)pageIndex;
 		[Export ("convertPdfRectToPageViewRect:pageIndex:")]
 		CGRect ConvertPdfRectToPageViewRect (FSRectF rect, int pageIndex);
@@ -17729,6 +17965,19 @@ namespace Foxit.iOS
 		[Export ("clearRenderCache")]
 		void ClearRenderCache ();
 
+		// -(UITapGestureRecognizer * _Nonnull)getPageViewDoubleTapGesture:(int)pageIndex;
+		[Export ("getPageViewDoubleTapGesture:")]
+		UITapGestureRecognizer GetPageViewDoubleTapGesture (int pageIndex);
+
+		// -(void)lockGesturesForRequires:(FSGestureLockOptions)options;
+		[Export ("lockGesturesForRequires:")]
+		void LockGesturesForRequires (FSGestureLockOptions options);
+
+		// -(FSGestureLockOptions)getLockedOptions;
+		[Export ("getLockedOptions")]
+		//[Verify (MethodToProperty)]
+		FSGestureLockOptions LockedOptions { get; }
+
 		// +(void)recoverForOOM;
 		[Static]
 		[Export ("recoverForOOM")]
@@ -17751,10 +18000,6 @@ namespace Foxit.iOS
 		// -(void)setPageViewEdgeInsets:(UIEdgeInsets)pageViewEdgeInsets moveOffset:(BOOL)moveOffset;
 		[Export ("setPageViewEdgeInsets:moveOffset:")]
 		void SetPageViewEdgeInsets (UIEdgeInsets pageViewEdgeInsets, bool moveOffset);
-
-		// -(UITapGestureRecognizer * _Nonnull)getPageViewDoubleTapGesture:(int)pageIndex;
-		[Export ("getPageViewDoubleTapGesture:")]
-		UITapGestureRecognizer GetPageViewDoubleTapGesture (int pageIndex);
 	}
 
 	// @interface xfa (FSPDFViewCtrl)

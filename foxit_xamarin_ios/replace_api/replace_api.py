@@ -201,8 +201,8 @@ def redress_method_to_property(srcPath):
         r'Load',
         r'LoadW',
         r'StartLoadW',
-        r'StartLoad',
-        r'StartLoadW',
+        r'ExecuteJavaScriptAction',
+        r'StartApply',
         r'StartRecognizeForm',
         r'StartEmbedAllFonts',
     ]
@@ -232,7 +232,8 @@ def replace_api_definitions(srcPath,destPath,foxitrdk = False):
 
     replace_api_definitions_Iprotocol(destPath,foxitrdk)
     comment_useless_codes(destPath)
-    replace_api_definitions_error_property(destPath)
+    redress_method_to_property(destPath)
+
 
     replace_file_string(destPath,'CGContextRef\*','IntPtr')
     replace_file_string(destPath,'unsafe void\*','IntPtr')

@@ -97,7 +97,17 @@ namespace Foxit.iOS
 		NoAdvEditModuleRight = 77,
 		NoPDF2OfficeModuleRight = 78,
 		URLInBlackList = 79,
-		NoDocumentPermission = 80
+		OFDEngineNotInit = 80,
+		NoOFDModuleRight = 81,
+		No3DModuleRight = 82,
+		InvalidRegex = 83,
+		NoDocumentPermission = 84,
+		NoOffice2PDFModuleRight = 85,
+		MIPUPEEngineInitFailed = 86,
+		MIPProtectionEngineInitFailed = 87,
+		MIPCreateProtectionHandlerFailed = 88,
+		MIPGetExtendedLabelInfoByIdFailed = 89,
+		NoPrint2PDFModuleRight = 90
 	}
 
 	//[Native]
@@ -108,6 +118,16 @@ namespace Foxit.iOS
 		FSRotation180 = 2,
 		FSRotation270 = 3,
 		Unknown = 4
+	}
+
+	//[Native]
+	public enum FSRotationPointOptions : long
+	{
+		Center = 0,
+		LeftTop = 1,
+		RightTop = 2,
+		LeftBottom = 3,
+		RightBottom = 4
 	}
 
 	//[Native]
@@ -157,7 +177,11 @@ namespace Foxit.iOS
 		TableMaker = 12,
 		Dwg2pdf = 13,
 		AdvEdit = 14,
-		PDF2Office = 15
+		PDF2Office = 15,
+		FSModuleName3D = 16,
+		Ofd = 17,
+		Office2PDF = 18,
+		Print2PDF = 19
 	}
 
 	//[Native]
@@ -170,8 +194,10 @@ namespace Foxit.iOS
 		CalGray = 4,
 		CalRGB = 5,
 		Lab = 6,
+		ICCBased = 7,
 		Separation = 8,
 		DeviceN = 9,
+		Indexed = 10,
 		Pattern = 11,
 		ICCBasedDeviceGray = 12,
 		ICCBasedDeviceRGB = 13,
@@ -354,6 +380,19 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSBitmapFadeOutEnhancementAlgorithm : long
+	{
+		FSBitmapEnhanceAlgoGrayLevelTransformation = 0
+	}
+
+	//[Native]
+	public enum FSBitmapFadeOutThresholdAlogrithm : long
+	{
+		FixedThreshold = 0,
+		Otsu = 1
+	}
+
+	//[Native]
 	public enum FSImageType : long
 	{
 		Unknown = -1,
@@ -365,6 +404,27 @@ namespace Foxit.iOS
 		Tif = 5,
 		Jpx = 6,
 		Jbig2 = 8
+	}
+
+	//[Native]
+	public enum FSImageOrientation : long
+	{
+		None = 0,
+		Normal = 1,
+		FlipH = 2,
+		Rotate180 = 3,
+		FlipV = 4,
+		Rotate90FlipH = 5,
+		Rotate90 = 6,
+		Rotate270FlipH = 7,
+		Rotate270 = 8
+	}
+
+	//[Native]
+	public enum FSPrintDeviceSettingDataOrientationFlag : long
+	{
+		Portrait = 0,
+		Landscape = 1
 	}
 
 	//[Native]
@@ -964,6 +1024,50 @@ namespace Foxit.iOS
 	}
 
 	//[Native]
+	public enum FSDWG2PDFSettingDataDWG2PDFExportFlags : long
+	{
+		EmbededTTF = 1,
+		TTFTextAsGeometry = 2,
+		SHXTextAsGeometry = 4,
+		SimpleGeomOptimization = 8,
+		EnableLayers = 16,
+		IncludeOffLayers = 32,
+		EmbededOptimizedTTF = 64,
+		UseHLR = 128,
+		FlateCompression = 256,
+		ASCIIHexEncoding = 512,
+		ExportHyperlinks = 1024,
+		ZoomToExtentsMode = 2048,
+		Linearized = 4096,
+		Measuring = 16384
+	}
+
+	//[Native]
+	public enum FSDWG2PDFSettingDataDWG2PDFExportHatchesType : long
+	{
+		Bitmap = 0,
+		Drawing = 1,
+		PdfPaths = 2,
+		Polygons = 3
+	}
+
+	//[Native]
+	public enum FSDWG2PDFSettingDataDWG2PDFSearchableTextType : long
+	{
+		NoSearch = 0,
+		Shx = 1,
+		Ttf = 2
+	}
+
+	//[Native]
+	public enum FSDWG2PDFSettingDataDWG2PDFColorPolicy : long
+	{
+		NoPolicy = 0,
+		Mono = 1,
+		Grayscale = 2
+	}
+
+	//[Native]
 	public enum FSFDFDocType : long
 	{
 		Fdf = 0,
@@ -1131,7 +1235,9 @@ namespace Foxit.iOS
 	{
 		Format = 0,
 		Calculation = 1,
-		Set = 2
+		SetValue = 2,
+		SetReadOnly = 3,
+		FillColor = 4
 	}
 
 	//[Native]
@@ -1688,6 +1794,16 @@ namespace Foxit.iOS
 		NumberSlashCount = 2,
 		PageNumber = 3,
 		PageNumberOfCount = 4
+	}
+
+	//[Native]
+	public enum FSTiledWatermarkSettingsFlags : long
+	{
+		AsPageContents = 0,
+		AsAnnot = 1,
+		OnTop = 2,
+		NoPrint = 4,
+		Invisible = 8
 	}
 
 	//[Native]
@@ -2534,10 +2650,10 @@ namespace Foxit.iOS
 		TwoMiddle
 	}
 
-	public enum PdfReflowReflowmode
+	public enum PdfReflowReflowmode 
 	{
-		None = -1,
-		Withimage = 0,
+		None = 0,
+		Withimage = 1,
 		Onlytext
 	}
 
@@ -2585,6 +2701,18 @@ namespace Foxit.iOS
 	{
 		Default,
 		MappingGray
+	}
+
+	//[Native]
+	public enum FSGestureLockOptions : ulong
+	{
+		None = 0,
+		SingleTap = 1uL << 0,
+		DoubleTap = 1uL << 1,
+		LongPress = 1uL << 3,
+		Pinch = 1uL << 4,
+		Pan = 1uL << 5,
+		All = SingleTap | DoubleTap | LongPress | Pinch | Pan
 	}
 
 	public enum PdfCertErrorCode 

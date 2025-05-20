@@ -168,7 +168,8 @@ namespace Foxit.iOS.UIExtensions
 		FullScreenToolbar,
 		FullScreenToolbarDrag,
 		ToolbarDrag,
-		FreeTrial
+		FreeTrial,
+		InkRecognitionText
 	}
 
 	//[Native]
@@ -255,7 +256,18 @@ namespace Foxit.iOS.UIExtensions
 		PassWord,
 		TrutedCertificates,
 		Rms,
-		Aip
+		Aip,
+		ViewSingle = 700,
+		ViewDay,
+		ViewColor,
+		ViewFitPage,
+		ViewFitWidth,
+		ViewReflow,
+		ViewCrop,
+		ViewSpeak,
+		ViewAutoFlip,
+		ViewRotate,
+		ViewPanZoom
 	}
 
 	//[Native]
@@ -263,6 +275,15 @@ namespace Foxit.iOS.UIExtensions
 	{
 		Exist,
 		Custom
+	}
+
+	//[Native]
+	public enum FSItemContentType : long
+	{
+		Custom,
+		Image = 1L << 0,
+		Text = 1L << 1,
+		ImageAndText = (Image | Text)
 	}
 
 	//[Native]
@@ -314,7 +335,8 @@ namespace Foxit.iOS.UIExtensions
 		Panel,
 		ViewSettings,
 		Thumbnail,
-		ReadingBookmark
+		ReadingBookmark,
+		SortTool
 	}
 
 	//[Native]
@@ -359,7 +381,11 @@ namespace Foxit.iOS.UIExtensions
 		SmallBottomBarToolItem,
 		ImageAnnoteItem,
 		AttachmentsPanelAddItem,
-		PDFEsign
+		AttachmentsPanelEditItem,
+		PDFEsign,
+		DocumentAttachmentCanEdit,
+		InkRecognize,
+		FSFunction3DView
 	}
 
 	//[Native]
@@ -367,6 +393,14 @@ namespace Foxit.iOS.UIExtensions
 	{
 		TopBar = 1,
 		BottomBar
+	}
+
+	//[Native]
+	public enum FSMeasurementUnits : ulong
+	{
+		Inch,
+		Cm,
+		Mm
 	}
 
 	//[Native]

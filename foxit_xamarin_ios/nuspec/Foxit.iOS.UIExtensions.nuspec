@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Foxit.iOS.UIExtensions</id>
-    <version>9.0.2</version>
+    <version>9.1.0</version>
     <title>Foxit.iOS.UIExtensions</title>
     <authors>Foxit Software Incorporated</authors>
     <owners>Foxit Software Incorporated</owners>
@@ -18,22 +18,22 @@ technology to securely display, create, edit, annotate, format, organize, print,
 documents as well as to fill PDF forms. Additionally, Foxit PDF SDK includes a built-in, embeddable PDF
 Viewer, making the development process easier and faster. For more detailed information, please visit
 the website https://developers.foxitsoftware.com/pdf-sdk/.</description>
-    <copyright>Copyright (C) 2003-2023, Foxit Software Inc.</copyright>
+    <copyright>Copyright (C) 2003-2025, Foxit Software Inc.</copyright>
     <tags>Foxit PDF SDK</tags>
     <summary></summary>
     <releaseNotes></releaseNotes>
     <language></language>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Foxit.iOS" version="9.0.2" />
+        <dependency id="Foxit.iOS" version="9.1.0" />
       </group>
       <group targetFramework="net6.0-ios11.0">
         <dependency id="System.Runtime.InteropServices.NFloat.Internal" version="6.0.1" exclude="Build,Analyzers" />
-        <dependency id="Foxit.iOS" version="9.0.2" />
+        <dependency id="Foxit.iOS" version="9.1.0" />
       </group>
       <group targetFramework="net6.0-maccatalyst13.1">
         <dependency id="System.Runtime.InteropServices.NFloat.Internal" version="6.0.1" exclude="Build,Analyzers" />
-        <dependency id="Foxit.iOS" version="9.0.2" />
+        <dependency id="Foxit.iOS" version="9.1.0" />
       </group>
     </dependencies>
     <frameworkAssemblies>

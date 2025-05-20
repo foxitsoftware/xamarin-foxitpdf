@@ -105,7 +105,8 @@
                 "pencil": {
                   "color": "#ff0000",
                   "opacity": 1.0,
-                  "thickness": 2
+                  "thickness": 2,
+                  "addHistoricalPoints": true
                 },
                 "polygon": {
                   "color": "#ff0000", "opacity": 1.0, "thickness": 2, "fillColor": null
@@ -194,5 +195,8 @@
       "signature": {
             "color": "#000000", "thickness": 8
       }
+    },
+    "optimizations": {
+      "optimizeEmbeddedFontsForAnnots": false // When this field is enabled, the font information from the existing document will be reused when adding annotations, allowing fonts to be shared and reducing the final document size to some extent. Currently, this option only takes effect for FreeText annotations.
     }
 }

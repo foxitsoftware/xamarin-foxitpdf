@@ -58,6 +58,8 @@
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setOnItemClickListener']"/>
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setOnItemLongPressListener']"/>
 
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog.sheetmenu']/interface[@name='IActionMenu']/method[@name='setContentView' and count(parameter)=1]" />
+
   <!-- Rxjava -->
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.internal')]"/>
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.observers')]"/>

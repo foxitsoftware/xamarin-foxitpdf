@@ -59,8 +59,9 @@
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.toolbar']/interface[@name='IBaseItem']/method[@name='setOnItemLongPressListener']"/>
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.controls.dialog.sheetmenu']/interface[@name='IActionMenu']/method[@name='setContentView' and count(parameter)=1]" />
+  <remove-node path="/api/package[@name='com.google.mlkit']" />
 
-  <!-- Rxjava -->
+	<!-- Rxjava -->
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.internal')]"/>
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.observers')]"/>
   <remove-node path="/api/package[starts-with(@name, 'io.reactivex.subjects')]"/>

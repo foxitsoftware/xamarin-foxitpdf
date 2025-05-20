@@ -119,5 +119,6 @@
     <PackageReference Include="Foxit.Android" Version="9.1.0" />
     <PackageReference Include="Foxit.Android.UIExtensions" Version="9.1.0" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0" />
+    <PackageReference Include="Xamarin.Google.MLKit.DigitalInk.Recognition" Version="118.0.0" />
   </ItemGroup>
 </Project>

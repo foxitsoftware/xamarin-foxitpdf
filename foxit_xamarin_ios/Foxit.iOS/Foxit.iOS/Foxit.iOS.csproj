@@ -24,9 +24,9 @@
 	  <TargetPlatformVersion Condition="$(_IsCatalyst)">13.1</TargetPlatformVersion>
       <RootNamespace>Foxit.iOS</RootNamespace>
       <AssemblyName>Foxit.iOS</AssemblyName>
-      <AssemblyVersion>9.0.1</AssemblyVersion>
-      <FileVersion>9.0.1</FileVersion>
-      <AssemblyInformationalVersion>9.0.1</AssemblyInformationalVersion>
+      <AssemblyVersion>9.1.0</AssemblyVersion>
+      <FileVersion>9.1.0</FileVersion>
+      <AssemblyInformationalVersion>9.1.0</AssemblyInformationalVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
@@ -44,11 +44,11 @@ Viewer, making the development process easier and faster. For more detailed info
 the website https://developers.foxitsoftware.com/pdf-sdk/</Description>
       <Authors>Foxit Software Incorporated</Authors>
       <Owners>Foxit Software Incorporated</Owners>
-      <Copyright>Copyright (C) 2003-2023, Foxit Software Inc.</Copyright>
+      <Copyright>Copyright (C) 2003-2025, Foxit Software Inc.</Copyright>
       <PackageProjectUrl>https://developers.foxitsoftware.com/pdf-sdk/ios/</PackageProjectUrl>
       <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
       <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-      <PackageVersion>9.0.1</PackageVersion>
+      <PackageVersion>9.1.0</PackageVersion>
   </PropertyGroup>
 
   <Import Project="Foxit.iOS.Framework.targets" />

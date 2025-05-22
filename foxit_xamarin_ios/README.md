@@ -1,11 +1,11 @@
 # foxit_xamarin_ios
 Use the Foxit Mobile PDF SDK with Xamarin/.NET on iOS/Mac Catalyst
 
-Now we had support rdk 9.0
+Now we had support rdk 9.1
 
 ## Introduction
 
-This sample project works with the  `Foxit PDF SDK for iOS 9.0` and is a direct port of the `CompletePdfViewer.xxx`  sample project included in the RDK.
+This sample project works with the  `Foxit PDF SDK for iOS 9.1` and is a direct port of the `CompletePdfViewer.xxx`  sample project included in the RDK.
 
 ## Installation
 

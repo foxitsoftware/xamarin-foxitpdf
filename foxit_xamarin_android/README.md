@@ -89,7 +89,7 @@ directory:
   -  Add the built DLLs as references to your project  
   This section takes `FoxitRDK.dll` as an example to show you how to add it as a reference to your project.
 For other DLLs, do the same steps with `FoxitRDK.dll`. We assume that you have got the `FoxitRDK.dll`, if
-not, please refer to [Build DLLs](#Build-DLLs) section to build the FoxitRDK project and generate the `FoxitRDK.dll`.  
+not, please refer to **_Build DLLs_** section to build the FoxitRDK project and generate the `FoxitRDK.dll`.  
 
       - In the Solution Explorer, right-click the References node of your project and select `Add Reference… `  
       

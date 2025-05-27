@@ -57,12 +57,11 @@ namespace Com.Foxit.Home
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            RequestWindowFeature(Android.Views.WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
 #if !NET
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 #endif
-            Uiextensions.Utils.AppTheme.SetThemeFullScreen(this);
+            SystemUiHelper.Instance.SetStatusBarColor(Window, unchecked((int)0xffA236B2));
             Uiextensions.Utils.AppTheme.SetThemeNeedMenuKey(this);
             ActManager.Instance.CurrentActivity = this;
 

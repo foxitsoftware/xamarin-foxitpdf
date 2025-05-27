@@ -37,7 +37,7 @@ namespace Com.Foxit.Pdfreader
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Uiextensions.Utils.AppTheme.SetThemeFullScreen(this);
+            SystemUiHelper.Instance.SetStatusBarColor(Window, unchecked((int)0xffA236B2));
             Uiextensions.Utils.AppTheme.SetThemeNeedMenuKey(this);
             ActManager.Instance.CurrentActivity = this;
 

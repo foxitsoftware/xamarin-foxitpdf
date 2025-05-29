@@ -36,9 +36,38 @@ Foxit PDF SDK for .NET features a powerful, easy-to-use Core API in C# for rende
   14. Select a PDF and open it.
 
 ### iOS
-* [Install Foxit.iOS](https://www.nuget.org/packages/Foxit.iOS)
-* [Install Foxit.iOS.UIExtensions](https://www.nuget.org/packages/Foxit.iOS.UIExtensions)
-* [Install Foxit.iOS.Scanning.UI](https://www.nuget.org/packages/Foxit.iOS.Scanning.UI)
+* **How to run the foxit maui.**
+
+  1. Go to https://github.com/foxitsoftware/xamarin-foxitpdf/tree/master
+
+  2. Click on "Code", then "Download ZIP"
+
+  3. Unzip xamarin-foxitpdf-master.zip to any directory
+
+  4. Ensure you have a Mac with Xcode 14+ and .NET 6.0+ installed
+
+  5. Open xamarin-foxitpdf-master\foxit_maui\foxit_maui.sln in Visual Studio 2022+ (with iOS workload installed)
+
+  6. Right-click the foxit_maui project in Solution Explorer → Manage NuGet Packages
+
+  7. Install the following packages (or confirm they are installed):
+      * Foxit.iOS
+  
+      * Foxit.iOS.UIExtensions
+  
+      * Foxit.iOS.Scanning.UI
+
+  9. In the Configuration Manager, select Debug | iPhone Simulator (or a physical iOS device)
+
+  10. Request a trial of Foxit PDF SDK for iOS, then unzip the package (foxitpdfsdk_$version_ios.zip)
+
+  11. Copy rdk_sn.txt and rdk_key.txt from the SDK package to:
+
+  12. xamarin-foxitpdf-master\foxit_xamarin_ios\Resources.
+
+  13. Click Run.
+
+  14. The app will launch in the simulator/device. Select a PDF to open it.
 
 ## More
 ------------

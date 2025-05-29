@@ -63,11 +63,11 @@ Foxit PDF SDK for .NET features a powerful, easy-to-use Core API in C# for rende
 
   11. Copy rdk_sn.txt and rdk_key.txt from the SDK package to:
 
-  12. xamarin-foxitpdf-master/foxit_xamarin_ios/CompletePdfViewer/Resources.
+     * xamarin-foxitpdf-master/foxit_xamarin_ios/libs/.
 
-  13. Click Run.
+  12. Click Run.
 
-  14. The app will launch in the simulator/device. Select a PDF to open it.
+  13. The app will launch in the simulator/device. Select a PDF to open it.
 
 ## More
 ------------

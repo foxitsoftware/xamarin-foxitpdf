@@ -16,7 +16,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Foxit.Android</PackageId>
-    <PackageVersion>9.1.0</PackageVersion>
+    <PackageVersion>9.1.0.1</PackageVersion>
     <Title>Foxit.Android</Title>
     <Authors>Foxit Software Incorporated</Authors>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
@@ -61,7 +61,7 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <InputJar Include="..\..\libs\FoxitRDK\classes.jar" Condition="Exists('..\..\libs\FoxitRDK\')"/>
+    <InputJar Include="..\..\libs\FoxitRDK\classes.jar" Condition="Exists('..\..\libs\FoxitRDK\')" />
   </ItemGroup>
 
   <ItemGroup>
@@ -85,10 +85,6 @@ the website https://developers.foxitsoftware.com/pdf-sdk/.</Description>
     <ProjectReference Include="..\..\RMSSDK_UI\RMSSDK_UI\RMSSDK_UI.csproj">
       <Project>{b71d0f8e-edd4-4c67-9b05-9647c334516a}</Project>
       <Name>RMSSDK_UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Xcrash\Xcrash\XCrash.csproj">
-      <Project>{6a76571e-f970-45a6-83d8-6825d4c50906}</Project>
-      <Name>XCrash</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

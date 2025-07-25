@@ -16,7 +16,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Foxit.Android.UIExtensions</PackageId>
-    <PackageVersion>9.1.0</PackageVersion>
+    <PackageVersion>9.1.0.2</PackageVersion>
     <Title>Foxit.Android.UIExtensions</Title>
     <Authors>Foxit Software Incorporated</Authors>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>

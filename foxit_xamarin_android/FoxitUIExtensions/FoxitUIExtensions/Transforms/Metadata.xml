@@ -14,8 +14,11 @@
 
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getDragToolBar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getToolbar']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='setToolBar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getCurToolbar']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='getPropertyBar']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='addTabSelectedListener']" />
+  <remove-node path="/api/package[@name='com.foxit.uiextensions.pdfreader']/interface[@name='IMainFrame']/method[@name='removeTabSelectedListener']" />
   
   <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='UIExtensionsManager']/method[@name='getDocumentManager']" />
   <remove-node path="/api/package[@name='com.foxit.uiextensions']/class[@name='DocumentManager']" />

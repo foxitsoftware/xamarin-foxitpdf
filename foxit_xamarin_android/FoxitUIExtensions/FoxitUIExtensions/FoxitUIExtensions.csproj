@@ -26,6 +26,7 @@
 			Viewer, making the development process easier and faster. For more detailed information, please visit
 			the website https://developers.foxitsoftware.com/pdf-sdk/.
 		</Description>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
 
 	<ItemGroup>

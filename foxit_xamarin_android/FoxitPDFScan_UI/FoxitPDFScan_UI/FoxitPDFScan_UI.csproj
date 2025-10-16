@@ -35,6 +35,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\FoxitMobileScanningRDK\FoxitMobileScanningRDK\FoxitMobileScanningRDK.csproj" />
+		<ProjectReference Include="..\..\FoxitUIExtensions\FoxitUIExtensions\FoxitUIExtensions.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<TransformFile Include="Transforms\Metadata.xml" />
 		<TransformFile Include="Transforms\EnumFields.xml" />
 		<TransformFile Include="Transforms\EnumMethods.xml" />
@@ -44,8 +49,4 @@
 		<None Include="LICENSE.txt" Pack="True" PackagePath="LICENSE.txt" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="Foxit.Android.Scanning" Version="3.0.0" />
-	  <PackageReference Include="Foxit.Android.UIExtensions" Version="9.1.0.4" />
-	</ItemGroup>
 </Project>

@@ -9,7 +9,7 @@
 
 		<AssemblyName>Foxit.Android.UIExtensions</AssemblyName>
 		<PackageId>Foxit.Android.UIExtensions</PackageId>
-		<PackageVersion>9.1.0.4</PackageVersion>
+		<PackageVersion>9.1.1</PackageVersion>
 		<Title>Foxit.Android.UIExtensions</Title>
 		<Authors>Foxit Software Incorporated</Authors>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
